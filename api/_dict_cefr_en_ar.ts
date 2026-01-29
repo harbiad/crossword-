@@ -90,6 +90,5 @@ export const DICT_A1_A2: Record<string, string> = {
   RUN: 'يجري',
 };
 
-// For now, intermediate/advanced are empty; we can grow these over time.
 export const DICT_B1_B2: Record<string, string> = {};
 export const DICT_C1_C2: Record<string, string> = {};

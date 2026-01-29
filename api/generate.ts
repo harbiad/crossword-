@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { HfInference } from '@huggingface/inference';
-import { DICT_A1_A2, DICT_B1_B2, DICT_C1_C2 } from '../src/lib/dict_cefr_en_ar';
+import { DICT_A1_A2, DICT_B1_B2, DICT_C1_C2 } from './_dict_cefr_en_ar';
 
 type Mode = 'en_to_ar' | 'ar_to_en';
 type Band = 'beginner' | 'intermediate' | 'advanced';
