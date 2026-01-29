@@ -37,30 +37,31 @@ function normalizeArabicWord(s: string) {
     .toUpperCase();
 }
 
-async function flanGenerateWordList(hf: HfInference, cefr: string, count: number) {
-  const prompt = [
-    'Return ONLY valid JSON.',
-    `Give exactly ${count} common English vocabulary words for CEFR ${cefr}.`,
-    'Rules:',
-    '- Output must be a JSON array of strings.',
-    '- Single words only (no spaces, no hyphens).',
-    '- No duplicates.',
-  ].join('\n');
+const WORDS_A1_A2 = [
+  'family','friend','school','teacher','student','book','pen','paper','phone','computer','music','movie','food','water','coffee','tea','bread','rice','fruit','apple','banana','orange','vegetable','meat','fish','milk','cheese','egg','sugar','salt','city','street','house','home','room','door','window','car','bus','train','airport','hotel','market','shop','money','price','today','tomorrow','yesterday','morning','evening','night','week','month','year','happy','sad','tired','hungry','thirsty','hot','cold','big','small','good','bad','new','old','fast','slow','right','left','open','close','start','stop','work','study','read','write','speak','listen','walk','run'
+];
 
-  const out = await hf.textGeneration({
-    model: 'google/flan-t5-base',
-    inputs: prompt,
-    parameters: {
-      max_new_tokens: 400,
-      temperature: 0.2,
-      return_full_text: false,
-    },
-  });
+const WORDS_B1_B2 = [
+  'advice','argument','attitude','balance','benefit','career','choice','culture','damage','decision','demand','detail','effort','energy','experience','freedom','goal','habit','health','history','identity','improve','increase','influence','interest','knowledge','language','manage','method','opinion','patient','pattern','perform','policy','prepare','pressure','problem','process','project','quality','reason','reduce','respect','result','routine','science','society','solution','strength','support','system','technology','tradition','traffic','training','travel','value','weather','worry','discover','discuss','develop','explain','imagine','consider','compare','protect','recommend','require','suggest'
+];
 
-  const text = (out.generated_text || '').trim();
-  const parsed = JSON.parse(text);
-  if (!Array.isArray(parsed)) throw new Error('word list is not an array');
-  return parsed.map((x) => String(x));
+const WORDS_C1_C2 = [
+  'abrupt','allocate','ambiguous','analogy','analyze','anticipate','assess','assumption','bias','coherent','comprehensive','consequence','controversy','criteria','dilemma','distinction','domestic','emerge','emphasis','ethical','evaluate','exaggerate','framework','generate','hypothesis','inevitable','inhibit','innovative','integrity','interpret','justify','legitimate','maintain','negligible','notion','paradox','perspective','phenomenon','precise','prevalent','prioritize','relevant','resilient','sophisticated','subtle','sustain','transform','undermine','viable','vulnerable','whereas','notwithstanding','contemporary','meticulous','intricate','ubiquitous'
+];
+
+function pickWordList(cefr: string): string[] {
+  if (cefr === 'A1-A2') return WORDS_A1_A2;
+  if (cefr === 'B1-B2') return WORDS_B1_B2;
+  return WORDS_C1_C2;
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 async function translateEnToAr(hf: HfInference, english: string) {
@@ -88,9 +89,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const cefr = bandToCefr(band);
     const hf = new HfInference(token);
 
-    // Generate a pool bigger than needed; crossword layout will drop some.
+    // Use built-in CEFR word lists (HF free-tier doesn't always host generator models).
     const poolCount = Math.max(18, Math.min(40, gridSize * 3));
-    const words = await flanGenerateWordList(hf, cefr, poolCount);
+    const baseList = pickWordList(cefr);
+    const words = shuffle(baseList).slice(0, Math.min(baseList.length, poolCount * 2));
 
     const pairs: Array<{ clue: string; answer: string }> = [];
     const seen = new Set<string>();
