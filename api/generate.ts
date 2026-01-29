@@ -36,8 +36,8 @@ function normalizeArabicWord(s: string) {
   return s
     .trim()
     .replace(/\s+/g, '')
-    .replace(/[ـ\u064B-\u065F\u0670]/g, '') // tatweel + harakat
-    .replace(/[\u061F\u060C\u06D4\u066B\u066C\u06D4.,;:!\-_/()\[\]{}"'`~@#$%^&*+=<>؟،]/g, '')
+    .replace(/[\u0640\u064B-\u065F\u0670]/g, '') // tatweel + harakat
+    .replace(/[\u061F\u060C\u06D4\u066B\u066C.,;:!\-_/()[\]{}"'`~@#$%^&*+=<>\u061F\u060C]/g, '')
     .toUpperCase();
 }
 
