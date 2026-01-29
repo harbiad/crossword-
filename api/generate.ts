@@ -75,13 +75,7 @@ function pickDict(cefr: string): Record<string, string> {
   return DICT_C1_C2;
 }
 
-async function translateEnToAr(hf: any, englishUpper: string) {
-  const out = await hf.translation({
-    model: 'Helsinki-NLP/opus-mt-en-ar',
-    inputs: englishUpper.toLowerCase(),
-  });
-  return (out.translation_text || '').trim();
-}
+// (HF fallback removed for speed + reliability on Vercel)
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
@@ -97,12 +91,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const cefr = bandToCefr(band);
 
     // Use built-in CEFR word lists.
-    // Speed strategy:
-    // 1) Prefer local curated dict (instant).
-    // 2) Optional HF fallback ONLY if needed and HF_TOKEN is present.
+    // Speed strategy: local curated dict (instant). (HF fallback removed for now.)
     const dict = pickDict(cefr);
-    const token = process.env.HF_TOKEN;
-    const hf = token ? new (await import('@huggingface/inference')).HfInference(token) : null;
 
     const poolCount = Math.max(18, Math.min(40, gridSize * 3));
     const baseList = pickWordList(cefr);
@@ -126,27 +116,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (pairs.length >= poolCount) break;
     }
 
-    // Optional fallback: HF translate missing words (kept for B1+ until dict grows)
-    if (pairs.length < poolCount && hf) {
-      for (const w of shuffle(baseList)) {
-        const en = normalizeEnglishWord(w);
-        if (en.length < 2 || en.length > gridSize) continue;
-        if (seen.has(en)) continue;
-
-        const arRaw = await translateEnToAr(hf, en);
-        const ar = normalizeArabicWord(arRaw);
-        if (!ar || ar.length < 2 || ar.length > gridSize) continue;
-
-        seen.add(en);
-        pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: ar, answer: en });
-        if (pairs.length >= poolCount) break;
-      }
-    }
+    // HF fallback removed.
 
     if (!pairs.length) {
       return json(res, 500, {
         error:
-          'No entries generated. For B1/B2 and C1/C2 we need to expand the local dictionary or set HF_TOKEN for fallback.',
+          'No entries generated. This level needs the local dictionary expanded (HF fallback is disabled).',
       });
     }
 
