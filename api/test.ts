@@ -1,14 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { DICT_A1_A2 } from '../lib/dict';
 
 export const config = {
   runtime: 'nodejs',
 };
 
-// Inline test dict
-const TEST_DICT: Record<string, string> = {
-  HELLO: '\u0645\u0631\u062D\u0628\u0627', // مرحبا in Unicode escapes
-};
-
 export default function handler(req: VercelRequest, res: VercelResponse) {
-  res.status(200).json({ ok: true, dictSize: Object.keys(TEST_DICT).length, sample: TEST_DICT.HELLO });
+  res.status(200).json({ ok: true, dictSize: Object.keys(DICT_A1_A2).length });
 }
