@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { DICT_A1_A2 } from './_dict_cefr_en_ar';
+import { DICT_A1_A2 } from './dict';
 
 export const config = {
   runtime: 'nodejs',
