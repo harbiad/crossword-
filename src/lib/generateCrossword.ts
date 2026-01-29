@@ -40,11 +40,13 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
 
   for (let r = 0; r < h; r++) {
     for (let c = 0; c < w; c++) {
-      const ch = table[r][c];
+      const chRaw = table[r][c];
+      const ch = (chRaw ?? '').toString();
       const rr = r + offR;
       const cc = c + offC;
       if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
-      if (ch && ch !== '') {
+      // Some generators use ' ' (space) for empty cells.
+      if (ch.trim() !== '') {
         grid[rr][cc] = {
           r: rr,
           c: cc,
