@@ -195,6 +195,8 @@ export default function App() {
                   <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''}`} onClick={() => onCellClick(r, c)}>
                     {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
                     <input
+                      className={mode === 'en_to_ar' ? 'rtlInput' : ''}
+                      dir={mode === 'en_to_ar' ? 'rtl' : 'ltr'}
                       value={fill[key(r, c)] || ''}
                       onChange={(e) => onCellChange(r, c, e.target.value)}
                       maxLength={1}
