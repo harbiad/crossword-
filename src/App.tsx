@@ -122,8 +122,15 @@ export default function App() {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ size, mode, band }),
       });
-      const data = await resp.json();
-      if (!resp.ok) throw new Error(data?.error || 'Failed to generate');
+      const raw = await resp.text();
+      let data: any = null;
+      try {
+        data = raw ? JSON.parse(raw) : null;
+      } catch {
+        // If server returns HTML/text error, surface a helpful snippet.
+        throw new Error(`Server returned non-JSON (${resp.status}). ${raw.slice(0, 120)}`);
+      }
+      if (!resp.ok) throw new Error(data?.error || `Failed to generate (${resp.status})`);
 
       const entries = Array.isArray(data?.entries) ? data.entries : [];
       if (entries.length < 6) throw new Error('Not enough entries generated. Try again.');

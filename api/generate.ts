@@ -1,6 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { HfInference } from '@huggingface/inference';
 import { DICT_A1_A2, DICT_B1_B2, DICT_C1_C2 } from './_dict_cefr_en_ar';
+
+// Ensure this runs as a Node.js Serverless Function (not Edge).
+export const config = {
+  runtime: 'nodejs18.x',
+};
 
 type Mode = 'en_to_ar' | 'ar_to_en';
 type Band = 'beginner' | 'intermediate' | 'advanced';
@@ -71,7 +75,7 @@ function pickDict(cefr: string): Record<string, string> {
   return DICT_C1_C2;
 }
 
-async function translateEnToAr(hf: HfInference, englishUpper: string) {
+async function translateEnToAr(hf: any, englishUpper: string) {
   const out = await hf.translation({
     model: 'Helsinki-NLP/opus-mt-en-ar',
     inputs: englishUpper.toLowerCase(),
@@ -98,7 +102,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 2) Optional HF fallback ONLY if needed and HF_TOKEN is present.
     const dict = pickDict(cefr);
     const token = process.env.HF_TOKEN;
-    const hf = token ? new HfInference(token) : null;
+    const hf = token ? new (await import('@huggingface/inference')).HfInference(token) : null;
 
     const poolCount = Math.max(18, Math.min(40, gridSize * 3));
     const baseList = pickWordList(cefr);
