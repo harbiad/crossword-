@@ -61,10 +61,10 @@ export function constructCrossword(size: number, wordClues: WordClue[], _targetW
   const slots = findSlots(template);
   const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
 
-  // Mark black squares
+  // Mark black squares (0 = black in template)
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
-      if (template[r][c] === 1) {
+      if (template[r][c] === 0) {
         grid[r][c] = '#'; // Black square marker
       }
     }

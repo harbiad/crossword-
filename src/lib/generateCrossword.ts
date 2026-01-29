@@ -35,12 +35,12 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   // Get template for this size
   const template = getTemplate(size);
 
-  // Build grid from template (1 = block, 0 = white cell)
+  // Build grid from template (0 = block, 1 = white cell)
   const grid: Cell[][] = template.map((row, r) =>
     row.map((cell, c) => ({
       r,
       c,
-      isBlock: cell === 1,
+      isBlock: cell === 0,
     } as Cell))
   );
 
@@ -93,15 +93,6 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
       clue: String(p.clue || ''),
       number: 0,
     });
-  }
-
-  // Mark unfilled white cells as blocks (no word placed there)
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      if (!grid[r][c].isBlock && !grid[r][c].solution) {
-        grid[r][c].isBlock = true;
-      }
-    }
   }
 
   // Assign clue numbers
