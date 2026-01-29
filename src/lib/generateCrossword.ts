@@ -1,5 +1,5 @@
 import type { Crossword, Cell, Entry, Direction } from './crossword';
-import { constructCrossword } from './construct';
+import { constructCrossword, getTemplate } from './construct';
 
 export type WordClue = { answer: string; clue: string };
 
@@ -32,28 +32,30 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     .map((wc) => ({ answer: normalizeAnswer(wc.answer), clue: wc.clue.trim() }))
     .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
 
-  // Build initial empty grid
-  const grid: Cell[][] = Array.from({ length: size }, (_, r) =>
-    Array.from({ length: size }, (_, c) => ({ r, c, isBlock: true } as Cell)),
+  // Get template for this size
+  const template = getTemplate(size);
+
+  // Build grid from template (1 = block, 0 = white cell)
+  const grid: Cell[][] = template.map((row, r) =>
+    row.map((cell, c) => ({
+      r,
+      c,
+      isBlock: cell === 1,
+    } as Cell))
   );
 
-  // Construct placements - try multiple times with different shuffles for best density
-  // Target: ~75-80% white cells (answers), 20-25% black cells
-  const targetWordsBySize: Record<number, number> = { 7: 14, 9: 20, 11: 28, 13: 36 };
-  const targetWords = targetWordsBySize[size] ?? 20;
-
-  const attempts = 20; // More attempts for better results
+  // Try multiple times with different shuffles for best fill
+  const attempts = 30;
   let best = [] as ReturnType<typeof constructCrossword>;
   let bestScore = -1;
 
   for (let i = 0; i < attempts; i++) {
     const shuffled = clean.slice().sort(() => Math.random() - 0.5);
-    const placed = constructCrossword(size, shuffled, targetWords);
+    const placed = constructCrossword(size, shuffled, 50);
 
-    const downCount = placed.filter((p) => p.direction === 'down').length;
-    // Score: total letters placed + bonus for word count + bonus for direction balance
+    // Score: total letters placed (more = better fill)
     const totalLetters = placed.reduce((sum, p) => sum + p.answer.length, 0);
-    const score = totalLetters + placed.length * 5 + downCount * 3;
+    const score = totalLetters;
 
     if (score > bestScore) {
       best = placed;
@@ -62,9 +64,9 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   }
 
   const placements = best;
-
   const entries: Entry[] = [];
 
+  // Place words in grid
   for (const p of placements) {
     const dir: Direction = p.direction;
     const row0 = p.row;
@@ -72,14 +74,13 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     const id = makeId(dir, row0, col0);
 
     const originalAns = String(p.answer);
-    const displayAns = adjustForRtl(originalAns, dir); // Reverse Arabic "across" for correct RTL display
+    const displayAns = adjustForRtl(originalAns, dir);
 
     for (let i = 0; i < displayAns.length; i++) {
       const rr = row0 + (dir === 'down' ? i : 0);
       const cc = col0 + (dir === 'across' ? i : 0);
       if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
       grid[rr][cc].entryId = id;
-      grid[rr][cc].isBlock = false;
       grid[rr][cc].solution = displayAns[i];
     }
 
@@ -88,14 +89,22 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
       direction: dir,
       row: row0,
       col: col0,
-      answer: displayAns, // Store reversed for grid display
+      answer: displayAns,
       clue: String(p.clue || ''),
       number: 0,
     });
   }
 
-  // Assign clue numbers based on entry start positions (robust even if grid/block semantics vary).
-  // Classic rule: starting squares are numbered in row-major order.
+  // Mark unfilled white cells as blocks (no word placed there)
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (!grid[r][c].isBlock && !grid[r][c].solution) {
+        grid[r][c].isBlock = true;
+      }
+    }
+  }
+
+  // Assign clue numbers
   const startPositions = new Map<string, { r: number; c: number }>();
   for (const e of entries) {
     startPositions.set(`${e.row},${e.col}`, { r: e.row, c: e.col });
@@ -117,70 +126,5 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   // Sort entries: across then down, by number
   entries.sort((a, b) => (a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1));
 
-  // Trim grid to bounding box of actual content (remove excess blocks)
-  let minR = size, minC = size, maxR = -1, maxC = -1;
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      if (!grid[r][c].isBlock) {
-        minR = Math.min(minR, r);
-        minC = Math.min(minC, c);
-        maxR = Math.max(maxR, r);
-        maxC = Math.max(maxC, c);
-      }
-    }
-  }
-
-  if (maxR === -1) {
-    // No content placed
-    return { size: 0, width: 0, height: 0, grid: [], entries: [] };
-  }
-
-  // Create trimmed grid
-  const trimmedHeight = maxR - minR + 1;
-  const trimmedWidth = maxC - minC + 1;
-  const trimmedSize = Math.max(trimmedHeight, trimmedWidth);
-
-  const trimmedGrid: Cell[][] = [];
-  for (let r = 0; r < trimmedHeight; r++) {
-    const row: Cell[] = [];
-    for (let c = 0; c < trimmedWidth; c++) {
-      const oldCell = grid[r + minR][c + minC];
-      row.push({
-        r,
-        c,
-        isBlock: oldCell.isBlock,
-        solution: oldCell.solution,
-        entryId: oldCell.entryId,
-        number: oldCell.number,
-      });
-    }
-    trimmedGrid.push(row);
-  }
-
-  // Adjust entry coordinates
-  for (const e of entries) {
-    e.row -= minR;
-    e.col -= minC;
-    e.id = makeId(e.direction, e.row, e.col);
-  }
-
-  // Update entryIds in trimmed grid cells
-  for (let r = 0; r < trimmedHeight; r++) {
-    for (let c = 0; c < trimmedWidth; c++) {
-      const cell = trimmedGrid[r][c];
-      if (cell.entryId) {
-        // Find the entry this cell belongs to and update the ID
-        for (const e of entries) {
-          const inEntry = (e.direction === 'across' && cell.r === e.row && cell.c >= e.col && cell.c < e.col + e.answer.length) ||
-                          (e.direction === 'down' && cell.c === e.col && cell.r >= e.row && cell.r < e.row + e.answer.length);
-          if (inEntry) {
-            cell.entryId = e.id;
-            break;
-          }
-        }
-      }
-    }
-  }
-
-  return { size: trimmedSize, width: trimmedWidth, height: trimmedHeight, grid: trimmedGrid, entries };
+  return { size, width: size, height: size, grid, entries };
 }
