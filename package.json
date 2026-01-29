@@ -12,7 +12,6 @@
   "dependencies": {
     "@huggingface/inference": "^4.13.11",
     "@vercel/node": "^5.5.28",
-    "crossword-layout-generator": "^0.1.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "zod": "^4.3.6"

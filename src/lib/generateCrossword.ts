@@ -1,5 +1,5 @@
-import { generateLayout } from 'crossword-layout-generator';
 import type { Crossword, Cell, Entry, Direction } from './crossword';
+import { constructCrossword } from './construct';
 
 export type WordClue = { answer: string; clue: string };
 
@@ -22,59 +22,28 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     .map((wc) => ({ answer: normalizeAnswer(wc.answer), clue: wc.clue.trim() }))
     .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
 
-  // crossword-layout-generator uses words array with {answer, clue}
-  const layout = generateLayout(clean);
-  // layout has: table (2d), result (placements)
-
   // Build initial empty grid
   const grid: Cell[][] = Array.from({ length: size }, (_, r) =>
     Array.from({ length: size }, (_, c) => ({ r, c, isBlock: true } as Cell)),
   );
 
-  // The library returns a minimal bounding box. We center it in our desired size.
-  const table: (string | null)[][] = layout.table;
-  const h = table.length;
-  const w = table[0]?.length ?? 0;
-  const offR = Math.max(0, Math.floor((size - h) / 2));
-  const offC = Math.max(0, Math.floor((size - w) / 2));
+  // Construct placements directly (so we have coordinates and true blocks).
+  const placements = constructCrossword(size, clean, Math.max(10, Math.min(16, size + 6)));
 
-  for (let r = 0; r < h; r++) {
-    for (let c = 0; c < w; c++) {
-      const chRaw = table[r][c];
-      const ch = (chRaw ?? '').toString();
-      const rr = r + offR;
-      const cc = c + offC;
-      if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
-      // Some generators use ' ' (space) for empty cells.
-      if (ch.trim() !== '') {
-        grid[rr][cc] = {
-          r: rr,
-          c: cc,
-          isBlock: false,
-          solution: ch,
-        };
-      }
-    }
-  }
-
-  // Build entries list from placements
   const entries: Entry[] = [];
 
-  // layout.result items have: answer, clue, startx/starty (1-indexed), orientation
-  for (const p of layout.result as any[]) {
-    const dir: Direction = p.orientation === 'across' ? 'across' : 'down';
-    const row0 = (p.starty - 1) + offR;
-    const col0 = (p.startx - 1) + offC;
+  for (const p of placements) {
+    const dir: Direction = p.direction;
+    const row0 = p.row;
+    const col0 = p.col;
     const id = makeId(dir, row0, col0);
 
-    // mark cells with entryId (for selection)
     const ans = String(p.answer);
     for (let i = 0; i < ans.length; i++) {
       const rr = row0 + (dir === 'down' ? i : 0);
       const cc = col0 + (dir === 'across' ? i : 0);
       if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
       grid[rr][cc].entryId = id;
-      // ensure non-block
       grid[rr][cc].isBlock = false;
       grid[rr][cc].solution = ans[i];
     }
@@ -86,7 +55,7 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
       col: col0,
       answer: ans,
       clue: String(p.clue || ''),
-      number: 0, // fill later
+      number: 0,
     });
   }
 
