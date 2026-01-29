@@ -1,10 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { DICT_A1_A2, DICT_B1_B2, DICT_C1_C2 } from './_dict_cefr_en_ar';
 
-// Ensure this runs as a Node.js Serverless Function (not Edge).
-export const config = {
-  runtime: 'nodejs',
-};
+// Runtime configured in vercel.json
 
 type Mode = 'en_to_ar' | 'ar_to_en';
 type Band = 'beginner' | 'intermediate' | 'advanced';
