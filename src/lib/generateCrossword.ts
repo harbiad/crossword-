@@ -122,5 +122,70 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   // Sort entries: across then down, by number
   entries.sort((a, b) => (a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1));
 
-  return { size, grid, entries };
+  // Trim grid to bounding box of actual content (remove excess blocks)
+  let minR = size, minC = size, maxR = -1, maxC = -1;
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (!grid[r][c].isBlock) {
+        minR = Math.min(minR, r);
+        minC = Math.min(minC, c);
+        maxR = Math.max(maxR, r);
+        maxC = Math.max(maxC, c);
+      }
+    }
+  }
+
+  if (maxR === -1) {
+    // No content placed
+    return { size: 0, width: 0, height: 0, grid: [], entries: [] };
+  }
+
+  // Create trimmed grid
+  const trimmedHeight = maxR - minR + 1;
+  const trimmedWidth = maxC - minC + 1;
+  const trimmedSize = Math.max(trimmedHeight, trimmedWidth);
+
+  const trimmedGrid: Cell[][] = [];
+  for (let r = 0; r < trimmedHeight; r++) {
+    const row: Cell[] = [];
+    for (let c = 0; c < trimmedWidth; c++) {
+      const oldCell = grid[r + minR][c + minC];
+      row.push({
+        r,
+        c,
+        isBlock: oldCell.isBlock,
+        solution: oldCell.solution,
+        entryId: oldCell.entryId,
+        number: oldCell.number,
+      });
+    }
+    trimmedGrid.push(row);
+  }
+
+  // Adjust entry coordinates
+  for (const e of entries) {
+    e.row -= minR;
+    e.col -= minC;
+    e.id = makeId(e.direction, e.row, e.col);
+  }
+
+  // Update entryIds in trimmed grid cells
+  for (let r = 0; r < trimmedHeight; r++) {
+    for (let c = 0; c < trimmedWidth; c++) {
+      const cell = trimmedGrid[r][c];
+      if (cell.entryId) {
+        // Find the entry this cell belongs to and update the ID
+        for (const e of entries) {
+          const inEntry = (e.direction === 'across' && cell.r === e.row && cell.c >= e.col && cell.c < e.col + e.answer.length) ||
+                          (e.direction === 'down' && cell.c === e.col && cell.r >= e.row && cell.r < e.row + e.answer.length);
+          if (inEntry) {
+            cell.entryId = e.id;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return { size: trimmedSize, width: trimmedWidth, height: trimmedHeight, grid: trimmedGrid, entries };
 }

@@ -20,7 +20,9 @@ export type Entry = {
 };
 
 export type Crossword = {
-  size: number;
+  size: number; // deprecated, use grid dimensions
+  width: number;
+  height: number;
   grid: Cell[][];
   entries: Entry[];
 };

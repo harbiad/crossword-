@@ -192,7 +192,7 @@ export default function App() {
 
       {cw && (
         <div className="main">
-          <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.size}, 1fr)` }}>
+          <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }}>
             {cw.grid.flatMap((row, r) =>
               row.map((cell, c) => {
                 if (cell.isBlock) {
