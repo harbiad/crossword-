@@ -207,17 +207,6 @@ export default function App() {
           </div>
 
           <div className="sidebar">
-            <div className="buttons">
-              <button onClick={checkSelected} disabled={!selectedEntry}>
-                Check answer (selected)
-              </button>
-              <button onClick={revealSelected} disabled={!selectedEntry}>
-                Answer selected word
-              </button>
-              <button onClick={revealAll}>Answer (solve grid)</button>
-              <button onClick={reset}>Reset</button>
-            </div>
-
             <div className="clues">
               <h2>Clues</h2>
               {selectedEntry && (
@@ -228,30 +217,49 @@ export default function App() {
                   : {selectedEntry.clue}
                 </div>
               )}
-              <h3>Across</h3>
-              <ul>
-                {cw.entries
-                  .filter((e) => e.direction === 'across')
-                  .map((e) => (
-                    <li key={e.id}>
-                      <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
-                        {e.number}. {e.clue}
-                      </button>
-                    </li>
-                  ))}
-              </ul>
-              <h3>Down</h3>
-              <ul>
-                {cw.entries
-                  .filter((e) => e.direction === 'down')
-                  .map((e) => (
-                    <li key={e.id}>
-                      <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
-                        {e.number}. {e.clue}
-                      </button>
-                    </li>
-                  ))}
-              </ul>
+
+              <div className="clueColumns">
+                <div>
+                  <h3>Across</h3>
+                  <ul>
+                    {cw.entries
+                      .filter((e) => e.direction === 'across')
+                      .map((e) => (
+                        <li key={e.id}>
+                          <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
+                            {e.number}. {e.clue}
+                          </button>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Down</h3>
+                  <ul>
+                    {cw.entries
+                      .filter((e) => e.direction === 'down')
+                      .map((e) => (
+                        <li key={e.id}>
+                          <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
+                            {e.number}. {e.clue}
+                          </button>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="buttons bottomButtons">
+                <button onClick={checkSelected} disabled={!selectedEntry}>
+                  Check answer (selected)
+                </button>
+                <button onClick={revealSelected} disabled={!selectedEntry}>
+                  Answer selected word
+                </button>
+                <button onClick={revealAll}>Answer (solve grid)</button>
+                <button onClick={reset}>Reset</button>
+              </div>
 
               <div className="meta">
                 <div>CEFR: {bandToCefr(band)}</div>
