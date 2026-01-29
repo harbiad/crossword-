@@ -6,6 +6,7 @@ export type Cell = {
   isBlock: boolean;
   solution?: string; // single char, uppercase English or Arabic letter
   entryId?: string;
+  number?: number; // crossword clue number for starting squares
 };
 
 export type Entry = {

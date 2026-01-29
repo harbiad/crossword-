@@ -4,11 +4,12 @@
 .controls select{padding:6px}
 .controls button{padding:8px 12px}
 .main{display:grid;grid-template-columns:1fr 360px;gap:16px;align-items:start}
-.grid{display:grid;gap:2px;background:#999;padding:2px;border-radius:6px}
+.grid{display:grid;gap:2px;background:#999;padding:2px;border-radius:6px;border:2px solid #999;overflow:hidden}
 .cell{background:white;position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
 .cell input{width:100%;height:100%;border:none;text-align:center;font-size:20px;background:transparent;outline:none}
 .cell.block{background:#111}
 .cell.selected{outline:3px solid #3b82f6;z-index:2}
+.cellNumber{position:absolute;top:2px;left:4px;font-size:10px;color:#111;opacity:0.8;pointer-events:none}
 .sidebar{display:flex;flex-direction:column;gap:12px}
 .buttons{display:grid;gap:8px}
 .buttons button{padding:10px 12px;text-align:left}

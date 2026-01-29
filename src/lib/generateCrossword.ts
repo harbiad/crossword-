@@ -90,25 +90,20 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     });
   }
 
-  // Assign clue numbers based on starting cells
-  // Classic rule: cell that begins an across or down word gets a number, numbers increase row-major.
+  // Assign clue numbers based on entry start positions (robust even if grid/block semantics vary).
+  // Classic rule: starting squares are numbered in row-major order.
+  const startPositions = new Map<string, { r: number; c: number }>();
+  for (const e of entries) {
+    startPositions.set(`${e.row},${e.col}`, { r: e.row, c: e.col });
+  }
+
+  const starts = Array.from(startPositions.values()).sort((a, b) => (a.r === b.r ? a.c - b.c : a.r - b.r));
   const startMap = new Map<string, number>();
   let counter = 1;
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      const cell = grid[r][c];
-      if (cell.isBlock) continue;
-
-      const leftIsBlock = c === 0 || grid[r][c - 1].isBlock;
-      const upIsBlock = r === 0 || grid[r - 1][c].isBlock;
-
-      const beginsAcross = leftIsBlock && c + 1 < size && !grid[r][c + 1].isBlock;
-      const beginsDown = upIsBlock && r + 1 < size && !grid[r + 1][c].isBlock;
-
-      if (beginsAcross || beginsDown) {
-        startMap.set(`${r},${c}`, counter++);
-      }
-    }
+  for (const s of starts) {
+    startMap.set(`${s.r},${s.c}`, counter);
+    grid[s.r][s.c].number = counter;
+    counter++;
   }
 
   for (const e of entries) {

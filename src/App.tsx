@@ -193,6 +193,7 @@ export default function App() {
 
                 return (
                   <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''}`} onClick={() => onCellClick(r, c)}>
+                    {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
                     <input
                       value={fill[key(r, c)] || ''}
                       onChange={(e) => onCellChange(r, c, e.target.value)}
