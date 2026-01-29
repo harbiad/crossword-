@@ -10,12 +10,8 @@ export type Placement = {
 };
 
 type GridChar = string | null;
-
 type Point = { r: number; c: number };
 
-type Candidate = Placement & { score: number; overlaps: number; adjustedScore: number };
-
-//
 function inBounds(size: number, r: number, c: number) {
   return r >= 0 && c >= 0 && r < size && c < size;
 }
@@ -29,195 +25,180 @@ function setCell(grid: GridChar[][], r: number, c: number, ch: string) {
   grid[r][c] = ch;
 }
 
-function iterCells(p: Placement): Point[] {
-  const pts: Point[] = [];
-  for (let i = 0; i < p.answer.length; i++) {
-    pts.push({
-      r: p.row + (p.direction === 'down' ? i : 0),
-      c: p.col + (p.direction === 'across' ? i : 0),
-    });
-  }
-  return pts;
-}
-
-function canPlace(grid: GridChar[][], p: Placement): { ok: boolean; overlaps: number } {
-  const size = grid.length;
+// Check if a word can be placed, return overlap count or -1 if invalid
+function canPlace(grid: GridChar[][], size: number, word: string, row: number, col: number, dir: Direction): number {
   let overlaps = 0;
+  const len = word.length;
 
-  // bounds
-  for (const pt of iterCells(p)) {
-    if (!inBounds(size, pt.r, pt.c)) return { ok: false, overlaps: 0 };
-  }
+  // Check bounds
+  const endR = row + (dir === 'down' ? len - 1 : 0);
+  const endC = col + (dir === 'across' ? len - 1 : 0);
+  if (!inBounds(size, row, col) || !inBounds(size, endR, endC)) return -1;
 
-  // check endpoints (classic crossword: before/after should be empty)
-  const before = p.direction === 'across' ? { r: p.row, c: p.col - 1 } : { r: p.row - 1, c: p.col };
-  const after = p.direction === 'across'
-    ? { r: p.row, c: p.col + p.answer.length }
-    : { r: p.row + p.answer.length, c: p.col };
-  if (inBounds(size, before.r, before.c) && cellAt(grid, before.r, before.c)) return { ok: false, overlaps: 0 };
-  if (inBounds(size, after.r, after.c) && cellAt(grid, after.r, after.c)) return { ok: false, overlaps: 0 };
+  // Check cell before word start (must be empty or edge)
+  const beforeR = row - (dir === 'down' ? 1 : 0);
+  const beforeC = col - (dir === 'across' ? 1 : 0);
+  if (inBounds(size, beforeR, beforeC) && cellAt(grid, beforeR, beforeC)) return -1;
 
-  // check each letter
-  for (let i = 0; i < p.answer.length; i++) {
-    const r = p.row + (p.direction === 'down' ? i : 0);
-    const c = p.col + (p.direction === 'across' ? i : 0);
-    const ch = p.answer[i];
+  // Check cell after word end (must be empty or edge)
+  const afterR = row + (dir === 'down' ? len : 0);
+  const afterC = col + (dir === 'across' ? len : 0);
+  if (inBounds(size, afterR, afterC) && cellAt(grid, afterR, afterC)) return -1;
+
+  // Check each letter position
+  for (let i = 0; i < len; i++) {
+    const r = row + (dir === 'down' ? i : 0);
+    const c = col + (dir === 'across' ? i : 0);
+    const ch = word[i];
     const cur = cellAt(grid, r, c);
-    if (cur && cur !== ch) return { ok: false, overlaps: 0 };
-    if (cur === ch) overlaps++;
 
-    // adjacency rule: if placing across, above/below should be empty unless it is a crossing.
-    if (p.direction === 'across') {
-      const up = cellAt(grid, r - 1, c);
-      const down = cellAt(grid, r + 1, c);
-      if (!cur) {
-        if (up) return { ok: false, overlaps: 0 };
-        if (down) return { ok: false, overlaps: 0 };
-      }
+    if (cur) {
+      // Cell occupied - must match our letter
+      if (cur !== ch) return -1;
+      overlaps++;
     } else {
-      const left = cellAt(grid, r, c - 1);
-      const right = cellAt(grid, r, c + 1);
-      if (!cur) {
-        if (left) return { ok: false, overlaps: 0 };
-        if (right) return { ok: false, overlaps: 0 };
+      // Empty cell - check perpendicular neighbors
+      // For across word: check above and below
+      // For down word: check left and right
+      if (dir === 'across') {
+        const above = cellAt(grid, r - 1, c);
+        const below = cellAt(grid, r + 1, c);
+        if (above || below) return -1; // Would create invalid adjacency
+      } else {
+        const left = cellAt(grid, r, c - 1);
+        const right = cellAt(grid, r, c + 1);
+        if (left || right) return -1;
       }
     }
   }
 
-  return { ok: true, overlaps };
+  return overlaps;
 }
 
-function boundingBox(grid: GridChar[][]) {
-  const size = grid.length;
-  let minR = size,
-    minC = size,
-    maxR = -1,
-    maxC = -1;
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      if (grid[r][c]) {
-        minR = Math.min(minR, r);
-        minC = Math.min(minC, c);
-        maxR = Math.max(maxR, r);
-        maxC = Math.max(maxC, c);
+// Place a word on the grid
+function placeWord(grid: GridChar[][], word: string, row: number, col: number, dir: Direction) {
+  for (let i = 0; i < word.length; i++) {
+    const r = row + (dir === 'down' ? i : 0);
+    const c = col + (dir === 'across' ? i : 0);
+    setCell(grid, r, c, word[i]);
+  }
+}
+
+// Find all valid placements for a word
+function findPlacements(
+  grid: GridChar[][],
+  size: number,
+  word: string,
+  existingLetters: Map<string, Point[]>,
+  needsIntersection: boolean
+): Array<{ row: number; col: number; dir: Direction; overlaps: number }> {
+  const results: Array<{ row: number; col: number; dir: Direction; overlaps: number }> = [];
+
+  // Try to intersect with existing letters
+  for (let i = 0; i < word.length; i++) {
+    const ch = word[i];
+    const positions = existingLetters.get(ch) || [];
+
+    for (const pos of positions) {
+      // Try across: letter i of word at position pos
+      const acrossCol = pos.c - i;
+      const acrossOverlaps = canPlace(grid, size, word, pos.r, acrossCol, 'across');
+      if (acrossOverlaps > 0) {
+        results.push({ row: pos.r, col: acrossCol, dir: 'across', overlaps: acrossOverlaps });
+      }
+
+      // Try down: letter i of word at position pos
+      const downRow = pos.r - i;
+      const downOverlaps = canPlace(grid, size, word, downRow, pos.c, 'down');
+      if (downOverlaps > 0) {
+        results.push({ row: downRow, col: pos.c, dir: 'down', overlaps: downOverlaps });
       }
     }
   }
-  if (maxR === -1) return { minR: 0, minC: 0, maxR: 0, maxC: 0, w: 0, h: 0 };
-  return { minR, minC, maxR, maxC, w: maxC - minC + 1, h: maxR - minR + 1 };
+
+  // If no intersection required (first word), try centered positions
+  if (!needsIntersection && results.length === 0) {
+    const centerR = Math.floor(size / 2);
+    const centerC = Math.floor((size - word.length) / 2);
+    const overlaps = canPlace(grid, size, word, centerR, centerC, 'across');
+    if (overlaps >= 0) {
+      results.push({ row: centerR, col: centerC, dir: 'across', overlaps: 0 });
+    }
+  }
+
+  return results;
 }
 
-function scoreCandidate(grid: GridChar[][], p: Placement, overlaps: number): number {
-  // Prefer more intersections and more compact bounding box.
-  const size = grid.length;
-  const tmp = grid.map((row) => row.slice());
-  for (const pt of iterCells(p)) {
-    const i = pt.r - p.row;
-    const j = pt.c - p.col;
-    const idx = p.direction === 'across' ? j : i;
-    setCell(tmp, pt.r, pt.c, p.answer[idx]);
+// Update letter position map
+function updateLetterMap(map: Map<string, Point[]>, word: string, row: number, col: number, dir: Direction) {
+  for (let i = 0; i < word.length; i++) {
+    const r = row + (dir === 'down' ? i : 0);
+    const c = col + (dir === 'across' ? i : 0);
+    const ch = word[i];
+    const arr = map.get(ch) || [];
+    // Avoid duplicates
+    if (!arr.some(p => p.r === r && p.c === c)) {
+      arr.push({ r, c });
+      map.set(ch, arr);
+    }
   }
-  const bb = boundingBox(tmp);
-  const area = bb.w * bb.h;
-  const centerDist = Math.abs((bb.minR + bb.maxR) / 2 - (size - 1) / 2) + Math.abs((bb.minC + bb.maxC) / 2 - (size - 1) / 2);
-  return overlaps * 1000 - area * 2 - centerDist * 5;
 }
 
 export function constructCrossword(size: number, wordClues: WordClue[], targetWords = 12): Placement[] {
   const grid: GridChar[][] = Array.from({ length: size }, () => Array.from({ length: size }, () => null));
-
-  const words = wordClues
-    .map((w) => ({ ...w, answer: w.answer }))
-    .sort((a, b) => b.answer.length - a.answer.length);
-
   const placements: Placement[] = [];
-
-  // Place the first word across, centered.
-  const first = words[0];
-  if (!first) return [];
-  const startRow = Math.floor(size / 2);
-  const startCol = Math.max(0, Math.floor((size - first.answer.length) / 2));
-  const firstPlacement: Placement = { answer: first.answer, clue: first.clue, row: startRow, col: startCol, direction: 'across' };
-  const okFirst = canPlace(grid, firstPlacement);
-  if (!okFirst.ok) return [];
-  for (let i = 0; i < first.answer.length; i++) setCell(grid, startRow, startCol + i, first.answer[i]);
-  placements.push(firstPlacement);
-
-  // Build map of existing letters positions
   const letterMap = new Map<string, Point[]>();
-  function rebuildLetterMap() {
-    letterMap.clear();
-    for (let r = 0; r < size; r++) {
-      for (let c = 0; c < size; c++) {
-        const ch = grid[r][c];
-        if (!ch) continue;
-        const arr = letterMap.get(ch) ?? [];
-        arr.push({ r, c });
-        letterMap.set(ch, arr);
-      }
-    }
-  }
-  rebuildLetterMap();
+  const usedWords = new Set<string>();
 
-  for (const w of words.slice(1)) {
-    const candidates: Candidate[] = [];
+  // Sort words: prefer longer words first, they create more intersection opportunities
+  const words = [...wordClues].sort((a, b) => b.answer.length - a.answer.length);
 
-    // Encourage balanced Across/Down so it feels like a real crossword.
-    const curAcross = placements.filter(p => p.direction === 'across').length;
-    const curDown = placements.length - curAcross;
-    const totalAfter = placements.length + 1;
-    const targetDown = Math.max(2, Math.floor(totalAfter * 0.35));
-    const wantDown = curDown < targetDown;
-    const wantAcross = curAcross < Math.max(2, Math.floor(totalAfter * 0.35));
+  // Track direction balance
+  let acrossCount = 0;
+  let downCount = 0;
 
-    // For each letter in the word, try to intersect with existing grid letters
-    for (let i = 0; i < w.answer.length; i++) {
-      const ch = w.answer[i];
-      const pts = letterMap.get(ch);
-      if (!pts) continue;
-
-      for (const pt of pts) {
-        // Try placing across crossing a down letter
-        const across: Placement = { answer: w.answer, clue: w.clue, direction: 'across', row: pt.r, col: pt.c - i };
-        const ca = canPlace(grid, across);
-        if (ca.ok) {
-          const base = scoreCandidate(grid, across, ca.overlaps);
-          const bonus = placements.length === 1 ? -5000 : (wantAcross ? 150 : 0); // after first word, prefer down for the second word
-          candidates.push({ ...across, overlaps: ca.overlaps, score: base, adjustedScore: base + bonus });
-        }
-
-        // Try placing down crossing an across letter
-        const down: Placement = { answer: w.answer, clue: w.clue, direction: 'down', row: pt.r - i, col: pt.c };
-        const cd = canPlace(grid, down);
-        if (cd.ok) {
-          const base = scoreCandidate(grid, down, cd.overlaps);
-          const bonus = placements.length === 1 ? 5000 : (wantDown ? 150 : 0);
-          candidates.push({ ...down, overlaps: cd.overlaps, score: base, adjustedScore: base + bonus });
-        }
-      }
-    }
-
-    // Classic crossword: enforce connectivity.
-    // If we can't place a word with at least one intersection, skip it.
-    if (!candidates.length) {
-      continue;
-    }
-
-    // Prefer intersecting placements (overlaps >= 1) and direction balance.
-    candidates.sort((a, b) => (b.overlaps - a.overlaps) || (b.adjustedScore - a.adjustedScore));
-    const best = candidates[0];
-    if (!best || best.overlaps < 1) continue;
-
-    // Apply
-    for (let i = 0; i < best.answer.length; i++) {
-      const r = best.row + (best.direction === 'down' ? i : 0);
-      const c = best.col + (best.direction === 'across' ? i : 0);
-      setCell(grid, r, c, best.answer[i]);
-    }
-    placements.push({ answer: best.answer, clue: best.clue, row: best.row, col: best.col, direction: best.direction });
-    rebuildLetterMap();
-
+  for (const wc of words) {
+    if (usedWords.has(wc.answer)) continue;
     if (placements.length >= targetWords) break;
+
+    const needsIntersection = placements.length > 0;
+    const candidates = findPlacements(grid, size, wc.answer, letterMap, needsIntersection);
+
+    if (candidates.length === 0) continue;
+
+    // Score candidates: prefer more overlaps and balance directions
+    const targetDownRatio = 0.4;
+    const currentDownRatio = placements.length > 0 ? downCount / placements.length : 0.5;
+
+    candidates.sort((a, b) => {
+      // Primary: more overlaps = better connectivity
+      if (b.overlaps !== a.overlaps) return b.overlaps - a.overlaps;
+
+      // Secondary: balance directions
+      const aBonus = (a.dir === 'down' && currentDownRatio < targetDownRatio) ? 100 :
+                     (a.dir === 'across' && currentDownRatio > 1 - targetDownRatio) ? 100 : 0;
+      const bBonus = (b.dir === 'down' && currentDownRatio < targetDownRatio) ? 100 :
+                     (b.dir === 'across' && currentDownRatio > 1 - targetDownRatio) ? 100 : 0;
+
+      return bBonus - aBonus;
+    });
+
+    const best = candidates[0];
+
+    // Place the word
+    placeWord(grid, wc.answer, best.row, best.col, best.dir);
+    updateLetterMap(letterMap, wc.answer, best.row, best.col, best.dir);
+    placements.push({
+      answer: wc.answer,
+      clue: wc.clue,
+      row: best.row,
+      col: best.col,
+      direction: best.dir,
+    });
+    usedWords.add(wc.answer);
+
+    if (best.dir === 'across') acrossCount++;
+    else downCount++;
   }
 
   return placements;

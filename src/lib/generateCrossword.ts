@@ -37,33 +37,28 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     Array.from({ length: size }, (_, c) => ({ r, c, isBlock: true } as Cell)),
   );
 
-  // Construct placements directly (so we have coordinates and true blocks).
-  // Retry a few times with different shuffles and keep the best (most words placed).
-  const minTotalBySize: Record<number, number> = { 7: 10, 9: 14, 11: 18, 13: 22 };
-  const minTotal = minTotalBySize[size] ?? 10;
-  const minDown = Math.max(3, Math.floor(minTotal * 0.35));
+  // Construct placements - try multiple times with different shuffles for best density
+  // Target: ~75-80% white cells (answers), 20-25% black cells
+  const targetWordsBySize: Record<number, number> = { 7: 14, 9: 20, 11: 28, 13: 36 };
+  const targetWords = targetWordsBySize[size] ?? 20;
 
-  const attempts = 10;
+  const attempts = 20; // More attempts for better results
   let best = [] as ReturnType<typeof constructCrossword>;
   let bestScore = -1;
 
   for (let i = 0; i < attempts; i++) {
     const shuffled = clean.slice().sort(() => Math.random() - 0.5);
-    const placed = constructCrossword(size, shuffled, Math.max(minTotal, Math.min(26, size + 12)));
+    const placed = constructCrossword(size, shuffled, targetWords);
 
     const downCount = placed.filter((p) => p.direction === 'down').length;
-    const score = placed.length * 10 + downCount * 3;
+    // Score: total letters placed + bonus for word count + bonus for direction balance
+    const totalLetters = placed.reduce((sum, p) => sum + p.answer.length, 0);
+    const score = totalLetters + placed.length * 5 + downCount * 3;
 
-    // Prefer solutions that meet thresholds; otherwise keep the best we can.
-    const meets = placed.length >= minTotal && downCount >= minDown;
-    const bestMeets = best.length >= minTotal && best.filter((p) => p.direction === 'down').length >= minDown;
-
-    if ((meets && !bestMeets) || score > bestScore) {
+    if (score > bestScore) {
       best = placed;
       bestScore = score;
     }
-
-    if (meets) break;
   }
 
   const placements = best;
