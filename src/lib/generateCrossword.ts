@@ -29,16 +29,33 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
 
   // Construct placements directly (so we have coordinates and true blocks).
   // Retry a few times with different shuffles and keep the best (most words placed).
-  const attempts = 6;
+  const minTotalBySize: Record<number, number> = { 7: 10, 9: 14, 11: 18, 13: 22 };
+  const minTotal = minTotalBySize[size] ?? 10;
+  const minDown = Math.max(3, Math.floor(minTotal * 0.35));
+
+  const attempts = 10;
   let best = [] as ReturnType<typeof constructCrossword>;
+  let bestScore = -1;
+
   for (let i = 0; i < attempts; i++) {
-    const shuffled = clean
-      .map((x) => x)
-      .sort(() => Math.random() - 0.5);
-    const placed = constructCrossword(size, shuffled, Math.max(10, Math.min(18, size + 8)));
-    if (placed.length > best.length) best = placed;
-    if (best.length >= Math.min(14, size + 6)) break;
+    const shuffled = clean.slice().sort(() => Math.random() - 0.5);
+    const placed = constructCrossword(size, shuffled, Math.max(minTotal, Math.min(26, size + 12)));
+
+    const downCount = placed.filter((p) => p.direction === 'down').length;
+    const score = placed.length * 10 + downCount * 3;
+
+    // Prefer solutions that meet thresholds; otherwise keep the best we can.
+    const meets = placed.length >= minTotal && downCount >= minDown;
+    const bestMeets = best.length >= minTotal && best.filter((p) => p.direction === 'down').length >= minDown;
+
+    if ((meets && !bestMeets) || score > bestScore) {
+      best = placed;
+      bestScore = score;
+    }
+
+    if (meets) break;
   }
+
   const placements = best;
 
   const entries: Entry[] = [];

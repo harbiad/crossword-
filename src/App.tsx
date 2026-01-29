@@ -148,7 +148,7 @@ export default function App() {
         <label>
           Grid
           <select value={size} onChange={(e) => setSize(Number(e.target.value))}>
-            {[5, 7, 9, 11, 13].map((n) => (
+            {[7, 9, 11, 13].map((n) => (
               <option key={n} value={n}>
                 {n}×{n}
               </option>

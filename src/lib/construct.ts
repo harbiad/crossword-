@@ -13,7 +13,7 @@ type GridChar = string | null;
 
 type Point = { r: number; c: number };
 
-type Candidate = Placement & { score: number; overlaps: number };
+type Candidate = Placement & { score: number; overlaps: number; adjustedScore: number };
 
 //
 function inBounds(size: number, r: number, c: number) {
@@ -162,6 +162,14 @@ export function constructCrossword(size: number, wordClues: WordClue[], targetWo
   for (const w of words.slice(1)) {
     const candidates: Candidate[] = [];
 
+    // Encourage balanced Across/Down so it feels like a real crossword.
+    const curAcross = placements.filter(p => p.direction === 'across').length;
+    const curDown = placements.length - curAcross;
+    const totalAfter = placements.length + 1;
+    const targetDown = Math.max(2, Math.floor(totalAfter * 0.35));
+    const wantDown = curDown < targetDown;
+    const wantAcross = curAcross < Math.max(2, Math.floor(totalAfter * 0.35));
+
     // For each letter in the word, try to intersect with existing grid letters
     for (let i = 0; i < w.answer.length; i++) {
       const ch = w.answer[i];
@@ -172,12 +180,20 @@ export function constructCrossword(size: number, wordClues: WordClue[], targetWo
         // Try placing across crossing a down letter
         const across: Placement = { answer: w.answer, clue: w.clue, direction: 'across', row: pt.r, col: pt.c - i };
         const ca = canPlace(grid, across);
-        if (ca.ok) candidates.push({ ...across, overlaps: ca.overlaps, score: scoreCandidate(grid, across, ca.overlaps) });
+        if (ca.ok) {
+          const base = scoreCandidate(grid, across, ca.overlaps);
+          const bonus = placements.length === 1 ? -5000 : (wantAcross ? 150 : 0); // after first word, prefer down for the second word
+          candidates.push({ ...across, overlaps: ca.overlaps, score: base, adjustedScore: base + bonus });
+        }
 
         // Try placing down crossing an across letter
         const down: Placement = { answer: w.answer, clue: w.clue, direction: 'down', row: pt.r - i, col: pt.c };
         const cd = canPlace(grid, down);
-        if (cd.ok) candidates.push({ ...down, overlaps: cd.overlaps, score: scoreCandidate(grid, down, cd.overlaps) });
+        if (cd.ok) {
+          const base = scoreCandidate(grid, down, cd.overlaps);
+          const bonus = placements.length === 1 ? 5000 : (wantDown ? 150 : 0);
+          candidates.push({ ...down, overlaps: cd.overlaps, score: base, adjustedScore: base + bonus });
+        }
       }
     }
 
@@ -187,8 +203,8 @@ export function constructCrossword(size: number, wordClues: WordClue[], targetWo
       continue;
     }
 
-    // Prefer intersecting placements (overlaps >= 1) and higher score.
-    candidates.sort((a, b) => (b.overlaps - a.overlaps) || (b.score - a.score));
+    // Prefer intersecting placements (overlaps >= 1) and direction balance.
+    candidates.sort((a, b) => (b.overlaps - a.overlaps) || (b.adjustedScore - a.adjustedScore));
     const best = candidates[0];
     if (!best || best.overlaps < 1) continue;
 

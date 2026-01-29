@@ -95,7 +95,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { size, mode, band } = (req.body || {}) as { size?: number; mode?: Mode; band?: Band };
 
     const gridSize = Number(size);
-    if (![5, 7, 9, 11, 13].includes(gridSize)) return json(res, 400, { error: 'Invalid size' });
+    if (![7, 9, 11, 13].includes(gridSize)) return json(res, 400, { error: 'Invalid size' });
     if (mode !== 'en_to_ar' && mode !== 'ar_to_en') return json(res, 400, { error: 'Invalid mode' });
     if (band !== 'beginner' && band !== 'intermediate' && band !== 'advanced') return json(res, 400, { error: 'Invalid band' });
 
