@@ -1,10 +1,10 @@
-.app{max-width:1100px;margin:0 auto;padding:16px;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+.app{max-width:1100px;margin:0 auto;padding:24px 16px;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
 .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-bottom:12px}
 .controls label{display:flex;flex-direction:column;gap:6px;font-size:14px}
 .controls select{padding:6px}
 .controls button{padding:8px 12px}
-.main{display:grid;grid-template-columns:1fr 360px;gap:16px;align-items:start}
-.grid{display:grid;gap:2px;background:#999;padding:2px;border-radius:6px;border:2px solid #999;overflow:hidden}
+.main{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start;justify-content:center}
+.grid{display:grid;gap:2px;background:#999;padding:2px;border-radius:8px;border:2px solid #999;overflow:hidden;justify-self:center}
 .cell{background:white;position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
 .cell input{width:100%;height:100%;border:none;text-align:center;font-size:20px;background:transparent;outline:none}
 .cell.block{background:#111}

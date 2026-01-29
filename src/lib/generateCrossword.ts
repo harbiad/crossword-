@@ -28,7 +28,18 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   );
 
   // Construct placements directly (so we have coordinates and true blocks).
-  const placements = constructCrossword(size, clean, Math.max(10, Math.min(16, size + 6)));
+  // Retry a few times with different shuffles and keep the best (most words placed).
+  const attempts = 6;
+  let best = [] as ReturnType<typeof constructCrossword>;
+  for (let i = 0; i < attempts; i++) {
+    const shuffled = clean
+      .map((x) => x)
+      .sort(() => Math.random() - 0.5);
+    const placed = constructCrossword(size, shuffled, Math.max(10, Math.min(18, size + 8)));
+    if (placed.length > best.length) best = placed;
+    if (best.length >= Math.min(14, size + 6)) break;
+  }
+  const placements = best;
 
   const entries: Entry[] = [];
 

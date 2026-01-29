@@ -13,7 +13,7 @@ type GridChar = string | null;
 
 type Point = { r: number; c: number };
 
-type Candidate = Placement & { score: number };
+type Candidate = Placement & { score: number; overlaps: number };
 
 //
 function inBounds(size: number, r: number, c: number) {
@@ -172,30 +172,25 @@ export function constructCrossword(size: number, wordClues: WordClue[], targetWo
         // Try placing across crossing a down letter
         const across: Placement = { answer: w.answer, clue: w.clue, direction: 'across', row: pt.r, col: pt.c - i };
         const ca = canPlace(grid, across);
-        if (ca.ok) candidates.push({ ...across, score: scoreCandidate(grid, across, ca.overlaps) });
+        if (ca.ok) candidates.push({ ...across, overlaps: ca.overlaps, score: scoreCandidate(grid, across, ca.overlaps) });
 
         // Try placing down crossing an across letter
         const down: Placement = { answer: w.answer, clue: w.clue, direction: 'down', row: pt.r - i, col: pt.c };
         const cd = canPlace(grid, down);
-        if (cd.ok) candidates.push({ ...down, score: scoreCandidate(grid, down, cd.overlaps) });
+        if (cd.ok) candidates.push({ ...down, overlaps: cd.overlaps, score: scoreCandidate(grid, down, cd.overlaps) });
       }
     }
 
-    // If no crossing candidate, try a few random placements to fill.
+    // Classic crossword: enforce connectivity.
+    // If we can't place a word with at least one intersection, skip it.
     if (!candidates.length) {
-      for (let tries = 0; tries < 30; tries++) {
-        const dir: Direction = Math.random() < 0.5 ? 'across' : 'down';
-        const row = Math.floor(Math.random() * size);
-        const col = Math.floor(Math.random() * size);
-        const p: Placement = { answer: w.answer, clue: w.clue, direction: dir, row, col };
-        const cp = canPlace(grid, p);
-        if (cp.ok) candidates.push({ ...p, score: scoreCandidate(grid, p, cp.overlaps) });
-      }
+      continue;
     }
 
-    candidates.sort((a, b) => b.score - a.score);
+    // Prefer intersecting placements (overlaps >= 1) and higher score.
+    candidates.sort((a, b) => (b.overlaps - a.overlaps) || (b.score - a.score));
     const best = candidates[0];
-    if (!best) continue;
+    if (!best || best.overlaps < 1) continue;
 
     // Apply
     for (let i = 0; i < best.answer.length; i++) {

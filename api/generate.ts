@@ -64,10 +64,23 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-async function translateEnToAr(hf: HfInference, english: string) {
+const EN_AR_OVERRIDES: Record<string, string> = {
+  HOT: 'حار',
+  COLD: 'بارد',
+  SCHOOL: 'مدرسة',
+  YEAR: 'سنة',
+  FRIEND: 'صديق',
+  HOUSE: 'بيت',
+  BUS: 'حافلة',
+};
+
+async function translateEnToAr(hf: HfInference, englishUpper: string) {
+  const override = EN_AR_OVERRIDES[englishUpper];
+  if (override) return override;
+
   const out = await hf.translation({
     model: 'Helsinki-NLP/opus-mt-en-ar',
-    inputs: english,
+    inputs: englishUpper.toLowerCase(),
   });
   return (out.translation_text || '').trim();
 }
@@ -102,7 +115,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (en.length < 2 || en.length > gridSize) continue;
       if (seen.has(en)) continue;
 
-      const arRaw = await translateEnToAr(hf, en.toLowerCase());
+      const arRaw = await translateEnToAr(hf, en);
       const ar = normalizeArabicWord(arRaw);
       if (!ar || ar.length < 2 || ar.length > gridSize) continue;
 
