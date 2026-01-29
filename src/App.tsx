@@ -149,7 +149,10 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>Crossword (EN ↔ AR)</h1>
+      <header className="header">
+        <h1>Crossword</h1>
+        <p className="subtitle">English ↔ Arabic vocabulary practice</p>
+      </header>
 
       <div className="controls">
         <label>
@@ -259,15 +262,15 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="buttons bottomButtons">
+              <div className="bottomButtons">
                 <button onClick={checkSelected} disabled={!selectedEntry}>
-                  Check answer (selected)
+                  Check
                 </button>
                 <button onClick={revealSelected} disabled={!selectedEntry}>
-                  Answer selected word
+                  Reveal Word
                 </button>
-                <button onClick={revealAll}>Answer (solve grid)</button>
-                <button onClick={reset}>Reset</button>
+                <button onClick={revealAll}>Solve All</button>
+                <button onClick={reset}>Clear</button>
               </div>
 
               <div className="meta">
@@ -280,7 +283,7 @@ export default function App() {
       )}
 
       <p className="note">
-        Tip: generating a good crossword may take a couple tries depending on the word list and grid size.
+        Generation may require a few attempts for optimal results.
       </p>
     </div>
   );
