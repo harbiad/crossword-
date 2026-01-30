@@ -117,5 +117,14 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   // Sort entries: across then down, by number
   entries.sort((a, b) => (a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1));
 
+  // Convert any unfilled white cells to black squares
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (!grid[r][c].isBlock && !grid[r][c].solution) {
+        grid[r][c].isBlock = true;
+      }
+    }
+  }
+
   return { size, width: size, height: size, grid, entries };
 }

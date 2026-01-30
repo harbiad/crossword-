@@ -58,14 +58,61 @@ export const TEMPLATE_13: number[][] = [
   [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
 ];
 
-export function getTemplate(size: number): number[][] {
-  switch (size) {
-    case 7: return TEMPLATE_7;
-    case 9: return TEMPLATE_9;
-    case 11: return TEMPLATE_11;
-    case 13: return TEMPLATE_13;
-    default: return TEMPLATE_9;
+// Rotate a template 90 degrees clockwise
+function rotateTemplate(t: number[][]): number[][] {
+  const n = t.length;
+  const result: number[][] = Array.from({ length: n }, () => Array(n).fill(0));
+  for (let r = 0; r < n; r++) {
+    for (let c = 0; c < n; c++) {
+      result[c][n - 1 - r] = t[r][c];
+    }
   }
+  return result;
+}
+
+// Flip template horizontally
+function flipHorizontal(t: number[][]): number[][] {
+  return t.map(row => [...row].reverse());
+}
+
+// Flip template vertically
+function flipVertical(t: number[][]): number[][] {
+  return [...t].reverse().map(row => [...row]);
+}
+
+// Apply random transformations to a template
+function randomizeTemplate(t: number[][]): number[][] {
+  let result = t.map(row => [...row]); // Deep copy
+
+  // Random rotations (0, 90, 180, or 270 degrees)
+  const rotations = Math.floor(Math.random() * 4);
+  for (let i = 0; i < rotations; i++) {
+    result = rotateTemplate(result);
+  }
+
+  // Random horizontal flip
+  if (Math.random() > 0.5) {
+    result = flipHorizontal(result);
+  }
+
+  // Random vertical flip
+  if (Math.random() > 0.5) {
+    result = flipVertical(result);
+  }
+
+  return result;
+}
+
+export function getTemplate(size: number): number[][] {
+  let base: number[][];
+  switch (size) {
+    case 7: base = TEMPLATE_7; break;
+    case 9: base = TEMPLATE_9; break;
+    case 11: base = TEMPLATE_11; break;
+    case 13: base = TEMPLATE_13; break;
+    default: base = TEMPLATE_9;
+  }
+  return randomizeTemplate(base);
 }
 
 // Find all word slots (consecutive white cells) in the template
