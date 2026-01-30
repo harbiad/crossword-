@@ -261,22 +261,22 @@ export default function App() {
                   </ul>
                 </div>
               </div>
+            </div>
 
-              <div className="bottomButtons">
-                <button onClick={checkSelected} disabled={!selectedEntry}>
-                  Check
-                </button>
-                <button onClick={revealSelected} disabled={!selectedEntry}>
-                  Reveal Word
-                </button>
-                <button onClick={revealAll}>Solve All</button>
-                <button onClick={reset}>Clear</button>
-              </div>
+            <div className="bottomButtons">
+              <button onClick={checkSelected} disabled={!selectedEntry}>
+                Check
+              </button>
+              <button onClick={revealSelected} disabled={!selectedEntry}>
+                Reveal Word
+              </button>
+              <button onClick={revealAll}>Solve All</button>
+              <button onClick={reset}>Clear</button>
+            </div>
 
-              <div className="meta">
-                <div>CEFR: {bandToCefr(band)}</div>
-                <div>Mode: {mode === 'en_to_ar' ? 'EN→AR' : 'AR→EN'}</div>
-              </div>
+            <div className="meta">
+              <div>CEFR: {bandToCefr(band)}</div>
+              <div>Mode: {mode === 'en_to_ar' ? 'EN→AR' : 'AR→EN'}</div>
             </div>
           </div>
         </div>

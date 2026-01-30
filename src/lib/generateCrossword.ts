@@ -117,11 +117,42 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   // Sort entries: across then down, by number
   entries.sort((a, b) => (a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1));
 
-  // Convert any unfilled white cells to black squares
+  // Helper: count consecutive black squares in a direction from (r,c)
+  function countBlacksInDirection(r: number, c: number, dr: number, dc: number): number {
+    let count = 0;
+    let nr = r + dr;
+    let nc = c + dc;
+    while (nr >= 0 && nr < size && nc >= 0 && nc < size && grid[nr][nc].isBlock) {
+      count++;
+      nr += dr;
+      nc += dc;
+    }
+    return count;
+  }
+
+  // Check if making (r,c) a black would create more than 2 adjacent blacks
+  function wouldExceedMaxAdjacent(r: number, c: number, maxAdjacent: number): boolean {
+    // Check horizontal run
+    const leftBlacks = countBlacksInDirection(r, c, 0, -1);
+    const rightBlacks = countBlacksInDirection(r, c, 0, 1);
+    if (leftBlacks + rightBlacks + 1 > maxAdjacent) return true;
+
+    // Check vertical run
+    const upBlacks = countBlacksInDirection(r, c, -1, 0);
+    const downBlacks = countBlacksInDirection(r, c, 1, 0);
+    if (upBlacks + downBlacks + 1 > maxAdjacent) return true;
+
+    return false;
+  }
+
+  // Convert unfilled white cells to black, but limit to max 2 adjacent blacks
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       if (!grid[r][c].isBlock && !grid[r][c].solution) {
-        grid[r][c].isBlock = true;
+        if (!wouldExceedMaxAdjacent(r, c, 2)) {
+          grid[r][c].isBlock = true;
+        }
+        // If it would exceed, leave it as an empty white cell (will show as blank)
       }
     }
   }
