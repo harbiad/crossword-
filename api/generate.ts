@@ -90,6 +90,114 @@ const DICT_A1_A2: Record<string, string> = {
   LISTEN: '\u064a\u0633\u062a\u0645\u0639',
   WALK: '\u064a\u0645\u0634\u064a',
   RUN: '\u064a\u062c\u0631\u064a',
+  // Additional short words for better crossword fill
+  NO: '\u0644\u0627',
+  GO: '\u0627\u0630\u0647\u0628',
+  UP: '\u0641\u0648\u0642',
+  IN: '\u0641\u064a',
+  ON: '\u0639\u0644\u0649',
+  SUN: '\u0634\u0645\u0633',
+  SKY: '\u0633\u0645\u0627\u0621',
+  AIR: '\u0647\u0648\u0627\u0621',
+  BOY: '\u0648\u0644\u062f',
+  MAN: '\u0631\u062c\u0644',
+  DAY: '\u064a\u0648\u0645',
+  EAT: '\u0627\u0643\u0644',
+  SEE: '\u0627\u0631\u0649',
+  SIT: '\u0627\u062c\u0644\u0633',
+  CUT: '\u0642\u0637\u0639',
+  GIRL: '\u0628\u0646\u062a',
+  BABY: '\u0637\u0641\u0644',
+  BIRD: '\u0637\u0627\u0626\u0631',
+  TREE: '\u0634\u062c\u0631\u0629',
+  RAIN: '\u0645\u0637\u0631',
+  SNOW: '\u062b\u0644\u062c',
+  WIND: '\u0631\u064a\u062d',
+  BLUE: '\u0627\u0632\u0631\u0642',
+  KING: '\u0645\u0644\u0643',
+  LOVE: '\u062d\u0628',
+  NAME: '\u0627\u0633\u0645',
+  HAND: '\u064a\u062f',
+  HEAD: '\u0631\u0627\u0633',
+  NOSE: '\u0627\u0646\u0641',
+  FACE: '\u0648\u062c\u0647',
+  PLAY: '\u064a\u0644\u0639\u0628',
+  SWIM: '\u064a\u0633\u0628\u062d',
+  JUMP: '\u064a\u0642\u0641\u0632',
+  FIVE: '\u062e\u0645\u0633\u0629',
+  FOUR: '\u0627\u0631\u0628\u0639\u0629',
+  TIME: '\u0648\u0642\u062a',
+  HAIR: '\u0634\u0639\u0631',
+  GAME: '\u0644\u0639\u0628\u0629',
+  LIFE: '\u062d\u064a\u0627\u0629',
+  ROAD: '\u0637\u0631\u064a\u0642',
+  STAR: '\u0646\u062c\u0645',
+  MOON: '\u0642\u0645\u0631',
+  ROSE: '\u0648\u0631\u062f\u0629',
+  LION: '\u0627\u0633\u062f',
+  BEAR: '\u062f\u0628',
+  DUCK: '\u0628\u0637\u0629',
+  COOK: '\u064a\u0637\u0628\u062e',
+  FIRE: '\u0646\u0627\u0631',
+  GOLD: '\u0630\u0647\u0628',
+  SAND: '\u0631\u0645\u0644',
+  TALL: '\u0637\u0648\u064a\u0644',
+  DARK: '\u0645\u0638\u0644\u0645',
+  RICH: '\u063a\u0646\u064a',
+  POOR: '\u0641\u0642\u064a\u0631',
+  EASY: '\u0633\u0647\u0644',
+  HARD: '\u0635\u0639\u0628',
+  SICK: '\u0645\u0631\u064a\u0636',
+  SAFE: '\u0627\u0645\u0646',
+  WIDE: '\u0648\u0627\u0633\u0639',
+  LONG: '\u0637\u0648\u064a\u0644',
+  NEAR: '\u0642\u0631\u064a\u0628',
+  LATE: '\u0645\u062a\u0627\u062e\u0631',
+  RIVER: '\u0646\u0647\u0631',
+  HORSE: '\u062d\u0635\u0627\u0646',
+  CHAIR: '\u0643\u0631\u0633\u064a',
+  TABLE: '\u0637\u0627\u0648\u0644\u0629',
+  GRASS: '\u0639\u0634\u0628',
+  EARTH: '\u0627\u0631\u0636',
+  PLANT: '\u0646\u0628\u0627\u062a',
+  LIGHT: '\u0636\u0648\u0621',
+  CLOCK: '\u0633\u0627\u0639\u0629',
+  UNCLE: '\u0639\u0645',
+  CHILD: '\u0637\u0641\u0644',
+  QUEEN: '\u0645\u0644\u0643\u0629',
+  DREAM: '\u062d\u0644\u0645',
+  SLEEP: '\u064a\u0646\u0627\u0645',
+  CLEAN: '\u0646\u0638\u064a\u0641',
+  DANCE: '\u064a\u0631\u0642\u0635',
+  THINK: '\u064a\u0641\u0643\u0631',
+  DRINK: '\u064a\u0634\u0631\u0628',
+  TEACH: '\u064a\u0639\u0644\u0645',
+  LEARN: '\u064a\u062a\u0639\u0644\u0645',
+  SMILE: '\u064a\u0628\u062a\u0633\u0645',
+  SWEET: '\u062d\u0644\u0648',
+  QUIET: '\u0647\u0627\u062f\u0626',
+  ANGRY: '\u063a\u0627\u0636\u0628',
+  DIRTY: '\u0648\u0633\u062e',
+  EMPTY: '\u0641\u0627\u0631\u063a',
+  EARLY: '\u0645\u0628\u0643\u0631',
+  WRONG: '\u062e\u0637\u0627',
+  BRAVE: '\u0634\u062c\u0627\u0639',
+  MOTHER: '\u0627\u0645',
+  FATHER: '\u0627\u0628',
+  SISTER: '\u0627\u062e\u062a',
+  WINTER: '\u0634\u062a\u0627\u0621',
+  SUMMER: '\u0635\u064a\u0641',
+  SPRING: '\u0631\u0628\u064a\u0639',
+  FLOWER: '\u0632\u0647\u0631\u0629',
+  ANIMAL: '\u062d\u064a\u0648\u0627\u0646',
+  DOCTOR: '\u0637\u0628\u064a\u0628',
+  STRONG: '\u0642\u0648\u064a',
+  ANSWER: '\u062c\u0648\u0627\u0628',
+  NUMBER: '\u0631\u0642\u0645',
+  DINNER: '\u0639\u0634\u0627\u0621',
+  FINGER: '\u0627\u0635\u0628\u0639',
+  YELLOW: '\u0627\u0635\u0641\u0631',
+  PURPLE: '\u0628\u0646\u0641\u0633\u062c\u064a',
 };
 const DICT_B1_B2: Record<string, string> = {};
 const DICT_C1_C2: Record<string, string> = {};
@@ -131,7 +239,30 @@ function normalizeArabicWord(s: string) {
 }
 
 const WORDS_A1_A2 = [
-  'family','friend','school','teacher','student','book','pen','paper','phone','computer','music','movie','food','water','coffee','tea','bread','rice','fruit','apple','banana','orange','vegetable','meat','fish','milk','cheese','egg','sugar','salt','city','street','house','home','room','door','window','car','bus','train','airport','hotel','market','shop','money','price','today','tomorrow','yesterday','morning','evening','night','week','month','year','happy','sad','tired','hungry','thirsty','hot','cold','big','small','good','bad','new','old','fast','slow','right','left','open','close','start','stop','work','study','read','write','speak','listen','walk','run'
+  // Original words
+  'family','friend','school','teacher','student','book','pen','paper','phone','computer',
+  'music','movie','food','water','coffee','tea','bread','rice','fruit','apple',
+  'banana','orange','vegetable','meat','fish','milk','cheese','egg','sugar','salt',
+  'city','street','house','home','room','door','window','car','bus','train',
+  'airport','hotel','market','shop','money','price','today','tomorrow','yesterday','morning',
+  'evening','night','week','month','year','happy','sad','tired','hungry','thirsty',
+  'hot','cold','big','small','good','bad','new','old','fast','slow',
+  'right','left','open','close','start','stop','work','study','read','write',
+  'speak','listen','walk','run',
+  // Short words (2-3 letters)
+  'no','go','up','in','on','sun','sky','air','boy','man','day','eat','see','sit','cut',
+  // 4-letter words
+  'girl','baby','bird','tree','rain','snow','wind','blue','king','love','name','hand',
+  'head','nose','face','play','swim','jump','five','four','time','hair','game','life',
+  'road','star','moon','rose','lion','bear','duck','cook','fire','gold','sand','tall',
+  'dark','rich','poor','easy','hard','sick','safe','wide','long','near','late',
+  // 5-letter words
+  'river','horse','chair','table','grass','earth','plant','light','clock','uncle','child',
+  'queen','dream','sleep','clean','dance','think','drink','teach','learn','smile','sweet',
+  'quiet','angry','dirty','empty','early','wrong','brave',
+  // 6-letter words
+  'mother','father','sister','winter','summer','spring','flower','animal','doctor','strong',
+  'answer','number','dinner','finger','yellow','purple'
 ];
 
 const WORDS_B1_B2 = [
@@ -182,13 +313,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Speed strategy: local curated dict (instant). (HF fallback removed for now.)
     const dict = pickDict(cefr);
 
-    const poolCount = Math.max(18, Math.min(40, gridSize * 3));
     const baseList = pickWordList(cefr);
 
     const pairs: Array<{ clue: string; answer: string }> = [];
     const seen = new Set<string>();
 
-    // First pass: local dict only
+    // Return ALL valid word pairs (no limit) to maximize crossword fill
     for (const w of shuffle(baseList)) {
       const en = normalizeEnglishWord(w);
       if (en.length < 2 || en.length > gridSize) continue;
@@ -201,7 +331,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       seen.add(en);
       pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: ar, answer: en });
-      if (pairs.length >= poolCount) break;
     }
 
     // HF fallback removed.
