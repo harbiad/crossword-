@@ -1,61 +1,61 @@
 // Predefined crossword templates
 // 0 = black square, 1 = white square (for answers)
-// Templates designed with ~80-85% white, ~15-20% black
+// IMPORTANT: Templates are designed with MAX 2 adjacent black squares
 
-// 7x7 template (45 white = 92%, 4 black = 8%)
+// 7x7 template - clean pattern with max 2 adjacent blacks
 export const TEMPLATE_7: number[][] = [
   [1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 0, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 0, 1, 0, 1, 1],
   [1, 0, 1, 1, 1, 0, 1],
-  [1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 0, 1, 0, 1, 1],
   [1, 1, 1, 0, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 1],
 ];
 
-// 9x9 template (68 white = 84%, 13 black = 16%)
+// 9x9 template - checkerboard-inspired pattern, max 2 adjacent blacks
 export const TEMPLATE_9: number[][] = [
   [1, 1, 1, 1, 0, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 0, 1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 0, 1, 0, 1, 1, 1],
+  [1, 1, 0, 1, 1, 1, 0, 1, 1],
+  [1, 0, 1, 1, 1, 1, 1, 0, 1],
   [0, 1, 1, 1, 1, 1, 1, 1, 0],
-  [1, 1, 1, 1, 1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 0, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 0, 1, 1, 1, 1, 1, 0, 1],
+  [1, 1, 0, 1, 1, 1, 0, 1, 1],
+  [1, 1, 1, 0, 1, 0, 1, 1, 1],
   [1, 1, 1, 1, 0, 1, 1, 1, 1],
 ];
 
-// 11x11 template (100 white = 83%, 21 black = 17%)
+// 11x11 template - symmetric pattern, max 2 adjacent blacks
 export const TEMPLATE_11: number[][] = [
-  [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1],
   [1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
-  [1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-  [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+  [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+  [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
   [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],
-  [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1],
   [1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+  [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],
+  [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+  [1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+  [1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+  [1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1],
 ];
 
-// 13x13 template (141 white = 83%, 28 black = 17%)
+// 13x13 template - symmetric pattern, max 2 adjacent blacks
 export const TEMPLATE_13: number[][] = [
-  [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1],
-  [1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+  [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+  [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+  [1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1],
   [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-  [1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+  [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+  [1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+  [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+  [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+  [1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1],
+  [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+  [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
   [1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
 ];
 
 // Rotate a template 90 degrees clockwise
@@ -162,4 +162,37 @@ export function findSlots(template: number[][]): Slot[] {
   }
 
   return slots;
+}
+
+// Validate that a template has no more than maxAdjacent consecutive black squares
+export function validateTemplate(template: number[][], maxAdjacent: number): boolean {
+  const size = template.length;
+
+  // Check horizontal runs
+  for (let r = 0; r < size; r++) {
+    let count = 0;
+    for (let c = 0; c < size; c++) {
+      if (template[r][c] === 0) {
+        count++;
+        if (count > maxAdjacent) return false;
+      } else {
+        count = 0;
+      }
+    }
+  }
+
+  // Check vertical runs
+  for (let c = 0; c < size; c++) {
+    let count = 0;
+    for (let r = 0; r < size; r++) {
+      if (template[r][c] === 0) {
+        count++;
+        if (count > maxAdjacent) return false;
+      } else {
+        count = 0;
+      }
+    }
+  }
+
+  return true;
 }

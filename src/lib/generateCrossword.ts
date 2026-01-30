@@ -32,8 +32,42 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     .map((wc) => ({ answer: normalizeAnswer(wc.answer), clue: wc.clue.trim() }))
     .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
 
-  // Get template for this size
-  const template = getTemplate(size);
+  // Try multiple templates and word arrangements to find the best fill
+  const attempts = 50;
+  let bestTemplate: number[][] | null = null;
+  let bestPlacements: ReturnType<typeof constructCrossword> = [];
+  let bestScore = -1;
+
+  for (let i = 0; i < attempts; i++) {
+    // Get a fresh randomized template for each attempt
+    const template = getTemplate(size);
+
+    // Count total white cells in this template
+    let totalWhiteCells = 0;
+    for (const row of template) {
+      for (const cell of row) {
+        if (cell === 1) totalWhiteCells++;
+      }
+    }
+
+    const shuffled = clean.slice().sort(() => Math.random() - 0.5);
+    const placed = constructCrossword(size, shuffled, template, 50);
+
+    // Score: total letters placed / total white cells (fill percentage)
+    const totalLetters = placed.reduce((sum, p) => sum + p.answer.length, 0);
+    // Bonus for number of words placed
+    const score = totalLetters + placed.length * 2;
+
+    if (score > bestScore) {
+      bestScore = score;
+      bestTemplate = template;
+      bestPlacements = placed;
+    }
+  }
+
+  // Use the best template and placements
+  const template = bestTemplate || getTemplate(size);
+  const placements = bestPlacements;
 
   // Build grid from template (0 = block, 1 = white cell)
   const grid: Cell[][] = template.map((row, r) =>
@@ -44,26 +78,6 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     } as Cell))
   );
 
-  // Try multiple times with different shuffles for best fill
-  const attempts = 30;
-  let best = [] as ReturnType<typeof constructCrossword>;
-  let bestScore = -1;
-
-  for (let i = 0; i < attempts; i++) {
-    const shuffled = clean.slice().sort(() => Math.random() - 0.5);
-    const placed = constructCrossword(size, shuffled, 50);
-
-    // Score: total letters placed (more = better fill)
-    const totalLetters = placed.reduce((sum, p) => sum + p.answer.length, 0);
-    const score = totalLetters;
-
-    if (score > bestScore) {
-      best = placed;
-      bestScore = score;
-    }
-  }
-
-  const placements = best;
   const entries: Entry[] = [];
 
   // Place words in grid
@@ -117,15 +131,9 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   // Sort entries: across then down, by number
   entries.sort((a, b) => (a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1));
 
-  // Convert ALL unfilled white cells to black squares
-  // Empty white cells are never acceptable - they must become black
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      if (!grid[r][c].isBlock && !grid[r][c].solution) {
-        grid[r][c].isBlock = true;
-      }
-    }
-  }
+  // DO NOT convert unfilled cells to black - the template already has
+  // proper black square placement with max 2 adjacent blacks.
+  // Unfilled white cells will remain white (user can see they're part of a word slot)
 
   return { size, width: size, height: size, grid, entries };
 }

@@ -56,8 +56,7 @@ function countIntersections(grid: GridChar[][], word: string, slot: Slot): numbe
   return count;
 }
 
-export function constructCrossword(size: number, wordClues: WordClue[], _targetWords = 12): Placement[] {
-  const template = getTemplate(size);
+export function constructCrossword(size: number, wordClues: WordClue[], template: number[][], _targetWords = 12): Placement[] {
   const slots = findSlots(template);
   const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
 
