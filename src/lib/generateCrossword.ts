@@ -1,5 +1,6 @@
 import type { Crossword, Cell, Entry, Direction } from './crossword';
-import { constructCrossword, getTemplate } from './construct';
+import { constructCrossword } from './construct';
+import { getTemplate } from './templates';
 
 export type WordClue = { answer: string; clue: string };
 
@@ -118,14 +119,9 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   // Sort entries: across then down, by number
   entries.sort((a, b) => (a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1));
 
-  // Convert unfilled white cells to black - empty cells are unacceptable
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      if (!grid[r][c].isBlock && !grid[r][c].solution) {
-        grid[r][c].isBlock = true;
-      }
-    }
-  }
+  // DO NOT convert unfilled cells to black - this can create single-letter entries
+  // which violate crossword rules. The template defines black squares.
+  // Unfilled white cells indicate incomplete slots (need more vocabulary).
 
   return { size, width: size, height: size, grid, entries };
 }

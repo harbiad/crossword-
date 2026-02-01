@@ -1,6 +1,6 @@
 import type { Direction } from './crossword';
 import type { WordClue } from './generateCrossword';
-import { getTemplate, findSlots, type Slot } from './templates';
+import { findSlots, type Slot } from './templates';
 
 export type Placement = {
   answer: string;
@@ -127,6 +127,3 @@ export function constructCrossword(size: number, wordClues: WordClue[], template
 
   return placements;
 }
-
-// Export template info for grid generation
-export { getTemplate };
