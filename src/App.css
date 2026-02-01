@@ -287,15 +287,12 @@
   color: #1a1a2e;
 }
 
-/* Action Buttons */
+/* Action Buttons - outside clues card */
 .bottomButtons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 16px;
+  padding: 0;
 }
 
 .bottomButtons button {
