@@ -190,6 +190,11 @@
   pointer-events: none;
 }
 
+.cellNumber.rtl {
+  left: auto;
+  right: 5px;
+}
+
 /* Sidebar */
 .sidebar {
   display: flex;

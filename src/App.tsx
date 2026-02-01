@@ -203,7 +203,7 @@ export default function App() {
 
                 return (
                   <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''}`} onClick={() => onCellClick(r, c)}>
-                    {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
+                    {cell.number ? <div className={`cellNumber ${mode === 'en_to_ar' ? 'rtl' : ''}`}>{cell.number}</div> : null}
                     <input
                       className={mode === 'en_to_ar' ? 'rtlInput' : ''}
                       dir={mode === 'en_to_ar' ? 'rtl' : 'ltr'}
