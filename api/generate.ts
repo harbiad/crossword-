@@ -91,11 +91,28 @@ const DICT_A1_A2: Record<string, string> = {
   WALK: '\u064a\u0645\u0634\u064a',
   RUN: '\u064a\u062c\u0631\u064a',
   // Additional short words for better crossword fill
+  // 2-letter words
   NO: '\u0644\u0627',
   GO: '\u0627\u0630\u0647\u0628',
   UP: '\u0641\u0648\u0642',
   IN: '\u0641\u064a',
   ON: '\u0639\u0644\u0649',
+  IF: '\u0625\u0630\u0627',
+  OR: '\u0623\u0648',
+  SO: '\u0644\u0630\u0627',
+  TO: '\u0625\u0644\u0649',
+  AT: '\u0641\u064a',
+  BY: '\u0628\u0648\u0627\u0633\u0637\u0629',
+  MY: '\u0644\u064a',
+  WE: '\u0646\u062d\u0646',
+  HE: '\u0647\u0648',
+  ME: '\u0623\u0646\u0627',
+  IT: '\u0647\u0648',
+  IS: '\u0647\u0648',
+  AS: '\u0643\u0640',
+  DO: '\u0627\u0641\u0639\u0644',
+  BE: '\u0643\u0646',
+  // 3-letter words
   SUN: '\u0634\u0645\u0633',
   SKY: '\u0633\u0645\u0627\u0621',
   AIR: '\u0647\u0648\u0627\u0621',
@@ -106,6 +123,121 @@ const DICT_A1_A2: Record<string, string> = {
   SEE: '\u0627\u0631\u0649',
   SIT: '\u0627\u062c\u0644\u0633',
   CUT: '\u0642\u0637\u0639',
+  RED: '\u0623\u062d\u0645\u0631',
+  BED: '\u0633\u0631\u064a\u0631',
+  SET: '\u0645\u062c\u0645\u0648\u0639\u0629',
+  GET: '\u0627\u062d\u0635\u0644',
+  LET: '\u062f\u0639',
+  NET: '\u0634\u0628\u0643\u0629',
+  PET: '\u062d\u064a\u0648\u0627\u0646',
+  WET: '\u0645\u0628\u0644\u0644',
+  YES: '\u0646\u0639\u0645',
+  NOT: '\u0644\u0627',
+  BUT: '\u0644\u0643\u0646',
+  FOR: '\u0644\u0640',
+  NOW: '\u0627\u0644\u0622\u0646',
+  HOW: '\u0643\u064a\u0641',
+  WHY: '\u0644\u0645\u0627\u0630\u0627',
+  WHO: '\u0645\u0646',
+  ALL: '\u0643\u0644',
+  TOP: '\u0623\u0639\u0644\u0649',
+  WAY: '\u0637\u0631\u064a\u0642',
+  END: '\u0646\u0647\u0627\u064a\u0629',
+  USE: '\u0627\u0633\u062a\u062e\u062f\u0645',
+  TRY: '\u062d\u0627\u0648\u0644',
+  ASK: '\u0627\u0633\u0623\u0644',
+  OWN: '\u0645\u0644\u0643',
+  ADD: '\u0623\u0636\u0641',
+  AGE: '\u0639\u0645\u0631',
+  ARM: '\u0630\u0631\u0627\u0639',
+  ART: '\u0641\u0646',
+  BAG: '\u062d\u0642\u064a\u0628\u0629',
+  BAT: '\u062e\u0641\u0627\u0634',
+  BOX: '\u0635\u0646\u062f\u0648\u0642',
+  BUS: '\u062d\u0627\u0641\u0644\u0629',
+  CAT: '\u0642\u0637',
+  COW: '\u0628\u0642\u0631\u0629',
+  CUP: '\u0643\u0648\u0628',
+  DOG: '\u0643\u0644\u0628',
+  DOT: '\u0646\u0642\u0637\u0629',
+  EAR: '\u0623\u0630\u0646',
+  EYE: '\u0639\u064a\u0646',
+  FAN: '\u0645\u0631\u0648\u062d\u0629',
+  FAT: '\u0633\u0645\u064a\u0646',
+  FLY: '\u0630\u0628\u0627\u0628\u0629',
+  FOX: '\u062b\u0639\u0644\u0628',
+  FUN: '\u0645\u0631\u062d',
+  GAS: '\u063a\u0627\u0632',
+  GUN: '\u0645\u0633\u062f\u0633',
+  HAT: '\u0642\u0628\u0639\u0629',
+  HIT: '\u0627\u0636\u0631\u0628',
+  ICE: '\u062b\u0644\u062c',
+  JAM: '\u0645\u0631\u0628\u0649',
+  JAR: '\u062c\u0631\u0629',
+  JOB: '\u0639\u0645\u0644',
+  JOY: '\u0641\u0631\u062d',
+  KEY: '\u0645\u0641\u062a\u0627\u062d',
+  KID: '\u0637\u0641\u0644',
+  LAW: '\u0642\u0627\u0646\u0648\u0646',
+  LEG: '\u0633\u0627\u0642',
+  LID: '\u063a\u0637\u0627\u0621',
+  LIP: '\u0634\u0641\u0629',
+  LOG: '\u062c\u0630\u0639',
+  MAP: '\u062e\u0631\u064a\u0637\u0629',
+  MAT: '\u062d\u0635\u064a\u0631\u0629',
+  MIX: '\u0627\u0645\u0632\u062c',
+  MOM: '\u0623\u0645',
+  MUD: '\u0637\u064a\u0646',
+  NUT: '\u062c\u0648\u0632',
+  OIL: '\u0632\u064a\u062a',
+  OWL: '\u0628\u0648\u0645\u0629',
+  PAN: '\u0645\u0642\u0644\u0627\u0629',
+  PIG: '\u062e\u0646\u0632\u064a\u0631',
+  PIN: '\u062f\u0628\u0648\u0633',
+  PIE: '\u0641\u0637\u064a\u0631\u0629',
+  POT: '\u0642\u062f\u0631',
+  RAT: '\u0641\u0623\u0631',
+  ROW: '\u0635\u0641',
+  RUG: '\u0633\u062c\u0627\u062f\u0629',
+  SAD: '\u062d\u0632\u064a\u0646',
+  SEA: '\u0628\u062d\u0631',
+  SIX: '\u0633\u062a\u0629',
+  SKI: '\u062a\u0632\u0644\u062c',
+  SON: '\u0627\u0628\u0646',
+  TAP: '\u0635\u0646\u0628\u0648\u0631',
+  TEN: '\u0639\u0634\u0631\u0629',
+  TIE: '\u0631\u0628\u0637\u0629',
+  TIP: '\u0646\u0635\u064a\u062d\u0629',
+  TOE: '\u0625\u0635\u0628\u0639',
+  TOY: '\u0644\u0639\u0628\u0629',
+  TWO: '\u0627\u062b\u0646\u0627\u0646',
+  VAN: '\u0634\u0627\u062d\u0646\u0629',
+  WAR: '\u062d\u0631\u0628',
+  WIN: '\u0641\u0648\u0632',
+  ZOO: '\u062d\u062f\u064a\u0642\u0629',
+  // Filler words (repeated letters) - used as last resort
+  AA: '\u0623\u0623',
+  BB: '\u0628\u0628',
+  CC: '\u062a\u062a',
+  DD: '\u062f\u062f',
+  EE: '\u0639\u0639',
+  FF: '\u0641\u0641',
+  GG: '\u062c\u062c',
+  HH: '\u062d\u062d',
+  II: '\u064a\u064a',
+  LL: '\u0644\u0644',
+  MM: '\u0645\u0645',
+  NN: '\u0646\u0646',
+  OO: '\u0648\u0648',
+  PP: '\u0628\u0628',
+  RR: '\u0631\u0631',
+  SS: '\u0633\u0633',
+  TT: '\u062a\u062a',
+  AAA: '\u0623\u0623\u0623',
+  BBB: '\u0628\u0628\u0628',
+  EEE: '\u0639\u0639\u0639',
+  III: '\u064a\u064a\u064a',
+  OOO: '\u0648\u0648\u0648',
   GIRL: '\u0628\u0646\u062a',
   BABY: '\u0637\u0641\u0644',
   BIRD: '\u0637\u0627\u0626\u0631',
@@ -249,8 +381,16 @@ const WORDS_A1_A2 = [
   'hot','cold','big','small','good','bad','new','old','fast','slow',
   'right','left','open','close','start','stop','work','study','read','write',
   'speak','listen','walk','run',
-  // Short words (2-3 letters)
-  'no','go','up','in','on','sun','sky','air','boy','man','day','eat','see','sit','cut',
+  // 2-letter words
+  'no','go','up','in','on','if','or','so','to','at','by','my','we','he','me','it','is','as','do','be',
+  // 3-letter words
+  'sun','sky','air','boy','man','day','eat','see','sit','cut','red','bed','set','get','let','net',
+  'pet','wet','yes','not','but','for','now','how','why','who','all','top','way','end','use','try',
+  'ask','own','add','age','arm','art','bag','bat','box','cat','cow','cup','dog','dot',
+  'ear','eye','fan','fat','fly','fox','fun','gas','gun','hat','hit','ice','jam','jar','job','joy',
+  'key','kid','law','leg','lid','lip','log','map','mat','mix','mom','mud','nut','oil','owl','pan',
+  'pig','pin','pie','pot','rat','row','rug','sea','six','ski','son','tap','ten','tie','tip',
+  'toe','toy','two','van','war','win','zoo',
   // 4-letter words
   'girl','baby','bird','tree','rain','snow','wind','blue','king','love','name','hand',
   'head','nose','face','play','swim','jump','five','four','time','hair','game','life',
@@ -263,6 +403,12 @@ const WORDS_A1_A2 = [
   // 6-letter words
   'mother','father','sister','winter','summer','spring','flower','animal','doctor','strong',
   'answer','number','dinner','finger','yellow','purple'
+];
+
+// Filler words (repeated letters) - used only when needed to complete the grid
+const FILLER_WORDS = [
+  'aa','bb','cc','dd','ee','ff','gg','hh','ii','ll','mm','nn','oo','pp','rr','ss','tt',
+  'aaa','bbb','eee','iii','ooo'
 ];
 
 const WORDS_B1_B2 = [
@@ -333,7 +479,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: ar, answer: en });
     }
 
-    // HF fallback removed.
+    // Add filler words (repeated letters) at the end - used as last resort
+    for (const w of FILLER_WORDS) {
+      const en = normalizeEnglishWord(w);
+      if (en.length < 2 || en.length > gridSize) continue;
+      if (seen.has(en)) continue;
+
+      const arRaw = dict[en];
+      if (!arRaw) continue;
+      const ar = normalizeArabicWord(arRaw);
+      if (!ar || ar.length < 2 || ar.length > gridSize) continue;
+
+      seen.add(en);
+      // Special clue for fillers
+      const fillerClue = mode === 'en_to_ar'
+        ? `${en.length === 2 ? 'Double' : 'Triple'} ${en[0]}`
+        : `\u062d\u0631\u0641 \u0645\u0643\u0631\u0631`; // "حرف مكرر" = repeated letter
+      pairs.push(mode === 'en_to_ar' ? { clue: fillerClue, answer: ar } : { clue: fillerClue, answer: en });
+    }
 
     if (!pairs.length) {
       return json(res, 500, {
