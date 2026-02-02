@@ -9,6 +9,10 @@ function normalizeAnswer(a: string): string {
     .trim()
     .replace(/\s+/g, '')
     .replace(/[ـ\u064B-\u065F\u0670]/g, '') // remove Arabic tatweel + harakat
+    // Normalize Alef variants to plain Alef (ا) - these are all the same letter
+    .replace(/[أإآٱ]/g, 'ا')
+    // Normalize Yeh variants - ى (alef maksura) often used interchangeably with ي
+    .replace(/ى/g, 'ي')
     .toUpperCase();
 }
 
