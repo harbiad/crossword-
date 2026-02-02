@@ -338,7 +338,7 @@ export function generateCrossword(
     .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
 
   const templates = getTemplates(size);
-  const attempts = 80;
+  const attempts = 200;
   let best: Crossword | null = null;
   let bestScore = -1;
 
