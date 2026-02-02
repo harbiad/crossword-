@@ -1,6 +1,6 @@
 import type { Crossword, Cell, Entry, Direction } from './crossword';
 import { constructCrossword, validateBlockRuns } from './construct';
-import { getTemplate } from './templates';
+import { getTemplates } from './templates';
 
 export type WordClue = { answer: string; clue: string; isRepeatedLetter?: boolean };
 
@@ -337,27 +337,37 @@ export function generateCrossword(
     }))
     .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
 
-  const template = getTemplate(size);
-
-  const attempts = 50;
+  const templates = getTemplates(size);
+  const attempts = 80;
   let best: Crossword | null = null;
   let bestScore = -1;
 
-  for (let i = 0; i < attempts; i++) {
-    const shuffled = clean.slice().sort(() => Math.random() - 0.5);
-    const placements = constructCrossword(size, shuffled, template, answerDirection, 50);
-    if (!placements.length) continue;
+  const optionSets = [
+    { minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 75 : 80 },
+    { minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 70 : 75 },
+  ];
 
-    const cw = buildCrosswordFromPlacements(size, template, placements, answerDirection);
-    if (!cw) continue;
+  for (const template of templates.sort(() => Math.random() - 0.5)) {
+    for (const opts of optionSets) {
+      for (let i = 0; i < attempts; i++) {
+        const shuffled = clean.slice().sort(() => Math.random() - 0.5);
+        const placements = constructCrossword(size, shuffled, template, answerDirection, opts, 50);
+        if (!placements.length) continue;
 
-    const totalLetters = cw.entries.reduce((sum, e) => sum + e.answer.length, 0);
-    const score = totalLetters + cw.entries.length * 2;
+        const cw = buildCrosswordFromPlacements(size, template, placements, answerDirection);
+        if (!cw) continue;
 
-    if (score > bestScore) {
-      bestScore = score;
-      best = cw;
+        const totalLetters = cw.entries.reduce((sum, e) => sum + e.answer.length, 0);
+        const score = totalLetters + cw.entries.length * 2;
+
+        if (score > bestScore) {
+          bestScore = score;
+          best = cw;
+        }
+      }
+      if (best) break;
     }
+    if (best) break;
   }
 
   if (!best) {

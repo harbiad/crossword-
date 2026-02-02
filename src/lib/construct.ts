@@ -210,11 +210,17 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
   return true;
 }
 
+type ConstructOptions = {
+  minIntersectionPct?: number;
+  minTotalIntersections?: number;
+};
+
 export function constructCrossword(
   size: number,
   wordClues: WordClue[],
   template: number[][],
   answerDirection: 'rtl' | 'ltr',
+  options: ConstructOptions = {},
   _targetWords = 12
 ): Placement[] {
   const slots = findSlots(template);
@@ -309,10 +315,13 @@ export function constructCrossword(
   if (!isFullyConnected(grid, size)) return [];
 
   const intersectionPct = calculateIntersectionPercentage(validPlacements, answerDirection);
-  if (intersectionPct < 80) return [];
+  const defaultPct = size <= 7 ? 70 : size <= 9 ? 75 : 80;
+  const minIntersectionPct = options.minIntersectionPct ?? defaultPct;
+  if (intersectionPct < minIntersectionPct) return [];
 
   const totalIntersections = countTotalIntersections(validPlacements, answerDirection);
-  const minIntersections = Math.max(3, Math.floor(validPlacements.length * 0.5));
+  const defaultMinIntersections = Math.max(2, Math.floor(validPlacements.length * 0.35));
+  const minIntersections = options.minTotalIntersections ?? defaultMinIntersections;
   if (totalIntersections < minIntersections) return [];
 
   return validPlacements;

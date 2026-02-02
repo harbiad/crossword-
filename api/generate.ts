@@ -44,7 +44,6 @@ const DICT_A1_A2: Record<string, string> = {
   DOOR: '\u0628\u0627\u0628',
   WINDOW: '\u0646\u0627\u0641\u0630\u0629',
   CAR: '\u0633\u064a\u0627\u0631\u0629',
-  BUS: '\u062d\u0627\u0641\u0644\u0629',
   TRAIN: '\u0642\u0637\u0627\u0631',
   AIRPORT: '\u0645\u0637\u0627\u0631',
   HOTEL: '\u0641\u0646\u062f\u0642',
@@ -62,7 +61,6 @@ const DICT_A1_A2: Record<string, string> = {
   MONTH: '\u0634\u0647\u0631',
   YEAR: '\u0633\u0646\u0629',
   HAPPY: '\u0633\u0639\u064a\u062f',
-  SAD: '\u062d\u0632\u064a\u0646',
   TIRED: '\u0645\u062a\u0639\u0628',
   HUNGRY: '\u062c\u0627\u0626\u0639',
   THIRSTY: '\u0639\u0637\u0634\u0627\u0646',
@@ -491,11 +489,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (!ar || ar.length < 2 || ar.length > gridSize) continue;
 
       seen.add(en);
-      // Special clue for fillers
+      // Format as "X ×N" where X is the letter and N is the count
+      const letter = en[0].toUpperCase();
+      const count = en.length;
       const fillerClue = mode === 'en_to_ar'
-        ? `${en.length === 2 ? 'Double' : 'Triple'} ${en[0]}`
-        : `\u062d\u0631\u0641 \u0645\u0643\u0631\u0631`; // "حرف مكرر" = repeated letter
-      pairs.push(mode === 'en_to_ar' ? { clue: fillerClue, answer: ar } : { clue: fillerClue, answer: en });
+        ? `${letter} ×${count}`
+        : `${letter} ×${count}`; // Same format for both modes
+      pairs.push(mode === 'en_to_ar'
+        ? { clue: fillerClue, answer: ar, isRepeatedLetter: true }
+        : { clue: fillerClue, answer: en, isRepeatedLetter: true }
+      );
     }
 
     if (!pairs.length) {

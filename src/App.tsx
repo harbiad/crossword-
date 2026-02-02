@@ -295,8 +295,15 @@ export default function App() {
 
       // Determine answer direction based on mode
       const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
-      const next = generateCrossword(size, entries, answerDirection);
-      if (!next.entries.length) throw new Error('Could not fit words into a crossword grid. Try again.');
+      let next: Crossword | null = null;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const candidate = generateCrossword(size, entries, answerDirection);
+        if (candidate.entries.length) {
+          next = candidate;
+          break;
+        }
+      }
+      if (!next) throw new Error('Could not fit words into a crossword grid. Try again.');
 
       setCw(next);
       setFill({});
