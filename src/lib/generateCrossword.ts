@@ -338,7 +338,7 @@ export function generateCrossword(
     .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
 
   const templates = getTemplates(size);
-  const attempts = 200;
+  const attempts = 400;
   let best: Crossword | null = null;
   let bestScore = -1;
 
@@ -347,9 +347,11 @@ export function generateCrossword(
     { minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 70 : 75 },
   ];
 
+  let attemptsRun = 0;
   for (const template of templates.sort(() => Math.random() - 0.5)) {
     for (const opts of optionSets) {
       for (let i = 0; i < attempts; i++) {
+        attemptsRun++;
         const shuffled = clean.slice().sort(() => Math.random() - 0.5);
         const placements = constructCrossword(size, shuffled, template, answerDirection, opts, 50);
         if (!placements.length) continue;
@@ -371,6 +373,9 @@ export function generateCrossword(
   }
 
   if (!best) {
+    if (typeof console !== 'undefined') {
+      console.warn(`[crossword] generation failed size=${size} attempts=${attemptsRun} candidates=${clean.length}`);
+    }
     return { size, width: size, height: size, grid: [], entries: [], answerDirection };
   }
 

@@ -296,6 +296,7 @@ export default function App() {
       // Determine answer direction based on mode
       const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
       let next: Crossword | null = null;
+      let finalSize = size;
       for (let attempt = 0; attempt < 3; attempt++) {
         const candidate = generateCrossword(size, entries, answerDirection);
         if (candidate.entries.length) {
@@ -303,9 +304,24 @@ export default function App() {
           break;
         }
       }
+      if (!next) {
+        const fallbackSizes = [9, 11, 13].filter((s) => s > size);
+        for (const fallback of fallbackSizes) {
+          for (let attempt = 0; attempt < 2; attempt++) {
+            const candidate = generateCrossword(fallback, entries, answerDirection);
+            if (candidate.entries.length) {
+              next = candidate;
+              finalSize = fallback;
+              break;
+            }
+          }
+          if (next) break;
+        }
+      }
       if (!next) throw new Error('Could not fit words into a crossword grid. Try again.');
 
       setCw(next);
+      if (finalSize !== size) setSize(finalSize);
       setFill({});
     } catch (e: any) {
       setError(e?.message || String(e));
@@ -317,7 +333,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 7</h1>
+        <h1>Crossword 8</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
