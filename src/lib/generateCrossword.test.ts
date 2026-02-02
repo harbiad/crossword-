@@ -246,7 +246,10 @@ describe('generateCrossword', () => {
       if (entry.direction === 'across') {
         const numberCell = cw.grid[entry.row][entry.col];
         // The number should be at the start cell for RTL across (rightmost)
-        expect(numberCell.number).toBe(entry.number);
+        expect(numberCell.type).toBe('letter');
+        if (numberCell.type === 'letter') {
+          expect(numberCell.number).toBe(entry.number);
+        }
       }
     }
   });
@@ -313,7 +316,10 @@ describe('generateCrossword', () => {
     for (const entry of cw.entries) {
       if (entry.direction === 'across') {
         const numberCell = cw.grid[entry.row][entry.col];
-        expect(numberCell.number).toBe(entry.number);
+        expect(numberCell.type).toBe('letter');
+        if (numberCell.type === 'letter') {
+          expect(numberCell.number).toBe(entry.number);
+        }
       }
     }
   });
