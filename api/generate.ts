@@ -434,8 +434,23 @@ function shuffle<T>(arr: T[]): T[] {
 
 function pickDict(cefr: string): Record<string, string> {
   if (cefr === 'A1-A2') return DICT_A1_A2;
-  if (cefr === 'B1-B2') return DICT_B1_B2;
-  return DICT_C1_C2;
+  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : DICT_A1_A2;
+  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : DICT_A1_A2;
+}
+
+function buildCandidateWords(cefr: string, dict: Record<string, string>): string[] {
+  const base = pickWordList(cefr);
+  const fallback = cefr === 'A1-A2' ? [] : WORDS_A1_A2;
+  const merged = [...base, ...fallback, ...Object.keys(dict)];
+  const seen = new Set<string>();
+  const unique: string[] = [];
+  for (const w of merged) {
+    const normalized = normalizeEnglishWord(w);
+    if (!normalized || seen.has(normalized)) continue;
+    seen.add(normalized);
+    unique.push(normalized);
+  }
+  return unique;
 }
 
 // (HF fallback removed for speed + reliability on Vercel)
@@ -457,7 +472,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Speed strategy: local curated dict (instant). (HF fallback removed for now.)
     const dict = pickDict(cefr);
 
-    const baseList = pickWordList(cefr);
+    const baseList = buildCandidateWords(cefr, dict);
 
     const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
     const seen = new Set<string>();
