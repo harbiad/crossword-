@@ -56,9 +56,12 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
 
   const entries: Entry[] = [];
 
-  // Place words in grid
+  // Track cell letters separately to ensure no conflicts
+  // Key: "r,c" -> letter
+  const cellLetters = new Map<string, string>();
+
+  // Place words in grid with strict conflict checking
   // Note: p.answer is already display-ready (Arabic across words are pre-reversed in construct.ts)
-  // We validate each placement to prevent letter conflicts at intersections
   for (const p of placements) {
     const dir: Direction = p.direction;
     const row0 = p.row;
@@ -66,31 +69,49 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     const id = makeId(dir, row0, col0);
     const answer = String(p.answer);
 
-    // Check for conflicts BEFORE placing
+    // Collect all cells this word would occupy
+    const wordCells: { r: number; c: number; letter: string }[] = [];
     let hasConflict = false;
+
     for (let i = 0; i < answer.length; i++) {
       const rr = row0 + (dir === 'down' ? i : 0);
       const cc = col0 + (dir === 'across' ? i : 0);
-      if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
-      const existing = grid[rr][cc].solution;
-      if (existing && existing !== answer[i]) {
+
+      // Skip if out of bounds
+      if (rr < 0 || cc < 0 || rr >= size || cc >= size) {
         hasConflict = true;
         break;
       }
+
+      // Skip if it's a block
+      if (grid[rr][cc].isBlock) {
+        hasConflict = true;
+        break;
+      }
+
+      const cellKey = `${rr},${cc}`;
+      const existingLetter = cellLetters.get(cellKey);
+
+      // If cell already has a letter, it MUST match
+      if (existingLetter !== undefined && existingLetter !== answer[i]) {
+        hasConflict = true;
+        break;
+      }
+
+      wordCells.push({ r: rr, c: cc, letter: answer[i] });
     }
 
-    // Skip entries with letter conflicts
-    if (hasConflict) {
+    // Skip this entire word if ANY conflict was found
+    if (hasConflict || wordCells.length !== answer.length) {
       continue;
     }
 
-    // Place the word
-    for (let i = 0; i < answer.length; i++) {
-      const rr = row0 + (dir === 'down' ? i : 0);
-      const cc = col0 + (dir === 'across' ? i : 0);
-      if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
-      grid[rr][cc].entryId = id;
-      grid[rr][cc].solution = answer[i];
+    // No conflicts - place the word
+    for (const { r, c, letter } of wordCells) {
+      const cellKey = `${r},${c}`;
+      cellLetters.set(cellKey, letter);
+      grid[r][c].entryId = id;
+      grid[r][c].solution = letter;
     }
 
     entries.push({

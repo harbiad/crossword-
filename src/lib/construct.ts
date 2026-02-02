@@ -179,5 +179,23 @@ export function constructCrossword(size: number, wordClues: WordClue[], template
     }
   }
 
-  return placements;
+  // Final validation: verify all placements match the grid
+  // This catches any bugs in the construction logic
+  const validPlacements: Placement[] = [];
+  for (const p of placements) {
+    let isValid = true;
+    for (let i = 0; i < p.answer.length; i++) {
+      const r = p.row + (p.direction === 'down' ? i : 0);
+      const c = p.col + (p.direction === 'across' ? i : 0);
+      if (grid[r]?.[c] !== p.answer[i]) {
+        isValid = false;
+        break;
+      }
+    }
+    if (isValid) {
+      validPlacements.push(p);
+    }
+  }
+
+  return validPlacements;
 }
