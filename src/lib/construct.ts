@@ -41,10 +41,21 @@ function wordFitsSlot(
   for (let i = 0; i < displayWord.length; i++) {
     const r = slot.row + (slot.direction === 'down' ? i : 0);
     const c = slot.col + (slot.direction === 'across' ? i : 0);
-    const existing = grid[r]?.[c];
 
-    // If cell has a letter, it must match
-    if (existing && existing !== displayWord[i]) {
+    // Bounds check
+    if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length) {
+      return false;
+    }
+
+    const existing = grid[r][c];
+
+    // Cannot place on black squares
+    if (existing === '#') {
+      return false;
+    }
+
+    // If cell has a letter, it must match exactly
+    if (existing !== null && existing !== displayWord[i]) {
       return false;
     }
   }
@@ -53,13 +64,29 @@ function wordFitsSlot(
 }
 
 // Place a word in the grid using display-adjusted letters
-function placeWord(grid: GridChar[][], word: string, slot: Slot) {
+// Returns false if placement would cause a conflict (should not happen if wordFitsSlot passed)
+function placeWord(grid: GridChar[][], word: string, slot: Slot): boolean {
   const displayWord = getDisplayWord(word, slot.direction);
+
+  // Verify no conflicts before placing
+  for (let i = 0; i < displayWord.length; i++) {
+    const r = slot.row + (slot.direction === 'down' ? i : 0);
+    const c = slot.col + (slot.direction === 'across' ? i : 0);
+    const existing = grid[r][c];
+    if (existing !== null && existing !== '#' && existing !== displayWord[i]) {
+      // Conflict detected - should not happen but prevents overwriting
+      return false;
+    }
+  }
+
+  // Now place the letters
   for (let i = 0; i < displayWord.length; i++) {
     const r = slot.row + (slot.direction === 'down' ? i : 0);
     const c = slot.col + (slot.direction === 'across' ? i : 0);
     grid[r][c] = displayWord[i];
   }
+
+  return true;
 }
 
 // Count intersections (letters that overlap with existing grid)
@@ -133,7 +160,11 @@ export function constructCrossword(size: number, wordClues: WordClue[], template
     }
 
     if (bestWord) {
-      placeWord(grid, bestWord.answer, slot);
+      // Try to place the word - skip if conflict detected
+      const placed = placeWord(grid, bestWord.answer, slot);
+      if (!placed) {
+        continue; // Skip this word if placement failed
+      }
       usedWords.add(bestWord.answer);
       filledSlots.add(slotKey);
       // Store the display-adjusted answer (Arabic across words are already reversed)

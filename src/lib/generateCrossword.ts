@@ -58,6 +58,7 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
 
   // Place words in grid
   // Note: p.answer is already display-ready (Arabic across words are pre-reversed in construct.ts)
+  // We validate each placement to prevent letter conflicts at intersections
   for (const p of placements) {
     const dir: Direction = p.direction;
     const row0 = p.row;
@@ -65,6 +66,25 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     const id = makeId(dir, row0, col0);
     const answer = String(p.answer);
 
+    // Check for conflicts BEFORE placing
+    let hasConflict = false;
+    for (let i = 0; i < answer.length; i++) {
+      const rr = row0 + (dir === 'down' ? i : 0);
+      const cc = col0 + (dir === 'across' ? i : 0);
+      if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
+      const existing = grid[rr][cc].solution;
+      if (existing && existing !== answer[i]) {
+        hasConflict = true;
+        break;
+      }
+    }
+
+    // Skip entries with letter conflicts
+    if (hasConflict) {
+      continue;
+    }
+
+    // Place the word
     for (let i = 0; i < answer.length; i++) {
       const rr = row0 + (dir === 'down' ? i : 0);
       const cc = col0 + (dir === 'across' ? i : 0);
