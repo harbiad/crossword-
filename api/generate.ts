@@ -459,7 +459,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const baseList = pickWordList(cefr);
 
-    const pairs: Array<{ clue: string; answer: string }> = [];
+    const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
     const seen = new Set<string>();
 
     // Return ALL valid word pairs (no limit) to maximize crossword fill
