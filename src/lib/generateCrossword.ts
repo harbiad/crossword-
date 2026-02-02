@@ -12,18 +12,6 @@ function normalizeAnswer(a: string): string {
     .toUpperCase();
 }
 
-function isArabic(s: string): boolean {
-  return /[\u0600-\u06FF]/.test(s);
-}
-
-// Reverse Arabic "across" answers so they display correctly RTL in the grid
-function adjustForRtl(answer: string, direction: Direction): string {
-  if (direction === 'across' && isArabic(answer)) {
-    return [...answer].reverse().join('');
-  }
-  return answer;
-}
-
 function makeId(dir: Direction, row: number, col: number) {
   return `${dir}:${row}:${col}`;
 }
@@ -69,21 +57,20 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
   const entries: Entry[] = [];
 
   // Place words in grid
+  // Note: p.answer is already display-ready (Arabic across words are pre-reversed in construct.ts)
   for (const p of placements) {
     const dir: Direction = p.direction;
     const row0 = p.row;
     const col0 = p.col;
     const id = makeId(dir, row0, col0);
+    const answer = String(p.answer);
 
-    const originalAns = String(p.answer);
-    const displayAns = adjustForRtl(originalAns, dir);
-
-    for (let i = 0; i < displayAns.length; i++) {
+    for (let i = 0; i < answer.length; i++) {
       const rr = row0 + (dir === 'down' ? i : 0);
       const cc = col0 + (dir === 'across' ? i : 0);
       if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
       grid[rr][cc].entryId = id;
-      grid[rr][cc].solution = displayAns[i];
+      grid[rr][cc].solution = answer[i];
     }
 
     entries.push({
@@ -91,7 +78,7 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
       direction: dir,
       row: row0,
       col: col0,
-      answer: displayAns,
+      answer,
       clue: String(p.clue || ''),
       number: 0,
     });

@@ -12,7 +12,22 @@ export type Placement = {
 
 type GridChar = string | null;
 
+// Check if text contains Arabic characters
+function isArabic(s: string): boolean {
+  return /[\u0600-\u06FF]/.test(s);
+}
+
+// Get the display version of a word for a given direction
+// Arabic across words are reversed so they display correctly RTL in the LTR grid
+function getDisplayWord(word: string, direction: Direction): string {
+  if (direction === 'across' && isArabic(word)) {
+    return [...word].reverse().join('');
+  }
+  return word;
+}
+
 // Check if a word fits in a slot given current grid state
+// Uses display-adjusted word (Arabic across words are reversed)
 function wordFitsSlot(
   grid: GridChar[][],
   word: string,
@@ -20,13 +35,16 @@ function wordFitsSlot(
 ): boolean {
   if (word.length !== slot.length) return false;
 
-  for (let i = 0; i < word.length; i++) {
+  // Use the display version of the word for this slot's direction
+  const displayWord = getDisplayWord(word, slot.direction);
+
+  for (let i = 0; i < displayWord.length; i++) {
     const r = slot.row + (slot.direction === 'down' ? i : 0);
     const c = slot.col + (slot.direction === 'across' ? i : 0);
     const existing = grid[r]?.[c];
 
     // If cell has a letter, it must match
-    if (existing && existing !== word[i]) {
+    if (existing && existing !== displayWord[i]) {
       return false;
     }
   }
@@ -34,22 +52,25 @@ function wordFitsSlot(
   return true;
 }
 
-// Place a word in the grid
+// Place a word in the grid using display-adjusted letters
 function placeWord(grid: GridChar[][], word: string, slot: Slot) {
-  for (let i = 0; i < word.length; i++) {
+  const displayWord = getDisplayWord(word, slot.direction);
+  for (let i = 0; i < displayWord.length; i++) {
     const r = slot.row + (slot.direction === 'down' ? i : 0);
     const c = slot.col + (slot.direction === 'across' ? i : 0);
-    grid[r][c] = word[i];
+    grid[r][c] = displayWord[i];
   }
 }
 
 // Count intersections (letters that overlap with existing grid)
+// Uses display-adjusted word for accurate intersection counting
 function countIntersections(grid: GridChar[][], word: string, slot: Slot): number {
+  const displayWord = getDisplayWord(word, slot.direction);
   let count = 0;
-  for (let i = 0; i < word.length; i++) {
+  for (let i = 0; i < displayWord.length; i++) {
     const r = slot.row + (slot.direction === 'down' ? i : 0);
     const c = slot.col + (slot.direction === 'across' ? i : 0);
-    if (grid[r]?.[c] === word[i]) {
+    if (grid[r]?.[c] === displayWord[i]) {
       count++;
     }
   }
@@ -115,8 +136,10 @@ export function constructCrossword(size: number, wordClues: WordClue[], template
       placeWord(grid, bestWord.answer, slot);
       usedWords.add(bestWord.answer);
       filledSlots.add(slotKey);
+      // Store the display-adjusted answer (Arabic across words are already reversed)
+      const displayAnswer = getDisplayWord(bestWord.answer, slot.direction);
       placements.push({
-        answer: bestWord.answer,
+        answer: displayAnswer,
         clue: bestWord.clue,
         row: slot.row,
         col: slot.col,
