@@ -451,7 +451,8 @@ function pickDict(cefr: string): Record<string, string> {
 function buildCandidateWords(cefr: string, dict: Record<string, string>): string[] {
   const base = pickWordList(cefr);
   const fallback = cefr === 'A1-A2' ? [] : WORDS_A1_A2;
-  const merged = [...base, ...fallback, ...WORDS_COMMON_EXTRA, ...Object.keys(dict)];
+  const commonA1 = cefr === 'A1-A2' ? Object.keys(DICT_COMMON_3000) : [];
+  const merged = [...base, ...fallback, ...WORDS_COMMON_EXTRA, ...commonA1, ...Object.keys(dict)];
   const seen = new Set<string>();
   const unique: string[] = [];
   for (const w of merged) {
