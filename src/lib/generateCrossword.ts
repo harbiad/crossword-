@@ -1,8 +1,15 @@
 import type { Crossword, Cell, Entry, Direction } from './crossword';
-import { constructCrossword } from './construct';
+import { constructCrossword, validateBlockRuns } from './construct';
 import { getTemplate } from './templates';
 
-export type WordClue = { answer: string; clue: string };
+export type WordClue = { answer: string; clue: string; isRepeatedLetter?: boolean };
+
+type WorkingCell = Cell | null;
+
+type NumberingResult = {
+  gridNumbers: Map<string, number>;
+  entryNumbers: Map<string, number>;
+};
 
 function normalizeAnswer(a: string): string {
   return a
@@ -11,8 +18,7 @@ function normalizeAnswer(a: string): string {
     .replace(/[ـ\u064B-\u065F\u0670]/g, '') // remove Arabic tatweel + harakat
     // Normalize Alef variants to plain Alef (ا) - these are all the same letter
     .replace(/[أإآٱ]/g, 'ا')
-    // Normalize Yeh variants - ى (alef maksura) often used interchangeably with ي
-    .replace(/ى/g, 'ي')
+    // NOTE: Do NOT normalize ى (alef maksura) to ي - they are different letters
     .toUpperCase();
 }
 
@@ -20,52 +26,211 @@ function makeId(dir: Direction, row: number, col: number) {
   return `${dir}:${row}:${col}`;
 }
 
-export function generateCrossword(size: number, wordClues: WordClue[]): Crossword {
-  const clean = wordClues
-    .map((wc) => ({ answer: normalizeAnswer(wc.answer), clue: wc.clue.trim() }))
-    .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
+function getEntryStep(direction: Direction, answerDirection: 'rtl' | 'ltr') {
+  if (direction === 'down') return { dr: 1, dc: 0 };
+  return { dr: 0, dc: answerDirection === 'rtl' ? -1 : 1 };
+}
 
-  // Get ONE random template for this puzzle - ensures different grids each time
-  const template = getTemplate(size);
+function computeNumbering(
+  grid: Cell[][],
+  entries: Entry[],
+  answerDirection: 'rtl' | 'ltr'
+): NumberingResult {
+  const size = grid.length;
+  const entryByStart = new Map<string, Entry>();
+  for (const entry of entries) {
+    const key = `${entry.row},${entry.col},${entry.direction}`;
+    entryByStart.set(key, entry);
+  }
 
-  // Try multiple word arrangements with the SAME template
-  const attempts = 30;
-  let bestPlacements: ReturnType<typeof constructCrossword> = [];
-  let bestScore = -1;
+  const gridNumbers = new Map<string, number>();
+  const entryNumbers = new Map<string, number>();
 
-  for (let i = 0; i < attempts; i++) {
-    const shuffled = clean.slice().sort(() => Math.random() - 0.5);
-    const placed = constructCrossword(size, shuffled, template, 50);
-
-    // Score: total letters placed + bonus for word count
-    const totalLetters = placed.reduce((sum, p) => sum + p.answer.length, 0);
-    const score = totalLetters + placed.length * 2;
-
-    if (score > bestScore) {
-      bestScore = score;
-      bestPlacements = placed;
+  const cells: { r: number; c: number }[] = [];
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      cells.push({ r, c });
     }
   }
 
-  const placements = bestPlacements;
+  cells.sort((a, b) => {
+    if (a.r !== b.r) return a.r - b.r;
+    return answerDirection === 'rtl' ? b.c - a.c : a.c - b.c;
+  });
 
-  // Build grid from template (0 = block, 1 = white cell)
-  const grid: Cell[][] = template.map((row, r) =>
-    row.map((cell, c) => ({
-      r,
-      c,
-      isBlock: cell === 0,
-    } as Cell))
+  let counter = 1;
+  for (const { r, c } of cells) {
+    const cell = grid[r][c];
+    if (!cell || cell.type !== 'letter') continue;
+
+    const leftIsLetter = c > 0 && grid[r][c - 1].type === 'letter';
+    const rightIsLetter = c < size - 1 && grid[r][c + 1].type === 'letter';
+    const upIsLetter = r > 0 && grid[r - 1][c].type === 'letter';
+    const downIsLetter = r < size - 1 && grid[r + 1][c].type === 'letter';
+
+    const acrossStart =
+      answerDirection === 'rtl'
+        ? !rightIsLetter && leftIsLetter
+        : !leftIsLetter && rightIsLetter;
+    const downStart = !upIsLetter && downIsLetter;
+
+    if (!acrossStart && !downStart) continue;
+
+    const key = `${r},${c}`;
+    gridNumbers.set(key, counter);
+
+    if (acrossStart) {
+      const entry = entryByStart.get(`${r},${c},across`);
+      if (entry) entryNumbers.set(entry.id, counter);
+    }
+    if (downStart) {
+      const entry = entryByStart.get(`${r},${c},down`);
+      if (entry) entryNumbers.set(entry.id, counter);
+    }
+
+    counter++;
+  }
+
+  return { gridNumbers, entryNumbers };
+}
+
+function validatePuzzle(
+  grid: Cell[][],
+  entries: Entry[],
+  answerDirection: 'rtl' | 'ltr'
+): { ok: boolean; errors: string[] } {
+  const errors: string[] = [];
+  const size = grid.length;
+
+  for (let r = 0; r < size; r++) {
+    if (grid[r].length !== size) {
+      errors.push(`Row ${r} length mismatch.`);
+      break;
+    }
+  }
+
+  const letterPositions = new Set<string>();
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      const cell = grid[r][c];
+      if (!cell) {
+        errors.push(`Empty cell at ${r},${c}.`);
+        continue;
+      }
+      if (cell.type === 'letter') {
+        letterPositions.add(`${r},${c}`);
+        if (!cell.char) errors.push(`Letter cell missing char at ${r},${c}.`);
+        if (!cell.entries || cell.entries.size === 0) {
+          errors.push(`Letter cell missing entries at ${r},${c}.`);
+        }
+      }
+    }
+  }
+
+  for (const entry of entries) {
+    const { dr, dc } = getEntryStep(entry.direction, answerDirection);
+    for (let i = 0; i < entry.answer.length; i++) {
+      const r = entry.row + dr * i;
+      const c = entry.col + dc * i;
+      if (r < 0 || c < 0 || r >= size || c >= size) {
+        errors.push(`Entry ${entry.id} out of bounds at ${r},${c}.`);
+        continue;
+      }
+      const cell = grid[r][c];
+      if (!cell || cell.type !== 'letter') {
+        errors.push(`Entry ${entry.id} hits non-letter at ${r},${c}.`);
+        continue;
+      }
+      if (cell.char !== entry.answer[i]) {
+        errors.push(`Entry ${entry.id} mismatch at ${r},${c}: ${cell.char} != ${entry.answer[i]}.`);
+      }
+      if (!cell.entries.has(entry.id)) {
+        errors.push(`Entry ${entry.id} missing in cell entries at ${r},${c}.`);
+      }
+    }
+  }
+
+  if (letterPositions.size > 0) {
+    const [start] = letterPositions;
+    const [startR, startC] = start.split(',').map(Number);
+    const queue: { r: number; c: number }[] = [{ r: startR, c: startC }];
+    const visited = new Set<string>([start]);
+
+    while (queue.length) {
+      const { r, c } = queue.shift()!;
+      const neighbors = [
+        { r: r - 1, c },
+        { r: r + 1, c },
+        { r, c: c - 1 },
+        { r, c: c + 1 },
+      ];
+      for (const n of neighbors) {
+        if (n.r < 0 || n.c < 0 || n.r >= size || n.c >= size) continue;
+        const key = `${n.r},${n.c}`;
+        if (visited.has(key)) continue;
+        if (letterPositions.has(key)) {
+          visited.add(key);
+          queue.push(n);
+        }
+      }
+    }
+
+    if (visited.size !== letterPositions.size) {
+      errors.push('Letters are not fully connected.');
+    }
+  }
+
+  const internalGrid: (string | null)[][] = grid.map((row) =>
+    row.map((cell) => (cell.type === 'block' ? '#' : cell.char))
+  );
+  if (!validateBlockRuns(internalGrid, size)) {
+    errors.push('Block run constraint violated.');
+  }
+
+  const numbering = computeNumbering(grid, entries, answerDirection);
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      const cell = grid[r][c];
+      if (cell.type !== 'letter' || cell.number === undefined) continue;
+      const key = `${r},${c}`;
+      const expected = numbering.gridNumbers.get(key);
+      if (expected === undefined) {
+        errors.push(`Unexpected number at ${key}.`);
+      } else if (expected !== cell.number) {
+        errors.push(`Cell number mismatch at ${key}.`);
+      }
+    }
+  }
+  for (const [key, number] of numbering.gridNumbers.entries()) {
+    const [r, c] = key.split(',').map(Number);
+    const cell = grid[r][c];
+    if (cell.type !== 'letter') continue;
+    if (cell.number !== number) {
+      errors.push(`Cell number mismatch at ${key}.`);
+    }
+  }
+  for (const entry of entries) {
+    const expected = numbering.entryNumbers.get(entry.id);
+    if (expected !== entry.number) {
+      errors.push(`Entry number mismatch for ${entry.id}.`);
+    }
+  }
+
+  return { ok: errors.length === 0, errors };
+}
+
+function buildCrosswordFromPlacements(
+  size: number,
+  template: number[][],
+  placements: ReturnType<typeof constructCrossword>,
+  answerDirection: 'rtl' | 'ltr'
+): Crossword | null {
+  const workingGrid: WorkingCell[][] = template.map((row, r) =>
+    row.map((cell, c) => (cell === 0 ? ({ r, c, type: 'block' } as Cell) : null))
   );
 
   const entries: Entry[] = [];
 
-  // Track cell letters separately to ensure no conflicts
-  // Key: "r,c" -> letter
-  const cellLetters = new Map<string, string>();
-
-  // Place words in grid with strict conflict checking
-  // Note: p.answer is already display-ready (Arabic across words are pre-reversed in construct.ts)
   for (const p of placements) {
     const dir: Direction = p.direction;
     const row0 = p.row;
@@ -73,31 +238,24 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
     const id = makeId(dir, row0, col0);
     const answer = String(p.answer);
 
-    // Collect all cells this word would occupy
+    const { dr, dc } = getEntryStep(dir, answerDirection);
     const wordCells: { r: number; c: number; letter: string }[] = [];
     let hasConflict = false;
 
     for (let i = 0; i < answer.length; i++) {
-      const rr = row0 + (dir === 'down' ? i : 0);
-      const cc = col0 + (dir === 'across' ? i : 0);
-
-      // Skip if out of bounds
+      const rr = row0 + dr * i;
+      const cc = col0 + dc * i;
       if (rr < 0 || cc < 0 || rr >= size || cc >= size) {
         hasConflict = true;
         break;
       }
 
-      // Skip if it's a block
-      if (grid[rr][cc].isBlock) {
+      const cell = workingGrid[rr][cc];
+      if (cell && cell.type === 'block') {
         hasConflict = true;
         break;
       }
-
-      const cellKey = `${rr},${cc}`;
-      const existingLetter = cellLetters.get(cellKey);
-
-      // If cell already has a letter, it MUST match
-      if (existingLetter !== undefined && existingLetter !== answer[i]) {
+      if (cell && cell.type === 'letter' && cell.char !== answer[i]) {
         hasConflict = true;
         break;
       }
@@ -105,17 +263,23 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
       wordCells.push({ r: rr, c: cc, letter: answer[i] });
     }
 
-    // Skip this entire word if ANY conflict was found
     if (hasConflict || wordCells.length !== answer.length) {
-      continue;
+      return null;
     }
 
-    // No conflicts - place the word
     for (const { r, c, letter } of wordCells) {
-      const cellKey = `${r},${c}`;
-      cellLetters.set(cellKey, letter);
-      grid[r][c].entryId = id;
-      grid[r][c].solution = letter;
+      const existing = workingGrid[r][c];
+      if (existing && existing.type === 'letter') {
+        existing.entries.add(id);
+      } else {
+        workingGrid[r][c] = {
+          r,
+          c,
+          type: 'letter',
+          char: letter,
+          entries: new Set([id]),
+        };
+      }
     }
 
     entries.push({
@@ -126,34 +290,81 @@ export function generateCrossword(size: number, wordClues: WordClue[]): Crosswor
       answer,
       clue: String(p.clue || ''),
       number: 0,
+      isRepeatedLetter: p.isRepeatedLetter,
     });
   }
 
-  // Assign clue numbers
-  const startPositions = new Map<string, { r: number; c: number }>();
-  for (const e of entries) {
-    startPositions.set(`${e.row},${e.col}`, { r: e.row, c: e.col });
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (!workingGrid[r][c]) {
+        workingGrid[r][c] = { r, c, type: 'block' };
+      }
+    }
   }
 
-  const starts = Array.from(startPositions.values()).sort((a, b) => (a.r === b.r ? a.c - b.c : a.r - b.r));
-  const startMap = new Map<string, number>();
-  let counter = 1;
-  for (const s of starts) {
-    startMap.set(`${s.r},${s.c}`, counter);
-    grid[s.r][s.c].number = counter;
-    counter++;
+  const grid = workingGrid as Cell[][];
+
+  const numbering = computeNumbering(grid, entries, answerDirection);
+  for (const [key, number] of numbering.gridNumbers.entries()) {
+    const [r, c] = key.split(',').map(Number);
+    const cell = grid[r][c];
+    if (cell.type === 'letter') cell.number = number;
+  }
+  for (const entry of entries) {
+    entry.number = numbering.entryNumbers.get(entry.id) ?? 0;
   }
 
-  for (const e of entries) {
-    e.number = startMap.get(`${e.row},${e.col}`) ?? 0;
-  }
+  entries.sort((a, b) =>
+    a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1
+  );
 
-  // Sort entries: across then down, by number
-  entries.sort((a, b) => (a.direction === b.direction ? a.number - b.number : a.direction === 'across' ? -1 : 1));
+  const validation = validatePuzzle(grid, entries, answerDirection);
+  if (!validation.ok) return null;
 
-  // DO NOT convert unfilled cells to black - this can create single-letter entries
-  // which violate crossword rules. The template defines black squares.
-  // Unfilled white cells indicate incomplete slots (need more vocabulary).
-
-  return { size, width: size, height: size, grid, entries };
+  return { size, width: size, height: size, grid, entries, answerDirection };
 }
+
+export function generateCrossword(
+  size: number,
+  wordClues: WordClue[],
+  answerDirection: 'rtl' | 'ltr' = 'ltr'
+): Crossword {
+  const clean = wordClues
+    .map((wc) => ({
+      answer: normalizeAnswer(wc.answer),
+      clue: wc.clue.trim(),
+      isRepeatedLetter: wc.isRepeatedLetter,
+    }))
+    .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
+
+  const template = getTemplate(size);
+
+  const attempts = 50;
+  let best: Crossword | null = null;
+  let bestScore = -1;
+
+  for (let i = 0; i < attempts; i++) {
+    const shuffled = clean.slice().sort(() => Math.random() - 0.5);
+    const placements = constructCrossword(size, shuffled, template, answerDirection, 50);
+    if (!placements.length) continue;
+
+    const cw = buildCrosswordFromPlacements(size, template, placements, answerDirection);
+    if (!cw) continue;
+
+    const totalLetters = cw.entries.reduce((sum, e) => sum + e.answer.length, 0);
+    const score = totalLetters + cw.entries.length * 2;
+
+    if (score > bestScore) {
+      bestScore = score;
+      best = cw;
+    }
+  }
+
+  if (!best) {
+    return { size, width: size, height: size, grid: [], entries: [], answerDirection };
+  }
+
+  return best;
+}
+
+export { validatePuzzle };

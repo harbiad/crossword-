@@ -2,7 +2,7 @@
 // Run with: npx vitest run src/lib/construct.test.ts
 
 import { describe, it, expect } from 'vitest';
-import { constructCrossword } from './construct';
+import { constructCrossword, validateBlockRuns } from './construct';
 import type { WordClue } from './generateCrossword';
 
 // Helper to check for conflicts in placements
@@ -57,7 +57,7 @@ describe('constructCrossword', () => {
 
     // Run multiple times to catch random issues
     for (let i = 0; i < 10; i++) {
-      const placements = constructCrossword(5, wordClues, template);
+      const placements = constructCrossword(5, wordClues, template, 'ltr');
       const conflicts = findConflicts(placements, 5);
 
       if (conflicts.length > 0) {
@@ -90,12 +90,63 @@ describe('constructCrossword', () => {
       { answer: 'محمود', clue: 'DOWN5B' },  // 5 letters for down
     ];
 
-    const placements = constructCrossword(5, wordClues, template);
+    const placements = constructCrossword(5, wordClues, template, 'ltr');
     const conflicts = findConflicts(placements, 5);
 
     console.log('Cross pattern placements:', placements);
 
     expect(conflicts).toHaveLength(0);
+  });
+
+  it('should ensure all words are connected (no disconnected components)', () => {
+    const template = [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+    ];
+
+    const wordClues: WordClue[] = [
+      { answer: 'HELLO', clue: 'Greeting' },
+      { answer: 'WORLD', clue: 'Earth' },
+      { answer: 'TEST', clue: 'Exam' },
+      { answer: 'CODE', clue: 'Program' },
+    ];
+
+    // Run multiple times - the algorithm should always produce connected words
+    for (let i = 0; i < 10; i++) {
+      const placements = constructCrossword(5, wordClues, template, 'ltr');
+
+      // Either no placements (failed) or all are connected
+      if (placements.length > 1) {
+        // Check connectivity: every word after the first should intersect with at least one previous word
+        const grid = new Map<string, string>();
+
+        for (let idx = 0; idx < placements.length; idx++) {
+          const p = placements[idx];
+          let hasIntersection = false;
+
+          for (let j = 0; j < p.answer.length; j++) {
+            const r = p.row + (p.direction === 'down' ? j : 0);
+            const c = p.col + (p.direction === 'across' ? j : 0);
+            const key = `${r},${c}`;
+
+            if (grid.has(key)) {
+              hasIntersection = true;
+            }
+            grid.set(key, p.answer[j]);
+          }
+
+          // First word doesn't need intersection, but all others do
+          if (idx > 0) {
+            // This is enforced by the algorithm - non-first words need intersections
+            // If placement succeeded and algorithm is working, it should have an intersection
+            expect(hasIntersection).toBe(true);
+          }
+        }
+      }
+    }
   });
 
   it('should handle JOY and ZOO scenario (user reported bug)', () => {
@@ -142,7 +193,7 @@ describe('constructCrossword', () => {
     // Run multiple times with shuffled word order
     for (let i = 0; i < 20; i++) {
       const shuffled = [...wordClues].sort(() => Math.random() - 0.5);
-      const placements = constructCrossword(11, shuffled, template);
+    const placements = constructCrossword(11, shuffled, template, 'ltr');
       const conflicts = findConflicts(placements, 11);
 
       if (conflicts.length > 0) {
@@ -159,5 +210,67 @@ describe('constructCrossword', () => {
 
       expect(conflicts).toHaveLength(0);
     }
+  });
+});
+
+describe('validateBlockRuns', () => {
+  it('should return true for grid with no 3+ consecutive blocks', () => {
+    const grid: (string | null)[][] = [
+      ['A', '#', '#', 'B', 'C'],
+      ['D', 'E', '#', '#', 'F'],
+      ['G', 'H', 'I', 'J', 'K'],
+      ['#', '#', 'L', 'M', 'N'],
+      ['O', 'P', 'Q', '#', '#'],
+    ];
+
+    expect(validateBlockRuns(grid, 5)).toBe(true);
+  });
+
+  it('should return false for grid with 3+ consecutive blocks in a row', () => {
+    const grid: (string | null)[][] = [
+      ['A', '#', '#', '#', 'B'], // 3 consecutive blocks!
+      ['C', 'D', 'E', 'F', 'G'],
+      ['H', 'I', 'J', 'K', 'L'],
+      ['M', 'N', 'O', 'P', 'Q'],
+      ['R', 'S', 'T', 'U', 'V'],
+    ];
+
+    expect(validateBlockRuns(grid, 5)).toBe(false);
+  });
+
+  it('should return false for grid with 3+ consecutive blocks in a column', () => {
+    const grid: (string | null)[][] = [
+      ['A', '#', 'B', 'C', 'D'],
+      ['E', '#', 'F', 'G', 'H'],
+      ['I', '#', 'J', 'K', 'L'], // Column 1 has 3 consecutive blocks
+      ['M', 'N', 'O', 'P', 'Q'],
+      ['R', 'S', 'T', 'U', 'V'],
+    ];
+
+    expect(validateBlockRuns(grid, 5)).toBe(false);
+  });
+
+  it('should treat null cells as blocks for run counting', () => {
+    const grid: (string | null)[][] = [
+      ['A', null, null, null, 'B'], // 3 consecutive nulls!
+      ['C', 'D', 'E', 'F', 'G'],
+      ['H', 'I', 'J', 'K', 'L'],
+      ['M', 'N', 'O', 'P', 'Q'],
+      ['R', 'S', 'T', 'U', 'V'],
+    ];
+
+    expect(validateBlockRuns(grid, 5)).toBe(false);
+  });
+
+  it('should allow exactly 2 consecutive blocks', () => {
+    const grid: (string | null)[][] = [
+      ['#', '#', 'A', 'B', 'C'],
+      ['D', 'E', '#', '#', 'F'],
+      ['G', 'H', 'I', 'J', '#'],
+      ['K', '#', 'L', 'M', '#'],
+      ['N', '#', 'O', 'P', 'Q'],
+    ];
+
+    expect(validateBlockRuns(grid, 5)).toBe(true);
   });
 });

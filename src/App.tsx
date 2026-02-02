@@ -1,6 +1,7 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef, useCallback } from 'react';
 import './App.css';
-import type { Crossword } from './lib/crossword';
+import type { Crossword, Entry } from './lib/crossword';
+import { getEntryCells as getEntryCellsForEntry, getEntryCellAt } from './lib/crossword';
 import { generateCrossword } from './lib/generateCrossword';
 import { bandToCefr, type CefrBand } from './lib/cefr';
 
@@ -15,17 +16,48 @@ function key(r: number, c: number) {
 function getEntryCells(cw: Crossword, entryId: string) {
   const e = cw.entries.find((x) => x.id === entryId);
   if (!e) return [] as { r: number; c: number }[];
-  const cells: { r: number; c: number }[] = [];
-  for (let i = 0; i < e.answer.length; i++) {
-    const r = e.row + (e.direction === 'down' ? i : 0);
-    const c = e.col + (e.direction === 'across' ? i : 0);
-    cells.push({ r, c });
-  }
-  return cells;
+  return getEntryCellsForEntry(e, cw.answerDirection);
 }
 
 function normalizeChar(ch: string) {
   return ch.trim().slice(0, 1).toUpperCase();
+}
+
+// Detect and convert old-format repeated letter clues ("Double X", "Triple X") to "X ×N" format
+function parseRepeatedLetter(clue: string): { letter: string; count: number } | null {
+  const doubleMatch = clue.match(/^Double\s+([A-Z])$/i);
+  if (doubleMatch) return { letter: doubleMatch[1].toUpperCase(), count: 2 };
+
+  const tripleMatch = clue.match(/^Triple\s+([A-Z])$/i);
+  if (tripleMatch) return { letter: tripleMatch[1].toUpperCase(), count: 3 };
+
+  const tokenMatch = clue.match(/^([A-Z])\s*[×x]\s*(\d+)$/i);
+  if (tokenMatch) return { letter: tokenMatch[1].toUpperCase(), count: Number(tokenMatch[2]) };
+
+  const countFirst = clue.match(/^(\d+)\s*(?:x|×|times)?\s*([A-Z])$/i);
+  if (countFirst) return { letter: countFirst[2].toUpperCase(), count: Number(countFirst[1]) };
+
+  const repeatedMatch = clue.match(/^(\d+)\s*repeated\s*([A-Z])$/i);
+  if (repeatedMatch) return { letter: repeatedMatch[2].toUpperCase(), count: Number(repeatedMatch[1]) };
+
+  const repeatedAlt = clue.match(/^([A-Z])\s*repeated\s*(\d+)$/i);
+  if (repeatedAlt) return { letter: repeatedAlt[1].toUpperCase(), count: Number(repeatedAlt[2]) };
+
+  return null;
+}
+
+function formatRepeatedLetterClue(clue: string): string {
+  const parsed = parseRepeatedLetter(clue);
+  if (!parsed) return clue;
+  return `${parsed.letter} ×${parsed.count}`;
+}
+
+// Check if a clue is a repeated letter clue (either by flag or by pattern)
+function isRepeatedLetterClue(clue: string, isRepeatedLetterFlag?: boolean): boolean {
+  if (isRepeatedLetterFlag) return true;
+  if (parseRepeatedLetter(clue)) return true;
+  if (/حرف مكرر/.test(clue)) return true;
+  return false;
 }
 
 export default function App() {
@@ -39,6 +71,10 @@ export default function App() {
 
   const [fill, setFill] = useState<Fill>({});
   const [selectedEntryId, setSelectedEntryId] = useState<string | null>(null);
+  const [activeCell, setActiveCell] = useState<{ r: number; c: number } | null>(null);
+
+  // Refs for input elements keyed by "r,c"
+  const inputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
   const selectedCells = useMemo(() => {
     if (!cw || !selectedEntryId) return [];
@@ -50,17 +86,142 @@ export default function App() {
     return cw.entries.find((e) => e.id === selectedEntryId) || null;
   }, [cw, selectedEntryId]);
 
+  // Focus a specific cell
+  const focusCell = useCallback((r: number, c: number) => {
+    const input = inputRefs.current.get(key(r, c));
+    if (input) {
+      input.focus();
+      setActiveCell({ r, c });
+    }
+  }, []);
+
+  // Get the next cell in the current entry direction
+  const getNextCell = useCallback((
+    currentR: number,
+    currentC: number,
+    entry: Entry | null,
+    direction: 'forward' | 'backward'
+  ): { r: number; c: number } | null => {
+    if (!cw || !entry) return null;
+
+    const isRtlAcross = cw.answerDirection === 'rtl' && entry.direction === 'across';
+    const isDown = entry.direction === 'down';
+
+    // For RTL across: forward = left (-1), backward = right (+1)
+    // For LTR across: forward = right (+1), backward = left (-1)
+    // For down: forward = down (+1), backward = up (-1)
+    let dr = 0, dc = 0;
+    if (isDown) {
+      dr = direction === 'forward' ? 1 : -1;
+    } else if (isRtlAcross) {
+      dc = direction === 'forward' ? -1 : 1;
+    } else {
+      dc = direction === 'forward' ? 1 : -1;
+    }
+
+    const nextR = currentR + dr;
+    const nextC = currentC + dc;
+
+    // Check if next cell is within bounds and part of the entry
+    if (nextR < 0 || nextR >= cw.size || nextC < 0 || nextC >= cw.size) return null;
+    const nextCell = cw.grid[nextR]?.[nextC];
+    if (!nextCell || nextCell.type === 'block') return null;
+
+    return { r: nextR, c: nextC };
+  }, [cw]);
+
   function onCellClick(r: number, c: number) {
     if (!cw) return;
     const cell = cw.grid[r][c];
-    if (cell.isBlock) return;
-    if (cell.entryId) setSelectedEntryId(cell.entryId);
+    if (cell.type === 'block') return;
+    const entries = Array.from(cell.entries);
+    if (entries.length > 0) {
+      if (selectedEntryId && cell.entries.has(selectedEntryId)) {
+        setSelectedEntryId(selectedEntryId);
+      } else {
+        setSelectedEntryId(entries[0]);
+      }
+    }
+    setActiveCell({ r, c });
   }
 
   function onCellChange(r: number, c: number, v: string) {
     const ch = normalizeChar(v);
     setFill((prev) => ({ ...prev, [key(r, c)]: ch }));
+
+    // Auto-advance to next cell after typing
+    if (ch && selectedEntry) {
+      const nextCell = getNextCell(r, c, selectedEntry, 'forward');
+      if (nextCell) {
+        setTimeout(() => focusCell(nextCell.r, nextCell.c), 0);
+      }
+    }
   }
+
+  // Handle keyboard navigation
+  const onCellKeyDown = useCallback((
+    e: React.KeyboardEvent<HTMLInputElement>,
+    r: number,
+    c: number
+  ) => {
+    if (!cw || !selectedEntry) return;
+
+    const isRtlAcross = cw.answerDirection === 'rtl' && selectedEntry.direction === 'across';
+    const isDown = selectedEntry.direction === 'down';
+
+    if (e.key === 'Backspace') {
+      // If cell is empty, move backward and delete that cell
+      const currentValue = fill[key(r, c)] || '';
+      if (!currentValue) {
+        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
+        if (prevCell) {
+          setFill((prev) => ({ ...prev, [key(prevCell.r, prevCell.c)]: '' }));
+          focusCell(prevCell.r, prevCell.c);
+          e.preventDefault();
+        }
+      }
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (isDown) {
+        // In down mode, left arrow does nothing or could switch to across entry
+      } else if (isRtlAcross) {
+        // RTL across: left = forward
+        const nextCell = getNextCell(r, c, selectedEntry, 'forward');
+        if (nextCell) focusCell(nextCell.r, nextCell.c);
+      } else {
+        // LTR across: left = backward
+        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
+        if (prevCell) focusCell(prevCell.r, prevCell.c);
+      }
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (isDown) {
+        // In down mode, right arrow does nothing
+      } else if (isRtlAcross) {
+        // RTL across: right = backward
+        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
+        if (prevCell) focusCell(prevCell.r, prevCell.c);
+      } else {
+        // LTR across: right = forward
+        const nextCell = getNextCell(r, c, selectedEntry, 'forward');
+        if (nextCell) focusCell(nextCell.r, nextCell.c);
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (isDown) {
+        // Down mode: up = backward
+        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
+        if (prevCell) focusCell(prevCell.r, prevCell.c);
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (isDown) {
+        // Down mode: down = forward
+        const nextCell = getNextCell(r, c, selectedEntry, 'forward');
+        if (nextCell) focusCell(nextCell.r, nextCell.c);
+      }
+    }
+  }, [cw, selectedEntry, fill, getNextCell, focusCell]);
 
   function reset() {
     setFill({});
@@ -68,13 +229,12 @@ export default function App() {
 
   function revealSelected() {
     if (!cw || !selectedEntryId) return;
-    const cells = getEntryCells(cw, selectedEntryId);
     const entry = cw.entries.find((e) => e.id === selectedEntryId);
     if (!entry) return;
     setFill((prev) => {
       const next = { ...prev };
-      for (let i = 0; i < cells.length; i++) {
-        const { r, c } = cells[i];
+      for (let i = 0; i < entry.answer.length; i++) {
+        const { r, c } = getEntryCellAt(entry, i, cw.answerDirection);
         next[key(r, c)] = entry.answer[i];
       }
       return next;
@@ -86,9 +246,8 @@ export default function App() {
     setFill((prev) => {
       const next = { ...prev };
       for (const e of cw.entries) {
-        const cells = getEntryCells(cw, e.id);
-        for (let i = 0; i < cells.length; i++) {
-          const { r, c } = cells[i];
+        for (let i = 0; i < e.answer.length; i++) {
+          const { r, c } = getEntryCellAt(e, i, cw.answerDirection);
           next[key(r, c)] = e.answer[i];
         }
       }
@@ -98,10 +257,9 @@ export default function App() {
 
   function checkSelected() {
     if (!cw || !selectedEntry) return;
-    const cells = getEntryCells(cw, selectedEntry.id);
     let ok = true;
-    for (let i = 0; i < cells.length; i++) {
-      const { r, c } = cells[i];
+    for (let i = 0; i < selectedEntry.answer.length; i++) {
+      const { r, c } = getEntryCellAt(selectedEntry, i, cw.answerDirection);
       const u = fill[key(r, c)] || '';
       if (u !== selectedEntry.answer[i]) {
         ok = false;
@@ -135,7 +293,9 @@ export default function App() {
       const entries = Array.isArray(data?.entries) ? data.entries : [];
       if (entries.length < 6) throw new Error('Not enough entries generated. Try again.');
 
-      const next = generateCrossword(size, entries);
+      // Determine answer direction based on mode
+      const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
+      const next = generateCrossword(size, entries, answerDirection);
       if (!next.entries.length) throw new Error('Could not fit words into a crossword grid. Try again.');
 
       setCw(next);
@@ -150,7 +310,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword</h1>
+        <h1>Crossword 1</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
@@ -192,23 +352,30 @@ export default function App() {
 
       {cw && (
         <div className="main">
-          <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }}>
+          <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }} dir={cw.answerDirection}>
             {cw.grid.flatMap((row, r) =>
               row.map((cell, c) => {
-                if (cell.isBlock) {
+                if (cell.type === 'block') {
                   return <div key={key(r, c)} className="cell block" />;
                 }
 
                 const isSelected = selectedCells.some((x) => x.r === r && x.c === c);
 
+                const isActive = activeCell?.r === r && activeCell?.c === c;
+
                 return (
-                  <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''}`} onClick={() => onCellClick(r, c)}>
-                    {cell.number ? <div className={`cellNumber ${mode === 'en_to_ar' ? 'rtl' : ''}`}>{cell.number}</div> : null}
+                  <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''} ${isActive ? 'active' : ''}`} onClick={() => onCellClick(r, c)}>
+                    {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
                     <input
+                      ref={(el) => {
+                        if (el) inputRefs.current.set(key(r, c), el);
+                        else inputRefs.current.delete(key(r, c));
+                      }}
                       className={mode === 'en_to_ar' ? 'rtlInput' : ''}
                       dir={mode === 'en_to_ar' ? 'rtl' : 'ltr'}
                       value={fill[key(r, c)] || ''}
                       onChange={(e) => onCellChange(r, c, e.target.value)}
+                      onKeyDown={(e) => onCellKeyDown(e, r, c)}
                       maxLength={1}
                       inputMode="text"
                     />
@@ -235,7 +402,7 @@ export default function App() {
                   <h3>Across</h3>
                   <ul>
                     {cw.entries
-                      .filter((e) => e.direction === 'across')
+                      .filter((e) => e.direction === 'across' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
                       .map((e) => (
                         <li key={e.id}>
                           <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
@@ -250,7 +417,7 @@ export default function App() {
                   <h3>Down</h3>
                   <ul>
                     {cw.entries
-                      .filter((e) => e.direction === 'down')
+                      .filter((e) => e.direction === 'down' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
                       .map((e) => (
                         <li key={e.id}>
                           <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
@@ -261,6 +428,25 @@ export default function App() {
                   </ul>
                 </div>
               </div>
+
+              {/* Repeated letter clues section */}
+              {/* en_to_ar: clues are English, ar_to_en: clues are Arabic */}
+              {cw.entries.some((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter)) && (
+                <div className="repeatedClues">
+                  <h3>{mode === 'ar_to_en' ? 'حروف متكررة' : 'Repeated letters'}</h3>
+                  <ul>
+                    {cw.entries
+                      .filter((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
+                      .map((e) => (
+                        <li key={e.id}>
+                          <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
+                            {e.number}. {formatRepeatedLetterClue(e.clue)} ({e.direction})
+                          </button>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             <div className="bottomButtons">

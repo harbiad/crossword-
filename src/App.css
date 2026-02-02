@@ -180,19 +180,20 @@
   background: transparent;
 }
 
+.cell.active {
+  outline: 2px solid #6366f1;
+  outline-offset: -2px;
+  z-index: 1;
+}
+
 .cellNumber {
   position: absolute;
-  top: 3px;
-  left: 5px;
+  inset-block-start: 3px;
+  inset-inline-start: 5px;
   font-size: 0.65rem;
   font-weight: 500;
   color: #9ca3af;
   pointer-events: none;
-}
-
-.cellNumber.rtl {
-  left: auto;
-  right: 5px;
 }
 
 /* Sidebar */
@@ -262,6 +263,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+}
+
+.repeatedClues {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.repeatedClues h3 {
+  color: #6366f1;
 }
 
 .clues ul {

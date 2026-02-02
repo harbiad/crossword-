@@ -182,6 +182,28 @@ export function getTemplate(size: number): number[][] {
     default: templates = TEMPLATES_9;
   }
 
+  const isValidTemplate = (grid: number[][]): boolean => {
+    const n = grid.length;
+    for (let r = 0; r < n; r++) {
+      let run = 0;
+      for (let c = 0; c < n; c++) {
+        run = grid[r][c] === 0 ? run + 1 : 0;
+        if (run >= 3) return false;
+      }
+    }
+    for (let c = 0; c < n; c++) {
+      let run = 0;
+      for (let r = 0; r < n; r++) {
+        run = grid[r][c] === 0 ? run + 1 : 0;
+        if (run >= 3) return false;
+      }
+    }
+    return true;
+  };
+
+  const validTemplates = templates.filter(isValidTemplate);
+  if (validTemplates.length > 0) templates = validTemplates;
+
   // Pick a random template
   const idx = Math.floor(Math.random() * templates.length);
   return templates[idx].map(row => [...row]);
