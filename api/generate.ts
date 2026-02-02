@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { DICT_COMMON_3000 } from './dict_common_3000';
 
 export const config = {
   runtime: 'nodejs',
@@ -329,6 +330,10 @@ const DICT_A1_A2: Record<string, string> = {
   YELLOW: '\u0627\u0635\u0641\u0631',
   PURPLE: '\u0628\u0646\u0641\u0633\u062c\u064a',
 };
+const DICT_A1_A2_EXPANDED: Record<string, string> = {
+  ...DICT_A1_A2,
+  ...DICT_COMMON_3000,
+};
 const DICT_B1_B2: Record<string, string> = {};
 const DICT_C1_C2: Record<string, string> = {};
 
@@ -438,9 +443,9 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 function pickDict(cefr: string): Record<string, string> {
-  if (cefr === 'A1-A2') return DICT_A1_A2;
-  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : DICT_A1_A2;
-  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : DICT_A1_A2;
+  if (cefr === 'A1-A2') return DICT_A1_A2_EXPANDED;
+  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : DICT_A1_A2_EXPANDED;
+  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : DICT_A1_A2_EXPANDED;
 }
 
 function buildCandidateWords(cefr: string, dict: Record<string, string>): string[] {
