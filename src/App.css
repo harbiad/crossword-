@@ -131,6 +131,7 @@
 .cell {
   background: #ffffff;
   position: relative;
+  direction: inherit;
   aspect-ratio: 1/1;
   display: flex;
   align-items: center;
@@ -190,6 +191,7 @@
   position: absolute;
   inset-block-start: 3px;
   inset-inline-start: 5px;
+  direction: inherit;
   font-size: 0.65rem;
   font-weight: 500;
   color: #9ca3af;

@@ -36,58 +36,32 @@ function computeNumbering(
   entries: Entry[],
   answerDirection: 'rtl' | 'ltr'
 ): NumberingResult {
-  const size = grid.length;
-  const entryByStart = new Map<string, Entry>();
-  for (const entry of entries) {
-    const key = `${entry.row},${entry.col},${entry.direction}`;
-    entryByStart.set(key, entry);
-  }
-
   const gridNumbers = new Map<string, number>();
   const entryNumbers = new Map<string, number>();
 
-  const cells: { r: number; c: number }[] = [];
-  for (let r = 0; r < size; r++) {
-    for (let c = 0; c < size; c++) {
-      cells.push({ r, c });
-    }
+  const startMap = new Map<string, string[]>();
+  for (const entry of entries) {
+    const key = `${entry.row},${entry.col}`;
+    const list = startMap.get(key) ?? [];
+    list.push(entry.id);
+    startMap.set(key, list);
   }
 
-  cells.sort((a, b) => {
+  const starts = Array.from(startMap.keys()).map((key) => {
+    const [r, c] = key.split(',').map(Number);
+    return { r, c, key };
+  });
+
+  starts.sort((a, b) => {
     if (a.r !== b.r) return a.r - b.r;
     return answerDirection === 'rtl' ? b.c - a.c : a.c - b.c;
   });
 
   let counter = 1;
-  for (const { r, c } of cells) {
-    const cell = grid[r][c];
-    if (!cell || cell.type !== 'letter') continue;
-
-    const leftIsLetter = c > 0 && grid[r][c - 1].type === 'letter';
-    const rightIsLetter = c < size - 1 && grid[r][c + 1].type === 'letter';
-    const upIsLetter = r > 0 && grid[r - 1][c].type === 'letter';
-    const downIsLetter = r < size - 1 && grid[r + 1][c].type === 'letter';
-
-    const acrossStart =
-      answerDirection === 'rtl'
-        ? !rightIsLetter && leftIsLetter
-        : !leftIsLetter && rightIsLetter;
-    const downStart = !upIsLetter && downIsLetter;
-
-    if (!acrossStart && !downStart) continue;
-
-    const key = `${r},${c}`;
-    gridNumbers.set(key, counter);
-
-    if (acrossStart) {
-      const entry = entryByStart.get(`${r},${c},across`);
-      if (entry) entryNumbers.set(entry.id, counter);
-    }
-    if (downStart) {
-      const entry = entryByStart.get(`${r},${c},down`);
-      if (entry) entryNumbers.set(entry.id, counter);
-    }
-
+  for (const start of starts) {
+    gridNumbers.set(start.key, counter);
+    const ids = startMap.get(start.key) ?? [];
+    for (const id of ids) entryNumbers.set(id, counter);
     counter++;
   }
 
