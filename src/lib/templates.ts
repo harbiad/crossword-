@@ -171,76 +171,13 @@ export function findSlots(template: number[][]): Slot[] {
   return slots;
 }
 
-// Get a random template for the given size
 export function getTemplate(size: number): number[][] {
-  let templates: number[][][];
-  switch (size) {
-    case 7: templates = TEMPLATES_7; break;
-    case 9: templates = TEMPLATES_9; break;
-    case 11: templates = TEMPLATES_11; break;
-    case 13: templates = TEMPLATES_13; break;
-    default: templates = TEMPLATES_9;
-  }
-
-  const isValidTemplate = (grid: number[][]): boolean => {
-    const n = grid.length;
-    for (let r = 0; r < n; r++) {
-      let run = 0;
-      for (let c = 0; c < n; c++) {
-        run = grid[r][c] === 0 ? run + 1 : 0;
-        if (run >= 3) return false;
-      }
-    }
-    for (let c = 0; c < n; c++) {
-      let run = 0;
-      for (let r = 0; r < n; r++) {
-        run = grid[r][c] === 0 ? run + 1 : 0;
-        if (run >= 3) return false;
-      }
-    }
-    return true;
-  };
-
-  const validTemplates = templates.filter(isValidTemplate);
-  if (validTemplates.length > 0) templates = validTemplates;
-
-  // Pick a random template
-  const idx = Math.floor(Math.random() * templates.length);
-  return templates[idx].map(row => [...row]);
+  const grid = Array.from({ length: size }, () => Array(size).fill(1));
+  return grid;
 }
 
 export function getTemplates(size: number): number[][][] {
-  let templates: number[][][];
-  switch (size) {
-    case 7: templates = TEMPLATES_7; break;
-    case 9: templates = TEMPLATES_9; break;
-    case 11: templates = TEMPLATES_11; break;
-    case 13: templates = TEMPLATES_13; break;
-    default: templates = TEMPLATES_9;
-  }
-
-  const isValidTemplate = (grid: number[][]): boolean => {
-    const n = grid.length;
-    for (let r = 0; r < n; r++) {
-      let run = 0;
-      for (let c = 0; c < n; c++) {
-        run = grid[r][c] === 0 ? run + 1 : 0;
-        if (run >= 3) return false;
-      }
-    }
-    for (let c = 0; c < n; c++) {
-      let run = 0;
-      for (let r = 0; r < n; r++) {
-        run = grid[r][c] === 0 ? run + 1 : 0;
-        if (run >= 3) return false;
-      }
-    }
-    return true;
-  };
-
-  const validTemplates = templates.filter(isValidTemplate);
-  const selected = validTemplates.length > 0 ? validTemplates : templates;
-  return selected.map((grid) => grid.map((row) => [...row]));
+  return [getTemplate(size)];
 }
 
 // Validate that converting a cell to black won't create single-letter entries

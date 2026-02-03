@@ -308,28 +308,19 @@ export default function App() {
           }));
         return [...list, ...extra];
       };
+      const entriesWithInverted = buildInvertedEntries(entries);
       for (let attempt = 0; attempt < 3; attempt++) {
-        const candidate = generateCrossword(size, entries, answerDirection);
+        const candidate = generateCrossword(size, entriesWithInverted, answerDirection);
         if (candidate.entries.length) {
           next = candidate;
           break;
         }
       }
       if (!next) {
-        const invertedEntries = buildInvertedEntries(entries);
-        for (let attempt = 0; attempt < 3; attempt++) {
-          const candidate = generateCrossword(size, invertedEntries, answerDirection);
-          if (candidate.entries.length) {
-            next = candidate;
-            break;
-          }
-        }
-      }
-      if (!next) {
         const fallbackSizes = [9, 11, 13].filter((s) => s > size);
         for (const fallback of fallbackSizes) {
           for (let attempt = 0; attempt < 2; attempt++) {
-            const candidate = generateCrossword(fallback, entries, answerDirection);
+            const candidate = generateCrossword(fallback, entriesWithInverted, answerDirection);
             if (candidate.entries.length) {
               next = candidate;
               finalSize = fallback;
@@ -337,20 +328,6 @@ export default function App() {
             }
           }
           if (next) break;
-        }
-        if (!next) {
-          const invertedEntries = buildInvertedEntries(entries);
-          for (const fallback of fallbackSizes) {
-            for (let attempt = 0; attempt < 2; attempt++) {
-              const candidate = generateCrossword(fallback, invertedEntries, answerDirection);
-              if (candidate.entries.length) {
-                next = candidate;
-                finalSize = fallback;
-                break;
-              }
-            }
-            if (next) break;
-          }
         }
       }
       if (!next) throw new Error('Could not fit words into a crossword grid. Try again.');
@@ -368,7 +345,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 24</h1>
+        <h1>Crossword 25</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
