@@ -333,7 +333,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 11</h1>
+        <h1>Crossword 12</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
@@ -376,8 +376,11 @@ export default function App() {
       {cw && (
         <div className="main">
           <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }} dir={cw.answerDirection}>
-            {cw.grid.flatMap((row, r) =>
-              row.map((cell, c) => {
+            {cw.grid.flatMap((row, r) => {
+              const ordered = cw.answerDirection === 'rtl'
+                ? row.map((cell, c) => ({ cell, c })).reverse()
+                : row.map((cell, c) => ({ cell, c }));
+              return ordered.map(({ cell, c }) => {
                 if (cell.type === 'block') {
                   return <div key={key(r, c)} className="cell block" />;
                 }
@@ -404,8 +407,8 @@ export default function App() {
                     />
                   </div>
                 );
-              }),
-            )}
+              });
+            })}
           </div>
 
           <div className="sidebar">
