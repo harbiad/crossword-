@@ -47,13 +47,131 @@ export function findSlots(template: number[][]): Slot[] {
   return slots;
 }
 
+function isWhiteConnected(grid: number[][]): boolean {
+  const size = grid.length;
+  let start: { r: number; c: number } | null = null;
+  let whiteCount = 0;
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (grid[r][c] === 1) {
+        whiteCount++;
+        if (!start) start = { r, c };
+      }
+    }
+  }
+  if (!start || whiteCount === 0) return false;
+
+  const queue = [start];
+  const visited = new Set<string>([`${start.r},${start.c}`]);
+  while (queue.length) {
+    const cur = queue.shift()!;
+    const neighbors = [
+      { r: cur.r - 1, c: cur.c },
+      { r: cur.r + 1, c: cur.c },
+      { r: cur.r, c: cur.c - 1 },
+      { r: cur.r, c: cur.c + 1 },
+    ];
+    for (const n of neighbors) {
+      if (n.r < 0 || n.c < 0 || n.r >= size || n.c >= size) continue;
+      if (grid[n.r][n.c] !== 1) continue;
+      const key = `${n.r},${n.c}`;
+      if (visited.has(key)) continue;
+      visited.add(key);
+      queue.push(n);
+    }
+  }
+  return visited.size === whiteCount;
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function validateBlockRunsLocal(grid: number[][]): boolean {
+  const size = grid.length;
+
+  // Check across runs
+  for (let r = 0; r < size; r++) {
+    let run = 0;
+    for (let c = 0; c <= size; c++) {
+      const isWhite = c < size && grid[r][c] === 1;
+      if (isWhite) run++;
+      if (!isWhite || c === size) {
+        if (run === 1) return false;
+        run = 0;
+      }
+    }
+  }
+
+  // Check down runs
+  for (let c = 0; c < size; c++) {
+    let run = 0;
+    for (let r = 0; r <= size; r++) {
+      const isWhite = r < size && grid[r][c] === 1;
+      if (isWhite) run++;
+      if (!isWhite || r === size) {
+        if (run === 1) return false;
+        run = 0;
+      }
+    }
+  }
+
+  return true;
+}
+
+function targetBlockRatio(size: number) {
+  if (size <= 7) return 0.18;
+  if (size <= 9) return 0.2;
+  if (size <= 11) return 0.22;
+  return 0.24;
+}
+
 export function getTemplate(size: number): number[][] {
   const grid = Array.from({ length: size }, () => Array(size).fill(1));
+  const targetBlocks = Math.floor(size * size * targetBlockRatio(size));
+  const maxBlocks = Math.floor(size * size * 0.3);
+  let blocks = 0;
+
+  const attempts = size * size * 6;
+  for (let i = 0; i < attempts && blocks < maxBlocks; i++) {
+    const r = Math.floor(Math.random() * size);
+    const c = Math.floor(Math.random() * size);
+    if (grid[r][c] === 0) continue;
+    if (!canConvertToBlack(grid, r, c)) continue;
+    grid[r][c] = 0;
+    if (!validateBlockRunsLocal(grid) || !isWhiteConnected(grid)) {
+      grid[r][c] = 1;
+      continue;
+    }
+    blocks++;
+  }
+
+  const minBlocks = clamp(Math.floor(size * size * 0.08), 2, targetBlocks);
+  if (blocks < minBlocks) {
+    // Try a few more passes to reach a minimal block count.
+    for (let i = 0; i < attempts && blocks < minBlocks; i++) {
+      const r = Math.floor(Math.random() * size);
+      const c = Math.floor(Math.random() * size);
+      if (grid[r][c] === 0) continue;
+      if (!canConvertToBlack(grid, r, c)) continue;
+      grid[r][c] = 0;
+      if (!validateBlockRunsLocal(grid) || !isWhiteConnected(grid)) {
+        grid[r][c] = 1;
+        continue;
+      }
+      blocks++;
+    }
+  }
+
   return grid;
 }
 
 export function getTemplates(size: number): number[][][] {
-  return [getTemplate(size)];
+  const templates: number[][][] = [];
+  for (let i = 0; i < 6; i++) {
+    templates.push(getTemplate(size));
+  }
+  return templates;
 }
 
 // Validate that converting a cell to black won't create single-letter entries
