@@ -330,12 +330,15 @@ const DICT_A1_A2: Record<string, string> = {
   YELLOW: '\u0627\u0635\u0641\u0631',
   PURPLE: '\u0628\u0646\u0641\u0633\u062c\u064a',
 };
-const DICT_A1_A2_EXPANDED: Record<string, string> = {
+type DictValue = string | string[];
+type DictMap = Record<string, DictValue>;
+
+const DICT_A1_A2_EXPANDED: DictMap = {
   ...DICT_A1_A2,
   ...DICT_COMMON_3000,
 };
-const DICT_B1_B2: Record<string, string> = {};
-const DICT_C1_C2: Record<string, string> = {};
+const DICT_B1_B2: DictMap = {};
+const DICT_C1_C2: DictMap = {};
 
 type Mode = 'en_to_ar' | 'ar_to_en';
 type Band = 'beginner' | 'intermediate' | 'advanced';
@@ -443,13 +446,13 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function pickDict(cefr: string): Record<string, string> {
+function pickDict(cefr: string): DictMap {
   if (cefr === 'A1-A2') return DICT_A1_A2_EXPANDED;
   if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : DICT_A1_A2_EXPANDED;
   return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : DICT_A1_A2_EXPANDED;
 }
 
-function buildCandidateWords(cefr: string, dict: Record<string, string>): string[] {
+function buildCandidateWords(cefr: string, dict: DictMap): string[] {
   const base = pickWordList(cefr);
   const fallback = cefr === 'A1-A2' ? [] : WORDS_A1_A2;
   const commonA1 = cefr === 'A1-A2' ? Object.keys(DICT_COMMON_3000) : [];
@@ -523,12 +526,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (en.length < 2 || en.length > gridSize) continue;
       if (seen.has(en)) continue;
 
-      const arRaw = dict[en];
-      if (arRaw) {
-        const ar = normalizeArabicWord(arRaw);
-        if (!ar || ar.length < 2 || ar.length > gridSize) continue;
-        seen.add(en);
-        pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: ar, answer: en });
+      const meanings = getMeanings(dict, en);
+      if (meanings.length) {
+        for (const arRaw of meanings) {
+          const ar = normalizeArabicWord(arRaw);
+          if (!ar || ar.length < 2 || ar.length > gridSize) continue;
+          const key = `${en}::${ar}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: ar, answer: en });
+        }
       }
       if (pairs.length >= targetPairs) break;
     }
@@ -573,12 +580,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (en.length < 2 || en.length > gridSize) continue;
       if (seen.has(en)) continue;
 
-      const arRaw = dict[en];
-      if (!arRaw) continue;
-      const ar = normalizeArabicWord(arRaw);
+      const meanings = getMeanings(dict, en);
+      if (!meanings.length) continue;
+      const ar = normalizeArabicWord(meanings[0]);
       if (!ar || ar.length < 2 || ar.length > gridSize) continue;
 
-      seen.add(en);
+      const key = `${en}::${ar}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
       // Format as "X ×N" where X is the letter and N is the count
       const letter = en[0].toUpperCase();
       const count = en.length;
@@ -602,4 +611,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (e: any) {
     return json(res, 500, { error: e?.message || String(e) });
   }
+}
+function getMeanings(dict: DictMap, en: string): string[] {
+  const val = dict[en];
+  if (!val) return [];
+  return Array.isArray(val) ? val : [val];
 }
