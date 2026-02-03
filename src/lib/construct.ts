@@ -236,22 +236,36 @@ export function constructCrossword(
   const usedWords = new Set<string>();
   const usedSlots = new Set<string>();
 
-  const sortedWords = wordClues
+  const wordsByLength = new Map<number, WordClue[]>();
+  for (const wc of wordClues) {
+    const len = wc.answer.length;
+    if (!wordsByLength.has(len)) wordsByLength.set(len, []);
+    wordsByLength.get(len)!.push(wc);
+  }
+
+  const slotOrder = slots
     .slice()
     .sort((a, b) => {
-      const diff = b.answer.length - a.answer.length;
-      if (diff !== 0) return diff;
+      const lenDiff = b.length - a.length;
+      if (lenDiff !== 0) return lenDiff;
+      const centerDiff = slotCenterScore(b, size) - slotCenterScore(a, size);
+      if (centerDiff !== 0) return centerDiff;
       return Math.random() - 0.5;
     });
 
-  const tryPlaceWord = (wc: WordClue, requireIntersection: boolean): boolean => {
-    let bestSlot: Slot | null = null;
+  const tryPlaceSlot = (slot: Slot, requireIntersection: boolean): boolean => {
+    const slotKey = `${slot.row},${slot.col},${slot.direction}`;
+    if (usedSlots.has(slotKey)) return false;
+
+    const bucket = wordsByLength.get(slot.length) ?? [];
+    if (!bucket.length) return false;
+
+    let bestWord: WordClue | null = null;
     let bestScore = -1;
 
-    for (const slot of slots) {
-      if (slot.length !== wc.answer.length) continue;
-      const slotKey = `${slot.row},${slot.col},${slot.direction}`;
-      if (usedSlots.has(slotKey)) continue;
+    const shuffled = bucket.slice().sort(() => Math.random() - 0.5);
+    for (const wc of shuffled) {
+      if (usedWords.has(wc.answer)) continue;
       if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
 
       const intersections = countIntersections(grid, wc.answer, slot, answerDirection);
@@ -259,40 +273,38 @@ export function constructCrossword(
 
       const centerBonus = slotCenterScore(slot, size);
       const score = intersections * 100 + centerBonus + Math.random();
-
       if (score > bestScore) {
         bestScore = score;
-        bestSlot = slot;
+        bestWord = wc;
       }
     }
 
-    if (!bestSlot) return false;
-    const placed = placeWord(grid, wc.answer, bestSlot, answerDirection);
+    if (!bestWord) return false;
+    const placed = placeWord(grid, bestWord.answer, slot, answerDirection);
     if (!placed) return false;
 
-    usedWords.add(wc.answer);
-    usedSlots.add(`${bestSlot.row},${bestSlot.col},${bestSlot.direction}`);
-    const start = getSlotStart(bestSlot, answerDirection);
+    usedWords.add(bestWord.answer);
+    usedSlots.add(slotKey);
+    const start = getSlotStart(slot, answerDirection);
     placements.push({
-      answer: wc.answer,
-      clue: wc.clue,
+      answer: bestWord.answer,
+      clue: bestWord.clue,
       row: start.row,
       col: start.col,
-      direction: bestSlot.direction,
-      isRepeatedLetter: wc.isRepeatedLetter,
+      direction: slot.direction,
+      isRepeatedLetter: bestWord.isRepeatedLetter,
     });
     return true;
   };
 
-  // Place longest word first near center
-  for (const wc of sortedWords) {
-    if (tryPlaceWord(wc, false)) break;
-  }
-
-  // Place remaining words, requiring intersections
-  for (const wc of sortedWords) {
-    if (usedWords.has(wc.answer)) continue;
-    tryPlaceWord(wc, true);
+  // Fill slots by length/centrality; require intersections after the first placement.
+  let placedAny = false;
+  for (const slot of slotOrder) {
+    if (!placedAny) {
+      placedAny = tryPlaceSlot(slot, false) || placedAny;
+      continue;
+    }
+    tryPlaceSlot(slot, true);
   }
 
   // Validate placements against grid to catch any mismatches
