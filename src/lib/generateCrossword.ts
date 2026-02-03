@@ -32,7 +32,7 @@ function getEntryStep(direction: Direction, answerDirection: 'rtl' | 'ltr') {
 }
 
 function computeNumbering(
-  grid: Cell[][],
+  _grid: Cell[][],
   entries: Entry[],
   answerDirection: 'rtl' | 'ltr'
 ): NumberingResult {
