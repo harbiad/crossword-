@@ -300,10 +300,10 @@ export default function App() {
       const buildInvertedEntries = (list: typeof entries) => {
         if (mode !== 'en_to_ar') return list;
         const extra = list
-          .filter((e) => typeof e.answer === 'string' && e.answer.length >= 2)
-          .map((e) => ({
+          .filter((e: { answer?: unknown; clue?: unknown }) => typeof e.answer === 'string' && e.answer.length >= 2)
+          .map((e: { answer: string; clue?: unknown }) => ({
             ...e,
-            clue: `${e.clue} (inverted)`,
+            clue: `${String(e.clue ?? '')} (inverted)`,
             answer: [...String(e.answer)].reverse().join(''),
           }));
         return [...list, ...extra];
@@ -368,7 +368,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 19</h1>
+        <h1>Crossword 20</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
