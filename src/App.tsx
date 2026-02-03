@@ -345,7 +345,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 30</h1>
+        <h1>Crossword 31</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
