@@ -365,7 +365,8 @@ function normalizeEnglishWord(s: string) {
 }
 
 function normalizeArabicWord(s: string) {
-  return s
+  const firstVariant = s.split('/')[0].split('،')[0].split(';')[0].split('|')[0];
+  return firstVariant
     .trim()
     .replace(/\s+/g, '')
     .replace(/[\u0640\u064B-\u065F\u0670]/g, '') // tatweel + harakat
