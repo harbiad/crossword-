@@ -518,7 +518,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
     const seen = new Set<string>();
 
-    const targetPairs = 1000;
+    const targetPairs = 2000;
 
     // Return ALL valid word pairs (no limit) to maximize crossword fill
     for (const w of shuffle(baseList)) {
