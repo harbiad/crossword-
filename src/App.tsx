@@ -333,7 +333,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 15</h1>
+        <h1>Crossword 16</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
@@ -375,7 +375,7 @@ export default function App() {
 
       {cw && (
         <div className="main">
-          <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }} dir={cw.answerDirection}>
+          <div className={`grid ${cw.answerDirection === 'rtl' ? 'rtlGrid' : ''}`} style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }} dir={cw.answerDirection}>
             {cw.grid.flatMap((row, r) =>
               row.map((cell, c) => {
                 if (cell.type === 'block') {

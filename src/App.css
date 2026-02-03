@@ -132,6 +132,16 @@
   direction: rtl;
 }
 
+.grid.rtlGrid {
+  transform: scaleX(-1);
+}
+
+.grid.rtlGrid .cell,
+.grid.rtlGrid .cellNumber,
+.grid.rtlGrid input {
+  transform: scaleX(-1);
+}
+
 .cell {
   background: #ffffff;
   position: relative;
