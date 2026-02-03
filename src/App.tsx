@@ -368,7 +368,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 21</h1>
+        <h1>Crossword 22</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
@@ -413,8 +413,10 @@ export default function App() {
           <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }} dir={cw.answerDirection}>
             {cw.grid.flatMap((row, r) =>
               row.map((cell, c) => {
+                const displayCol = cw.answerDirection === 'rtl' ? cw.width - c : c + 1;
+                const cellStyle = { gridColumnStart: displayCol, gridRowStart: r + 1 };
                 if (cell.type === 'block') {
-                  return <div key={key(r, c)} className="cell block" />;
+                  return <div key={key(r, c)} className="cell block" style={cellStyle} />;
                 }
 
                 const isSelected = selectedCells.some((x) => x.r === r && x.c === c);
@@ -422,7 +424,7 @@ export default function App() {
                 const isActive = activeCell?.r === r && activeCell?.c === c;
 
                 return (
-                  <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''} ${isActive ? 'active' : ''}`} onClick={() => onCellClick(r, c)}>
+                  <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''} ${isActive ? 'active' : ''}`} style={cellStyle} onClick={() => onCellClick(r, c)}>
                     {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
                     <input
                       ref={(el) => {
