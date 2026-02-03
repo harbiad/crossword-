@@ -297,11 +297,32 @@ export default function App() {
       const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
       let next: Crossword | null = null;
       let finalSize = size;
+      const buildInvertedEntries = (list: typeof entries) => {
+        if (mode !== 'en_to_ar') return list;
+        const extra = list
+          .filter((e) => typeof e.answer === 'string' && e.answer.length >= 2)
+          .map((e) => ({
+            ...e,
+            clue: `${e.clue} (inverted)`,
+            answer: [...String(e.answer)].reverse().join(''),
+          }));
+        return [...list, ...extra];
+      };
       for (let attempt = 0; attempt < 3; attempt++) {
         const candidate = generateCrossword(size, entries, answerDirection);
         if (candidate.entries.length) {
           next = candidate;
           break;
+        }
+      }
+      if (!next) {
+        const invertedEntries = buildInvertedEntries(entries);
+        for (let attempt = 0; attempt < 3; attempt++) {
+          const candidate = generateCrossword(size, invertedEntries, answerDirection);
+          if (candidate.entries.length) {
+            next = candidate;
+            break;
+          }
         }
       }
       if (!next) {
@@ -316,6 +337,20 @@ export default function App() {
             }
           }
           if (next) break;
+        }
+        if (!next) {
+          const invertedEntries = buildInvertedEntries(entries);
+          for (const fallback of fallbackSizes) {
+            for (let attempt = 0; attempt < 2; attempt++) {
+              const candidate = generateCrossword(fallback, invertedEntries, answerDirection);
+              if (candidate.entries.length) {
+                next = candidate;
+                finalSize = fallback;
+                break;
+              }
+            }
+            if (next) break;
+          }
         }
       }
       if (!next) throw new Error('Could not fit words into a crossword grid. Try again.');
@@ -333,7 +368,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Crossword 18</h1>
+        <h1>Crossword 19</h1>
         <p className="subtitle">English ↔ Arabic vocabulary practice</p>
       </header>
 
