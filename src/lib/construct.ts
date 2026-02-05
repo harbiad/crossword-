@@ -471,6 +471,7 @@ function constructCrosswordWordCentric(
     dbg('reject: no seed placement found');
     return [];
   }
+  dbg(`seed: word=${seed.word.answer} len=${seed.word.answer.length} row=${seed.row} col=${seed.col} dir=${seed.direction}`);
   const seedChanged = applyPlacement(seed);
   usedWords.add(seed.word.answer);
   placements.push({
@@ -488,6 +489,7 @@ function constructCrosswordWordCentric(
   // cleanup seed for consistency if needed
   undoPlacement(seedChanged);
 
+  dbg(`best placements=${best.length}`);
   if (!best.length) {
     dbg('reject: no valid placements found in word-centric search');
   }
