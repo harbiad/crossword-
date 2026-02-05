@@ -156,6 +156,65 @@ function targetBlockRatio(size: number) {
   return 0.24;
 }
 
+function canConvertPairToBlack(grid: number[][], r: number, c: number): boolean {
+  const size = grid.length;
+  const r2 = size - 1 - r;
+  const c2 = size - 1 - c;
+  if (grid[r][c] === 0 && grid[r2][c2] === 0) return false;
+
+  const add = (r === r2 && c === c2) ? 1 : 2;
+  if (grid[r][c] === 0 && grid[r2][c2] === 0) return false;
+
+  const prev1 = grid[r][c];
+  const prev2 = grid[r2][c2];
+  grid[r][c] = 0;
+  grid[r2][c2] = 0;
+
+  const ok = validateBlockRunsLocal(grid) && validateBlockRunsBlocks(grid) && isWhiteConnected(grid);
+
+  if (!ok) {
+    grid[r][c] = prev1;
+    grid[r2][c2] = prev2;
+  }
+
+  return ok;
+}
+
+export function getNYTTemplate(size: number): number[][] {
+  const grid = Array.from({ length: size }, () => Array(size).fill(1));
+  const targetBlocks = Math.floor(size * size * targetBlockRatio(size));
+  const maxBlocks = Math.floor(size * size * 0.3);
+  let blocks = 0;
+
+  const attempts = size * size * 10;
+  for (let i = 0; i < attempts && blocks < maxBlocks; i++) {
+    const r = Math.floor(Math.random() * size);
+    const c = Math.floor(Math.random() * size);
+    const r2 = size - 1 - r;
+    const c2 = size - 1 - c;
+    const add = (r === r2 && c === c2) ? 1 : 2;
+    if (blocks + add > maxBlocks) continue;
+    if (!canConvertPairToBlack(grid, r, c)) continue;
+    blocks += add;
+  }
+
+  const minBlocks = clamp(Math.floor(size * size * 0.08), 2, targetBlocks);
+  if (blocks < minBlocks) {
+    for (let i = 0; i < attempts && blocks < minBlocks; i++) {
+      const r = Math.floor(Math.random() * size);
+      const c = Math.floor(Math.random() * size);
+      const r2 = size - 1 - r;
+      const c2 = size - 1 - c;
+      const add = (r === r2 && c === c2) ? 1 : 2;
+      if (blocks + add > maxBlocks) continue;
+      if (!canConvertPairToBlack(grid, r, c)) continue;
+      blocks += add;
+    }
+  }
+
+  return grid;
+}
+
 export function getTemplate(size: number): number[][] {
   const grid = Array.from({ length: size }, () => Array(size).fill(1));
   const targetBlocks = Math.floor(size * size * targetBlockRatio(size));
@@ -199,7 +258,11 @@ export function getTemplate(size: number): number[][] {
 export function getTemplates(size: number): number[][][] {
   const templates: number[][][] = [];
   for (let i = 0; i < 6; i++) {
-    templates.push(getTemplate(size));
+    if (Math.random() < 0.5) {
+      templates.push(getNYTTemplate(size));
+    } else {
+      templates.push(getTemplate(size));
+    }
   }
   return templates;
 }
