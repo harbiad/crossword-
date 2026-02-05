@@ -292,12 +292,19 @@ function buildCrosswordFromPlacements(
     });
   }
 
+  let emptyCount = 0;
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       if (!workingGrid[r][c]) {
-        return null;
+        emptyCount++;
       }
     }
+  }
+  if (emptyCount > 0) {
+    if (debug?.enabled) {
+      debug.log(`unfilled white cells: ${emptyCount}`);
+    }
+    return null;
   }
 
   const grid = workingGrid as Cell[][];
@@ -445,6 +452,10 @@ export function generateCrossword(
           },
           50
         );
+        if (debugEnabled) {
+          // eslint-disable-next-line no-console
+          console.log(`[cw-gen size=${size}] attempt=${attemptsRun} placements=${placements.length}`);
+        }
         if (!placements.length) {
           if (debugEnabled) {
             // eslint-disable-next-line no-console
