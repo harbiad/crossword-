@@ -184,6 +184,7 @@ type ConstructOptions = {
   minWords?: number;
   useBacktracking?: boolean;
   useWordCentric?: boolean;
+  useFillAllSlots?: boolean;
 };
 
 export function constructCrossword(
@@ -194,6 +195,9 @@ export function constructCrossword(
   options: ConstructOptions = {},
   _targetWords = 12
 ): Placement[] {
+  if (options.useFillAllSlots) {
+    return constructCrosswordFillAllSlots(size, wordClues, template, answerDirection, options);
+  }
   if (options.useWordCentric) {
     return constructCrosswordWordCentric(size, wordClues, template, answerDirection, options);
   }
@@ -201,6 +205,149 @@ export function constructCrossword(
     return constructCrosswordGreedy(size, wordClues, template, answerDirection, options);
   }
   return constructCrosswordBacktracking(size, wordClues, template, answerDirection, options);
+}
+
+function constructCrosswordFillAllSlots(
+  size: number,
+  wordClues: WordClue[],
+  template: number[][],
+  answerDirection: 'rtl' | 'ltr',
+  options: ConstructOptions = {}
+): Placement[] {
+  const debug = options.debug;
+  const dbg = debug?.enabled
+    ? (msg: string) => {
+        debug.log(msg);
+      }
+    : () => {};
+
+  const slots = findSlots(template);
+  const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
+
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (template[r][c] === 0) grid[r][c] = BLOCK;
+    }
+  }
+
+  const wordsByLength = new Map<number, WordClue[]>();
+  for (const wc of wordClues) {
+    const len = wc.answer.length;
+    if (!wordsByLength.has(len)) wordsByLength.set(len, []);
+    wordsByLength.get(len)!.push(wc);
+  }
+
+  const usedWords = new Set<string>();
+  const placements: Placement[] = [];
+  const deadline = getNow() + (options.timeBudgetMs ?? 400);
+
+  const getPattern = (slot: Slot): (string | null)[] => {
+    const pattern: (string | null)[] = [];
+    for (let i = 0; i < slot.length; i++) {
+      const { r, c } = getCellAt(slot, i, answerDirection);
+      const cell = grid[r][c];
+      pattern.push(cell && cell !== BLOCK ? cell : null);
+    }
+    return pattern;
+  };
+
+  const wordFitsPattern = (word: string, pattern: (string | null)[]) => {
+    for (let i = 0; i < pattern.length; i++) {
+      const ch = pattern[i];
+      if (ch && ch !== word[i]) return false;
+    }
+    return true;
+  };
+
+  const getCandidatesForSlot = (slot: Slot): WordClue[] => {
+    const bucket = wordsByLength.get(slot.length) ?? [];
+    if (!bucket.length) return [];
+    const pattern = getPattern(slot);
+    const candidates: WordClue[] = [];
+    for (const wc of bucket) {
+      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+      if (!wordFitsPattern(wc.answer, pattern)) continue;
+      candidates.push(wc);
+    }
+    return candidates;
+  };
+
+  const applyWord = (slot: Slot, word: WordClue): Array<{ r: number; c: number }> => {
+    const changed: Array<{ r: number; c: number }> = [];
+    for (let i = 0; i < slot.length; i++) {
+      const { r, c } = getCellAt(slot, i, answerDirection);
+      if (grid[r][c] === null) {
+        grid[r][c] = word.answer[i];
+        changed.push({ r, c });
+      }
+    }
+    return changed;
+  };
+
+  const undoWord = (changed: Array<{ r: number; c: number }>) => {
+    for (const cell of changed) {
+      grid[cell.r][cell.c] = null;
+    }
+  };
+
+  const backtrack = (remaining: Slot[]): boolean => {
+    if (getNow() > deadline) return false;
+    if (remaining.length === 0) return true;
+
+    let bestIdx = -1;
+    let bestCandidates: WordClue[] = [];
+    let bestCount = Infinity;
+    for (let i = 0; i < remaining.length; i++) {
+      const slot = remaining[i];
+      const candidates = getCandidatesForSlot(slot);
+      if (candidates.length === 0) return false;
+      if (candidates.length < bestCount) {
+        bestCount = candidates.length;
+        bestIdx = i;
+        bestCandidates = candidates;
+        if (bestCount === 1) break;
+      }
+    }
+
+    if (bestIdx === -1) return false;
+    const slot = remaining[bestIdx];
+
+    bestCandidates.sort((a, b) => b.answer.length - a.answer.length);
+    for (const wc of bestCandidates) {
+      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+
+      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
+      const changed = applyWord(slot, wc);
+      usedWords.add(wc.answer);
+      const start = getSlotStart(slot, answerDirection);
+      placements.push({
+        answer: wc.answer,
+        clue: wc.clue,
+        row: start.row,
+        col: start.col,
+        direction: slot.direction,
+        isRepeatedLetter: wc.isRepeatedLetter,
+      });
+
+      const next = remaining.slice();
+      next.splice(bestIdx, 1);
+      if (backtrack(next)) return true;
+
+      placements.pop();
+      if (wc.answer.length > 3) usedWords.delete(wc.answer);
+      undoWord(changed);
+    }
+
+    return false;
+  };
+
+  const ok = backtrack(slots);
+  if (!ok) {
+    dbg('reject: no valid placements found in fill-all-slots solver');
+    return [];
+  }
+
+  return placements;
 }
 
 type WordPlacement = {
