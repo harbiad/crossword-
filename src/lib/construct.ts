@@ -473,21 +473,39 @@ function constructCrosswordBacktracking(
     let bestIdx = -1;
     let bestCandidates: WordClue[] = [];
     let bestCount = Infinity;
-    for (let i = 0; i < remaining.length; i++) {
-      const slot = remaining[i];
-      const candidates = getCandidates(slot);
-      const filtered = candidates.filter((wc) => !usedWords.has(wc.answer));
-      if (filtered.length === 0) {
-        if (bestIdx === -1) bestIdx = i;
-        bestCandidates = [];
-        bestCount = 0;
-        break;
+
+    if (placements.length === 0) {
+      let bestSlotScore = -Infinity;
+      for (let i = 0; i < remaining.length; i++) {
+        const slot = remaining[i];
+        const candidates = getCandidates(slot);
+        const filtered = candidates.filter((wc) => !usedWords.has(wc.answer));
+        if (filtered.length === 0) continue;
+        const score = slot.length * 10 + slotCenterScore(slot, size);
+        if (score > bestSlotScore) {
+          bestSlotScore = score;
+          bestIdx = i;
+          bestCandidates = filtered;
+          bestCount = filtered.length;
+        }
       }
-      if (filtered.length < bestCount) {
-        bestCount = filtered.length;
-        bestIdx = i;
-        bestCandidates = filtered;
-        if (bestCount === 1) break;
+    } else {
+      for (let i = 0; i < remaining.length; i++) {
+        const slot = remaining[i];
+        const candidates = getCandidates(slot);
+        const filtered = candidates.filter((wc) => !usedWords.has(wc.answer));
+        if (filtered.length === 0) {
+          if (bestIdx === -1) bestIdx = i;
+          bestCandidates = [];
+          bestCount = 0;
+          break;
+        }
+        if (filtered.length < bestCount) {
+          bestCount = filtered.length;
+          bestIdx = i;
+          bestCandidates = filtered;
+          if (bestCount === 1) break;
+        }
       }
     }
 

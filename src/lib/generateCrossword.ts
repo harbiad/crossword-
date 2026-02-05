@@ -353,15 +353,15 @@ export function generateCrossword(
   const optionSets = [
     {
       minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 68 : 72,
-      seedPlacements: size <= 9 ? 1 : 2,
+      seedPlacements: size <= 7 ? 1 : size <= 9 ? 2 : 2,
     },
     {
       minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 62 : 65,
-      seedPlacements: size <= 9 ? 1 : 2,
+      seedPlacements: size <= 7 ? 1 : size <= 9 ? 2 : 2,
     },
     {
       minIntersectionPct: size <= 7 ? 60 : size <= 9 ? 58 : 62,
-      seedPlacements: size <= 9 ? 1 : 2,
+      seedPlacements: size <= 7 ? 1 : size <= 9 ? 2 : 2,
     },
   ];
   const targetWords = size <= 7 ? 8 : size <= 9 ? 11 : size <= 11 ? 15 : 18;
