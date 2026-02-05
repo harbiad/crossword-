@@ -409,6 +409,10 @@ export function generateCrossword(
         }
 
         const debugEnabled = typeof window !== 'undefined' && (window as any).__CW_DEBUG;
+        if (debugEnabled) {
+          // eslint-disable-next-line no-console
+          console.log(`[cw-gen size=${size}] attempt=${attemptsRun} words=${attemptWords.length} templateSlots=${slots.length}`);
+        }
         const placements = constructCrossword(
           size,
           attemptWords,
@@ -434,7 +438,13 @@ export function generateCrossword(
           },
           50
         );
-        if (!placements.length) continue;
+        if (!placements.length) {
+          if (debugEnabled) {
+            // eslint-disable-next-line no-console
+            console.log(`[cw-gen size=${size}] attempt=${attemptsRun} no placements`);
+          }
+          continue;
+        }
 
         const cw = buildCrosswordFromPlacements(size, template, placements, answerDirection);
         if (!cw) continue;
