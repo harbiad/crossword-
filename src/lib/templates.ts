@@ -119,6 +119,36 @@ function validateBlockRunsLocal(grid: number[][]): boolean {
   return true;
 }
 
+function validateBlockRunsBlocks(grid: number[][]): boolean {
+  const size = grid.length;
+
+  for (let r = 0; r < size; r++) {
+    let run = 0;
+    for (let c = 0; c <= size; c++) {
+      const isBlock = c < size && grid[r][c] === 0;
+      if (isBlock) run++;
+      if (!isBlock || c === size) {
+        if (run >= 3) return false;
+        run = 0;
+      }
+    }
+  }
+
+  for (let c = 0; c < size; c++) {
+    let run = 0;
+    for (let r = 0; r <= size; r++) {
+      const isBlock = r < size && grid[r][c] === 0;
+      if (isBlock) run++;
+      if (!isBlock || r === size) {
+        if (run >= 3) return false;
+        run = 0;
+      }
+    }
+  }
+
+  return true;
+}
+
 function targetBlockRatio(size: number) {
   if (size <= 7) return 0.18;
   if (size <= 9) return 0.2;
@@ -139,7 +169,7 @@ export function getTemplate(size: number): number[][] {
     if (grid[r][c] === 0) continue;
     if (!canConvertToBlack(grid, r, c)) continue;
     grid[r][c] = 0;
-    if (!validateBlockRunsLocal(grid) || !isWhiteConnected(grid)) {
+    if (!validateBlockRunsLocal(grid) || !validateBlockRunsBlocks(grid) || !isWhiteConnected(grid)) {
       grid[r][c] = 1;
       continue;
     }
@@ -155,7 +185,7 @@ export function getTemplate(size: number): number[][] {
       if (grid[r][c] === 0) continue;
       if (!canConvertToBlack(grid, r, c)) continue;
       grid[r][c] = 0;
-      if (!validateBlockRunsLocal(grid) || !isWhiteConnected(grid)) {
+      if (!validateBlockRunsLocal(grid) || !validateBlockRunsBlocks(grid) || !isWhiteConnected(grid)) {
         grid[r][c] = 1;
         continue;
       }

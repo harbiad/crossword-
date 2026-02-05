@@ -295,7 +295,7 @@ function buildCrosswordFromPlacements(
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       if (!workingGrid[r][c]) {
-        workingGrid[r][c] = { r, c, type: 'block' };
+        return null;
       }
     }
   }
@@ -370,8 +370,8 @@ export function generateCrossword(
       seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
   ];
-  const targetWords = size <= 7 ? 8 : size <= 9 ? 10 : size <= 11 ? 14 : 18;
-  const minWords = size <= 7 ? 5 : size <= 9 ? 6 : size <= 11 ? 9 : 12;
+  const targetWords = size <= 7 ? 8 : size <= 9 ? 22 : size <= 11 ? 28 : 36;
+  const minWords = size <= 7 ? 5 : size <= 9 ? 18 : size <= 11 ? 24 : 30;
 
   let attemptsRun = 0;
   const templateScores = templates
@@ -427,11 +427,12 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 220 : size <= 9 ? 520 : 520,
-            maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 320 : 340,
+            timeBudgetMs: size <= 7 ? 220 : size <= 9 ? 900 : 1200,
+            maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 260 : 260,
             targetWords,
             minWords,
-            useWordCentric: size >= 9,
+            useWordCentric: false,
+            useBacktracking: size >= 9,
             debug: debugEnabled
               ? {
                   enabled: true,
