@@ -162,7 +162,6 @@ function canConvertPairToBlack(grid: number[][], r: number, c: number): boolean 
   const c2 = size - 1 - c;
   if (grid[r][c] === 0 && grid[r2][c2] === 0) return false;
 
-  const add = (r === r2 && c === c2) ? 1 : 2;
   if (grid[r][c] === 0 && grid[r2][c2] === 0) return false;
 
   const prev1 = grid[r][c];
