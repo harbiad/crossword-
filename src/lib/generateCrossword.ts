@@ -344,7 +344,7 @@ export function generateCrossword(
   for (const bucket of buckets.values()) shuffleInPlace(bucket);
 
   const templates = getTemplates(size);
-  const attempts = size <= 7 ? 320 : size <= 9 ? 320 : 220;
+  const attempts = size <= 7 ? 6 : size <= 9 ? 6 : 5;
   const timeBudgetMs = size <= 7 ? 380 : size <= 9 ? 440 : 340;
   let best: Crossword | null = null;
   let bestScore = -1;
@@ -364,6 +364,7 @@ export function generateCrossword(
       seedPlacements: size <= 9 ? 1 : 2,
     },
   ];
+  const targetWords = size <= 7 ? 10 : size <= 9 ? 14 : size <= 11 ? 18 : 22;
 
   let attemptsRun = 0;
   const templateScores = templates
@@ -406,6 +407,7 @@ export function generateCrossword(
           attemptWords.push(...sliceWithWrap(bucket, offset, cap));
         }
 
+        const debugEnabled = typeof window !== 'undefined' && (window as any).__CW_DEBUG;
         const placements = constructCrossword(
           size,
           attemptWords,
@@ -414,6 +416,18 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
+            timeBudgetMs: size <= 7 ? 50 : size <= 9 ? 70 : 80,
+            maxCandidatesPerSlot: size <= 7 ? 120 : size <= 9 ? 140 : 160,
+            targetWords,
+            debug: debugEnabled
+              ? {
+                  enabled: true,
+                  log: (msg: string) => {
+                    // eslint-disable-next-line no-console
+                    console.log(`[cw-gen size=${size}] ${msg}`);
+                  },
+                }
+              : undefined,
           },
           50
         );
