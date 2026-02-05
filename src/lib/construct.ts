@@ -121,46 +121,6 @@ function isFullyConnected(grid: GridChar[][], size: number): boolean {
   return visited.size === letterCells.length;
 }
 
-function calculateIntersectionPercentage(placements: Placement[], answerDirection: 'rtl' | 'ltr'): number {
-  if (placements.length <= 1) return 100;
-
-  let entriesWithIntersection = 0;
-  const nonFirstCount = placements.length - 1;
-
-  for (let i = 1; i < placements.length; i++) {
-    const p = placements[i];
-    const pCells = new Set<string>();
-    const dr = p.direction === 'down' ? 1 : 0;
-    const dc = p.direction === 'across' ? (answerDirection === 'rtl' ? -1 : 1) : 0;
-
-    for (let j = 0; j < p.answer.length; j++) {
-      const r = p.row + dr * j;
-      const c = p.col + dc * j;
-      pCells.add(`${r},${c}`);
-    }
-
-    let hasIntersection = false;
-    for (let k = 0; k < i; k++) {
-      const prev = placements[k];
-      const prevDr = prev.direction === 'down' ? 1 : 0;
-      const prevDc = prev.direction === 'across' ? (answerDirection === 'rtl' ? -1 : 1) : 0;
-      for (let j = 0; j < prev.answer.length; j++) {
-        const r = prev.row + prevDr * j;
-        const c = prev.col + prevDc * j;
-        if (pCells.has(`${r},${c}`)) {
-          hasIntersection = true;
-          break;
-        }
-      }
-      if (hasIntersection) break;
-    }
-
-    if (hasIntersection) entriesWithIntersection++;
-  }
-
-  return nonFirstCount > 0 ? (entriesWithIntersection / nonFirstCount) * 100 : 100;
-}
-
 function countTotalIntersections(placements: Placement[], answerDirection: 'rtl' | 'ltr'): number {
   const cellCounts = new Map<string, number>();
   for (const p of placements) {
@@ -351,7 +311,7 @@ function constructCrosswordBacktracking(
     return totalLetters + placements.length * 2 + totalIntersections * 3;
   };
 
-  const validatePlacements = (placements: Placement[]): boolean => {
+  const validatePlacements = (_placements: Placement[]): boolean => {
     if (!isFullyConnected(grid, size)) return false;
     return true;
   };
