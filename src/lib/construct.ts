@@ -255,15 +255,15 @@ function constructCrosswordWordCentric(
     if (direction === 'down') {
       const prevR = row - 1;
       const nextR = row + len;
-      if (inBounds(prevR, col) && grid[prevR][col] !== BLOCK) return false;
-      if (inBounds(nextR, col) && grid[nextR][col] !== BLOCK) return false;
+      if (inBounds(prevR, col) && grid[prevR][col] !== BLOCK && grid[prevR][col] !== null) return false;
+      if (inBounds(nextR, col) && grid[nextR][col] !== BLOCK && grid[nextR][col] !== null) return false;
       return true;
     }
     const dc = answerDirection === 'rtl' ? -1 : 1;
     const prevC = col - dc;
     const nextC = col + dc * len;
-    if (inBounds(row, prevC) && grid[row][prevC] !== BLOCK) return false;
-    if (inBounds(row, nextC) && grid[row][nextC] !== BLOCK) return false;
+    if (inBounds(row, prevC) && grid[row][prevC] !== BLOCK && grid[row][prevC] !== null) return false;
+    if (inBounds(row, nextC) && grid[row][nextC] !== BLOCK && grid[row][nextC] !== null) return false;
     return true;
   };
 
