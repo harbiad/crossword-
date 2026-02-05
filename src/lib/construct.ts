@@ -263,8 +263,9 @@ export function constructCrossword(
     let bestWord: WordClue | null = null;
     let bestScore = -1;
 
-    const shuffled = bucket.slice().sort(() => Math.random() - 0.5);
-    for (const wc of shuffled) {
+    const startIdx = Math.floor(Math.random() * bucket.length);
+    for (let i = 0; i < bucket.length; i++) {
+      const wc = bucket[(startIdx + i) % bucket.length];
       if (usedWords.has(wc.answer)) continue;
       if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
 

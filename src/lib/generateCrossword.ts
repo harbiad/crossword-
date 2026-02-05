@@ -1,6 +1,6 @@
 import type { Crossword, Cell, Entry, Direction } from './crossword';
 import { constructCrossword, validateBlockRuns } from './construct';
-import { getTemplates } from './templates';
+import { findSlots, getTemplates } from './templates';
 
 export type WordClue = { answer: string; clue: string; isRepeatedLetter?: boolean };
 
@@ -20,6 +20,29 @@ function normalizeAnswer(a: string): string {
     .replace(/[أإآٱ]/g, 'ا')
     // NOTE: Do NOT normalize ى (alef maksura) to ي - they are different letters
     .toUpperCase();
+}
+
+function getNow() {
+  if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+    return performance.now();
+  }
+  return Date.now();
+}
+
+function shuffleInPlace<T>(arr: T[]): void {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function sliceWithWrap<T>(arr: T[], start: number, count: number): T[] {
+  if (arr.length <= count) return arr.slice();
+  const out: T[] = [];
+  for (let i = 0; i < count; i++) {
+    out.push(arr[(start + i) % arr.length]);
+  }
+  return out;
 }
 
 function makeId(dir: Direction, row: number, col: number) {
@@ -311,10 +334,21 @@ export function generateCrossword(
     }))
     .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
 
+  const buckets = new Map<number, WordClue[]>();
+  for (const wc of clean) {
+    const len = wc.answer.length;
+    const bucket = buckets.get(len) ?? [];
+    bucket.push(wc);
+    buckets.set(len, bucket);
+  }
+  for (const bucket of buckets.values()) shuffleInPlace(bucket);
+
   const templates = getTemplates(size);
-  const attempts = 600;
+  const attempts = size <= 7 ? 320 : size <= 9 ? 240 : 200;
+  const timeBudgetMs = size <= 7 ? 380 : size <= 9 ? 300 : 260;
   let best: Crossword | null = null;
   let bestScore = -1;
+  const deadline = getNow() + timeBudgetMs;
 
   const optionSets = [
     { minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 75 : 80 },
@@ -323,11 +357,26 @@ export function generateCrossword(
 
   let attemptsRun = 0;
   for (const template of templates.sort(() => Math.random() - 0.5)) {
+    if (getNow() > deadline) break;
+    const slots = findSlots(template);
+    const allowedLengths = new Set<number>();
+    for (const slot of slots) allowedLengths.add(slot.length);
+    const perLengthCap = size <= 7 ? 220 : size <= 9 ? 280 : 320;
+
     for (const opts of optionSets) {
       for (let i = 0; i < attempts; i++) {
+        if (getNow() > deadline) break;
         attemptsRun++;
-        const shuffled = clean.slice().sort(() => Math.random() - 0.5);
-        const placements = constructCrossword(size, shuffled, template, answerDirection, opts, 50);
+        const attemptWords: WordClue[] = [];
+        for (const len of allowedLengths) {
+          const bucket = buckets.get(len);
+          if (!bucket || bucket.length === 0) continue;
+          const cap = Math.min(bucket.length, perLengthCap);
+          const offset = (attemptsRun * 97 + len * 13) % bucket.length;
+          attemptWords.push(...sliceWithWrap(bucket, offset, cap));
+        }
+
+        const placements = constructCrossword(size, attemptWords, template, answerDirection, opts, 50);
         if (!placements.length) continue;
 
         const cw = buildCrosswordFromPlacements(size, template, placements, answerDirection);
@@ -341,9 +390,9 @@ export function generateCrossword(
           best = cw;
         }
       }
-      if (best) break;
+      if (best || getNow() > deadline) break;
     }
-    if (best) break;
+    if (best || getNow() > deadline) break;
   }
 
   if (!best) {
