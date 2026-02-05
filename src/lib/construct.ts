@@ -353,15 +353,6 @@ function constructCrosswordBacktracking(
 
   const validatePlacements = (placements: Placement[]): boolean => {
     if (!isFullyConnected(grid, size)) return false;
-    const intersectionPct = calculateIntersectionPercentage(placements, answerDirection);
-    const defaultPct = size <= 7 ? 70 : size <= 9 ? 75 : 80;
-    const minIntersectionPct = options.minIntersectionPct ?? defaultPct;
-    if (intersectionPct < minIntersectionPct) return false;
-    const totalIntersections = countTotalIntersections(placements, answerDirection);
-    const defaultRatio = size <= 7 ? 0.35 : size <= 9 ? 0.3 : 0.25;
-    const defaultMinIntersections = Math.max(2, Math.floor(placements.length * defaultRatio));
-    const minIntersections = options.minTotalIntersections ?? defaultMinIntersections;
-    if (totalIntersections < minIntersections) return false;
     return true;
   };
 

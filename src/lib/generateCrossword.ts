@@ -345,7 +345,7 @@ export function generateCrossword(
 
   const templates = getTemplates(size);
   const attempts = size <= 7 ? 6 : size <= 9 ? 6 : 5;
-  const timeBudgetMs = size <= 7 ? 380 : size <= 9 ? 440 : 340;
+  const timeBudgetMs = size <= 7 ? 520 : size <= 9 ? 620 : 520;
   let best: Crossword | null = null;
   let bestScore = -1;
   const deadline = getNow() + timeBudgetMs;
@@ -365,7 +365,7 @@ export function generateCrossword(
     },
   ];
   const targetWords = size <= 7 ? 8 : size <= 9 ? 11 : size <= 11 ? 15 : 18;
-  const minWords = size <= 7 ? 6 : size <= 9 ? 8 : size <= 11 ? 11 : 14;
+  const minWords = size <= 7 ? 5 : size <= 9 ? 7 : size <= 11 ? 10 : 13;
 
   let attemptsRun = 0;
   const templateScores = templates
@@ -417,8 +417,8 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 140 : size <= 9 ? 180 : 200,
-            maxCandidatesPerSlot: size <= 7 ? 160 : size <= 9 ? 200 : 240,
+            timeBudgetMs: size <= 7 ? 220 : size <= 9 ? 280 : 300,
+            maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 260 : 300,
             targetWords,
             minWords,
             debug: debugEnabled
