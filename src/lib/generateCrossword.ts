@@ -344,20 +344,24 @@ export function generateCrossword(
   for (const bucket of buckets.values()) shuffleInPlace(bucket);
 
   const templates = getTemplates(size);
-  const attempts = size <= 7 ? 320 : size <= 9 ? 260 : 220;
-  const timeBudgetMs = size <= 7 ? 380 : size <= 9 ? 360 : 340;
+  const attempts = size <= 7 ? 320 : size <= 9 ? 320 : 220;
+  const timeBudgetMs = size <= 7 ? 380 : size <= 9 ? 440 : 340;
   let best: Crossword | null = null;
   let bestScore = -1;
   const deadline = getNow() + timeBudgetMs;
 
   const optionSets = [
     {
-      minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 70 : 72,
-      seedPlacements: size <= 7 ? 1 : 2,
+      minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 68 : 72,
+      seedPlacements: size <= 9 ? 1 : 2,
     },
     {
       minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 62 : 65,
-      seedPlacements: size <= 7 ? 1 : 2,
+      seedPlacements: size <= 9 ? 1 : 2,
+    },
+    {
+      minIntersectionPct: size <= 7 ? 60 : size <= 9 ? 58 : 62,
+      seedPlacements: size <= 9 ? 1 : 2,
     },
   ];
 
