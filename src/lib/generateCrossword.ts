@@ -364,7 +364,8 @@ export function generateCrossword(
       seedPlacements: size <= 9 ? 1 : 2,
     },
   ];
-  const targetWords = size <= 7 ? 10 : size <= 9 ? 14 : size <= 11 ? 18 : 22;
+  const targetWords = size <= 7 ? 8 : size <= 9 ? 11 : size <= 11 ? 15 : 18;
+  const minWords = size <= 7 ? 6 : size <= 9 ? 8 : size <= 11 ? 11 : 14;
 
   let attemptsRun = 0;
   const templateScores = templates
@@ -416,9 +417,10 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 50 : size <= 9 ? 70 : 80,
-            maxCandidatesPerSlot: size <= 7 ? 120 : size <= 9 ? 140 : 160,
+            timeBudgetMs: size <= 7 ? 140 : size <= 9 ? 180 : 200,
+            maxCandidatesPerSlot: size <= 7 ? 160 : size <= 9 ? 200 : 240,
             targetWords,
+            minWords,
             debug: debugEnabled
               ? {
                   enabled: true,

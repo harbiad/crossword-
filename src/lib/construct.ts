@@ -221,6 +221,7 @@ type ConstructOptions = {
   timeBudgetMs?: number;
   maxCandidatesPerSlot?: number;
   targetWords?: number;
+  minWords?: number;
 };
 
 export function constructCrossword(
@@ -300,6 +301,7 @@ function constructCrosswordBacktracking(
   const seedPlacements = Math.max(1, options.seedPlacements ?? 1);
   const maxCandidatesPerSlot = options.maxCandidatesPerSlot ?? 120;
   const targetWords = options.targetWords ?? 0;
+  const minWords = Math.max(1, options.minWords ?? Math.min(6, targetWords || 6));
   const deadline = getNow() + (options.timeBudgetMs ?? 70);
 
   let best: Placement[] = [];
@@ -363,17 +365,21 @@ function constructCrosswordBacktracking(
     return true;
   };
 
+  const maybeRecordBest = (placements: Placement[]) => {
+    if (placements.length < minWords) return;
+    if (!validatePlacements(placements)) return;
+    const score = scorePlacements(placements);
+    if (score > bestScore) {
+      bestScore = score;
+      best = placements.slice();
+    }
+  };
+
   const backtrack = (remaining: Slot[], placements: Placement[]): void => {
     if (getNow() > deadline) return;
 
     if (remaining.length === 0 || (targetWords > 0 && placements.length >= targetWords)) {
-      if (placements.length && validatePlacements(placements)) {
-        const score = scorePlacements(placements);
-        if (score > bestScore) {
-          bestScore = score;
-          best = placements.slice();
-        }
-      }
+      maybeRecordBest(placements);
       return;
     }
 
@@ -436,6 +442,8 @@ function constructCrosswordBacktracking(
         direction: slot.direction,
         isRepeatedLetter: wc.isRepeatedLetter,
       });
+
+      maybeRecordBest(placements);
 
       const nextRemaining = remaining.slice();
       nextRemaining.splice(bestIdx, 1);
