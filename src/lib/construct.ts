@@ -183,6 +183,7 @@ type ConstructOptions = {
   targetWords?: number;
   minWords?: number;
   useBacktracking?: boolean;
+  useWordCentric?: boolean;
 };
 
 export function constructCrossword(
@@ -193,10 +194,305 @@ export function constructCrossword(
   options: ConstructOptions = {},
   _targetWords = 12
 ): Placement[] {
+  if (options.useWordCentric) {
+    return constructCrosswordWordCentric(size, wordClues, template, answerDirection, options);
+  }
   if (!options.useBacktracking) {
     return constructCrosswordGreedy(size, wordClues, template, answerDirection, options);
   }
   return constructCrosswordBacktracking(size, wordClues, template, answerDirection, options);
+}
+
+type WordPlacement = {
+  word: WordClue;
+  row: number;
+  col: number;
+  direction: Direction;
+  intersections: number;
+};
+
+function constructCrosswordWordCentric(
+  size: number,
+  wordClues: WordClue[],
+  template: number[][],
+  answerDirection: 'rtl' | 'ltr',
+  options: ConstructOptions = {}
+): Placement[] {
+  const debug = options.debug;
+  const dbg = debug?.enabled
+    ? (msg: string) => {
+        debug.log(msg);
+      }
+    : () => {};
+
+  const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (template[r][c] === 0) grid[r][c] = BLOCK;
+    }
+  }
+
+  const seedPlacements = Math.max(1, options.seedPlacements ?? 1);
+  const targetWords = options.targetWords ?? 0;
+  const minWords = Math.max(1, options.minWords ?? 5);
+  const deadline = getNow() + (options.timeBudgetMs ?? 120);
+
+  const words = wordClues
+    .filter((w) => w.answer.length >= 2 && w.answer.length <= size)
+    .slice()
+    .sort((a, b) => b.answer.length - a.answer.length);
+
+  const usedWords = new Set<string>();
+  const placements: Placement[] = [];
+  let best: Placement[] = [];
+  let bestScore = -1;
+
+  const getStepLocal = (direction: Direction) => getStep(direction, answerDirection);
+
+  const inBounds = (r: number, c: number) => r >= 0 && c >= 0 && r < size && c < size;
+
+  const isBoundaryOk = (row: number, col: number, direction: Direction, len: number) => {
+    if (direction === 'down') {
+      const prevR = row - 1;
+      const nextR = row + len;
+      if (inBounds(prevR, col) && grid[prevR][col] !== BLOCK) return false;
+      if (inBounds(nextR, col) && grid[nextR][col] !== BLOCK) return false;
+      return true;
+    }
+    const dc = answerDirection === 'rtl' ? -1 : 1;
+    const prevC = col - dc;
+    const nextC = col + dc * len;
+    if (inBounds(row, prevC) && grid[row][prevC] !== BLOCK) return false;
+    if (inBounds(row, nextC) && grid[row][nextC] !== BLOCK) return false;
+    return true;
+  };
+
+  const placeable = (word: string, row: number, col: number, direction: Direction): number | null => {
+    if (!isBoundaryOk(row, col, direction, word.length)) return null;
+    const { dr, dc } = getStepLocal(direction);
+    let intersections = 0;
+    for (let i = 0; i < word.length; i++) {
+      const r = row + dr * i;
+      const c = col + dc * i;
+      if (!inBounds(r, c)) return null;
+      const cell = grid[r][c];
+      if (cell === BLOCK) return null;
+      if (cell !== null && cell !== word[i]) return null;
+      if (cell === word[i]) intersections++;
+    }
+    return intersections;
+  };
+
+  const applyPlacement = (placement: WordPlacement): Array<{ r: number; c: number }> => {
+    const changed: Array<{ r: number; c: number }> = [];
+    const { dr, dc } = getStepLocal(placement.direction);
+    const word = placement.word.answer;
+    for (let i = 0; i < word.length; i++) {
+      const r = placement.row + dr * i;
+      const c = placement.col + dc * i;
+      if (grid[r][c] === null) {
+        grid[r][c] = word[i];
+        changed.push({ r, c });
+      }
+    }
+    return changed;
+  };
+
+  const undoPlacement = (changed: Array<{ r: number; c: number }>) => {
+    for (const cell of changed) {
+      grid[cell.r][cell.c] = null;
+    }
+  };
+
+  const buildLetterMap = () => {
+    const map = new Map<string, Array<{ r: number; c: number }>>();
+    for (let r = 0; r < size; r++) {
+      for (let c = 0; c < size; c++) {
+        const cell = grid[r][c];
+        if (cell && cell !== BLOCK) {
+          const list = map.get(cell) ?? [];
+          list.push({ r, c });
+          map.set(cell, list);
+        }
+      }
+    }
+    return map;
+  };
+
+  const scorePlacements = (list: Placement[]) => {
+    const totalLetters = list.reduce((sum, p) => sum + p.answer.length, 0);
+    const totalIntersections = countTotalIntersections(list, answerDirection);
+    return totalLetters + list.length * 2 + totalIntersections * 3;
+  };
+
+  const recordBest = () => {
+    if (placements.length < minWords) return;
+    const score = scorePlacements(placements);
+    if (score > bestScore) {
+      bestScore = score;
+      best = placements.slice();
+    }
+  };
+
+  const generatePlacementsForWord = (word: WordClue): WordPlacement[] => {
+    const placementsOut: WordPlacement[] = [];
+    const letterMap = buildLetterMap();
+    let matchedAny = false;
+
+    for (let i = 0; i < word.answer.length; i++) {
+      const ch = word.answer[i];
+      const positions = letterMap.get(ch);
+      if (!positions || positions.length === 0) continue;
+      matchedAny = true;
+      for (const pos of positions) {
+        for (const direction of ['across', 'down'] as Direction[]) {
+          const { dr, dc } = getStepLocal(direction);
+          const row = pos.r - dr * i;
+          const col = pos.c - dc * i;
+          const intersections = placeable(word.answer, row, col, direction);
+          if (intersections === null) continue;
+          if (intersections === 0) continue;
+          placementsOut.push({
+            word,
+            row,
+            col,
+            direction,
+            intersections,
+          });
+        }
+      }
+    }
+
+    if (!matchedAny && placements.length < seedPlacements) {
+      // Allow seed placement in any valid slot if grid is empty or during initial seeding.
+      for (const direction of ['across', 'down'] as Direction[]) {
+        const { dr, dc } = getStepLocal(direction);
+        for (let r = 0; r < size; r++) {
+          for (let c = 0; c < size; c++) {
+            const intersections = placeable(word.answer, r, c, direction);
+            if (intersections === null) continue;
+            if (intersections !== 0) continue;
+            // ensure word stays within white cells only
+            const endR = r + dr * (word.answer.length - 1);
+            const endC = c + dc * (word.answer.length - 1);
+            if (!inBounds(endR, endC)) continue;
+            placementsOut.push({ word, row: r, col: c, direction, intersections: 0 });
+          }
+        }
+      }
+    }
+
+    return placementsOut;
+  };
+
+  const pickSeedPlacement = (): WordPlacement | null => {
+    for (const word of words) {
+      if (usedWords.has(word.answer)) continue;
+      let bestSeed: WordPlacement | null = null;
+      let bestSeedScore = -Infinity;
+      for (const direction of ['across', 'down'] as Direction[]) {
+        const { dr, dc } = getStepLocal(direction);
+        for (let r = 0; r < size; r++) {
+          for (let c = 0; c < size; c++) {
+            const intersections = placeable(word.answer, r, c, direction);
+            if (intersections === null || intersections !== 0) continue;
+            const endR = r + dr * (word.answer.length - 1);
+            const endC = c + dc * (word.answer.length - 1);
+            if (!inBounds(endR, endC)) continue;
+            const centerBonus = slotCenterScore({ row: r, col: c, direction, length: word.answer.length }, size);
+            const score = word.answer.length * 10 + centerBonus;
+            if (score > bestSeedScore) {
+              bestSeedScore = score;
+              bestSeed = { word, row: r, col: c, direction, intersections: 0 };
+            }
+          }
+        }
+      }
+      if (bestSeed) return bestSeed;
+    }
+    return null;
+  };
+
+  const backtrack = () => {
+    if (getNow() > deadline) return;
+    if (targetWords > 0 && placements.length >= targetWords) {
+      recordBest();
+      return;
+    }
+
+    const candidates: Array<{ word: WordClue; placements: WordPlacement[] }> = [];
+    for (const word of words) {
+      if (usedWords.has(word.answer)) continue;
+      const placementsForWord = generatePlacementsForWord(word);
+      if (placementsForWord.length > 0) {
+        candidates.push({ word, placements: placementsForWord });
+      }
+    }
+
+    if (candidates.length === 0) {
+      recordBest();
+      return;
+    }
+
+    candidates.sort((a, b) => a.placements.length - b.placements.length);
+    const next = candidates[0];
+    const sortedPlacements = next.placements
+      .sort((a, b) => b.intersections - a.intersections)
+      .slice(0, options.maxCandidatesPerSlot ?? 200);
+
+    for (const placement of sortedPlacements) {
+      if (getNow() > deadline) return;
+      const word = placement.word;
+      if (usedWords.has(word.answer)) continue;
+      if (placeable(word.answer, placement.row, placement.col, placement.direction) === null) continue;
+
+      const changed = applyPlacement(placement);
+      usedWords.add(word.answer);
+      placements.push({
+        answer: word.answer,
+        clue: word.clue,
+        row: placement.row,
+        col: placement.col,
+        direction: placement.direction,
+        isRepeatedLetter: word.isRepeatedLetter,
+      });
+
+      recordBest();
+      backtrack();
+
+      placements.pop();
+      usedWords.delete(word.answer);
+      undoPlacement(changed);
+    }
+  };
+
+  const seed = pickSeedPlacement();
+  if (!seed) {
+    dbg('reject: no seed placement found');
+    return [];
+  }
+  const seedChanged = applyPlacement(seed);
+  usedWords.add(seed.word.answer);
+  placements.push({
+    answer: seed.word.answer,
+    clue: seed.word.clue,
+    row: seed.row,
+    col: seed.col,
+    direction: seed.direction,
+    isRepeatedLetter: seed.word.isRepeatedLetter,
+  });
+
+  recordBest();
+  backtrack();
+
+  // cleanup seed for consistency if needed
+  undoPlacement(seedChanged);
+
+  if (!best.length) {
+    dbg('reject: no valid placements found in word-centric search');
+  }
+
+  return best;
 }
 
 function constructCrosswordGreedy(

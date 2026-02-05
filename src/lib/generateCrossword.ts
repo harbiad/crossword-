@@ -421,7 +421,7 @@ export function generateCrossword(
             maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 320 : 340,
             targetWords,
             minWords,
-            useBacktracking: size >= 9,
+            useWordCentric: size >= 9,
             debug: debugEnabled
               ? {
                   enabled: true,
