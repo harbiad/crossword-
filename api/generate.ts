@@ -330,7 +330,8 @@ const DICT_A1_A2: Record<string, string> = {
   YELLOW: '\u0627\u0635\u0641\u0631',
   PURPLE: '\u0628\u0646\u0641\u0633\u062c\u064a',
 };
-type DictValue = string | string[];
+type DictMeaning = { answer: string; clue: string };
+type DictValue = string | string[] | DictMeaning | DictMeaning[];
 type DictMap = Record<string, DictValue>;
 
 const DICT_A1_A2_EXPANDED: DictMap = {
@@ -528,13 +529,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       const meanings = getMeanings(dict, en);
       if (meanings.length) {
-        for (const arRaw of meanings) {
-          const ar = normalizeArabicWord(arRaw);
+        for (const meaning of meanings) {
+          const ar = meaning.answer;
           if (!ar || ar.length < 2 || ar.length > gridSize) continue;
           const key = `${en}::${ar}`;
           if (seen.has(key)) continue;
           seen.add(key);
-          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: ar, answer: en });
+          const clueAr = meaning.clue || ar;
+          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: clueAr, answer: en });
         }
       }
       if (pairs.length >= targetPairs) break;
@@ -564,11 +566,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
         for (let j = 0; j < batch.length; j++) {
           const en = batch[j];
-          const ar = normalizeArabicWord(translations[j] || '');
+          const arRaw = translations[j] || '';
+          const ar = normalizeArabicWord(arRaw);
           if (!ar || ar.length < 2 || ar.length > gridSize) continue;
           if (seen.has(en)) continue;
           seen.add(en);
-          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: ar, answer: en });
+          const clueAr = arRaw.trim() || ar;
+          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: clueAr, answer: en });
           if (pairs.length >= targetPairs) break;
         }
       }
@@ -582,7 +586,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       const meanings = getMeanings(dict, en);
       if (!meanings.length) continue;
-      const ar = normalizeArabicWord(meanings[0]);
+      const ar = meanings[0].answer;
       if (!ar || ar.length < 2 || ar.length > gridSize) continue;
 
       const key = `${en}::${ar}`;
@@ -612,8 +616,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return json(res, 500, { error: e?.message || String(e) });
   }
 }
-function getMeanings(dict: DictMap, en: string): string[] {
+function getMeanings(dict: DictMap, en: string): DictMeaning[] {
   const val = dict[en];
   if (!val) return [];
-  return Array.isArray(val) ? val : [val];
+  const arr = Array.isArray(val) ? val : [val];
+  return arr.map((v) => {
+    if (typeof v === 'string') {
+      return { answer: normalizeArabicWord(v), clue: v };
+    }
+    return { answer: normalizeArabicWord(v.answer), clue: v.clue };
+  });
 }
