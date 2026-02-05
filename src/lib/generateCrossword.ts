@@ -345,7 +345,7 @@ export function generateCrossword(
 
   const templates = getTemplates(size);
   const attempts = size <= 7 ? 6 : size <= 9 ? 6 : 5;
-  const timeBudgetMs = size <= 7 ? 520 : size <= 9 ? 620 : 520;
+  const timeBudgetMs = size <= 7 ? 520 : size <= 9 ? 900 : 700;
   let best: Crossword | null = null;
   let bestScore = -1;
   const deadline = getNow() + timeBudgetMs;
@@ -353,19 +353,19 @@ export function generateCrossword(
   const optionSets = [
     {
       minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 68 : 72,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 2 : 2,
+      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
     {
       minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 62 : 65,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 2 : 2,
+      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
     {
       minIntersectionPct: size <= 7 ? 60 : size <= 9 ? 58 : 62,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 2 : 2,
+      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
   ];
-  const targetWords = size <= 7 ? 8 : size <= 9 ? 11 : size <= 11 ? 15 : 18;
-  const minWords = size <= 7 ? 5 : size <= 9 ? 7 : size <= 11 ? 10 : 13;
+  const targetWords = size <= 7 ? 8 : size <= 9 ? 10 : size <= 11 ? 14 : 18;
+  const minWords = size <= 7 ? 5 : size <= 9 ? 6 : size <= 11 ? 9 : 12;
 
   let attemptsRun = 0;
   const templateScores = templates
@@ -417,8 +417,8 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 220 : size <= 9 ? 280 : 300,
-            maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 260 : 300,
+            timeBudgetMs: size <= 7 ? 220 : size <= 9 ? 520 : 520,
+            maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 320 : 340,
             targetWords,
             minWords,
             useBacktracking: size >= 9,
