@@ -220,7 +220,8 @@ function buildCrosswordFromPlacements(
   size: number,
   template: number[][],
   placements: ReturnType<typeof constructCrossword>,
-  answerDirection: 'rtl' | 'ltr'
+  answerDirection: 'rtl' | 'ltr',
+  debug?: { enabled: boolean; log: (msg: string) => void }
 ): Crossword | null {
   const workingGrid: WorkingCell[][] = template.map((row, r) =>
     row.map((cell, c) => (cell === 0 ? ({ r, c, type: 'block' } as Cell) : null))
@@ -316,7 +317,12 @@ function buildCrosswordFromPlacements(
   );
 
   const validation = validatePuzzle(grid, entries, answerDirection);
-  if (!validation.ok) return null;
+  if (!validation.ok) {
+    if (debug?.enabled) {
+      debug.log(`validation failed: ${validation.errors.slice(0, 4).join(' | ')}`);
+    }
+    return null;
+  }
 
   return { size, width: size, height: size, grid, entries, answerDirection };
 }
@@ -446,7 +452,21 @@ export function generateCrossword(
           continue;
         }
 
-        const cw = buildCrosswordFromPlacements(size, template, placements, answerDirection);
+        const cw = buildCrosswordFromPlacements(
+          size,
+          template,
+          placements,
+          answerDirection,
+          debugEnabled
+            ? {
+                enabled: true,
+                log: (msg: string) => {
+                  // eslint-disable-next-line no-console
+                  console.log(`[cw-gen size=${size}] ${msg}`);
+                },
+              }
+            : undefined
+        );
         if (!cw) continue;
 
         const totalLetters = cw.entries.reduce((sum, e) => sum + e.answer.length, 0);
