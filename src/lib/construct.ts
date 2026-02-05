@@ -213,6 +213,7 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
 type ConstructOptions = {
   minIntersectionPct?: number;
   minTotalIntersections?: number;
+  seedPlacements?: number;
 };
 
 export function constructCrossword(
@@ -299,13 +300,15 @@ export function constructCrossword(
   };
 
   // Fill slots by length/centrality; require intersections after the first placement.
+  const seedPlacements = Math.max(1, options.seedPlacements ?? 1);
   let placedAny = false;
   for (const slot of slotOrder) {
     if (!placedAny) {
       placedAny = tryPlaceSlot(slot, false) || placedAny;
       continue;
     }
-    tryPlaceSlot(slot, true);
+    const requireIntersection = placements.length >= seedPlacements;
+    tryPlaceSlot(slot, requireIntersection);
   }
 
   // Validate placements against grid to catch any mismatches
@@ -333,7 +336,8 @@ export function constructCrossword(
   if (intersectionPct < minIntersectionPct) return [];
 
   const totalIntersections = countTotalIntersections(validPlacements, answerDirection);
-  const defaultMinIntersections = Math.max(2, Math.floor(validPlacements.length * 0.35));
+  const defaultRatio = size <= 7 ? 0.35 : size <= 9 ? 0.3 : 0.25;
+  const defaultMinIntersections = Math.max(2, Math.floor(validPlacements.length * defaultRatio));
   const minIntersections = options.minTotalIntersections ?? defaultMinIntersections;
   if (totalIntersections < minIntersections) return [];
 

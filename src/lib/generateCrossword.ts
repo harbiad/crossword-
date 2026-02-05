@@ -344,24 +344,50 @@ export function generateCrossword(
   for (const bucket of buckets.values()) shuffleInPlace(bucket);
 
   const templates = getTemplates(size);
-  const attempts = size <= 7 ? 320 : size <= 9 ? 240 : 200;
-  const timeBudgetMs = size <= 7 ? 380 : size <= 9 ? 300 : 260;
+  const attempts = size <= 7 ? 320 : size <= 9 ? 260 : 220;
+  const timeBudgetMs = size <= 7 ? 380 : size <= 9 ? 360 : 340;
   let best: Crossword | null = null;
   let bestScore = -1;
   const deadline = getNow() + timeBudgetMs;
 
   const optionSets = [
-    { minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 75 : 80 },
-    { minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 70 : 75 },
+    {
+      minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 70 : 72,
+      seedPlacements: size <= 7 ? 1 : 2,
+    },
+    {
+      minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 62 : 65,
+      seedPlacements: size <= 7 ? 1 : 2,
+    },
   ];
 
   let attemptsRun = 0;
-  for (const template of templates.sort(() => Math.random() - 0.5)) {
+  const templateScores = templates
+    .map((template) => {
+      const slots = findSlots(template);
+      const lengths = new Set(slots.map((s) => s.length));
+      let score = 0;
+      let viable = true;
+      for (const len of lengths) {
+        const bucket = buckets.get(len);
+        if (!bucket || bucket.length === 0) {
+          viable = false;
+          break;
+        }
+        score += bucket.length;
+      }
+      return { template, score, viable };
+    })
+    .filter((t) => t.viable)
+    .sort((a, b) => b.score - a.score);
+
+  for (const ranked of templateScores.length ? templateScores : templates.map((template) => ({ template, score: 0, viable: true }))) {
+    const template = ranked.template;
     if (getNow() > deadline) break;
     const slots = findSlots(template);
     const allowedLengths = new Set<number>();
     for (const slot of slots) allowedLengths.add(slot.length);
-    const perLengthCap = size <= 7 ? 220 : size <= 9 ? 280 : 320;
+    const perLengthCap = size <= 7 ? 260 : size <= 9 ? 420 : 520;
 
     for (const opts of optionSets) {
       for (let i = 0; i < attempts; i++) {
@@ -376,7 +402,17 @@ export function generateCrossword(
           attemptWords.push(...sliceWithWrap(bucket, offset, cap));
         }
 
-        const placements = constructCrossword(size, attemptWords, template, answerDirection, opts, 50);
+        const placements = constructCrossword(
+          size,
+          attemptWords,
+          template,
+          answerDirection,
+          {
+            minIntersectionPct: opts.minIntersectionPct,
+            seedPlacements: opts.seedPlacements,
+          },
+          50
+        );
         if (!placements.length) continue;
 
         const cw = buildCrosswordFromPlacements(size, template, placements, answerDirection);
