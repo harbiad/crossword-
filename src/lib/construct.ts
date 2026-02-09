@@ -240,6 +240,7 @@ function constructCrosswordFillAllSlots(
   const usedWords = new Set<string>();
   const placements: Placement[] = [];
   const deadline = getNow() + (options.timeBudgetMs ?? 400);
+  const maxTwoLetterRatio = 0.1;
 
   const getPattern = (slot: Slot): (string | null)[] => {
     const pattern: (string | null)[] = [];
@@ -294,6 +295,9 @@ function constructCrosswordFillAllSlots(
     if (getNow() > deadline) return false;
     if (remaining.length === 0) return true;
 
+    const currentTwoLetter = placements.filter((p) => p.answer.length === 2).length;
+    const maxTwoLetter = Math.max(1, Math.floor(slots.length * maxTwoLetterRatio));
+
     let bestIdx = -1;
     let bestCandidates: WordClue[] = [];
     let bestCount = Infinity;
@@ -315,6 +319,7 @@ function constructCrosswordFillAllSlots(
     bestCandidates.sort((a, b) => b.answer.length - a.answer.length);
     for (const wc of bestCandidates) {
       if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+      if (wc.answer.length === 2 && currentTwoLetter >= maxTwoLetter) continue;
 
       if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
       const changed = applyWord(slot, wc);
