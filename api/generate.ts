@@ -413,12 +413,6 @@ const WORDS_A1_A2 = [
   'answer','number','dinner','finger','yellow','purple'
 ];
 
-// Filler words (repeated letters) - used only when needed to complete the grid
-const FILLER_WORDS = [
-  'aa','bb','cc','dd','ee','ff','gg','hh','ii','ll','mm','nn','oo','pp','rr','ss','tt',
-  'aaa','bbb','eee','iii','ooo'
-];
-
 const WORDS_B1_B2 = [
   'advice','argument','attitude','balance','benefit','career','choice','culture','damage','decision','demand','detail','effort','energy','experience','freedom','goal','habit','health','history','identity','improve','increase','influence','interest','knowledge','language','manage','method','opinion','patient','pattern','perform','policy','prepare','pressure','problem','process','project','quality','reason','reduce','respect','result','routine','science','society','solution','strength','support','system','technology','tradition','traffic','training','travel','value','weather','worry','discover','discuss','develop','explain','imagine','consider','compare','protect','recommend','require','suggest'
 ];
@@ -576,32 +570,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           if (pairs.length >= targetPairs) break;
         }
       }
-    }
-
-    // Add filler words (repeated letters) at the end - used as last resort
-    for (const w of FILLER_WORDS) {
-      const en = normalizeEnglishWord(w);
-      if (en.length < 2 || en.length > gridSize) continue;
-      if (seen.has(en)) continue;
-
-      const meanings = getMeanings(dict, en);
-      if (!meanings.length) continue;
-      const ar = meanings[0].answer;
-      if (!ar || ar.length < 2 || ar.length > gridSize) continue;
-
-      const key = `${en}::${ar}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      // Format as "X ×N" where X is the letter and N is the count
-      const letter = en[0].toUpperCase();
-      const count = en.length;
-      const fillerClue = mode === 'en_to_ar'
-        ? `${letter} ×${count}`
-        : `${letter} ×${count}`; // Same format for both modes
-      pairs.push(mode === 'en_to_ar'
-        ? { clue: fillerClue, answer: ar, isRepeatedLetter: true }
-        : { clue: fillerClue, answer: en, isRepeatedLetter: true }
-      );
     }
 
     if (!pairs.length) {
