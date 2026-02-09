@@ -1,6 +1,6 @@
 import type { Crossword, Cell, Entry, Direction } from './crossword';
 import { constructCrossword, validateBlockRuns } from './construct';
-import { findSlots, getTemplates } from './templates';
+import { findSlots, getTemplates, getNYTTemplate } from './templates';
 
 export type WordClue = { answer: string; clue: string; isRepeatedLetter?: boolean };
 
@@ -381,6 +381,24 @@ export function generateCrossword(
   const minWords = size <= 7 ? 5 : size <= 9 ? 18 : size <= 11 ? 24 : 30;
 
   let attemptsRun = 0;
+  const maxShortReuse = 2;
+  const isTemplateViable = (template: number[][]) => {
+    const slots = findSlots(template);
+    const counts = new Map<number, number>();
+    for (const s of slots) counts.set(s.length, (counts.get(s.length) ?? 0) + 1);
+    for (const [len, count] of counts.entries()) {
+      const bucket = buckets.get(len);
+      if (!bucket || bucket.length === 0) return false;
+      if (len <= 3) {
+        const needed = Math.ceil(count / maxShortReuse);
+        if (bucket.length < needed) return false;
+      } else if (bucket.length < count) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   const templateScores = templates
     .map((template) => {
       const slots = findSlots(template);
@@ -395,13 +413,19 @@ export function generateCrossword(
         }
         score += bucket.length;
       }
+      if (!isTemplateViable(template)) viable = false;
       return { template, score, viable };
     })
     .filter((t) => t.viable)
     .sort((a, b) => b.score - a.score);
 
-  for (const ranked of templateScores.length ? templateScores : templates.map((template) => ({ template, score: 0, viable: true }))) {
-    const template = ranked.template;
+  const randomTemplates = templateScores.length
+    ? templateScores.map((t) => t.template)
+    : templates.map((t) => t);
+  const nytTemplates = Array.from({ length: 6 }, () => getNYTTemplate(size)).filter(isTemplateViable);
+  const templatePool: number[][][] = [...randomTemplates, ...nytTemplates];
+
+  for (const template of templatePool) {
     if (getNow() > deadline) break;
     const slots = findSlots(template);
     const allowedLengths = new Set<number>();
