@@ -242,7 +242,7 @@ function constructCrosswordFillAllSlots(
   const placements: Placement[] = [];
   const deadline = getNow() + (options.timeBudgetMs ?? 400);
   const maxTwoLetterRatio = 0.1;
-  const maxShortReuse = 2;
+  const maxShortReuse = 4;
 
   const getPattern = (slot: Slot): (string | null)[] => {
     const pattern: (string | null)[] = [];
