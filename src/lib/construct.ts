@@ -238,9 +238,11 @@ function constructCrosswordFillAllSlots(
   }
 
   const usedWords = new Set<string>();
+  const shortUseCount = new Map<string, number>();
   const placements: Placement[] = [];
   const deadline = getNow() + (options.timeBudgetMs ?? 400);
   const maxTwoLetterRatio = 0.1;
+  const maxShortReuse = 2;
 
   const getPattern = (slot: Slot): (string | null)[] => {
     const pattern: (string | null)[] = [];
@@ -267,6 +269,10 @@ function constructCrosswordFillAllSlots(
     const candidates: WordClue[] = [];
     for (const wc of bucket) {
       if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+      if (wc.answer.length <= 3) {
+        const count = shortUseCount.get(wc.answer) ?? 0;
+        if (count >= maxShortReuse) continue;
+      }
       if (!wordFitsPattern(wc.answer, pattern)) continue;
       candidates.push(wc);
     }
@@ -319,11 +325,18 @@ function constructCrosswordFillAllSlots(
     bestCandidates.sort((a, b) => b.answer.length - a.answer.length);
     for (const wc of bestCandidates) {
       if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+      if (wc.answer.length <= 3) {
+        const count = shortUseCount.get(wc.answer) ?? 0;
+        if (count >= maxShortReuse) continue;
+      }
       if (wc.answer.length === 2 && currentTwoLetter >= maxTwoLetter) continue;
 
       if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
       const changed = applyWord(slot, wc);
       usedWords.add(wc.answer);
+      if (wc.answer.length <= 3) {
+        shortUseCount.set(wc.answer, (shortUseCount.get(wc.answer) ?? 0) + 1);
+      }
       const start = getSlotStart(slot, answerDirection);
       placements.push({
         answer: wc.answer,
@@ -339,7 +352,13 @@ function constructCrosswordFillAllSlots(
       if (backtrack(next)) return true;
 
       placements.pop();
-      if (wc.answer.length > 3) usedWords.delete(wc.answer);
+      if (wc.answer.length > 3) {
+        usedWords.delete(wc.answer);
+      } else {
+        const count = (shortUseCount.get(wc.answer) ?? 0) - 1;
+        if (count <= 0) shortUseCount.delete(wc.answer);
+        else shortUseCount.set(wc.answer, count);
+      }
       undoWord(changed);
     }
 
