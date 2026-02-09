@@ -1,10 +1,4 @@
 export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: string }[]> = {
-  "A": [
-    {
-      "answer": "أداةتنكير",
-      "clue": "أداة تنكير"
-    }
-  ],
   "AA": [
     {
       "answer": "أأ",
@@ -65,12 +59,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "أسم"
     }
   ],
-  "ACT": [
-    {
-      "answer": "تصرف",
-      "clue": "تصرف"
-    }
-  ],
   "AD": [
     {
       "answer": "إعلانية",
@@ -81,12 +69,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "آدا",
       "clue": "آدا"
-    }
-  ],
-  "ADD": [
-    {
-      "answer": "إضافة",
-      "clue": "إضافة"
     }
   ],
   "ADS": [
@@ -113,18 +95,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "(أأ)"
     }
   ],
-  "AGE": [
-    {
-      "answer": "العمر",
-      "clue": "العمر"
-    }
-  ],
-  "AGO": [
-    {
-      "answer": "منذ",
-      "clue": "منذ"
-    }
-  ],
   "AH": [
     {
       "answer": "أه",
@@ -141,18 +111,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "المعونة",
       "clue": "المعونة"
-    }
-  ],
-  "AIM": [
-    {
-      "answer": "الهدف",
-      "clue": "الهدف"
-    }
-  ],
-  "AIR": [
-    {
-      "answer": "الهواء",
-      "clue": "الهواء"
     }
   ],
   "AJ": [
@@ -191,22 +149,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "علي علي"
     }
   ],
-  "ALL": [
-    {
-      "answer": "الكل",
-      "clue": "الكل"
-    }
-  ],
   "ALT": [
     {
       "answer": "البداية",
       "clue": "البداية"
-    }
-  ],
-  "AM": [
-    {
-      "answer": "أنا",
-      "clue": "أنا."
     }
   ],
   "AMD": [
@@ -227,22 +173,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ايمي"
     }
   ],
-  "AN": [
-    {
-      "answer": "أداةتنكير",
-      "clue": "أداة تنكير"
-    }
-  ],
   "ANA": [
     {
       "answer": "أنا",
       "clue": "أنّا"
-    }
-  ],
-  "AND": [
-    {
-      "answer": "و",
-      "clue": "و"
     }
   ],
   "ANN": [
@@ -255,12 +189,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "نملة",
       "clue": "نملة"
-    }
-  ],
-  "ANY": [
-    {
-      "answer": "أيمنها",
-      "clue": "أي منها"
     }
   ],
   "AOL": [
@@ -315,46 +243,16 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "قوس"
     }
   ],
-  "ARE": [
-    {
-      "answer": "نعم",
-      "clue": "نعم."
-    }
-  ],
   "ARG": [
     {
       "answer": "آرغ",
       "clue": "آرغ"
     }
   ],
-  "ARM": [
-    {
-      "answer": "ذراع",
-      "clue": "ذراع"
-    }
-  ],
-  "ART": [
-    {
-      "answer": "الفن",
-      "clue": "الفن"
-    }
-  ],
-  "AS": [
-    {
-      "answer": "حسب",
-      "clue": "حسب"
-    }
-  ],
   "ASH": [
     {
       "answer": "اش",
       "clue": "اش"
-    }
-  ],
-  "ASK": [
-    {
-      "answer": "اسأل",
-      "clue": "اسأل"
     }
   ],
   "ASN": [
@@ -367,12 +265,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "آسب",
       "clue": "آسب"
-    }
-  ],
-  "AT": [
-    {
-      "answer": "في",
-      "clue": "في"
     }
   ],
   "ATA": [
@@ -477,42 +369,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "با با"
     }
   ],
-  "BAD": [
-    {
-      "answer": "سيئة",
-      "clue": "سيئة"
-    }
-  ],
-  "BAG": [
-    {
-      "answer": "حقيبةحقيبة",
-      "clue": "حقيبة حقيبة"
-    }
-  ],
-  "BAN": [
-    {
-      "answer": "الحظر",
-      "clue": "الحظر"
-    }
-  ],
-  "BAR": [
-    {
-      "answer": "بار",
-      "clue": "بار"
-    }
-  ],
-  "BAT": [
-    {
-      "answer": "الخفاش",
-      "clue": "الخفاش"
-    }
-  ],
-  "BAY": [
-    {
-      "answer": "خليج",
-      "clue": "خليج"
-    }
-  ],
   "BB": [
     {
       "answer": "بيبي",
@@ -549,18 +405,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "كن"
     }
   ],
-  "BED": [
-    {
-      "answer": "سرير",
-      "clue": "سرير"
-    }
-  ],
-  "BEE": [
-    {
-      "answer": "نحلة",
-      "clue": "نحلة"
-    }
-  ],
   "BEN": [
     {
       "answer": "بنبن",
@@ -585,34 +429,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "بي"
     }
   ],
-  "BID": [
-    {
-      "answer": "المزايدة",
-      "clue": "المزايدة"
-    }
-  ],
-  "BIG": [
-    {
-      "answer": "كبير",
-      "clue": "كبير"
-    }
-  ],
-  "BIN": [
-    {
-      "answer": "بنبن",
-      "clue": "بن بن"
-    }
-  ],
   "BIO": [
     {
       "answer": "الحيوي",
       "clue": "الحيوي"
-    }
-  ],
-  "BIT": [
-    {
-      "answer": "بت",
-      "clue": "بت"
     }
   ],
   "BIZ": [
@@ -669,24 +489,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "بون بون"
     }
   ],
-  "BOW": [
-    {
-      "answer": "القوس",
-      "clue": "القوس"
-    }
-  ],
-  "BOX": [
-    {
-      "answer": "مربعمربع",
-      "clue": "مربع مربع"
-    }
-  ],
-  "BOY": [
-    {
-      "answer": "صبي",
-      "clue": "صبي"
-    }
-  ],
   "BP": [
     {
       "answer": "بيبي",
@@ -735,34 +537,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "حافلة"
     }
   ],
-  "BUT": [
-    {
-      "answer": "لكن",
-      "clue": "لكن"
-    }
-  ],
-  "BUY": [
-    {
-      "answer": "شراء",
-      "clue": "شراء"
-    }
-  ],
   "BW": [
     {
       "answer": "وزنالجسم",
       "clue": "وزن الجسم"
-    }
-  ],
-  "BY": [
-    {
-      "answer": "بواسطة",
-      "clue": "بواسطة"
-    }
-  ],
-  "BYE": [
-    {
-      "answer": "وداعا",
-      "clue": "وداعاً"
     }
   ],
   "C": [
@@ -801,34 +579,16 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "كام"
     }
   ],
-  "CAN": [
-    {
-      "answer": "يمكن",
-      "clue": "يمكن"
-    }
-  ],
   "CAP": [
     {
       "answer": "كابكاب",
       "clue": "كاب كاب"
     }
   ],
-  "CAR": [
-    {
-      "answer": "سيارة",
-      "clue": "سيارة"
-    }
-  ],
   "CAS": [
     {
       "answer": "قضية",
       "clue": "قضية"
-    }
-  ],
-  "CAT": [
-    {
-      "answer": "القط",
-      "clue": "القط"
     }
   ],
   "CB": [
@@ -1107,12 +867,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "كوب"
     }
   ],
-  "CUT": [
-    {
-      "answer": "قطع",
-      "clue": "قطع"
-    }
-  ],
   "CV": [
     {
       "answer": "السيرةالذاتية",
@@ -1177,12 +931,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "دات",
       "clue": "دات"
-    }
-  ],
-  "DAY": [
-    {
-      "answer": "اليوم",
-      "clue": "اليوم"
     }
   ],
   "DB": [
@@ -1297,34 +1045,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "دي دي"
     }
   ],
-  "DID": [
-    {
-      "answer": "فعلت",
-      "clue": "فعلت"
-    }
-  ],
-  "DIE": [
-    {
-      "answer": "يموت",
-      "clue": "يموت"
-    }
-  ],
-  "DIG": [
-    {
-      "answer": "حفر",
-      "clue": "حفر"
-    }
-  ],
   "DIM": [
     {
       "answer": "خافت",
       "clue": "خافت"
-    }
-  ],
-  "DIP": [
-    {
-      "answer": "تراجع",
-      "clue": "تراجع"
     }
   ],
   "DIR": [
@@ -1387,12 +1111,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "دنس"
     }
   ],
-  "DO": [
-    {
-      "answer": "افعل",
-      "clue": "افعل"
-    }
-  ],
   "DOC": [
     {
       "answer": "دكتورة",
@@ -1411,34 +1129,16 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "مجهول الهوية"
     }
   ],
-  "DOG": [
-    {
-      "answer": "كلب",
-      "clue": "كلب"
-    }
-  ],
   "DOM": [
     {
       "answer": "الدوم",
       "clue": "الدوم"
     }
   ],
-  "DON": [
-    {
-      "answer": "دون",
-      "clue": "دون"
-    }
-  ],
   "DOS": [
     {
       "answer": "دوس",
       "clue": "دوس"
-    }
-  ],
-  "DOT": [
-    {
-      "answer": "دوت",
-      "clue": "دوت"
     }
   ],
   "DOW": [
@@ -1463,12 +1163,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "د",
       "clue": "د."
-    }
-  ],
-  "DRY": [
-    {
-      "answer": "جافجاف",
-      "clue": "جاف جاف"
     }
   ],
   "DS": [
@@ -1505,12 +1199,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "دودو",
       "clue": "دو دو"
-    }
-  ],
-  "DUE": [
-    {
-      "answer": "المستحق",
-      "clue": "المستحق"
     }
   ],
   "DUI": [
@@ -1553,18 +1241,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "إيا",
       "clue": "إيا"
-    }
-  ],
-  "EAR": [
-    {
-      "answer": "الأذنالأذن",
-      "clue": "الأذن الأذن"
-    }
-  ],
-  "EAT": [
-    {
-      "answer": "تناولالطعام",
-      "clue": "تناول الطعام"
     }
   ],
   "EAU": [
@@ -1655,12 +1331,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "إنب",
       "clue": "إنب"
-    }
-  ],
-  "END": [
-    {
-      "answer": "النهاية",
-      "clue": "النهاية"
     }
   ],
   "ENG": [
@@ -1789,12 +1459,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "تحويلة"
     }
   ],
-  "EYE": [
-    {
-      "answer": "العين",
-      "clue": "العين"
-    }
-  ],
   "EZ": [
     {
       "answer": "إيز",
@@ -1813,28 +1477,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "فا"
     }
   ],
-  "FAN": [
-    {
-      "answer": "مروحة",
-      "clue": "مروحة"
-    }
-  ],
   "FAQ": [
     {
       "answer": "أسئلةوأجوبة",
       "clue": "أسئلة وأجوبة"
-    }
-  ],
-  "FAR": [
-    {
-      "answer": "بعيدا",
-      "clue": "بعيداً"
-    }
-  ],
-  "FAT": [
-    {
-      "answer": "الدهون",
-      "clue": "الدهون"
     }
   ],
   "FAX": [
@@ -1885,24 +1531,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "فيب"
     }
   ],
-  "FED": [
-    {
-      "answer": "تغذية",
-      "clue": "تغذية"
-    }
-  ],
-  "FEE": [
-    {
-      "answer": "رسوم",
-      "clue": "رسوم"
-    }
-  ],
-  "FEW": [
-    {
-      "answer": "عددقليل",
-      "clue": "عدد قليل"
-    }
-  ],
   "FF": [
     {
       "answer": "ومايليها",
@@ -1921,30 +1549,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "فاي فاي"
     }
   ],
-  "FIG": [
-    {
-      "answer": "التين",
-      "clue": "التين"
-    }
-  ],
-  "FIN": [
-    {
-      "answer": "زعنفة",
-      "clue": "زعنفة"
-    }
-  ],
-  "FIT": [
-    {
-      "answer": "تناسب",
-      "clue": "تناسب"
-    }
-  ],
-  "FIX": [
-    {
-      "answer": "إصلاح",
-      "clue": "إصلاح"
-    }
-  ],
   "FL": [
     {
       "answer": "فلورنس",
@@ -1955,12 +1559,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "الانفلونزا",
       "clue": "الانفلونزا"
-    }
-  ],
-  "FLY": [
-    {
-      "answer": "يطير",
-      "clue": "يطير"
     }
   ],
   "FM": [
@@ -1985,18 +1583,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "فوو",
       "clue": "فوو"
-    }
-  ],
-  "FOR": [
-    {
-      "answer": "منأجل",
-      "clue": "من أجل"
-    }
-  ],
-  "FOX": [
-    {
-      "answer": "الثعلب",
-      "clue": "الثعلب"
     }
   ],
   "FP": [
@@ -2039,18 +1625,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "فوفو",
       "clue": "فو فو"
-    }
-  ],
-  "FUN": [
-    {
-      "answer": "متعة",
-      "clue": "متعة"
-    }
-  ],
-  "FUR": [
-    {
-      "answer": "فرو",
-      "clue": "فرو"
     }
   ],
   "FW": [
@@ -2179,12 +1753,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "الموقع الجغرافي"
     }
   ],
-  "GET": [
-    {
-      "answer": "الحصولعلى",
-      "clue": "الحصول على"
-    }
-  ],
   "GG": [
     {
       "answer": "زز",
@@ -2251,18 +1819,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "غنو"
     }
   ],
-  "GO": [
-    {
-      "answer": "اذهبي",
-      "clue": "اذهبي"
-    }
-  ],
-  "GOT": [
-    {
-      "answer": "حصلتعليه",
-      "clue": "حصلت عليه"
-    }
-  ],
   "GP": [
     {
       "answer": "جيبي",
@@ -2323,18 +1879,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "غوي"
     }
   ],
-  "GUN": [
-    {
-      "answer": "بندقيةبندقية",
-      "clue": "بندقية بندقية"
-    }
-  ],
-  "GUY": [
-    {
-      "answer": "الرجل",
-      "clue": "الرجل"
-    }
-  ],
   "GYM": [
     {
       "answer": "صالةالألعابالرياضية",
@@ -2351,30 +1895,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ها",
       "clue": "ها"
-    }
-  ],
-  "HAD": [
-    {
-      "answer": "كان",
-      "clue": "كان"
-    }
-  ],
-  "HAM": [
-    {
-      "answer": "لحمالخنزير",
-      "clue": "لحم الخنزير"
-    }
-  ],
-  "HAS": [
-    {
-      "answer": "لديه",
-      "clue": "لديه"
-    }
-  ],
-  "HAT": [
-    {
-      "answer": "قبعة",
-      "clue": "قبعة"
     }
   ],
   "HAY": [
@@ -2401,24 +1921,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "عالية الدقة"
     }
   ],
-  "HE": [
-    {
-      "answer": "هو",
-      "clue": "هو."
-    }
-  ],
-  "HER": [
-    {
-      "answer": "لها",
-      "clue": "لها"
-    }
-  ],
-  "HEY": [
-    {
-      "answer": "مرحبا",
-      "clue": "مرحباً"
-    }
-  ],
   "HH": [
     {
       "answer": "حح",
@@ -2429,30 +1931,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "مرحبا",
       "clue": "مرحبا"
-    }
-  ],
-  "HIM": [
-    {
-      "answer": "هو",
-      "clue": "هو"
-    }
-  ],
-  "HIP": [
-    {
-      "answer": "الورك",
-      "clue": "الورك"
-    }
-  ],
-  "HIS": [
-    {
-      "answer": "له",
-      "clue": "له"
-    }
-  ],
-  "HIT": [
-    {
-      "answer": "ضرب",
-      "clue": "ضرب"
     }
   ],
   "HIV": [
@@ -2489,18 +1967,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "هوب",
       "clue": "هوب"
-    }
-  ],
-  "HOT": [
-    {
-      "answer": "حار",
-      "clue": "حار"
-    }
-  ],
-  "HOW": [
-    {
-      "answer": "كيف",
-      "clue": "كيف"
     }
   ],
   "HP": [
@@ -2545,12 +2011,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "هو هو"
     }
   ],
-  "HUB": [
-    {
-      "answer": "المحور",
-      "clue": "المحور"
-    }
-  ],
   "HWY": [
     {
       "answer": "هوي",
@@ -2561,12 +2021,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "اتشزي",
       "clue": "اتش زي"
-    }
-  ],
-  "I": [
-    {
-      "answer": "أولا",
-      "clue": "أولاً"
     }
   ],
   "IA": [
@@ -2591,12 +2045,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "آيسي",
       "clue": "آي سي"
-    }
-  ],
-  "ICE": [
-    {
-      "answer": "الجليد",
-      "clue": "الجليد"
     }
   ],
   "ICQ": [
@@ -2635,12 +2083,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "أي."
     }
   ],
-  "IF": [
-    {
-      "answer": "لو",
-      "clue": "لو"
-    }
-  ],
   "II": [
     {
       "answer": "ثانيا",
@@ -2659,12 +2101,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ايل"
     }
   ],
-  "ILL": [
-    {
-      "answer": "مريضة",
-      "clue": "مريضة"
-    }
-  ],
   "IM": [
     {
       "answer": "إم",
@@ -2675,12 +2111,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ايمج",
       "clue": "ايمج"
-    }
-  ],
-  "IN": [
-    {
-      "answer": "في",
-      "clue": "في"
     }
   ],
   "INC": [
@@ -2705,18 +2135,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ينغ",
       "clue": "ينغ"
-    }
-  ],
-  "INK": [
-    {
-      "answer": "حبر",
-      "clue": "حبر"
-    }
-  ],
-  "INN": [
-    {
-      "answer": "النزل",
-      "clue": "النزل"
     }
   ],
   "INS": [
@@ -2779,12 +2197,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "آي آر إس"
     }
   ],
-  "IS": [
-    {
-      "answer": "هوكذلك",
-      "clue": "هو كذلك"
-    }
-  ],
   "ISA": [
     {
       "answer": "إيزا",
@@ -2807,18 +2219,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ايست",
       "clue": "ايست"
-    }
-  ],
-  "IT": [
-    {
-      "answer": "بل",
-      "clue": "بل..."
-    }
-  ],
-  "ITS": [
-    {
-      "answer": "هاته",
-      "clue": "هاته"
     }
   ],
   "IV": [
@@ -2845,22 +2245,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "جا جا"
     }
   ],
-  "JAM": [
-    {
-      "answer": "مربى",
-      "clue": "مربى"
-    }
-  ],
   "JAN": [
     {
       "answer": "يان",
       "clue": "يان"
-    }
-  ],
-  "JAR": [
-    {
-      "answer": "جرة",
-      "clue": "جرة"
     }
   ],
   "JAY": [
@@ -2887,12 +2275,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "جيه"
     }
   ],
-  "JET": [
-    {
-      "answer": "الطائرةالنفاثة",
-      "clue": "الطائرة النفاثة"
-    }
-  ],
   "JIM": [
     {
       "answer": "جيمجيم",
@@ -2911,12 +2293,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "جي ام"
     }
   ],
-  "JOB": [
-    {
-      "answer": "الوظيفة",
-      "clue": "الوظيفة"
-    }
-  ],
   "JOE": [
     {
       "answer": "جوو",
@@ -2927,12 +2303,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "جونجون",
       "clue": "جون جون"
-    }
-  ],
-  "JOY": [
-    {
-      "answer": "الفرح",
-      "clue": "الفرح"
     }
   ],
   "JP": [
@@ -3023,34 +2393,16 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "كين كين"
     }
   ],
-  "KEY": [
-    {
-      "answer": "مفتاح",
-      "clue": "مفتاح"
-    }
-  ],
   "KG": [
     {
       "answer": "كلغ",
       "clue": "كلغ"
     }
   ],
-  "KID": [
-    {
-      "answer": "طفل",
-      "clue": "طفل"
-    }
-  ],
   "KIM": [
     {
       "answer": "كيمكيم",
       "clue": "كيم كيم"
-    }
-  ],
-  "KIT": [
-    {
-      "answer": "طقمعدة",
-      "clue": "طقم عدة"
     }
   ],
   "KM": [
@@ -3107,12 +2459,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ايلان"
     }
   ],
-  "LAP": [
-    {
-      "answer": "اللفة",
-      "clue": "اللفة"
-    }
-  ],
   "LAS": [
     {
       "answer": "لاسفيغاس",
@@ -3123,18 +2469,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "لات",
       "clue": "لات"
-    }
-  ],
-  "LAW": [
-    {
-      "answer": "القانون",
-      "clue": "القانون"
-    }
-  ],
-  "LAY": [
-    {
-      "answer": "وضع",
-      "clue": "وضع"
     }
   ],
   "LB": [
@@ -3173,22 +2507,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ليه"
     }
   ],
-  "LED": [
-    {
-      "answer": "قاد",
-      "clue": "قاد"
-    }
-  ],
   "LEE": [
     {
       "answer": "ليلي",
       "clue": "لي لي"
-    }
-  ],
-  "LEG": [
-    {
-      "answer": "الساق",
-      "clue": "الساق"
     }
   ],
   "LEN": [
@@ -3207,12 +2529,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ليه",
       "clue": "ليه"
-    }
-  ],
-  "LET": [
-    {
-      "answer": "دعونا",
-      "clue": "دعونا"
     }
   ],
   "LEU": [
@@ -3245,28 +2561,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ليب"
     }
   ],
-  "LID": [
-    {
-      "answer": "غطاء",
-      "clue": "غطاء"
-    }
-  ],
-  "LIE": [
-    {
-      "answer": "كذبة",
-      "clue": "كذبة"
-    }
-  ],
   "LIL": [
     {
       "answer": "ليل",
       "clue": "ليل"
-    }
-  ],
-  "LIP": [
-    {
-      "answer": "شفاه",
-      "clue": "شفاه"
     }
   ],
   "LIT": [
@@ -3323,12 +2621,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "الموقع"
     }
   ],
-  "LOG": [
-    {
-      "answer": "سجل",
-      "clue": "سجل"
-    }
-  ],
   "LOL": [
     {
       "answer": "لول",
@@ -3341,22 +2633,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "لوس لوس"
     }
   ],
-  "LOT": [
-    {
-      "answer": "الكثير",
-      "clue": "الكثير"
-    }
-  ],
   "LOU": [
     {
       "answer": "لولو",
       "clue": "لو لو"
-    }
-  ],
-  "LOW": [
-    {
-      "answer": "منخفض",
-      "clue": "منخفض"
     }
   ],
   "LP": [
@@ -3431,18 +2711,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ماي ماي"
     }
   ],
-  "MAN": [
-    {
-      "answer": "رجل",
-      "clue": "رجل"
-    }
-  ],
-  "MAP": [
-    {
-      "answer": "خريطة",
-      "clue": "خريطة"
-    }
-  ],
   "MAR": [
     {
       "answer": "مار",
@@ -3455,22 +2723,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ماس"
     }
   ],
-  "MAT": [
-    {
-      "answer": "حصيرة",
-      "clue": "حصيرة"
-    }
-  ],
   "MAX": [
     {
       "answer": "ماكس",
       "clue": "ماكس"
-    }
-  ],
-  "MAY": [
-    {
-      "answer": "مايو",
-      "clue": "مايو"
     }
   ],
   "MB": [
@@ -3497,12 +2753,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "د.م"
     }
   ],
-  "ME": [
-    {
-      "answer": "أنا",
-      "clue": "أنا."
-    }
-  ],
   "MED": [
     {
       "answer": "ميدميد",
@@ -3519,18 +2769,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ميمميم",
       "clue": "ميم ميم"
-    }
-  ],
-  "MEN": [
-    {
-      "answer": "الرجال",
-      "clue": "الرجال"
-    }
-  ],
-  "MET": [
-    {
-      "answer": "التقى",
-      "clue": "التقى"
     }
   ],
   "MF": [
@@ -3597,12 +2835,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ميت",
       "clue": "ميت"
-    }
-  ],
-  "MIX": [
-    {
-      "answer": "مزيج",
-      "clue": "مزيج"
     }
   ],
   "MJ": [
@@ -3731,18 +2963,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "مو"
     }
   ],
-  "MUD": [
-    {
-      "answer": "طين",
-      "clue": "طين"
-    }
-  ],
-  "MUG": [
-    {
-      "answer": "القدح",
-      "clue": "القدح"
-    }
-  ],
   "MV": [
     {
       "answer": "مف",
@@ -3759,12 +2979,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "مكس",
       "clue": "مكس"
-    }
-  ],
-  "MY": [
-    {
-      "answer": "بلدي",
-      "clue": "بلدي"
     }
   ],
   "N": [
@@ -3851,12 +3065,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "الصافي"
     }
   ],
-  "NEW": [
-    {
-      "answer": "جديد",
-      "clue": "جديد"
-    }
-  ],
   "NFL": [
     {
       "answer": "نفل",
@@ -3923,12 +3131,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ن ن"
     }
   ],
-  "NO": [
-    {
-      "answer": "لا",
-      "clue": "لا"
-    }
-  ],
   "NON": [
     {
       "answer": "غير",
@@ -3941,22 +3143,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ولا"
     }
   ],
-  "NOT": [
-    {
-      "answer": "لا",
-      "clue": "لا."
-    }
-  ],
   "NOV": [
     {
       "answer": "نوف",
       "clue": "نوف"
-    }
-  ],
-  "NOW": [
-    {
-      "answer": "الآن",
-      "clue": "الآن"
     }
   ],
   "NP": [
@@ -3995,12 +3185,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "نو نو"
     }
   ],
-  "NUT": [
-    {
-      "answer": "الجوز",
-      "clue": "الجوز"
-    }
-  ],
   "NV": [
     {
       "answer": "نف",
@@ -4037,12 +3221,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "س س"
     }
   ],
-  "OAK": [
-    {
-      "answer": "البلوط",
-      "clue": "البلوط"
-    }
-  ],
   "OB": [
     {
       "answer": "أوب",
@@ -4067,12 +3245,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "أكتوبر تشرين الأول"
     }
   ],
-  "ODD": [
-    {
-      "answer": "غريب",
-      "clue": "غريب"
-    }
-  ],
   "OE": [
     {
       "answer": "أوه",
@@ -4083,18 +3255,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "تصنيعالمعداتالأصلية",
       "clue": "تصنيع المعدات الأصلية"
-    }
-  ],
-  "OF": [
-    {
-      "answer": "من",
-      "clue": "من"
-    }
-  ],
-  "OFF": [
-    {
-      "answer": "قبالة",
-      "clue": "قبالة"
     }
   ],
   "OG": [
@@ -4109,46 +3269,16 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "أوه"
     }
   ],
-  "OIL": [
-    {
-      "answer": "النفط",
-      "clue": "النفط"
-    }
-  ],
-  "OK": [
-    {
-      "answer": "موافق",
-      "clue": "موافق"
-    }
-  ],
   "OL": [
     {
       "answer": "أول",
       "clue": "(أول)"
     }
   ],
-  "OLD": [
-    {
-      "answer": "قديم",
-      "clue": "قديم"
-    }
-  ],
   "OM": [
     {
       "answer": "أوم",
       "clue": "أوم"
-    }
-  ],
-  "ON": [
-    {
-      "answer": "على",
-      "clue": "على"
-    }
-  ],
-  "ONE": [
-    {
-      "answer": "واحد",
-      "clue": "واحد"
     }
   ],
   "ONS": [
@@ -4179,12 +3309,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "اختيار",
       "clue": "اختيار"
-    }
-  ],
-  "OR": [
-    {
-      "answer": "أو",
-      "clue": "أو"
     }
   ],
   "ORG": [
@@ -4223,12 +3347,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "خارجا"
     }
   ],
-  "OWN": [
-    {
-      "answer": "الخاصةبك",
-      "clue": "الخاصة بك"
-    }
-  ],
   "OZ": [
     {
       "answer": "أوقية",
@@ -4253,28 +3371,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "باك باك"
     }
   ],
-  "PAD": [
-    {
-      "answer": "وسادةوسادة",
-      "clue": "وسادة وسادة"
-    }
-  ],
-  "PAL": [
-    {
-      "answer": "بال",
-      "clue": "بال"
-    }
-  ],
   "PAM": [
     {
       "answer": "بامبام",
       "clue": "بام بام"
-    }
-  ],
-  "PAN": [
-    {
-      "answer": "عموم",
-      "clue": "عموم"
     }
   ],
   "PAR": [
@@ -4287,18 +3387,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "باسباس",
       "clue": "باس باس"
-    }
-  ],
-  "PAT": [
-    {
-      "answer": "بات",
-      "clue": "بات"
-    }
-  ],
-  "PAY": [
-    {
-      "answer": "الدفع",
-      "clue": "الدفع"
     }
   ],
   "PB": [
@@ -4367,22 +3455,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "تبول"
     }
   ],
-  "PEN": [
-    {
-      "answer": "قلم",
-      "clue": "قلم"
-    }
-  ],
   "PER": [
     {
       "answer": "لكلفرد",
       "clue": "لكل فرد"
-    }
-  ],
-  "PET": [
-    {
-      "answer": "الحيواناتالأليفة",
-      "clue": "الحيوانات الأليفة"
     }
   ],
   "PF": [
@@ -4437,30 +3513,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "الصورة",
       "clue": "الصورة"
-    }
-  ],
-  "PIE": [
-    {
-      "answer": "فطيرة",
-      "clue": "فطيرة"
-    }
-  ],
-  "PIG": [
-    {
-      "answer": "خنزير",
-      "clue": "خنزير"
-    }
-  ],
-  "PIN": [
-    {
-      "answer": "دبوس",
-      "clue": "دبوس"
-    }
-  ],
-  "PIT": [
-    {
-      "answer": "حفرة",
-      "clue": "حفرة"
     }
   ],
   "PIX": [
@@ -4523,12 +3575,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "جراب"
     }
   ],
-  "POP": [
-    {
-      "answer": "البوب",
-      "clue": "البوب"
-    }
-  ],
   "POR": [
     {
       "answer": "صبور",
@@ -4539,12 +3585,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "نقاطالبيع",
       "clue": "نقاط البيع"
-    }
-  ],
-  "POT": [
-    {
-      "answer": "وعاء",
-      "clue": "وعاء"
     }
   ],
   "PP": [
@@ -4631,12 +3671,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "حانة"
     }
   ],
-  "PUT": [
-    {
-      "answer": "ضع",
-      "clue": "ضع"
-    }
-  ],
   "PVC": [
     {
       "answer": "بوليكلوريدالفينيل",
@@ -4703,36 +3737,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "رام"
     }
   ],
-  "RAN": [
-    {
-      "answer": "ركض",
-      "clue": "ركض"
-    }
-  ],
-  "RAP": [
-    {
-      "answer": "الراب",
-      "clue": "الراب"
-    }
-  ],
-  "RAT": [
-    {
-      "answer": "فأر",
-      "clue": "فأر"
-    }
-  ],
-  "RAW": [
-    {
-      "answer": "الخام",
-      "clue": "الخام"
-    }
-  ],
-  "RAY": [
-    {
-      "answer": "رايراي",
-      "clue": "راي راي"
-    }
-  ],
   "RB": [
     {
       "answer": "آربي",
@@ -4767,12 +3771,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ريك",
       "clue": "ريك"
-    }
-  ],
-  "RED": [
-    {
-      "answer": "أحمر",
-      "clue": "أحمر"
     }
   ],
   "REF": [
@@ -4835,12 +3833,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ري ري"
     }
   ],
-  "RID": [
-    {
-      "answer": "تخلص",
-      "clue": "تخلص"
-    }
-  ],
   "RIM": [
     {
       "answer": "ريم",
@@ -4851,12 +3843,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ريو",
       "clue": "ريو"
-    }
-  ],
-  "RIP": [
-    {
-      "answer": "مزق",
-      "clue": "مزق"
     }
   ],
   "RJ": [
@@ -4991,12 +3977,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "سجادة"
     }
   ],
-  "RUN": [
-    {
-      "answer": "تشغيل",
-      "clue": "تشغيل"
-    }
-  ],
   "RV": [
     {
       "answer": "الRV",
@@ -5025,12 +4005,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "ساسا",
       "clue": "سا سا"
-    }
-  ],
-  "SAD": [
-    {
-      "answer": "حزينة",
-      "clue": "حزينة"
     }
   ],
   "SAM": [
@@ -5075,12 +4049,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "المنشار"
     }
   ],
-  "SAY": [
-    {
-      "answer": "قولي",
-      "clue": "قولي"
-    }
-  ],
   "SB": [
     {
       "answer": "سب",
@@ -5111,22 +4079,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "سي"
     }
   ],
-  "SEA": [
-    {
-      "answer": "البحر",
-      "clue": "البحر"
-    }
-  ],
   "SEC": [
     {
       "answer": "ثانية",
       "clue": "ثانية"
-    }
-  ],
-  "SEE": [
-    {
-      "answer": "انظر",
-      "clue": "انظر"
     }
   ],
   "SEN": [
@@ -5159,12 +4115,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "صير"
     }
   ],
-  "SET": [
-    {
-      "answer": "مجموعة",
-      "clue": "مجموعة"
-    }
-  ],
   "SF": [
     {
       "answer": "اساف",
@@ -5181,12 +4131,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "شش",
       "clue": "شش"
-    }
-  ],
-  "SHE": [
-    {
-      "answer": "هي",
-      "clue": "هي."
     }
   ],
   "SI": [
@@ -5219,30 +4163,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "سيم"
     }
   ],
-  "SIN": [
-    {
-      "answer": "خطيئة",
-      "clue": "خطيئة"
-    }
-  ],
-  "SIP": [
-    {
-      "answer": "رشفة",
-      "clue": "رشفة"
-    }
-  ],
-  "SIR": [
-    {
-      "answer": "سيدي",
-      "clue": "سيدي"
-    }
-  ],
-  "SIT": [
-    {
-      "answer": "الجلوس",
-      "clue": "الجلوس"
-    }
-  ],
   "SIX": [
     {
       "answer": "ستةستة",
@@ -5255,22 +4175,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "سكي"
     }
   ],
-  "SKI": [
-    {
-      "answer": "التزلج",
-      "clue": "التزلج"
-    }
-  ],
   "SKU": [
     {
       "answer": "سكو",
       "clue": "سكو"
-    }
-  ],
-  "SKY": [
-    {
-      "answer": "السماء",
-      "clue": "السماء"
     }
   ],
   "SL": [
@@ -5297,12 +4205,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "اس ان"
     }
   ],
-  "SO": [
-    {
-      "answer": "أجل",
-      "clue": "أجل."
-    }
-  ],
   "SOA": [
     {
       "answer": "سوا",
@@ -5321,12 +4223,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "الشمس"
     }
   ],
-  "SON": [
-    {
-      "answer": "إبني",
-      "clue": "إبني"
-    }
-  ],
   "SOX": [
     {
       "answer": "سوكس",
@@ -5343,12 +4239,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "سبا",
       "clue": "سبا"
-    }
-  ],
-  "SPY": [
-    {
-      "answer": "جاسوس",
-      "clue": "جاسوس"
     }
   ],
   "SQ": [
@@ -5441,12 +4331,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "المجموع"
     }
   ],
-  "SUN": [
-    {
-      "answer": "الشمس",
-      "clue": "الشمس"
-    }
-  ],
   "SUR": [
     {
       "answer": "سورا",
@@ -5481,42 +4365,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "تاتا",
       "clue": "تاتا"
-    }
-  ],
-  "TAB": [
-    {
-      "answer": "لسان",
-      "clue": "لسان"
-    }
-  ],
-  "TAG": [
-    {
-      "answer": "وسم",
-      "clue": "وسم"
-    }
-  ],
-  "TAN": [
-    {
-      "answer": "تانتان",
-      "clue": "تان تان"
-    }
-  ],
-  "TAP": [
-    {
-      "answer": "اضغط",
-      "clue": "اضغط"
-    }
-  ],
-  "TAR": [
-    {
-      "answer": "القطران",
-      "clue": "القطران"
-    }
-  ],
-  "TAX": [
-    {
-      "answer": "الضريبة",
-      "clue": "الضريبة"
     }
   ],
   "TB": [
@@ -5555,12 +4403,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "تي تي"
     }
   ],
-  "TEA": [
-    {
-      "answer": "شاي",
-      "clue": "شاي"
-    }
-  ],
   "TED": [
     {
       "answer": "تيدي",
@@ -5577,12 +4419,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "الهاتف",
       "clue": "الهاتف"
-    }
-  ],
-  "TEN": [
-    {
-      "answer": "عشرة",
-      "clue": "عشرة."
     }
   ],
   "TEX": [
@@ -5639,12 +4475,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "تي تي"
     }
   ],
-  "TIE": [
-    {
-      "answer": "التعادل",
-      "clue": "التعادل"
-    }
-  ],
   "TIL": [
     {
       "answer": "سمسم",
@@ -5655,18 +4485,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "تيمتيم",
       "clue": "تيم تيم"
-    }
-  ],
-  "TIN": [
-    {
-      "answer": "القصدير",
-      "clue": "القصدير"
-    }
-  ],
-  "TIP": [
-    {
-      "answer": "نصيحة",
-      "clue": "نصيحة"
     }
   ],
   "TM": [
@@ -5687,46 +4505,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "تينيسي"
     }
   ],
-  "TO": [
-    {
-      "answer": "منأجل",
-      "clue": "من أجل"
-    }
-  ],
-  "TOE": [
-    {
-      "answer": "اصبعالقدم",
-      "clue": "اصبع القدم"
-    }
-  ],
   "TOM": [
     {
       "answer": "تومتوم",
       "clue": "توم توم"
-    }
-  ],
-  "TON": [
-    {
-      "answer": "طنطن",
-      "clue": "طن طن"
-    }
-  ],
-  "TOO": [
-    {
-      "answer": "أيضا",
-      "clue": "أيضا"
-    }
-  ],
-  "TOP": [
-    {
-      "answer": "أعلى",
-      "clue": "أعلى"
-    }
-  ],
-  "TOY": [
-    {
-      "answer": "لعبة",
-      "clue": "لعبة"
     }
   ],
   "TP": [
@@ -5747,12 +4529,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "ثلاثي"
     }
   ],
-  "TRY": [
-    {
-      "answer": "حاول",
-      "clue": "حاول"
-    }
-  ],
   "TS": [
     {
       "answer": "تيإس",
@@ -5771,12 +4547,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "تو"
     }
   ],
-  "TUB": [
-    {
-      "answer": "حوضاستحمام",
-      "clue": "حوض استحمام"
-    }
-  ],
   "TUE": [
     {
       "answer": "ثلاثاء",
@@ -5793,12 +4563,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "تلفزيونات",
       "clue": "تلفزيونات"
-    }
-  ],
-  "TWO": [
-    {
-      "answer": "اثنان",
-      "clue": "اثنان"
     }
   ],
   "TX": [
@@ -5885,12 +4649,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "يوني"
     }
   ],
-  "UP": [
-    {
-      "answer": "فوق",
-      "clue": "فوق"
-    }
-  ],
   "UPC": [
     {
       "answer": "أوبك",
@@ -5927,12 +4685,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "أورو"
     }
   ],
-  "US": [
-    {
-      "answer": "نحن",
-      "clue": "نحن"
-    }
-  ],
   "USA": [
     {
       "answer": "الولاياتالمتحدةالأمريكية",
@@ -5955,12 +4707,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "دولارأمريكيد",
       "clue": "دولار أمريكي(د)"
-    }
-  ],
-  "USE": [
-    {
-      "answer": "الاستخدام",
-      "clue": "الاستخدام"
     }
   ],
   "USR": [
@@ -6009,12 +4755,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "فال",
       "clue": "فال"
-    }
-  ],
-  "VAN": [
-    {
-      "answer": "فان",
-      "clue": "فان"
     }
   ],
   "VAR": [
@@ -6167,34 +4907,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "وان"
     }
   ],
-  "WAR": [
-    {
-      "answer": "الحرب",
-      "clue": "الحرب"
-    }
-  ],
-  "WAS": [
-    {
-      "answer": "كان",
-      "clue": "كان"
-    }
-  ],
   "WAV": [
     {
       "answer": "وا",
       "clue": "وا"
-    }
-  ],
-  "WAX": [
-    {
-      "answer": "الشمع",
-      "clue": "الشمع"
-    }
-  ],
-  "WAY": [
-    {
-      "answer": "الطريقة",
-      "clue": "الطريقة"
     }
   ],
   "WB": [
@@ -6209,58 +4925,10 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "وات"
     }
   ],
-  "WE": [
-    {
-      "answer": "نحن",
-      "clue": "نحن."
-    }
-  ],
-  "WEB": [
-    {
-      "answer": "شبكةالإنترنت",
-      "clue": "شبكة الإنترنت"
-    }
-  ],
-  "WED": [
-    {
-      "answer": "ويد",
-      "clue": "ويد"
-    }
-  ],
-  "WET": [
-    {
-      "answer": "رطب",
-      "clue": "رطب"
-    }
-  ],
-  "WHO": [
-    {
-      "answer": "من",
-      "clue": "مَن"
-    }
-  ],
-  "WHY": [
-    {
-      "answer": "لماذا",
-      "clue": "لماذا؟"
-    }
-  ],
   "WI": [
     {
       "answer": "وايفاي",
       "clue": "واي فاي"
-    }
-  ],
-  "WIN": [
-    {
-      "answer": "الفوز",
-      "clue": "الفوز"
-    }
-  ],
-  "WIT": [
-    {
-      "answer": "خفةدم",
-      "clue": "خفة دم"
     }
   ],
   "WM": [
@@ -6279,18 +4947,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "المملكةالمتحدة",
       "clue": "المملكة المتحدة"
-    }
-  ],
-  "WON": [
-    {
-      "answer": "فاز",
-      "clue": "فاز"
-    }
-  ],
-  "WOW": [
-    {
-      "answer": "نجاحباهر",
-      "clue": "نجاح باهر"
     }
   ],
   "WP": [
@@ -6407,30 +5063,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
       "clue": "أنتم!"
     }
   ],
-  "YEA": [
-    {
-      "answer": "نعمنعم",
-      "clue": "نعم نعم"
-    }
-  ],
-  "YEN": [
-    {
-      "answer": "الين",
-      "clue": "الين"
-    }
-  ],
-  "YES": [
-    {
-      "answer": "نعمفعلا",
-      "clue": "نعم فعلا"
-    }
-  ],
-  "YET": [
-    {
-      "answer": "حتىالآن",
-      "clue": "حتى الآن"
-    }
-  ],
   "YN": [
     {
       "answer": "أون",
@@ -6441,12 +5073,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "يو",
       "clue": "يو."
-    }
-  ],
-  "YOU": [
-    {
-      "answer": "أنت",
-      "clue": "أنت."
     }
   ],
   "YR": [
@@ -6477,24 +5103,6 @@ export const DICT_COMMON_3000_ABBREV: Record<string, { answer: string; clue: str
     {
       "answer": "زاه",
       "clue": "زاه"
-    }
-  ],
-  "ZEN": [
-    {
-      "answer": "زن",
-      "clue": "زِن"
-    }
-  ],
-  "ZIP": [
-    {
-      "answer": "الرمزالبريدي",
-      "clue": "الرمز البريدي"
-    }
-  ],
-  "ZOO": [
-    {
-      "answer": "حديقةالحيوان",
-      "clue": "حديقة الحيوان"
     }
   ],
   "ZU": [
