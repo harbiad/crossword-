@@ -394,7 +394,7 @@ export default function App() {
               gridTemplateRows: `repeat(${cw.height}, var(--cell-size))`,
               // Smaller cells for larger grids to keep everything on screen.
               // Tune these if you want tighter or looser sizing.
-              ['--cell-size' as any]: cw.width >= 13 ? '40px' : cw.width >= 11 ? '43px' : cw.width >= 9 ? '45px' : '47px',
+              ['--cell-size' as any]: cw.width >= 13 ? '46px' : cw.width >= 11 ? '49px' : cw.width >= 9 ? '52px' : '54px',
               ['--grid-size' as any]: cw.width,
             }}
             dir={cw.answerDirection}
