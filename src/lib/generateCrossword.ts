@@ -528,13 +528,13 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 240 : size <= 9 ? 320 : 420,
+            timeBudgetMs: size <= 7 ? 700 : size <= 9 ? 1000 : 600,
             maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 260 : 260,
             targetWords,
             minWords,
-            useWordCentric: size >= 9,
+            useWordCentric: size >= 11,
             useBacktracking: false,
-            useFillAllSlots: false,
+            useFillAllSlots: size <= 9,
             debug: debugEnabled
               ? {
                   enabled: true,
