@@ -508,6 +508,20 @@ async function translateBatch(words: string[], token: string): Promise<string[]>
 // (HF fallback removed for speed + reliability on Vercel)
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  const buildEmergencyEntries = (mode: Mode, gridSize: number) => {
+    const entries: Array<{ clue: string; answer: string }> = [];
+    for (const [en, arRaw] of Object.entries(DICT_A1_A2)) {
+      const enNorm = normalizeEnglishWord(en);
+      const arNorm = normalizeArabicWord(arRaw);
+      if (!enNorm || !arNorm) continue;
+      if (enNorm.length < 2 || enNorm.length > gridSize) continue;
+      if (arNorm.length < 2 || arNorm.length > gridSize) continue;
+      entries.push(mode === 'en_to_ar' ? { clue: enNorm, answer: arNorm } : { clue: arRaw, answer: enNorm });
+      if (entries.length >= 300) break;
+    }
+    return entries;
+  };
+
   try {
     if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed' });
 
@@ -530,10 +544,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
     const seen = new Set<string>();
 
-    const targetPairs = 2000;
+    const targetPairs = 800;
 
     // Return ALL valid word pairs (no limit) to maximize crossword fill
-    for (const w of shuffle(baseList)) {
+    const shuffledBase = shuffle(baseList);
+    for (const w of shuffledBase) {
       const en = normalizeEnglishWord(w);
       if (en.length < 2 || en.length > gridSize) continue;
       if (seen.has(en)) continue;
@@ -553,52 +568,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (pairs.length >= targetPairs) break;
     }
 
-    // HF translation fallback to reach target pairs
-    if (pairs.length < targetPairs && process.env.HF_TOKEN) {
-      const token = process.env.HF_TOKEN;
-      const candidates = shuffle(baseList);
-      const missing: string[] = [];
-      for (const w of candidates) {
-        const en = normalizeEnglishWord(w);
-        if (en.length < 2 || en.length > gridSize) continue;
-        if (seen.has(en)) continue;
-        missing.push(en);
-        if (missing.length >= 200) break; // avoid long requests
-      }
-
-      const batchSize = 10;
-      for (let i = 0; i < missing.length && pairs.length < targetPairs; i += batchSize) {
-        const batch = missing.slice(i, i + batchSize);
-        let translations: string[] = [];
-        try {
-          translations = await translateBatch(batch, token);
-        } catch {
-          break;
-        }
-        for (let j = 0; j < batch.length; j++) {
-          const en = batch[j];
-          const arRaw = translations[j] || '';
-          const ar = normalizeArabicWord(arRaw);
-          if (!ar || ar.length < 2 || ar.length > gridSize) continue;
-          if (seen.has(en)) continue;
-          seen.add(en);
-          const clueAr = arRaw.trim() || ar;
-          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: clueAr, answer: en });
-          if (pairs.length >= targetPairs) break;
-        }
-      }
-    }
+    // Intentionally disabled remote translation fallback in production route
+    // to keep Vercel execution deterministic and avoid timeout/failure spikes.
 
     if (!pairs.length) {
-      return json(res, 500, {
-        error:
-          'No entries generated. This level needs the local dictionary expanded (HF fallback is disabled).',
-      });
+      const emergency = buildEmergencyEntries(mode, gridSize);
+      if (emergency.length) return json(res, 200, { entries: emergency });
+      return json(res, 500, { error: 'No entries generated from local dictionaries.' });
     }
 
     return json(res, 200, { entries: pairs });
   } catch (e: any) {
-    return json(res, 500, { error: e?.message || String(e) });
+    try {
+      const { size, mode } = (req.body || {}) as { size?: number; mode?: Mode };
+      const gridSize = [7, 9, 11, 13].includes(Number(size)) ? Number(size) : 7;
+      const safeMode: Mode = mode === 'ar_to_en' ? 'ar_to_en' : 'en_to_ar';
+      const emergency = buildEmergencyEntries(safeMode, gridSize);
+      if (emergency.length) return json(res, 200, { entries: emergency, fallback: true });
+    } catch {
+      // ignore and return 500 below
+    }
+    return json(res, 500, { error: e?.message || String(e), stage: 'handler' });
   }
 }
 function getMeanings(dict: DictMap, en: string): DictMeaning[] {
