@@ -147,6 +147,76 @@ function validatePuzzle(
     }
   }
 
+  // Ensure every visible word run has a clue entry, and every entry maps to a visible run.
+  const buildEntryRunKey = (entry: Entry) => {
+    const { dr, dc } = getEntryStep(entry.direction, answerDirection);
+    const coords: string[] = [];
+    for (let i = 0; i < entry.answer.length; i++) {
+      const r = entry.row + dr * i;
+      const c = entry.col + dc * i;
+      coords.push(`${r},${c}`);
+    }
+    coords.sort();
+    return `${entry.direction}:${coords.join('|')}`;
+  };
+
+  const entryRunKeys = new Set(entries.map(buildEntryRunKey));
+  const seenRunKeys = new Set<string>();
+
+  // Across runs (visual left->right scan; key is coordinate-set so RTL/LTR is handled)
+  for (let r = 0; r < size; r++) {
+    let c = 0;
+    while (c < size) {
+      if (grid[r][c].type !== 'letter') {
+        c++;
+        continue;
+      }
+      const start = c;
+      while (c < size && grid[r][c].type === 'letter') c++;
+      const len = c - start;
+      if (len >= 2) {
+        const coords: string[] = [];
+        for (let x = start; x < c; x++) coords.push(`${r},${x}`);
+        coords.sort();
+        const key = `across:${coords.join('|')}`;
+        seenRunKeys.add(key);
+        if (!entryRunKeys.has(key)) {
+          errors.push(`Across run without clue at row ${r}, cols ${start}-${c - 1}.`);
+        }
+      }
+    }
+  }
+
+  // Down runs
+  for (let c = 0; c < size; c++) {
+    let r = 0;
+    while (r < size) {
+      if (grid[r][c].type !== 'letter') {
+        r++;
+        continue;
+      }
+      const start = r;
+      while (r < size && grid[r][c].type === 'letter') r++;
+      const len = r - start;
+      if (len >= 2) {
+        const coords: string[] = [];
+        for (let x = start; x < r; x++) coords.push(`${x},${c}`);
+        coords.sort();
+        const key = `down:${coords.join('|')}`;
+        seenRunKeys.add(key);
+        if (!entryRunKeys.has(key)) {
+          errors.push(`Down run without clue at col ${c}, rows ${start}-${r - 1}.`);
+        }
+      }
+    }
+  }
+
+  for (const key of entryRunKeys) {
+    if (!seenRunKeys.has(key)) {
+      errors.push(`Entry does not map to a visible run: ${key}.`);
+    }
+  }
+
   if (letterPositions.size > 0) {
     const [start] = letterPositions;
     const [startR, startC] = start.split(',').map(Number);
