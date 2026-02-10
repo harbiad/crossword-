@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { DICT_COMMON_30000 } from './DICT_COMMON_30000.js';
+import { DICT_COMMON_30000 } from './DICT_COMMON_30000';
 
 export const config = {
   runtime: 'nodejs',
