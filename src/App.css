@@ -143,8 +143,8 @@
   justify-content: center;
   border-right: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
-  min-width: 36px;
-  min-height: 36px;
+  min-width: 31px;
+  min-height: 31px;
 }
 
 .cell:nth-child(-n+13) { /* First row - adjust based on grid size */
@@ -156,7 +156,7 @@
   height: 100%;
   border: none;
   text-align: center;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: 500;
   background: transparent;
   color: #1a1a2e;
@@ -405,8 +405,8 @@
   }
 
   .cell {
-    min-width: 34px;
-    min-height: 34px;
+    min-width: 29px;
+    min-height: 29px;
   }
 
   .clueColumns {
@@ -438,11 +438,11 @@
   }
 
   .cell {
-    min-width: 30px;
-    min-height: 30px;
+    min-width: 26px;
+    min-height: 26px;
   }
 
   .cell input {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
   }
 }
