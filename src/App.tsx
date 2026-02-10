@@ -395,6 +395,7 @@ export default function App() {
               // Smaller cells for larger grids to keep everything on screen.
               // Tune these if you want tighter or looser sizing.
               ['--cell-size' as any]: cw.width >= 13 ? '26px' : cw.width >= 11 ? '28px' : cw.width >= 9 ? '30px' : '32px',
+              ['--grid-size' as any]: cw.width,
             }}
             dir={cw.answerDirection}
           >
