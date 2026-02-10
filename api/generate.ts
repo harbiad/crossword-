@@ -1,7 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { DICT_COMMON_3000 } from './dict_common_3000';
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
 
 export const config = {
   runtime: 'nodejs',
@@ -342,31 +339,18 @@ const DICT_C1_C2: DictMap = {};
 
 async function getPrimaryDict(): Promise<DictMap> {
   if (cachedPrimaryDict) return cachedPrimaryDict;
-  const parsed: DictMap = {};
   try {
-    // Prefer flat txt source to avoid loading huge TS dictionary objects in serverless cold starts.
-    const txtPath = path.join(process.cwd(), 'api', 'en-ar.txt');
-    const raw = await readFile(txtPath, 'utf8');
-    const lines = raw.split(/\r?\n/);
-    for (const line of lines) {
-      if (!line) continue;
-      const [enRaw, arRaw] = line.split('\t');
-      const en = normalizeEnglishWord(enRaw ?? '');
-      const ar = normalizeArabicWord(arRaw ?? '');
-      if (!en || !ar || ar.length < 2) continue;
-      const existing = parsed[en];
-      const item: DictMeaning = { answer: ar, clue: arRaw ?? ar };
-      if (!existing) {
-        parsed[en] = [item];
-      } else if (Array.isArray(existing)) {
-        const arr = existing as DictMeaning[];
-        if (!arr.some((x) => x.answer === ar)) arr.push(item);
-      }
+    // Use only DICT_COMMON_30000 as requested, and lazy-load it to reduce cold-start pressure.
+    const mod = await import('./DICT_COMMON_30000');
+    const dict = (mod as { DICT_COMMON_30000?: DictMap }).DICT_COMMON_30000;
+    if (dict && Object.keys(dict).length > 0) {
+      cachedPrimaryDict = dict;
+      return cachedPrimaryDict;
     }
   } catch {
-    // fall through to fallback
+    // fall through to empty dictionary
   }
-  cachedPrimaryDict = Object.keys(parsed).length ? parsed : (DICT_COMMON_3000 as DictMap);
+  cachedPrimaryDict = {};
   return cachedPrimaryDict;
 }
 
@@ -472,17 +456,15 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 function pickDict(cefr: string): DictMap {
-  if (cefr === 'A1-A2') return cachedPrimaryDict ?? (DICT_COMMON_3000 as DictMap);
-  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : (cachedPrimaryDict ?? (DICT_COMMON_3000 as DictMap));
-  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : (cachedPrimaryDict ?? (DICT_COMMON_3000 as DictMap));
+  if (cefr === 'A1-A2') return cachedPrimaryDict ?? {};
+  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : (cachedPrimaryDict ?? {});
+  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : (cachedPrimaryDict ?? {});
 }
 
 function buildCandidateWords(cefr: string, dict: DictMap): string[] {
   const base = pickWordList(cefr);
   const fallback = cefr === 'A1-A2' ? [] : WORDS_A1_A2;
-  const merged = cefr === 'A1-A2'
-    ? [...base, ...Object.keys(dict)]
-    : [...base, ...fallback, ...WORDS_COMMON_EXTRA, ...Object.keys(dict)];
+  const merged = cefr === 'A1-A2' ? [...base, ...Object.keys(dict)] : [...base, ...fallback, ...Object.keys(dict)];
   const seen = new Set<string>();
   const unique: string[] = [];
   for (const w of merged) {
@@ -492,6 +474,17 @@ function buildCandidateWords(cefr: string, dict: DictMap): string[] {
     unique.push(normalized);
   }
   return unique;
+}
+
+function sampleCandidateWords(words: string[], limit: number): string[] {
+  if (words.length <= limit) return shuffle(words);
+  const out: string[] = [];
+  const start = Math.floor(Math.random() * words.length);
+  const step = 7919; // prime step for broad coverage
+  for (let i = 0; i < limit; i++) {
+    out.push(words[(start + i * step) % words.length]);
+  }
+  return out;
 }
 
 async function translateBatch(words: string[], token: string): Promise<string[]> {
@@ -523,15 +516,16 @@ async function translateBatch(words: string[], token: string): Promise<string[]>
 // (HF fallback removed for speed + reliability on Vercel)
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const buildEmergencyEntries = (mode: Mode, gridSize: number) => {
+  const buildEmergencyEntries = (mode: Mode, gridSize: number, dict: DictMap) => {
     const entries: Array<{ clue: string; answer: string }> = [];
-    for (const [en, arRaw] of Object.entries(DICT_A1_A2)) {
+    for (const [en, val] of Object.entries(dict)) {
       const enNorm = normalizeEnglishWord(en);
-      const arNorm = normalizeArabicWord(arRaw);
-      if (!enNorm || !arNorm) continue;
       if (enNorm.length < 2 || enNorm.length > gridSize) continue;
-      if (arNorm.length < 2 || arNorm.length > gridSize) continue;
-      entries.push(mode === 'en_to_ar' ? { clue: enNorm, answer: arNorm } : { clue: arRaw, answer: enNorm });
+      const meanings = getMeanings(dict, enNorm);
+      for (const m of meanings) {
+        if (m.answer.length < 2 || m.answer.length > gridSize) continue;
+        entries.push(mode === 'en_to_ar' ? { clue: enNorm, answer: m.answer } : { clue: m.clue || m.answer, answer: enNorm });
+      }
       if (entries.length >= 300) break;
     }
     return entries;
@@ -562,7 +556,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const targetPairs = 800;
 
     // Return ALL valid word pairs (no limit) to maximize crossword fill
-    const shuffledBase = shuffle(baseList);
+    const shuffledBase = sampleCandidateWords(baseList, 5000);
     for (const w of shuffledBase) {
       const en = normalizeEnglishWord(w);
       if (en.length < 2 || en.length > gridSize) continue;
@@ -587,7 +581,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // to keep Vercel execution deterministic and avoid timeout/failure spikes.
 
     if (!pairs.length) {
-      const emergency = buildEmergencyEntries(mode, gridSize);
+      const emergency = buildEmergencyEntries(mode, gridSize, dict);
       if (emergency.length) return json(res, 200, { entries: emergency });
       return json(res, 500, { error: 'No entries generated from local dictionaries.' });
     }
@@ -598,7 +592,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const { size, mode } = (req.body || {}) as { size?: number; mode?: Mode };
       const gridSize = [7, 9, 11, 13].includes(Number(size)) ? Number(size) : 7;
       const safeMode: Mode = mode === 'ar_to_en' ? 'ar_to_en' : 'en_to_ar';
-      const emergency = buildEmergencyEntries(safeMode, gridSize);
+      const dict = await getPrimaryDict();
+      const emergency = buildEmergencyEntries(safeMode, gridSize, dict);
       if (emergency.length) return json(res, 200, { entries: emergency, fallback: true });
     } catch {
       // ignore and return 500 below
