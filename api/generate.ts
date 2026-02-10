@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { DICT_COMMON_30000 } from './DICT_COMMON_30000';
+import { DICT_COMMON_3000 } from './dict_common_3000';
 
 export const config = {
   runtime: 'nodejs',
@@ -333,9 +333,27 @@ const DICT_A1_A2: Record<string, string> = {
 type DictMeaning = { answer: string; clue: string };
 type DictValue = string | string[] | DictMeaning | DictMeaning[];
 type DictMap = Record<string, DictValue>;
+let cachedPrimaryDict: DictMap | null = null;
 
 const DICT_B1_B2: DictMap = {};
 const DICT_C1_C2: DictMap = {};
+
+async function getPrimaryDict(): Promise<DictMap> {
+  if (cachedPrimaryDict) return cachedPrimaryDict;
+  try {
+    // Lazy-load to avoid cold-start crashes from loading a huge object at module init.
+    const mod = await import('./DICT_COMMON_30000_non_empty');
+    const dict = (mod as { DICT_COMMON_30000_NON_EMPTY?: DictMap }).DICT_COMMON_30000_NON_EMPTY;
+    if (dict && Object.keys(dict).length > 0) {
+      cachedPrimaryDict = dict;
+      return cachedPrimaryDict;
+    }
+  } catch {
+    // fallback below
+  }
+  cachedPrimaryDict = DICT_COMMON_3000 as DictMap;
+  return cachedPrimaryDict;
+}
 
 type Mode = 'en_to_ar' | 'ar_to_en';
 type Band = 'beginner' | 'intermediate' | 'advanced';
@@ -439,9 +457,9 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 function pickDict(cefr: string): DictMap {
-  if (cefr === 'A1-A2') return DICT_COMMON_30000;
-  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : DICT_COMMON_30000;
-  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : DICT_COMMON_30000;
+  if (cefr === 'A1-A2') return cachedPrimaryDict ?? (DICT_COMMON_3000 as DictMap);
+  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : (cachedPrimaryDict ?? (DICT_COMMON_3000 as DictMap));
+  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : (cachedPrimaryDict ?? (DICT_COMMON_3000 as DictMap));
 }
 
 function buildCandidateWords(cefr: string, dict: DictMap): string[] {
@@ -501,6 +519,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (band !== 'beginner' && band !== 'intermediate' && band !== 'advanced') return json(res, 400, { error: 'Invalid band' });
 
     const cefr = bandToCefr(band);
+    await getPrimaryDict();
 
     // Use built-in CEFR word lists.
     // Speed strategy: local curated dict (instant). (HF fallback removed for now.)
