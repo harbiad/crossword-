@@ -31,8 +31,8 @@
 /* Controls */
 .controls {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 12px;
+  flex-wrap: nowrap;
   align-items: flex-end;
   justify-content: center;
   margin-bottom: 24px;
@@ -55,13 +55,13 @@
 }
 
 .controls select {
-  padding: 8px 12px;
-  font-size: 0.85rem;
+  padding: 7px 10px;
+  font-size: 0.82rem;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   background: #fafafa;
   color: #1a1a2e;
-  min-width: 150px;
+  min-width: 130px;
   transition: all 0.2s ease;
 }
 
@@ -76,13 +76,13 @@
 }
 
 .controls button {
-  padding: 10px 20px;
+  padding: 9px 16px;
   background: #2563eb;
   color: #ffffff;
   border: 1px solid #1d4ed8;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .controls button:hover:not(:disabled) {
@@ -223,8 +223,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-height: 55vh;
-  overflow-y: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 .clues::-webkit-scrollbar {
@@ -274,7 +274,7 @@
 .clueColumns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 12px;
 }
 
 .repeatedClues {
@@ -291,23 +291,28 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: block;
+  column-count: 2;
+  column-gap: 16px;
+}
+
+.clueList li {
+  break-inside: avoid;
 }
 
 .clueBtn {
   display: block;
   width: 100%;
-  padding: 8px 10px;
+  padding: 6px 8px;
   text-align: left;
   background: transparent;
   border: none;
   border-radius: 8px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: #4b5563;
-  line-height: 1.4;
+  line-height: 1.25;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
 .clueBtn:hover {
@@ -386,7 +391,7 @@
 
   .controls {
     padding: 16px;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 24px;
   }
 
@@ -411,6 +416,10 @@
 
   .clueColumns {
     grid-template-columns: 1fr;
+  }
+
+  .clues ul {
+    column-count: 1;
   }
 
   .bottomButtons {

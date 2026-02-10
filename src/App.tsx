@@ -391,6 +391,7 @@ export default function App() {
             className="grid"
             style={{
               gridTemplateColumns: `repeat(${cw.width}, var(--cell-size))`,
+              gridTemplateRows: `repeat(${cw.height}, var(--cell-size))`,
               // Smaller cells for larger grids to keep everything on screen.
               // Tune these if you want tighter or looser sizing.
               ['--cell-size' as any]: cw.width >= 13 ? '26px' : cw.width >= 11 ? '28px' : cw.width >= 9 ? '30px' : '32px',
@@ -446,7 +447,7 @@ export default function App() {
               <div className="clueColumns">
                 <div>
                   <h3>Across</h3>
-                  <ul>
+                  <ul className="clueList">
                     {cw.entries
                       .filter((e) => e.direction === 'across' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
                       .map((e) => (
@@ -461,7 +462,7 @@ export default function App() {
 
                 <div>
                   <h3>Down</h3>
-                  <ul>
+                  <ul className="clueList">
                     {cw.entries
                       .filter((e) => e.direction === 'down' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
                       .map((e) => (
