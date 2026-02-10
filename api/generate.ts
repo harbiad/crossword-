@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { DICT_COMMON_3000 } from './dict_common_3000.js';
+import { DICT_COMMON_30000 } from './DICT_COMMON_30000.js';
 
 export const config = {
   runtime: 'nodejs',
@@ -336,7 +336,7 @@ type DictMap = Record<string, DictValue>;
 
 const DICT_A1_A2_EXPANDED: DictMap = {
   ...DICT_A1_A2,
-  ...DICT_COMMON_3000,
+  ...DICT_COMMON_30000,
 };
 const DICT_B1_B2: DictMap = {};
 const DICT_C1_C2: DictMap = {};
@@ -450,7 +450,7 @@ function pickDict(cefr: string): DictMap {
 function buildCandidateWords(cefr: string, dict: DictMap): string[] {
   const base = pickWordList(cefr);
   const fallback = cefr === 'A1-A2' ? [] : WORDS_A1_A2;
-  const commonA1 = cefr === 'A1-A2' ? Object.keys(DICT_COMMON_3000) : [];
+  const commonA1 = cefr === 'A1-A2' ? Object.keys(DICT_COMMON_30000) : [];
   const merged = [...base, ...fallback, ...WORDS_COMMON_EXTRA, ...commonA1, ...Object.keys(dict)];
   const seen = new Set<string>();
   const unique: string[] = [];
