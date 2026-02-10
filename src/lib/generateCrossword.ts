@@ -435,23 +435,23 @@ export function generateCrossword(
 
   const optionSets = [
     {
-      minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 68 : 72,
+      minIntersectionPct: size <= 7 ? 58 : size <= 9 ? 55 : 60,
       seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
     {
-      minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 62 : 65,
+      minIntersectionPct: size <= 7 ? 52 : size <= 9 ? 50 : 54,
       seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
     {
-      minIntersectionPct: size <= 7 ? 60 : size <= 9 ? 58 : 62,
+      minIntersectionPct: size <= 7 ? 46 : size <= 9 ? 45 : 48,
       seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
   ];
-  const targetWords = size <= 7 ? 8 : size <= 9 ? 22 : size <= 11 ? 28 : 36;
-  const minWords = size <= 7 ? 5 : size <= 9 ? 18 : size <= 11 ? 24 : 30;
+  const targetWords = size <= 7 ? 6 : size <= 9 ? 14 : size <= 11 ? 20 : 26;
+  const minWords = size <= 7 ? 4 : size <= 9 ? 10 : size <= 11 ? 14 : 18;
 
   let attemptsRun = 0;
-  const maxShortReuse = 2;
+  const maxShortReuse = 6;
   const isTemplateViable = (template: number[][]) => {
     const slots = findSlots(template);
     const counts = new Map<number, number>();
@@ -500,7 +500,7 @@ export function generateCrossword(
     const slots = findSlots(template);
     const allowedLengths = new Set<number>();
     for (const slot of slots) allowedLengths.add(slot.length);
-    const perLengthCap = size <= 7 ? 260 : size <= 9 ? 420 : 520;
+    const perLengthCap = size <= 7 ? 320 : size <= 9 ? 620 : 760;
 
     for (const opts of optionSets) {
       for (let i = 0; i < attempts; i++) {

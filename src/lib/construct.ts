@@ -241,7 +241,7 @@ function constructCrosswordFillAllSlots(
   const shortUseCount = new Map<string, number>();
   const placements: Placement[] = [];
   const deadline = getNow() + (options.timeBudgetMs ?? 400);
-  const maxTwoLetterRatio = 0.1;
+  const maxTwoLetterRatio = size <= 9 ? 0.25 : 0.15;
   const maxShortReuse = 4;
 
   const getPattern = (slot: Slot): (string | null)[] => {
