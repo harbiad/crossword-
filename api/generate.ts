@@ -1,5 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { DICT_COMMON_3000 } from './dict_common_3000';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 
 export const config = {
   runtime: 'nodejs',
@@ -340,18 +342,31 @@ const DICT_C1_C2: DictMap = {};
 
 async function getPrimaryDict(): Promise<DictMap> {
   if (cachedPrimaryDict) return cachedPrimaryDict;
+  const parsed: DictMap = {};
   try {
-    // Lazy-load to avoid cold-start crashes from loading a huge object at module init.
-    const mod = await import('./DICT_COMMON_30000_non_empty');
-    const dict = (mod as { DICT_COMMON_30000_NON_EMPTY?: DictMap }).DICT_COMMON_30000_NON_EMPTY;
-    if (dict && Object.keys(dict).length > 0) {
-      cachedPrimaryDict = dict;
-      return cachedPrimaryDict;
+    // Prefer flat txt source to avoid loading huge TS dictionary objects in serverless cold starts.
+    const txtPath = path.join(process.cwd(), 'api', 'en-ar.txt');
+    const raw = await readFile(txtPath, 'utf8');
+    const lines = raw.split(/\r?\n/);
+    for (const line of lines) {
+      if (!line) continue;
+      const [enRaw, arRaw] = line.split('\t');
+      const en = normalizeEnglishWord(enRaw ?? '');
+      const ar = normalizeArabicWord(arRaw ?? '');
+      if (!en || !ar || ar.length < 2) continue;
+      const existing = parsed[en];
+      const item: DictMeaning = { answer: ar, clue: arRaw ?? ar };
+      if (!existing) {
+        parsed[en] = [item];
+      } else if (Array.isArray(existing)) {
+        const arr = existing as DictMeaning[];
+        if (!arr.some((x) => x.answer === ar)) arr.push(item);
+      }
     }
   } catch {
-    // fallback below
+    // fall through to fallback
   }
-  cachedPrimaryDict = DICT_COMMON_3000 as DictMap;
+  cachedPrimaryDict = Object.keys(parsed).length ? parsed : (DICT_COMMON_3000 as DictMap);
   return cachedPrimaryDict;
 }
 
