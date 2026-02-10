@@ -387,7 +387,16 @@ export default function App() {
 
       {cw && (
         <div className="main">
-          <div className="grid" style={{ gridTemplateColumns: `repeat(${cw.width}, 1fr)` }} dir={cw.answerDirection}>
+          <div
+            className="grid"
+            style={{
+              gridTemplateColumns: `repeat(${cw.width}, var(--cell-size))`,
+              // Smaller cells for larger grids to keep everything on screen.
+              // Tune these if you want tighter or looser sizing.
+              ['--cell-size' as any]: cw.width >= 13 ? '26px' : cw.width >= 11 ? '28px' : cw.width >= 9 ? '30px' : '32px',
+            }}
+            dir={cw.answerDirection}
+          >
             {cw.grid.flatMap((row, r) =>
               row.map((cell, c) => {
                 const displayCol = cw.answerDirection === 'rtl' ? cw.width - c : c + 1;
