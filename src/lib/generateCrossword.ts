@@ -148,7 +148,6 @@ function validatePuzzle(
   }
 
   // Ensure entry/run consistency.
-  // NOTE: We keep this as a soft check for now to avoid over-rejecting generated puzzles.
   const buildEntryRunKey = (entry: Entry) => {
     const { dr, dc } = getEntryStep(entry.direction, answerDirection);
     const coords: string[] = [];
@@ -182,7 +181,7 @@ function validatePuzzle(
         const key = `across:${coords.join('|')}`;
         seenRunKeys.add(key);
         if (!entryRunKeys.has(key)) {
-          // Soft warning path; do not reject generation on this alone.
+          errors.push(`Across run without clue at row ${r}, cols ${start}-${c - 1}.`);
         }
       }
     }
@@ -206,7 +205,7 @@ function validatePuzzle(
         const key = `down:${coords.join('|')}`;
         seenRunKeys.add(key);
         if (!entryRunKeys.has(key)) {
-          // Soft warning path; do not reject generation on this alone.
+          errors.push(`Down run without clue at col ${c}, rows ${start}-${r - 1}.`);
         }
       }
     }
@@ -251,8 +250,9 @@ function validatePuzzle(
   const internalGrid: (string | null)[][] = grid.map((row) =>
     row.map((cell) => (cell.type === 'block' ? '#' : cell.char))
   );
-  // Keep generation resilient: block runs are tolerated when needed to avoid hard failures.
-  validateBlockRuns(internalGrid, size);
+  if (!validateBlockRuns(internalGrid, size)) {
+    errors.push('Block run constraint violated.');
+  }
 
   const numbering = computeNumbering(grid, entries, answerDirection);
   for (let r = 0; r < size; r++) {
@@ -367,14 +367,14 @@ function buildCrosswordFromPlacements(
     for (let c = 0; c < size; c++) {
       if (!workingGrid[r][c]) {
         emptyCount++;
-        workingGrid[r][c] = { r, c, type: 'block' } as Cell;
       }
     }
   }
   if (emptyCount > 0) {
     if (debug?.enabled) {
-      debug.log(`unfilled white cells converted to blocks: ${emptyCount}`);
+      debug.log(`unfilled white cells: ${emptyCount}`);
     }
+    return null;
   }
 
   const grid = workingGrid as Cell[][];
@@ -427,8 +427,8 @@ export function generateCrossword(
   for (const bucket of buckets.values()) shuffleInPlace(bucket);
 
   const templates = getTemplates(size);
-  const attempts = size <= 7 ? 8 : size <= 9 ? 14 : 12;
-  const timeBudgetMs = size <= 7 ? 900 : size <= 9 ? 3500 : 5000;
+  const attempts = size <= 7 ? 10 : size <= 9 ? 18 : 14;
+  const timeBudgetMs = size <= 7 ? 1200 : size <= 9 ? 4500 : 6500;
   let best: Crossword | null = null;
   let bestScore = -1;
   const deadline = getNow() + timeBudgetMs;
