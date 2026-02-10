@@ -334,10 +334,6 @@ type DictMeaning = { answer: string; clue: string };
 type DictValue = string | string[] | DictMeaning | DictMeaning[];
 type DictMap = Record<string, DictValue>;
 
-const DICT_A1_A2_EXPANDED: DictMap = {
-  ...DICT_A1_A2,
-  ...DICT_COMMON_30000,
-};
 const DICT_B1_B2: DictMap = {};
 const DICT_C1_C2: DictMap = {};
 
@@ -442,16 +438,17 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 function pickDict(cefr: string): DictMap {
-  if (cefr === 'A1-A2') return DICT_A1_A2_EXPANDED;
-  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : DICT_A1_A2_EXPANDED;
-  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : DICT_A1_A2_EXPANDED;
+  if (cefr === 'A1-A2') return DICT_COMMON_30000;
+  if (cefr === 'B1-B2') return Object.keys(DICT_B1_B2).length ? DICT_B1_B2 : DICT_COMMON_30000;
+  return Object.keys(DICT_C1_C2).length ? DICT_C1_C2 : DICT_COMMON_30000;
 }
 
 function buildCandidateWords(cefr: string, dict: DictMap): string[] {
   const base = pickWordList(cefr);
   const fallback = cefr === 'A1-A2' ? [] : WORDS_A1_A2;
-  const commonA1 = cefr === 'A1-A2' ? Object.keys(DICT_COMMON_30000) : [];
-  const merged = [...base, ...fallback, ...WORDS_COMMON_EXTRA, ...commonA1, ...Object.keys(dict)];
+  const merged = cefr === 'A1-A2'
+    ? [...base, ...Object.keys(dict)]
+    : [...base, ...fallback, ...WORDS_COMMON_EXTRA, ...Object.keys(dict)];
   const seen = new Set<string>();
   const unique: string[] = [];
   for (const w of merged) {
@@ -585,7 +582,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 }
 function getMeanings(dict: DictMap, en: string): DictMeaning[] {
-  const val = dict[en];
+  const val = dict[en] ?? DICT_A1_A2[en];
   if (!val) return [];
   const arr = Array.isArray(val) ? val : [val];
   return arr.map((v) => {
