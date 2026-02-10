@@ -110,7 +110,7 @@
 /* Main Layout */
 .main {
   display: grid;
-  grid-template-columns: auto 320px;
+  grid-template-columns: auto 360px;
   gap: 24px;
   align-items: start;
   width: 100%;
@@ -228,6 +228,7 @@
   max-height: none;
   overflow: visible;
   width: 100%;
+  overflow: hidden;
 }
 
 .clues::-webkit-scrollbar {
@@ -294,16 +295,12 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: block;
-}
-
-.clueList li {
-  break-inside: avoid;
 }
 
 .clueList {
-  column-count: 2;
-  column-gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
 }
 
 .clueBtn {
@@ -316,7 +313,7 @@
   border-radius: 8px;
   font-size: 0.78rem;
   color: #4b5563;
-  line-height: 1.25;
+  line-height: 1.2;
   transition: all 0.15s ease;
   white-space: nowrap;
 }
@@ -329,10 +326,11 @@
 /* Action Buttons - outside clues card */
 .bottomButtons {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, auto);
   gap: 10px;
   padding: 0;
-  justify-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .bottomButtons button {
@@ -344,7 +342,7 @@
   color: #ffffff;
   font-weight: 600;
   text-align: center;
-  min-width: 120px;
+  min-width: 110px;
 }
 
 .bottomButtons button:hover:not(:disabled) {
@@ -427,11 +425,12 @@
   }
 
   .clueList {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
 
   .bottomButtons {
     grid-template-columns: 1fr 1fr;
+    justify-content: center;
   }
 }
 
