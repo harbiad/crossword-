@@ -364,7 +364,8 @@ function normalizeEnglishWord(s: string) {
     .toUpperCase();
 }
 
-function normalizeArabicWord(s: string) {
+function normalizeArabicWord(s: unknown) {
+  if (typeof s !== 'string') return '';
   const firstVariant = s.split('/')[0].split('،')[0].split(';')[0].split('|')[0];
   return firstVariant
     .trim()
@@ -585,10 +586,14 @@ function getMeanings(dict: DictMap, en: string): DictMeaning[] {
   const val = dict[en] ?? DICT_A1_A2[en];
   if (!val) return [];
   const arr = Array.isArray(val) ? val : [val];
-  return arr.map((v) => {
+  return arr
+    .map((v) => {
     if (typeof v === 'string') {
       return { answer: normalizeArabicWord(v), clue: v };
     }
-    return { answer: normalizeArabicWord(v.answer), clue: v.clue };
-  });
+    const clue = typeof v?.clue === 'string' ? v.clue : '';
+    const answer = normalizeArabicWord(v?.answer);
+    return { answer, clue };
+  })
+    .filter((m) => m.answer.length >= 2);
 }
