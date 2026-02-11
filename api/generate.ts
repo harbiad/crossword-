@@ -350,7 +350,7 @@ async function getPrimaryDict(): Promise<DictMap> {
   } catch {
     // fall through to built-in fallback dictionary
   }
-  cachedPrimaryDict = DICT_A1_A2;
+  cachedPrimaryDict = {};
   return cachedPrimaryDict;
 }
 
@@ -518,11 +518,10 @@ void translateBatch;
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const buildEmergencyEntries = (mode: Mode, gridSize: number, dict: DictMap) => {
     const entries: Array<{ clue: string; answer: string }> = [];
-    const source = Object.keys(dict).length > 0 ? dict : DICT_A1_A2;
-    for (const [en] of Object.entries(source)) {
+    for (const [en] of Object.entries(dict)) {
       const enNorm = normalizeEnglishWord(en);
       if (enNorm.length < 2 || enNorm.length > gridSize) continue;
-      const meanings = getMeanings(source, enNorm);
+      const meanings = getMeanings(dict, enNorm);
       for (const m of meanings) {
         if (m.answer.length < 2 || m.answer.length > gridSize) continue;
         entries.push(mode === 'en_to_ar' ? { clue: enNorm, answer: m.answer } : { clue: m.clue || m.answer, answer: enNorm });
@@ -612,7 +611,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 }
 function getMeanings(dict: DictMap, en: string): DictMeaning[] {
-  const val = dict[en] ?? DICT_A1_A2[en];
+  const val = dict[en];
   if (!val) return [];
   const arr = Array.isArray(val) ? val : [val];
   return arr
