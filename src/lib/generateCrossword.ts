@@ -423,7 +423,7 @@ function isTemplateViable(
 function getUsefulLengthCap(size: number, slotCount: number, len: number): number {
   const demandWeight = len <= 3 ? 7 : len <= Math.ceil(size * 0.55) ? 10 : 8;
   const dynamic = slotCount * demandWeight;
-  const base = size <= 7 ? 120 : size <= 9 ? 300 : size <= 11 ? 460 : 560;
+  const base = size <= 7 ? 156 : size <= 9 ? 390 : size <= 11 ? 598 : 728;
   return Math.max(base, dynamic);
 }
 
@@ -542,7 +542,7 @@ export function generateCrossword(
       {
         strategy,
         seedPlacements: strategy === 'hybrid' ? 2 : 1,
-        maxCandidatesPerSlot: size <= 7 ? 150 : size <= 9 ? 220 : 180,
+        maxCandidatesPerSlot: size <= 7 ? 195 : size <= 9 ? 286 : 234,
         maxShortReuse,
         timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
         allowSyntheticFillers: syntheticEnabled,
