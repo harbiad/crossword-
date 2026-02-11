@@ -502,7 +502,7 @@ function buildCandidateWords(cefr: string, dict: DictMap): string[] {
 function getLengthCapBySize(size: number, len: number): number {
   const midpoint = Math.ceil(size * 0.55);
   const distance = Math.abs(len - midpoint);
-  const base = size <= 7 ? 507 : size <= 9 ? 659 : size <= 11 ? 811 : 963;
+  const base = size <= 7 ? 659 : size <= 9 ? 857 : size <= 11 ? 1054 : 1252;
   const cap = base - distance * 32;
   return Math.max(80, cap);
 }
@@ -593,8 +593,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
     const seenPair = new Set<string>();
     const answerLengthCount = new Map<number, number>();
-    const targetPairs = 8112;
+    const targetPairs = 10546;
     const shuffledBase = shuffle(baseList);
+    const clueUseCount = new Map<string, number>();
+    const deferredClueRepeats: Array<{ clue: string; answer: string; answerLen: number }> = [];
 
     for (const w of shuffledBase) {
       const en = normalizeEnglishWord(w);
@@ -620,10 +622,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         if (seenPair.has(pairKey)) continue;
         seenPair.add(pairKey);
 
-        pairs.push({ clue, answer });
-        answerLengthCount.set(answerLen, curLenCount + 1);
+        const clueCount = clueUseCount.get(clue) ?? 0;
+        if (clueCount === 0) {
+          pairs.push({ clue, answer });
+          answerLengthCount.set(answerLen, curLenCount + 1);
+          clueUseCount.set(clue, 1);
+        } else if (clueCount === 1) {
+          deferredClueRepeats.push({ clue, answer, answerLen });
+        }
       }
       if (pairs.length >= targetPairs) break;
+    }
+
+    if (pairs.length < targetPairs && deferredClueRepeats.length) {
+      for (const item of shuffle(deferredClueRepeats)) {
+        if (pairs.length >= targetPairs) break;
+        const curClueCount = clueUseCount.get(item.clue) ?? 0;
+        if (curClueCount >= 2) continue;
+        const capForLen = getLengthCapBySize(gridSize, item.answerLen);
+        const curLenCount = answerLengthCount.get(item.answerLen) ?? 0;
+        if (curLenCount >= capForLen) continue;
+        pairs.push({ clue: item.clue, answer: item.answer });
+        answerLengthCount.set(item.answerLen, curLenCount + 1);
+        clueUseCount.set(item.clue, curClueCount + 1);
+      }
     }
 
     // Intentionally disabled remote translation fallback in production route

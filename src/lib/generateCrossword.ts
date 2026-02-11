@@ -423,7 +423,7 @@ function isTemplateViable(
 function getUsefulLengthCap(size: number, slotCount: number, len: number): number {
   const demandWeight = len <= 3 ? 7 : len <= Math.ceil(size * 0.55) ? 10 : 8;
   const dynamic = slotCount * demandWeight;
-  const base = size <= 7 ? 304 : size <= 9 ? 761 : size <= 11 ? 1166 : 1420;
+  const base = size <= 7 ? 410 : size <= 9 ? 1030 : size <= 11 ? 1580 : 1930;
   return Math.max(base, dynamic);
 }
 
@@ -534,31 +534,36 @@ export function generateCrossword(
       );
     }
 
-    const placements = constructCrossword(
-      size,
-      attemptWords,
-      template,
-      answerDirection,
-      {
-        strategy,
-        seedPlacements: strategy === 'hybrid' ? 2 : 1,
-        maxCandidatesPerSlot: size <= 7 ? 381 : size <= 9 ? 558 : 456,
-        maxShortReuse,
-        timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
-        allowSyntheticFillers: syntheticEnabled,
-        preferSyntheticFillers: preferSynthetic,
-        maxLongReuse: size >= 9 ? 2 : 1,
-        onReject: recordConstructReject,
-        debug: debugEnabled
-          ? {
-              enabled: true,
-              log: (msg: string) => {
-                console.log(`[cw-gen size=${size}] ${msg}`);
-              },
-            }
-          : undefined,
-      }
-    );
+    const commonConstructOptions = {
+      strategy,
+      seedPlacements: strategy === 'hybrid' ? 2 : 1,
+      maxCandidatesPerSlot: size <= 7 ? 520 : size <= 9 ? 760 : 620,
+      maxShortReuse,
+      timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
+      allowSyntheticFillers: syntheticEnabled,
+      preferSyntheticFillers: preferSynthetic,
+      maxLongReuse: size >= 9 ? 2 : 1,
+      onReject: recordConstructReject,
+      debug: debugEnabled
+        ? {
+            enabled: true,
+            log: (msg: string) => {
+              console.log(`[cw-gen size=${size}] ${msg}`);
+            },
+          }
+        : undefined,
+    } as const;
+
+    let placements = constructCrossword(size, attemptWords, template, answerDirection, {
+      ...commonConstructOptions,
+      maxClueUses: 1,
+    });
+    if (!placements.length) {
+      placements = constructCrossword(size, attemptWords, template, answerDirection, {
+        ...commonConstructOptions,
+        maxClueUses: 2,
+      });
+    }
 
     if (!placements.length) {
       incrementCounter(rejectedByReason, 'no_placements');

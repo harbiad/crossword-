@@ -37,6 +37,7 @@ type ConstructOptions = {
   allowSyntheticFillers?: boolean;
   preferSyntheticFillers?: boolean;
   maxLongReuse?: number;
+  maxClueUses?: number;
 };
 
 function getNow() {
@@ -189,8 +190,10 @@ function buildCandidates(
   answerDirection: 'rtl' | 'ltr',
   longReuseCount: Map<string, number>,
   shortReuseCount: Map<string, number>,
+  clueUseCount: Map<string, number>,
   maxLongReuse: number,
   maxShortReuse: number,
+  maxClueUses: number,
   requireIntersection: boolean,
   maxCandidates: number,
   wordCommonness: Map<string, number>,
@@ -202,6 +205,7 @@ function buildCandidates(
     const isSynthetic = Boolean(word.isRepeatedLetter && /^SYNTHETIC:/.test(word.clue));
     if (!isSynthetic && slot.length > SHORT_WORD_MAX_LEN && (longReuseCount.get(word.answer) ?? 0) >= maxLongReuse) continue;
     if (!isSynthetic && slot.length <= SHORT_WORD_MAX_LEN && (shortReuseCount.get(word.answer) ?? 0) >= maxShortReuse) continue;
+    if (!isSynthetic && (clueUseCount.get(word.clue) ?? 0) >= maxClueUses) continue;
     if (!wordFitsSlot(grid, word.answer, slot, answerDirection)) continue;
 
     const intersections = countIntersections(grid, word.answer, slot, answerDirection);
@@ -329,6 +333,7 @@ export function constructCrossword(
   const assigned = new Array<Placement | null>(slots.length).fill(null);
   const longReuseCount = new Map<string, number>();
   const shortReuseCount = new Map<string, number>();
+  const clueUseCount = new Map<string, number>();
   const deadline = getNow() + (options.timeBudgetMs ?? 1200);
   const maxCandidates = options.maxCandidatesPerSlot ?? (size <= 9 ? 100 : 70);
   const maxShortReuse = options.maxShortReuse ?? (size <= 9 ? 4 : 3);
@@ -337,6 +342,7 @@ export function constructCrossword(
   const allowSyntheticFillers = Boolean(options.allowSyntheticFillers);
   const preferSyntheticFillers = Boolean(options.preferSyntheticFillers);
   const maxLongReuse = Math.max(1, options.maxLongReuse ?? (size >= 9 ? 2 : 1));
+  const maxClueUses = Math.max(1, options.maxClueUses ?? 1);
 
   const chooseNextSlot = (): number => {
     if (strategy === 'hybrid' && placements.length < seedPlacements) {
@@ -354,8 +360,10 @@ export function constructCrossword(
           answerDirection,
           longReuseCount,
           shortReuseCount,
+          clueUseCount,
           maxLongReuse,
           maxShortReuse,
+          maxClueUses,
           false,
           maxCandidates,
           wordCommonness,
@@ -391,8 +399,10 @@ export function constructCrossword(
         answerDirection,
         longReuseCount,
         shortReuseCount,
+        clueUseCount,
         maxLongReuse,
         maxShortReuse,
+        maxClueUses,
         shouldRequireIntersection,
         maxCandidates,
         wordCommonness,
@@ -407,8 +417,10 @@ export function constructCrossword(
           answerDirection,
           longReuseCount,
           shortReuseCount,
+          clueUseCount,
           maxLongReuse,
           maxShortReuse,
+          maxClueUses,
           false,
           maxCandidates,
           wordCommonness,
@@ -438,6 +450,7 @@ export function constructCrossword(
     } else {
       shortReuseCount.set(word.answer, (shortReuseCount.get(word.answer) ?? 0) + 1);
     }
+    clueUseCount.set(word.clue, (clueUseCount.get(word.clue) ?? 0) + 1);
 
     const start = getSlotStart(slot, answerDirection);
     const p: Placement = {
@@ -465,6 +478,11 @@ export function constructCrossword(
       const next = (shortReuseCount.get(word.answer) ?? 1) - 1;
       if (next <= 0) shortReuseCount.delete(word.answer);
       else shortReuseCount.set(word.answer, next);
+    }
+    {
+      const next = (clueUseCount.get(word.clue) ?? 1) - 1;
+      if (next <= 0) clueUseCount.delete(word.clue);
+      else clueUseCount.set(word.clue, next);
     }
 
     assigned[slotIndex] = null;
@@ -499,8 +517,10 @@ export function constructCrossword(
       answerDirection,
       longReuseCount,
       shortReuseCount,
+      clueUseCount,
       maxLongReuse,
       maxShortReuse,
+      maxClueUses,
       shouldRequireIntersection,
       maxCandidates,
       wordCommonness,
@@ -515,8 +535,10 @@ export function constructCrossword(
         answerDirection,
         longReuseCount,
         shortReuseCount,
+        clueUseCount,
         maxLongReuse,
         maxShortReuse,
+        maxClueUses,
         false,
         maxCandidates,
         wordCommonness,
