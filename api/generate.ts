@@ -377,6 +377,7 @@ async function getPrimaryDict(): Promise<DictMap> {
 
 type Mode = 'en_to_ar' | 'ar_to_en';
 type Band = 'beginner' | 'intermediate' | 'advanced';
+const MIN_ENTRIES_FOR_UI = 24;
 
 function bandToCefr(b: Band): string {
   switch (b) {
@@ -537,13 +538,31 @@ void translateBatch;
 // (HF fallback removed for speed + reliability on Vercel)
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  const isRepeatedToken = (s: string) => /^([A-Z])\1+$/.test(s.trim().toUpperCase());
+
+  const buildInlineSafeEntries = (mode: Mode, gridSize: number) => {
+    const entries: Array<{ clue: string; answer: string }> = [];
+    for (const [en, arRaw] of Object.entries(DICT_A1_A2)) {
+      const enNorm = normalizeEnglishWord(en);
+      if (enNorm.length < 2 || enNorm.length > gridSize) continue;
+      if (isRepeatedToken(enNorm)) continue;
+      const ar = normalizeArabicWord(arRaw);
+      if (!ar || ar.length < 2 || ar.length > gridSize) continue;
+      entries.push(mode === 'en_to_ar' ? { clue: enNorm, answer: ar } : { clue: arRaw, answer: enNorm });
+      if (entries.length >= 300) break;
+    }
+    return entries;
+  };
+
   const buildEmergencyEntries = (mode: Mode, gridSize: number, dict: DictMap) => {
     const entries: Array<{ clue: string; answer: string }> = [];
     for (const [en] of Object.entries(dict)) {
       const enNorm = normalizeEnglishWord(en);
       if (enNorm.length < 2 || enNorm.length > gridSize) continue;
+      if (isRepeatedToken(enNorm)) continue;
       const meanings = getMeanings(dict, enNorm);
       for (const m of meanings) {
+        if (!m.clue || m.clue === '[]') continue;
         if (m.answer.length < 2 || m.answer.length > gridSize) continue;
         entries.push(mode === 'en_to_ar' ? { clue: enNorm, answer: m.answer } : { clue: m.clue || m.answer, answer: enNorm });
       }
@@ -610,9 +629,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Intentionally disabled remote translation fallback in production route
     // to keep Vercel execution deterministic and avoid timeout/failure spikes.
 
-    if (!pairs.length) {
+    if (pairs.length < MIN_ENTRIES_FOR_UI) {
       const emergency = buildEmergencyEntries(mode, gridSize, dict);
-      if (emergency.length) return json(res, 200, { entries: emergency, fallback: true });
+      if (emergency.length >= MIN_ENTRIES_FOR_UI) {
+        return json(res, 200, { entries: emergency, fallback: true, source: 'emergency_dict' });
+      }
+      const inline = buildInlineSafeEntries(mode, gridSize);
+      if (inline.length) return json(res, 200, { entries: inline, fallback: true, source: 'inline_safe' });
       return json(res, 200, { entries: [], fallback: true, warning: 'No entries generated from local dictionaries.' });
     }
 
@@ -624,7 +647,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const safeMode: Mode = mode === 'ar_to_en' ? 'ar_to_en' : 'en_to_ar';
       const dict = await getPrimaryDict();
       const emergency = buildEmergencyEntries(safeMode, gridSize, dict);
-      if (emergency.length) return json(res, 200, { entries: emergency, fallback: true });
+      if (emergency.length >= MIN_ENTRIES_FOR_UI) {
+        return json(res, 200, { entries: emergency, fallback: true, source: 'emergency_dict_catch' });
+      }
+      const inline = buildInlineSafeEntries(safeMode, gridSize);
+      if (inline.length) return json(res, 200, { entries: inline, fallback: true, source: 'inline_safe_catch' });
     } catch {
       // ignore and return 500 below
     }
