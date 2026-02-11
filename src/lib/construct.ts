@@ -36,6 +36,7 @@ type ConstructOptions = {
   onReject?: (reason: ConstructRejectReason) => void;
   allowSyntheticFillers?: boolean;
   preferSyntheticFillers?: boolean;
+  maxLongReuse?: number;
 };
 
 function getNow() {
@@ -186,8 +187,9 @@ function buildCandidates(
   bucket: WordClue[],
   grid: GridChar[][],
   answerDirection: 'rtl' | 'ltr',
-  usedLongWords: Set<string>,
+  longReuseCount: Map<string, number>,
   shortReuseCount: Map<string, number>,
+  maxLongReuse: number,
   maxShortReuse: number,
   requireIntersection: boolean,
   maxCandidates: number,
@@ -198,7 +200,7 @@ function buildCandidates(
   const out: Candidate[] = [];
   for (const word of bucket) {
     const isSynthetic = Boolean(word.isRepeatedLetter && /^SYNTHETIC:/.test(word.clue));
-    if (!isSynthetic && slot.length > SHORT_WORD_MAX_LEN && usedLongWords.has(word.answer)) continue;
+    if (!isSynthetic && slot.length > SHORT_WORD_MAX_LEN && (longReuseCount.get(word.answer) ?? 0) >= maxLongReuse) continue;
     if (!isSynthetic && slot.length <= SHORT_WORD_MAX_LEN && (shortReuseCount.get(word.answer) ?? 0) >= maxShortReuse) continue;
     if (!wordFitsSlot(grid, word.answer, slot, answerDirection)) continue;
 
@@ -316,7 +318,7 @@ export function constructCrossword(
 
   const placements: Placement[] = [];
   const assigned = new Array<Placement | null>(slots.length).fill(null);
-  const usedLongWords = new Set<string>();
+  const longReuseCount = new Map<string, number>();
   const shortReuseCount = new Map<string, number>();
   const deadline = getNow() + (options.timeBudgetMs ?? 1200);
   const maxCandidates = options.maxCandidatesPerSlot ?? (size <= 9 ? 100 : 70);
@@ -325,6 +327,7 @@ export function constructCrossword(
   const seedPlacements = Math.max(1, options.seedPlacements ?? (strategy === 'hybrid' ? 2 : 1));
   const allowSyntheticFillers = Boolean(options.allowSyntheticFillers);
   const preferSyntheticFillers = Boolean(options.preferSyntheticFillers);
+  const maxLongReuse = Math.max(1, options.maxLongReuse ?? (size >= 9 ? 2 : 1));
 
   const chooseNextSlot = (): number => {
     if (strategy === 'hybrid' && placements.length < seedPlacements) {
@@ -340,8 +343,9 @@ export function constructCrossword(
           bucket,
           grid,
           answerDirection,
-          usedLongWords,
+          longReuseCount,
           shortReuseCount,
+          maxLongReuse,
           maxShortReuse,
           false,
           maxCandidates,
@@ -376,8 +380,9 @@ export function constructCrossword(
         bucket,
         grid,
         answerDirection,
-        usedLongWords,
+        longReuseCount,
         shortReuseCount,
+        maxLongReuse,
         maxShortReuse,
         shouldRequireIntersection,
         maxCandidates,
@@ -391,8 +396,9 @@ export function constructCrossword(
           bucket,
           grid,
           answerDirection,
-          usedLongWords,
+          longReuseCount,
           shortReuseCount,
+          maxLongReuse,
           maxShortReuse,
           false,
           maxCandidates,
@@ -419,7 +425,7 @@ export function constructCrossword(
     const changed = placeWord(grid, word.answer, slot, answerDirection);
 
     if (slot.length > SHORT_WORD_MAX_LEN) {
-      usedLongWords.add(word.answer);
+      longReuseCount.set(word.answer, (longReuseCount.get(word.answer) ?? 0) + 1);
     } else {
       shortReuseCount.set(word.answer, (shortReuseCount.get(word.answer) ?? 0) + 1);
     }
@@ -443,7 +449,9 @@ export function constructCrossword(
     undoPlacement(grid, changed);
 
     if (slots[slotIndex].length > SHORT_WORD_MAX_LEN) {
-      usedLongWords.delete(word.answer);
+      const next = (longReuseCount.get(word.answer) ?? 1) - 1;
+      if (next <= 0) longReuseCount.delete(word.answer);
+      else longReuseCount.set(word.answer, next);
     } else {
       const next = (shortReuseCount.get(word.answer) ?? 1) - 1;
       if (next <= 0) shortReuseCount.delete(word.answer);
@@ -480,8 +488,9 @@ export function constructCrossword(
       bucket,
       grid,
       answerDirection,
-      usedLongWords,
+      longReuseCount,
       shortReuseCount,
+      maxLongReuse,
       maxShortReuse,
       shouldRequireIntersection,
       maxCandidates,
@@ -495,8 +504,9 @@ export function constructCrossword(
         bucket,
         grid,
         answerDirection,
-        usedLongWords,
+        longReuseCount,
         shortReuseCount,
+        maxLongReuse,
         maxShortReuse,
         false,
         maxCandidates,

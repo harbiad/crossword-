@@ -275,46 +275,52 @@ export default function App() {
     setSelectedEntryId(null);
 
     try {
-      const resp = await fetch('/api/generate', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ size, mode, band }),
-      });
-      const raw = await resp.text();
-      let data: any = null;
-      try {
-        data = raw ? JSON.parse(raw) : null;
-      } catch {
-        // If server returns HTML/text error, surface a helpful snippet.
-        throw new Error(`Server returned non-JSON (${resp.status}). ${raw.slice(0, 120)}`);
-      }
-      if (!resp.ok) throw new Error(data?.error || `Failed to generate (${resp.status})`);
-
-      const entries = Array.isArray(data?.entries) ? data.entries : [];
-      if (entries.length < 6) throw new Error('Not enough entries generated. Try again.');
-
-      // Determine answer direction based on mode
       const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
+      const maxRounds = size <= 7 ? 2 : size <= 9 ? 3 : 4;
+      const attemptsPerRound = size <= 7 ? 3 : size <= 9 ? 4 : 5;
       let next: Crossword | null = null;
-      const buildInvertedEntries = (list: typeof entries) => {
-        if (mode !== 'en_to_ar') return list;
-        const extra = list
-          .filter((e: { answer?: unknown; clue?: unknown }) => typeof e.answer === 'string' && e.answer.length >= 2)
-          .map((e: { answer: string; clue?: unknown }) => ({
-            ...e,
-            clue: `${String(e.clue ?? '')} (inverted)`,
-            answer: [...String(e.answer)].reverse().join(''),
-          }));
-        return [...list, ...extra];
-      };
-      const entriesWithInverted = buildInvertedEntries(entries);
-      for (let attempt = 0; attempt < 3; attempt++) {
-        const candidate = generateCrossword(size, entriesWithInverted, answerDirection);
-        if (candidate.entries.length) {
-          next = candidate;
-          break;
+
+      for (let round = 0; round < maxRounds; round++) {
+        const resp = await fetch('/api/generate', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ size, mode, band }),
+        });
+        const raw = await resp.text();
+        let data: any = null;
+        try {
+          data = raw ? JSON.parse(raw) : null;
+        } catch {
+          throw new Error(`Server returned non-JSON (${resp.status}). ${raw.slice(0, 120)}`);
         }
+        if (!resp.ok) throw new Error(data?.error || `Failed to generate (${resp.status})`);
+
+        const entries = Array.isArray(data?.entries) ? data.entries : [];
+        if (entries.length < 6) continue;
+
+        const buildInvertedEntries = (list: typeof entries) => {
+          if (mode !== 'en_to_ar') return list;
+          const extra = list
+            .filter((e: { answer?: unknown; clue?: unknown }) => typeof e.answer === 'string' && e.answer.length >= 2)
+            .map((e: { answer: string; clue?: unknown }) => ({
+              ...e,
+              clue: `${String(e.clue ?? '')} (inverted)`,
+              answer: [...String(e.answer)].reverse().join(''),
+            }));
+          return [...list, ...extra];
+        };
+
+        const entriesWithInverted = buildInvertedEntries(entries);
+        for (let attempt = 0; attempt < attemptsPerRound; attempt++) {
+          const candidate = generateCrossword(size, entriesWithInverted, answerDirection);
+          if (candidate.entries.length) {
+            next = candidate;
+            break;
+          }
+        }
+        if (next) break;
       }
+
       if (!next) throw new Error('Could not fit words into a crossword grid. Try again.');
 
       setCw(next);

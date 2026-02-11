@@ -547,6 +547,7 @@ export function generateCrossword(
         timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
         allowSyntheticFillers: syntheticEnabled,
         preferSyntheticFillers: preferSynthetic,
+        maxLongReuse: size >= 9 ? 2 : 1,
         onReject: recordConstructReject,
         debug: debugEnabled
           ? {
