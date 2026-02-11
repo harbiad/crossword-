@@ -502,7 +502,7 @@ function buildCandidateWords(cefr: string, dict: DictMap): string[] {
 function getLengthCapBySize(size: number, len: number): number {
   const midpoint = Math.ceil(size * 0.55);
   const distance = Math.abs(len - midpoint);
-  const base = size <= 7 ? 260 : size <= 9 ? 338 : size <= 11 ? 416 : 494;
+  const base = size <= 7 ? 507 : size <= 9 ? 659 : size <= 11 ? 811 : 963;
   const cap = base - distance * 32;
   return Math.max(80, cap);
 }
@@ -593,7 +593,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
     const seenPair = new Set<string>();
     const answerLengthCount = new Map<number, number>();
-    const targetPairs = 4160;
+    const targetPairs = 8112;
     const shuffledBase = shuffle(baseList);
 
     for (const w of shuffledBase) {
