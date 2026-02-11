@@ -1,4 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { DICT_COMMON_30000_NON_EMPTY } from './DICT_COMMON_30000_non_empty.ts';
+import { DICT_COMMON_30000 } from './DICT_COMMON_30000.ts';
 
 export const config = {
   runtime: 'nodejs',
@@ -339,16 +341,15 @@ const DICT_C1_C2: DictMap = {};
 
 async function getPrimaryDict(): Promise<DictMap> {
   if (cachedPrimaryDict) return cachedPrimaryDict;
-  try {
-    // Use only DICT_COMMON_30000_NON_EMPTY so empty/placeholder clues are excluded at source.
-    const mod = await import('./DICT_COMMON_30000_non_empty');
-    const dict = (mod as { DICT_COMMON_30000_NON_EMPTY?: DictMap }).DICT_COMMON_30000_NON_EMPTY;
-    if (dict && Object.keys(dict).length > 0) {
-      cachedPrimaryDict = dict;
-      return cachedPrimaryDict;
-    }
-  } catch {
-    // fall through to built-in fallback dictionary
+  // Primary source: NON_EMPTY dictionary.
+  if (DICT_COMMON_30000_NON_EMPTY && Object.keys(DICT_COMMON_30000_NON_EMPTY).length > 0) {
+    cachedPrimaryDict = DICT_COMMON_30000_NON_EMPTY;
+    return cachedPrimaryDict;
+  }
+  // Fallback: full dictionary, with placeholder clues filtered in getMeanings().
+  if (DICT_COMMON_30000 && Object.keys(DICT_COMMON_30000).length > 0) {
+    cachedPrimaryDict = DICT_COMMON_30000;
+    return cachedPrimaryDict;
   }
   cachedPrimaryDict = {};
   return cachedPrimaryDict;
