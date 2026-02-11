@@ -34,6 +34,7 @@ type ConstructOptions = {
   seedPlacements?: number;
   strategy?: 'slot_fill' | 'hybrid';
   onReject?: (reason: ConstructRejectReason) => void;
+  allowSyntheticFillers?: boolean;
 };
 
 function getNow() {
@@ -189,12 +190,14 @@ function buildCandidates(
   maxShortReuse: number,
   requireIntersection: boolean,
   maxCandidates: number,
-  wordCommonness: Map<string, number>
+  wordCommonness: Map<string, number>,
+  allowSyntheticFillers: boolean
 ): Candidate[] {
   const out: Candidate[] = [];
   for (const word of bucket) {
-    if (slot.length > SHORT_WORD_MAX_LEN && usedLongWords.has(word.answer)) continue;
-    if (slot.length <= SHORT_WORD_MAX_LEN && (shortReuseCount.get(word.answer) ?? 0) >= maxShortReuse) continue;
+    const isSynthetic = Boolean(word.isRepeatedLetter && /^SYNTHETIC:/.test(word.clue));
+    if (!isSynthetic && slot.length > SHORT_WORD_MAX_LEN && usedLongWords.has(word.answer)) continue;
+    if (!isSynthetic && slot.length <= SHORT_WORD_MAX_LEN && (shortReuseCount.get(word.answer) ?? 0) >= maxShortReuse) continue;
     if (!wordFitsSlot(grid, word.answer, slot, answerDirection)) continue;
 
     const intersections = countIntersections(grid, word.answer, slot, answerDirection);
@@ -211,6 +214,30 @@ function buildCandidates(
     if (a.word.answer !== b.word.answer) return a.word.answer.localeCompare(b.word.answer);
     return a.word.clue.localeCompare(b.word.clue);
   });
+
+  if (!out.length && allowSyntheticFillers) {
+    const pattern: Array<string | null> = [];
+    for (let i = 0; i < slot.length; i++) {
+      const { r, c } = getCellAt(slot, i, answerDirection);
+      const ch = grid[r][c];
+      pattern.push(ch && ch !== BLOCK ? ch : null);
+    }
+
+    const fixed = pattern.filter((ch): ch is string => Boolean(ch));
+    const distinct = new Set(fixed);
+    if (distinct.size <= 1) {
+      const fillChar = fixed[0] ?? (answerDirection === 'rtl' ? 'ا' : 'E');
+      const syntheticAnswer = pattern.map((ch) => ch ?? fillChar).join('');
+      out.push({
+        word: {
+          answer: syntheticAnswer,
+          clue: `SYNTHETIC:${fillChar} ×${slot.length}`,
+          isRepeatedLetter: true,
+        },
+        intersections: fixed.length,
+      });
+    }
+  }
 
   return out.slice(0, maxCandidates);
 }
@@ -289,8 +316,40 @@ export function constructCrossword(
   const maxShortReuse = options.maxShortReuse ?? (size <= 9 ? 4 : 3);
   const strategy = options.strategy ?? (size <= 9 ? 'slot_fill' : 'hybrid');
   const seedPlacements = Math.max(1, options.seedPlacements ?? (strategy === 'hybrid' ? 2 : 1));
+  const allowSyntheticFillers = Boolean(options.allowSyntheticFillers);
 
   const chooseNextSlot = (): number => {
+    if (strategy === 'hybrid' && placements.length < seedPlacements) {
+      let bestIdx = -1;
+      let bestScore = -Infinity;
+      for (let i = 0; i < slots.length; i++) {
+        if (assigned[i]) continue;
+        const slot = slots[i];
+        const bucket = wordsByLength.get(slot.length) ?? [];
+        if (!bucket.length) continue;
+        const candidates = buildCandidates(
+          slot,
+          bucket,
+          grid,
+          answerDirection,
+          usedLongWords,
+          shortReuseCount,
+          maxShortReuse,
+          false,
+          maxCandidates,
+          wordCommonness,
+          allowSyntheticFillers
+        );
+        if (!candidates.length) continue;
+        const score = slot.length * 100 + slotCenterScore(slot, size) - candidates.length;
+        if (score > bestScore) {
+          bestScore = score;
+          bestIdx = i;
+        }
+      }
+      return bestIdx === -1 ? -2 : bestIdx;
+    }
+
     let bestIdx = -1;
     let bestCount = Infinity;
     let bestScore = Infinity;
@@ -313,7 +372,8 @@ export function constructCrossword(
         maxShortReuse,
         shouldRequireIntersection,
         maxCandidates,
-        wordCommonness
+        wordCommonness,
+        allowSyntheticFillers
       );
       if (!candidates.length && shouldRequireIntersection) {
         candidates = buildCandidates(
@@ -326,7 +386,8 @@ export function constructCrossword(
           maxShortReuse,
           false,
           maxCandidates,
-          wordCommonness
+          wordCommonness,
+          allowSyntheticFillers
         );
       }
       if (!candidates.length) return -2;
@@ -355,7 +416,7 @@ export function constructCrossword(
     const start = getSlotStart(slot, answerDirection);
     const p: Placement = {
       answer: word.answer,
-      clue: word.clue,
+      clue: word.clue.replace(/^SYNTHETIC:/, ''),
       row: start.row,
       col: start.col,
       direction: slot.direction,
@@ -382,65 +443,6 @@ export function constructCrossword(
     placements.pop();
   };
 
-  const runSeedStep = (): boolean => {
-    if (strategy !== 'hybrid') return true;
-    for (let seedIdx = 0; seedIdx < seedPlacements; seedIdx++) {
-      if (getNow() > deadline) {
-        reject('timeout');
-        return false;
-      }
-
-      let bestSlotIdx = -1;
-      let bestSlotScore = -Infinity;
-      for (let i = 0; i < slots.length; i++) {
-        if (assigned[i]) continue;
-        const slot = slots[i];
-        const score = slot.length * 100 + slotCenterScore(slot, size);
-        if (score > bestSlotScore) {
-          bestSlotScore = score;
-          bestSlotIdx = i;
-        }
-      }
-      if (bestSlotIdx < 0) return true;
-
-      const slot = slots[bestSlotIdx];
-      const bucket = wordsByLength.get(slot.length) ?? [];
-      const shouldRequireIntersection = seedIdx > 0 && slotHasFilledCell(slot, grid, answerDirection);
-      let candidates = buildCandidates(
-        slot,
-        bucket,
-        grid,
-        answerDirection,
-        usedLongWords,
-        shortReuseCount,
-        maxShortReuse,
-        shouldRequireIntersection,
-        maxCandidates,
-        wordCommonness
-      );
-      if (!candidates.length && shouldRequireIntersection) {
-        candidates = buildCandidates(
-          slot,
-          bucket,
-          grid,
-          answerDirection,
-          usedLongWords,
-          shortReuseCount,
-          maxShortReuse,
-          false,
-          maxCandidates,
-          wordCommonness
-        );
-      }
-      if (!candidates.length) {
-        reject('no_seed_candidate');
-        return false;
-      }
-      placeAtSlot(bestSlotIdx, candidates[0].word);
-    }
-    return true;
-  };
-
   const backtrack = (): boolean => {
     if (getNow() > deadline) {
       reject('timeout');
@@ -450,7 +452,11 @@ export function constructCrossword(
     const nextSlotIdx = chooseNextSlot();
     if (nextSlotIdx === -1) return true;
     if (nextSlotIdx === -2) {
-      reject('no_candidates_for_slot');
+      if (strategy === 'hybrid' && placements.length < seedPlacements) {
+        reject('no_seed_candidate');
+      } else {
+        reject('no_candidates_for_slot');
+      }
       return false;
     }
 
@@ -468,7 +474,8 @@ export function constructCrossword(
       maxShortReuse,
       shouldRequireIntersection,
       maxCandidates,
-      wordCommonness
+      wordCommonness,
+      allowSyntheticFillers
     );
     if (!candidates.length && shouldRequireIntersection) {
       candidates = buildCandidates(
@@ -481,7 +488,8 @@ export function constructCrossword(
         maxShortReuse,
         false,
         maxCandidates,
-        wordCommonness
+        wordCommonness,
+        allowSyntheticFillers
       );
     }
 
@@ -498,8 +506,6 @@ export function constructCrossword(
 
     return false;
   };
-
-  if (!runSeedStep()) return [];
 
   if (!backtrack()) return [];
 

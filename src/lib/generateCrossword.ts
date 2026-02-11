@@ -539,6 +539,7 @@ export function generateCrossword(
         maxCandidatesPerSlot: size <= 7 ? 150 : size <= 9 ? 220 : 180,
         maxShortReuse,
         timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
+        allowSyntheticFillers: size >= 11,
         onReject: recordConstructReject,
         debug: debugEnabled
           ? {
