@@ -348,9 +348,9 @@ async function getPrimaryDict(): Promise<DictMap> {
       return cachedPrimaryDict;
     }
   } catch {
-    // fall through to empty dictionary
+    // fall through to built-in fallback dictionary
   }
-  cachedPrimaryDict = {};
+  cachedPrimaryDict = DICT_A1_A2;
   return cachedPrimaryDict;
 }
 
@@ -518,10 +518,11 @@ void translateBatch;
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const buildEmergencyEntries = (mode: Mode, gridSize: number, dict: DictMap) => {
     const entries: Array<{ clue: string; answer: string }> = [];
-    for (const [en] of Object.entries(dict)) {
+    const source = Object.keys(dict).length > 0 ? dict : DICT_A1_A2;
+    for (const [en] of Object.entries(source)) {
       const enNorm = normalizeEnglishWord(en);
       if (enNorm.length < 2 || enNorm.length > gridSize) continue;
-      const meanings = getMeanings(dict, enNorm);
+      const meanings = getMeanings(source, enNorm);
       for (const m of meanings) {
         if (m.answer.length < 2 || m.answer.length > gridSize) continue;
         entries.push(mode === 'en_to_ar' ? { clue: enNorm, answer: m.answer } : { clue: m.clue || m.answer, answer: enNorm });
@@ -591,8 +592,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!pairs.length) {
       const emergency = buildEmergencyEntries(mode, gridSize, dict);
-      if (emergency.length) return json(res, 200, { entries: emergency });
-      return json(res, 500, { error: 'No entries generated from local dictionaries.' });
+      if (emergency.length) return json(res, 200, { entries: emergency, fallback: true });
+      return json(res, 200, { entries: [], fallback: true, warning: 'No entries generated from local dictionaries.' });
     }
 
     return json(res, 200, { entries: pairs });
