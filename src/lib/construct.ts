@@ -228,23 +228,32 @@ function buildCandidates(
     }
 
     const fixed = pattern.filter((ch): ch is string => Boolean(ch));
-    const distinct = new Set(fixed);
-    if (distinct.size <= 1 || fixed.length > 0) {
-      const fillChar = fixed[0] ?? (answerDirection === 'rtl' ? 'ا' : 'E');
-      const syntheticAnswer = pattern.map((ch) => ch ?? fillChar).join('');
-      const synthetic: Candidate = {
-        word: {
-          answer: syntheticAnswer,
-          clue: `SYNTHETIC:${fillChar} ×${slot.length}`,
-          isRepeatedLetter: true,
-        },
-        intersections: fixed.length,
-      };
-      if (!out.length || preferSyntheticFillers) {
-        out.unshift(synthetic);
-      } else {
-        out.push(synthetic);
-      }
+    const rtlChars = ['ا', 'ل', 'م', 'ن', 'ر', 'س', 'ت', 'ب'];
+    const ltrChars = ['E', 'A', 'R', 'T', 'N', 'S', 'L', 'I'];
+    const pool = answerDirection === 'rtl' ? rtlChars : ltrChars;
+    const syntheticAnswer = pattern
+      .map((ch, i) => {
+        if (ch) return ch;
+        const prev = i > 0 ? pattern[i - 1] : null;
+        let candidate = pool[i % pool.length];
+        if (candidate === prev) {
+          candidate = pool[(i + 1) % pool.length];
+        }
+        return candidate;
+      })
+      .join('');
+
+    const synthetic: Candidate = {
+      word: {
+        answer: syntheticAnswer,
+        clue: `SYNTHETIC:Generated ${slot.length}`,
+      },
+      intersections: fixed.length,
+    };
+    if (!out.length || preferSyntheticFillers) {
+      out.unshift(synthetic);
+    } else {
+      out.push(synthetic);
     }
   }
 
