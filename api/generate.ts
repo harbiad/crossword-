@@ -476,17 +476,6 @@ function buildCandidateWords(cefr: string, dict: DictMap): string[] {
   return unique;
 }
 
-function sampleCandidateWords(words: string[], limit: number): string[] {
-  if (words.length <= limit) return shuffle(words);
-  const out: string[] = [];
-  const start = Math.floor(Math.random() * words.length);
-  const step = 7919; // prime step for broad coverage
-  for (let i = 0; i < limit; i++) {
-    out.push(words[(start + i * step) % words.length]);
-  }
-  return out;
-}
-
 async function translateBatch(words: string[], token: string): Promise<string[]> {
   if (!words.length) return [];
   const resp = await fetch('https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-ar', {
@@ -553,10 +542,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
     const seen = new Set<string>();
 
-    const targetPairs = 800;
+    const targetPairs = 3000;
 
     // Return ALL valid word pairs (no limit) to maximize crossword fill
-    const shuffledBase = sampleCandidateWords(baseList, 5000);
+    const shuffledBase = shuffle(baseList);
     for (const w of shuffledBase) {
       const en = normalizeEnglishWord(w);
       if (en.length < 2 || en.length > gridSize) continue;
