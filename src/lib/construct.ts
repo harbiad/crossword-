@@ -35,6 +35,7 @@ type ConstructOptions = {
   strategy?: 'slot_fill' | 'hybrid';
   onReject?: (reason: ConstructRejectReason) => void;
   allowSyntheticFillers?: boolean;
+  preferSyntheticFillers?: boolean;
 };
 
 function getNow() {
@@ -191,7 +192,8 @@ function buildCandidates(
   requireIntersection: boolean,
   maxCandidates: number,
   wordCommonness: Map<string, number>,
-  allowSyntheticFillers: boolean
+  allowSyntheticFillers: boolean,
+  preferSyntheticFillers: boolean
 ): Candidate[] {
   const out: Candidate[] = [];
   for (const word of bucket) {
@@ -215,7 +217,7 @@ function buildCandidates(
     return a.word.clue.localeCompare(b.word.clue);
   });
 
-  if (!out.length && allowSyntheticFillers) {
+  if (allowSyntheticFillers) {
     const pattern: Array<string | null> = [];
     for (let i = 0; i < slot.length; i++) {
       const { r, c } = getCellAt(slot, i, answerDirection);
@@ -225,17 +227,22 @@ function buildCandidates(
 
     const fixed = pattern.filter((ch): ch is string => Boolean(ch));
     const distinct = new Set(fixed);
-    if (distinct.size <= 1) {
+    if (distinct.size <= 1 || fixed.length > 0) {
       const fillChar = fixed[0] ?? (answerDirection === 'rtl' ? 'ا' : 'E');
       const syntheticAnswer = pattern.map((ch) => ch ?? fillChar).join('');
-      out.push({
+      const synthetic: Candidate = {
         word: {
           answer: syntheticAnswer,
           clue: `SYNTHETIC:${fillChar} ×${slot.length}`,
           isRepeatedLetter: true,
         },
         intersections: fixed.length,
-      });
+      };
+      if (!out.length || preferSyntheticFillers) {
+        out.unshift(synthetic);
+      } else {
+        out.push(synthetic);
+      }
     }
   }
 
@@ -317,6 +324,7 @@ export function constructCrossword(
   const strategy = options.strategy ?? (size <= 9 ? 'slot_fill' : 'hybrid');
   const seedPlacements = Math.max(1, options.seedPlacements ?? (strategy === 'hybrid' ? 2 : 1));
   const allowSyntheticFillers = Boolean(options.allowSyntheticFillers);
+  const preferSyntheticFillers = Boolean(options.preferSyntheticFillers);
 
   const chooseNextSlot = (): number => {
     if (strategy === 'hybrid' && placements.length < seedPlacements) {
@@ -338,7 +346,8 @@ export function constructCrossword(
           false,
           maxCandidates,
           wordCommonness,
-          allowSyntheticFillers
+          allowSyntheticFillers,
+          preferSyntheticFillers
         );
         if (!candidates.length) continue;
         const score = slot.length * 100 + slotCenterScore(slot, size) - candidates.length;
@@ -373,7 +382,8 @@ export function constructCrossword(
         shouldRequireIntersection,
         maxCandidates,
         wordCommonness,
-        allowSyntheticFillers
+        allowSyntheticFillers,
+        preferSyntheticFillers
       );
       if (!candidates.length && shouldRequireIntersection) {
         candidates = buildCandidates(
@@ -387,7 +397,8 @@ export function constructCrossword(
           false,
           maxCandidates,
           wordCommonness,
-          allowSyntheticFillers
+          allowSyntheticFillers,
+          preferSyntheticFillers
         );
       }
       if (!candidates.length) return -2;
@@ -475,7 +486,8 @@ export function constructCrossword(
       shouldRequireIntersection,
       maxCandidates,
       wordCommonness,
-      allowSyntheticFillers
+      allowSyntheticFillers,
+      preferSyntheticFillers
     );
     if (!candidates.length && shouldRequireIntersection) {
       candidates = buildCandidates(
@@ -489,7 +501,8 @@ export function constructCrossword(
         false,
         maxCandidates,
         wordCommonness,
-        allowSyntheticFillers
+        allowSyntheticFillers,
+        preferSyntheticFillers
       );
     }
 

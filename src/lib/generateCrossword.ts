@@ -524,8 +524,12 @@ export function generateCrossword(
     }
 
     attempts++;
+    const syntheticEnabled = size >= 11;
+    const preferSynthetic = syntheticEnabled && attempts > Math.floor(attemptsBudget / 2);
     if (debugEnabled) {
-      console.log(`[cw-gen size=${size}] attempt=${attempts} strategy=${strategy} words=${attemptWords.length} templateSlots=${slots.length}`);
+      console.log(
+        `[cw-gen size=${size}] attempt=${attempts} strategy=${strategy} words=${attemptWords.length} templateSlots=${slots.length} synthetic=${preferSynthetic ? 'prefer' : syntheticEnabled ? 'allow' : 'off'}`
+      );
     }
 
     const placements = constructCrossword(
@@ -539,7 +543,8 @@ export function generateCrossword(
         maxCandidatesPerSlot: size <= 7 ? 150 : size <= 9 ? 220 : 180,
         maxShortReuse,
         timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
-        allowSyntheticFillers: size >= 11,
+        allowSyntheticFillers: syntheticEnabled,
+        preferSyntheticFillers: preferSynthetic,
         onReject: recordConstructReject,
         debug: debugEnabled
           ? {
