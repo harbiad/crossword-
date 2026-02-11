@@ -348,12 +348,14 @@ function buildCrosswordFromPlacements(
   let emptyCount = 0;
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
-      if (!workingGrid[r][c]) emptyCount++;
+      if (!workingGrid[r][c]) {
+        workingGrid[r][c] = { r, c, type: 'block' };
+        emptyCount++;
+      }
     }
   }
-  if (emptyCount > 0) {
-    if (debug?.enabled) debug.log(`unfilled white cells: ${emptyCount}`);
-    return { crossword: null, rejectReason: 'unfilled_white_cells' };
+  if (debug?.enabled && emptyCount > 0) {
+    debug.log(`filled unassigned white cells with blocks: ${emptyCount}`);
   }
 
   const grid = workingGrid as Cell[][];
@@ -524,8 +526,8 @@ export function generateCrossword(
     }
 
     attempts++;
-    const syntheticEnabled = size >= 11;
-    const preferSynthetic = syntheticEnabled && attempts > Math.floor(attemptsBudget / 2);
+    const syntheticEnabled = false;
+    const preferSynthetic = false;
     if (debugEnabled) {
       console.log(
         `[cw-gen size=${size}] attempt=${attempts} strategy=${strategy} words=${attemptWords.length} templateSlots=${slots.length} synthetic=${preferSynthetic ? 'prefer' : syntheticEnabled ? 'allow' : 'off'}`

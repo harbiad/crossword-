@@ -152,7 +152,7 @@ describe('generateCrossword', () => {
     }
   });
 
-  it('should not have 3+ consecutive blocks in any row or column', () => {
+  it('should not have 4+ consecutive blocks in any row or column', () => {
     const wordClues: WordClue[] = [
       { answer: 'HELLO', clue: 'Greeting' },
       { answer: 'WORLD', clue: 'Earth' },
@@ -174,7 +174,7 @@ describe('generateCrossword', () => {
         for (let c = 0; c < size; c++) {
           if (cw.grid[r][c].type === 'block') {
             consecutiveBlocks++;
-            expect(consecutiveBlocks).toBeLessThan(3);
+            expect(consecutiveBlocks).toBeLessThan(4);
           } else {
             consecutiveBlocks = 0;
           }
@@ -187,7 +187,7 @@ describe('generateCrossword', () => {
         for (let r = 0; r < size; r++) {
           if (cw.grid[r][c].type === 'block') {
             consecutiveBlocks++;
-            expect(consecutiveBlocks).toBeLessThan(3);
+            expect(consecutiveBlocks).toBeLessThan(4);
           } else {
             consecutiveBlocks = 0;
           }

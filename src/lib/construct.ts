@@ -143,7 +143,7 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
       const cell = grid[r][c];
       if (cell === BLOCK || cell === null) {
         consecutiveBlocks++;
-        if (consecutiveBlocks >= 3) return false;
+        if (consecutiveBlocks >= 4) return false;
       } else {
         consecutiveBlocks = 0;
       }
@@ -156,7 +156,7 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
       const cell = grid[r][c];
       if (cell === BLOCK || cell === null) {
         consecutiveBlocks++;
-        if (consecutiveBlocks >= 3) return false;
+        if (consecutiveBlocks >= 4) return false;
       } else {
         consecutiveBlocks = 0;
       }

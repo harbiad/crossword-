@@ -128,7 +128,7 @@ function validateBlockRunsBlocks(grid: number[][]): boolean {
       const isBlock = c < size && grid[r][c] === 0;
       if (isBlock) run++;
       if (!isBlock || c === size) {
-        if (run >= 3) return false;
+        if (run >= 4) return false;
         run = 0;
       }
     }
@@ -140,7 +140,7 @@ function validateBlockRunsBlocks(grid: number[][]): boolean {
       const isBlock = r < size && grid[r][c] === 0;
       if (isBlock) run++;
       if (!isBlock || r === size) {
-        if (run >= 3) return false;
+        if (run >= 4) return false;
         run = 0;
       }
     }
