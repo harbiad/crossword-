@@ -526,8 +526,8 @@ export function generateCrossword(
     }
 
     attempts++;
-    const syntheticEnabled = true;
-    const preferSynthetic = attempts > Math.floor(attemptsBudget / 2);
+    const syntheticEnabled = false;
+    const preferSynthetic = false;
     if (debugEnabled) {
       console.log(
         `[cw-gen size=${size}] attempt=${attempts} strategy=${strategy} words=${attemptWords.length} templateSlots=${slots.length} synthetic=${preferSynthetic ? 'prefer' : syntheticEnabled ? 'allow' : 'off'}`
