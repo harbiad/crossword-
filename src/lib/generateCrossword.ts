@@ -1,5 +1,5 @@
 import type { Crossword, Cell, Entry, Direction } from './crossword';
-import { constructCrossword, validateBlockRuns } from './construct';
+import { constructCrossword, validateBlockRuns, type ConstructRejectReason } from './construct';
 import { findSlots, getTemplates, getNYTTemplate } from './templates';
 
 export type WordClue = { answer: string; clue: string; isRepeatedLetter?: boolean };
@@ -11,14 +11,19 @@ type NumberingResult = {
   entryNumbers: Map<string, number>;
 };
 
+export type GenerationStats = {
+  attempts: number;
+  templatesTried: number;
+  strategy: 'slot_fill' | 'hybrid';
+  rejectedByReason: Record<string, number>;
+};
+
 function normalizeAnswer(a: string): string {
   return a
     .trim()
     .replace(/\s+/g, '')
-    .replace(/[ـ\u064B-\u065F\u0670]/g, '') // remove Arabic tatweel + harakat
-    // Normalize Alef variants to plain Alef (ا) - these are all the same letter
+    .replace(/[ـ\u064B-\u065F\u0670]/g, '')
     .replace(/[أإآٱ]/g, 'ا')
-    // NOTE: Do NOT normalize ى (alef maksura) to ي - they are different letters
     .toUpperCase();
 }
 
@@ -27,22 +32,6 @@ function getNow() {
     return performance.now();
   }
   return Date.now();
-}
-
-function shuffleInPlace<T>(arr: T[]): void {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-}
-
-function sliceWithWrap<T>(arr: T[], start: number, count: number): T[] {
-  if (arr.length <= count) return arr.slice();
-  const out: T[] = [];
-  for (let i = 0; i < count; i++) {
-    out.push(arr[(start + i) % arr.length]);
-  }
-  return out;
 }
 
 function makeId(dir: Direction, row: number, col: number) {
@@ -147,7 +136,6 @@ function validatePuzzle(
     }
   }
 
-  // Ensure entry/run consistency.
   const buildEntryRunKey = (entry: Entry) => {
     const { dr, dc } = getEntryStep(entry.direction, answerDirection);
     const coords: string[] = [];
@@ -163,7 +151,6 @@ function validatePuzzle(
   const entryRunKeys = new Set(entries.map(buildEntryRunKey));
   const seenRunKeys = new Set<string>();
 
-  // Across runs (visual left->right scan; key is coordinate-set so RTL/LTR is handled)
   for (let r = 0; r < size; r++) {
     let c = 0;
     while (c < size) {
@@ -187,7 +174,6 @@ function validatePuzzle(
     }
   }
 
-  // Down runs
   for (let c = 0; c < size; c++) {
     let r = 0;
     while (r < size) {
@@ -286,13 +272,18 @@ function validatePuzzle(
   return { ok: errors.length === 0, errors };
 }
 
+type BuildResult = {
+  crossword: Crossword | null;
+  rejectReason?: string;
+};
+
 function buildCrosswordFromPlacements(
   size: number,
   template: number[][],
   placements: ReturnType<typeof constructCrossword>,
   answerDirection: 'rtl' | 'ltr',
   debug?: { enabled: boolean; log: (msg: string) => void }
-): Crossword | null {
+): BuildResult {
   const workingGrid: WorkingCell[][] = template.map((row, r) =>
     row.map((cell, c) => (cell === 0 ? ({ r, c, type: 'block' } as Cell) : null))
   );
@@ -308,31 +299,23 @@ function buildCrosswordFromPlacements(
 
     const { dr, dc } = getEntryStep(dir, answerDirection);
     const wordCells: { r: number; c: number; letter: string }[] = [];
-    let hasConflict = false;
 
     for (let i = 0; i < answer.length; i++) {
       const rr = row0 + dr * i;
       const cc = col0 + dc * i;
       if (rr < 0 || cc < 0 || rr >= size || cc >= size) {
-        hasConflict = true;
-        break;
+        return { crossword: null, rejectReason: 'entry_out_of_bounds' };
       }
 
       const cell = workingGrid[rr][cc];
       if (cell && cell.type === 'block') {
-        hasConflict = true;
-        break;
+        return { crossword: null, rejectReason: 'entry_hits_block' };
       }
       if (cell && cell.type === 'letter' && cell.char !== answer[i]) {
-        hasConflict = true;
-        break;
+        return { crossword: null, rejectReason: 'letter_conflict' };
       }
 
       wordCells.push({ r: rr, c: cc, letter: answer[i] });
-    }
-
-    if (hasConflict || wordCells.length !== answer.length) {
-      return null;
     }
 
     for (const { r, c, letter } of wordCells) {
@@ -365,16 +348,12 @@ function buildCrosswordFromPlacements(
   let emptyCount = 0;
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
-      if (!workingGrid[r][c]) {
-        emptyCount++;
-      }
+      if (!workingGrid[r][c]) emptyCount++;
     }
   }
   if (emptyCount > 0) {
-    if (debug?.enabled) {
-      debug.log(`unfilled white cells: ${emptyCount}`);
-    }
-    return null;
+    if (debug?.enabled) debug.log(`unfilled white cells: ${emptyCount}`);
+    return { crossword: null, rejectReason: 'unfilled_white_cells' };
   }
 
   const grid = workingGrid as Cell[][];
@@ -398,10 +377,52 @@ function buildCrosswordFromPlacements(
     if (debug?.enabled) {
       debug.log(`validation failed: ${validation.errors.slice(0, 4).join(' | ')}`);
     }
-    return null;
+    return { crossword: null, rejectReason: 'validation_failed' };
   }
 
-  return { size, width: size, height: size, grid, entries, answerDirection };
+  return { crossword: { size, width: size, height: size, grid, entries, answerDirection } };
+}
+
+function incrementCounter(map: Record<string, number>, key: string) {
+  map[key] = (map[key] ?? 0) + 1;
+}
+
+function isDebugEnabled() {
+  if (typeof window !== 'undefined' && (window as any).__CW_DEBUG) return true;
+  if ((globalThis as any).__CW_DEBUG) return true;
+  return false;
+}
+
+function isTemplateViable(
+  template: number[][],
+  buckets: Map<number, WordClue[]>,
+  maxShortReuse: number
+): boolean {
+  const slots = findSlots(template);
+  const requiredByLen = new Map<number, number>();
+  for (const slot of slots) {
+    requiredByLen.set(slot.length, (requiredByLen.get(slot.length) ?? 0) + 1);
+  }
+
+  for (const [len, required] of requiredByLen.entries()) {
+    const available = buckets.get(len)?.length ?? 0;
+    if (available === 0) return false;
+    if (len <= 3) {
+      const neededDistinct = Math.ceil(required / maxShortReuse);
+      if (available < neededDistinct) return false;
+    } else if (available < required) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function getUsefulLengthCap(size: number, slotCount: number, len: number): number {
+  const demandWeight = len <= 3 ? 7 : len <= Math.ceil(size * 0.55) ? 10 : 8;
+  const dynamic = slotCount * demandWeight;
+  const base = size <= 7 ? 120 : size <= 9 ? 300 : size <= 11 ? 460 : 560;
+  return Math.max(base, dynamic);
 }
 
 export function generateCrossword(
@@ -424,179 +445,167 @@ export function generateCrossword(
     bucket.push(wc);
     buckets.set(len, bucket);
   }
-  for (const bucket of buckets.values()) shuffleInPlace(bucket);
 
-  const templates = getTemplates(size);
-  const attempts = size <= 7 ? 10 : size <= 9 ? 18 : 14;
-  const timeBudgetMs = size <= 7 ? 1200 : size <= 9 ? 4500 : 6500;
-  let best: Crossword | null = null;
-  let bestScore = -1;
-  const deadline = getNow() + timeBudgetMs;
+  for (const bucket of buckets.values()) {
+    bucket.sort((a, b) => {
+      if (a.answer !== b.answer) return a.answer.localeCompare(b.answer);
+      return a.clue.localeCompare(b.clue);
+    });
+  }
 
-  const optionSets = [
-    {
-      minIntersectionPct: size <= 7 ? 58 : size <= 9 ? 55 : 60,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
-    },
-    {
-      minIntersectionPct: size <= 7 ? 52 : size <= 9 ? 50 : 54,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
-    },
-    {
-      minIntersectionPct: size <= 7 ? 46 : size <= 9 ? 45 : 48,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
-    },
+  const strategy: 'slot_fill' | 'hybrid' = size <= 9 ? 'slot_fill' : 'hybrid';
+  const maxShortReuse = size <= 9 ? 4 : 3;
+  const attemptsBudget = size <= 7 ? 14 : size <= 9 ? 22 : 18;
+  const timeBudgetMs = size <= 7 ? 3500 : size <= 9 ? 9000 : 11000;
+
+  const rejectedByReason: Record<string, number> = {};
+  const recordConstructReject = (reason: ConstructRejectReason) => incrementCounter(rejectedByReason, reason);
+
+  const templates = [
+    ...getTemplates(size),
+    ...Array.from({ length: 10 }, () => getNYTTemplate(size)),
+    ...Array.from({ length: 8 }, () => getTemplates(size)[0]),
   ];
-  const targetWords = size <= 7 ? 6 : size <= 9 ? 14 : size <= 11 ? 20 : 26;
-  const minWords = size <= 7 ? 4 : size <= 9 ? 10 : size <= 11 ? 14 : 18;
-
-  let attemptsRun = 0;
-  const maxShortReuse = 6;
-  const isTemplateViable = (template: number[][]) => {
-    const slots = findSlots(template);
-    const counts = new Map<number, number>();
-    for (const s of slots) counts.set(s.length, (counts.get(s.length) ?? 0) + 1);
-    for (const [len, count] of counts.entries()) {
-      const bucket = buckets.get(len);
-      if (!bucket || bucket.length === 0) return false;
-      if (len <= 3) {
-        const needed = Math.ceil(count / maxShortReuse);
-        if (bucket.length < needed) return false;
-      } else if (bucket.length < count) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const templateScores = templates
+  const viableTemplates = templates
     .map((template) => {
+      if (!isTemplateViable(template, buckets, maxShortReuse)) return null;
       const slots = findSlots(template);
-      const lengths = new Set(slots.map((s) => s.length));
+      const maxSlots = size <= 7 ? 28 : size <= 9 ? 44 : size <= 11 ? 56 : 72;
+      if (slots.length > maxSlots) return null;
+      const byLen = new Map<number, number>();
+      for (const slot of slots) byLen.set(slot.length, (byLen.get(slot.length) ?? 0) + 1);
       let score = 0;
-      let viable = true;
-      for (const len of lengths) {
-        const bucket = buckets.get(len);
-        if (!bucket || bucket.length === 0) {
-          viable = false;
-          break;
-        }
-        score += bucket.length;
+      for (const [len, count] of byLen.entries()) {
+        const pool = buckets.get(len)?.length ?? 0;
+        score += Math.min(pool, count * 16);
       }
-      if (!isTemplateViable(template)) viable = false;
-      return { template, score, viable };
+      score -= slots.length * 12;
+      return { template, score };
     })
-    .filter((t) => t.viable)
-    .sort((a, b) => b.score - a.score);
+    .filter((item): item is { template: number[][]; score: number } => Boolean(item))
+    .sort((a, b) => b.score - a.score)
+    .map((x) => x.template);
 
-  const randomTemplates = templateScores.length
-    ? templateScores.map((t) => t.template)
-    : templates.map((t) => t);
-  const nytTemplates = Array.from({ length: 6 }, () => getNYTTemplate(size)).filter(isTemplateViable);
-  const templatePool: number[][][] = [...randomTemplates, ...nytTemplates];
+  if (!viableTemplates.length) {
+    incrementCounter(rejectedByReason, 'template_precheck_failed');
+    return {
+      size,
+      width: size,
+      height: size,
+      grid: [],
+      entries: [],
+      answerDirection,
+      generationStats: {
+        attempts: 0,
+        templatesTried: 0,
+        strategy,
+        rejectedByReason,
+      },
+    };
+  }
 
-  for (const template of templatePool) {
-    if (getNow() > deadline) break;
+  const debugEnabled = isDebugEnabled();
+  const deadline = getNow() + timeBudgetMs;
+  let attempts = 0;
+
+  for (const template of viableTemplates) {
+    if (getNow() > deadline || attempts >= attemptsBudget) break;
+
     const slots = findSlots(template);
-    const allowedLengths = new Set<number>();
-    for (const slot of slots) allowedLengths.add(slot.length);
-    const perLengthCap = size <= 7 ? 320 : size <= 9 ? 620 : 760;
+    const slotCountByLen = new Map<number, number>();
+    for (const slot of slots) slotCountByLen.set(slot.length, (slotCountByLen.get(slot.length) ?? 0) + 1);
 
-    for (const opts of optionSets) {
-      for (let i = 0; i < attempts; i++) {
-        if (getNow() > deadline) break;
-        attemptsRun++;
-        const attemptWords: WordClue[] = [];
-        for (const len of allowedLengths) {
-          const bucket = buckets.get(len);
-          if (!bucket || bucket.length === 0) continue;
-          const cap = Math.min(bucket.length, perLengthCap);
-          const offset = (attemptsRun * 97 + len * 13) % bucket.length;
-          attemptWords.push(...sliceWithWrap(bucket, offset, cap));
-        }
+    const attemptWords: WordClue[] = [];
+    for (const [len, count] of slotCountByLen.entries()) {
+      const bucket = buckets.get(len);
+      if (!bucket || !bucket.length) continue;
+      const cap = Math.min(bucket.length, getUsefulLengthCap(size, count, len));
+      attemptWords.push(...bucket.slice(0, cap));
+    }
 
-        const debugEnabled = typeof window !== 'undefined' && (window as any).__CW_DEBUG;
-        if (debugEnabled) {
-          // eslint-disable-next-line no-console
-          console.log(`[cw-gen size=${size}] attempt=${attemptsRun} words=${attemptWords.length} templateSlots=${slots.length}`);
-        }
-        const placements = constructCrossword(
-          size,
-          attemptWords,
-          template,
-          answerDirection,
-          {
-            minIntersectionPct: opts.minIntersectionPct,
-            seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 700 : size <= 9 ? 1000 : 600,
-            maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 260 : 260,
-            targetWords,
-            minWords,
-            useWordCentric: size >= 11,
-            useBacktracking: false,
-            useFillAllSlots: size <= 9,
-            debug: debugEnabled
-              ? {
-                  enabled: true,
-                  log: (msg: string) => {
-                    // eslint-disable-next-line no-console
-                    console.log(`[cw-gen size=${size}] ${msg}`);
-                  },
-                }
-              : undefined,
-          },
-          50
-        );
-        if (debugEnabled) {
-          // eslint-disable-next-line no-console
-          console.log(`[cw-gen size=${size}] attempt=${attemptsRun} placements=${placements.length}`);
-        }
-        if (!placements.length) {
-          if (debugEnabled) {
-            // eslint-disable-next-line no-console
-            console.log(`[cw-gen size=${size}] attempt=${attemptsRun} no placements`);
-          }
-          continue;
-        }
+    attempts++;
+    if (debugEnabled) {
+      console.log(`[cw-gen size=${size}] attempt=${attempts} strategy=${strategy} words=${attemptWords.length} templateSlots=${slots.length}`);
+    }
 
-        const cw = buildCrosswordFromPlacements(
-          size,
-          template,
-          placements,
-          answerDirection,
-          debugEnabled
-            ? {
-                enabled: true,
-                log: (msg: string) => {
-                  // eslint-disable-next-line no-console
-                  console.log(`[cw-gen size=${size}] ${msg}`);
-                },
-              }
-            : undefined
-        );
-        if (!cw) continue;
-
-        const totalLetters = cw.entries.reduce((sum, e) => sum + e.answer.length, 0);
-        const score = totalLetters + cw.entries.length * 2;
-
-        if (score > bestScore) {
-          bestScore = score;
-          best = cw;
-        }
+    const placements = constructCrossword(
+      size,
+      attemptWords,
+      template,
+      answerDirection,
+      {
+        strategy,
+        seedPlacements: strategy === 'hybrid' ? 2 : 1,
+        maxCandidatesPerSlot: size <= 7 ? 150 : size <= 9 ? 220 : 180,
+        maxShortReuse,
+        timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
+        onReject: recordConstructReject,
+        debug: debugEnabled
+          ? {
+              enabled: true,
+              log: (msg: string) => {
+                console.log(`[cw-gen size=${size}] ${msg}`);
+              },
+            }
+          : undefined,
       }
-      if (best || getNow() > deadline) break;
+    );
+
+    if (!placements.length) {
+      incrementCounter(rejectedByReason, 'no_placements');
+      continue;
     }
-    if (best || getNow() > deadline) break;
+
+    const built = buildCrosswordFromPlacements(
+      size,
+      template,
+      placements,
+      answerDirection,
+      debugEnabled
+        ? {
+            enabled: true,
+            log: (msg: string) => {
+              console.log(`[cw-gen size=${size}] ${msg}`);
+            },
+          }
+        : undefined
+    );
+
+    if (!built.crossword) {
+      incrementCounter(rejectedByReason, built.rejectReason ?? 'build_failed');
+      continue;
+    }
+
+    built.crossword.generationStats = {
+      attempts,
+      templatesTried: attempts,
+      strategy,
+      rejectedByReason,
+    };
+
+    return built.crossword;
   }
 
-  if (!best) {
-    if (typeof console !== 'undefined') {
-      console.warn(`[crossword] generation failed size=${size} attempts=${attemptsRun} candidates=${clean.length}`);
-    }
-    return { size, width: size, height: size, grid: [], entries: [], answerDirection };
+  if (typeof console !== 'undefined') {
+    console.warn(
+      `[crossword] generation failed size=${size} attempts=${attempts} candidates=${clean.length} strategy=${strategy}`
+    );
   }
 
-  return best;
+  return {
+    size,
+    width: size,
+    height: size,
+    grid: [],
+    entries: [],
+    answerDirection,
+    generationStats: {
+      attempts,
+      templatesTried: attempts,
+      strategy,
+      rejectedByReason,
+    },
+  };
 }
 
 export { validatePuzzle };

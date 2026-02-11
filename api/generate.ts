@@ -462,9 +462,10 @@ function pickDict(cefr: string): DictMap {
 }
 
 function buildCandidateWords(cefr: string, dict: DictMap): string[] {
-  const base = pickWordList(cefr);
-  const fallback = cefr === 'A1-A2' ? [] : WORDS_A1_A2;
-  const merged = cefr === 'A1-A2' ? [...base, ...Object.keys(dict)] : [...base, ...fallback, ...Object.keys(dict)];
+  // Source candidates from DICT_COMMON_30000 only.
+  // Keep CEFR hook invoked to preserve extension point without affecting output.
+  void pickWordList(cefr);
+  const merged = Object.keys(dict);
   const seen = new Set<string>();
   const unique: string[] = [];
   for (const w of merged) {
@@ -474,6 +475,14 @@ function buildCandidateWords(cefr: string, dict: DictMap): string[] {
     unique.push(normalized);
   }
   return unique;
+}
+
+function getLengthCapBySize(size: number, len: number): number {
+  const midpoint = Math.ceil(size * 0.55);
+  const distance = Math.abs(len - midpoint);
+  const base = size <= 7 ? 200 : size <= 9 ? 260 : size <= 11 ? 320 : 380;
+  const cap = base - distance * 32;
+  return Math.max(80, cap);
 }
 
 async function translateBatch(words: string[], token: string): Promise<string[]> {
@@ -501,13 +510,15 @@ async function translateBatch(words: string[], token: string): Promise<string[]>
   if (data?.translation_text) return [data.translation_text];
   return [];
 }
+void WORDS_COMMON_EXTRA;
+void translateBatch;
 
 // (HF fallback removed for speed + reliability on Vercel)
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const buildEmergencyEntries = (mode: Mode, gridSize: number, dict: DictMap) => {
     const entries: Array<{ clue: string; answer: string }> = [];
-    for (const [en, val] of Object.entries(dict)) {
+    for (const [en] of Object.entries(dict)) {
       const enNorm = normalizeEnglishWord(en);
       if (enNorm.length < 2 || enNorm.length > gridSize) continue;
       const meanings = getMeanings(dict, enNorm);
@@ -540,28 +551,37 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const baseList = buildCandidateWords(cefr, dict);
 
     const pairs: Array<{ clue: string; answer: string; isRepeatedLetter?: boolean }> = [];
-    const seen = new Set<string>();
-
-    const targetPairs = 3000;
-
-    // Return ALL valid word pairs (no limit) to maximize crossword fill
+    const seenPair = new Set<string>();
+    const answerLengthCount = new Map<number, number>();
+    const targetPairs = 3200;
     const shuffledBase = shuffle(baseList);
+
     for (const w of shuffledBase) {
       const en = normalizeEnglishWord(w);
       if (en.length < 2 || en.length > gridSize) continue;
-      if (seen.has(en)) continue;
 
       const meanings = getMeanings(dict, en);
-      if (meanings.length) {
-        for (const meaning of meanings) {
-          const ar = meaning.answer;
-          if (!ar || ar.length < 2 || ar.length > gridSize) continue;
-          const key = `${en}::${ar}`;
-          if (seen.has(key)) continue;
-          seen.add(key);
-          const clueAr = meaning.clue || ar;
-          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: clueAr, answer: en });
-        }
+      if (!meanings.length) continue;
+
+      for (const meaning of meanings) {
+        const ar = meaning.answer;
+        if (!ar || ar.length < 2 || ar.length > gridSize) continue;
+
+        const answer = mode === 'en_to_ar' ? ar : en;
+        const clue = mode === 'en_to_ar' ? en : (meaning.clue || ar);
+        const answerLen = answer.length;
+        if (answerLen < 2 || answerLen > gridSize) continue;
+
+        const capForLen = getLengthCapBySize(gridSize, answerLen);
+        const curLenCount = answerLengthCount.get(answerLen) ?? 0;
+        if (curLenCount >= capForLen) continue;
+
+        const pairKey = `${clue}::${answer}`;
+        if (seenPair.has(pairKey)) continue;
+        seenPair.add(pairKey);
+
+        pairs.push({ clue, answer });
+        answerLengthCount.set(answerLen, curLenCount + 1);
       }
       if (pairs.length >= targetPairs) break;
     }

@@ -35,6 +35,12 @@ export type Crossword = {
   grid: Cell[][];
   entries: Entry[];
   answerDirection: 'rtl' | 'ltr';
+  generationStats?: {
+    attempts: number;
+    templatesTried: number;
+    strategy: 'slot_fill' | 'hybrid';
+    rejectedByReason: Record<string, number>;
+  };
 };
 
 export function isBlockCell(cell: Cell): cell is BlockCell {
