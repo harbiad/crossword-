@@ -340,9 +340,9 @@ const DICT_C1_C2: DictMap = {};
 async function getPrimaryDict(): Promise<DictMap> {
   if (cachedPrimaryDict) return cachedPrimaryDict;
   try {
-    // Use only DICT_COMMON_30000 as requested, and lazy-load it to reduce cold-start pressure.
-    const mod = await import('./DICT_COMMON_30000');
-    const dict = (mod as { DICT_COMMON_30000?: DictMap }).DICT_COMMON_30000;
+    // Use only DICT_COMMON_30000_NON_EMPTY so empty/placeholder clues are excluded at source.
+    const mod = await import('./DICT_COMMON_30000_non_empty');
+    const dict = (mod as { DICT_COMMON_30000_NON_EMPTY?: DictMap }).DICT_COMMON_30000_NON_EMPTY;
     if (dict && Object.keys(dict).length > 0) {
       cachedPrimaryDict = dict;
       return cachedPrimaryDict;
@@ -462,7 +462,7 @@ function pickDict(cefr: string): DictMap {
 }
 
 function buildCandidateWords(cefr: string, dict: DictMap): string[] {
-  // Source candidates from DICT_COMMON_30000 only.
+  // Source candidates from DICT_COMMON_30000_NON_EMPTY only.
   // Keep CEFR hook invoked to preserve extension point without affecting output.
   void pickWordList(cefr);
   const merged = Object.keys(dict);
@@ -620,7 +620,8 @@ function getMeanings(dict: DictMap, en: string): DictMeaning[] {
     if (typeof v === 'string') {
       return { answer: normalizeArabicWord(v), clue: v };
     }
-    const clue = typeof v?.clue === 'string' ? v.clue : '';
+    const clueRaw = typeof v?.clue === 'string' ? v.clue.trim() : '';
+    const clue = clueRaw === '[]' ? '' : clueRaw;
     const answer = normalizeArabicWord(v?.answer);
     return { answer, clue };
   })
