@@ -389,6 +389,15 @@ function incrementCounter(map: Record<string, number>, key: string) {
   map[key] = (map[key] ?? 0) + 1;
 }
 
+function shuffle<T>(arr: T[]): T[] {
+  const out = arr.slice();
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
 function isDebugEnabled() {
   if (typeof window !== 'undefined' && (window as any).__CW_DEBUG) return true;
   if ((globalThis as any).__CW_DEBUG) return true;
@@ -457,22 +466,25 @@ export function generateCrossword(
 
   const strategy: 'slot_fill' | 'hybrid' = size <= 9 ? 'slot_fill' : 'hybrid';
   const maxShortReuse = size <= 9 ? 4 : 3;
-  const attemptsBudget = size <= 7 ? 14 : size <= 9 ? 22 : 18;
-  const timeBudgetMs = size <= 7 ? 3500 : size <= 9 ? 9000 : 11000;
+  const attemptsBudget = size <= 7 ? 16 : size <= 9 ? 28 : size <= 11 ? 40 : 52;
+  const timeBudgetMs = size <= 7 ? 4500 : size <= 9 ? 12000 : size <= 11 ? 22000 : 26000;
 
   const rejectedByReason: Record<string, number> = {};
   const recordConstructReject = (reason: ConstructRejectReason) => incrementCounter(rejectedByReason, reason);
 
+  const baseTemplates = getTemplates(size);
+  const nytCount = size <= 9 ? 10 : size <= 11 ? 18 : 24;
+  const remixCount = size <= 9 ? 8 : size <= 11 ? 14 : 18;
   const templates = [
-    ...getTemplates(size),
-    ...Array.from({ length: 10 }, () => getNYTTemplate(size)),
-    ...Array.from({ length: 8 }, () => getTemplates(size)[0]),
+    ...baseTemplates,
+    ...Array.from({ length: nytCount }, () => getNYTTemplate(size)),
+    ...Array.from({ length: remixCount }, () => baseTemplates[Math.floor(Math.random() * baseTemplates.length)]),
   ];
   const viableTemplates = templates
     .map((template) => {
       if (!isTemplateViable(template, buckets, maxShortReuse)) return null;
       const slots = findSlots(template);
-      const maxSlots = size <= 7 ? 28 : size <= 9 ? 44 : size <= 11 ? 56 : 72;
+      const maxSlots = size <= 7 ? 28 : size <= 9 ? 44 : size <= 11 ? 72 : 96;
       if (slots.length > maxSlots) return null;
       const byLen = new Map<number, number>();
       for (const slot of slots) byLen.set(slot.length, (byLen.get(slot.length) ?? 0) + 1);
@@ -522,7 +534,7 @@ export function generateCrossword(
       const bucket = buckets.get(len);
       if (!bucket || !bucket.length) continue;
       const cap = Math.min(bucket.length, getUsefulLengthCap(size, count, len));
-      attemptWords.push(...bucket.slice(0, cap));
+      attemptWords.push(...shuffle(bucket).slice(0, cap));
     }
 
     attempts++;
@@ -537,12 +549,11 @@ export function generateCrossword(
     const commonConstructOptions = {
       strategy,
       seedPlacements: strategy === 'hybrid' ? 2 : 1,
-      maxCandidatesPerSlot: size <= 7 ? 520 : size <= 9 ? 760 : 620,
+      maxCandidatesPerSlot: size <= 7 ? 520 : size <= 9 ? 760 : size <= 11 ? 920 : 1100,
       maxShortReuse,
-      timeBudgetMs: size <= 7 ? 1200 : size <= 9 ? 2200 : 2600,
+      timeBudgetMs: size <= 7 ? 1400 : size <= 9 ? 2600 : size <= 11 ? 4200 : 5200,
       allowSyntheticFillers: syntheticEnabled,
       preferSyntheticFillers: preferSynthetic,
-      maxLongReuse: size >= 9 ? 2 : 1,
       onReject: recordConstructReject,
       debug: debugEnabled
         ? {
@@ -554,15 +565,22 @@ export function generateCrossword(
         : undefined,
     } as const;
 
-    let placements = constructCrossword(size, attemptWords, template, answerDirection, {
-      ...commonConstructOptions,
-      maxClueUses: 1,
-    });
-    if (!placements.length) {
+    const passOptions: Array<{ maxClueUses: number; maxLongReuse: number }> = [
+      { maxClueUses: 1, maxLongReuse: size >= 11 ? 2 : size >= 9 ? 2 : 1 },
+      { maxClueUses: 2, maxLongReuse: size >= 11 ? 2 : size >= 9 ? 2 : 1 },
+    ];
+    if (size >= 11) {
+      passOptions.push({ maxClueUses: 2, maxLongReuse: 3 });
+    }
+
+    let placements: ReturnType<typeof constructCrossword> = [];
+    for (const pass of passOptions) {
       placements = constructCrossword(size, attemptWords, template, answerDirection, {
         ...commonConstructOptions,
-        maxClueUses: 2,
+        maxClueUses: pass.maxClueUses,
+        maxLongReuse: pass.maxLongReuse,
       });
+      if (placements.length) break;
     }
 
     if (!placements.length) {
