@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef, useCallback } from 'react';
+import { useMemo, useState, useRef, useCallback, useEffect } from 'react';
 import './App.css';
 import type { Crossword, Entry } from './lib/crossword';
 import { getEntryCells as getEntryCellsForEntry, getEntryCellAt } from './lib/crossword';
@@ -6,8 +6,7 @@ import { generateCrossword } from './lib/generateCrossword';
 import { bandToCefr, type CefrBand } from './lib/cefr';
 
 type Mode = 'en_to_ar' | 'ar_to_en';
-
-type Fill = Record<string, string>; // key: r,c -> user char
+type Fill = Record<string, string>;
 
 function key(r: number, c: number) {
   return `${r},${c}`;
@@ -23,26 +22,13 @@ function normalizeChar(ch: string) {
   return ch.trim().slice(0, 1).toUpperCase();
 }
 
-// Detect and convert old-format repeated letter clues ("Double X", "Triple X") to "X ×N" format
 function parseRepeatedLetter(clue: string): { letter: string; count: number } | null {
   const doubleMatch = clue.match(/^Double\s+([A-Z])$/i);
   if (doubleMatch) return { letter: doubleMatch[1].toUpperCase(), count: 2 };
-
   const tripleMatch = clue.match(/^Triple\s+([A-Z])$/i);
   if (tripleMatch) return { letter: tripleMatch[1].toUpperCase(), count: 3 };
-
   const tokenMatch = clue.match(/^([A-Z])\s*[×x]\s*(\d+)$/i);
   if (tokenMatch) return { letter: tokenMatch[1].toUpperCase(), count: Number(tokenMatch[2]) };
-
-  const countFirst = clue.match(/^(\d+)\s*(?:x|×|times)?\s*([A-Z])$/i);
-  if (countFirst) return { letter: countFirst[2].toUpperCase(), count: Number(countFirst[1]) };
-
-  const repeatedMatch = clue.match(/^(\d+)\s*repeated\s*([A-Z])$/i);
-  if (repeatedMatch) return { letter: repeatedMatch[2].toUpperCase(), count: Number(repeatedMatch[1]) };
-
-  const repeatedAlt = clue.match(/^([A-Z])\s*repeated\s*(\d+)$/i);
-  if (repeatedAlt) return { letter: repeatedAlt[1].toUpperCase(), count: Number(repeatedAlt[2]) };
-
   return null;
 }
 
@@ -52,13 +38,25 @@ function formatRepeatedLetterClue(clue: string): string {
   return `${parsed.letter} ×${parsed.count}`;
 }
 
-// Check if a clue is a repeated letter clue (either by flag or by pattern)
 function isRepeatedLetterClue(clue: string, isRepeatedLetterFlag?: boolean): boolean {
   if (isRepeatedLetterFlag) return true;
   if (parseRepeatedLetter(clue)) return true;
   if (/حرف مكرر/.test(clue)) return true;
   return false;
 }
+
+// Bilingual keyboard layout
+const KEYBOARD_EN = [
+  ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+  ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+  ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
+];
+
+const KEYBOARD_AR = [
+  ['ض', 'ص', 'ث', 'ق', 'ف', 'غ', 'ع', 'ه', 'خ', 'ح', 'ج', 'د'],
+  ['ش', 'س', 'ي', 'ب', 'ل', 'ا', 'ت', 'ن', 'م', 'ك', 'ط'],
+  ['ئ', 'ء', 'ؤ', 'ر', 'ى', 'ة', 'و', 'ز', 'ظ', 'ذ'],
+];
 
 export default function App() {
   const [size, setSize] = useState<number>(7);
@@ -72,9 +70,19 @@ export default function App() {
   const [fill, setFill] = useState<Fill>({});
   const [selectedEntryId, setSelectedEntryId] = useState<string | null>(null);
   const [activeCell, setActiveCell] = useState<{ r: number; c: number } | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const [lastTappedCell, setLastTappedCell] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Refs for input elements keyed by "r,c"
   const inputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
+
+  // Detect mobile for keyboard handling
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const selectedCells = useMemo(() => {
     if (!cw || !selectedEntryId) return [];
@@ -86,7 +94,15 @@ export default function App() {
     return cw.entries.find((e) => e.id === selectedEntryId) || null;
   }, [cw, selectedEntryId]);
 
-  // Focus a specific cell
+  // Sorted entries for navigation
+  const sortedEntries = useMemo(() => {
+    if (!cw) return [];
+    return [...cw.entries].sort((a, b) => {
+      if (a.number !== b.number) return a.number - b.number;
+      return a.direction === 'across' ? -1 : 1;
+    });
+  }, [cw]);
+
   const focusCell = useCallback((r: number, c: number) => {
     const input = inputRefs.current.get(key(r, c));
     if (input) {
@@ -95,7 +111,6 @@ export default function App() {
     }
   }, []);
 
-  // Get the next cell in the current entry direction
   const getNextCell = useCallback((
     currentR: number,
     currentC: number,
@@ -104,25 +119,27 @@ export default function App() {
   ): { r: number; c: number } | null => {
     if (!cw || !entry) return null;
 
+    const isInverted = entry.clue.includes('(inverted)');
     const isRtlAcross = cw.answerDirection === 'rtl' && entry.direction === 'across';
     const isDown = entry.direction === 'down';
 
-    // For RTL across: forward = left (-1), backward = right (+1)
-    // For LTR across: forward = right (+1), backward = left (-1)
-    // For down: forward = down (+1), backward = up (-1)
+    // For inverted entries, reverse the movement direction
+    const effectiveDirection = isInverted
+      ? (direction === 'forward' ? 'backward' : 'forward')
+      : direction;
+
     let dr = 0, dc = 0;
     if (isDown) {
-      dr = direction === 'forward' ? 1 : -1;
+      dr = effectiveDirection === 'forward' ? 1 : -1;
     } else if (isRtlAcross) {
-      dc = direction === 'forward' ? -1 : 1;
+      dc = effectiveDirection === 'forward' ? -1 : 1;
     } else {
-      dc = direction === 'forward' ? 1 : -1;
+      dc = effectiveDirection === 'forward' ? 1 : -1;
     }
 
     const nextR = currentR + dr;
     const nextC = currentC + dc;
 
-    // Check if next cell is within bounds and part of the entry
     if (nextR < 0 || nextR >= cw.size || nextC < 0 || nextC >= cw.size) return null;
     const nextCell = cw.grid[nextR]?.[nextC];
     if (!nextCell || nextCell.type === 'block') return null;
@@ -130,18 +147,34 @@ export default function App() {
     return { r: nextR, c: nextC };
   }, [cw]);
 
+  // Handle cell click - toggle between across/down on repeated tap
   function onCellClick(r: number, c: number) {
     if (!cw) return;
     const cell = cw.grid[r][c];
     if (cell.type === 'block') return;
-    const entries = Array.from(cell.entries);
-    if (entries.length > 0) {
-      if (selectedEntryId && cell.entries.has(selectedEntryId)) {
-        setSelectedEntryId(selectedEntryId);
-      } else {
-        setSelectedEntryId(entries[0]);
+
+    const cellKey = key(r, c);
+    const entryIds = Array.from(cell.entries);
+    const acrossEntry = cw.entries.find(e => entryIds.includes(e.id) && e.direction === 'across');
+    const downEntry = cw.entries.find(e => entryIds.includes(e.id) && e.direction === 'down');
+
+    // Toggle logic: if same cell tapped again, switch direction
+    if (lastTappedCell === cellKey && selectedEntry) {
+      if (selectedEntry.direction === 'across' && downEntry) {
+        setSelectedEntryId(downEntry.id);
+      } else if (selectedEntry.direction === 'down' && acrossEntry) {
+        setSelectedEntryId(acrossEntry.id);
+      }
+    } else {
+      // New cell - prefer across, or down if no across
+      if (acrossEntry) {
+        setSelectedEntryId(acrossEntry.id);
+      } else if (downEntry) {
+        setSelectedEntryId(downEntry.id);
       }
     }
+
+    setLastTappedCell(cellKey);
     setActiveCell({ r, c });
   }
 
@@ -149,7 +182,6 @@ export default function App() {
     const ch = normalizeChar(v);
     setFill((prev) => ({ ...prev, [key(r, c)]: ch }));
 
-    // Auto-advance to next cell after typing
     if (ch && selectedEntry) {
       const nextCell = getNextCell(r, c, selectedEntry, 'forward');
       if (nextCell) {
@@ -158,7 +190,6 @@ export default function App() {
     }
   }
 
-  // Handle keyboard navigation
   const onCellKeyDown = useCallback((
     e: React.KeyboardEvent<HTMLInputElement>,
     r: number,
@@ -170,7 +201,6 @@ export default function App() {
     const isDown = selectedEntry.direction === 'down';
 
     if (e.key === 'Backspace') {
-      // If cell is empty, move backward and delete that cell
       const currentValue = fill[key(r, c)] || '';
       if (!currentValue) {
         const prevCell = getNextCell(r, c, selectedEntry, 'backward');
@@ -182,46 +212,85 @@ export default function App() {
       }
     } else if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      if (isDown) {
-        // In down mode, left arrow does nothing or could switch to across entry
-      } else if (isRtlAcross) {
-        // RTL across: left = forward
-        const nextCell = getNextCell(r, c, selectedEntry, 'forward');
-        if (nextCell) focusCell(nextCell.r, nextCell.c);
-      } else {
-        // LTR across: left = backward
-        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
-        if (prevCell) focusCell(prevCell.r, prevCell.c);
+      if (!isDown) {
+        const dir = isRtlAcross ? 'forward' : 'backward';
+        const cell = getNextCell(r, c, selectedEntry, dir);
+        if (cell) focusCell(cell.r, cell.c);
       }
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
-      if (isDown) {
-        // In down mode, right arrow does nothing
-      } else if (isRtlAcross) {
-        // RTL across: right = backward
-        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
-        if (prevCell) focusCell(prevCell.r, prevCell.c);
-      } else {
-        // LTR across: right = forward
-        const nextCell = getNextCell(r, c, selectedEntry, 'forward');
-        if (nextCell) focusCell(nextCell.r, nextCell.c);
+      if (!isDown) {
+        const dir = isRtlAcross ? 'backward' : 'forward';
+        const cell = getNextCell(r, c, selectedEntry, dir);
+        if (cell) focusCell(cell.r, cell.c);
       }
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (isDown) {
-        // Down mode: up = backward
-        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
-        if (prevCell) focusCell(prevCell.r, prevCell.c);
+        const cell = getNextCell(r, c, selectedEntry, 'backward');
+        if (cell) focusCell(cell.r, cell.c);
       }
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
       if (isDown) {
-        // Down mode: down = forward
-        const nextCell = getNextCell(r, c, selectedEntry, 'forward');
-        if (nextCell) focusCell(nextCell.r, nextCell.c);
+        const cell = getNextCell(r, c, selectedEntry, 'forward');
+        if (cell) focusCell(cell.r, cell.c);
       }
     }
   }, [cw, selectedEntry, fill, getNextCell, focusCell]);
+
+  // Custom keyboard input
+  function onKeyboardPress(char: string) {
+    if (!activeCell || !cw) return;
+    const { r, c } = activeCell;
+    const cell = cw.grid[r]?.[c];
+    if (!cell || cell.type === 'block') return;
+
+    const ch = normalizeChar(char);
+    setFill((prev) => ({ ...prev, [key(r, c)]: ch }));
+
+    if (selectedEntry) {
+      const nextCell = getNextCell(r, c, selectedEntry, 'forward');
+      if (nextCell) {
+        setActiveCell(nextCell);
+      }
+    }
+  }
+
+  function onKeyboardBackspace() {
+    if (!activeCell || !cw) return;
+    const { r, c } = activeCell;
+    const currentValue = fill[key(r, c)] || '';
+
+    if (currentValue) {
+      setFill((prev) => ({ ...prev, [key(r, c)]: '' }));
+    } else if (selectedEntry) {
+      const prevCell = getNextCell(r, c, selectedEntry, 'backward');
+      if (prevCell) {
+        setFill((prev) => ({ ...prev, [key(prevCell.r, prevCell.c)]: '' }));
+        setActiveCell(prevCell);
+      }
+    }
+  }
+
+  // Navigate to prev/next clue
+  function goToPrevClue() {
+    if (!selectedEntry || !sortedEntries.length) return;
+    const idx = sortedEntries.findIndex(e => e.id === selectedEntry.id);
+    const prevIdx = idx > 0 ? idx - 1 : sortedEntries.length - 1;
+    const prev = sortedEntries[prevIdx];
+    setSelectedEntryId(prev.id);
+    setActiveCell({ r: prev.row, c: prev.col });
+  }
+
+  function goToNextClue() {
+    if (!selectedEntry || !sortedEntries.length) return;
+    const idx = sortedEntries.findIndex(e => e.id === selectedEntry.id);
+    const nextIdx = idx < sortedEntries.length - 1 ? idx + 1 : 0;
+    const next = sortedEntries[nextIdx];
+    setSelectedEntryId(next.id);
+    setActiveCell({ r: next.row, c: next.col });
+  }
 
   function reset() {
     setFill({});
@@ -273,6 +342,12 @@ export default function App() {
     setLoading(true);
     setError(null);
     setSelectedEntryId(null);
+    setShowSettings(false);
+
+    const bandFallbackOrder: CefrBand[] =
+      band === 'beginner' ? ['beginner', 'intermediate', 'advanced'] :
+      band === 'intermediate' ? ['intermediate', 'advanced'] :
+      ['advanced'];
 
     try {
       const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
@@ -280,48 +355,51 @@ export default function App() {
       const attemptsPerRound = size <= 7 ? 3 : size <= 9 ? 4 : 5;
       let next: Crossword | null = null;
 
-      for (let round = 0; round < maxRounds; round++) {
-        const resp = await fetch('/api/generate', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ size, mode, band }),
-        });
-        const raw = await resp.text();
-        let data: any = null;
-        try {
-          data = raw ? JSON.parse(raw) : null;
-        } catch {
-          throw new Error(`Server returned non-JSON (${resp.status}). ${raw.slice(0, 120)}`);
-        }
-        if (!resp.ok) throw new Error(data?.error || `Failed to generate (${resp.status})`);
-
-        const entries = Array.isArray(data?.entries) ? data.entries : [];
-        if (entries.length < 6) continue;
-
-        const buildInvertedEntries = (list: typeof entries) => {
-          if (mode !== 'en_to_ar') return list;
-          const extra = list
-            .filter((e: { answer?: unknown; clue?: unknown }) => typeof e.answer === 'string' && e.answer.length >= 2)
-            .map((e: { answer: string; clue?: unknown }) => ({
-              ...e,
-              clue: `${String(e.clue ?? '')} (inverted)`,
-              answer: [...String(e.answer)].reverse().join(''),
-            }));
-          return [...list, ...extra];
-        };
-
-        const entriesWithInverted = buildInvertedEntries(entries);
-        for (let attempt = 0; attempt < attemptsPerRound; attempt++) {
-          const candidate = generateCrossword(size, entriesWithInverted, answerDirection);
-          if (candidate.entries.length) {
-            next = candidate;
-            break;
+      for (const tryBand of bandFallbackOrder) {
+        for (let round = 0; round < maxRounds; round++) {
+          const resp = await fetch('/api/generate', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ size, mode, band: tryBand }),
+          });
+          const raw = await resp.text();
+          let data: any = null;
+          try {
+            data = raw ? JSON.parse(raw) : null;
+          } catch {
+            throw new Error(`Server returned non-JSON (${resp.status}).`);
           }
+          if (!resp.ok) throw new Error(data?.error || `Failed (${resp.status})`);
+
+          const entries = Array.isArray(data?.entries) ? data.entries : [];
+          if (entries.length < 6) continue;
+
+          const buildInvertedEntries = (list: typeof entries) => {
+            if (mode !== 'en_to_ar') return list;
+            const extra = list
+              .filter((e: { answer?: unknown }) => typeof e.answer === 'string' && e.answer.length >= 2)
+              .map((e: { answer: string; clue?: unknown }) => ({
+                ...e,
+                clue: `${String(e.clue ?? '')} (inverted)`,
+                answer: [...String(e.answer)].reverse().join(''),
+              }));
+            return [...list, ...extra];
+          };
+
+          const entriesWithInverted = buildInvertedEntries(entries);
+          for (let attempt = 0; attempt < attemptsPerRound; attempt++) {
+            const candidate = generateCrossword(size, entriesWithInverted, answerDirection);
+            if (candidate.entries.length) {
+              next = candidate;
+              break;
+            }
+          }
+          if (next) break;
         }
         if (next) break;
       }
 
-      if (!next) throw new Error('Could not fit words into a crossword grid. Try again.');
+      if (!next) throw new Error('Could not generate puzzle. Try again.');
 
       setCw(next);
       setFill({});
@@ -332,44 +410,84 @@ export default function App() {
     }
   }
 
+  const getCellSize = (gridSize: number) => {
+    if (gridSize >= 13) return 28;
+    if (gridSize >= 11) return 32;
+    if (gridSize >= 9) return 36;
+    return 40;
+  };
+
+  const keyboardRows = mode === 'en_to_ar' ? KEYBOARD_AR : KEYBOARD_EN;
+
   return (
     <div className="app">
-      <header className="header">
-        <h1>Crossword 33</h1>
-        <p className="subtitle">English ↔ Arabic vocabulary practice</p>
+      {/* Mobile Header */}
+      <header className="mobileHeader">
+        <h1>Crossword</h1>
+        <button className="settingsBtn" onClick={() => setShowSettings(!showSettings)}>
+          <span>⋮</span>
+        </button>
       </header>
 
-      <div className="controls">
+      {/* Settings Panel */}
+      {showSettings && (
+        <div className="settingsPanel">
+          <label>
+            <span>Grid</span>
+            <select value={size} onChange={(e) => setSize(Number(e.target.value))}>
+              {[7, 9, 11, 13].map((n) => (
+                <option key={n} value={n}>{n}×{n}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span>Level</span>
+            <select value={band} onChange={(e) => setBand(e.target.value as CefrBand)}>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </label>
+          <label>
+            <span>Mode</span>
+            <select value={mode} onChange={(e) => setMode(e.target.value as Mode)}>
+              <option value="en_to_ar">EN → AR</option>
+              <option value="ar_to_en">AR → EN</option>
+            </select>
+          </label>
+          <button className="newPuzzleBtn" onClick={newPuzzle} disabled={loading}>
+            {loading ? 'Loading…' : 'New Puzzle'}
+          </button>
+        </div>
+      )}
+
+      {/* Desktop Controls */}
+      <div className="desktopControls">
         <label>
           Grid
           <select value={size} onChange={(e) => setSize(Number(e.target.value))}>
             {[7, 9, 11, 13].map((n) => (
-              <option key={n} value={n}>
-                {n}×{n}
-              </option>
+              <option key={n} value={n}>{n}×{n}</option>
             ))}
           </select>
         </label>
-
         <label>
           Level
           <select value={band} onChange={(e) => setBand(e.target.value as CefrBand)}>
-            <option value="beginner">Beginner (A1–A2)</option>
-            <option value="intermediate">Intermediate (B1–B2)</option>
-            <option value="advanced">Advanced (C1–C2)</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
           </select>
         </label>
-
         <label>
           Mode
           <select value={mode} onChange={(e) => setMode(e.target.value as Mode)}>
-            <option value="en_to_ar">English clue → Arabic answer</option>
-            <option value="ar_to_en">Arabic clue → English answer</option>
+            <option value="en_to_ar">EN → AR</option>
+            <option value="ar_to_en">AR → EN</option>
           </select>
         </label>
-
         <button onClick={newPuzzle} disabled={loading}>
-          {loading ? 'Generating…' : 'New puzzle'}
+          {loading ? 'Loading…' : 'New Puzzle'}
         </button>
       </div>
 
@@ -377,138 +495,180 @@ export default function App() {
 
       {cw && (
         <div className="main">
-          <div
-            className="grid"
-            style={{
-              gridTemplateColumns: `repeat(${cw.width}, var(--cell-size))`,
-              gridTemplateRows: `repeat(${cw.height}, var(--cell-size))`,
-              // Smaller cells for larger grids to keep everything on screen.
-              // Tune these if you want tighter or looser sizing.
-              ['--cell-size' as any]: cw.width >= 13 ? '46px' : cw.width >= 11 ? '49px' : cw.width >= 9 ? '52px' : '54px',
-              ['--grid-size' as any]: cw.width,
-            }}
-            dir={cw.answerDirection}
-          >
-            {cw.grid.flatMap((row, r) =>
-              row.map((cell, c) => {
-                const displayCol = cw.answerDirection === 'rtl' ? cw.width - c : c + 1;
-                const cellStyle = { gridColumnStart: displayCol, gridRowStart: r + 1 };
-                if (cell.type === 'block') {
-                  return <div key={key(r, c)} className="cell block" style={cellStyle} />;
-                }
+          <div className="gameArea">
+            <div className="gridContainer">
+              <div
+                className="grid"
+                style={{
+                  gridTemplateColumns: `repeat(${cw.width}, var(--cell-size))`,
+                  gridTemplateRows: `repeat(${cw.height}, var(--cell-size))`,
+                  ['--cell-size' as string]: `${getCellSize(cw.width)}px`,
+                  ['--grid-size' as string]: cw.width,
+                }}
+                dir={cw.answerDirection}
+              >
+                {cw.grid.flatMap((row, r) =>
+                  row.map((cell, c) => {
+                    const displayCol = cw.answerDirection === 'rtl' ? cw.width - c : c + 1;
+                    const cellStyle = { gridColumnStart: displayCol, gridRowStart: r + 1 };
+                    if (cell.type === 'block') {
+                      return <div key={key(r, c)} className="cell block" style={cellStyle} />;
+                    }
 
-                const isSelected = selectedCells.some((x) => x.r === r && x.c === c);
+                    const isSelected = selectedCells.some((x) => x.r === r && x.c === c);
+                    const isActive = activeCell?.r === r && activeCell?.c === c;
 
-                const isActive = activeCell?.r === r && activeCell?.c === c;
-
-                return (
-                  <div key={key(r, c)} className={`cell ${isSelected ? 'selected' : ''} ${isActive ? 'active' : ''}`} style={cellStyle} onClick={() => onCellClick(r, c)}>
-                    {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
-                    <input
-                      ref={(el) => {
-                        if (el) inputRefs.current.set(key(r, c), el);
-                        else inputRefs.current.delete(key(r, c));
-                      }}
-                      className={mode === 'en_to_ar' ? 'rtlInput' : ''}
-                      dir={mode === 'en_to_ar' ? 'rtl' : 'ltr'}
-                      value={fill[key(r, c)] || ''}
-                      onChange={(e) => onCellChange(r, c, e.target.value)}
-                      onKeyDown={(e) => onCellKeyDown(e, r, c)}
-                      maxLength={1}
-                      inputMode="text"
-                    />
-                  </div>
-                );
-              }),
-            )}
-          </div>
-
-          <div className="sidebar">
-            <div className="clues">
-              <h2>Clues</h2>
-              {selectedEntry && (
-                <div className="selected-clue">
-                  <strong>
-                    {selectedEntry.number} {selectedEntry.direction}
-                  </strong>
-                  : {selectedEntry.clue}
-                </div>
-              )}
-
-              <div className="clueColumns">
-                <div>
-                  <h3>Across</h3>
-                  <ul className="clueList">
-                    {cw.entries
-                      .filter((e) => e.direction === 'across' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
-                      .map((e) => (
-                        <li key={e.id}>
-                          <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
-                            {e.number}. {e.clue}
-                          </button>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h3>Down</h3>
-                  <ul className="clueList">
-                    {cw.entries
-                      .filter((e) => e.direction === 'down' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
-                      .map((e) => (
-                        <li key={e.id}>
-                          <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
-                            {e.number}. {e.clue}
-                          </button>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
+                    return (
+                      <div
+                        key={key(r, c)}
+                        className={`cell ${isSelected ? 'selected' : ''} ${isActive ? 'active' : ''}`}
+                        style={cellStyle}
+                        onClick={() => onCellClick(r, c)}
+                      >
+                        {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
+                        <input
+                          ref={(el) => {
+                            if (el) inputRefs.current.set(key(r, c), el);
+                            else inputRefs.current.delete(key(r, c));
+                          }}
+                          className={mode === 'en_to_ar' ? 'rtlInput' : ''}
+                          dir={mode === 'en_to_ar' ? 'rtl' : 'ltr'}
+                          value={fill[key(r, c)] || ''}
+                          onChange={(e) => onCellChange(r, c, e.target.value)}
+                          onKeyDown={(e) => onCellKeyDown(e, r, c)}
+                          maxLength={1}
+                          inputMode={isMobile ? 'none' : undefined}
+                          readOnly={isMobile}
+                        />
+                      </div>
+                    );
+                  }),
+                )}
               </div>
+            </div>
 
-              {/* Repeated letter clues section */}
-              {/* en_to_ar: clues are English, ar_to_en: clues are Arabic */}
-              {cw.entries.some((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter)) && (
-                <div className="repeatedClues">
-                  <h3>{mode === 'ar_to_en' ? 'حروف متكررة' : 'Repeated letters'}</h3>
-                  <ul>
-                    {cw.entries
-                      .filter((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
-                      .map((e) => (
-                        <li key={e.id}>
-                          <button className="clueBtn" onClick={() => setSelectedEntryId(e.id)}>
-                            {e.number}. {formatRepeatedLetterClue(e.clue)} ({e.direction})
-                          </button>
-                        </li>
-                      ))}
-                  </ul>
+            {/* Desktop Clues Panel */}
+            <div className="cluesPanel">
+              <div className="cluesHeader">
+                <h2>Clues</h2>
+              </div>
+              {selectedEntry && (
+                <div className="selectedClue">
+                  <strong>{selectedEntry.number}{selectedEntry.direction[0]}. </strong>
+                  <span>{selectedEntry.clue}</span>
                 </div>
               )}
+              <div className="cluesContent">
+                <div className="clueColumns">
+                  <div className="clueSection">
+                    <h3>Across</h3>
+                    <ul className="clueList">
+                      {cw.entries
+                        .filter((e) => e.direction === 'across' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
+                        .map((e) => (
+                          <li key={e.id}>
+                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
+                              {e.number}. {e.clue}
+                            </button>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                  <div className="clueSection">
+                    <h3>Down</h3>
+                    <ul className="clueList">
+                      {cw.entries
+                        .filter((e) => e.direction === 'down' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
+                        .map((e) => (
+                          <li key={e.id}>
+                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
+                              {e.number}. {e.clue}
+                            </button>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                </div>
+                {cw.entries.some((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter)) && (
+                  <div className="repeatedSection">
+                    <h3>{mode === 'ar_to_en' ? 'حروف متكررة' : 'Repeated'}</h3>
+                    <ul className="clueList">
+                      {cw.entries
+                        .filter((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
+                        .map((e) => (
+                          <li key={e.id}>
+                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
+                              {e.number}. {formatRepeatedLetterClue(e.clue)} ({e.direction[0]})
+                            </button>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
-          <div className="bottomButtons">
-            <button onClick={checkSelected} disabled={!selectedEntry}>
-              Check
-            </button>
-            <button onClick={revealSelected} disabled={!selectedEntry}>
-              Reveal Word
-            </button>
+          {/* Desktop Action Buttons */}
+          <div className="actionButtons desktopOnly">
+            <button onClick={checkSelected} disabled={!selectedEntry}>Check</button>
+            <button onClick={revealSelected} disabled={!selectedEntry}>Reveal</button>
             <button onClick={revealAll}>Solve All</button>
             <button onClick={reset}>Clear</button>
           </div>
 
-          <div className="meta">
-            <div>CEFR: {bandToCefr(band)}</div>
-            <div>Mode: {mode === 'en_to_ar' ? 'EN→AR' : 'AR→EN'}</div>
+          <div className="meta desktopOnly">
+            <span>{bandToCefr(band)}</span>
+            <span>{mode === 'en_to_ar' ? 'EN→AR' : 'AR→EN'}</span>
+            <span>{cw.entries.length} words</span>
           </div>
         </div>
       )}
 
-      <p className="note">
-        Generation may require a few attempts for optimal results.
-      </p>
+      {/* Mobile Clue Bar */}
+      {cw && selectedEntry && (
+        <div className="mobileClueBar">
+          <button className="clueNavBtn" onClick={goToPrevClue}>‹</button>
+          <div className="clueText">
+            <span className="clueNumber">{selectedEntry.number}{selectedEntry.direction[0]}.</span>
+            <span className="clueContent">{selectedEntry.clue}</span>
+          </div>
+          <button className="clueNavBtn" onClick={goToNextClue}>›</button>
+        </div>
+      )}
+
+      {/* Mobile Keyboard */}
+      {cw && (
+        <div className="mobileKeyboard">
+          {keyboardRows.map((row, i) => (
+            <div key={i} className="keyboardRow">
+              {row.map((char) => (
+                <button key={char} className="keyBtn" onClick={() => onKeyboardPress(char)}>
+                  {char}
+                </button>
+              ))}
+              {i === keyboardRows.length - 1 && (
+                <button className="keyBtn backspace" onClick={onKeyboardBackspace}>⌫</button>
+              )}
+            </div>
+          ))}
+          <div className="keyboardActions">
+            <button onClick={checkSelected} disabled={!selectedEntry}>Check</button>
+            <button onClick={revealSelected} disabled={!selectedEntry}>Reveal</button>
+            <button onClick={revealAll}>Solve</button>
+            <button onClick={reset}>Clear</button>
+          </div>
+        </div>
+      )}
+
+      {!cw && (
+        <div className="startPrompt">
+          <p>Tap ⋮ to configure and start a new puzzle</p>
+          <button className="bigStartBtn" onClick={() => setShowSettings(true)}>
+            Start
+          </button>
+        </div>
+      )}
     </div>
   );
 }

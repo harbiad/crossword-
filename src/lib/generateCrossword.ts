@@ -549,7 +549,7 @@ export function generateCrossword(
     const commonConstructOptions = {
       strategy,
       seedPlacements: strategy === 'hybrid' ? 2 : 1,
-      maxCandidatesPerSlot: size <= 7 ? 520 : size <= 9 ? 760 : size <= 11 ? 920 : 1100,
+      maxCandidatesPerSlot: size <= 7 ? 800 : size <= 9 ? 1200 : size <= 11 ? 1800 : 2500,
       maxShortReuse,
       timeBudgetMs: size <= 7 ? 1400 : size <= 9 ? 2600 : size <= 11 ? 4200 : 5200,
       allowSyntheticFillers: syntheticEnabled,
