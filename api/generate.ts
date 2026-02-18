@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getWordLevel, isLevelAllowed, type CefrLevel } from './cefr_levels';
+import { getWordLevel, isLevelAllowed, type CefrLevel } from './cefr_levels.js';
 
 export const config = {
   runtime: 'nodejs',
