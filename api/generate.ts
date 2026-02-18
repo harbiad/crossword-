@@ -145,17 +145,46 @@ function getMeanings(dict: DictMap, en: string): DictMeaning[] {
   const val = dict[en];
   if (!val) return [];
   const arr = Array.isArray(val) ? val : [val];
-  return arr
-    .map((v) => {
-      if (typeof v === 'string') {
-        return { answer: normalizeArabicWord(v), clue: v };
-      }
-      const clueRaw = typeof v?.clue === 'string' ? v.clue.trim() : '';
-      const clue = clueRaw === '[]' ? '' : clueRaw;
-      const answer = normalizeArabicWord(v?.answer);
-      return { answer, clue };
-    })
-    .filter((m) => m.answer.length >= 2);
+  const out: DictMeaning[] = [];
+  const seen = new Set<string>();
+  const stripPrefixes = ['وال', 'بال', 'كال', 'فال', 'لل', 'ال'];
+
+  const addAnswer = (answerRaw: string, clue: string) => {
+    const normalized = normalizeArabicWord(answerRaw);
+    if (normalized.length < 2) return;
+    if (seen.has(normalized)) return;
+    seen.add(normalized);
+    out.push({ answer: normalized, clue });
+
+    for (const prefix of stripPrefixes) {
+      if (!normalized.startsWith(prefix)) continue;
+      const stripped = normalized.slice(prefix.length);
+      if (stripped.length < 2) continue;
+      if (seen.has(stripped)) continue;
+      seen.add(stripped);
+      out.push({ answer: stripped, clue });
+    }
+  };
+
+  for (const v of arr) {
+    const clueRaw = typeof v === 'string' ? v : typeof v?.clue === 'string' ? v.clue : '';
+    const answerRaw = typeof v === 'string' ? v : typeof v?.answer === 'string' ? v.answer : '';
+    if (!answerRaw) continue;
+    const clueTrimmed = clueRaw.trim();
+    const clueCandidate = clueTrimmed === '[]' ? '' : clueTrimmed;
+    const clue = clueCandidate || answerRaw;
+
+    // Main variants split by common delimiters.
+    const primaryVariants = answerRaw.split(/[\/،;|]/).map((s) => s.trim()).filter(Boolean);
+    for (const variant of primaryVariants) {
+      addAnswer(variant, clue);
+      // Also add tokenized variants from multi-word phrases (often much shorter/fillable).
+      const tokens = variant.split(/\s+/).map((s) => s.trim()).filter(Boolean);
+      for (const token of tokens) addAnswer(token, clue);
+    }
+  }
+
+  return out;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
