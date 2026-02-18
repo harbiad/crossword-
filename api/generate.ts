@@ -536,7 +536,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           if (seen.has(key)) continue;
           seen.add(key);
           const clueAr = meaning.clue || ar;
-          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: clueAr, answer: en });
+          const clue = mode === 'en_to_ar' ? en : clueAr;
+          if (/repeated/i.test(clue)) continue;
+          pairs.push(mode === 'en_to_ar' ? { clue, answer: ar } : { clue, answer: en });
         }
       }
       if (pairs.length >= targetPairs) break;
@@ -572,36 +574,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           if (seen.has(en)) continue;
           seen.add(en);
           const clueAr = arRaw.trim() || ar;
-          pairs.push(mode === 'en_to_ar' ? { clue: en, answer: ar } : { clue: clueAr, answer: en });
+          const clue = mode === 'en_to_ar' ? en : clueAr;
+          if (/repeated/i.test(clue)) continue;
+          pairs.push(mode === 'en_to_ar' ? { clue, answer: ar } : { clue, answer: en });
           if (pairs.length >= targetPairs) break;
         }
       }
-    }
-
-    // Add filler words (repeated letters) at the end - used as last resort
-    for (const w of FILLER_WORDS) {
-      const en = normalizeEnglishWord(w);
-      if (en.length < 2 || en.length > gridSize) continue;
-      if (seen.has(en)) continue;
-
-      const meanings = getMeanings(dict, en);
-      if (!meanings.length) continue;
-      const ar = meanings[0].answer;
-      if (!ar || ar.length < 2 || ar.length > gridSize) continue;
-
-      const key = `${en}::${ar}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      // Format as "X ×N" where X is the letter and N is the count
-      const letter = en[0].toUpperCase();
-      const count = en.length;
-      const fillerClue = mode === 'en_to_ar'
-        ? `${letter} ×${count}`
-        : `${letter} ×${count}`; // Same format for both modes
-      pairs.push(mode === 'en_to_ar'
-        ? { clue: fillerClue, answer: ar, isRepeatedLetter: true }
-        : { clue: fillerClue, answer: en, isRepeatedLetter: true }
-      );
     }
 
     if (!pairs.length) {

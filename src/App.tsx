@@ -22,29 +22,6 @@ function normalizeChar(ch: string) {
   return ch.trim().slice(0, 1).toUpperCase();
 }
 
-function parseRepeatedLetter(clue: string): { letter: string; count: number } | null {
-  const doubleMatch = clue.match(/^Double\s+([A-Z])$/i);
-  if (doubleMatch) return { letter: doubleMatch[1].toUpperCase(), count: 2 };
-  const tripleMatch = clue.match(/^Triple\s+([A-Z])$/i);
-  if (tripleMatch) return { letter: tripleMatch[1].toUpperCase(), count: 3 };
-  const tokenMatch = clue.match(/^([A-Z])\s*[×x]\s*(\d+)$/i);
-  if (tokenMatch) return { letter: tokenMatch[1].toUpperCase(), count: Number(tokenMatch[2]) };
-  return null;
-}
-
-function formatRepeatedLetterClue(clue: string): string {
-  const parsed = parseRepeatedLetter(clue);
-  if (!parsed) return clue;
-  return `${parsed.letter} ×${parsed.count}`;
-}
-
-function isRepeatedLetterClue(clue: string, isRepeatedLetterFlag?: boolean): boolean {
-  if (isRepeatedLetterFlag) return true;
-  if (parseRepeatedLetter(clue)) return true;
-  if (/حرف مكرر/.test(clue)) return true;
-  return false;
-}
-
 // Bilingual keyboard layout
 const KEYBOARD_EN = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -564,7 +541,7 @@ export default function App() {
                     <h3>Across</h3>
                     <ul className="clueList">
                       {cw.entries
-                        .filter((e) => e.direction === 'across' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
+                        .filter((e) => e.direction === 'across')
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
@@ -578,7 +555,7 @@ export default function App() {
                     <h3>Down</h3>
                     <ul className="clueList">
                       {cw.entries
-                        .filter((e) => e.direction === 'down' && !isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
+                        .filter((e) => e.direction === 'down')
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
@@ -589,22 +566,6 @@ export default function App() {
                     </ul>
                   </div>
                 </div>
-                {cw.entries.some((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter)) && (
-                  <div className="repeatedSection">
-                    <h3>{mode === 'ar_to_en' ? 'حروف متكررة' : 'Repeated'}</h3>
-                    <ul className="clueList">
-                      {cw.entries
-                        .filter((e) => isRepeatedLetterClue(e.clue, e.isRepeatedLetter))
-                        .map((e) => (
-                          <li key={e.id}>
-                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {e.number}. {formatRepeatedLetterClue(e.clue)} ({e.direction[0]})
-                            </button>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                )}
               </div>
             </div>
           </div>

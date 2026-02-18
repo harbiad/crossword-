@@ -37,6 +37,10 @@ Added CEFR difficulty levels to filter dictionary words by user-selected difficu
 
 You are working on my crossword puzzle generator app.
 
+### Additional requirement (latest)
+
+* Do **not** generate or display any clue labeled as **"Repeated"** (or repeated-letter filler clues like `X ×2`).
+
 ### Context
 
 * The app supports two modes:
