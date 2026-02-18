@@ -357,8 +357,8 @@ export function generateCrossword(
   for (const bucket of buckets.values()) shuffleInPlace(bucket);
 
   const templates = getTemplates(size);
-  const attempts = size <= 7 ? 6 : size <= 9 ? 6 : 5;
-  const timeBudgetMs = size <= 7 ? 520 : size <= 9 ? 900 : 700;
+  const attempts = size <= 7 ? 18 : size <= 9 ? 22 : 20;
+  const timeBudgetMs = size <= 7 ? 2200 : size <= 9 ? 3400 : 3600;
   let best: Crossword | null = null;
   let bestScore = -1;
   const deadline = getNow() + timeBudgetMs;
@@ -377,8 +377,8 @@ export function generateCrossword(
       seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
     },
   ];
-  const targetWords = size <= 7 ? 8 : size <= 9 ? 22 : size <= 11 ? 28 : 36;
-  const minWords = size <= 7 ? 5 : size <= 9 ? 18 : size <= 11 ? 24 : 30;
+  const targetWords = size <= 7 ? 10 : size <= 9 ? 24 : size <= 11 ? 30 : 38;
+  const minWords = size <= 7 ? 6 : size <= 9 ? 18 : size <= 11 ? 23 : 28;
 
   let attemptsRun = 0;
   const templateScores = templates
@@ -406,7 +406,7 @@ export function generateCrossword(
     const slots = findSlots(template);
     const allowedLengths = new Set<number>();
     for (const slot of slots) allowedLengths.add(slot.length);
-    const perLengthCap = size <= 7 ? 260 : size <= 9 ? 420 : 520;
+    const perLengthCap = size <= 7 ? 900 : size <= 9 ? 1300 : 1700;
 
     for (const opts of optionSets) {
       for (let i = 0; i < attempts; i++) {
@@ -434,8 +434,8 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 220 : size <= 9 ? 900 : 1200,
-            maxCandidatesPerSlot: size <= 7 ? 220 : size <= 9 ? 260 : 260,
+            timeBudgetMs: size <= 7 ? 900 : size <= 9 ? 1700 : 2000,
+            maxCandidatesPerSlot: size <= 7 ? 850 : size <= 9 ? 1200 : 1500,
             targetWords,
             minWords,
             useWordCentric: false,

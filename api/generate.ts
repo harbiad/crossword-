@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getWordLevel, isLevelAllowed, type CefrLevel } from './cefr_levels.js';
+import { getWordLevel, type CefrLevel } from './cefr_levels.js';
 import { DICT_COMMON_30000_NON_EMPTY } from './DICT_COMMON_30000_non_empty.js';
 
 export const config = {
@@ -54,16 +54,28 @@ function buildCandidateWords(band: Band): string[] {
     candidatesWithLevel.push({ word: normalized, level });
   }
 
-  let filtered = candidatesWithLevel
-    .filter((c) => isLevelAllowed(c.level, band))
-    .map((c) => c.word);
+  // Always use the full non-empty dictionary for reliability.
+  // Band only controls preference order (easier words first for beginner/intermediate).
+  const rankByBand: Record<Band, Record<CefrLevel, number>> = {
+    beginner: { A: 0, B: 1, C: 2 },
+    intermediate: { A: 0, B: 0, C: 1 },
+    advanced: { A: 0, B: 0, C: 0 },
+  };
+  const rank = rankByBand[band];
 
-  // Keep generation reliable when level-filtered set is too small.
-  if (filtered.length < 1200 && band !== 'advanced') {
-    filtered = candidatesWithLevel.map((c) => c.word);
-  }
+  const withNoise = candidatesWithLevel.map((c) => ({
+    ...c,
+    noise: Math.random(),
+  }));
 
-  return filtered;
+  withNoise.sort((a, b) => {
+    const ra = rank[a.level];
+    const rb = rank[b.level];
+    if (ra !== rb) return ra - rb;
+    return a.noise - b.noise;
+  });
+
+  return withNoise.map((c) => c.word);
 }
 
 function getMeanings(en: string): DictMeaning[] {
