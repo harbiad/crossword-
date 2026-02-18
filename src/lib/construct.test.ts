@@ -214,7 +214,7 @@ describe('constructCrossword', () => {
 });
 
 describe('validateBlockRuns', () => {
-  it('should return true for grid with no 4+ consecutive blocks', () => {
+  it('should return true for grid with no 3+ consecutive blocks', () => {
     const grid: (string | null)[][] = [
       ['A', '#', '#', 'B', 'C'],
       ['D', 'E', '#', '#', 'F'],
@@ -226,9 +226,9 @@ describe('validateBlockRuns', () => {
     expect(validateBlockRuns(grid, 5)).toBe(true);
   });
 
-  it('should return false for grid with 4+ consecutive blocks in a row', () => {
+  it('should return false for grid with 3+ consecutive blocks in a row', () => {
     const grid: (string | null)[][] = [
-      ['A', '#', '#', '#', '#'], // 4 consecutive blocks
+      ['A', '#', '#', '#', 'B'], // 3 consecutive blocks!
       ['C', 'D', 'E', 'F', 'G'],
       ['H', 'I', 'J', 'K', 'L'],
       ['M', 'N', 'O', 'P', 'Q'],
@@ -238,12 +238,12 @@ describe('validateBlockRuns', () => {
     expect(validateBlockRuns(grid, 5)).toBe(false);
   });
 
-  it('should return false for grid with 4+ consecutive blocks in a column', () => {
+  it('should return false for grid with 3+ consecutive blocks in a column', () => {
     const grid: (string | null)[][] = [
       ['A', '#', 'B', 'C', 'D'],
       ['E', '#', 'F', 'G', 'H'],
-      ['I', '#', 'J', 'K', 'L'],
-      ['M', '#', 'O', 'P', 'Q'], // Column 1 has 4 consecutive blocks
+      ['I', '#', 'J', 'K', 'L'], // Column 1 has 3 consecutive blocks
+      ['M', 'N', 'O', 'P', 'Q'],
       ['R', 'S', 'T', 'U', 'V'],
     ];
 
@@ -252,7 +252,7 @@ describe('validateBlockRuns', () => {
 
   it('should treat null cells as blocks for run counting', () => {
     const grid: (string | null)[][] = [
-      ['A', null, null, null, null], // 4 consecutive nulls
+      ['A', null, null, null, 'B'], // 3 consecutive nulls!
       ['C', 'D', 'E', 'F', 'G'],
       ['H', 'I', 'J', 'K', 'L'],
       ['M', 'N', 'O', 'P', 'Q'],
@@ -262,10 +262,10 @@ describe('validateBlockRuns', () => {
     expect(validateBlockRuns(grid, 5)).toBe(false);
   });
 
-  it('should allow exactly 3 consecutive blocks', () => {
+  it('should allow exactly 2 consecutive blocks', () => {
     const grid: (string | null)[][] = [
-      ['#', '#', '#', 'B', 'C'],
-      ['D', 'E', '#', '#', '#'],
+      ['#', '#', 'A', 'B', 'C'],
+      ['D', 'E', '#', '#', 'F'],
       ['G', 'H', 'I', 'J', '#'],
       ['K', '#', 'L', 'M', '#'],
       ['N', '#', 'O', 'P', 'Q'],

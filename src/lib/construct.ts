@@ -14,38 +14,6 @@ export type Placement = {
 type GridChar = string | null | '#';
 
 const BLOCK: GridChar = '#';
-const SHORT_WORD_MAX_LEN = 3;
-
-export type ConstructRejectReason =
-  | 'timeout'
-  | 'no_seed_candidate'
-  | 'no_candidates_for_slot'
-  | 'incomplete_fill'
-  | 'disconnected_letters';
-
-type ConstructOptions = {
-  debug?: {
-    enabled: boolean;
-    log: (msg: string) => void;
-  };
-  timeBudgetMs?: number;
-  maxCandidatesPerSlot?: number;
-  maxShortReuse?: number;
-  seedPlacements?: number;
-  strategy?: 'slot_fill' | 'hybrid';
-  onReject?: (reason: ConstructRejectReason) => void;
-  allowSyntheticFillers?: boolean;
-  preferSyntheticFillers?: boolean;
-  maxLongReuse?: number;
-  maxClueUses?: number;
-};
-
-function getNow() {
-  if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
-    return performance.now();
-  }
-  return Date.now();
-}
 
 function getSlotStart(slot: Slot, answerDirection: 'rtl' | 'ltr'): { row: number; col: number } {
   if (slot.direction === 'across' && answerDirection === 'rtl') {
@@ -67,12 +35,16 @@ function getCellAt(slot: Slot, i: number, answerDirection: 'rtl' | 'ltr') {
 
 function wordFitsSlot(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr'): boolean {
   if (word.length !== slot.length) return false;
+
   for (let i = 0; i < word.length; i++) {
     const { r, c } = getCellAt(slot, i, answerDirection);
-    const existing = grid[r]?.[c];
-    if (existing === undefined || existing === BLOCK) return false;
+    if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length) return false;
+
+    const existing = grid[r][c];
+    if (existing === BLOCK) return false;
     if (existing !== null && existing !== word[i]) return false;
   }
+
   return true;
 }
 
@@ -85,46 +57,57 @@ function countIntersections(grid: GridChar[][], word: string, slot: Slot, answer
   return count;
 }
 
-function placeWord(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr'): Array<{ r: number; c: number }> {
-  const changed: Array<{ r: number; c: number }> = [];
+function placeWord(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr'): boolean {
   for (let i = 0; i < word.length; i++) {
     const { r, c } = getCellAt(slot, i, answerDirection);
-    if (grid[r][c] === null) {
-      grid[r][c] = word[i];
-      changed.push({ r, c });
-    }
+    const existing = grid[r][c];
+    if (existing !== null && existing !== BLOCK && existing !== word[i]) return false;
   }
-  return changed;
+
+  for (let i = 0; i < word.length; i++) {
+    const { r, c } = getCellAt(slot, i, answerDirection);
+    grid[r][c] = word[i];
+  }
+
+  return true;
 }
 
-function undoPlacement(grid: GridChar[][], changed: Array<{ r: number; c: number }>) {
-  for (const cell of changed) grid[cell.r][cell.c] = null;
+function slotCenterScore(slot: Slot, size: number): number {
+  const centerR = size / 2;
+  const centerC = size / 2;
+  const wordCenterR = slot.row + (slot.direction === 'down' ? slot.length / 2 : 0);
+  const wordCenterC = slot.col + (slot.direction === 'across' ? slot.length / 2 : 0);
+  const distToCenter = Math.hypot(wordCenterR - centerR, wordCenterC - centerC);
+  const maxDist = Math.sqrt(2) * size;
+  return ((maxDist - distToCenter) / maxDist) * 20;
 }
 
 function isFullyConnected(grid: GridChar[][], size: number): boolean {
-  const letterCells: Array<{ r: number; c: number }> = [];
+  const letterCells: { r: number; c: number }[] = [];
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       const cell = grid[r][c];
       if (cell !== null && cell !== BLOCK) letterCells.push({ r, c });
     }
   }
+
   if (letterCells.length === 0) return true;
 
   const visited = new Set<string>();
-  const queue: Array<{ r: number; c: number }> = [letterCells[0]];
+  const queue: { r: number; c: number }[] = [letterCells[0]];
   visited.add(`${letterCells[0].r},${letterCells[0].c}`);
 
   while (queue.length > 0) {
-    const cur = queue.shift()!;
+    const { r, c } = queue.shift()!;
     const neighbors = [
-      { r: cur.r - 1, c: cur.c },
-      { r: cur.r + 1, c: cur.c },
-      { r: cur.r, c: cur.c - 1 },
-      { r: cur.r, c: cur.c + 1 },
+      { r: r - 1, c },
+      { r: r + 1, c },
+      { r, c: c - 1 },
+      { r, c: c + 1 },
     ];
+
     for (const n of neighbors) {
-      if (n.r < 0 || n.c < 0 || n.r >= size || n.c >= size) continue;
+      if (n.r < 0 || n.r >= size || n.c < 0 || n.c >= size) continue;
       const key = `${n.r},${n.c}`;
       if (visited.has(key)) continue;
       const cell = grid[n.r][n.c];
@@ -138,14 +121,33 @@ function isFullyConnected(grid: GridChar[][], size: number): boolean {
   return visited.size === letterCells.length;
 }
 
+function countTotalIntersections(placements: Placement[], answerDirection: 'rtl' | 'ltr'): number {
+  const cellCounts = new Map<string, number>();
+  for (const p of placements) {
+    const dr = p.direction === 'down' ? 1 : 0;
+    const dc = p.direction === 'across' ? (answerDirection === 'rtl' ? -1 : 1) : 0;
+    for (let i = 0; i < p.answer.length; i++) {
+      const r = p.row + dr * i;
+      const c = p.col + dc * i;
+      const key = `${r},${c}`;
+      cellCounts.set(key, (cellCounts.get(key) ?? 0) + 1);
+    }
+  }
+  let total = 0;
+  for (const count of cellCounts.values()) {
+    if (count > 1) total++;
+  }
+  return total;
+}
+
 export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
   for (let r = 0; r < size; r++) {
     let consecutiveBlocks = 0;
     for (let c = 0; c < size; c++) {
       const cell = grid[r][c];
-      if (cell === BLOCK || cell === null) {
+      if (cell === BLOCK) {
         consecutiveBlocks++;
-        if (consecutiveBlocks >= 4) return false;
+        if (consecutiveBlocks >= 3) return false;
       } else {
         consecutiveBlocks = 0;
       }
@@ -156,9 +158,9 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
     let consecutiveBlocks = 0;
     for (let r = 0; r < size; r++) {
       const cell = grid[r][c];
-      if (cell === BLOCK || cell === null) {
+      if (cell === BLOCK) {
         consecutiveBlocks++;
-        if (consecutiveBlocks >= 4) return false;
+        if (consecutiveBlocks >= 3) return false;
       } else {
         consecutiveBlocks = 0;
       }
@@ -168,111 +170,44 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
   return true;
 }
 
-type Candidate = {
-  word: WordClue;
-  intersections: number;
+type ConstructOptions = {
+  minIntersectionPct?: number;
+  minTotalIntersections?: number;
+  seedPlacements?: number;
+  debug?: {
+    enabled: boolean;
+    log: (msg: string) => void;
+  };
+  timeBudgetMs?: number;
+  maxCandidatesPerSlot?: number;
+  targetWords?: number;
+  minWords?: number;
+  useBacktracking?: boolean;
+  useWordCentric?: boolean;
+  useFillAllSlots?: boolean;
 };
 
-function slotCenterScore(slot: Slot, size: number): number {
-  const centerR = (size - 1) / 2;
-  const centerC = (size - 1) / 2;
-  const mid = (slot.length - 1) / 2;
-  const r = slot.row + (slot.direction === 'down' ? mid : 0);
-  const c = slot.col + (slot.direction === 'across' ? mid : 0);
-  const dist = Math.abs(r - centerR) + Math.abs(c - centerC);
-  return -dist;
-}
-
-function buildCandidates(
-  slot: Slot,
-  bucket: WordClue[],
-  grid: GridChar[][],
-  answerDirection: 'rtl' | 'ltr',
-  longReuseCount: Map<string, number>,
-  shortReuseCount: Map<string, number>,
-  clueUseCount: Map<string, number>,
-  maxLongReuse: number,
-  maxShortReuse: number,
-  maxClueUses: number,
-  requireIntersection: boolean,
-  maxCandidates: number,
-  wordCommonness: Map<string, number>,
-  allowSyntheticFillers: boolean,
-  preferSyntheticFillers: boolean
-): Candidate[] {
-  const out: Candidate[] = [];
-  for (const word of bucket) {
-    const isSynthetic = Boolean(word.isRepeatedLetter && /^SYNTHETIC:/.test(word.clue));
-    if (!isSynthetic && slot.length > SHORT_WORD_MAX_LEN && (longReuseCount.get(word.answer) ?? 0) >= maxLongReuse) continue;
-    if (!isSynthetic && slot.length <= SHORT_WORD_MAX_LEN && (shortReuseCount.get(word.answer) ?? 0) >= maxShortReuse) continue;
-    if (!isSynthetic && (clueUseCount.get(word.clue) ?? 0) >= maxClueUses) continue;
-    if (!wordFitsSlot(grid, word.answer, slot, answerDirection)) continue;
-
-    const intersections = countIntersections(grid, word.answer, slot, answerDirection);
-    if (requireIntersection && intersections === 0) continue;
-
-    out.push({ word, intersections });
-  }
-
-  out.sort((a, b) => {
-    if (b.intersections !== a.intersections) return b.intersections - a.intersections;
-    const commonnessDiff = (wordCommonness.get(b.word.answer) ?? 0) - (wordCommonness.get(a.word.answer) ?? 0);
-    if (commonnessDiff !== 0) return commonnessDiff;
-    if (b.word.answer.length !== a.word.answer.length) return b.word.answer.length - a.word.answer.length;
-    if (a.word.answer !== b.word.answer) return a.word.answer.localeCompare(b.word.answer);
-    return a.word.clue.localeCompare(b.word.clue);
-  });
-
-  if (allowSyntheticFillers) {
-    const pattern: Array<string | null> = [];
-    for (let i = 0; i < slot.length; i++) {
-      const { r, c } = getCellAt(slot, i, answerDirection);
-      const ch = grid[r][c];
-      pattern.push(ch && ch !== BLOCK ? ch : null);
-    }
-
-    const fixed = pattern.filter((ch): ch is string => Boolean(ch));
-    const rtlChars = ['ا', 'ل', 'م', 'ن', 'ر', 'س', 'ت', 'ب'];
-    const ltrChars = ['E', 'A', 'R', 'T', 'N', 'S', 'L', 'I'];
-    const pool = answerDirection === 'rtl' ? rtlChars : ltrChars;
-    const syntheticAnswer = pattern
-      .map((ch, i) => {
-        if (ch) return ch;
-        const prev = i > 0 ? pattern[i - 1] : null;
-        let candidate = pool[i % pool.length];
-        if (candidate === prev) {
-          candidate = pool[(i + 1) % pool.length];
-        }
-        return candidate;
-      })
-      .join('');
-
-    const synthetic: Candidate = {
-      word: {
-        answer: syntheticAnswer,
-        clue: `SYNTHETIC:Generated ${slot.length}`,
-      },
-      intersections: fixed.length,
-    };
-    if (!out.length || preferSyntheticFillers) {
-      out.unshift(synthetic);
-    } else {
-      out.push(synthetic);
-    }
-  }
-
-  return out.slice(0, maxCandidates);
-}
-
-function slotHasFilledCell(slot: Slot, grid: GridChar[][], answerDirection: 'rtl' | 'ltr'): boolean {
-  for (let i = 0; i < slot.length; i++) {
-    const { r, c } = getCellAt(slot, i, answerDirection);
-    if (grid[r][c] !== null && grid[r][c] !== BLOCK) return true;
-  }
-  return false;
-}
-
 export function constructCrossword(
+  size: number,
+  wordClues: WordClue[],
+  template: number[][],
+  answerDirection: 'rtl' | 'ltr',
+  options: ConstructOptions = {},
+  _targetWords = 12
+): Placement[] {
+  if (options.useFillAllSlots) {
+    return constructCrosswordFillAllSlots(size, wordClues, template, answerDirection, options);
+  }
+  if (options.useWordCentric) {
+    return constructCrosswordWordCentric(size, wordClues, template, answerDirection, options);
+  }
+  if (!options.useBacktracking) {
+    return constructCrosswordGreedy(size, wordClues, template, answerDirection, options);
+  }
+  return constructCrosswordBacktracking(size, wordClues, template, answerDirection, options);
+}
+
+function constructCrosswordFillAllSlots(
   size: number,
   wordClues: WordClue[],
   template: number[][],
@@ -280,22 +215,15 @@ export function constructCrossword(
   options: ConstructOptions = {}
 ): Placement[] {
   const debug = options.debug;
-  const dbg = debug?.enabled ? (msg: string) => debug.log(msg) : () => {};
-  const reject = (reason: ConstructRejectReason) => {
-    options.onReject?.(reason);
-    dbg(`reject: ${reason}`);
-  };
+  const dbg = debug?.enabled
+    ? (msg: string) => {
+        debug.log(msg);
+      }
+    : () => {};
 
-  const slots = findSlots(template)
-    .slice()
-    .sort((a, b) => {
-      if (b.length !== a.length) return b.length - a.length;
-      if (a.direction !== b.direction) return a.direction === 'across' ? -1 : 1;
-      if (a.row !== b.row) return a.row - b.row;
-      return a.col - b.col;
-    });
-
+  const slots = findSlots(template);
   const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
+
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       if (template[r][c] === 0) grid[r][c] = BLOCK;
@@ -304,274 +232,786 @@ export function constructCrossword(
 
   const wordsByLength = new Map<number, WordClue[]>();
   for (const wc of wordClues) {
-    if (wc.answer.length < 2 || wc.answer.length > size) continue;
-    const list = wordsByLength.get(wc.answer.length) ?? [];
-    list.push(wc);
-    wordsByLength.set(wc.answer.length, list);
-  }
-  for (const list of wordsByLength.values()) {
-    list.sort((a, b) => {
-      if (a.answer !== b.answer) return a.answer.localeCompare(b.answer);
-      return a.clue.localeCompare(b.clue);
-    });
+    const len = wc.answer.length;
+    if (!wordsByLength.has(len)) wordsByLength.set(len, []);
+    wordsByLength.get(len)!.push(wc);
   }
 
-  const letterFreq = new Map<string, number>();
-  for (const wc of wordClues) {
-    for (const ch of wc.answer) {
-      letterFreq.set(ch, (letterFreq.get(ch) ?? 0) + 1);
-    }
-  }
-  const wordCommonness = new Map<string, number>();
-  for (const wc of wordClues) {
-    let score = 0;
-    for (const ch of wc.answer) score += letterFreq.get(ch) ?? 0;
-    wordCommonness.set(wc.answer, score);
-  }
-
+  const usedWords = new Set<string>();
   const placements: Placement[] = [];
-  const assigned = new Array<Placement | null>(slots.length).fill(null);
-  const longReuseCount = new Map<string, number>();
-  const shortReuseCount = new Map<string, number>();
-  const clueUseCount = new Map<string, number>();
-  const deadline = getNow() + (options.timeBudgetMs ?? 1200);
-  const maxCandidates = options.maxCandidatesPerSlot ?? (size <= 9 ? 100 : 70);
-  const maxShortReuse = options.maxShortReuse ?? (size <= 9 ? 4 : 3);
-  const strategy = options.strategy ?? (size <= 9 ? 'slot_fill' : 'hybrid');
-  const seedPlacements = Math.max(1, options.seedPlacements ?? (strategy === 'hybrid' ? 2 : 1));
-  const allowSyntheticFillers = Boolean(options.allowSyntheticFillers);
-  const preferSyntheticFillers = Boolean(options.preferSyntheticFillers);
-  const maxLongReuse = Math.max(1, options.maxLongReuse ?? (size >= 9 ? 2 : 1));
-  const maxClueUses = Math.max(1, options.maxClueUses ?? 1);
+  const deadline = getNow() + (options.timeBudgetMs ?? 400);
 
-  const chooseNextSlot = (): number => {
-    if (strategy === 'hybrid' && placements.length < seedPlacements) {
-      let bestIdx = -1;
-      let bestScore = -Infinity;
-      for (let i = 0; i < slots.length; i++) {
-        if (assigned[i]) continue;
-        const slot = slots[i];
-        const bucket = wordsByLength.get(slot.length) ?? [];
-        if (!bucket.length) continue;
-        const candidates = buildCandidates(
-          slot,
-          bucket,
-          grid,
-          answerDirection,
-          longReuseCount,
-          shortReuseCount,
-          clueUseCount,
-          maxLongReuse,
-          maxShortReuse,
-          maxClueUses,
-          false,
-          maxCandidates,
-          wordCommonness,
-          allowSyntheticFillers,
-          preferSyntheticFillers
-        );
-        if (!candidates.length) continue;
-        const score = slot.length * 100 + slotCenterScore(slot, size) - candidates.length;
-        if (score > bestScore) {
-          bestScore = score;
-          bestIdx = i;
-        }
-      }
-      return bestIdx === -1 ? -2 : bestIdx;
+  const getPattern = (slot: Slot): (string | null)[] => {
+    const pattern: (string | null)[] = [];
+    for (let i = 0; i < slot.length; i++) {
+      const { r, c } = getCellAt(slot, i, answerDirection);
+      const cell = grid[r][c];
+      pattern.push(cell && cell !== BLOCK ? cell : null);
     }
-
-    let bestIdx = -1;
-    let bestCount = Infinity;
-    let bestScore = Infinity;
-
-    for (let i = 0; i < slots.length; i++) {
-      if (assigned[i]) continue;
-      const slot = slots[i];
-      const bucket = wordsByLength.get(slot.length) ?? [];
-      if (!bucket.length) return -2;
-
-      const shouldRequireIntersection =
-        placements.length >= seedPlacements && slotHasFilledCell(slot, grid, answerDirection);
-      let candidates = buildCandidates(
-        slot,
-        bucket,
-        grid,
-        answerDirection,
-        longReuseCount,
-        shortReuseCount,
-        clueUseCount,
-        maxLongReuse,
-        maxShortReuse,
-        maxClueUses,
-        shouldRequireIntersection,
-        maxCandidates,
-        wordCommonness,
-        allowSyntheticFillers,
-        preferSyntheticFillers
-      );
-      if (!candidates.length && shouldRequireIntersection) {
-        candidates = buildCandidates(
-          slot,
-          bucket,
-          grid,
-          answerDirection,
-          longReuseCount,
-          shortReuseCount,
-          clueUseCount,
-          maxLongReuse,
-          maxShortReuse,
-          maxClueUses,
-          false,
-          maxCandidates,
-          wordCommonness,
-          allowSyntheticFillers,
-          preferSyntheticFillers
-        );
-      }
-      if (!candidates.length) return -2;
-
-      const scarcityScore = candidates.length * 10 - slot.length;
-      if (candidates.length < bestCount || (candidates.length === bestCount && scarcityScore < bestScore)) {
-        bestIdx = i;
-        bestCount = candidates.length;
-        bestScore = scarcityScore;
-      }
-    }
-
-    return bestIdx;
+    return pattern;
   };
 
-  const placeAtSlot = (slotIndex: number, word: WordClue) => {
-    const slot = slots[slotIndex];
-    const changed = placeWord(grid, word.answer, slot, answerDirection);
-
-    if (slot.length > SHORT_WORD_MAX_LEN) {
-      longReuseCount.set(word.answer, (longReuseCount.get(word.answer) ?? 0) + 1);
-    } else {
-      shortReuseCount.set(word.answer, (shortReuseCount.get(word.answer) ?? 0) + 1);
+  const wordFitsPattern = (word: string, pattern: (string | null)[]) => {
+    for (let i = 0; i < pattern.length; i++) {
+      const ch = pattern[i];
+      if (ch && ch !== word[i]) return false;
     }
-    clueUseCount.set(word.clue, (clueUseCount.get(word.clue) ?? 0) + 1);
+    return true;
+  };
 
-    const start = getSlotStart(slot, answerDirection);
-    const p: Placement = {
-      answer: word.answer,
-      clue: word.clue.replace(/^SYNTHETIC:/, ''),
-      row: start.row,
-      col: start.col,
-      direction: slot.direction,
-      isRepeatedLetter: word.isRepeatedLetter,
-    };
-    assigned[slotIndex] = p;
-    placements.push(p);
+  const getCandidatesForSlot = (slot: Slot): WordClue[] => {
+    const bucket = wordsByLength.get(slot.length) ?? [];
+    if (!bucket.length) return [];
+    const pattern = getPattern(slot);
+    const candidates: WordClue[] = [];
+    for (const wc of bucket) {
+      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+      if (!wordFitsPattern(wc.answer, pattern)) continue;
+      candidates.push(wc);
+    }
+    return candidates;
+  };
 
+  const applyWord = (slot: Slot, word: WordClue): Array<{ r: number; c: number }> => {
+    const changed: Array<{ r: number; c: number }> = [];
+    for (let i = 0; i < slot.length; i++) {
+      const { r, c } = getCellAt(slot, i, answerDirection);
+      if (grid[r][c] === null) {
+        grid[r][c] = word.answer[i];
+        changed.push({ r, c });
+      }
+    }
     return changed;
   };
 
-  const unplaceAtSlot = (slotIndex: number, word: WordClue, changed: Array<{ r: number; c: number }>) => {
-    undoPlacement(grid, changed);
-
-    if (slots[slotIndex].length > SHORT_WORD_MAX_LEN) {
-      const next = (longReuseCount.get(word.answer) ?? 1) - 1;
-      if (next <= 0) longReuseCount.delete(word.answer);
-      else longReuseCount.set(word.answer, next);
-    } else {
-      const next = (shortReuseCount.get(word.answer) ?? 1) - 1;
-      if (next <= 0) shortReuseCount.delete(word.answer);
-      else shortReuseCount.set(word.answer, next);
+  const undoWord = (changed: Array<{ r: number; c: number }>) => {
+    for (const cell of changed) {
+      grid[cell.r][cell.c] = null;
     }
-    {
-      const next = (clueUseCount.get(word.clue) ?? 1) - 1;
-      if (next <= 0) clueUseCount.delete(word.clue);
-      else clueUseCount.set(word.clue, next);
-    }
-
-    assigned[slotIndex] = null;
-    placements.pop();
   };
 
-  const backtrack = (): boolean => {
-    if (getNow() > deadline) {
-      reject('timeout');
-      return false;
-    }
+  const backtrack = (remaining: Slot[]): boolean => {
+    if (getNow() > deadline) return false;
+    if (remaining.length === 0) return true;
 
-    const nextSlotIdx = chooseNextSlot();
-    if (nextSlotIdx === -1) return true;
-    if (nextSlotIdx === -2) {
-      if (strategy === 'hybrid' && placements.length < seedPlacements) {
-        reject('no_seed_candidate');
-      } else {
-        reject('no_candidates_for_slot');
+    let bestIdx = -1;
+    let bestCandidates: WordClue[] = [];
+    let bestCount = Infinity;
+    for (let i = 0; i < remaining.length; i++) {
+      const slot = remaining[i];
+      const candidates = getCandidatesForSlot(slot);
+      if (candidates.length === 0) return false;
+      if (candidates.length < bestCount) {
+        bestCount = candidates.length;
+        bestIdx = i;
+        bestCandidates = candidates;
+        if (bestCount === 1) break;
       }
-      return false;
     }
 
-    const slot = slots[nextSlotIdx];
-    const bucket = wordsByLength.get(slot.length) ?? [];
-    const shouldRequireIntersection =
-      placements.length >= seedPlacements && slotHasFilledCell(slot, grid, answerDirection);
-    let candidates = buildCandidates(
-      slot,
-      bucket,
-      grid,
-      answerDirection,
-      longReuseCount,
-      shortReuseCount,
-      clueUseCount,
-      maxLongReuse,
-      maxShortReuse,
-      maxClueUses,
-      shouldRequireIntersection,
-      maxCandidates,
-      wordCommonness,
-      allowSyntheticFillers,
-      preferSyntheticFillers
-    );
-    if (!candidates.length && shouldRequireIntersection) {
-      candidates = buildCandidates(
-        slot,
-        bucket,
-        grid,
-        answerDirection,
-        longReuseCount,
-        shortReuseCount,
-        clueUseCount,
-        maxLongReuse,
-        maxShortReuse,
-        maxClueUses,
-        false,
-        maxCandidates,
-        wordCommonness,
-        allowSyntheticFillers,
-        preferSyntheticFillers
-      );
-    }
+    if (bestIdx === -1) return false;
+    const slot = remaining[bestIdx];
 
-    if (!candidates.length) {
-      reject('no_candidates_for_slot');
-      return false;
-    }
+    bestCandidates.sort((a, b) => b.answer.length - a.answer.length);
+    for (const wc of bestCandidates) {
+      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
 
-    for (const candidate of candidates) {
-      const changed = placeAtSlot(nextSlotIdx, candidate.word);
-      if (backtrack()) return true;
-      unplaceAtSlot(nextSlotIdx, candidate.word, changed);
+      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
+      const changed = applyWord(slot, wc);
+      usedWords.add(wc.answer);
+      const start = getSlotStart(slot, answerDirection);
+      placements.push({
+        answer: wc.answer,
+        clue: wc.clue,
+        row: start.row,
+        col: start.col,
+        direction: slot.direction,
+        isRepeatedLetter: wc.isRepeatedLetter,
+      });
+
+      const next = remaining.slice();
+      next.splice(bestIdx, 1);
+      if (backtrack(next)) return true;
+
+      placements.pop();
+      if (wc.answer.length > 3) usedWords.delete(wc.answer);
+      undoWord(changed);
     }
 
     return false;
   };
 
-  if (!backtrack()) return [];
-
-  if (placements.length !== slots.length) {
-    reject('incomplete_fill');
+  const ok = backtrack(slots);
+  if (!ok) {
+    dbg('reject: no valid placements found in fill-all-slots solver');
     return [];
+  }
+
+  return placements;
+}
+
+type WordPlacement = {
+  word: WordClue;
+  row: number;
+  col: number;
+  direction: Direction;
+  intersections: number;
+};
+
+function constructCrosswordWordCentric(
+  size: number,
+  wordClues: WordClue[],
+  template: number[][],
+  answerDirection: 'rtl' | 'ltr',
+  options: ConstructOptions = {}
+): Placement[] {
+  const debug = options.debug;
+  const dbg = debug?.enabled
+    ? (msg: string) => {
+        debug.log(msg);
+      }
+    : () => {};
+
+  const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (template[r][c] === 0) grid[r][c] = BLOCK;
+    }
+  }
+
+  const seedPlacements = Math.max(1, options.seedPlacements ?? 1);
+  const targetWords = options.targetWords ?? 0;
+  const minWords = Math.max(1, options.minWords ?? 5);
+  const deadline = getNow() + (options.timeBudgetMs ?? 120);
+
+  const words = wordClues
+    .filter((w) => w.answer.length >= 2 && w.answer.length <= size)
+    .slice()
+    .sort((a, b) => b.answer.length - a.answer.length);
+
+  const usedWords = new Set<string>();
+  const placements: Placement[] = [];
+  let best: Placement[] = [];
+  let bestScore = -1;
+
+  const getStepLocal = (direction: Direction) => getStep(direction, answerDirection);
+
+  const inBounds = (r: number, c: number) => r >= 0 && c >= 0 && r < size && c < size;
+
+  const isBoundaryOk = (row: number, col: number, direction: Direction, len: number) => {
+    if (direction === 'down') {
+      const prevR = row - 1;
+      const nextR = row + len;
+      if (inBounds(prevR, col) && grid[prevR][col] !== BLOCK && grid[prevR][col] !== null) return false;
+      if (inBounds(nextR, col) && grid[nextR][col] !== BLOCK && grid[nextR][col] !== null) return false;
+      return true;
+    }
+    const dc = answerDirection === 'rtl' ? -1 : 1;
+    const prevC = col - dc;
+    const nextC = col + dc * len;
+    if (inBounds(row, prevC) && grid[row][prevC] !== BLOCK && grid[row][prevC] !== null) return false;
+    if (inBounds(row, nextC) && grid[row][nextC] !== BLOCK && grid[row][nextC] !== null) return false;
+    return true;
+  };
+
+  const placeable = (word: string, row: number, col: number, direction: Direction): number | null => {
+    if (!isBoundaryOk(row, col, direction, word.length)) return null;
+    const { dr, dc } = getStepLocal(direction);
+    let intersections = 0;
+    for (let i = 0; i < word.length; i++) {
+      const r = row + dr * i;
+      const c = col + dc * i;
+      if (!inBounds(r, c)) return null;
+      const cell = grid[r][c];
+      if (cell === BLOCK) return null;
+      if (cell !== null && cell !== word[i]) return null;
+      if (cell === word[i]) intersections++;
+    }
+    return intersections;
+  };
+
+  const applyPlacement = (placement: WordPlacement): Array<{ r: number; c: number }> => {
+    const changed: Array<{ r: number; c: number }> = [];
+    const { dr, dc } = getStepLocal(placement.direction);
+    const word = placement.word.answer;
+    for (let i = 0; i < word.length; i++) {
+      const r = placement.row + dr * i;
+      const c = placement.col + dc * i;
+      if (grid[r][c] === null) {
+        grid[r][c] = word[i];
+        changed.push({ r, c });
+      }
+    }
+    return changed;
+  };
+
+  const undoPlacement = (changed: Array<{ r: number; c: number }>) => {
+    for (const cell of changed) {
+      grid[cell.r][cell.c] = null;
+    }
+  };
+
+  const buildLetterMap = () => {
+    const map = new Map<string, Array<{ r: number; c: number }>>();
+    for (let r = 0; r < size; r++) {
+      for (let c = 0; c < size; c++) {
+        const cell = grid[r][c];
+        if (cell && cell !== BLOCK) {
+          const list = map.get(cell) ?? [];
+          list.push({ r, c });
+          map.set(cell, list);
+        }
+      }
+    }
+    return map;
+  };
+
+  const scorePlacements = (list: Placement[]) => {
+    const totalLetters = list.reduce((sum, p) => sum + p.answer.length, 0);
+    const totalIntersections = countTotalIntersections(list, answerDirection);
+    return totalLetters + list.length * 2 + totalIntersections * 3;
+  };
+
+  const recordBest = () => {
+    if (placements.length < minWords) return;
+    const score = scorePlacements(placements);
+    if (score > bestScore) {
+      bestScore = score;
+      best = placements.slice();
+    }
+  };
+
+  const generatePlacementsForWord = (word: WordClue): WordPlacement[] => {
+    const placementsOut: WordPlacement[] = [];
+    const letterMap = buildLetterMap();
+    let matchedAny = false;
+
+    for (let i = 0; i < word.answer.length; i++) {
+      const ch = word.answer[i];
+      const positions = letterMap.get(ch);
+      if (!positions || positions.length === 0) continue;
+      matchedAny = true;
+      for (const pos of positions) {
+        for (const direction of ['across', 'down'] as Direction[]) {
+          const { dr, dc } = getStepLocal(direction);
+          const row = pos.r - dr * i;
+          const col = pos.c - dc * i;
+          const intersections = placeable(word.answer, row, col, direction);
+          if (intersections === null) continue;
+          if (intersections === 0) continue;
+          placementsOut.push({
+            word,
+            row,
+            col,
+            direction,
+            intersections,
+          });
+        }
+      }
+    }
+
+    if (!matchedAny && placements.length < seedPlacements) {
+      // Allow seed placement in any valid slot if grid is empty or during initial seeding.
+      for (const direction of ['across', 'down'] as Direction[]) {
+        const { dr, dc } = getStepLocal(direction);
+        for (let r = 0; r < size; r++) {
+          for (let c = 0; c < size; c++) {
+            const intersections = placeable(word.answer, r, c, direction);
+            if (intersections === null) continue;
+            if (intersections !== 0) continue;
+            // ensure word stays within white cells only
+            const endR = r + dr * (word.answer.length - 1);
+            const endC = c + dc * (word.answer.length - 1);
+            if (!inBounds(endR, endC)) continue;
+            placementsOut.push({ word, row: r, col: c, direction, intersections: 0 });
+          }
+        }
+      }
+    }
+
+    return placementsOut;
+  };
+
+  const pickSeedPlacement = (): WordPlacement | null => {
+    for (const word of words) {
+      if (usedWords.has(word.answer)) continue;
+      let bestSeed: WordPlacement | null = null;
+      let bestSeedScore = -Infinity;
+      for (const direction of ['across', 'down'] as Direction[]) {
+        const { dr, dc } = getStepLocal(direction);
+        for (let r = 0; r < size; r++) {
+          for (let c = 0; c < size; c++) {
+            const intersections = placeable(word.answer, r, c, direction);
+            if (intersections === null || intersections !== 0) continue;
+            const endR = r + dr * (word.answer.length - 1);
+            const endC = c + dc * (word.answer.length - 1);
+            if (!inBounds(endR, endC)) continue;
+            const centerBonus = slotCenterScore({ row: r, col: c, direction, length: word.answer.length }, size);
+            const score = word.answer.length * 10 + centerBonus;
+            if (score > bestSeedScore) {
+              bestSeedScore = score;
+              bestSeed = { word, row: r, col: c, direction, intersections: 0 };
+            }
+          }
+        }
+      }
+      if (bestSeed) return bestSeed;
+    }
+    return null;
+  };
+
+  const backtrack = () => {
+    if (getNow() > deadline) return;
+    if (targetWords > 0 && placements.length >= targetWords) {
+      recordBest();
+      return;
+    }
+
+    const candidates: Array<{ word: WordClue; placements: WordPlacement[] }> = [];
+    for (const word of words) {
+      if (usedWords.has(word.answer)) continue;
+      const placementsForWord = generatePlacementsForWord(word);
+      if (placementsForWord.length > 0) {
+        candidates.push({ word, placements: placementsForWord });
+      }
+    }
+
+    if (candidates.length === 0) {
+      recordBest();
+      return;
+    }
+
+    candidates.sort((a, b) => a.placements.length - b.placements.length);
+    const next = candidates[0];
+    const sortedPlacements = next.placements
+      .sort((a, b) => b.intersections - a.intersections)
+      .slice(0, options.maxCandidatesPerSlot ?? 200);
+
+    for (const placement of sortedPlacements) {
+      if (getNow() > deadline) return;
+      const word = placement.word;
+      if (usedWords.has(word.answer)) continue;
+      if (placeable(word.answer, placement.row, placement.col, placement.direction) === null) continue;
+
+      const changed = applyPlacement(placement);
+      usedWords.add(word.answer);
+      placements.push({
+        answer: word.answer,
+        clue: word.clue,
+        row: placement.row,
+        col: placement.col,
+        direction: placement.direction,
+        isRepeatedLetter: word.isRepeatedLetter,
+      });
+
+      recordBest();
+      backtrack();
+
+      placements.pop();
+      usedWords.delete(word.answer);
+      undoPlacement(changed);
+    }
+  };
+
+  const seed = pickSeedPlacement();
+  if (!seed) {
+    dbg('reject: no seed placement found');
+    return [];
+  }
+  dbg(`seed: word=${seed.word.answer} len=${seed.word.answer.length} row=${seed.row} col=${seed.col} dir=${seed.direction}`);
+  const seedChanged = applyPlacement(seed);
+  usedWords.add(seed.word.answer);
+  placements.push({
+    answer: seed.word.answer,
+    clue: seed.word.clue,
+    row: seed.row,
+    col: seed.col,
+    direction: seed.direction,
+    isRepeatedLetter: seed.word.isRepeatedLetter,
+  });
+
+  recordBest();
+  backtrack();
+
+  // cleanup seed for consistency if needed
+  undoPlacement(seedChanged);
+
+  dbg(`best placements=${best.length}`);
+  if (!best.length) {
+    dbg('reject: no valid placements found in word-centric search');
+  }
+
+  return best;
+}
+
+function constructCrosswordGreedy(
+  size: number,
+  wordClues: WordClue[],
+  template: number[][],
+  answerDirection: 'rtl' | 'ltr',
+  options: ConstructOptions = {}
+): Placement[] {
+  const debug = options.debug;
+  const dbg = debug?.enabled
+    ? (msg: string) => {
+        debug.log(msg);
+      }
+    : () => {};
+
+  const slots = findSlots(template);
+  const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
+
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (template[r][c] === 0) grid[r][c] = BLOCK;
+    }
+  }
+
+  const placements: Placement[] = [];
+  const usedWords = new Set<string>();
+  const usedSlots = new Set<string>();
+
+  const wordsByLength = new Map<number, WordClue[]>();
+  for (const wc of wordClues) {
+    const len = wc.answer.length;
+    if (!wordsByLength.has(len)) wordsByLength.set(len, []);
+    wordsByLength.get(len)!.push(wc);
+  }
+
+  const slotOrder = slots
+    .slice()
+    .sort((a, b) => {
+      const lenDiff = b.length - a.length;
+      if (lenDiff !== 0) return lenDiff;
+      const centerDiff = slotCenterScore(b, size) - slotCenterScore(a, size);
+      if (centerDiff !== 0) return centerDiff;
+      return Math.random() - 0.5;
+    });
+
+  const tryPlaceSlot = (slot: Slot, requireIntersection: boolean): boolean => {
+    const slotKey = `${slot.row},${slot.col},${slot.direction}`;
+    if (usedSlots.has(slotKey)) return false;
+
+    const bucket = wordsByLength.get(slot.length) ?? [];
+    if (!bucket.length) {
+      dbg(`slot length ${slot.length}: no candidates`);
+      return false;
+    }
+
+    let bestWord: WordClue | null = null;
+    let bestScore = -1;
+
+    const startIdx = Math.floor(Math.random() * bucket.length);
+    for (let i = 0; i < bucket.length; i++) {
+      const wc = bucket[(startIdx + i) % bucket.length];
+      if (usedWords.has(wc.answer)) continue;
+      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
+
+      const intersections = countIntersections(grid, wc.answer, slot, answerDirection);
+      if (requireIntersection && intersections === 0) continue;
+
+      const centerBonus = slotCenterScore(slot, size);
+      const score = intersections * 100 + centerBonus + Math.random();
+      if (score > bestScore) {
+        bestScore = score;
+        bestWord = wc;
+      }
+    }
+
+    if (!bestWord) {
+      dbg(
+        `slot ${slot.row},${slot.col},${slot.direction},len=${slot.length}: no fit (requireIntersection=${requireIntersection})`
+      );
+      return false;
+    }
+    const placed = placeWord(grid, bestWord.answer, slot, answerDirection);
+    if (!placed) return false;
+
+    usedWords.add(bestWord.answer);
+    usedSlots.add(slotKey);
+    const start = getSlotStart(slot, answerDirection);
+    placements.push({
+      answer: bestWord.answer,
+      clue: bestWord.clue,
+      row: start.row,
+      col: start.col,
+      direction: slot.direction,
+      isRepeatedLetter: bestWord.isRepeatedLetter,
+    });
+    return true;
+  };
+
+  const seedPlacements = Math.max(1, options.seedPlacements ?? 1);
+  let placedAny = false;
+  for (const slot of slotOrder) {
+    if (!placedAny) {
+      placedAny = tryPlaceSlot(slot, false) || placedAny;
+      continue;
+    }
+    const requireIntersection = placements.length >= seedPlacements;
+    tryPlaceSlot(slot, requireIntersection);
+  }
+
+  const validPlacements: Placement[] = [];
+  for (const p of placements) {
+    let isValid = true;
+    const dr = p.direction === 'down' ? 1 : 0;
+    const dc = p.direction === 'across' ? (answerDirection === 'rtl' ? -1 : 1) : 0;
+    for (let i = 0; i < p.answer.length; i++) {
+      const r = p.row + dr * i;
+      const c = p.col + dc * i;
+      if (grid[r]?.[c] !== p.answer[i]) {
+        isValid = false;
+        break;
+      }
+    }
+    if (isValid) validPlacements.push(p);
   }
 
   if (!isFullyConnected(grid, size)) {
-    reject('disconnected_letters');
+    dbg('reject: not fully connected');
     return [];
   }
 
-  return assigned.filter((x): x is Placement => Boolean(x));
+  return validPlacements;
+}
+
+type WordBucket = {
+  words: WordClue[];
+  byPos: Map<number, Map<string, number[]>>;
+};
+
+function buildBuckets(wordClues: WordClue[]): Map<number, WordBucket> {
+  const buckets = new Map<number, WordBucket>();
+  for (const wc of wordClues) {
+    const len = wc.answer.length;
+    let bucket = buckets.get(len);
+    if (!bucket) {
+      bucket = { words: [], byPos: new Map() };
+      buckets.set(len, bucket);
+    }
+    const idx = bucket.words.length;
+    bucket.words.push(wc);
+    for (let i = 0; i < len; i++) {
+      const ch = wc.answer[i];
+      let posMap = bucket.byPos.get(i);
+      if (!posMap) {
+        posMap = new Map();
+        bucket.byPos.set(i, posMap);
+      }
+      const list = posMap.get(ch) ?? [];
+      list.push(idx);
+      posMap.set(ch, list);
+    }
+  }
+  return buckets;
+}
+
+function getNow() {
+  if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+    return performance.now();
+  }
+  return Date.now();
+}
+
+function constructCrosswordBacktracking(
+  size: number,
+  wordClues: WordClue[],
+  template: number[][],
+  answerDirection: 'rtl' | 'ltr',
+  options: ConstructOptions = {}
+): Placement[] {
+  const debug = options.debug;
+  const dbg = debug?.enabled
+    ? (msg: string) => {
+        debug.log(msg);
+      }
+    : () => {};
+
+  const slots = findSlots(template);
+  const grid: GridChar[][] = Array.from({ length: size }, () => Array(size).fill(null));
+
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (template[r][c] === 0) grid[r][c] = BLOCK;
+    }
+  }
+
+  const buckets = buildBuckets(wordClues);
+  const usedWords = new Set<string>();
+  const seedPlacements = Math.max(1, options.seedPlacements ?? 1);
+  const maxCandidatesPerSlot = options.maxCandidatesPerSlot ?? 120;
+  const targetWords = options.targetWords ?? 0;
+  const minWords = Math.max(1, options.minWords ?? Math.min(6, targetWords || 6));
+  const deadline = getNow() + (options.timeBudgetMs ?? 70);
+
+  let best: Placement[] = [];
+  let bestScore = -1;
+
+  const getCandidates = (slot: Slot): WordClue[] => {
+    const bucket = buckets.get(slot.length);
+    if (!bucket) return [];
+    const fixed: Array<{ i: number; ch: string }> = [];
+    for (let i = 0; i < slot.length; i++) {
+      const { r, c } = getCellAt(slot, i, answerDirection);
+      const cell = grid[r][c];
+      if (cell && cell !== BLOCK) fixed.push({ i, ch: cell });
+    }
+
+    if (fixed.length === 0) {
+      return bucket.words;
+    }
+
+    let baseList: number[] | null = null;
+    for (const f of fixed) {
+      const list = bucket.byPos.get(f.i)?.get(f.ch) ?? [];
+      if (!baseList || list.length < baseList.length) baseList = list;
+    }
+    if (!baseList || baseList.length === 0) return [];
+
+    const baseSet = new Set<number>(baseList);
+    for (const f of fixed) {
+      const list = bucket.byPos.get(f.i)?.get(f.ch) ?? [];
+      const nextSet = new Set<number>();
+      for (const idx of list) {
+        if (baseSet.has(idx)) nextSet.add(idx);
+      }
+      if (nextSet.size === 0) return [];
+      baseSet.clear();
+      for (const idx of nextSet) baseSet.add(idx);
+    }
+
+    const out: WordClue[] = [];
+    for (const idx of baseSet) out.push(bucket.words[idx]);
+    return out;
+  };
+
+  const scorePlacements = (placements: Placement[]): number => {
+    const totalLetters = placements.reduce((sum, p) => sum + p.answer.length, 0);
+    const totalIntersections = countTotalIntersections(placements, answerDirection);
+    return totalLetters + placements.length * 2 + totalIntersections * 3;
+  };
+
+  const validatePlacements = (_placements: Placement[]): boolean => {
+    if (!isFullyConnected(grid, size)) return false;
+    return true;
+  };
+
+  const maybeRecordBest = (placements: Placement[]) => {
+    if (placements.length < minWords) return;
+    if (!validatePlacements(placements)) return;
+    const score = scorePlacements(placements);
+    if (score > bestScore) {
+      bestScore = score;
+      best = placements.slice();
+    }
+  };
+
+  const backtrack = (remaining: Slot[], placements: Placement[]): void => {
+    if (getNow() > deadline) return;
+
+    if (remaining.length === 0 || (targetWords > 0 && placements.length >= targetWords)) {
+      maybeRecordBest(placements);
+      return;
+    }
+
+    let bestIdx = -1;
+    let bestCandidates: WordClue[] = [];
+    let bestCount = Infinity;
+
+    if (placements.length === 0) {
+      let bestSlotScore = -Infinity;
+      for (let i = 0; i < remaining.length; i++) {
+        const slot = remaining[i];
+        const candidates = getCandidates(slot);
+        const filtered = candidates.filter((wc) => !usedWords.has(wc.answer));
+        if (filtered.length === 0) continue;
+        const score = slot.length * 10 + slotCenterScore(slot, size);
+        if (score > bestSlotScore) {
+          bestSlotScore = score;
+          bestIdx = i;
+          bestCandidates = filtered;
+          bestCount = filtered.length;
+        }
+      }
+    } else {
+      for (let i = 0; i < remaining.length; i++) {
+        const slot = remaining[i];
+        const candidates = getCandidates(slot);
+        const filtered = candidates.filter((wc) => !usedWords.has(wc.answer));
+        if (filtered.length === 0) {
+          if (bestIdx === -1) bestIdx = i;
+          bestCandidates = [];
+          bestCount = 0;
+          break;
+        }
+        if (filtered.length < bestCount) {
+          bestCount = filtered.length;
+          bestIdx = i;
+          bestCandidates = filtered;
+          if (bestCount === 1) break;
+        }
+      }
+    }
+
+    if (bestIdx === -1) return;
+    if (bestCandidates.length === 0) return;
+
+    const slot = remaining[bestIdx];
+    const requireIntersection = placements.length >= seedPlacements;
+
+    const scored = bestCandidates
+      .map((wc) => {
+        const intersections = countIntersections(grid, wc.answer, slot, answerDirection);
+        const centerBonus = slotCenterScore(slot, size);
+        return { wc, score: intersections * 100 + centerBonus };
+      })
+      .filter((c) => !requireIntersection || c.score >= 100)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, maxCandidatesPerSlot);
+
+    for (const item of scored) {
+      if (getNow() > deadline) return;
+      const wc = item.wc;
+      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
+
+      const changed: Array<{ r: number; c: number }> = [];
+      for (let i = 0; i < wc.answer.length; i++) {
+        const { r, c } = getCellAt(slot, i, answerDirection);
+        if (grid[r][c] === null) changed.push({ r, c });
+      }
+      if (!placeWord(grid, wc.answer, slot, answerDirection)) continue;
+
+      usedWords.add(wc.answer);
+      const start = getSlotStart(slot, answerDirection);
+      placements.push({
+        answer: wc.answer,
+        clue: wc.clue,
+        row: start.row,
+        col: start.col,
+        direction: slot.direction,
+        isRepeatedLetter: wc.isRepeatedLetter,
+      });
+
+      maybeRecordBest(placements);
+
+      const nextRemaining = remaining.slice();
+      nextRemaining.splice(bestIdx, 1);
+      backtrack(nextRemaining, placements);
+
+      placements.pop();
+      usedWords.delete(wc.answer);
+      for (const cell of changed) {
+        grid[cell.r][cell.c] = null;
+      }
+    }
+  };
+
+  backtrack(slots, []);
+
+  if (!best.length) {
+    dbg('reject: no valid placements found in backtracking');
+  }
+
+  return best;
 }

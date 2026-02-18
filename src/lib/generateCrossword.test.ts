@@ -152,7 +152,7 @@ describe('generateCrossword', () => {
     }
   });
 
-  it('should not have 4+ consecutive blocks in any row or column', () => {
+  it('should not have 3+ consecutive blocks in any row or column', () => {
     const wordClues: WordClue[] = [
       { answer: 'HELLO', clue: 'Greeting' },
       { answer: 'WORLD', clue: 'Earth' },
@@ -174,7 +174,7 @@ describe('generateCrossword', () => {
         for (let c = 0; c < size; c++) {
           if (cw.grid[r][c].type === 'block') {
             consecutiveBlocks++;
-            expect(consecutiveBlocks).toBeLessThan(4);
+            expect(consecutiveBlocks).toBeLessThan(3);
           } else {
             consecutiveBlocks = 0;
           }
@@ -187,7 +187,7 @@ describe('generateCrossword', () => {
         for (let r = 0; r < size; r++) {
           if (cw.grid[r][c].type === 'block') {
             consecutiveBlocks++;
-            expect(consecutiveBlocks).toBeLessThan(4);
+            expect(consecutiveBlocks).toBeLessThan(3);
           } else {
             consecutiveBlocks = 0;
           }
@@ -324,24 +324,29 @@ describe('generateCrossword', () => {
     }
   });
 
-  it('should generate valid puzzles across random seeds when length coverage is sufficient', () => {
-    const toWord = (len: number, index: number) => {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      let n = index + 1;
-      let out = '';
-      for (let i = 0; i < len; i++) {
-        out += chars[n % chars.length];
-        n = Math.floor(n / chars.length) + 7;
-      }
-      return out;
-    };
-
-    const wordClues: WordClue[] = [];
-    for (let len = 2; len <= 7; len++) {
-      for (let i = 0; i < 80; i++) {
-        wordClues.push({ answer: toWord(len, i), clue: `L${len}-${i}` });
-      }
-    }
+  it('should generate valid puzzles across random seeds', () => {
+    const wordClues: WordClue[] = [
+      { answer: 'HELLO', clue: 'Greeting' },
+      { answer: 'WORLD', clue: 'Earth' },
+      { answer: 'PLANT', clue: 'Green' },
+      { answer: 'RIVER', clue: 'Stream' },
+      { answer: 'STONE', clue: 'Rock' },
+      { answer: 'HOUSE', clue: 'Home' },
+      { answer: 'SOUND', clue: 'Noise' },
+      { answer: 'LIGHT', clue: 'Bright' },
+      { answer: 'MUSIC', clue: 'Tune' },
+      { answer: 'CLOUD', clue: 'Sky' },
+      { answer: 'TRAIN', clue: 'Rail' },
+      { answer: 'BREAD', clue: 'Food' },
+      { answer: 'SLEEP', clue: 'Rest' },
+      { answer: 'WATER', clue: 'Liquid' },
+      { answer: 'CHAIR', clue: 'Seat' },
+      { answer: 'TABLE', clue: 'Desk' },
+      { answer: 'PHONE', clue: 'Call' },
+      { answer: 'CLOCK', clue: 'Time' },
+      { answer: 'BRICK', clue: 'Block' },
+      { answer: 'GRASS', clue: 'Lawn' },
+    ];
 
     const withSeed = <T,>(seed: number, fn: () => T): T => {
       const original = Math.random;
@@ -357,34 +362,17 @@ describe('generateCrossword', () => {
       }
     };
 
-    const runs = 6;
+    const runs = 200;
     for (let seed = 1; seed <= runs; seed++) {
       const dir = seed % 2 === 0 ? 'ltr' : 'rtl';
       const cw = withSeed(seed, () => generateCrossword(7, wordClues, dir));
       if (!cw.entries.length) {
-        expect(cw.generationStats).toBeTruthy();
-        expect(Object.keys(cw.generationStats?.rejectedByReason ?? {}).length > 0).toBe(true);
-        continue;
+        throw new Error(`No entries generated for seed ${seed} (${dir}).`);
       }
       const validation = validatePuzzle(cw.grid, cw.entries, cw.answerDirection);
       if (!validation.ok) {
         throw new Error(`Seed ${seed} (${dir}) failed: ${validation.errors.join(' | ')}`);
       }
     }
-  }, 30000);
-
-  it('should expose generation diagnostics when generation fails', () => {
-    const impossibleWords: WordClue[] = [
-      { answer: 'HELLO', clue: 'Greeting' },
-      { answer: 'WORLD', clue: 'Earth' },
-      { answer: 'STONE', clue: 'Rock' },
-    ];
-
-    const cw = generateCrossword(7, impossibleWords, 'ltr');
-    if (cw.entries.length > 0) return;
-
-    expect(cw.generationStats).toBeTruthy();
-    expect((cw.generationStats?.attempts ?? 0) >= 0).toBe(true);
-    expect(Object.keys(cw.generationStats?.rejectedByReason ?? {}).length > 0).toBe(true);
   });
 });
