@@ -49,6 +49,10 @@ export default function App() {
   const [band, setBand] = useState<CefrBand>('beginner');
   const [mode, setMode] = useState<Mode>('en_to_ar');
 
+  // Active mode tracks the mode of the current puzzle (for UI language)
+  // Only updates when user generates a new puzzle
+  const [activeMode, setActiveMode] = useState<Mode>('en_to_ar');
+
   const [cw, setCw] = useState<Crossword | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -60,11 +64,11 @@ export default function App() {
   const [lastTappedCell, setLastTappedCell] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Get translations based on current mode
-  const t = useMemo(() => getTranslations(mode), [mode]);
+  // Get translations based on active mode (current puzzle mode)
+  const t = useMemo(() => getTranslations(activeMode), [activeMode]);
 
   // Check if we're in RTL mode (Arabic source)
-  const isRtl = mode === 'ar_to_en' || mode === 'ar_to_fr';
+  const isRtl = activeMode === 'ar_to_en' || activeMode === 'ar_to_fr';
 
   const inputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
@@ -395,6 +399,7 @@ export default function App() {
 
       setCw(next);
       setFill({});
+      setActiveMode(mode); // Update active mode to current puzzle mode
     } catch (e: any) {
       setError(e?.message || String(e));
     } finally {
@@ -557,8 +562,7 @@ export default function App() {
               <div className="cluesContent">
                 <div className="clueColumns">
                   <div className="clueSection">
-                    <h3>{t.across}</h3>
-                    <ul className="clueList">
+                    <ul className={`clueList ${isRtl ? 'rtl' : ''}`}>
                       {cw.entries
                         .filter((e) => e.direction === 'across')
                         .map((e) => (
@@ -571,8 +575,7 @@ export default function App() {
                     </ul>
                   </div>
                   <div className="clueSection">
-                    <h3>{t.down}</h3>
-                    <ul className="clueList">
+                    <ul className={`clueList ${isRtl ? 'rtl' : ''}`}>
                       {cw.entries
                         .filter((e) => e.direction === 'down')
                         .map((e) => (
@@ -599,7 +602,7 @@ export default function App() {
 
           <div className="meta desktopOnly">
             <span>{bandToCefr(band)}</span>
-            <span>{getModeDisplay(mode)}</span>
+            <span>{getModeDisplay(activeMode)}</span>
             <span>{cw.entries.length} {t.words}</span>
           </div>
         </div>

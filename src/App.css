@@ -419,6 +419,15 @@ html, body, #root {
   color: #1e293b;
 }
 
+/* RTL clue styles */
+.clueList.rtl {
+  direction: rtl;
+}
+
+.clueList.rtl .clueBtn {
+  text-align: right;
+}
+
 /* Repeated Clues */
 .repeatedSection {
   margin-top: 10px;
