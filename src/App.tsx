@@ -4,8 +4,8 @@ import type { Crossword, Entry } from './lib/crossword';
 import { getEntryCells as getEntryCellsForEntry, getEntryCellAt } from './lib/crossword';
 import { generateCrossword } from './lib/generateCrossword';
 import { bandToCefr, type CefrBand } from './lib/cefr';
+import { getTranslations, type Mode, getModeLabel, getModeDisplay } from './lib/i18n';
 
-type Mode = 'en_to_ar' | 'ar_to_en';
 type Fill = Record<string, string>;
 
 function key(r: number, c: number) {
@@ -50,6 +50,9 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [lastTappedCell, setLastTappedCell] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Get translations based on current mode
+  const t = useMemo(() => getTranslations(mode), [mode]);
 
   const inputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
@@ -312,7 +315,7 @@ export default function App() {
         break;
       }
     }
-    alert(ok ? 'Correct!' : 'Not correct yet.');
+    alert(ok ? t.correct : t.notCorrect);
   }
 
   async function newPuzzle() {
@@ -395,7 +398,7 @@ export default function App() {
     <div className="app">
       {/* Mobile Header */}
       <header className="mobileHeader">
-        <h1>Crossword</h1>
+        <h1>{t.crossword}</h1>
         <button className="settingsBtn" onClick={() => setShowSettings(!showSettings)}>
           <span>⋮</span>
         </button>
@@ -405,7 +408,7 @@ export default function App() {
       {showSettings && (
         <div className="settingsPanel">
           <label>
-            <span>Grid</span>
+            <span>{t.grid}</span>
             <select value={size} onChange={(e) => setSize(Number(e.target.value))}>
               {[7, 9, 11, 13].map((n) => (
                 <option key={n} value={n}>{n}×{n}</option>
@@ -413,22 +416,22 @@ export default function App() {
             </select>
           </label>
           <label>
-            <span>Level</span>
+            <span>{t.level}</span>
             <select value={band} onChange={(e) => setBand(e.target.value as CefrBand)}>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="advanced">Advanced</option>
+              <option value="beginner">{t.beginner}</option>
+              <option value="intermediate">{t.intermediate}</option>
+              <option value="advanced">{t.advanced}</option>
             </select>
           </label>
           <label>
-            <span>Mode</span>
+            <span>{t.mode}</span>
             <select value={mode} onChange={(e) => setMode(e.target.value as Mode)}>
-              <option value="en_to_ar">EN → AR</option>
-              <option value="ar_to_en">AR → EN</option>
+              <option value="en_to_ar">{getModeLabel('en_to_ar')}</option>
+              <option value="ar_to_en">{getModeLabel('ar_to_en')}</option>
             </select>
           </label>
           <button className="newPuzzleBtn" onClick={newPuzzle} disabled={loading}>
-            {loading ? 'Loading…' : 'New Puzzle'}
+            {loading ? t.loading : t.newPuzzle}
           </button>
         </div>
       )}
@@ -436,7 +439,7 @@ export default function App() {
       {/* Desktop Controls */}
       <div className="desktopControls">
         <label>
-          Grid
+          {t.grid}
           <select value={size} onChange={(e) => setSize(Number(e.target.value))}>
             {[7, 9, 11, 13].map((n) => (
               <option key={n} value={n}>{n}×{n}</option>
@@ -444,22 +447,22 @@ export default function App() {
           </select>
         </label>
         <label>
-          Level
+          {t.level}
           <select value={band} onChange={(e) => setBand(e.target.value as CefrBand)}>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
+            <option value="beginner">{t.beginner}</option>
+            <option value="intermediate">{t.intermediate}</option>
+            <option value="advanced">{t.advanced}</option>
           </select>
         </label>
         <label>
-          Mode
+          {t.mode}
           <select value={mode} onChange={(e) => setMode(e.target.value as Mode)}>
-            <option value="en_to_ar">EN → AR</option>
-            <option value="ar_to_en">AR → EN</option>
+            <option value="en_to_ar">{getModeLabel('en_to_ar')}</option>
+            <option value="ar_to_en">{getModeLabel('ar_to_en')}</option>
           </select>
         </label>
         <button onClick={newPuzzle} disabled={loading}>
-          {loading ? 'Loading…' : 'New Puzzle'}
+          {loading ? t.loading : t.newPuzzle}
         </button>
       </div>
 
@@ -522,7 +525,7 @@ export default function App() {
             {/* Desktop Clues Panel */}
             <div className="cluesPanel">
               <div className="cluesHeader">
-                <h2>Clues</h2>
+                <h2>{t.clues}</h2>
               </div>
               {selectedEntry && (
                 <div className="selectedClue">
@@ -533,7 +536,7 @@ export default function App() {
               <div className="cluesContent">
                 <div className="clueColumns">
                   <div className="clueSection">
-                    <h3>Across</h3>
+                    <h3>{t.across}</h3>
                     <ul className="clueList">
                       {cw.entries
                         .filter((e) => e.direction === 'across')
@@ -547,7 +550,7 @@ export default function App() {
                     </ul>
                   </div>
                   <div className="clueSection">
-                    <h3>Down</h3>
+                    <h3>{t.down}</h3>
                     <ul className="clueList">
                       {cw.entries
                         .filter((e) => e.direction === 'down')
@@ -567,16 +570,16 @@ export default function App() {
 
           {/* Desktop Action Buttons */}
           <div className="actionButtons desktopOnly">
-            <button onClick={checkSelected} disabled={!selectedEntry}>Check</button>
-            <button onClick={revealSelected} disabled={!selectedEntry}>Reveal</button>
-            <button onClick={revealAll}>Solve All</button>
-            <button onClick={reset}>Clear</button>
+            <button onClick={checkSelected} disabled={!selectedEntry}>{t.check}</button>
+            <button onClick={revealSelected} disabled={!selectedEntry}>{t.reveal}</button>
+            <button onClick={revealAll}>{t.solveAll}</button>
+            <button onClick={reset}>{t.clear}</button>
           </div>
 
           <div className="meta desktopOnly">
             <span>{bandToCefr(band)}</span>
-            <span>{mode === 'en_to_ar' ? 'EN→AR' : 'AR→EN'}</span>
-            <span>{cw.entries.length} words</span>
+            <span>{getModeDisplay(mode)}</span>
+            <span>{cw.entries.length} {t.words}</span>
           </div>
         </div>
       )}
@@ -609,19 +612,19 @@ export default function App() {
             </div>
           ))}
           <div className="keyboardActions">
-            <button onClick={checkSelected} disabled={!selectedEntry}>Check</button>
-            <button onClick={revealSelected} disabled={!selectedEntry}>Reveal</button>
-            <button onClick={revealAll}>Solve</button>
-            <button onClick={reset}>Clear</button>
+            <button onClick={checkSelected} disabled={!selectedEntry}>{t.check}</button>
+            <button onClick={revealSelected} disabled={!selectedEntry}>{t.reveal}</button>
+            <button onClick={revealAll}>{t.solve}</button>
+            <button onClick={reset}>{t.clear}</button>
           </div>
         </div>
       )}
 
       {!cw && (
         <div className="startPrompt">
-          <p>Tap ⋮ to configure and start a new puzzle</p>
+          <p>{t.startPrompt}</p>
           <button className="bigStartBtn" onClick={() => setShowSettings(true)}>
-            Start
+            {t.start}
           </button>
         </div>
       )}
