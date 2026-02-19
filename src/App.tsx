@@ -22,15 +22,6 @@ function normalizeChar(ch: string) {
   return ch.trim().slice(0, 1).toUpperCase();
 }
 
-// Format clue number based on direction (RTL: number on right, LTR: number on left)
-function formatClueNumber(number: number, direction: string, isRtl: boolean): string {
-  const dirChar = direction[0];
-  if (isRtl) {
-    return `${dirChar}. ${number}`; // Number on right for RTL
-  }
-  return `${number}${dirChar}.`; // Number on left for LTR
-}
-
 // Bilingual keyboard layout
 const KEYBOARD_EN = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -549,11 +540,11 @@ export default function App() {
                   {isRtl ? (
                     <>
                       <span>{selectedEntry.clue}</span>
-                      <strong> {formatClueNumber(selectedEntry.number, selectedEntry.direction, isRtl)}</strong>
+                      <strong> {selectedEntry.number}</strong>
                     </>
                   ) : (
                     <>
-                      <strong>{selectedEntry.number}{selectedEntry.direction[0]}. </strong>
+                      <strong>{selectedEntry.number}. </strong>
                       <span>{selectedEntry.clue}</span>
                     </>
                   )}
@@ -562,26 +553,28 @@ export default function App() {
               <div className="cluesContent">
                 <div className="clueColumns">
                   <div className="clueSection">
+                    <h3>{t.across}</h3>
                     <ul className={`clueList ${isRtl ? 'rtl' : ''}`}>
                       {cw.entries
                         .filter((e) => e.direction === 'across')
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? `${e.clue} ${formatClueNumber(e.number, 'across', isRtl)}` : `${e.number}. ${e.clue}`}
+                              {isRtl ? `${e.clue} ${e.number}` : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
                     </ul>
                   </div>
                   <div className="clueSection">
+                    <h3>{t.down}</h3>
                     <ul className={`clueList ${isRtl ? 'rtl' : ''}`}>
                       {cw.entries
                         .filter((e) => e.direction === 'down')
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? `${e.clue} ${formatClueNumber(e.number, 'down', isRtl)}` : `${e.number}. ${e.clue}`}
+                              {isRtl ? `${e.clue} ${e.number}` : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
@@ -616,11 +609,11 @@ export default function App() {
             {isRtl ? (
               <>
                 <span className="clueContent">{selectedEntry.clue}</span>
-                <span className="clueNumber"> {formatClueNumber(selectedEntry.number, selectedEntry.direction, isRtl)}</span>
+                <span className="clueNumber"> {selectedEntry.number}</span>
               </>
             ) : (
               <>
-                <span className="clueNumber">{selectedEntry.number}{selectedEntry.direction[0]}.</span>
+                <span className="clueNumber">{selectedEntry.number}.</span>
                 <span className="clueContent">{selectedEntry.clue}</span>
               </>
             )}
