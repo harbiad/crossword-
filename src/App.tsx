@@ -536,12 +536,9 @@ export default function App() {
                 <h2>{t.clues}</h2>
               </div>
               {selectedEntry && (
-                <div className="selectedClue" dir={isRtl ? 'rtl' : 'ltr'}>
+                <div className="selectedClue">
                   {isRtl ? (
-                    <>
-                      <strong className="clueNum">{selectedEntry.number}</strong>
-                      <span className="clueText">{selectedEntry.clue}</span>
-                    </>
+                    <span className="clueText" dir="rtl"><strong>{selectedEntry.number}.</strong> {selectedEntry.clue}</span>
                   ) : (
                     <>
                       <strong>{selectedEntry.number}. </strong>
@@ -560,7 +557,7 @@ export default function App() {
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? <><span className="clueNum">{e.number}</span><span className="clueText">{e.clue}</span></> : `${e.number}. ${e.clue}`}
+                              {isRtl ? <span className="clueText" dir="rtl">{e.number}. {e.clue}</span> : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
@@ -574,7 +571,7 @@ export default function App() {
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? <><span className="clueNum">{e.number}</span><span className="clueText">{e.clue}</span></> : `${e.number}. ${e.clue}`}
+                              {isRtl ? <span className="clueText" dir="rtl">{e.number}. {e.clue}</span> : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
@@ -605,12 +602,9 @@ export default function App() {
       {cw && selectedEntry && (
         <div className="mobileClueBar">
           <button className="clueNavBtn" onClick={goToPrevClue}>‹</button>
-          <div className="clueText" dir={isRtl ? 'rtl' : 'ltr'}>
+          <div className="clueText">
             {isRtl ? (
-              <>
-                <span className="clueNumber">{selectedEntry.number}</span>
-                <span className="clueContent">{selectedEntry.clue}</span>
-              </>
+              <span dir="rtl">{selectedEntry.number}. {selectedEntry.clue}</span>
             ) : (
               <>
                 <span className="clueNumber">{selectedEntry.number}.</span>
