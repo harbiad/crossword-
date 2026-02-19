@@ -408,9 +408,15 @@ export function generateCrossword(
   }
   for (const bucket of buckets.values()) shuffleInPlace(bucket);
 
-  const templates = getTemplates(size);
+  // LTR mode needs more templates to find a solvable one (fewer 2-letter slots = tighter constraints)
+  const templateCount = answerDirection === 'ltr' ? 24 : 6;
+  const templates = getTemplates(size, answerDirection === 'ltr' ? 3 : 2, templateCount);
   const attempts = size <= 7 ? 18 : size <= 9 ? 22 : 20;
-  const timeBudgetMs = size <= 7 ? 2200 : size <= 9 ? 3400 : 3600;
+  // LTR (ar_to_en) uses English words without the doubled pool that RTL gets from inversions,
+  // so give it a larger time budget to compensate.
+  const timeBudgetMs = answerDirection === 'ltr'
+    ? (size <= 7 ? 6000 : size <= 9 ? 8000 : 9000)
+    : (size <= 7 ? 2200 : size <= 9 ? 3400 : 3600);
   let best: Crossword | null = null;
   let bestScore = -1;
   const deadline = getNow() + timeBudgetMs;
@@ -452,9 +458,26 @@ export function generateCrossword(
     .filter((t) => t.viable)
     .sort((a, b) => b.score - a.score);
 
-  for (const ranked of templateScores.length ? templateScores : templates.map((template) => ({ template, score: 0, viable: true }))) {
+  const rankedTemplates = templateScores.length
+    ? templateScores
+    : templates.map((template) => ({ template, score: 0, viable: true }));
+
+  // For LTR: give each template a per-template budget so we cycle through all of them
+  // instead of getting stuck on the first unsolvable template until the global deadline.
+  const perTemplateBudgetMs = answerDirection === 'ltr'
+    ? Math.floor(timeBudgetMs / rankedTemplates.length)
+    : timeBudgetMs; // RTL: keep original behavior (single template focus)
+
+  const innerBudgetMs = answerDirection === 'ltr'
+    ? (size <= 7 ? 250 : size <= 9 ? 400 : 700)
+    : (size <= 7 ? 900 : size <= 9 ? 1700 : 2000);
+
+  for (const ranked of rankedTemplates) {
     const template = ranked.template;
     if (getNow() > deadline) break;
+    const templateDeadline = answerDirection === 'ltr'
+      ? Math.min(getNow() + perTemplateBudgetMs, deadline)
+      : deadline;
     const slots = findSlots(template);
     const allowedLengths = new Set<number>();
     for (const slot of slots) allowedLengths.add(slot.length);
@@ -462,7 +485,7 @@ export function generateCrossword(
 
     for (const opts of optionSets) {
       for (let i = 0; i < attempts; i++) {
-        if (getNow() > deadline) break;
+        if (getNow() > templateDeadline) break;
         attemptsRun++;
         const attemptWords: WordClue[] = [];
         for (const len of allowedLengths) {
@@ -478,6 +501,7 @@ export function generateCrossword(
           // eslint-disable-next-line no-console
           console.log(`[cw-gen size=${size}] attempt=${attemptsRun} words=${attemptWords.length} templateSlots=${slots.length}`);
         }
+        const remainingMs = templateDeadline - getNow();
         const placements = constructCrossword(
           size,
           attemptWords,
@@ -486,7 +510,7 @@ export function generateCrossword(
           {
             minIntersectionPct: opts.minIntersectionPct,
             seedPlacements: opts.seedPlacements,
-            timeBudgetMs: size <= 7 ? 900 : size <= 9 ? 1700 : 2000,
+            timeBudgetMs: Math.min(innerBudgetMs, Math.max(50, remainingMs)),
             maxCandidatesPerSlot: size <= 7 ? 850 : size <= 9 ? 1200 : 1500,
             targetWords,
             minWords,
@@ -542,9 +566,12 @@ export function generateCrossword(
           best = cw;
         }
       }
-      if (best || getNow() > deadline) break;
+      if (best || getNow() > templateDeadline) break;
     }
-    if (best || getNow() > deadline) break;
+    if (best) break;
+    // For LTR: continue to next template even if templateDeadline exceeded (only stop at global deadline)
+    // For RTL: stop on deadline (original behavior)
+    if (answerDirection !== 'ltr' && getNow() > deadline) break;
   }
 
   if (!best) {

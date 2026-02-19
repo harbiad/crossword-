@@ -127,18 +127,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const meanings = getMeanings(en);
       if (!meanings.length) continue;
 
-      for (const meaning of meanings) {
-        const ar = meaning.answer;
-        if (!ar || ar.length < 2 || ar.length > gridSize) continue;
+      if (mode === 'ar_to_en') {
+        // For ar_to_en: one pair per unique English word (don't duplicate by Arabic clue).
+        // Arabic is just the clue so its length doesn't need to fit the grid.
+        if (seenPair.has(en)) continue;
+        seenPair.add(en);
+        const clue = meanings[0].clue;
+        pairs.push({ clue, answer: en });
+      } else {
+        for (const meaning of meanings) {
+          const ar = meaning.answer;
+          if (!ar || ar.length < 2 || ar.length > gridSize) continue;
 
-        const clue = mode === 'en_to_ar' ? en : meaning.clue;
-        if (/repeated/i.test(clue)) continue;
+          const clue = en;
+          if (/repeated/i.test(clue)) continue;
 
-        const answer = mode === 'en_to_ar' ? ar : en;
-        const key = `${clue}::${answer}`;
-        if (seenPair.has(key)) continue;
-        seenPair.add(key);
-        pairs.push({ clue, answer });
+          const answer = ar;
+          const key = `${clue}::${answer}`;
+          if (seenPair.has(key)) continue;
+          seenPair.add(key);
+          pairs.push({ clue, answer });
+        }
       }
 
       if (pairs.length >= TARGET_PAIRS) break;

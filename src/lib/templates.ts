@@ -87,7 +87,7 @@ function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
 }
 
-function validateBlockRunsLocal(grid: number[][]): boolean {
+function validateBlockRunsLocal(grid: number[][], minRunLength = 2): boolean {
   const size = grid.length;
 
   // Check across runs
@@ -97,7 +97,7 @@ function validateBlockRunsLocal(grid: number[][]): boolean {
       const isWhite = c < size && grid[r][c] === 1;
       if (isWhite) run++;
       if (!isWhite || c === size) {
-        if (run === 1) return false;
+        if (run > 0 && run < minRunLength) return false;
         run = 0;
       }
     }
@@ -110,7 +110,7 @@ function validateBlockRunsLocal(grid: number[][]): boolean {
       const isWhite = r < size && grid[r][c] === 1;
       if (isWhite) run++;
       if (!isWhite || r === size) {
-        if (run === 1) return false;
+        if (run > 0 && run < minRunLength) return false;
         run = 0;
       }
     }
@@ -156,12 +156,10 @@ function targetBlockRatio(size: number) {
   return 0.24;
 }
 
-function canConvertPairToBlack(grid: number[][], r: number, c: number): boolean {
+function canConvertPairToBlack(grid: number[][], r: number, c: number, minRunLength = 2): boolean {
   const size = grid.length;
   const r2 = size - 1 - r;
   const c2 = size - 1 - c;
-  if (grid[r][c] === 0 && grid[r2][c2] === 0) return false;
-
   if (grid[r][c] === 0 && grid[r2][c2] === 0) return false;
 
   const prev1 = grid[r][c];
@@ -169,7 +167,7 @@ function canConvertPairToBlack(grid: number[][], r: number, c: number): boolean 
   grid[r][c] = 0;
   grid[r2][c2] = 0;
 
-  const ok = validateBlockRunsLocal(grid) && validateBlockRunsBlocks(grid) && isWhiteConnected(grid);
+  const ok = validateBlockRunsLocal(grid, minRunLength) && validateBlockRunsBlocks(grid) && isWhiteConnected(grid);
 
   if (!ok) {
     grid[r][c] = prev1;
@@ -179,7 +177,7 @@ function canConvertPairToBlack(grid: number[][], r: number, c: number): boolean 
   return ok;
 }
 
-export function getNYTTemplate(size: number): number[][] {
+export function getNYTTemplate(size: number, minRunLength = 2): number[][] {
   const grid = Array.from({ length: size }, () => Array(size).fill(1));
   const targetBlocks = Math.floor(size * size * targetBlockRatio(size));
   const maxBlocks = Math.floor(size * size * 0.3);
@@ -193,7 +191,7 @@ export function getNYTTemplate(size: number): number[][] {
     const c2 = size - 1 - c;
     const add = (r === r2 && c === c2) ? 1 : 2;
     if (blocks + add > maxBlocks) continue;
-    if (!canConvertPairToBlack(grid, r, c)) continue;
+    if (!canConvertPairToBlack(grid, r, c, minRunLength)) continue;
     blocks += add;
   }
 
@@ -206,7 +204,7 @@ export function getNYTTemplate(size: number): number[][] {
       const c2 = size - 1 - c;
       const add = (r === r2 && c === c2) ? 1 : 2;
       if (blocks + add > maxBlocks) continue;
-      if (!canConvertPairToBlack(grid, r, c)) continue;
+      if (!canConvertPairToBlack(grid, r, c, minRunLength)) continue;
       blocks += add;
     }
   }
@@ -214,7 +212,7 @@ export function getNYTTemplate(size: number): number[][] {
   return grid;
 }
 
-export function getTemplate(size: number): number[][] {
+export function getTemplate(size: number, minRunLength = 2): number[][] {
   const grid = Array.from({ length: size }, () => Array(size).fill(1));
   const targetBlocks = Math.floor(size * size * targetBlockRatio(size));
   const maxBlocks = Math.floor(size * size * 0.3);
@@ -227,7 +225,7 @@ export function getTemplate(size: number): number[][] {
     if (grid[r][c] === 0) continue;
     if (!canConvertToBlack(grid, r, c)) continue;
     grid[r][c] = 0;
-    if (!validateBlockRunsLocal(grid) || !validateBlockRunsBlocks(grid) || !isWhiteConnected(grid)) {
+    if (!validateBlockRunsLocal(grid, minRunLength) || !validateBlockRunsBlocks(grid) || !isWhiteConnected(grid)) {
       grid[r][c] = 1;
       continue;
     }
@@ -243,7 +241,7 @@ export function getTemplate(size: number): number[][] {
       if (grid[r][c] === 0) continue;
       if (!canConvertToBlack(grid, r, c)) continue;
       grid[r][c] = 0;
-      if (!validateBlockRunsLocal(grid) || !validateBlockRunsBlocks(grid) || !isWhiteConnected(grid)) {
+      if (!validateBlockRunsLocal(grid, minRunLength) || !validateBlockRunsBlocks(grid) || !isWhiteConnected(grid)) {
         grid[r][c] = 1;
         continue;
       }
@@ -254,13 +252,13 @@ export function getTemplate(size: number): number[][] {
   return grid;
 }
 
-export function getTemplates(size: number): number[][][] {
+export function getTemplates(size: number, minRunLength = 2, count = 6): number[][][] {
   const templates: number[][][] = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < count; i++) {
     if (Math.random() < 0.5) {
-      templates.push(getNYTTemplate(size));
+      templates.push(getNYTTemplate(size, minRunLength));
     } else {
-      templates.push(getTemplate(size));
+      templates.push(getTemplate(size, minRunLength));
     }
   }
   return templates;

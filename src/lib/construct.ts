@@ -259,6 +259,17 @@ function constructCrosswordFillAllSlots(
     return true;
   };
 
+  const hasCandidateForSlot = (slot: Slot): boolean => {
+    const bucket = wordsByLength.get(slot.length) ?? [];
+    if (!bucket.length) return false;
+    const pattern = getPattern(slot);
+    for (const wc of bucket) {
+      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+      if (wordFitsPattern(wc.answer, pattern)) return true;
+    }
+    return false;
+  };
+
   const getCandidatesForSlot = (slot: Slot): WordClue[] => {
     const bucket = wordsByLength.get(slot.length) ?? [];
     if (!bucket.length) return [];
@@ -290,6 +301,29 @@ function constructCrosswordFillAllSlots(
     }
   };
 
+  // Pre-compute which slots share at least one cell (intersect).
+  // Used for forward-checking: after placing a word, immediately verify that
+  // all intersecting remaining slots still have at least one candidate.
+  const slotCells = slots.map((slot) => {
+    const cells = new Set<string>();
+    for (let i = 0; i < slot.length; i++) {
+      const { r, c } = getCellAt(slot, i, answerDirection);
+      cells.add(`${r},${c}`);
+    }
+    return cells;
+  });
+  const slotNeighbors: number[][] = slots.map((_, si) => {
+    const neighbors: number[] = [];
+    for (let sj = 0; sj < slots.length; sj++) {
+      if (si === sj) continue;
+      for (const cell of slotCells[si]) {
+        if (slotCells[sj].has(cell)) { neighbors.push(sj); break; }
+      }
+    }
+    return neighbors;
+  });
+  const slotIndex = new Map<Slot, number>(slots.map((s, i) => [s, i]));
+
   const backtrack = (remaining: Slot[]): boolean => {
     if (getNow() > deadline) return false;
     if (remaining.length === 0) return true;
@@ -311,6 +345,8 @@ function constructCrosswordFillAllSlots(
 
     if (bestIdx === -1) return false;
     const slot = remaining[bestIdx];
+    const slotIdx = slotIndex.get(slot)!;
+    const remainingSet = new Set(remaining);
 
     bestCandidates.sort((a, b) => b.answer.length - a.answer.length);
     for (const wc of bestCandidates) {
@@ -319,21 +355,33 @@ function constructCrosswordFillAllSlots(
       if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
       const changed = applyWord(slot, wc);
       usedWords.add(wc.answer);
-      const start = getSlotStart(slot, answerDirection);
-      placements.push({
-        answer: wc.answer,
-        clue: wc.clue,
-        row: start.row,
-        col: start.col,
-        direction: slot.direction,
-        isRepeatedLetter: wc.isRepeatedLetter,
-      });
 
-      const next = remaining.slice();
-      next.splice(bestIdx, 1);
-      if (backtrack(next)) return true;
+      // Forward checking: verify all intersecting remaining slots still have candidates.
+      let feasible = true;
+      for (const ni of slotNeighbors[slotIdx]) {
+        const neighbor = slots[ni];
+        if (!remainingSet.has(neighbor) || neighbor === slot) continue;
+        if (!hasCandidateForSlot(neighbor)) { feasible = false; break; }
+      }
 
-      placements.pop();
+      if (feasible) {
+        const start = getSlotStart(slot, answerDirection);
+        placements.push({
+          answer: wc.answer,
+          clue: wc.clue,
+          row: start.row,
+          col: start.col,
+          direction: slot.direction,
+          isRepeatedLetter: wc.isRepeatedLetter,
+        });
+
+        const next = remaining.slice();
+        next.splice(bestIdx, 1);
+        if (backtrack(next)) return true;
+
+        placements.pop();
+      }
+
       if (wc.answer.length > 3) usedWords.delete(wc.answer);
       undoWord(changed);
     }
