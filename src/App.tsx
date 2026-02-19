@@ -539,8 +539,8 @@ export default function App() {
                 <div className="selectedClue" dir={isRtl ? 'rtl' : 'ltr'}>
                   {isRtl ? (
                     <>
-                      <span className="clueText">{selectedEntry.clue}</span>
                       <strong className="clueNum">{selectedEntry.number}</strong>
+                      <span className="clueText">{selectedEntry.clue}</span>
                     </>
                   ) : (
                     <>
@@ -560,7 +560,7 @@ export default function App() {
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? <><span className="clueText">{e.clue}</span><span className="clueNum">{e.number}</span></> : `${e.number}. ${e.clue}`}
+                              {isRtl ? <><span className="clueNum">{e.number}</span><span className="clueText">{e.clue}</span></> : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
@@ -574,7 +574,7 @@ export default function App() {
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? <><span className="clueText">{e.clue}</span><span className="clueNum">{e.number}</span></> : `${e.number}. ${e.clue}`}
+                              {isRtl ? <><span className="clueNum">{e.number}</span><span className="clueText">{e.clue}</span></> : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
@@ -608,8 +608,8 @@ export default function App() {
           <div className="clueText" dir={isRtl ? 'rtl' : 'ltr'}>
             {isRtl ? (
               <>
-                <span className="clueContent">{selectedEntry.clue}</span>
                 <span className="clueNumber">{selectedEntry.number}</span>
+                <span className="clueContent">{selectedEntry.clue}</span>
               </>
             ) : (
               <>
