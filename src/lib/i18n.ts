@@ -1,15 +1,14 @@
 // i18n translations for crossword puzzle UI
-// UI language follows the target language of the puzzle
+// UI language follows the SOURCE language of the puzzle
 
 export type Mode = 'en_to_ar' | 'ar_to_en' | 'en_to_es' | 'ar_to_fr';
 
 // Map mode to UI locale (the language the interface displays)
-export const modeToLocale: Record<Mode, string> = {
-  en_to_ar: 'ar',
-  ar_to_en: 'en',
-  en_to_es: 'es',
-  ar_to_fr: 'fr',
-};
+// UI follows the source language: EN→AR shows English UI, AR→EN shows Arabic UI
+// Extract source language from mode (e.g., 'en_to_ar' -> 'en')
+export function getSourceLocale(mode: Mode): string {
+  return mode.split('_')[0];
+}
 
 // Translations for each supported locale
 type Translations = {
@@ -151,7 +150,7 @@ const translations: Record<string, Translations> = {
 
 // Get translations for a given mode
 export function getTranslations(mode: Mode): Translations {
-  const locale = modeToLocale[mode] || 'en';
+  const locale = getSourceLocale(mode);
   return translations[locale] || translations.en;
 }
 
