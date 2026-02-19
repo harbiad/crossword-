@@ -309,19 +309,6 @@ function buildCrosswordFromPlacements(
 
   const grid = workingGrid as Cell[][];
 
-  // Ensure every template slot has an explicit clue entry.
-  // This avoids "implicit words" formed only by crossings with no across/down clue.
-  const slotStarts = new Set(
-    findSlots(template).map((s) => `${s.direction}:${s.row}:${s.col}`)
-  );
-  const placedStarts = new Set(entries.map((e) => `${e.direction}:${e.row}:${e.col}`));
-  for (const slotStart of slotStarts) {
-    if (!placedStarts.has(slotStart)) {
-      if (debug?.enabled) debug.log(`missing slot entry: ${slotStart}`);
-      return null;
-    }
-  }
-
   const numbering = computeNumbering(grid, entries, answerDirection);
   for (const [key, number] of numbering.gridNumbers.entries()) {
     const [r, c] = key.split(',').map(Number);
@@ -453,7 +440,7 @@ export function generateCrossword(
             minWords,
             useWordCentric: false,
             useBacktracking: false,
-            useFillAllSlots: true,
+            useFillAllSlots: size >= 9,
             debug: debugEnabled
               ? {
                   enabled: true,
