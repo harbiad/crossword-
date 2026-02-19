@@ -387,12 +387,7 @@ export default function App() {
     }
   }
 
-  const getCellSize = (gridSize: number) => {
-    if (gridSize >= 13) return 28;
-    if (gridSize >= 11) return 32;
-    if (gridSize >= 9) return 36;
-    return 40;
-  };
+  const getCellSize = (_gridSize: number) => 36;
 
   const keyboardRows = mode === 'en_to_ar' ? KEYBOARD_AR : KEYBOARD_EN;
 
