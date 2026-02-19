@@ -344,7 +344,6 @@ html, body, #root {
 
 .selectedClue.rtl {
   direction: rtl;
-  justify-content: space-between;
 }
 
 .selectedClue strong {
@@ -433,14 +432,11 @@ html, body, #root {
 }
 
 .clueList.rtl .clueBtn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  direction: rtl;
   text-align: right;
 }
 
 .clueList.rtl .clueNum {
-  flex-shrink: 0;
   margin-left: 8px;
 }
 
@@ -563,11 +559,10 @@ html, body, #root {
 
 .clueText.rtl {
   direction: rtl;
-  justify-content: space-between;
 }
 
 .clueText.rtl .clueNumber {
-  flex-shrink: 0;
+  margin-left: 8px;
 }
 
 .clueNumber {
