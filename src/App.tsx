@@ -536,7 +536,7 @@ export default function App() {
                 <h2>{t.clues}</h2>
               </div>
               {selectedEntry && (
-                <div className={`selectedClue ${isRtl ? 'rtl' : ''}`}>
+                <div className="selectedClue" dir={isRtl ? 'rtl' : 'ltr'}>
                   {isRtl ? (
                     <>
                       <span className="clueText">{selectedEntry.clue}</span>
@@ -554,7 +554,7 @@ export default function App() {
                 <div className="clueColumns">
                   <div className="clueSection">
                     <h3>{t.across}</h3>
-                    <ul className={`clueList ${isRtl ? 'rtl' : ''}`}>
+                    <ul className="clueList" dir={isRtl ? 'rtl' : 'ltr'}>
                       {cw.entries
                         .filter((e) => e.direction === 'across')
                         .map((e) => (
@@ -568,7 +568,7 @@ export default function App() {
                   </div>
                   <div className="clueSection">
                     <h3>{t.down}</h3>
-                    <ul className={`clueList ${isRtl ? 'rtl' : ''}`}>
+                    <ul className="clueList" dir={isRtl ? 'rtl' : 'ltr'}>
                       {cw.entries
                         .filter((e) => e.direction === 'down')
                         .map((e) => (
@@ -605,7 +605,7 @@ export default function App() {
       {cw && selectedEntry && (
         <div className="mobileClueBar">
           <button className="clueNavBtn" onClick={goToPrevClue}>‹</button>
-          <div className={`clueText ${isRtl ? 'rtl' : ''}`}>
+          <div className="clueText" dir={isRtl ? 'rtl' : 'ltr'}>
             {isRtl ? (
               <>
                 <span className="clueContent">{selectedEntry.clue}</span>
