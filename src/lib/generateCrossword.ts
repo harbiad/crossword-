@@ -11,6 +11,8 @@ type NumberingResult = {
   entryNumbers: Map<string, number>;
 };
 
+type GridRun = { direction: Direction; row: number; col: number; length: number };
+
 function normalizeAnswer(a: string): string {
   return a
     .trim()
@@ -89,6 +91,42 @@ function computeNumbering(
   }
 
   return { gridNumbers, entryNumbers };
+}
+
+function getGridRuns(grid: Cell[][], answerDirection: 'rtl' | 'ltr'): GridRun[] {
+  const size = grid.length;
+  const runs: GridRun[] = [];
+
+  for (let r = 0; r < size; r++) {
+    let c = 0;
+    while (c < size) {
+      while (c < size && grid[r][c].type === 'block') c++;
+      const start = c;
+      while (c < size && grid[r][c].type === 'letter') c++;
+      const end = c - 1;
+      const len = end - start + 1;
+      if (len >= 2) {
+        const col = answerDirection === 'rtl' ? end : start;
+        runs.push({ direction: 'across', row: r, col, length: len });
+      }
+    }
+  }
+
+  for (let c = 0; c < size; c++) {
+    let r = 0;
+    while (r < size) {
+      while (r < size && grid[r][c].type === 'block') r++;
+      const start = r;
+      while (r < size && grid[r][c].type === 'letter') r++;
+      const end = r - 1;
+      const len = end - start + 1;
+      if (len >= 2) {
+        runs.push({ direction: 'down', row: start, col: c, length: len });
+      }
+    }
+  }
+
+  return runs;
 }
 
 function validatePuzzle(
@@ -182,6 +220,20 @@ function validatePuzzle(
   );
   if (!validateBlockRuns(internalGrid, size)) {
     errors.push('Block run constraint violated.');
+  }
+
+  const gridRuns = getGridRuns(grid, answerDirection);
+  const runStarts = new Set(gridRuns.map((r) => `${r.direction}:${r.row}:${r.col}`));
+  const entryStarts = new Set(entries.map((e) => `${e.direction}:${e.row}:${e.col}`));
+  for (const start of runStarts) {
+    if (!entryStarts.has(start)) {
+      errors.push(`Grid run missing clue entry at ${start}.`);
+    }
+  }
+  for (const start of entryStarts) {
+    if (!runStarts.has(start)) {
+      errors.push(`Entry start does not match a grid run at ${start}.`);
+    }
   }
 
   const numbering = computeNumbering(grid, entries, answerDirection);
