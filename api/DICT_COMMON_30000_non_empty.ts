@@ -315,10 +315,6 @@ export const DICT_COMMON_30000_NON_EMPTY: Record<
       answer: "يمكن",
       clue: "يمكن",
     },
-    {
-      answer: "يم",
-      clue: "يم",
-    },
   ],
   US: [
     {
@@ -14951,10 +14947,6 @@ export const DICT_COMMON_30000_NON_EMPTY: Record<
       answer: "روبيرت",
       clue: "روبيرت",
     },
-    {
-      answer: "روبرتروبرت",
-      clue: "روبرت روبرت",
-    },
   ],
   HOMEPAGE: [
     {
@@ -15004,10 +14996,6 @@ export const DICT_COMMON_30000_NON_EMPTY: Record<
     {
       answer: "ستة",
       clue: "ستة",
-    },
-    {
-      answer: "سكس",
-      clue: "سكس",
     },
   ],
   BUSH: [
