@@ -492,7 +492,7 @@ export function generateCrossword(
             minWords,
             useWordCentric: false,
             useBacktracking: false,
-            useFillAllSlots: size >= 9,
+            useFillAllSlots: true,
             debug: debugEnabled
               ? {
                   enabled: true,
