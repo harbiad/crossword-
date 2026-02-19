@@ -349,11 +349,11 @@ html, body, #root {
   color: #334155;
 }
 
-/* Clues Content - scrollable */
+/* Clues Content - compact and fully visible */
 .cluesContent {
   flex: 1;
-  overflow-y: auto;
-  padding: 10px;
+  overflow: hidden;
+  padding: 8px 10px;
 }
 
 .cluesContent::-webkit-scrollbar {
@@ -369,7 +369,7 @@ html, body, #root {
 .clueColumns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .clueSection h3 {
@@ -378,12 +378,15 @@ html, body, #root {
   color: #6366f1;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0 0 6px 0;
-  padding-bottom: 4px;
+  margin: 0 0 5px 0;
+  padding-bottom: 3px;
   border-bottom: 1px solid #e2e8f0;
 }
 
 .clueList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -396,14 +399,14 @@ html, body, #root {
 .clueBtn {
   display: block;
   width: 100%;
-  padding: 4px 6px;
+  padding: 3px 5px;
   text-align: left;
   background: transparent;
   border: none;
   border-radius: 4px;
-  font-size: 0.72rem;
+  font-size: 0.69rem;
   color: #475569;
-  line-height: 1.3;
+  line-height: 1.2;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
