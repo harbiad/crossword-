@@ -337,6 +337,14 @@ html, body, #root {
   padding: 8px 12px;
   border-bottom: 1px solid #e2e8f0;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selectedClue.rtl {
+  direction: rtl;
+  justify-content: space-between;
 }
 
 .selectedClue strong {
@@ -425,7 +433,15 @@ html, body, #root {
 }
 
 .clueList.rtl .clueBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: right;
+}
+
+.clueList.rtl .clueNum {
+  flex-shrink: 0;
+  margin-left: 8px;
 }
 
 /* Repeated Clues */
@@ -543,6 +559,15 @@ html, body, #root {
   gap: 6px;
   min-width: 0;
   overflow: hidden;
+}
+
+.clueText.rtl {
+  direction: rtl;
+  justify-content: space-between;
+}
+
+.clueText.rtl .clueNumber {
+  flex-shrink: 0;
 }
 
 .clueNumber {

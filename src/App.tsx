@@ -536,11 +536,11 @@ export default function App() {
                 <h2>{t.clues}</h2>
               </div>
               {selectedEntry && (
-                <div className="selectedClue">
+                <div className={`selectedClue ${isRtl ? 'rtl' : ''}`}>
                   {isRtl ? (
                     <>
-                      <span>{selectedEntry.clue}</span>
-                      <strong> {selectedEntry.number}</strong>
+                      <span className="clueText">{selectedEntry.clue}</span>
+                      <strong className="clueNum">{selectedEntry.number}</strong>
                     </>
                   ) : (
                     <>
@@ -560,7 +560,7 @@ export default function App() {
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? `${e.clue} ${e.number}` : `${e.number}. ${e.clue}`}
+                              {isRtl ? <><span className="clueText">{e.clue}</span><span className="clueNum">{e.number}</span></> : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
@@ -574,7 +574,7 @@ export default function App() {
                         .map((e) => (
                           <li key={e.id}>
                             <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? `${e.clue} ${e.number}` : `${e.number}. ${e.clue}`}
+                              {isRtl ? <><span className="clueText">{e.clue}</span><span className="clueNum">{e.number}</span></> : `${e.number}. ${e.clue}`}
                             </button>
                           </li>
                         ))}
@@ -605,11 +605,11 @@ export default function App() {
       {cw && selectedEntry && (
         <div className="mobileClueBar">
           <button className="clueNavBtn" onClick={goToPrevClue}>‹</button>
-          <div className="clueText">
+          <div className={`clueText ${isRtl ? 'rtl' : ''}`}>
             {isRtl ? (
               <>
                 <span className="clueContent">{selectedEntry.clue}</span>
-                <span className="clueNumber"> {selectedEntry.number}</span>
+                <span className="clueNumber">{selectedEntry.number}</span>
               </>
             ) : (
               <>
