@@ -432,12 +432,14 @@ html, body, #root {
 }
 
 .clueList.rtl .clueBtn {
-  direction: rtl;
-  text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .clueList.rtl .clueNum {
-  margin-left: 8px;
+  margin-right: 6px;
 }
 
 /* Repeated Clues */
@@ -562,7 +564,7 @@ html, body, #root {
 }
 
 .clueText.rtl .clueNumber {
-  margin-left: 8px;
+  margin-right: 6px;
 }
 
 .clueNumber {
