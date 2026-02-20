@@ -550,7 +550,7 @@ export default function App() {
               <div className="cluesContent">
                 <div className="clueColumns">
                   <div className="clueSection">
-                    <h3>{t.across}</h3>
+                    <h3 dir={isRtl ? 'rtl' : 'ltr'}>{t.across}</h3>
                     <ul className="clueList" dir={isRtl ? 'rtl' : 'ltr'}>
                       {cw.entries
                         .filter((e) => e.direction === 'across')
@@ -564,7 +564,7 @@ export default function App() {
                     </ul>
                   </div>
                   <div className="clueSection">
-                    <h3>{t.down}</h3>
+                    <h3 dir={isRtl ? 'rtl' : 'ltr'}>{t.down}</h3>
                     <ul className="clueList" dir={isRtl ? 'rtl' : 'ltr'}>
                       {cw.entries
                         .filter((e) => e.direction === 'down')
