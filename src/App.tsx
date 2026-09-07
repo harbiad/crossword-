@@ -1,12 +1,12 @@
-import { useMemo, useState, useRef, useCallback, useEffect } from 'react';
+import { useMemo, useState, useRef, useEffect, useLayoutEffect } from 'react';
 import './App.css';
 import type { Crossword, Entry } from './lib/crossword';
-import { getEntryCells as getEntryCellsForEntry, getEntryCellAt, getAdjacentEntryCell, revealEntries, checkEntry, displayClue } from './lib/crossword';
+import { getEntryCells as getEntryCellsForEntry, getEntryCellAt, revealEntries, checkEntry, displayClue } from './lib/crossword';
 import { generateCrossword, type WordClue } from './lib/generateCrossword';
 import { bandToCefr, type CefrBand } from './lib/cefr';
 import { getTranslations, type Mode, getModeLabel, getModeDisplay } from './lib/i18n';
 
-type Fill = Record<string, string>;
+import { enterCharacter, backspace, getPhysicalArrowCell, isArrowKey, type Fill } from './lib/navigation';
 
 function key(r: number, c: number) {
   return `${r},${c}`;
@@ -90,24 +90,38 @@ export default function App() {
     });
   }, [cw]);
 
-  const focusCell = useCallback((r: number, c: number) => {
-    const input = inputRefs.current.get(key(r, c));
-    if (input) {
-      input.focus();
-      setActiveCell({ r, c });
+  // Focus after React commits the new entry, cell and value. Selecting the value
+  // lets a deliberate click, clue selection or arrow move replace a filled cell.
+  useLayoutEffect(() => {
+    if (!activeCell) return;
+    const input = inputRefs.current.get(key(activeCell.r, activeCell.c));
+    input?.focus();
+    input?.select();
+  }, [activeCell, selectedEntryId]);
+
+  function selectEntry(entry: Entry) {
+    if (!cw) return;
+    setSelectedEntryId(entry.id);
+    setActiveCell(getEntryCellAt(entry, 0, cw.answerDirection));
+    setLastTappedCell(null);
+  }
+
+  // Tab/focus navigation must keep the active cell and selected entry in sync,
+  // but only a repeated click/tap may toggle the direction at a crossing.
+  function onCellFocus(r: number, c: number) {
+    if (!cw) return;
+    const cell = cw.grid[r][c];
+    if (cell.type === 'block') return;
+    if (!selectedEntry || !cell.entries.has(selectedEntry.id)) {
+      const entry = cw.entries.find(entry => cell.entries.has(entry.id) && entry.direction === 'across')
+        ?? cw.entries.find(entry => cell.entries.has(entry.id));
+      if (entry) setSelectedEntryId(entry.id);
     }
-  }, []);
-
-  const getNextCell = useCallback((
-    currentR: number,
-    currentC: number,
-    entry: Entry | null,
-    direction: 'forward' | 'backward'
-  ): { r: number; c: number } | null => {
-    if (!cw || !entry) return null;
-
-    return getAdjacentEntryCell(entry, currentR, currentC, direction === 'forward' ? 1 : -1, cw.answerDirection);
-  }, [cw]);
+    if (activeCell?.r !== r || activeCell?.c !== c) {
+      setActiveCell({ r, c });
+      setLastTappedCell(null);
+    }
+  }
 
   // Handle cell click - toggle between across/down on repeated tap
   function onCellClick(r: number, c: number) {
@@ -140,78 +154,47 @@ export default function App() {
     setActiveCell({ r, c });
   }
 
-  function onCellChange(r: number, c: number, v: string) {
-    const ch = normalizeChar(v);
-    setFill((prev) => ({ ...prev, [key(r, c)]: ch }));
+  // Physical input and the custom keyboard use exactly the same state changes.
+  function onCellChange(r: number, c: number, value: string) {
+    const result = enterCharacter(selectedCells, { r, c }, fill, normalizeChar(value));
+    if (!result) return;
+    setFill(result.fill);
+    setActiveCell({ ...result.activeCell });
+    setLastTappedCell(null);
+  }
 
-    if (ch && selectedEntry) {
-      const nextCell = getNextCell(r, c, selectedEntry, 'forward');
-      if (nextCell) {
-        setTimeout(() => focusCell(nextCell.r, nextCell.c), 0);
-      }
+  function onBackspace(r: number, c: number) {
+    const result = backspace(selectedCells, { r, c }, fill);
+    if (!result) return;
+    setFill(result.fill);
+    setActiveCell({ ...result.activeCell });
+    setLastTappedCell(null);
+  }
+
+  function onCellKeyDown(e: React.KeyboardEvent<HTMLInputElement>, r: number, c: number) {
+    if (!cw || !selectedEntry || e.nativeEvent.isComposing) return;
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      onBackspace(r, c);
+    } else if (isArrowKey(e.key)) {
+      e.preventDefault();
+      const cell = getPhysicalArrowCell(selectedCells, { r, c }, e.key);
+      if (cell) setActiveCell({ ...cell });
+      setLastTappedCell(null);
+    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      // Handle printable keys directly so maxLength=1 cannot block replacement,
+      // including retyping the same letter or using hardware keys on mobile.
+      e.preventDefault();
+      onCellChange(r, c, e.key);
     }
   }
 
-  const onCellKeyDown = useCallback((
-    e: React.KeyboardEvent<HTMLInputElement>,
-    r: number,
-    c: number
-  ) => {
-    if (!cw || !selectedEntry) return;
-
-    if (e.key === 'Backspace') {
-      const currentValue = fill[key(r, c)] || '';
-      if (!currentValue) {
-        const prevCell = getNextCell(r, c, selectedEntry, 'backward');
-        if (prevCell) {
-          setFill((prev) => ({ ...prev, [key(prevCell.r, prevCell.c)]: '' }));
-          focusCell(prevCell.r, prevCell.c);
-          e.preventDefault();
-        }
-      }
-    } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
-      e.preventDefault();
-      // Arrow keys move physically; typing and backspace follow spelling order.
-      const targetR = r + (e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0);
-      const targetC = c + (e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0);
-      const cell = getEntryCellsForEntry(selectedEntry, cw.answerDirection)
-        .find(cell => cell.r === targetR && cell.c === targetC);
-      if (cell) focusCell(cell.r, cell.c);
-    }
-  }, [cw, selectedEntry, fill, getNextCell, focusCell]);
-
-  // Custom keyboard input
   function onKeyboardPress(char: string) {
-    if (!activeCell || !cw) return;
-    const { r, c } = activeCell;
-    const cell = cw.grid[r]?.[c];
-    if (!cell || cell.type === 'block') return;
-
-    const ch = normalizeChar(char);
-    setFill((prev) => ({ ...prev, [key(r, c)]: ch }));
-
-    if (selectedEntry) {
-      const nextCell = getNextCell(r, c, selectedEntry, 'forward');
-      if (nextCell) {
-        setActiveCell(nextCell);
-      }
-    }
+    if (activeCell) onCellChange(activeCell.r, activeCell.c, char);
   }
 
   function onKeyboardBackspace() {
-    if (!activeCell || !cw) return;
-    const { r, c } = activeCell;
-    const currentValue = fill[key(r, c)] || '';
-
-    if (currentValue) {
-      setFill((prev) => ({ ...prev, [key(r, c)]: '' }));
-    } else if (selectedEntry) {
-      const prevCell = getNextCell(r, c, selectedEntry, 'backward');
-      if (prevCell) {
-        setFill((prev) => ({ ...prev, [key(prevCell.r, prevCell.c)]: '' }));
-        setActiveCell(prevCell);
-      }
-    }
+    if (activeCell) onBackspace(activeCell.r, activeCell.c);
   }
 
   // Navigate to prev/next clue
@@ -220,8 +203,7 @@ export default function App() {
     const idx = sortedEntries.findIndex(e => e.id === selectedEntry.id);
     const prevIdx = idx > 0 ? idx - 1 : sortedEntries.length - 1;
     const prev = sortedEntries[prevIdx];
-    setSelectedEntryId(prev.id);
-    setActiveCell(getEntryCellAt(prev, 0, cw!.answerDirection));
+    selectEntry(prev);
   }
 
   function goToNextClue() {
@@ -229,8 +211,7 @@ export default function App() {
     const idx = sortedEntries.findIndex(e => e.id === selectedEntry.id);
     const nextIdx = idx < sortedEntries.length - 1 ? idx + 1 : 0;
     const next = sortedEntries[nextIdx];
-    setSelectedEntryId(next.id);
-    setActiveCell(getEntryCellAt(next, 0, cw!.answerDirection));
+    selectEntry(next);
   }
 
   function reset() {
@@ -258,6 +239,8 @@ export default function App() {
     setLoading(true);
     setError(null);
     setSelectedEntryId(null);
+    setActiveCell(null);
+    setLastTappedCell(null);
     setShowSettings(false);
 
     const bandFallbackOrder: CefrBand[] =
@@ -316,7 +299,8 @@ export default function App() {
 
   const getCellSize = () => 36;
 
-  const keyboardRows = mode === 'en_to_ar' ? KEYBOARD_AR : KEYBOARD_EN;
+  const answerDirection = cw?.answerDirection ?? (activeMode === 'en_to_ar' ? 'rtl' : 'ltr');
+  const keyboardRows = answerDirection === 'rtl' ? KEYBOARD_AR : KEYBOARD_EN;
 
   return (
     <div className="app">
@@ -430,9 +414,10 @@ export default function App() {
                             if (el) inputRefs.current.set(key(r, c), el);
                             else inputRefs.current.delete(key(r, c));
                           }}
-                          className={mode === 'en_to_ar' ? 'rtlInput' : ''}
-                          dir={mode === 'en_to_ar' ? 'rtl' : 'ltr'}
+                          className={answerDirection === 'rtl' ? 'rtlInput' : ''}
+                          dir={answerDirection}
                           value={fill[key(r, c)] || ''}
+                          onFocus={() => onCellFocus(r, c)}
                           onChange={(e) => onCellChange(r, c, e.target.value)}
                           onKeyDown={(e) => onCellKeyDown(e, r, c)}
                           maxLength={1}
@@ -472,7 +457,7 @@ export default function App() {
                         .filter((e) => e.direction === 'across')
                         .map((e) => (
                           <li key={e.id}>
-                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell(getEntryCellAt(e, 0, cw!.answerDirection)); }}>
+                            <button className="clueBtn" onClick={() => selectEntry(e)}>
                               {isRtl ? <span className="clueText" dir="rtl">{e.number}. {displayClue(e)}</span> : `${e.number}. ${displayClue(e)}`}
                             </button>
                           </li>
@@ -486,7 +471,7 @@ export default function App() {
                         .filter((e) => e.direction === 'down')
                         .map((e) => (
                           <li key={e.id}>
-                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell(getEntryCellAt(e, 0, cw!.answerDirection)); }}>
+                            <button className="clueBtn" onClick={() => selectEntry(e)}>
                               {isRtl ? <span className="clueText" dir="rtl">{e.number}. {displayClue(e)}</span> : `${e.number}. ${displayClue(e)}`}
                             </button>
                           </li>
