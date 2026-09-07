@@ -1,8 +1,16 @@
-import type { Direction } from './crossword';
+import { getEntryCellAt, type Direction } from './crossword';
 import type { WordClue } from './generateCrossword';
 import { findSlots, type Slot } from './templates';
 
+type OrientedWord = WordClue & { isInverted: boolean };
+
+function* orientations(word: WordClue): Generator<OrientedWord> {
+  yield { ...word, isInverted: false };
+  yield { ...word, isInverted: true };
+}
+
 export type Placement = {
+  isInverted: boolean;
   answer: string;
   clue: string;
   row: number;
@@ -22,22 +30,16 @@ function getSlotStart(slot: Slot, answerDirection: 'rtl' | 'ltr'): { row: number
   return { row: slot.row, col: slot.col };
 }
 
-function getStep(direction: Direction, answerDirection: 'rtl' | 'ltr'): { dr: number; dc: number } {
-  if (direction === 'down') return { dr: 1, dc: 0 };
-  return { dr: 0, dc: answerDirection === 'rtl' ? -1 : 1 };
+function getCellAt(slot: Slot, i: number, answerDirection: 'rtl' | 'ltr', isInverted = false) {
+  return getEntryCellAt({ ...getSlotStart(slot, answerDirection), direction: slot.direction,
+    answer: { length: slot.length }, isInverted }, i, answerDirection);
 }
 
-function getCellAt(slot: Slot, i: number, answerDirection: 'rtl' | 'ltr') {
-  const { row, col } = getSlotStart(slot, answerDirection);
-  const { dr, dc } = getStep(slot.direction, answerDirection);
-  return { r: row + dr * i, c: col + dc * i };
-}
-
-function wordFitsSlot(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr'): boolean {
+function wordFitsSlot(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr', isInverted: boolean): boolean {
   if (word.length !== slot.length) return false;
 
   for (let i = 0; i < word.length; i++) {
-    const { r, c } = getCellAt(slot, i, answerDirection);
+    const { r, c } = getCellAt(slot, i, answerDirection, isInverted);
     if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length) return false;
 
     const existing = grid[r][c];
@@ -48,24 +50,20 @@ function wordFitsSlot(grid: GridChar[][], word: string, slot: Slot, answerDirect
   return true;
 }
 
-function countIntersections(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr'): number {
+function countIntersections(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr', isInverted: boolean): number {
   let count = 0;
   for (let i = 0; i < word.length; i++) {
-    const { r, c } = getCellAt(slot, i, answerDirection);
+    const { r, c } = getCellAt(slot, i, answerDirection, isInverted);
     if (grid[r]?.[c] === word[i]) count++;
   }
   return count;
 }
 
-function placeWord(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr'): boolean {
-  for (let i = 0; i < word.length; i++) {
-    const { r, c } = getCellAt(slot, i, answerDirection);
-    const existing = grid[r][c];
-    if (existing !== null && existing !== BLOCK && existing !== word[i]) return false;
-  }
+function placeWord(grid: GridChar[][], word: string, slot: Slot, answerDirection: 'rtl' | 'ltr', isInverted: boolean): boolean {
+  if (!wordFitsSlot(grid, word, slot, answerDirection, isInverted)) return false;
 
   for (let i = 0; i < word.length; i++) {
-    const { r, c } = getCellAt(slot, i, answerDirection);
+    const { r, c } = getCellAt(slot, i, answerDirection, isInverted);
     grid[r][c] = word[i];
   }
 
@@ -124,11 +122,8 @@ function isFullyConnected(grid: GridChar[][], size: number): boolean {
 function countTotalIntersections(placements: Placement[], answerDirection: 'rtl' | 'ltr'): number {
   const cellCounts = new Map<string, number>();
   for (const p of placements) {
-    const dr = p.direction === 'down' ? 1 : 0;
-    const dc = p.direction === 'across' ? (answerDirection === 'rtl' ? -1 : 1) : 0;
     for (let i = 0; i < p.answer.length; i++) {
-      const r = p.row + dr * i;
-      const c = p.col + dc * i;
+      const { r, c } = getEntryCellAt(p, i, answerDirection);
       const key = `${r},${c}`;
       cellCounts.set(key, (cellCounts.get(key) ?? 0) + 1);
     }
@@ -145,7 +140,7 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
     let consecutiveBlocks = 0;
     for (let c = 0; c < size; c++) {
       const cell = grid[r][c];
-      if (cell === BLOCK) {
+      if (cell === BLOCK || cell === null) {
         consecutiveBlocks++;
         if (consecutiveBlocks >= 3) return false;
       } else {
@@ -158,7 +153,7 @@ export function validateBlockRuns(grid: GridChar[][], size: number): boolean {
     let consecutiveBlocks = 0;
     for (let r = 0; r < size; r++) {
       const cell = grid[r][c];
-      if (cell === BLOCK) {
+      if (cell === BLOCK || cell === null) {
         consecutiveBlocks++;
         if (consecutiveBlocks >= 3) return false;
       } else {
@@ -192,8 +187,7 @@ export function constructCrossword(
   wordClues: WordClue[],
   template: number[][],
   answerDirection: 'rtl' | 'ltr',
-  options: ConstructOptions = {},
-  _targetWords = 12
+  options: ConstructOptions = {}
 ): Placement[] {
   if (options.useFillAllSlots) {
     return constructCrosswordFillAllSlots(size, wordClues, template, answerDirection, options);
@@ -241,10 +235,10 @@ function constructCrosswordFillAllSlots(
   const placements: Placement[] = [];
   const deadline = getNow() + (options.timeBudgetMs ?? 400);
 
-  const getPattern = (slot: Slot): (string | null)[] => {
+  const getPattern = (slot: Slot, isInverted: boolean): (string | null)[] => {
     const pattern: (string | null)[] = [];
     for (let i = 0; i < slot.length; i++) {
-      const { r, c } = getCellAt(slot, i, answerDirection);
+      const { r, c } = getCellAt(slot, i, answerDirection, isInverted);
       const cell = grid[r][c];
       pattern.push(cell && cell !== BLOCK ? cell : null);
     }
@@ -262,31 +256,31 @@ function constructCrosswordFillAllSlots(
   const hasCandidateForSlot = (slot: Slot): boolean => {
     const bucket = wordsByLength.get(slot.length) ?? [];
     if (!bucket.length) return false;
-    const pattern = getPattern(slot);
-    for (const wc of bucket) {
-      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+    for (const word of bucket) for (const wc of orientations(word)) {
+      const pattern = getPattern(slot, wc.isInverted);
+      if (usedWords.has(wc.answer)) continue;
       if (wordFitsPattern(wc.answer, pattern)) return true;
     }
     return false;
   };
 
-  const getCandidatesForSlot = (slot: Slot): WordClue[] => {
+  const getCandidatesForSlot = (slot: Slot): OrientedWord[] => {
     const bucket = wordsByLength.get(slot.length) ?? [];
     if (!bucket.length) return [];
-    const pattern = getPattern(slot);
-    const candidates: WordClue[] = [];
-    for (const wc of bucket) {
-      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+    const candidates: OrientedWord[] = [];
+    for (const word of bucket) for (const wc of orientations(word)) {
+      const pattern = getPattern(slot, wc.isInverted);
+      if (usedWords.has(wc.answer)) continue;
       if (!wordFitsPattern(wc.answer, pattern)) continue;
       candidates.push(wc);
     }
     return candidates;
   };
 
-  const applyWord = (slot: Slot, word: WordClue): Array<{ r: number; c: number }> => {
+  const applyWord = (slot: Slot, word: OrientedWord): Array<{ r: number; c: number }> => {
     const changed: Array<{ r: number; c: number }> = [];
     for (let i = 0; i < slot.length; i++) {
-      const { r, c } = getCellAt(slot, i, answerDirection);
+      const { r, c } = getCellAt(slot, i, answerDirection, word.isInverted);
       if (grid[r][c] === null) {
         grid[r][c] = word.answer[i];
         changed.push({ r, c });
@@ -329,7 +323,7 @@ function constructCrosswordFillAllSlots(
     if (remaining.length === 0) return true;
 
     let bestIdx = -1;
-    let bestCandidates: WordClue[] = [];
+    let bestCandidates: OrientedWord[] = [];
     let bestCount = Infinity;
     for (let i = 0; i < remaining.length; i++) {
       const slot = remaining[i];
@@ -350,9 +344,9 @@ function constructCrosswordFillAllSlots(
 
     bestCandidates.sort((a, b) => b.answer.length - a.answer.length);
     for (const wc of bestCandidates) {
-      if (usedWords.has(wc.answer) && wc.answer.length > 3) continue;
+      if (usedWords.has(wc.answer)) continue;
 
-      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
+      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection, wc.isInverted)) continue;
       const changed = applyWord(slot, wc);
       usedWords.add(wc.answer);
 
@@ -373,6 +367,7 @@ function constructCrosswordFillAllSlots(
           col: start.col,
           direction: slot.direction,
           isRepeatedLetter: wc.isRepeatedLetter,
+          isInverted: wc.isInverted,
         });
 
         const next = remaining.slice();
@@ -382,7 +377,7 @@ function constructCrosswordFillAllSlots(
         placements.pop();
       }
 
-      if (wc.answer.length > 3) usedWords.delete(wc.answer);
+      usedWords.delete(wc.answer);
       undoWord(changed);
     }
 
@@ -399,7 +394,7 @@ function constructCrosswordFillAllSlots(
 }
 
 type WordPlacement = {
-  word: WordClue;
+  word: OrientedWord;
   row: number;
   col: number;
   direction: Direction;
@@ -442,7 +437,7 @@ function constructCrosswordWordCentric(
   let best: Placement[] = [];
   let bestScore = -1;
 
-  const getStepLocal = (direction: Direction) => getStep(direction, answerDirection);
+
 
   const inBounds = (r: number, c: number) => r >= 0 && c >= 0 && r < size && c < size;
 
@@ -462,13 +457,11 @@ function constructCrosswordWordCentric(
     return true;
   };
 
-  const placeable = (word: string, row: number, col: number, direction: Direction): number | null => {
+  const placeable = (word: string, row: number, col: number, direction: Direction, isInverted: boolean): number | null => {
     if (!isBoundaryOk(row, col, direction, word.length)) return null;
-    const { dr, dc } = getStepLocal(direction);
     let intersections = 0;
     for (let i = 0; i < word.length; i++) {
-      const r = row + dr * i;
-      const c = col + dc * i;
+      const { r, c } = getEntryCellAt({ row, col, direction, answer: word, isInverted }, i, answerDirection);
       if (!inBounds(r, c)) return null;
       const cell = grid[r][c];
       if (cell === BLOCK) return null;
@@ -480,11 +473,9 @@ function constructCrosswordWordCentric(
 
   const applyPlacement = (placement: WordPlacement): Array<{ r: number; c: number }> => {
     const changed: Array<{ r: number; c: number }> = [];
-    const { dr, dc } = getStepLocal(placement.direction);
     const word = placement.word.answer;
     for (let i = 0; i < word.length; i++) {
-      const r = placement.row + dr * i;
-      const c = placement.col + dc * i;
+      const { r, c } = getEntryCellAt({ ...placement, answer: word, isInverted: placement.word.isInverted }, i, answerDirection);
       if (grid[r][c] === null) {
         grid[r][c] = word[i];
         changed.push({ r, c });
@@ -529,70 +520,68 @@ function constructCrosswordWordCentric(
     }
   };
 
-  const generatePlacementsForWord = (word: WordClue): WordPlacement[] => {
+  const generatePlacementsForWord = (canonicalWord: WordClue): WordPlacement[] => {
     const placementsOut: WordPlacement[] = [];
     const letterMap = buildLetterMap();
     let matchedAny = false;
 
-    for (let i = 0; i < word.answer.length; i++) {
-      const ch = word.answer[i];
-      const positions = letterMap.get(ch);
-      if (!positions || positions.length === 0) continue;
-      matchedAny = true;
-      for (const pos of positions) {
-        for (const direction of ['across', 'down'] as Direction[]) {
-          const { dr, dc } = getStepLocal(direction);
-          const row = pos.r - dr * i;
-          const col = pos.c - dc * i;
-          const intersections = placeable(word.answer, row, col, direction);
-          if (intersections === null) continue;
-          if (intersections === 0) continue;
-          placementsOut.push({
-            word,
-            row,
-            col,
-            direction,
-            intersections,
-          });
-        }
-      }
-    }
-
-    if (!matchedAny && placements.length < seedPlacements) {
-      // Allow seed placement in any valid slot if grid is empty or during initial seeding.
-      for (const direction of ['across', 'down'] as Direction[]) {
-        const { dr, dc } = getStepLocal(direction);
-        for (let r = 0; r < size; r++) {
-          for (let c = 0; c < size; c++) {
-            const intersections = placeable(word.answer, r, c, direction);
+    for (const word of orientations(canonicalWord)) {
+      for (let i = 0; i < word.answer.length; i++) {
+        const ch = word.answer[i];
+        const positions = letterMap.get(ch);
+        if (!positions || positions.length === 0) continue;
+        matchedAny = true;
+        for (const pos of positions) {
+          for (const direction of ['across', 'down'] as Direction[]) {
+            const offset = getEntryCellAt({ row: 0, col: 0, direction, answer: word.answer, isInverted: word.isInverted }, i, answerDirection);
+            const row = pos.r - offset.r;
+            const col = pos.c - offset.c;
+            const intersections = placeable(word.answer, row, col, direction, word.isInverted);
             if (intersections === null) continue;
-            if (intersections !== 0) continue;
-            // ensure word stays within white cells only
-            const endR = r + dr * (word.answer.length - 1);
-            const endC = c + dc * (word.answer.length - 1);
-            if (!inBounds(endR, endC)) continue;
-            placementsOut.push({ word, row: r, col: c, direction, intersections: 0 });
+            if (intersections === 0) continue;
+            placementsOut.push({
+              word,
+              row,
+              col,
+              direction,
+              intersections,
+            });
           }
         }
       }
-    }
 
+      if (!matchedAny && placements.length < seedPlacements) {
+        // Allow seed placement in any valid slot if grid is empty or during initial seeding.
+        for (const direction of ['across', 'down'] as Direction[]) {
+          for (let r = 0; r < size; r++) {
+            for (let c = 0; c < size; c++) {
+              const intersections = placeable(word.answer, r, c, direction, word.isInverted);
+              if (intersections === null) continue;
+              if (intersections !== 0) continue;
+              // ensure word stays within white cells only
+              const { r: endR, c: endC } = getEntryCellAt({ row: r, col: c, direction, answer: word.answer, isInverted: false }, word.answer.length - 1, answerDirection);
+              if (!inBounds(endR, endC)) continue;
+              placementsOut.push({ word, row: r, col: c, direction, intersections: 0 });
+            }
+          }
+        }
+      }
+
+    }
     return placementsOut;
   };
 
   const pickSeedPlacement = (): WordPlacement | null => {
-    for (const word of words) {
+    for (const canonicalWord of words) for (const word of orientations(canonicalWord)) {
       if (usedWords.has(word.answer)) continue;
       let bestSeed: WordPlacement | null = null;
       let bestSeedScore = -Infinity;
       for (const direction of ['across', 'down'] as Direction[]) {
-        const { dr, dc } = getStepLocal(direction);
         for (let r = 0; r < size; r++) {
           for (let c = 0; c < size; c++) {
-            const intersections = placeable(word.answer, r, c, direction);
+            const intersections = placeable(word.answer, r, c, direction, word.isInverted);
             if (intersections === null || intersections !== 0) continue;
-            const endR = r + dr * (word.answer.length - 1);
-            const endC = c + dc * (word.answer.length - 1);
+            const { r: endR, c: endC } = getEntryCellAt({ row: r, col: c, direction, answer: word.answer, isInverted: false }, word.answer.length - 1, answerDirection);
             if (!inBounds(endR, endC)) continue;
             const centerBonus = slotCenterScore({ row: r, col: c, direction, length: word.answer.length }, size);
             const score = word.answer.length * 10 + centerBonus;
@@ -639,7 +628,7 @@ function constructCrosswordWordCentric(
       if (getNow() > deadline) return;
       const word = placement.word;
       if (usedWords.has(word.answer)) continue;
-      if (placeable(word.answer, placement.row, placement.col, placement.direction) === null) continue;
+      if (placeable(word.answer, placement.row, placement.col, placement.direction, word.isInverted) === null) continue;
 
       const changed = applyPlacement(placement);
       usedWords.add(word.answer);
@@ -650,6 +639,7 @@ function constructCrosswordWordCentric(
         col: placement.col,
         direction: placement.direction,
         isRepeatedLetter: word.isRepeatedLetter,
+        isInverted: word.isInverted,
       });
 
       recordBest();
@@ -676,6 +666,7 @@ function constructCrosswordWordCentric(
     col: seed.col,
     direction: seed.direction,
     isRepeatedLetter: seed.word.isRepeatedLetter,
+    isInverted: seed.word.isInverted,
   });
 
   recordBest();
@@ -746,23 +737,24 @@ function constructCrosswordGreedy(
       return false;
     }
 
-    let bestWord: WordClue | null = null;
+    let bestWord: OrientedWord | null = null;
     let bestScore = -1;
 
     const startIdx = Math.floor(Math.random() * bucket.length);
     for (let i = 0; i < bucket.length; i++) {
-      const wc = bucket[(startIdx + i) % bucket.length];
-      if (usedWords.has(wc.answer)) continue;
-      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
+      for (const wc of orientations(bucket[(startIdx + i) % bucket.length])) {
+        if (usedWords.has(wc.answer)) continue;
+        if (!wordFitsSlot(grid, wc.answer, slot, answerDirection, wc.isInverted)) continue;
 
-      const intersections = countIntersections(grid, wc.answer, slot, answerDirection);
-      if (requireIntersection && intersections === 0) continue;
+        const intersections = countIntersections(grid, wc.answer, slot, answerDirection, wc.isInverted);
+        if (requireIntersection && intersections === 0) continue;
 
-      const centerBonus = slotCenterScore(slot, size);
-      const score = intersections * 100 + centerBonus + Math.random();
-      if (score > bestScore) {
-        bestScore = score;
-        bestWord = wc;
+        const centerBonus = slotCenterScore(slot, size);
+        const score = intersections * 100 + centerBonus + Math.random();
+        if (score > bestScore) {
+          bestScore = score;
+          bestWord = wc;
+        }
       }
     }
 
@@ -772,7 +764,7 @@ function constructCrosswordGreedy(
       );
       return false;
     }
-    const placed = placeWord(grid, bestWord.answer, slot, answerDirection);
+    const placed = placeWord(grid, bestWord.answer, slot, answerDirection, bestWord.isInverted);
     if (!placed) return false;
 
     usedWords.add(bestWord.answer);
@@ -785,6 +777,7 @@ function constructCrosswordGreedy(
       col: start.col,
       direction: slot.direction,
       isRepeatedLetter: bestWord.isRepeatedLetter,
+      isInverted: bestWord.isInverted,
     });
     return true;
   };
@@ -803,11 +796,8 @@ function constructCrosswordGreedy(
   const validPlacements: Placement[] = [];
   for (const p of placements) {
     let isValid = true;
-    const dr = p.direction === 'down' ? 1 : 0;
-    const dc = p.direction === 'across' ? (answerDirection === 'rtl' ? -1 : 1) : 0;
     for (let i = 0; i < p.answer.length; i++) {
-      const r = p.row + dr * i;
-      const c = p.col + dc * i;
+      const { r, c } = getEntryCellAt(p, i, answerDirection);
       if (grid[r]?.[c] !== p.answer[i]) {
         isValid = false;
         break;
@@ -896,18 +886,18 @@ function constructCrosswordBacktracking(
   let best: Placement[] = [];
   let bestScore = -1;
 
-  const getCandidates = (slot: Slot): WordClue[] => {
+  const getCandidatesForOrientation = (slot: Slot, isInverted: boolean): OrientedWord[] => {
     const bucket = buckets.get(slot.length);
     if (!bucket) return [];
     const fixed: Array<{ i: number; ch: string }> = [];
     for (let i = 0; i < slot.length; i++) {
-      const { r, c } = getCellAt(slot, i, answerDirection);
+      const { r, c } = getCellAt(slot, i, answerDirection, isInverted);
       const cell = grid[r][c];
       if (cell && cell !== BLOCK) fixed.push({ i, ch: cell });
     }
 
     if (fixed.length === 0) {
-      return bucket.words;
+      return bucket.words.map(word => ({ ...word, isInverted }));
     }
 
     let baseList: number[] | null = null;
@@ -929,10 +919,12 @@ function constructCrosswordBacktracking(
       for (const idx of nextSet) baseSet.add(idx);
     }
 
-    const out: WordClue[] = [];
-    for (const idx of baseSet) out.push(bucket.words[idx]);
+    const out: OrientedWord[] = [];
+    for (const idx of baseSet) out.push({ ...bucket.words[idx], isInverted });
     return out;
   };
+
+  const getCandidates = (slot: Slot) => [false, true].flatMap(isInverted => getCandidatesForOrientation(slot, isInverted));
 
   const scorePlacements = (placements: Placement[]): number => {
     const totalLetters = placements.reduce((sum, p) => sum + p.answer.length, 0);
@@ -940,14 +932,14 @@ function constructCrosswordBacktracking(
     return totalLetters + placements.length * 2 + totalIntersections * 3;
   };
 
-  const validatePlacements = (_placements: Placement[]): boolean => {
+  const validatePlacements = (): boolean => {
     if (!isFullyConnected(grid, size)) return false;
     return true;
   };
 
   const maybeRecordBest = (placements: Placement[]) => {
     if (placements.length < minWords) return;
-    if (!validatePlacements(placements)) return;
+    if (!validatePlacements()) return;
     const score = scorePlacements(placements);
     if (score > bestScore) {
       bestScore = score;
@@ -964,7 +956,7 @@ function constructCrosswordBacktracking(
     }
 
     let bestIdx = -1;
-    let bestCandidates: WordClue[] = [];
+    let bestCandidates: OrientedWord[] = [];
     let bestCount = Infinity;
 
     if (placements.length === 0) {
@@ -1010,7 +1002,7 @@ function constructCrosswordBacktracking(
 
     const scored = bestCandidates
       .map((wc) => {
-        const intersections = countIntersections(grid, wc.answer, slot, answerDirection);
+        const intersections = countIntersections(grid, wc.answer, slot, answerDirection, wc.isInverted);
         const centerBonus = slotCenterScore(slot, size);
         return { wc, score: intersections * 100 + centerBonus };
       })
@@ -1021,14 +1013,14 @@ function constructCrosswordBacktracking(
     for (const item of scored) {
       if (getNow() > deadline) return;
       const wc = item.wc;
-      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection)) continue;
+      if (!wordFitsSlot(grid, wc.answer, slot, answerDirection, wc.isInverted)) continue;
 
       const changed: Array<{ r: number; c: number }> = [];
       for (let i = 0; i < wc.answer.length; i++) {
         const { r, c } = getCellAt(slot, i, answerDirection);
         if (grid[r][c] === null) changed.push({ r, c });
       }
-      if (!placeWord(grid, wc.answer, slot, answerDirection)) continue;
+      if (!placeWord(grid, wc.answer, slot, answerDirection, wc.isInverted)) continue;
 
       usedWords.add(wc.answer);
       const start = getSlotStart(slot, answerDirection);
@@ -1039,6 +1031,7 @@ function constructCrosswordBacktracking(
         col: start.col,
         direction: slot.direction,
         isRepeatedLetter: wc.isRepeatedLetter,
+        isInverted: wc.isInverted,
       });
 
       maybeRecordBest(placements);

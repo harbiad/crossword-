@@ -1,9 +1,10 @@
 // Test file for generateCrossword.ts
 // Run with: npx vitest run src/lib/generateCrossword.test.ts
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { generateCrossword, validatePuzzle, type WordClue } from './generateCrossword';
 import { getEntryCellAt } from './crossword';
+import * as templates from './templates';
 
 // Helper to check for conflicts in the final grid
 function findGridConflicts(cw: ReturnType<typeof generateCrossword>) {
@@ -325,29 +326,6 @@ describe('generateCrossword', () => {
   });
 
   it('should generate valid puzzles across random seeds', () => {
-    const wordClues: WordClue[] = [
-      { answer: 'HELLO', clue: 'Greeting' },
-      { answer: 'WORLD', clue: 'Earth' },
-      { answer: 'PLANT', clue: 'Green' },
-      { answer: 'RIVER', clue: 'Stream' },
-      { answer: 'STONE', clue: 'Rock' },
-      { answer: 'HOUSE', clue: 'Home' },
-      { answer: 'SOUND', clue: 'Noise' },
-      { answer: 'LIGHT', clue: 'Bright' },
-      { answer: 'MUSIC', clue: 'Tune' },
-      { answer: 'CLOUD', clue: 'Sky' },
-      { answer: 'TRAIN', clue: 'Rail' },
-      { answer: 'BREAD', clue: 'Food' },
-      { answer: 'SLEEP', clue: 'Rest' },
-      { answer: 'WATER', clue: 'Liquid' },
-      { answer: 'CHAIR', clue: 'Seat' },
-      { answer: 'TABLE', clue: 'Desk' },
-      { answer: 'PHONE', clue: 'Call' },
-      { answer: 'CLOCK', clue: 'Time' },
-      { answer: 'BRICK', clue: 'Block' },
-      { answer: 'GRASS', clue: 'Lawn' },
-    ];
-
     const withSeed = <T,>(seed: number, fn: () => T): T => {
       const original = Math.random;
       let s = seed >>> 0;
@@ -365,7 +343,38 @@ describe('generateCrossword', () => {
     const runs = 200;
     for (let seed = 1; seed <= runs; seed++) {
       const dir = seed % 2 === 0 ? 'ltr' : 'rtl';
-      const cw = withSeed(seed, () => generateCrossword(7, wordClues, dir));
+      const cw = withSeed(seed, () => {
+        // Build a satisfiable vocabulary for a real randomized template. The old
+        // five-letter-only pool could not fill templates containing other lengths.
+        const template = templates.getNYTTemplate(7, dir === 'ltr' ? 3 : 2);
+        const alphabet = dir === 'ltr' ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : 'ابتثجحخدذرزسشصضطظعغفقكلمنهوي';
+        let wordClues: WordClue[] = [];
+        // Redraw fixture letters if two slots accidentally share a canonical
+        // answer: the production solver correctly forbids vocabulary reuse.
+        for (let attempt = 0; attempt < 100; attempt++) {
+          const letters = template.map(row => row.map(() => alphabet[Math.floor(Math.random() * alphabet.length)]));
+          wordClues = templates.findSlots(template).map(slot => {
+            const chars = Array.from({ length: slot.length }, (_, i) => {
+              const r = slot.row + (slot.direction === 'down' ? i : 0);
+              const c = slot.col + (slot.direction === 'across' ? i : 0);
+              return letters[r][c];
+            });
+            if (slot.direction === 'across' && dir === 'rtl') chars.reverse();
+            if (Math.random() < 0.5) chars.reverse();
+            return { answer: chars.join(''), clue: 'Seeded vocabulary' };
+          });
+          if (new Set(wordClues.map(w => w.answer)).size === wordClues.length) break;
+        }
+        expect(new Set(wordClues.map(w => w.answer)).size, `unique vocabulary for seed ${seed}`).toBe(wordClues.length);
+        // Control template selection only; run the real solver, grid builder,
+        // numbering and validation, with both normal and inverted candidates.
+        const templateSpy = vi.spyOn(templates, 'getTemplates').mockReturnValue([template]);
+        try {
+          return generateCrossword(7, wordClues, dir);
+        } finally {
+          templateSpy.mockRestore();
+        }
+      });
       if (!cw.entries.length) {
         throw new Error(`No entries generated for seed ${seed} (${dir}).`);
       }

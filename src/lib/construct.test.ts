@@ -1,19 +1,19 @@
 // Test file for construct.ts
 // Run with: npx vitest run src/lib/construct.test.ts
 
+import { getEntryCellAt } from './crossword';
 import { describe, it, expect } from 'vitest';
 import { constructCrossword, validateBlockRuns } from './construct';
 import type { WordClue } from './generateCrossword';
 
 // Helper to check for conflicts in placements
-function findConflicts(placements: ReturnType<typeof constructCrossword>, _size: number) {
+function findConflicts(placements: ReturnType<typeof constructCrossword>) {
   const grid: Map<string, { letter: string; word: string; direction: string }> = new Map();
   const conflicts: string[] = [];
 
   for (const p of placements) {
     for (let i = 0; i < p.answer.length; i++) {
-      const r = p.row + (p.direction === 'down' ? i : 0);
-      const c = p.col + (p.direction === 'across' ? i : 0);
+      const { r, c } = getEntryCellAt(p, i, 'ltr');
       const key = `${r},${c}`;
       const letter = p.answer[i];
 
@@ -58,7 +58,7 @@ describe('constructCrossword', () => {
     // Run multiple times to catch random issues
     for (let i = 0; i < 10; i++) {
       const placements = constructCrossword(5, wordClues, template, 'ltr');
-      const conflicts = findConflicts(placements, 5);
+      const conflicts = findConflicts(placements);
 
       if (conflicts.length > 0) {
         console.log('Placements:', placements.map(p => ({
@@ -91,7 +91,7 @@ describe('constructCrossword', () => {
     ];
 
     const placements = constructCrossword(5, wordClues, template, 'ltr');
-    const conflicts = findConflicts(placements, 5);
+    const conflicts = findConflicts(placements);
 
     console.log('Cross pattern placements:', placements);
 
@@ -128,8 +128,7 @@ describe('constructCrossword', () => {
           let hasIntersection = false;
 
           for (let j = 0; j < p.answer.length; j++) {
-            const r = p.row + (p.direction === 'down' ? j : 0);
-            const c = p.col + (p.direction === 'across' ? j : 0);
+            const { r, c } = getEntryCellAt(p, j, 'ltr');
             const key = `${r},${c}`;
 
             if (grid.has(key)) {
@@ -194,7 +193,7 @@ describe('constructCrossword', () => {
     for (let i = 0; i < 20; i++) {
       const shuffled = [...wordClues].sort(() => Math.random() - 0.5);
     const placements = constructCrossword(11, shuffled, template, 'ltr');
-      const conflicts = findConflicts(placements, 11);
+      const conflicts = findConflicts(placements);
 
       if (conflicts.length > 0) {
         console.log(`\nIteration ${i} - CONFLICT FOUND:`);

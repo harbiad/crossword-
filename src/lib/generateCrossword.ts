@@ -1,3 +1,4 @@
+import { getEntryCellAt } from './crossword';
 import type { Crossword, Cell, Entry, Direction } from './crossword';
 import { constructCrossword, validateBlockRuns } from './construct';
 import { findSlots, getTemplates } from './templates';
@@ -17,7 +18,7 @@ function normalizeAnswer(a: string): string {
   return a
     .trim()
     .replace(/\s+/g, '')
-    .replace(/[ـ\u064B-\u065F\u0670]/g, '') // remove Arabic tatweel + harakat
+    .replace(/(?:ـ|[\u064B-\u065F\u0670])/g, '') // remove Arabic tatweel + harakat
     // Normalize Alef variants to plain Alef (ا) - these are all the same letter
     .replace(/[أإآٱ]/g, 'ا')
     // NOTE: Do NOT normalize ى (alef maksura) to ي - they are different letters
@@ -49,11 +50,6 @@ function sliceWithWrap<T>(arr: T[], start: number, count: number): T[] {
 
 function makeId(dir: Direction, row: number, col: number) {
   return `${dir}:${row}:${col}`;
-}
-
-function getEntryStep(direction: Direction, answerDirection: 'rtl' | 'ltr') {
-  if (direction === 'down') return { dr: 1, dc: 0 };
-  return { dr: 0, dc: answerDirection === 'rtl' ? -1 : 1 };
 }
 
 function computeNumbering(
@@ -163,10 +159,8 @@ function validatePuzzle(
   }
 
   for (const entry of entries) {
-    const { dr, dc } = getEntryStep(entry.direction, answerDirection);
     for (let i = 0; i < entry.answer.length; i++) {
-      const r = entry.row + dr * i;
-      const c = entry.col + dc * i;
+      const { r, c } = getEntryCellAt(entry, i, answerDirection);
       if (r < 0 || c < 0 || r >= size || c >= size) {
         errors.push(`Entry ${entry.id} out of bounds at ${r},${c}.`);
         continue;
@@ -268,7 +262,7 @@ function validatePuzzle(
   return { ok: errors.length === 0, errors };
 }
 
-function buildCrosswordFromPlacements(
+export function buildCrosswordFromPlacements(
   size: number,
   template: number[][],
   placements: ReturnType<typeof constructCrossword>,
@@ -288,13 +282,11 @@ function buildCrosswordFromPlacements(
     const id = makeId(dir, row0, col0);
     const answer = String(p.answer);
 
-    const { dr, dc } = getEntryStep(dir, answerDirection);
     const wordCells: { r: number; c: number; letter: string }[] = [];
     let hasConflict = false;
 
     for (let i = 0; i < answer.length; i++) {
-      const rr = row0 + dr * i;
-      const cc = col0 + dc * i;
+      const { r: rr, c: cc } = getEntryCellAt(p, i, answerDirection);
       if (rr < 0 || cc < 0 || rr >= size || cc >= size) {
         hasConflict = true;
         break;
@@ -338,6 +330,7 @@ function buildCrosswordFromPlacements(
       row: row0,
       col: col0,
       answer,
+      isInverted: p.isInverted,
       clue: String(p.clue || ''),
       number: 0,
       isRepeatedLetter: p.isRepeatedLetter,
@@ -412,8 +405,7 @@ export function generateCrossword(
   const templateCount = answerDirection === 'ltr' ? 24 : 6;
   const templates = getTemplates(size, answerDirection === 'ltr' ? 3 : 2, templateCount);
   const attempts = size <= 7 ? 18 : size <= 9 ? 22 : 20;
-  // LTR (ar_to_en) uses English words without the doubled pool that RTL gets from inversions,
-  // so give it a larger time budget to compensate.
+  // Preserve the existing language-specific search budgets; both modes consider inversion.
   const timeBudgetMs = answerDirection === 'ltr'
     ? (size <= 7 ? 6000 : size <= 9 ? 8000 : 9000)
     : (size <= 7 ? 2200 : size <= 9 ? 3400 : 3600);
@@ -496,9 +488,8 @@ export function generateCrossword(
           attemptWords.push(...sliceWithWrap(bucket, offset, cap));
         }
 
-        const debugEnabled = typeof window !== 'undefined' && (window as any).__CW_DEBUG;
+        const debugEnabled = typeof window !== 'undefined' && (window as Window & { __CW_DEBUG?: boolean }).__CW_DEBUG;
         if (debugEnabled) {
-          // eslint-disable-next-line no-console
           console.log(`[cw-gen size=${size}] attempt=${attemptsRun} words=${attemptWords.length} templateSlots=${slots.length}`);
         }
         const remainingMs = templateDeadline - getNow();
@@ -521,21 +512,17 @@ export function generateCrossword(
               ? {
                   enabled: true,
                   log: (msg: string) => {
-                    // eslint-disable-next-line no-console
                     console.log(`[cw-gen size=${size}] ${msg}`);
                   },
                 }
               : undefined,
-          },
-          50
+          }
         );
         if (debugEnabled) {
-          // eslint-disable-next-line no-console
           console.log(`[cw-gen size=${size}] attempt=${attemptsRun} placements=${placements.length}`);
         }
         if (!placements.length) {
           if (debugEnabled) {
-            // eslint-disable-next-line no-console
             console.log(`[cw-gen size=${size}] attempt=${attemptsRun} no placements`);
           }
           continue;
@@ -550,7 +537,6 @@ export function generateCrossword(
             ? {
                 enabled: true,
                 log: (msg: string) => {
-                  // eslint-disable-next-line no-console
                   console.log(`[cw-gen size=${size}] ${msg}`);
                 },
               }

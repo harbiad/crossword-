@@ -1,8 +1,8 @@
 import { useMemo, useState, useRef, useCallback, useEffect } from 'react';
 import './App.css';
 import type { Crossword, Entry } from './lib/crossword';
-import { getEntryCells as getEntryCellsForEntry, getEntryCellAt } from './lib/crossword';
-import { generateCrossword } from './lib/generateCrossword';
+import { getEntryCells as getEntryCellsForEntry, getEntryCellAt, getAdjacentEntryCell, revealEntries, checkEntry, displayClue } from './lib/crossword';
+import { generateCrossword, type WordClue } from './lib/generateCrossword';
 import { bandToCefr, type CefrBand } from './lib/cefr';
 import { getTranslations, type Mode, getModeLabel, getModeDisplay } from './lib/i18n';
 
@@ -106,32 +106,7 @@ export default function App() {
   ): { r: number; c: number } | null => {
     if (!cw || !entry) return null;
 
-    const isInverted = entry.clue.includes('(inverted)');
-    const isRtlAcross = cw.answerDirection === 'rtl' && entry.direction === 'across';
-    const isDown = entry.direction === 'down';
-
-    // For inverted entries, reverse the movement direction
-    const effectiveDirection = isInverted
-      ? (direction === 'forward' ? 'backward' : 'forward')
-      : direction;
-
-    let dr = 0, dc = 0;
-    if (isDown) {
-      dr = effectiveDirection === 'forward' ? 1 : -1;
-    } else if (isRtlAcross) {
-      dc = effectiveDirection === 'forward' ? -1 : 1;
-    } else {
-      dc = effectiveDirection === 'forward' ? 1 : -1;
-    }
-
-    const nextR = currentR + dr;
-    const nextC = currentC + dc;
-
-    if (nextR < 0 || nextR >= cw.size || nextC < 0 || nextC >= cw.size) return null;
-    const nextCell = cw.grid[nextR]?.[nextC];
-    if (!nextCell || nextCell.type === 'block') return null;
-
-    return { r: nextR, c: nextC };
+    return getAdjacentEntryCell(entry, currentR, currentC, direction === 'forward' ? 1 : -1, cw.answerDirection);
   }, [cw]);
 
   // Handle cell click - toggle between across/down on repeated tap
@@ -184,9 +159,6 @@ export default function App() {
   ) => {
     if (!cw || !selectedEntry) return;
 
-    const isRtlAcross = cw.answerDirection === 'rtl' && selectedEntry.direction === 'across';
-    const isDown = selectedEntry.direction === 'down';
-
     if (e.key === 'Backspace') {
       const currentValue = fill[key(r, c)] || '';
       if (!currentValue) {
@@ -197,32 +169,14 @@ export default function App() {
           e.preventDefault();
         }
       }
-    } else if (e.key === 'ArrowLeft') {
+    } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
-      if (!isDown) {
-        const dir = isRtlAcross ? 'forward' : 'backward';
-        const cell = getNextCell(r, c, selectedEntry, dir);
-        if (cell) focusCell(cell.r, cell.c);
-      }
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      if (!isDown) {
-        const dir = isRtlAcross ? 'backward' : 'forward';
-        const cell = getNextCell(r, c, selectedEntry, dir);
-        if (cell) focusCell(cell.r, cell.c);
-      }
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (isDown) {
-        const cell = getNextCell(r, c, selectedEntry, 'backward');
-        if (cell) focusCell(cell.r, cell.c);
-      }
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (isDown) {
-        const cell = getNextCell(r, c, selectedEntry, 'forward');
-        if (cell) focusCell(cell.r, cell.c);
-      }
+      // Arrow keys move physically; typing and backspace follow spelling order.
+      const targetR = r + (e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0);
+      const targetC = c + (e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0);
+      const cell = getEntryCellsForEntry(selectedEntry, cw.answerDirection)
+        .find(cell => cell.r === targetR && cell.c === targetC);
+      if (cell) focusCell(cell.r, cell.c);
     }
   }, [cw, selectedEntry, fill, getNextCell, focusCell]);
 
@@ -267,7 +221,7 @@ export default function App() {
     const prevIdx = idx > 0 ? idx - 1 : sortedEntries.length - 1;
     const prev = sortedEntries[prevIdx];
     setSelectedEntryId(prev.id);
-    setActiveCell({ r: prev.row, c: prev.col });
+    setActiveCell(getEntryCellAt(prev, 0, cw!.answerDirection));
   }
 
   function goToNextClue() {
@@ -276,7 +230,7 @@ export default function App() {
     const nextIdx = idx < sortedEntries.length - 1 ? idx + 1 : 0;
     const next = sortedEntries[nextIdx];
     setSelectedEntryId(next.id);
-    setActiveCell({ r: next.row, c: next.col });
+    setActiveCell(getEntryCellAt(next, 0, cw!.answerDirection));
   }
 
   function reset() {
@@ -287,42 +241,17 @@ export default function App() {
     if (!cw || !selectedEntryId) return;
     const entry = cw.entries.find((e) => e.id === selectedEntryId);
     if (!entry) return;
-    setFill((prev) => {
-      const next = { ...prev };
-      for (let i = 0; i < entry.answer.length; i++) {
-        const { r, c } = getEntryCellAt(entry, i, cw.answerDirection);
-        next[key(r, c)] = entry.answer[i];
-      }
-      return next;
-    });
+    setFill(prev => revealEntries([entry], prev, cw.answerDirection));
   }
 
   function revealAll() {
     if (!cw) return;
-    setFill((prev) => {
-      const next = { ...prev };
-      for (const e of cw.entries) {
-        for (let i = 0; i < e.answer.length; i++) {
-          const { r, c } = getEntryCellAt(e, i, cw.answerDirection);
-          next[key(r, c)] = e.answer[i];
-        }
-      }
-      return next;
-    });
+    setFill(prev => revealEntries(cw.entries, prev, cw.answerDirection));
   }
 
   function checkSelected() {
     if (!cw || !selectedEntry) return;
-    let ok = true;
-    for (let i = 0; i < selectedEntry.answer.length; i++) {
-      const { r, c } = getEntryCellAt(selectedEntry, i, cw.answerDirection);
-      const u = fill[key(r, c)] || '';
-      if (u !== selectedEntry.answer[i]) {
-        ok = false;
-        break;
-      }
-    }
-    alert(ok ? t.correct : t.notCorrect);
+    alert(checkEntry(selectedEntry, fill, cw.answerDirection) ? t.correct : t.notCorrect);
   }
 
   async function newPuzzle() {
@@ -350,7 +279,7 @@ export default function App() {
             body: JSON.stringify({ size, mode, band: tryBand }),
           });
           const raw = await resp.text();
-          let data: any = null;
+          let data: { error?: string; entries?: WordClue[] } | null = null;
           try {
             data = raw ? JSON.parse(raw) : null;
           } catch {
@@ -361,21 +290,8 @@ export default function App() {
           const entries = Array.isArray(data?.entries) ? data.entries : [];
           if (entries.length < 6) continue;
 
-          const buildInvertedEntries = (list: typeof entries) => {
-            if (mode !== 'en_to_ar') return list;
-            const extra = list
-              .filter((e: { answer?: unknown }) => typeof e.answer === 'string' && e.answer.length >= 2)
-              .map((e: { answer: string; clue?: unknown }) => ({
-                ...e,
-                clue: `${String(e.clue ?? '')} (inverted)`,
-                answer: [...String(e.answer)].reverse().join(''),
-              }));
-            return [...list, ...extra];
-          };
-
-          const entriesWithInverted = buildInvertedEntries(entries);
           for (let attempt = 0; attempt < attemptsPerRound; attempt++) {
-            const candidate = generateCrossword(size, entriesWithInverted, answerDirection);
+            const candidate = generateCrossword(size, entries, answerDirection);
             if (candidate.entries.length) {
               next = candidate;
               break;
@@ -391,14 +307,14 @@ export default function App() {
       setCw(next);
       setFill({});
       setActiveMode(mode); // Update active mode to current puzzle mode
-    } catch (e: any) {
-      setError(e?.message || String(e));
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e));
     } finally {
       setLoading(false);
     }
   }
 
-  const getCellSize = (_gridSize: number) => 36;
+  const getCellSize = () => 36;
 
   const keyboardRows = mode === 'en_to_ar' ? KEYBOARD_AR : KEYBOARD_EN;
 
@@ -485,7 +401,7 @@ export default function App() {
                 style={{
                   gridTemplateColumns: `repeat(${cw.width}, var(--cell-size))`,
                   gridTemplateRows: `repeat(${cw.height}, var(--cell-size))`,
-                  ['--cell-size' as string]: `${getCellSize(cw.width)}px`,
+                  ['--cell-size' as string]: `${getCellSize()}px`,
                   ['--grid-size' as string]: cw.width,
                 }}
                 dir={cw.answerDirection}
@@ -538,11 +454,11 @@ export default function App() {
               {selectedEntry && (
                 <div className="selectedClue">
                   {isRtl ? (
-                    <span className="clueText" dir="rtl"><strong>{selectedEntry.number}.</strong> {selectedEntry.clue}</span>
+                    <span className="clueText" dir="rtl"><strong>{selectedEntry.number}.</strong> {displayClue(selectedEntry)}</span>
                   ) : (
                     <>
                       <strong>{selectedEntry.number}. </strong>
-                      <span>{selectedEntry.clue}</span>
+                      <span>{displayClue(selectedEntry)}</span>
                     </>
                   )}
                 </div>
@@ -556,8 +472,8 @@ export default function App() {
                         .filter((e) => e.direction === 'across')
                         .map((e) => (
                           <li key={e.id}>
-                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? <span className="clueText" dir="rtl">{e.number}. {e.clue}</span> : `${e.number}. ${e.clue}`}
+                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell(getEntryCellAt(e, 0, cw!.answerDirection)); }}>
+                              {isRtl ? <span className="clueText" dir="rtl">{e.number}. {displayClue(e)}</span> : `${e.number}. ${displayClue(e)}`}
                             </button>
                           </li>
                         ))}
@@ -570,8 +486,8 @@ export default function App() {
                         .filter((e) => e.direction === 'down')
                         .map((e) => (
                           <li key={e.id}>
-                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell({ r: e.row, c: e.col }); }}>
-                              {isRtl ? <span className="clueText" dir="rtl">{e.number}. {e.clue}</span> : `${e.number}. ${e.clue}`}
+                            <button className="clueBtn" onClick={() => { setSelectedEntryId(e.id); setActiveCell(getEntryCellAt(e, 0, cw!.answerDirection)); }}>
+                              {isRtl ? <span className="clueText" dir="rtl">{e.number}. {displayClue(e)}</span> : `${e.number}. ${displayClue(e)}`}
                             </button>
                           </li>
                         ))}
@@ -604,11 +520,11 @@ export default function App() {
           <button className="clueNavBtn" onClick={goToPrevClue}>‹</button>
           <div className="clueText">
             {isRtl ? (
-              <span dir="rtl">{selectedEntry.number}. {selectedEntry.clue}</span>
+              <span dir="rtl">{selectedEntry.number}. {displayClue(selectedEntry)}</span>
             ) : (
               <>
                 <span className="clueNumber">{selectedEntry.number}.</span>
-                <span className="clueContent">{selectedEntry.clue}</span>
+                <span className="clueContent">{displayClue(selectedEntry)}</span>
               </>
             )}
           </div>

@@ -27,8 +27,8 @@ function normalizeArabicWord(s: string) {
   return s
     .trim()
     .replace(/\s+/g, '')
-    .replace(/[ـ\u064B-\u065F\u0670]/g, '')
-    .replace(/[\u061F\u060C\u06D4\u066B\u066C.,;:!\-_/()[\]{}\"'`~@#$%^&*+=<>]/g, '')
+    .replace(/(?:ـ|[\u064B-\u065F\u0670])/g, '')
+    .replace(/[\u061F\u060C\u06D4\u066B\u066C.,;:!\-_/()[\]{}"'`~@#$%^&*+=<>]/g, '')
     .toUpperCase();
 }
 
@@ -91,7 +91,7 @@ function getMeanings(en: string): DictMeaning[] {
     if (!answerRaw) continue;
 
     const clue = clueRaw && clueRaw !== '[]' ? clueRaw : answerRaw;
-    const variants = answerRaw.split(/[\/،;|]/).map((s) => s.trim()).filter(Boolean);
+    const variants = answerRaw.split(/[/،;|]/).map((s) => s.trim()).filter(Boolean);
 
     for (const v of variants) {
       const answer = normalizeArabicWord(v);
@@ -158,7 +158,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     return json(res, 200, { entries: pairs });
-  } catch (e: any) {
-    return json(res, 500, { error: e?.message || String(e) });
+  } catch (e: unknown) {
+    return json(res, 500, { error: e instanceof Error ? e.message : String(e) });
   }
 }
