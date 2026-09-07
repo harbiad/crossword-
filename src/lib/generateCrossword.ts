@@ -133,49 +133,128 @@ function validatePuzzle(
   const errors: string[] = [];
   const size = grid.length;
 
+  // Reject malformed grids before any traversal so validation reports errors,
+  // rather than throwing or hanging while scanning incomplete rows.
+  if (size === 0) errors.push('Grid is empty.');
   for (let r = 0; r < size; r++) {
-    if (grid[r].length !== size) {
+    if (!Array.isArray(grid[r]) || grid[r].length !== size) {
       errors.push(`Row ${r} length mismatch.`);
-      break;
+      continue;
+    }
+    for (let c = 0; c < size; c++) {
+      const cell = grid[r][c];
+      if (!cell || (cell.type !== 'letter' && cell.type !== 'block')) {
+        errors.push(`Empty or invalid cell at ${r},${c}.`);
+      } else if (cell.type === 'letter' && !(cell.entries instanceof Set)) {
+        errors.push(`Letter cell missing entries set at ${r},${c}.`);
+      }
     }
   }
+  if (errors.length) return { ok: false, errors };
+
+  const entriesById = new Map<string, Entry>();
+  for (const entry of entries) {
+    if (entriesById.has(entry.id)) errors.push(`Duplicate entry id ${entry.id} at ${entry.row},${entry.col}.`);
+    entriesById.set(entry.id, entry);
+    if (!Number.isInteger(entry.row) || !Number.isInteger(entry.col)
+      || !['across', 'down'].includes(entry.direction)
+      || typeof entry.answer !== 'string' || entry.answer.length < 2
+      || typeof entry.isInverted !== 'boolean') {
+      errors.push(`Invalid entry ${entry.id} at ${entry.row},${entry.col}.`);
+    }
+  }
+  if (errors.length) return { ok: false, errors };
 
   const letterPositions = new Set<string>();
+  type Owner = { entry: Entry; node: number; char: string; index: number };
+  const owners = new Map<string, Owner[]>();
+  const graph = entries.map(() => new Set<number>());
+
+  // Derive ownership from canonical answer coordinates, independently of the
+  // cell's entry-id metadata. Check both directions of that relationship below.
+  entries.forEach((entry, node) => {
+    for (let i = 0; i < entry.answer.length; i++) {
+      const { r, c } = getEntryCellAt(entry, i, answerDirection);
+      if (r < 0 || c < 0 || r >= size || c >= size) {
+        errors.push(`Entry ${entry.id} index ${i} out of bounds at ${r},${c}.`);
+        continue;
+      }
+      const cell = grid[r][c];
+      if (cell.type !== 'letter') {
+        errors.push(`Entry ${entry.id} index ${i} hits non-letter at ${r},${c}.`);
+        continue;
+      }
+      const key = `${r},${c}`;
+      const list = owners.get(key) ?? [];
+      list.push({ entry, node, char: entry.answer[i], index: i });
+      owners.set(key, list);
+      if (cell.char !== entry.answer[i]) {
+        errors.push(`Entry ${entry.id} index ${i} mismatch at ${key}: ${cell.char} != ${entry.answer[i]}.`);
+      }
+      if (!cell.entries.has(entry.id)) {
+        errors.push(`Entry ${entry.id} index ${i} missing in cell entries at ${key}.`);
+      }
+    }
+  });
+
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       const cell = grid[r][c];
-      if (!cell) {
-        errors.push(`Empty cell at ${r},${c}.`);
+      const key = `${r},${c}`;
+      if (cell.r !== r || cell.c !== c) errors.push(`Cell coordinates mismatch at ${key}.`);
+      if (cell.type === 'block') {
+        if ('char' in cell || 'entries' in cell) errors.push(`Block contains letter data at ${key}.`);
         continue;
       }
-      if (cell.type === 'letter') {
-        letterPositions.add(`${r},${c}`);
-        if (!cell.char) errors.push(`Letter cell missing char at ${r},${c}.`);
-        if (!cell.entries || cell.entries.size === 0) {
-          errors.push(`Letter cell missing entries at ${r},${c}.`);
+      letterPositions.add(key);
+      if (typeof cell.char !== 'string' || cell.char.length !== 1) errors.push(`Letter cell must contain one char at ${key}.`);
+      if (cell.entries.size < 1 || cell.entries.size > 2) {
+        errors.push(`Letter cell at ${key} must reference 1–2 entries; found ${cell.entries.size}.`);
+      }
+      const list = owners.get(key) ?? [];
+      if (list.length < 1 || list.length > 2) {
+        errors.push(`Letter cell at ${key} must be traversed by 1–2 entries; found ${list.length}.`);
+      }
+      for (const id of cell.entries) {
+        if (!entriesById.has(id)) errors.push(`Unknown entry ${id} referenced at ${key}.`);
+        else if (!list.some(owner => owner.entry.id === id)) errors.push(`Entry ${id} does not traverse referenced cell at ${key}.`);
+      }
+      for (let i = 0; i < list.length; i++) {
+        for (let j = i + 1; j < list.length; j++) {
+          const left = list[i];
+          const right = list[j];
+          if (left.entry.direction === right.entry.direction) {
+            errors.push(`Same-direction ${left.entry.direction} overlap: entries ${left.entry.id} and ${right.entry.id} at ${key}.`);
+          }
+          if (left.char !== right.char) {
+            errors.push(`Crossing mismatch at ${key}: entry ${left.entry.id}[${left.index}]=${left.char}, entry ${right.entry.id}[${right.index}]=${right.char}.`);
+          }
+          graph[left.node].add(right.node);
+          graph[right.node].add(left.node);
         }
       }
     }
   }
+  if (letterPositions.size === 0) errors.push('Grid has no letter cells.');
 
-  for (const entry of entries) {
-    for (let i = 0; i < entry.answer.length; i++) {
-      const { r, c } = getEntryCellAt(entry, i, answerDirection);
-      if (r < 0 || c < 0 || r >= size || c >= size) {
-        errors.push(`Entry ${entry.id} out of bounds at ${r},${c}.`);
-        continue;
+  if (entries.length > 1) {
+    graph.forEach((neighbors, node) => {
+      const entry = entries[node];
+      if (neighbors.size === 0) errors.push(`Entry ${entry.id} at ${entry.row},${entry.col} has no crossing.`);
+    });
+    const visited = new Set<number>([0]);
+    const queue = [0];
+    for (let i = 0; i < queue.length; i++) {
+      for (const neighbor of graph[queue[i]]) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push(neighbor);
+        }
       }
-      const cell = grid[r][c];
-      if (!cell || cell.type !== 'letter') {
-        errors.push(`Entry ${entry.id} hits non-letter at ${r},${c}.`);
-        continue;
-      }
-      if (cell.char !== entry.answer[i]) {
-        errors.push(`Entry ${entry.id} mismatch at ${r},${c}: ${cell.char} != ${entry.answer[i]}.`);
-      }
-      if (!cell.entries.has(entry.id)) {
-        errors.push(`Entry ${entry.id} missing in cell entries at ${r},${c}.`);
-      }
+    }
+    if (visited.size !== entries.length) {
+      const disconnected = entries.filter((_, i) => !visited.has(i));
+      errors.push(`Entry intersection graph is disconnected: ${disconnected.map(e => `${e.id} at ${e.row},${e.col}`).join('; ')}.`);
     }
   }
 
@@ -217,16 +296,25 @@ function validatePuzzle(
   }
 
   const gridRuns = getGridRuns(grid, answerDirection);
-  const runStarts = new Set(gridRuns.map((r) => `${r.direction}:${r.row}:${r.col}`));
-  const entryStarts = new Set(entries.map((e) => `${e.direction}:${e.row}:${e.col}`));
-  for (const start of runStarts) {
-    if (!entryStarts.has(start)) {
-      errors.push(`Grid run missing clue entry at ${start}.`);
+  const runKey = (direction: Direction, row: number, col: number, length: number) => `${direction}:${row}:${col}:${length}`;
+  const entriesByRun = new Map<string, Entry[]>();
+  for (const entry of entries) {
+    const key = runKey(entry.direction, entry.row, entry.col, entry.answer.length);
+    const list = entriesByRun.get(key) ?? [];
+    list.push(entry);
+    entriesByRun.set(key, list);
+  }
+  for (const run of gridRuns) {
+    const matches = entriesByRun.get(runKey(run.direction, run.row, run.col, run.length)) ?? [];
+    if (matches.length !== 1) {
+      errors.push(`Grid run ${run.direction} at ${run.row},${run.col} length ${run.length} must have exactly one clue entry; found ${matches.length} (${matches.map(e => e.id).join(', ')}).`);
     }
   }
-  for (const start of entryStarts) {
-    if (!runStarts.has(start)) {
-      errors.push(`Entry start does not match a grid run at ${start}.`);
+  for (const entry of entries) {
+    const matches = gridRuns.filter(run => run.direction === entry.direction && run.row === entry.row
+      && run.col === entry.col && run.length === entry.answer.length);
+    if (matches.length !== 1) {
+      errors.push(`Entry ${entry.id} at ${entry.row},${entry.col} length ${entry.answer.length} must match exactly one real grid run; found ${matches.length}.`);
     }
   }
 
@@ -246,8 +334,8 @@ function validatePuzzle(
   }
   for (const [key, number] of numbering.gridNumbers.entries()) {
     const [r, c] = key.split(',').map(Number);
-    const cell = grid[r][c];
-    if (cell.type !== 'letter') continue;
+    const cell = grid[r]?.[c];
+    if (!cell || cell.type !== 'letter') continue;
     if (cell.number !== number) {
       errors.push(`Cell number mismatch at ${key}.`);
     }
