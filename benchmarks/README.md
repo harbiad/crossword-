@@ -75,3 +75,9 @@ Client preparation now includes normalized canonical records, shuffled length bu
 `npm run test:worker` builds the app and exercises the emitted worker asset in a real Node worker thread. It verifies both answer languages, structural-clone preservation of Sets, worker exception reporting, and host event-loop scheduling during a heavy 13×13 search. These heavier checks are separate from normal `npm test`.
 
 This is not a browser UI test. See [worker migration verification](results/worker-migration.md) for measured scheduling results and the pending browser confirmation. The normal generation benchmark continues to measure the unchanged solver directly, without network or worker startup overhead.
+
+## Look-ahead cache latency
+
+`npm run bench:lookahead` builds and compares the existing foreground flow with consuming a ready one-puzzle cache, using the actual emitted worker and local API. Five deterministic seeds cover every size and both modes; use `CROSSWORD_LOOKAHEAD_SEEDS=20` for more coverage. This separate benchmark does not run in ordinary `npm test`.
+
+[Saved results and measurement limits](results/lookahead-latency.md) include generation failures and cache availability separately. This is a Node request-to-ready proxy, excluding network and browser paint, rather than an end-to-end browser latency claim.

@@ -54,3 +54,12 @@ it('does not retry cancelled or exceptional worker requests', async () => {
     expect(fetch).toHaveBeenCalledTimes(1);
   }
 });
+
+it('rejects recent duplicates within the existing two-pool foreground bound', async () => {
+  const fetch = vi.fn().mockResolvedValue(pool);
+  const generate = vi.fn().mockResolvedValue(success);
+  const accept = vi.fn().mockReturnValue(false);
+  expect(await generateWithRetry(fetch, generate, accept)).toBeNull();
+  expect(fetch).toHaveBeenCalledTimes(2);
+  expect(accept).toHaveBeenCalledTimes(2);
+});

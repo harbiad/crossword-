@@ -6,12 +6,13 @@ import type { WordClue } from './generateCrossword';
 export async function generateWithRetry(
   fetchPool: () => Promise<WordClue[]>,
   generate: (pool: WordClue[]) => Crossword | Promise<Crossword>,
+  accept: (puzzle: Crossword) => boolean = () => true,
 ): Promise<Crossword | null> {
   for (let request = 0; request < 2; request++) {
     const pool = await fetchPool();
     if (pool.length < 6) continue;
     const puzzle = await generate(pool);
-    if (puzzle.entries.length) return puzzle;
+    if (puzzle.entries.length && accept(puzzle)) return puzzle;
   }
   return null;
 }

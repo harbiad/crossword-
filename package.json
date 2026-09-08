@@ -12,7 +12,8 @@
     "build": "node ./node_modules/typescript/lib/tsc.js -b && node ./node_modules/vite/bin/vite.js build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:worker": "npm run build && vitest run --config vitest.worker.config.ts"
+    "test:worker": "npm run build && vitest run --config vitest.worker.config.ts",
+    "bench:lookahead": "npm run build && vitest run --config vitest.lookahead.config.ts"
   },
   "dependencies": {
     "@vercel/node": "^5.5.28",

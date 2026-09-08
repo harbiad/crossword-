@@ -5,6 +5,7 @@ import { getEntryCells as getEntryCellsForEntry, getEntryCellAt, revealEntries, 
 import type { WordClue } from './lib/generateCrossword';
 import { generateWithRetry } from './lib/generateWithRetry';
 import { generateInWorker } from './lib/generateInWorker';
+import { PuzzleLookAhead, type PuzzleSettings } from './lib/puzzleLookAhead';
 import { bandToCefr, type CefrBand } from './lib/cefr';
 import { getTranslations, type Mode, getModeLabel, getModeDisplay } from './lib/i18n';
 
@@ -48,6 +49,23 @@ export default function App() {
 
   const [cw, setCw] = useState<Crossword | null>(null);
   const [loading, setLoading] = useState(false);
+  const [lookAhead] = useState(() => new PuzzleLookAhead((settings, entries, signal) =>
+    generateInWorker({ size: settings.size, entries, answerDirection: settings.mode === 'en_to_ar' ? 'rtl' : 'ltr' }, signal)));
+  const displayedSource = useRef<{ settings: PuzzleSettings; pool: WordClue[]; puzzle: Crossword } | null>(null);
+  useLayoutEffect(() => { lookAhead.settingsChanged({ size, band, mode }); }, [lookAhead, size, band, mode]);
+  useEffect(() => {
+    const visibilityChanged = () => lookAhead.setVisible(!document.hidden);
+    visibilityChanged();
+    document.addEventListener('visibilitychange', visibilityChanged);
+    return () => {
+      document.removeEventListener('visibilitychange', visibilityChanged);
+      lookAhead.clear();
+    };
+  }, [lookAhead]);
+  useEffect(() => {
+    const source = displayedSource.current;
+    if (source && source.puzzle === cw) lookAhead.afterDisplay(source.settings, source.pool);
+  }, [cw, lookAhead]);
   const generationRequest = useRef<AbortController | null>(null);
   useEffect(() => () => {
     generationRequest.current?.abort();
@@ -246,14 +264,28 @@ export default function App() {
     generationRequest.current?.abort();
     const request = new AbortController();
     generationRequest.current = request;
-    setLoading(true);
+    const settings = { size, band, mode };
+    const cached = lookAhead.take(settings);
+    setLoading(!cached);
     setError(null);
     setSelectedEntryId(null);
     setActiveCell(null);
     setLastTappedCell(null);
     setShowSettings(false);
 
+    const display = (puzzle: Crossword, pool: WordClue[]) => {
+      lookAhead.remember(puzzle);
+      displayedSource.current = { settings, pool, puzzle };
+      setCw(puzzle);
+      setFill({});
+      setActiveMode(mode);
+    };
     try {
+      if (cached) {
+        display(cached.puzzle, cached.pool);
+        return;
+      }
+      let poolUsed: WordClue[] = [];
       const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
       // The API already provides CEFR fallback within this preference band.
       const next = await generateWithRetry(async () => {
@@ -271,15 +303,15 @@ export default function App() {
           throw new Error(`Server returned non-JSON (${resp.status}).`);
         }
         if (!resp.ok) throw new Error(data?.error || `Failed (${resp.status})`);
-        return Array.isArray(data?.entries) ? data.entries : [];
-      }, entries => generateInWorker({ size, entries, answerDirection }, request.signal));
+        poolUsed = Array.isArray(data?.entries) ? data.entries : [];
+        return poolUsed;
+      }, entries => generateInWorker({ size, entries, answerDirection }, request.signal),
+      puzzle => !lookAhead.hasSeen(puzzle));
 
       if (request.signal.aborted || generationRequest.current !== request) return;
       if (!next) throw new Error('Could not generate puzzle. Try again.');
 
-      setCw(next);
-      setFill({});
-      setActiveMode(mode); // Update active mode to current puzzle mode
+      display(next, poolUsed);
     } catch (e: unknown) {
       if (!request.signal.aborted && generationRequest.current === request) {
         setError(e instanceof Error ? e.message : String(e));
@@ -287,6 +319,7 @@ export default function App() {
     } finally {
       if (generationRequest.current === request) {
         generationRequest.current = null;
+        lookAhead.finishActive();
         setLoading(false);
       }
     }
