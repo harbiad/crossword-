@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-09-08T08:40:29.770Z",
+  "workerAsset": "crossword.worker-CIYwymWd.js",
+  "environment": "Node worker_threads running Vite production worker; not a browser UI test",
+  "results": [
+    {
+      "size": 7,
+      "answerDirection": "rtl",
+      "entries": 26,
+      "validation": "passed",
+      "setsPreserved": true
+    },
+    {
+      "size": 7,
+      "answerDirection": "ltr",
+      "entries": 22,
+      "validation": "passed",
+      "setsPreserved": true
+    },
+    {
+      "size": 13,
+      "answerDirection": "ltr",
+      "elapsedMs": 4519.402167,
+      "hostHeartbeatTicks": 410,
+      "largestHeartbeatGapMs": 17.65783300000021,
+      "generationSuccess": false
+    }
+  ]
+}

@@ -1,0 +1,2099 @@
+{
+  "metadata": {
+    "startedAt": "2026-09-07T22:34:55.464Z",
+    "gitCommit": "e095dba37cb985912261efd9fd24ff51b54cabc9",
+    "sourceHashes": {
+      "api/generate.ts": "dbe1e6bf8e97a9148641c706f89fe038160a0d3d71e72f9e64c0493574707c0a",
+      "api/_lib/candidates.ts": "bd91d86b05b526b83241399fd24546ff8b659a6bc66e07a7517f96d061fa7d79",
+      "benchmarks/fixtures/legacy-generate.ts": "b7455cbac1c4db727963200c7f87dfe7e6c2eb45db2a24fd07b3595493d79b86",
+      "api/cefr_levels.ts": "d0620ac9b7872905f5078d88e97d1d8ed01b88622e1430fa36744f58f2c39074",
+      "api/DICT_COMMON_30000_non_empty.ts": "32dca86a491a889e1dc9b20a911495e9f21842024bd0cb7e4bc845074724c9a6",
+      "src/lib/generateCrossword.ts": "623df0ae2ae7a7f5c84b5e4dd97e1c64f98f87e71328cab11543c1fb04f71498",
+      "src/lib/construct.ts": "34d20c18451cd4c77a050fc22f1cb77b8369f5752f573b73ef7232a20554e0cd",
+      "src/lib/preparedCandidates.ts": "d01a2312a6d65280881f107b0dc35799546dcaeb1d4e42a6541893c01c7c002c",
+      "src/lib/preparedTemplate.ts": "d93d49ba3bdb7aa9a96c6d0fbc53643d68075df872fb32bc86c443b698cde28a",
+      "src/lib/templates.ts": "e4782887fa5471fa6ac6d396d50d1335b6307be49990726fce813ac3202bf9da",
+      "src/lib/crossword.ts": "bb5a1222ddedeefaed1a8f86592257bb0f3ca04c88bf787cc0ef5f1554df55e2",
+      "benchmarks/crossword.benchmark.ts": "4308a3b0ed7784ab9a5136794c03015306f4d73b32f8108a74dbe47c88c4817e",
+      "benchmarks/instrumentation.ts": "bddae4c3af613b52f3bcb649fdb8b1b089319f3b547945cb4f5f7c395278bb14",
+      "benchmarks/metrics.ts": "d4d6e8d3e538ed808ce5bdb86297a788b3afef2895f3b47a8289658daf02515d"
+    },
+    "node": "v24.10.0",
+    "platform": "darwin",
+    "osRelease": "25.3.0",
+    "arch": "arm64",
+    "cpu": "Apple M4 Pro",
+    "seedsPerConfiguration": 3,
+    "pools": [
+      "default"
+    ],
+    "budgetScale": 0.5,
+    "band": "beginner",
+    "warmups": 1,
+    "rng": "LCG 1664525/1013904223 uint32; independent API/client streams reset to seed",
+    "timing": "Real wall-clock production deadlines preserved; seeds reproduce inputs, not exact timeout-dependent solver outcomes",
+    "network": false,
+    "percentiles": "median midpoint; p95 nearest rank; includes successes and failures",
+    "completedAt": "2026-09-07T22:35:38.659Z"
+  },
+  "summary": [
+    {
+      "pool": "default",
+      "size": 7,
+      "answerDirection": "rtl",
+      "candidatesByLength": {
+        "2": {
+          "median": 225,
+          "p95": 225,
+          "slowest": 225
+        },
+        "3": {
+          "median": 355,
+          "p95": 355,
+          "slowest": 355
+        },
+        "4": {
+          "median": 355,
+          "p95": 355,
+          "slowest": 355
+        },
+        "5": {
+          "median": 355,
+          "p95": 355,
+          "slowest": 355
+        },
+        "6": {
+          "median": 355,
+          "p95": 355,
+          "slowest": 355
+        },
+        "7": {
+          "median": 355,
+          "p95": 355,
+          "slowest": 355
+        }
+      },
+      "runs": 3,
+      "successRate": 1,
+      "generationFailures": 0,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.23791700000037963,
+          "p95": 0.3909999999999627,
+          "slowest": 0.3909999999999627
+        },
+        "apiTotalMs": {
+          "median": 0.5466249999990396,
+          "p95": 0.6589579999999842,
+          "slowest": 0.6589579999999842
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 76095,
+          "p95": 76132,
+          "slowest": 76132
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 0.9315830000014103,
+          "p95": 1.420208000000116,
+          "slowest": 1.420208000000116
+        },
+        "templatesMs": {
+          "median": 0.7054170000010345,
+          "p95": 2.0987510000001066,
+          "slowest": 2.0987510000001066
+        },
+        "constructMs": {
+          "median": 2.585124999999607,
+          "p95": 3.435000000000059,
+          "slowest": 3.435000000000059
+        },
+        "validationMs": {
+          "median": 0.08962500000052387,
+          "p95": 0.11374999999998181,
+          "slowest": 0.11374999999998181
+        },
+        "gridBuildMs": {
+          "median": 0.061958000000004176,
+          "p95": 0.06454199999825505,
+          "slowest": 0.06454199999825505
+        },
+        "totalMs": {
+          "median": 4.263167000000976,
+          "p95": 7.14224999999999,
+          "slowest": 7.14224999999999
+        },
+        "solverAttempts": {
+          "median": 1,
+          "p95": 1,
+          "slowest": 1
+        },
+        "validationCalls": {
+          "median": 1,
+          "p95": 1,
+          "slowest": 1
+        },
+        "entries": {
+          "median": 23,
+          "p95": 24,
+          "slowest": 24
+        },
+        "intersections": {
+          "median": 35,
+          "p95": 35,
+          "slowest": 35
+        }
+      },
+      "successfulTotalMs": {
+        "median": 4.263167000000976,
+        "p95": 7.14224999999999,
+        "slowest": 7.14224999999999
+      },
+      "failedTotalMs": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      }
+    },
+    {
+      "pool": "default",
+      "size": 7,
+      "answerDirection": "ltr",
+      "candidatesByLength": {
+        "2": {
+          "median": 57,
+          "p95": 57,
+          "slowest": 57
+        },
+        "3": {
+          "median": 389,
+          "p95": 389,
+          "slowest": 389
+        },
+        "4": {
+          "median": 389,
+          "p95": 389,
+          "slowest": 389
+        },
+        "5": {
+          "median": 389,
+          "p95": 389,
+          "slowest": 389
+        },
+        "6": {
+          "median": 388,
+          "p95": 388,
+          "slowest": 388
+        },
+        "7": {
+          "median": 388,
+          "p95": 388,
+          "slowest": 388
+        }
+      },
+      "runs": 3,
+      "successRate": 1,
+      "generationFailures": 0,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.2264579999991838,
+          "p95": 0.3724160000000438,
+          "slowest": 0.3724160000000438
+        },
+        "apiTotalMs": {
+          "median": 0.5071659999994154,
+          "p95": 0.6675840000000335,
+          "slowest": 0.6675840000000335
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 78239,
+          "p95": 78258,
+          "slowest": 78258
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 0.7837060000056226,
+          "p95": 0.9673730000002934,
+          "slowest": 0.9673730000002934
+        },
+        "templatesMs": {
+          "median": 2.104042999999365,
+          "p95": 2.952166000000034,
+          "slowest": 2.952166000000034
+        },
+        "constructMs": {
+          "median": 2010.7869180000012,
+          "p95": 2127.9646669999966,
+          "slowest": 2127.9646669999966
+        },
+        "validationMs": {
+          "median": 0.08712500000001455,
+          "p95": 0.16554200000018682,
+          "slowest": 0.16554200000018682
+        },
+        "gridBuildMs": {
+          "median": 0.0745840000017779,
+          "p95": 0.0887920000000122,
+          "slowest": 0.0887920000000122
+        },
+        "totalMs": {
+          "median": 2015.1641659999998,
+          "p95": 2130.9179170000025,
+          "slowest": 2130.9179170000025
+        },
+        "solverAttempts": {
+          "median": 17,
+          "p95": 18,
+          "slowest": 18
+        },
+        "validationCalls": {
+          "median": 1,
+          "p95": 1,
+          "slowest": 1
+        },
+        "entries": {
+          "median": 22,
+          "p95": 22,
+          "slowest": 22
+        },
+        "intersections": {
+          "median": 41,
+          "p95": 41,
+          "slowest": 41
+        }
+      },
+      "successfulTotalMs": {
+        "median": 2015.1641659999998,
+        "p95": 2130.9179170000025,
+        "slowest": 2130.9179170000025
+      },
+      "failedTotalMs": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      }
+    },
+    {
+      "pool": "default",
+      "size": 9,
+      "answerDirection": "rtl",
+      "candidatesByLength": {
+        "2": {
+          "median": 238,
+          "p95": 238,
+          "slowest": 238
+        },
+        "3": {
+          "median": 252,
+          "p95": 252,
+          "slowest": 252
+        },
+        "4": {
+          "median": 252,
+          "p95": 252,
+          "slowest": 252
+        },
+        "5": {
+          "median": 252,
+          "p95": 252,
+          "slowest": 252
+        },
+        "6": {
+          "median": 252,
+          "p95": 252,
+          "slowest": 252
+        },
+        "7": {
+          "median": 252,
+          "p95": 252,
+          "slowest": 252
+        },
+        "8": {
+          "median": 251,
+          "p95": 251,
+          "slowest": 251
+        },
+        "9": {
+          "median": 251,
+          "p95": 251,
+          "slowest": 251
+        }
+      },
+      "runs": 3,
+      "successRate": 1,
+      "generationFailures": 0,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.2343330000003334,
+          "p95": 0.317707999999584,
+          "slowest": 0.317707999999584
+        },
+        "apiTotalMs": {
+          "median": 0.5593340000013995,
+          "p95": 0.6523329999999987,
+          "slowest": 0.6523329999999987
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 80633,
+          "p95": 80648,
+          "slowest": 80648
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 0.984208000000308,
+          "p95": 1.0036669999990409,
+          "slowest": 1.0036669999990409
+        },
+        "templatesMs": {
+          "median": 1.736376000000746,
+          "p95": 1.849456999999802,
+          "slowest": 1.849456999999802
+        },
+        "constructMs": {
+          "median": 4.7509160000008706,
+          "p95": 5.382917000000816,
+          "slowest": 5.382917000000816
+        },
+        "validationMs": {
+          "median": 0.0976249999985157,
+          "p95": 0.1577079999997295,
+          "slowest": 0.1577079999997295
+        },
+        "gridBuildMs": {
+          "median": 0.0628750000000764,
+          "p95": 0.07816600000114704,
+          "slowest": 0.07816600000114704
+        },
+        "totalMs": {
+          "median": 7.227083999998285,
+          "p95": 8.305916000001162,
+          "slowest": 8.305916000001162
+        },
+        "solverAttempts": {
+          "median": 1,
+          "p95": 1,
+          "slowest": 1
+        },
+        "validationCalls": {
+          "median": 1,
+          "p95": 1,
+          "slowest": 1
+        },
+        "entries": {
+          "median": 40,
+          "p95": 40,
+          "slowest": 40
+        },
+        "intersections": {
+          "median": 59,
+          "p95": 60,
+          "slowest": 60
+        }
+      },
+      "successfulTotalMs": {
+        "median": 7.227083999998285,
+        "p95": 8.305916000001162,
+        "slowest": 8.305916000001162
+      },
+      "failedTotalMs": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      }
+    },
+    {
+      "pool": "default",
+      "size": 9,
+      "answerDirection": "ltr",
+      "candidatesByLength": {
+        "2": {
+          "median": 57,
+          "p95": 57,
+          "slowest": 57
+        },
+        "3": {
+          "median": 278,
+          "p95": 278,
+          "slowest": 278
+        },
+        "4": {
+          "median": 278,
+          "p95": 278,
+          "slowest": 278
+        },
+        "5": {
+          "median": 278,
+          "p95": 278,
+          "slowest": 278
+        },
+        "6": {
+          "median": 278,
+          "p95": 278,
+          "slowest": 278
+        },
+        "7": {
+          "median": 277,
+          "p95": 277,
+          "slowest": 277
+        },
+        "8": {
+          "median": 277,
+          "p95": 277,
+          "slowest": 277
+        },
+        "9": {
+          "median": 277,
+          "p95": 277,
+          "slowest": 277
+        }
+      },
+      "runs": 3,
+      "successRate": 1,
+      "generationFailures": 0,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.20799999999871943,
+          "p95": 0.2755419999998594,
+          "slowest": 0.2755419999998594
+        },
+        "apiTotalMs": {
+          "median": 0.48474999999962165,
+          "p95": 0.5529160000000957,
+          "slowest": 0.5529160000000957
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 81749,
+          "p95": 82010,
+          "slowest": 82010
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 0.6798329999983252,
+          "p95": 0.7803749999989122,
+          "slowest": 0.7803749999989122
+        },
+        "templatesMs": {
+          "median": 5.926292000001013,
+          "p95": 6.59150100000079,
+          "slowest": 6.59150100000079
+        },
+        "constructMs": {
+          "median": 1643.648165,
+          "p95": 1664.7071669999968,
+          "slowest": 1664.7071669999968
+        },
+        "validationMs": {
+          "median": 0.1050840000025346,
+          "p95": 0.19891699999971024,
+          "slowest": 0.19891699999971024
+        },
+        "gridBuildMs": {
+          "median": 0.07224899999710033,
+          "p95": 0.08158300000013696,
+          "slowest": 0.08158300000013696
+        },
+        "totalMs": {
+          "median": 1650.7327089999999,
+          "p95": 1671.119208,
+          "slowest": 1671.119208
+        },
+        "solverAttempts": {
+          "median": 10,
+          "p95": 11,
+          "slowest": 11
+        },
+        "validationCalls": {
+          "median": 1,
+          "p95": 1,
+          "slowest": 1
+        },
+        "entries": {
+          "median": 31,
+          "p95": 32,
+          "slowest": 32
+        },
+        "intersections": {
+          "median": 62,
+          "p95": 64,
+          "slowest": 64
+        }
+      },
+      "successfulTotalMs": {
+        "median": 1650.7327089999999,
+        "p95": 1671.119208,
+        "slowest": 1671.119208
+      },
+      "failedTotalMs": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      }
+    },
+    {
+      "pool": "default",
+      "size": 11,
+      "answerDirection": "rtl",
+      "candidatesByLength": {
+        "2": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "3": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "4": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "5": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "6": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "7": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "8": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "9": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "10": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        },
+        "11": {
+          "median": 200,
+          "p95": 200,
+          "slowest": 200
+        }
+      },
+      "runs": 3,
+      "successRate": 0.6666666666666666,
+      "generationFailures": 1,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.23025000000052387,
+          "p95": 0.4498750000002474,
+          "slowest": 0.4498750000002474
+        },
+        "apiTotalMs": {
+          "median": 0.5907079999997222,
+          "p95": 0.8327500000004875,
+          "slowest": 0.8327500000004875
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 85230,
+          "p95": 85278,
+          "slowest": 85278
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 0.9708749999990687,
+          "p95": 1.349833000000217,
+          "slowest": 1.349833000000217
+        },
+        "templatesMs": {
+          "median": 3.5654579999973066,
+          "p95": 3.624416999999994,
+          "slowest": 3.624416999999994
+        },
+        "constructMs": {
+          "median": 1012.3111670000035,
+          "p95": 1799.7541660000024,
+          "slowest": 1799.7541660000024
+        },
+        "validationMs": {
+          "median": 0.1614579999986745,
+          "p95": 0.25824999999986176,
+          "slowest": 0.25824999999986176
+        },
+        "gridBuildMs": {
+          "median": 0.11666699999841512,
+          "p95": 0.12950000000000728,
+          "slowest": 0.12950000000000728
+        },
+        "totalMs": {
+          "median": 1016.5554999999986,
+          "p95": 1804.3565000000017,
+          "slowest": 1804.3565000000017
+        },
+        "solverAttempts": {
+          "median": 2,
+          "p95": 2,
+          "slowest": 2
+        },
+        "validationCalls": {
+          "median": 1,
+          "p95": 1,
+          "slowest": 1
+        },
+        "entries": {
+          "median": 56,
+          "p95": 57,
+          "slowest": 57
+        },
+        "intersections": {
+          "median": 85,
+          "p95": 88,
+          "slowest": 88
+        }
+      },
+      "successfulTotalMs": {
+        "median": 518.5003539999993,
+        "p95": 1016.5554999999986,
+        "slowest": 1016.5554999999986
+      },
+      "failedTotalMs": {
+        "median": 1804.3565000000017,
+        "p95": 1804.3565000000017,
+        "slowest": 1804.3565000000017
+      }
+    },
+    {
+      "pool": "default",
+      "size": 11,
+      "answerDirection": "ltr",
+      "candidatesByLength": {
+        "2": {
+          "median": 57,
+          "p95": 57,
+          "slowest": 57
+        },
+        "3": {
+          "median": 215,
+          "p95": 215,
+          "slowest": 215
+        },
+        "4": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        },
+        "5": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        },
+        "6": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        },
+        "7": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        },
+        "8": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        },
+        "9": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        },
+        "10": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        },
+        "11": {
+          "median": 216,
+          "p95": 216,
+          "slowest": 216
+        }
+      },
+      "runs": 3,
+      "successRate": 0,
+      "generationFailures": 3,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.2320419999959995,
+          "p95": 0.4117079999996349,
+          "slowest": 0.4117079999996349
+        },
+        "apiTotalMs": {
+          "median": 0.5487079999984417,
+          "p95": 0.7647500000002765,
+          "slowest": 0.7647500000002765
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 85057,
+          "p95": 85065,
+          "slowest": 85065
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 0.8441649999986112,
+          "p95": 0.9344980000014402,
+          "slowest": 0.9344980000014402
+        },
+        "templatesMs": {
+          "median": 12.579001000005519,
+          "p95": 12.629538000000139,
+          "slowest": 12.629538000000139
+        },
+        "constructMs": {
+          "median": 4489.584248000001,
+          "p95": 4490.55791399999,
+          "slowest": 4490.55791399999
+        },
+        "validationMs": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "gridBuildMs": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "totalMs": {
+          "median": 4503.487375000001,
+          "p95": 4503.596207999999,
+          "slowest": 4503.596207999999
+        },
+        "solverAttempts": {
+          "median": 24,
+          "p95": 24,
+          "slowest": 24
+        },
+        "validationCalls": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "entries": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "intersections": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        }
+      },
+      "successfulTotalMs": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "failedTotalMs": {
+        "median": 4503.487375000001,
+        "p95": 4503.596207999999,
+        "slowest": 4503.596207999999
+      }
+    },
+    {
+      "pool": "default",
+      "size": 13,
+      "answerDirection": "rtl",
+      "candidatesByLength": {
+        "2": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "3": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "4": {
+          "median": 173,
+          "p95": 173,
+          "slowest": 173
+        },
+        "5": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "6": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "7": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "8": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "9": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "10": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "11": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "12": {
+          "median": 172,
+          "p95": 172,
+          "slowest": 172
+        },
+        "13": {
+          "median": 107,
+          "p95": 107,
+          "slowest": 107
+        }
+      },
+      "runs": 3,
+      "successRate": 0.3333333333333333,
+      "generationFailures": 2,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.24204199999803677,
+          "p95": 0.4391249999989668,
+          "slowest": 0.4391249999989668
+        },
+        "apiTotalMs": {
+          "median": 0.6002500000031432,
+          "p95": 0.8057920000010199,
+          "slowest": 0.8057920000010199
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 89070,
+          "p95": 89097,
+          "slowest": 89097
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 1.0962079999990237,
+          "p95": 1.1801660000000993,
+          "slowest": 1.1801660000000993
+        },
+        "templatesMs": {
+          "median": 5.598165999996127,
+          "p95": 5.811251000000993,
+          "slowest": 5.811251000000993
+        },
+        "constructMs": {
+          "median": 1799.6436249999988,
+          "p95": 1799.7280840000021,
+          "slowest": 1799.7280840000021
+        },
+        "validationMs": {
+          "median": 0,
+          "p95": 0.2264999999970314,
+          "slowest": 0.2264999999970314
+        },
+        "gridBuildMs": {
+          "median": 0,
+          "p95": 0.14312500000596629,
+          "slowest": 0.14312500000596629
+        },
+        "totalMs": {
+          "median": 1806.4742909999986,
+          "p95": 1806.7550839999985,
+          "slowest": 1806.7550839999985
+        },
+        "solverAttempts": {
+          "median": 2,
+          "p95": 2,
+          "slowest": 2
+        },
+        "validationCalls": {
+          "median": 0,
+          "p95": 1,
+          "slowest": 1
+        },
+        "entries": {
+          "median": 0,
+          "p95": 78,
+          "slowest": 78
+        },
+        "intersections": {
+          "median": 0,
+          "p95": 119,
+          "slowest": 119
+        }
+      },
+      "successfulTotalMs": {
+        "median": 45.44262500000332,
+        "p95": 45.44262500000332,
+        "slowest": 45.44262500000332
+      },
+      "failedTotalMs": {
+        "median": 1806.6146874999986,
+        "p95": 1806.7550839999985,
+        "slowest": 1806.7550839999985
+      }
+    },
+    {
+      "pool": "default",
+      "size": 13,
+      "answerDirection": "ltr",
+      "candidatesByLength": {
+        "2": {
+          "median": 57,
+          "p95": 57,
+          "slowest": 57
+        },
+        "3": {
+          "median": 176,
+          "p95": 176,
+          "slowest": 176
+        },
+        "4": {
+          "median": 177,
+          "p95": 177,
+          "slowest": 177
+        },
+        "5": {
+          "median": 177,
+          "p95": 177,
+          "slowest": 177
+        },
+        "6": {
+          "median": 177,
+          "p95": 177,
+          "slowest": 177
+        },
+        "7": {
+          "median": 177,
+          "p95": 177,
+          "slowest": 177
+        },
+        "8": {
+          "median": 177,
+          "p95": 177,
+          "slowest": 177
+        },
+        "9": {
+          "median": 177,
+          "p95": 177,
+          "slowest": 177
+        },
+        "10": {
+          "median": 177,
+          "p95": 177,
+          "slowest": 177
+        },
+        "11": {
+          "median": 176,
+          "p95": 176,
+          "slowest": 176
+        },
+        "12": {
+          "median": 176,
+          "p95": 176,
+          "slowest": 176
+        },
+        "13": {
+          "median": 176,
+          "p95": 176,
+          "slowest": 176
+        }
+      },
+      "runs": 3,
+      "successRate": 0,
+      "generationFailures": 3,
+      "invalidPuzzles": 0,
+      "metrics": {
+        "apiPreparationMs": {
+          "median": 0.23087500000110595,
+          "p95": 0.35987500000010186,
+          "slowest": 0.35987500000010186
+        },
+        "apiTotalMs": {
+          "median": 0.5441659999996773,
+          "p95": 0.7162919999991573,
+          "slowest": 0.7162919999991573
+        },
+        "apiCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "responseBytes": {
+          "median": 87849,
+          "p95": 88176,
+          "slowest": 88176
+        },
+        "clientCandidateCount": {
+          "median": 2000,
+          "p95": 2000,
+          "slowest": 2000
+        },
+        "clientPreparationMs": {
+          "median": 0.8986249999979918,
+          "p95": 0.918829000009282,
+          "slowest": 0.918829000009282
+        },
+        "templatesMs": {
+          "median": 22.04816799999753,
+          "p95": 23.58849800000462,
+          "slowest": 23.58849800000462
+        },
+        "constructMs": {
+          "median": 4490.250542999995,
+          "p95": 4490.280540000005,
+          "slowest": 4490.280540000005
+        },
+        "validationMs": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "gridBuildMs": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "totalMs": {
+          "median": 4513.544833,
+          "p95": 4515.148292,
+          "slowest": 4515.148292
+        },
+        "solverAttempts": {
+          "median": 24,
+          "p95": 24,
+          "slowest": 24
+        },
+        "validationCalls": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "entries": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        },
+        "intersections": {
+          "median": 0,
+          "p95": 0,
+          "slowest": 0
+        }
+      },
+      "successfulTotalMs": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "failedTotalMs": {
+        "median": 4513.544833,
+        "p95": 4515.148292,
+        "slowest": 4515.148292
+      }
+    }
+  ],
+  "samples": [
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 225,
+        "3": 355,
+        "4": 355,
+        "5": 355,
+        "6": 355,
+        "7": 355
+      },
+      "seed": 1,
+      "size": 7,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "ec12fa6471e02330bc94b671d21a6a140ca2eb4e163e0662120764dcc17f7ffd",
+      "puzzleSha256": "3653d56a531318214a273dae2f01d5ea9e91d49820678d3daad03846b0872ec8",
+      "apiTotalMs": 0.6589579999999842,
+      "apiPreparationMs": 0.3909999999999627,
+      "apiCandidateCount": 2000,
+      "responseBytes": 76132,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 1.420208000000116,
+      "templatesMs": 2.0987510000001066,
+      "constructMs": 3.435000000000059,
+      "validationMs": 0.11374999999998181,
+      "gridBuildMs": 0.061958000000004176,
+      "totalMs": 7.14224999999999,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 22,
+      "intersections": 35
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 389,
+        "4": 389,
+        "5": 389,
+        "6": 388,
+        "7": 388
+      },
+      "seed": 1,
+      "size": 7,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "e298ca3c33d3a834bbf73fa4555dd625dffc0f35d4570855e0c9cf63e690e731",
+      "puzzleSha256": "cfc8d588d4b0b6b5dd4a73431597f517cd9783c616e9d4dd25a486498708a188",
+      "apiTotalMs": 0.6675840000000335,
+      "apiPreparationMs": 0.3724160000000438,
+      "apiCandidateCount": 2000,
+      "responseBytes": 78104,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.9673730000002934,
+      "templatesMs": 2.952166000000034,
+      "constructMs": 2010.7869180000012,
+      "validationMs": 0.16554200000018682,
+      "gridBuildMs": 0.0887920000000122,
+      "totalMs": 2015.1641659999998,
+      "solverAttempts": 17,
+      "validationCalls": 1,
+      "entries": 22,
+      "intersections": 41
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 238,
+        "3": 252,
+        "4": 252,
+        "5": 252,
+        "6": 252,
+        "7": 252,
+        "8": 251,
+        "9": 251
+      },
+      "seed": 1,
+      "size": 9,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "c0567be9305d85ba738268a1b5e37fd7baf806e86e9ba9d2a84f306135a58586",
+      "puzzleSha256": "d3944855a4ffb326ee6ed70b6c5dcb319ddf5b10e652b5f61962bfc753a856ad",
+      "apiTotalMs": 0.6523329999999987,
+      "apiPreparationMs": 0.317707999999584,
+      "apiCandidateCount": 2000,
+      "responseBytes": 80633,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.984208000000308,
+      "templatesMs": 1.849456999999802,
+      "constructMs": 3.7620419999998376,
+      "validationMs": 0.1577079999997295,
+      "gridBuildMs": 0.0628750000000764,
+      "totalMs": 6.8229160000000775,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 40,
+      "intersections": 60
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 278,
+        "4": 278,
+        "5": 278,
+        "6": 278,
+        "7": 277,
+        "8": 277,
+        "9": 277
+      },
+      "seed": 1,
+      "size": 9,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "0b495ec51c18cce31fc948767c68f74dfa09a4510286dbb76c644395e0510186",
+      "puzzleSha256": "c1e34d28f40a1aa3a8ad75ba3ccdbd60d7168cf389d040cb4dec4aae2958bf61",
+      "apiTotalMs": 0.5529160000000957,
+      "apiPreparationMs": 0.2755419999998594,
+      "apiCandidateCount": 2000,
+      "responseBytes": 81749,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.7803749999989122,
+      "templatesMs": 5.926292000001013,
+      "constructMs": 1643.648165,
+      "validationMs": 0.19891699999971024,
+      "gridBuildMs": 0.08158300000013696,
+      "totalMs": 1650.7327089999999,
+      "solverAttempts": 10,
+      "validationCalls": 1,
+      "entries": 31,
+      "intersections": 62
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 200,
+        "3": 200,
+        "4": 200,
+        "5": 200,
+        "6": 200,
+        "7": 200,
+        "8": 200,
+        "9": 200,
+        "10": 200,
+        "11": 200
+      },
+      "seed": 1,
+      "size": 11,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "b033148674ab5bbf95ad76dd75b5207c42ddfc93a36501d4171bd1745cbf5ab4",
+      "puzzleSha256": "a133990b4c6b8bce04006ea44c90185dd4c00ac1cd87a1dbd97fe41c79e653f5",
+      "apiTotalMs": 0.8327500000004875,
+      "apiPreparationMs": 0.4498750000002474,
+      "apiCandidateCount": 2000,
+      "responseBytes": 85230,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 1.349833000000217,
+      "templatesMs": 3.624416999999994,
+      "constructMs": 15.070041999999376,
+      "validationMs": 0.25824999999986176,
+      "gridBuildMs": 0.12950000000000728,
+      "totalMs": 20.445208000000093,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 57,
+      "intersections": 85
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 215,
+        "4": 216,
+        "5": 216,
+        "6": 216,
+        "7": 216,
+        "8": 216,
+        "9": 216,
+        "10": 216,
+        "11": 216
+      },
+      "seed": 1,
+      "size": 11,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "9acdcad9fad3d83d2622a091d2ad0fa818cee6098dfde3fb28c06455fcb63fcf",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.7647500000002765,
+      "apiPreparationMs": 0.4117079999996349,
+      "apiCandidateCount": 2000,
+      "responseBytes": 85057,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.9344980000014402,
+      "templatesMs": 12.629538000000139,
+      "constructMs": 4489.584248000001,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 4503.596207999999,
+      "solverAttempts": 24,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 172,
+        "3": 172,
+        "4": 173,
+        "5": 172,
+        "6": 172,
+        "7": 172,
+        "8": 172,
+        "9": 172,
+        "10": 172,
+        "11": 172,
+        "12": 172,
+        "13": 107
+      },
+      "seed": 1,
+      "size": 13,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "19257b52bb63c581c9a065464f76b46155e3f791176e6b4c74d4368444a7d176",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.8057920000010199,
+      "apiPreparationMs": 0.4391249999989668,
+      "apiCandidateCount": 2000,
+      "responseBytes": 89097,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 1.1801660000000993,
+      "templatesMs": 5.811251000000993,
+      "constructMs": 1799.6436249999988,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 1806.7550839999985,
+      "solverAttempts": 2,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 176,
+        "4": 177,
+        "5": 177,
+        "6": 177,
+        "7": 177,
+        "8": 177,
+        "9": 177,
+        "10": 177,
+        "11": 176,
+        "12": 176,
+        "13": 176
+      },
+      "seed": 1,
+      "size": 13,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "3ea3a9a8c598738ac0d652125ba752c185ad8b4b74358ec9bab835532dd9d63d",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.7162919999991573,
+      "apiPreparationMs": 0.35987500000010186,
+      "apiCandidateCount": 2000,
+      "responseBytes": 87678,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.918829000009282,
+      "templatesMs": 23.58849800000462,
+      "constructMs": 4490.280540000005,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 4515.148292,
+      "solverAttempts": 24,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 225,
+        "3": 355,
+        "4": 355,
+        "5": 355,
+        "6": 355,
+        "7": 355
+      },
+      "seed": 2,
+      "size": 7,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "afedcfff8eda714d231395d7e227f876109833d092137288936464d4a9fbf5f9",
+      "puzzleSha256": "ffd231a26869fe7ce4115a30c0419415f58b9e402d8cf9e77dae63d543192da6",
+      "apiTotalMs": 0.5466249999990396,
+      "apiPreparationMs": 0.23791700000037963,
+      "apiCandidateCount": 2000,
+      "responseBytes": 76053,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.8119170000027225,
+      "templatesMs": 0.7054170000010345,
+      "constructMs": 2.585124999999607,
+      "validationMs": 0.08962500000052387,
+      "gridBuildMs": 0.06454199999825505,
+      "totalMs": 4.263167000000976,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 24,
+      "intersections": 35
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 389,
+        "4": 389,
+        "5": 389,
+        "6": 388,
+        "7": 388
+      },
+      "seed": 2,
+      "size": 7,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "372747bbdc9ecb66184650e1c9a7123c3d3d9ab23339924280bd70dd2cade59b",
+      "puzzleSha256": "4feb70614b7580ce691c38a442d7538832c6e8faf143bede08c1dad9588e6818",
+      "apiTotalMs": 0.5071659999994154,
+      "apiPreparationMs": 0.2264579999991838,
+      "apiCandidateCount": 2000,
+      "responseBytes": 78258,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.6092499999977008,
+      "templatesMs": 2.104042999999365,
+      "constructMs": 544.979209000001,
+      "validationMs": 0.08712500000001455,
+      "gridBuildMs": 0.053958000000420725,
+      "totalMs": 547.8978750000006,
+      "solverAttempts": 5,
+      "validationCalls": 1,
+      "entries": 16,
+      "intersections": 35
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 238,
+        "3": 252,
+        "4": 252,
+        "5": 252,
+        "6": 252,
+        "7": 252,
+        "8": 251,
+        "9": 251
+      },
+      "seed": 2,
+      "size": 9,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "f76ceaee925b01429dcd9d2a8489af9bccb8517bac51cd2645e26e519da267bb",
+      "puzzleSha256": "779e96ac09b8aad9c2e1f8fd84bbaa5552cb25b19aa161e2f0327ddcf9f4eb9e",
+      "apiTotalMs": 0.5587080000004789,
+      "apiPreparationMs": 0.23237500000141154,
+      "apiCandidateCount": 2000,
+      "responseBytes": 80614,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 1.0036669999990409,
+      "templatesMs": 1.736376000000746,
+      "constructMs": 5.382917000000816,
+      "validationMs": 0.0976249999985157,
+      "gridBuildMs": 0.07816600000114704,
+      "totalMs": 8.305916000001162,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 35,
+      "intersections": 57
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 278,
+        "4": 278,
+        "5": 278,
+        "6": 278,
+        "7": 277,
+        "8": 277,
+        "9": 277
+      },
+      "seed": 2,
+      "size": 9,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "96a7e798b874827bbe7955d4144295bc4f099854a24c2471f15feff4f58d76b4",
+      "puzzleSha256": "6b76c455dcd0f7c5b91e519b68109dcba1d87e2d5410c474b7ac5f90cc05d933",
+      "apiTotalMs": 0.48474999999962165,
+      "apiPreparationMs": 0.20799999999871943,
+      "apiCandidateCount": 2000,
+      "responseBytes": 82010,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.6798329999983252,
+      "templatesMs": 6.59150100000079,
+      "constructMs": 1491.557208000011,
+      "validationMs": 0.1050840000025346,
+      "gridBuildMs": 0.07224899999710033,
+      "totalMs": 1499.090500000002,
+      "solverAttempts": 9,
+      "validationCalls": 1,
+      "entries": 32,
+      "intersections": 64
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 200,
+        "3": 200,
+        "4": 200,
+        "5": 200,
+        "6": 200,
+        "7": 200,
+        "8": 200,
+        "9": 200,
+        "10": 200,
+        "11": 200
+      },
+      "seed": 2,
+      "size": 11,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "8670708a481fecd28d91ee04a6d1da1f2c488edd5e21b224795a2063745ff89f",
+      "puzzleSha256": "c4735cde8cb02b2f18216885c12bdea43124f1ee18004960b0e80c10afc99052",
+      "apiTotalMs": 0.5657500000015716,
+      "apiPreparationMs": 0.22620800000004238,
+      "apiCandidateCount": 2000,
+      "responseBytes": 85223,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.9708749999990687,
+      "templatesMs": 2.9765000000006694,
+      "constructMs": 1012.3111670000035,
+      "validationMs": 0.1614579999986745,
+      "gridBuildMs": 0.11666699999841512,
+      "totalMs": 1016.5554999999986,
+      "solverAttempts": 2,
+      "validationCalls": 1,
+      "entries": 56,
+      "intersections": 88
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 215,
+        "4": 216,
+        "5": 216,
+        "6": 216,
+        "7": 216,
+        "8": 216,
+        "9": 216,
+        "10": 216,
+        "11": 216
+      },
+      "seed": 2,
+      "size": 11,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "5916d824fe346a005811785ec55ba05963ca0547cb3425e4dd51cb416dd5a53d",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.5487079999984417,
+      "apiPreparationMs": 0.21204199999920093,
+      "apiCandidateCount": 2000,
+      "responseBytes": 85065,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.8441649999986112,
+      "templatesMs": 11.752586000005977,
+      "constructMs": 4490.55791399999,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 4503.487375000001,
+      "solverAttempts": 24,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 172,
+        "3": 172,
+        "4": 173,
+        "5": 172,
+        "6": 172,
+        "7": 172,
+        "8": 172,
+        "9": 172,
+        "10": 172,
+        "11": 172,
+        "12": 172,
+        "13": 107
+      },
+      "seed": 2,
+      "size": 13,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "fbc6c8f751b4d6211f99f609fc21f130b6464bccdaa81bda9555537986c4ddab",
+      "puzzleSha256": "98ebcbc8491b8c494ff54591c0aa1aab29a644392b64f56f224e2ddab918a651",
+      "apiTotalMs": 0.5941669999992882,
+      "apiPreparationMs": 0.23983299999963492,
+      "apiCandidateCount": 2000,
+      "responseBytes": 89070,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 1.0962079999990237,
+      "templatesMs": 4.476749999997992,
+      "constructMs": 39.49091699999917,
+      "validationMs": 0.2264999999970314,
+      "gridBuildMs": 0.14312500000596629,
+      "totalMs": 45.44262500000332,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 78,
+      "intersections": 119
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 176,
+        "4": 177,
+        "5": 177,
+        "6": 177,
+        "7": 177,
+        "8": 177,
+        "9": 177,
+        "10": 177,
+        "11": 176,
+        "12": 176,
+        "13": 176
+      },
+      "seed": 2,
+      "size": 13,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "66fb1a8d33267f5f59ca87220420df04047a68c539cef0571527044e3badd88f",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.5441659999996773,
+      "apiPreparationMs": 0.23087500000110595,
+      "apiCandidateCount": 2000,
+      "responseBytes": 87849,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.8986249999979918,
+      "templatesMs": 22.04816799999753,
+      "constructMs": 4490.250542999995,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 4513.544833,
+      "solverAttempts": 24,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 225,
+        "3": 355,
+        "4": 355,
+        "5": 355,
+        "6": 355,
+        "7": 355
+      },
+      "seed": 3,
+      "size": 7,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "6117359ca664e69109d1e6765660f684f1f1f852a00ea64e3d03b8afaf747e73",
+      "puzzleSha256": "77e4a0b22ccfa5c76285ac423a69b55d30dfa8bafca9d69559f2ac7164e0be09",
+      "apiTotalMs": 0.5449159999989206,
+      "apiPreparationMs": 0.2207090000010794,
+      "apiCandidateCount": 2000,
+      "responseBytes": 76095,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.9315830000014103,
+      "templatesMs": 0.5875420000011218,
+      "constructMs": 1.5157499999986612,
+      "validationMs": 0.06395900000279653,
+      "gridBuildMs": 0.03970799999660812,
+      "totalMs": 3.143707999999606,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 23,
+      "intersections": 35
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 389,
+        "4": 389,
+        "5": 389,
+        "6": 388,
+        "7": 388
+      },
+      "seed": 3,
+      "size": 7,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "f5ccec27b41579d5aac782c4250bdecdb4b3a791f4293d9d45d27770d7a8c820",
+      "puzzleSha256": "36a21e3456cae63ae24df44ba80e10723aa1a9ce3cd7472591b6618fcc8c07dc",
+      "apiTotalMs": 0.4529579999980342,
+      "apiPreparationMs": 0.21133299999928568,
+      "apiCandidateCount": 2000,
+      "responseBytes": 78239,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.7837060000056226,
+      "templatesMs": 1.8686650000090594,
+      "constructMs": 2127.9646669999966,
+      "validationMs": 0.07037499999933061,
+      "gridBuildMs": 0.0745840000017779,
+      "totalMs": 2130.9179170000025,
+      "solverAttempts": 18,
+      "validationCalls": 1,
+      "entries": 22,
+      "intersections": 41
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 238,
+        "3": 252,
+        "4": 252,
+        "5": 252,
+        "6": 252,
+        "7": 252,
+        "8": 251,
+        "9": 251
+      },
+      "seed": 3,
+      "size": 9,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "0c4096df56780a49166ff42e1642a5e52f8153157ccedee39d24ac7a30c4b26d",
+      "puzzleSha256": "b07de2c1ba11ccb72c87d7c1197712290cf552fefb32ee36804e7acdd2bcc55c",
+      "apiTotalMs": 0.5593340000013995,
+      "apiPreparationMs": 0.2343330000003334,
+      "apiCandidateCount": 2000,
+      "responseBytes": 80648,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.8568759999980102,
+      "templatesMs": 1.4822510000012699,
+      "constructMs": 4.7509160000008706,
+      "validationMs": 0.09475000000020373,
+      "gridBuildMs": 0.037334000000555534,
+      "totalMs": 7.227083999998285,
+      "solverAttempts": 1,
+      "validationCalls": 1,
+      "entries": 40,
+      "intersections": 59
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 278,
+        "4": 278,
+        "5": 278,
+        "6": 278,
+        "7": 277,
+        "8": 277,
+        "9": 277
+      },
+      "seed": 3,
+      "size": 9,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": true,
+      "error": null,
+      "payloadSha256": "32b448fad6570c1c415e2939768435f699226a8413f66bab5324251430c40d06",
+      "puzzleSha256": "31f6fd4607ab01b7052652159fbf1f39b6a26a786ac8fe3e2ee73c857de8cd3d",
+      "apiTotalMs": 0.4565419999998994,
+      "apiPreparationMs": 0.19995799999742303,
+      "apiCandidateCount": 2000,
+      "responseBytes": 81676,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.6439579999932903,
+      "templatesMs": 5.537124999998923,
+      "constructMs": 1664.7071669999968,
+      "validationMs": 0.09441700000024866,
+      "gridBuildMs": 0.04354099999909522,
+      "totalMs": 1671.119208,
+      "solverAttempts": 11,
+      "validationCalls": 1,
+      "entries": 30,
+      "intersections": 61
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 200,
+        "3": 200,
+        "4": 200,
+        "5": 200,
+        "6": 200,
+        "7": 200,
+        "8": 200,
+        "9": 200,
+        "10": 200,
+        "11": 200
+      },
+      "seed": 3,
+      "size": 11,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "348c513afea259a4a33156b451e3049d8f9a407bb7936a3d945125053e1cf3d2",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.5907079999997222,
+      "apiPreparationMs": 0.23025000000052387,
+      "apiCandidateCount": 2000,
+      "responseBytes": 85278,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.9549979999974312,
+      "templatesMs": 3.5654579999973066,
+      "constructMs": 1799.7541660000024,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 1804.3565000000017,
+      "solverAttempts": 2,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 215,
+        "4": 216,
+        "5": 216,
+        "6": 216,
+        "7": 216,
+        "8": 216,
+        "9": 216,
+        "10": 216,
+        "11": 216
+      },
+      "seed": 3,
+      "size": 11,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "67418cd4ad979460aef5534a0fa6f8fd95c10415de9fe811e76063d3cf2caa51",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.5319999999992433,
+      "apiPreparationMs": 0.2320419999959995,
+      "apiCandidateCount": 2000,
+      "responseBytes": 84923,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.7936679999838816,
+      "templatesMs": 12.579001000005519,
+      "constructMs": 4489.053082999999,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 4502.71875,
+      "solverAttempts": 24,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 172,
+        "3": 172,
+        "4": 173,
+        "5": 172,
+        "6": 172,
+        "7": 172,
+        "8": 172,
+        "9": 172,
+        "10": 172,
+        "11": 172,
+        "12": 172,
+        "13": 107
+      },
+      "seed": 3,
+      "size": 13,
+      "mode": "en_to_ar",
+      "answerDirection": "rtl",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "40a632993b2c10c039329e16146e3586a06f3aa53fc5c4d9fb83ea4b628b174d",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.6002500000031432,
+      "apiPreparationMs": 0.24204199999803677,
+      "apiCandidateCount": 2000,
+      "responseBytes": 89058,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 1.0708749999903375,
+      "templatesMs": 5.598165999996127,
+      "constructMs": 1799.7280840000021,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 1806.4742909999986,
+      "solverAttempts": 2,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    },
+    {
+      "pool": "default",
+      "candidatesByLength": {
+        "2": 57,
+        "3": 176,
+        "4": 177,
+        "5": 177,
+        "6": 177,
+        "7": 177,
+        "8": 177,
+        "9": 177,
+        "10": 177,
+        "11": 176,
+        "12": 176,
+        "13": 176
+      },
+      "seed": 3,
+      "size": 13,
+      "mode": "ar_to_en",
+      "answerDirection": "ltr",
+      "band": "beginner",
+      "success": false,
+      "error": null,
+      "payloadSha256": "d28b6486d7d474863ee6cc2e2d0eb07e3b845e8936aa68d4a368e33552beeed2",
+      "puzzleSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "apiTotalMs": 0.5226670000047307,
+      "apiPreparationMs": 0.2145410000011907,
+      "apiCandidateCount": 2000,
+      "responseBytes": 88176,
+      "clientCandidateCount": 2000,
+      "clientPreparationMs": 0.7851659999796539,
+      "templatesMs": 21.51245799996832,
+      "constructMs": 4489.297626999993,
+      "validationMs": 0,
+      "gridBuildMs": 0,
+      "totalMs": 4511.872458999998,
+      "solverAttempts": 24,
+      "validationCalls": 0,
+      "entries": 0,
+      "intersections": 0
+    }
+  ]
+}

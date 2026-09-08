@@ -2,7 +2,9 @@ import { useMemo, useState, useRef, useEffect, useLayoutEffect } from 'react';
 import './App.css';
 import type { Crossword, Entry } from './lib/crossword';
 import { getEntryCells as getEntryCellsForEntry, getEntryCellAt, revealEntries, checkEntry, displayClue } from './lib/crossword';
-import { generateCrossword, type WordClue } from './lib/generateCrossword';
+import type { WordClue } from './lib/generateCrossword';
+import { generateWithRetry } from './lib/generateWithRetry';
+import { generateInWorker } from './lib/generateInWorker';
 import { bandToCefr, type CefrBand } from './lib/cefr';
 import { getTranslations, type Mode, getModeLabel, getModeDisplay } from './lib/i18n';
 
@@ -46,6 +48,11 @@ export default function App() {
 
   const [cw, setCw] = useState<Crossword | null>(null);
   const [loading, setLoading] = useState(false);
+  const generationRequest = useRef<AbortController | null>(null);
+  useEffect(() => () => {
+    generationRequest.current?.abort();
+    generationRequest.current = null;
+  }, []);
   const [error, setError] = useState<string | null>(null);
 
   const [fill, setFill] = useState<Fill>({});
@@ -236,6 +243,9 @@ export default function App() {
   }
 
   async function newPuzzle() {
+    generationRequest.current?.abort();
+    const request = new AbortController();
+    generationRequest.current = request;
     setLoading(true);
     setError(null);
     setSelectedEntryId(null);
@@ -243,57 +253,42 @@ export default function App() {
     setLastTappedCell(null);
     setShowSettings(false);
 
-    const bandFallbackOrder: CefrBand[] =
-      band === 'beginner' ? ['beginner', 'intermediate', 'advanced'] :
-      band === 'intermediate' ? ['intermediate', 'advanced'] :
-      ['advanced'];
-
     try {
       const answerDirection = mode === 'en_to_ar' ? 'rtl' : 'ltr';
-      const maxRounds = size <= 7 ? 2 : size <= 9 ? 3 : 4;
-      const attemptsPerRound = size <= 7 ? 3 : size <= 9 ? 4 : 5;
-      let next: Crossword | null = null;
-
-      for (const tryBand of bandFallbackOrder) {
-        for (let round = 0; round < maxRounds; round++) {
-          const resp = await fetch('/api/generate', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ size, mode, band: tryBand }),
-          });
-          const raw = await resp.text();
-          let data: { error?: string; entries?: WordClue[] } | null = null;
-          try {
-            data = raw ? JSON.parse(raw) : null;
-          } catch {
-            throw new Error(`Server returned non-JSON (${resp.status}).`);
-          }
-          if (!resp.ok) throw new Error(data?.error || `Failed (${resp.status})`);
-
-          const entries = Array.isArray(data?.entries) ? data.entries : [];
-          if (entries.length < 6) continue;
-
-          for (let attempt = 0; attempt < attemptsPerRound; attempt++) {
-            const candidate = generateCrossword(size, entries, answerDirection);
-            if (candidate.entries.length) {
-              next = candidate;
-              break;
-            }
-          }
-          if (next) break;
+      // The API already provides CEFR fallback within this preference band.
+      const next = await generateWithRetry(async () => {
+        const resp = await fetch('/api/generate', {
+          method: 'POST',
+          signal: request.signal,
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ size, mode, band }),
+        });
+        const raw = await resp.text();
+        let data: { error?: string; entries?: WordClue[] } | null = null;
+        try {
+          data = raw ? JSON.parse(raw) : null;
+        } catch {
+          throw new Error(`Server returned non-JSON (${resp.status}).`);
         }
-        if (next) break;
-      }
+        if (!resp.ok) throw new Error(data?.error || `Failed (${resp.status})`);
+        return Array.isArray(data?.entries) ? data.entries : [];
+      }, entries => generateInWorker({ size, entries, answerDirection }, request.signal));
 
+      if (request.signal.aborted || generationRequest.current !== request) return;
       if (!next) throw new Error('Could not generate puzzle. Try again.');
 
       setCw(next);
       setFill({});
       setActiveMode(mode); // Update active mode to current puzzle mode
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
+      if (!request.signal.aborted && generationRequest.current === request) {
+        setError(e instanceof Error ? e.message : String(e));
+      }
     } finally {
-      setLoading(false);
+      if (generationRequest.current === request) {
+        generationRequest.current = null;
+        setLoading(false);
+      }
     }
   }
 

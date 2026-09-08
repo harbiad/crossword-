@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
+    "bench:crossword": "vitest run --config vitest.benchmark.config.ts",
+    "bench:crossword:stress": "CROSSWORD_BENCH_STRESS=1 vitest run --config vitest.benchmark.config.ts",
     "test:stress": "vitest run --config vitest.stress.config.ts",
     "dev": "vite",
     "build": "node ./node_modules/typescript/lib/tsc.js -b && node ./node_modules/vite/bin/vite.js build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:worker": "npm run build && vitest run --config vitest.worker.config.ts"
   },
   "dependencies": {
     "@vercel/node": "^5.5.28",

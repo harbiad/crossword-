@@ -1,7 +1,9 @@
 import { getEntryCellAt } from './crossword';
 import type { Crossword, Cell, Entry, Direction } from './crossword';
 import { constructCrossword, validateBlockRuns } from './construct';
-import { findSlots, getTemplates } from './templates';
+import { getTemplates } from './templates';
+import { prepareCandidates, type CandidateWindow } from './preparedCandidates';
+import { prepareTemplate } from './preparedTemplate';
 
 export type WordClue = { answer: string; clue: string; isRepeatedLetter?: boolean };
 
@@ -14,38 +16,11 @@ type NumberingResult = {
 
 type GridRun = { direction: Direction; row: number; col: number; length: number };
 
-function normalizeAnswer(a: string): string {
-  return a
-    .trim()
-    .replace(/\s+/g, '')
-    .replace(/(?:ـ|[\u064B-\u065F\u0670])/g, '') // remove Arabic tatweel + harakat
-    // Normalize Alef variants to plain Alef (ا) - these are all the same letter
-    .replace(/[أإآٱ]/g, 'ا')
-    // NOTE: Do NOT normalize ى (alef maksura) to ي - they are different letters
-    .toUpperCase();
-}
-
 function getNow() {
   if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
     return performance.now();
   }
   return Date.now();
-}
-
-function shuffleInPlace<T>(arr: T[]): void {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-}
-
-function sliceWithWrap<T>(arr: T[], start: number, count: number): T[] {
-  if (arr.length <= count) return arr.slice();
-  const out: T[] = [];
-  for (let i = 0; i < count; i++) {
-    out.push(arr[(start + i) % arr.length]);
-  }
-  return out;
 }
 
 function makeId(dir: Direction, row: number, col: number) {
@@ -472,75 +447,46 @@ export function generateCrossword(
   wordClues: WordClue[],
   answerDirection: 'rtl' | 'ltr' = 'ltr'
 ): Crossword {
-  const clean = wordClues
-    .map((wc) => ({
-      answer: normalizeAnswer(wc.answer),
-      clue: wc.clue.trim(),
-      isRepeatedLetter: wc.isRepeatedLetter,
-    }))
-    .filter((wc) => wc.answer.length >= 2 && wc.answer.length <= size);
-
-  const buckets = new Map<number, WordClue[]>();
-  for (const wc of clean) {
-    const len = wc.answer.length;
-    const bucket = buckets.get(len) ?? [];
-    bucket.push(wc);
-    buckets.set(len, bucket);
-  }
-  for (const bucket of buckets.values()) shuffleInPlace(bucket);
+  const prepared = prepareCandidates(wordClues, size);
+  const clean = prepared.words;
+  const buckets = prepared.byLength;
 
   // LTR mode needs more templates to find a solvable one (fewer 2-letter slots = tighter constraints)
   const templateCount = answerDirection === 'ltr' ? 24 : 6;
   const templates = getTemplates(size, answerDirection === 'ltr' ? 3 : 2, templateCount);
   const attempts = size <= 7 ? 18 : size <= 9 ? 22 : 20;
-  // Preserve the existing language-specific search budgets; both modes consider inversion.
+  // Halved after indexed 100%/75%/50% budget comparisons; see the solver benchmark report.
   const timeBudgetMs = answerDirection === 'ltr'
-    ? (size <= 7 ? 6000 : size <= 9 ? 8000 : 9000)
-    : (size <= 7 ? 2200 : size <= 9 ? 3400 : 3600);
-  let best: Crossword | null = null;
-  let bestScore = -1;
+    ? (size <= 7 ? 3000 : size <= 9 ? 4000 : 4500)
+    : (size <= 7 ? 1100 : size <= 9 ? 1700 : 1800);
   const deadline = getNow() + timeBudgetMs;
-
-  const optionSets = [
-    {
-      minIntersectionPct: size <= 7 ? 70 : size <= 9 ? 68 : 72,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
-    },
-    {
-      minIntersectionPct: size <= 7 ? 65 : size <= 9 ? 62 : 65,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
-    },
-    {
-      minIntersectionPct: size <= 7 ? 60 : size <= 9 ? 58 : 62,
-      seedPlacements: size <= 7 ? 1 : size <= 9 ? 1 : 2,
-    },
-  ];
-  const targetWords = size <= 7 ? 10 : size <= 9 ? 24 : size <= 11 ? 30 : 38;
-  const minWords = size <= 7 ? 6 : size <= 9 ? 18 : size <= 11 ? 23 : 28;
 
   let attemptsRun = 0;
   const templateScores = templates
     .map((template) => {
-      const slots = findSlots(template);
-      const lengths = new Set(slots.map((s) => s.length));
+      const geometry = prepareTemplate(template, answerDirection);
+      const lengths = geometry.lengths;
       let score = 0;
       let viable = true;
       for (const len of lengths) {
         const bucket = buckets.get(len);
-        if (!bucket || bucket.length === 0) {
+        if (!bucket || bucket.words.length === 0) {
           viable = false;
           break;
         }
-        score += bucket.length;
+        score += bucket.words.length;
       }
-      return { template, score, viable };
+      // Full-slot solutions have this exact existing puzzle score. Favor
+      // denser templates now that indexing can solve previously slow layouts.
+      const quality = geometry.slots.reduce((sum, slot) => sum + slot.length + 2, 0);
+      return { template, geometry, score, viable, quality };
     })
     .filter((t) => t.viable)
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => b.quality - a.quality || b.score - a.score);
 
   const rankedTemplates = templateScores.length
     ? templateScores
-    : templates.map((template) => ({ template, score: 0, viable: true }));
+    : templates.map((template) => ({ template, geometry: prepareTemplate(template, answerDirection), score: 0, viable: true }));
 
   // For LTR: give each template a per-template budget so we cycle through all of them
   // instead of getting stuck on the first unsolvable template until the global deadline.
@@ -549,8 +495,8 @@ export function generateCrossword(
     : timeBudgetMs; // RTL: keep original behavior (single template focus)
 
   const innerBudgetMs = answerDirection === 'ltr'
-    ? (size <= 7 ? 250 : size <= 9 ? 400 : 700)
-    : (size <= 7 ? 900 : size <= 9 ? 1700 : 2000);
+    ? (size <= 7 ? 125 : size <= 9 ? 200 : 350)
+    : (size <= 7 ? 450 : size <= 9 ? 850 : 1000);
 
   for (const ranked of rankedTemplates) {
     const template = ranked.template;
@@ -558,104 +504,87 @@ export function generateCrossword(
     const templateDeadline = answerDirection === 'ltr'
       ? Math.min(getNow() + perTemplateBudgetMs, deadline)
       : deadline;
-    const slots = findSlots(template);
-    const allowedLengths = new Set<number>();
-    for (const slot of slots) allowedLengths.add(slot.length);
+    const slots = ranked.geometry.slots;
+    const allowedLengths = ranked.geometry.lengths;
     const perLengthCap = size <= 7 ? 900 : size <= 9 ? 1300 : 1700;
 
-    for (const opts of optionSets) {
-      for (let i = 0; i < attempts; i++) {
-        if (getNow() > templateDeadline) break;
-        attemptsRun++;
-        const attemptWords: WordClue[] = [];
-        for (const len of allowedLengths) {
-          const bucket = buckets.get(len);
-          if (!bucket || bucket.length === 0) continue;
-          const cap = Math.min(bucket.length, perLengthCap);
-          const offset = (attemptsRun * 97 + len * 13) % bucket.length;
-          attemptWords.push(...sliceWithWrap(bucket, offset, cap));
-        }
+    for (let i = 0; i < attempts; i++) {
+      if (getNow() > templateDeadline) break;
+      attemptsRun++;
+      const candidateWindows = new Map<number, CandidateWindow>();
+      for (const len of allowedLengths) {
+        const bucket = buckets.get(len);
+        if (!bucket || bucket.words.length === 0) continue;
+        const cap = Math.min(bucket.words.length, perLengthCap);
+        const offset = i === 0 && bucket.words.length <= cap ? 0 : (attemptsRun * 97 + len * 13) % bucket.words.length;
+        candidateWindows.set(len, { offset, count: cap });
+      }
 
-        const debugEnabled = typeof window !== 'undefined' && (window as Window & { __CW_DEBUG?: boolean }).__CW_DEBUG;
-        if (debugEnabled) {
-          console.log(`[cw-gen size=${size}] attempt=${attemptsRun} words=${attemptWords.length} templateSlots=${slots.length}`);
-        }
-        const remainingMs = templateDeadline - getNow();
-        const placements = constructCrossword(
-          size,
-          attemptWords,
-          template,
-          answerDirection,
-          {
-            minIntersectionPct: opts.minIntersectionPct,
-            seedPlacements: opts.seedPlacements,
-            timeBudgetMs: Math.min(innerBudgetMs, Math.max(50, remainingMs)),
-            maxCandidatesPerSlot: size <= 7 ? 850 : size <= 9 ? 1200 : 1500,
-            targetWords,
-            minWords,
-            useWordCentric: false,
-            useBacktracking: false,
-            useFillAllSlots: true,
-            debug: debugEnabled
-              ? {
-                  enabled: true,
-                  log: (msg: string) => {
-                    console.log(`[cw-gen size=${size}] ${msg}`);
-                  },
-                }
-              : undefined,
-          }
-        );
-        if (debugEnabled) {
-          console.log(`[cw-gen size=${size}] attempt=${attemptsRun} placements=${placements.length}`);
-        }
-        if (!placements.length) {
-          if (debugEnabled) {
-            console.log(`[cw-gen size=${size}] attempt=${attemptsRun} no placements`);
-          }
-          continue;
-        }
-
-        const cw = buildCrosswordFromPlacements(
-          size,
-          template,
-          placements,
-          answerDirection,
-          debugEnabled
+      const debugEnabled = typeof window !== 'undefined' && (window as Window & { __CW_DEBUG?: boolean }).__CW_DEBUG;
+      if (debugEnabled) {
+        console.log(`[cw-gen size=${size}] attempt=${attemptsRun} words=${clean.length} templateSlots=${slots.length}`);
+      }
+      const remainingMs = templateDeadline - getNow();
+      const placements = constructCrossword(
+        size,
+        clean,
+        template,
+        answerDirection,
+        {
+          preparedCandidates: prepared,
+          preparedTemplate: ranked.geometry,
+          candidateWindows,
+          timeBudgetMs: Math.min(innerBudgetMs, Math.max(0, remainingMs)),
+          useFillAllSlots: true,
+          debug: debugEnabled
             ? {
                 enabled: true,
                 log: (msg: string) => {
                   console.log(`[cw-gen size=${size}] ${msg}`);
                 },
               }
-            : undefined
-        );
-        if (!cw) continue;
-
-        const totalLetters = cw.entries.reduce((sum, e) => sum + e.answer.length, 0);
-        const score = totalLetters + cw.entries.length * 2;
-
-        if (score > bestScore) {
-          bestScore = score;
-          best = cw;
+            : undefined,
         }
+      );
+      if (debugEnabled) {
+        console.log(`[cw-gen size=${size}] attempt=${attemptsRun} placements=${placements.length}`);
       }
-      if (best || getNow() > templateDeadline) break;
+      if (!placements.length) {
+        if (debugEnabled) {
+          console.log(`[cw-gen size=${size}] attempt=${attemptsRun} no placements`);
+        }
+        continue;
+      }
+
+      const cw = buildCrosswordFromPlacements(
+        size,
+        template,
+        placements,
+        answerDirection,
+        debugEnabled
+          ? {
+              enabled: true,
+              log: (msg: string) => {
+                console.log(`[cw-gen size=${size}] ${msg}`);
+              },
+            }
+          : undefined
+      );
+      if (!cw) continue;
+
+      // Every slot is filled, so all valid solutions of this template have
+      // the same word count/length score. Re-solving cannot improve density.
+      return cw;
     }
-    if (best) break;
     // For LTR: continue to next template even if templateDeadline exceeded (only stop at global deadline)
     // For RTL: stop on deadline (original behavior)
     if (answerDirection !== 'ltr' && getNow() > deadline) break;
   }
 
-  if (!best) {
-    if (typeof console !== 'undefined') {
-      console.warn(`[crossword] generation failed size=${size} attempts=${attemptsRun} candidates=${clean.length}`);
-    }
-    return { size, width: size, height: size, grid: [], entries: [], answerDirection };
+  if (typeof console !== 'undefined') {
+    console.warn(`[crossword] generation failed size=${size} attempts=${attemptsRun} candidates=${clean.length}`);
   }
-
-  return best;
+  return { size, width: size, height: size, grid: [], entries: [], answerDirection };
 }
 
 export { validatePuzzle };
