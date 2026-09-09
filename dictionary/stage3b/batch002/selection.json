@@ -1,0 +1,2502 @@
+[
+  {
+    "headwordIndex": 527,
+    "english": "SELL",
+    "referenceArabic": "بيع"
+  },
+  {
+    "headwordIndex": 528,
+    "english": "OPTIONS",
+    "referenceArabic": "خيارات"
+  },
+  {
+    "headwordIndex": 529,
+    "english": "EXPERIENCE",
+    "referenceArabic": "الخبرة"
+  },
+  {
+    "headwordIndex": 530,
+    "english": "RATES",
+    "referenceArabic": "المعدلات"
+  },
+  {
+    "headwordIndex": 531,
+    "english": "CREATE",
+    "referenceArabic": "إنشاء"
+  },
+  {
+    "headwordIndex": 532,
+    "english": "KEY",
+    "referenceArabic": "مفتاح"
+  },
+  {
+    "headwordIndex": 533,
+    "english": "BODY",
+    "referenceArabic": "الجسم"
+  },
+  {
+    "headwordIndex": 534,
+    "english": "YOUNG",
+    "referenceArabic": "الشباب"
+  },
+  {
+    "headwordIndex": 536,
+    "english": "IMPORTANT",
+    "referenceArabic": "مهم"
+  },
+  {
+    "headwordIndex": 537,
+    "english": "FIELD",
+    "referenceArabic": "حقل"
+  },
+  {
+    "headwordIndex": 538,
+    "english": "FEW",
+    "referenceArabic": "عدد قليل"
+  },
+  {
+    "headwordIndex": 539,
+    "english": "EAST",
+    "referenceArabic": "الشرق"
+  },
+  {
+    "headwordIndex": 540,
+    "english": "PAPER",
+    "referenceArabic": "ورقة"
+  },
+  {
+    "headwordIndex": 541,
+    "english": "SINGLE",
+    "referenceArabic": "أعزب"
+  },
+  {
+    "headwordIndex": 542,
+    "english": "AGE",
+    "referenceArabic": "العمر"
+  },
+  {
+    "headwordIndex": 543,
+    "english": "ACTIVITIES",
+    "referenceArabic": "الأنشطة"
+  },
+  {
+    "headwordIndex": 544,
+    "english": "CLUB",
+    "referenceArabic": "النادي"
+  },
+  {
+    "headwordIndex": 545,
+    "english": "EXAMPLE",
+    "referenceArabic": "مثال"
+  },
+  {
+    "headwordIndex": 546,
+    "english": "GIRLS",
+    "referenceArabic": "بنات"
+  },
+  {
+    "headwordIndex": 547,
+    "english": "ADDITIONAL",
+    "referenceArabic": "إضافية"
+  },
+  {
+    "headwordIndex": 548,
+    "english": "PASSWORD",
+    "referenceArabic": "كلمة السر"
+  },
+  {
+    "headwordIndex": 549,
+    "english": "LATEST",
+    "referenceArabic": "آخر الأخبار"
+  },
+  {
+    "headwordIndex": 550,
+    "english": "SOMETHING",
+    "referenceArabic": "شيء ما"
+  },
+  {
+    "headwordIndex": 551,
+    "english": "ROAD",
+    "referenceArabic": "الطريق"
+  },
+  {
+    "headwordIndex": 552,
+    "english": "GIFT",
+    "referenceArabic": "هدية"
+  },
+  {
+    "headwordIndex": 553,
+    "english": "QUESTION",
+    "referenceArabic": "سؤال"
+  },
+  {
+    "headwordIndex": 554,
+    "english": "CHANGES",
+    "referenceArabic": "التغييرات"
+  },
+  {
+    "headwordIndex": 555,
+    "english": "NIGHT",
+    "referenceArabic": "ليلة"
+  },
+  {
+    "headwordIndex": 556,
+    "english": "HARD",
+    "referenceArabic": "بجد"
+  },
+  {
+    "headwordIndex": 558,
+    "english": "PAY",
+    "referenceArabic": "الدفع"
+  },
+  {
+    "headwordIndex": 559,
+    "english": "FOUR",
+    "referenceArabic": "أربعة"
+  },
+  {
+    "headwordIndex": 560,
+    "english": "POKER",
+    "referenceArabic": "بوكر"
+  },
+  {
+    "headwordIndex": 561,
+    "english": "STATUS",
+    "referenceArabic": "الحالة"
+  },
+  {
+    "headwordIndex": 562,
+    "english": "BROWSE",
+    "referenceArabic": "تصفح"
+  },
+  {
+    "headwordIndex": 563,
+    "english": "ISSUE",
+    "referenceArabic": "المسألة"
+  },
+  {
+    "headwordIndex": 564,
+    "english": "RANGE",
+    "referenceArabic": "نطاق"
+  },
+  {
+    "headwordIndex": 565,
+    "english": "BUILDING",
+    "referenceArabic": "بناية"
+  },
+  {
+    "headwordIndex": 566,
+    "english": "SELLER",
+    "referenceArabic": "البائع"
+  },
+  {
+    "headwordIndex": 567,
+    "english": "COURT",
+    "referenceArabic": "محكمة"
+  },
+  {
+    "headwordIndex": 568,
+    "english": "FEBRUARY",
+    "referenceArabic": "فبراير/شباط"
+  },
+  {
+    "headwordIndex": 569,
+    "english": "ALWAYS",
+    "referenceArabic": "دائما"
+  },
+  {
+    "headwordIndex": 570,
+    "english": "RESULT",
+    "referenceArabic": "نتيجة"
+  },
+  {
+    "headwordIndex": 571,
+    "english": "AUDIO",
+    "referenceArabic": "الصوت"
+  },
+  {
+    "headwordIndex": 572,
+    "english": "LIGHT",
+    "referenceArabic": "ضوء"
+  },
+  {
+    "headwordIndex": 573,
+    "english": "WRITE",
+    "referenceArabic": "اكتب"
+  },
+  {
+    "headwordIndex": 574,
+    "english": "WAR",
+    "referenceArabic": "الحرب"
+  },
+  {
+    "headwordIndex": 576,
+    "english": "OFFER",
+    "referenceArabic": "عرض"
+  },
+  {
+    "headwordIndex": 577,
+    "english": "BLUE",
+    "referenceArabic": "أزرق"
+  },
+  {
+    "headwordIndex": 578,
+    "english": "GROUPS",
+    "referenceArabic": "المجموعات"
+  },
+  {
+    "headwordIndex": 579,
+    "english": "EASY",
+    "referenceArabic": "سهل"
+  },
+  {
+    "headwordIndex": 580,
+    "english": "GIVEN",
+    "referenceArabic": "نظرا"
+  },
+  {
+    "headwordIndex": 581,
+    "english": "FILES",
+    "referenceArabic": "ملفات"
+  },
+  {
+    "headwordIndex": 582,
+    "english": "EVENT",
+    "referenceArabic": "الحدث"
+  },
+  {
+    "headwordIndex": 583,
+    "english": "RELEASE",
+    "referenceArabic": "إطلاق سراح"
+  },
+  {
+    "headwordIndex": 584,
+    "english": "ANALYSIS",
+    "referenceArabic": "تحليل"
+  },
+  {
+    "headwordIndex": 585,
+    "english": "REQUEST",
+    "referenceArabic": "طلب"
+  },
+  {
+    "headwordIndex": 589,
+    "english": "PICTURE",
+    "referenceArabic": "صورة"
+  },
+  {
+    "headwordIndex": 590,
+    "english": "NEEDS",
+    "referenceArabic": "الاحتياجات"
+  },
+  {
+    "headwordIndex": 591,
+    "english": "POSSIBLE",
+    "referenceArabic": "ممكن"
+  },
+  {
+    "headwordIndex": 592,
+    "english": "MIGHT",
+    "referenceArabic": "ربما"
+  },
+  {
+    "headwordIndex": 593,
+    "english": "PROFESSIONAL",
+    "referenceArabic": "المهنية"
+  },
+  {
+    "headwordIndex": 594,
+    "english": "YET",
+    "referenceArabic": "حتى الآن"
+  },
+  {
+    "headwordIndex": 595,
+    "english": "MONTH",
+    "referenceArabic": "الشهر"
+  },
+  {
+    "headwordIndex": 596,
+    "english": "MAJOR",
+    "referenceArabic": "الرئيسية"
+  },
+  {
+    "headwordIndex": 597,
+    "english": "STAR",
+    "referenceArabic": "نجمة"
+  },
+  {
+    "headwordIndex": 598,
+    "english": "AREAS",
+    "referenceArabic": "المناطق"
+  },
+  {
+    "headwordIndex": 599,
+    "english": "FUTURE",
+    "referenceArabic": "المستقبل"
+  },
+  {
+    "headwordIndex": 600,
+    "english": "SPACE",
+    "referenceArabic": "الفضاء"
+  },
+  {
+    "headwordIndex": 601,
+    "english": "COMMITTEE",
+    "referenceArabic": "اللجنة"
+  },
+  {
+    "headwordIndex": 602,
+    "english": "HAND",
+    "referenceArabic": "اليد"
+  },
+  {
+    "headwordIndex": 603,
+    "english": "SUN",
+    "referenceArabic": "الشمس"
+  },
+  {
+    "headwordIndex": 604,
+    "english": "CARDS",
+    "referenceArabic": "البطاقات"
+  },
+  {
+    "headwordIndex": 605,
+    "english": "PROBLEMS",
+    "referenceArabic": "مشاكل"
+  },
+  {
+    "headwordIndex": 608,
+    "english": "MEETING",
+    "referenceArabic": "اجتماع"
+  },
+  {
+    "headwordIndex": 609,
+    "english": "BECOME",
+    "referenceArabic": "تصبح"
+  },
+  {
+    "headwordIndex": 610,
+    "english": "INTEREST",
+    "referenceArabic": "الفائدة"
+  },
+  {
+    "headwordIndex": 612,
+    "english": "CHILD",
+    "referenceArabic": "طفل"
+  },
+  {
+    "headwordIndex": 613,
+    "english": "KEEP",
+    "referenceArabic": "حافظ على"
+  },
+  {
+    "headwordIndex": 614,
+    "english": "ENTER",
+    "referenceArabic": "أدخل"
+  },
+  {
+    "headwordIndex": 617,
+    "english": "SHARE",
+    "referenceArabic": "حصة"
+  },
+  {
+    "headwordIndex": 618,
+    "english": "SIMILAR",
+    "referenceArabic": "مماثل"
+  },
+  {
+    "headwordIndex": 620,
+    "english": "SCHOOLS",
+    "referenceArabic": "مدارس"
+  },
+  {
+    "headwordIndex": 621,
+    "english": "MILLION",
+    "referenceArabic": "مليون"
+  },
+  {
+    "headwordIndex": 622,
+    "english": "ADDED",
+    "referenceArabic": "مضاف"
+  },
+  {
+    "headwordIndex": 623,
+    "english": "REFERENCE",
+    "referenceArabic": "مرجع"
+  },
+  {
+    "headwordIndex": 624,
+    "english": "COMPANIES",
+    "referenceArabic": "شركات"
+  },
+  {
+    "headwordIndex": 625,
+    "english": "LISTED",
+    "referenceArabic": "المدرجة"
+  },
+  {
+    "headwordIndex": 626,
+    "english": "BABY",
+    "referenceArabic": "طفل رضيع"
+  },
+  {
+    "headwordIndex": 627,
+    "english": "LEARNING",
+    "referenceArabic": "التعلم"
+  },
+  {
+    "headwordIndex": 628,
+    "english": "ENERGY",
+    "referenceArabic": "الطاقة"
+  },
+  {
+    "headwordIndex": 629,
+    "english": "RUN",
+    "referenceArabic": "تشغيل"
+  },
+  {
+    "headwordIndex": 630,
+    "english": "DELIVERY",
+    "referenceArabic": "التسليم"
+  },
+  {
+    "headwordIndex": 632,
+    "english": "POPULAR",
+    "referenceArabic": "شعبية"
+  },
+  {
+    "headwordIndex": 633,
+    "english": "TERM",
+    "referenceArabic": "مصطلح"
+  },
+  {
+    "headwordIndex": 634,
+    "english": "FILM",
+    "referenceArabic": "فيلم"
+  },
+  {
+    "headwordIndex": 636,
+    "english": "PUT",
+    "referenceArabic": "ضع"
+  },
+  {
+    "headwordIndex": 637,
+    "english": "COMPUTERS",
+    "referenceArabic": "الحواسيب"
+  },
+  {
+    "headwordIndex": 638,
+    "english": "JOURNAL",
+    "referenceArabic": "دفتر اليومية"
+  },
+  {
+    "headwordIndex": 639,
+    "english": "REPORTS",
+    "referenceArabic": "التقارير"
+  },
+  {
+    "headwordIndex": 640,
+    "english": "TRY",
+    "referenceArabic": "حاول"
+  },
+  {
+    "headwordIndex": 641,
+    "english": "WELCOME",
+    "referenceArabic": "ترحيب"
+  },
+  {
+    "headwordIndex": 642,
+    "english": "CENTRAL",
+    "referenceArabic": "المركزية"
+  },
+  {
+    "headwordIndex": 643,
+    "english": "IMAGES",
+    "referenceArabic": "الصور"
+  },
+  {
+    "headwordIndex": 644,
+    "english": "PRESIDENT",
+    "referenceArabic": "الرئيس"
+  },
+  {
+    "headwordIndex": 645,
+    "english": "NOTICE",
+    "referenceArabic": "إشعار"
+  },
+  {
+    "headwordIndex": 647,
+    "english": "ORIGINAL",
+    "referenceArabic": "الأصلي"
+  },
+  {
+    "headwordIndex": 648,
+    "english": "HEAD",
+    "referenceArabic": "الرأس"
+  },
+  {
+    "headwordIndex": 649,
+    "english": "RADIO",
+    "referenceArabic": "الإذاعة"
+  },
+  {
+    "headwordIndex": 650,
+    "english": "UNTIL",
+    "referenceArabic": "حتى"
+  },
+  {
+    "headwordIndex": 651,
+    "english": "CELL",
+    "referenceArabic": "الخلية"
+  },
+  {
+    "headwordIndex": 652,
+    "english": "COLOR",
+    "referenceArabic": "اللون"
+  },
+  {
+    "headwordIndex": 653,
+    "english": "SELF",
+    "referenceArabic": "الذات"
+  },
+  {
+    "headwordIndex": 654,
+    "english": "COUNCIL",
+    "referenceArabic": "المجلس"
+  },
+  {
+    "headwordIndex": 655,
+    "english": "AWAY",
+    "referenceArabic": "بعيداً"
+  },
+  {
+    "headwordIndex": 656,
+    "english": "INCLUDES",
+    "referenceArabic": "يشمل"
+  },
+  {
+    "headwordIndex": 657,
+    "english": "TRACK",
+    "referenceArabic": "المسار"
+  },
+  {
+    "headwordIndex": 659,
+    "english": "DISCUSSION",
+    "referenceArabic": "المناقشة"
+  },
+  {
+    "headwordIndex": 660,
+    "english": "ARCHIVE",
+    "referenceArabic": "أرشيف"
+  },
+  {
+    "headwordIndex": 661,
+    "english": "ONCE",
+    "referenceArabic": "مرة واحدة"
+  },
+  {
+    "headwordIndex": 662,
+    "english": "OTHERS",
+    "referenceArabic": "أخرى"
+  },
+  {
+    "headwordIndex": 663,
+    "english": "ENTERTAINMENT",
+    "referenceArabic": "الترفيه"
+  },
+  {
+    "headwordIndex": 664,
+    "english": "AGREEMENT",
+    "referenceArabic": "اتفاق"
+  },
+  {
+    "headwordIndex": 665,
+    "english": "FORMAT",
+    "referenceArabic": "الشكل"
+  },
+  {
+    "headwordIndex": 666,
+    "english": "LEAST",
+    "referenceArabic": "الأقل"
+  },
+  {
+    "headwordIndex": 667,
+    "english": "SOCIETY",
+    "referenceArabic": "المجتمع"
+  },
+  {
+    "headwordIndex": 668,
+    "english": "MONTHS",
+    "referenceArabic": "أشهر"
+  },
+  {
+    "headwordIndex": 669,
+    "english": "LOG",
+    "referenceArabic": "سجل"
+  },
+  {
+    "headwordIndex": 670,
+    "english": "SAFETY",
+    "referenceArabic": "السلامة"
+  },
+  {
+    "headwordIndex": 671,
+    "english": "FRIENDS",
+    "referenceArabic": "الأصدقاء"
+  },
+  {
+    "headwordIndex": 672,
+    "english": "SURE",
+    "referenceArabic": "متأكد"
+  },
+  {
+    "headwordIndex": 673,
+    "english": "TRADE",
+    "referenceArabic": "التجارة"
+  },
+  {
+    "headwordIndex": 674,
+    "english": "EDITION",
+    "referenceArabic": "الطبعة"
+  },
+  {
+    "headwordIndex": 675,
+    "english": "CARS",
+    "referenceArabic": "السيارات"
+  },
+  {
+    "headwordIndex": 676,
+    "english": "MESSAGES",
+    "referenceArabic": "الرسائل"
+  },
+  {
+    "headwordIndex": 677,
+    "english": "MARKETING",
+    "referenceArabic": "التسويق"
+  },
+  {
+    "headwordIndex": 678,
+    "english": "TELL",
+    "referenceArabic": "أخبر"
+  },
+  {
+    "headwordIndex": 679,
+    "english": "FURTHER",
+    "referenceArabic": "المزيد"
+  },
+  {
+    "headwordIndex": 680,
+    "english": "UPDATED",
+    "referenceArabic": "تحديث"
+  },
+  {
+    "headwordIndex": 681,
+    "english": "ASSOCIATION",
+    "referenceArabic": "جمعية"
+  },
+  {
+    "headwordIndex": 682,
+    "english": "ABLE",
+    "referenceArabic": "قادر"
+  },
+  {
+    "headwordIndex": 683,
+    "english": "HAVING",
+    "referenceArabic": "وجود"
+  },
+  {
+    "headwordIndex": 684,
+    "english": "PROVIDES",
+    "referenceArabic": "يوفر"
+  },
+  {
+    "headwordIndex": 686,
+    "english": "FUN",
+    "referenceArabic": "متعة"
+  },
+  {
+    "headwordIndex": 687,
+    "english": "ALREADY",
+    "referenceArabic": "بالفعل"
+  },
+  {
+    "headwordIndex": 688,
+    "english": "GREEN",
+    "referenceArabic": "أخضر"
+  },
+  {
+    "headwordIndex": 689,
+    "english": "STUDIES",
+    "referenceArabic": "دراسات"
+  },
+  {
+    "headwordIndex": 690,
+    "english": "CLOSE",
+    "referenceArabic": "إغلاق"
+  },
+  {
+    "headwordIndex": 691,
+    "english": "COMMON",
+    "referenceArabic": "مشترك"
+  },
+  {
+    "headwordIndex": 692,
+    "english": "DRIVE",
+    "referenceArabic": "محرك الأقراص"
+  },
+  {
+    "headwordIndex": 693,
+    "english": "SPECIFIC",
+    "referenceArabic": "محددة"
+  },
+  {
+    "headwordIndex": 694,
+    "english": "SEVERAL",
+    "referenceArabic": "عدة"
+  },
+  {
+    "headwordIndex": 695,
+    "english": "GOLD",
+    "referenceArabic": "ذهبي"
+  },
+  {
+    "headwordIndex": 697,
+    "english": "LIVING",
+    "referenceArabic": "المعيشة"
+  },
+  {
+    "headwordIndex": 698,
+    "english": "COLLECTION",
+    "referenceArabic": "جمع"
+  },
+  {
+    "headwordIndex": 699,
+    "english": "CALLED",
+    "referenceArabic": "يسمى"
+  },
+  {
+    "headwordIndex": 700,
+    "english": "SHORT",
+    "referenceArabic": "قصيرة"
+  },
+  {
+    "headwordIndex": 701,
+    "english": "ARTS",
+    "referenceArabic": "الفنون"
+  },
+  {
+    "headwordIndex": 702,
+    "english": "LOT",
+    "referenceArabic": "الكثير"
+  },
+  {
+    "headwordIndex": 703,
+    "english": "ASK",
+    "referenceArabic": "اسأل"
+  },
+  {
+    "headwordIndex": 704,
+    "english": "DISPLAY",
+    "referenceArabic": "عرض"
+  },
+  {
+    "headwordIndex": 705,
+    "english": "LIMITED",
+    "referenceArabic": "محدودة"
+  },
+  {
+    "headwordIndex": 706,
+    "english": "POWERED",
+    "referenceArabic": "مدعوم"
+  },
+  {
+    "headwordIndex": 707,
+    "english": "SOLUTIONS",
+    "referenceArabic": "الحلول"
+  },
+  {
+    "headwordIndex": 708,
+    "english": "MEANS",
+    "referenceArabic": "يعني"
+  },
+  {
+    "headwordIndex": 709,
+    "english": "DIRECTOR",
+    "referenceArabic": "مدير"
+  },
+  {
+    "headwordIndex": 710,
+    "english": "DAILY",
+    "referenceArabic": "يوميا"
+  },
+  {
+    "headwordIndex": 711,
+    "english": "BEACH",
+    "referenceArabic": "الشاطئ"
+  },
+  {
+    "headwordIndex": 712,
+    "english": "PAST",
+    "referenceArabic": "الماضي"
+  },
+  {
+    "headwordIndex": 713,
+    "english": "NATURAL",
+    "referenceArabic": "طبيعي"
+  },
+  {
+    "headwordIndex": 714,
+    "english": "WHETHER",
+    "referenceArabic": "ما إذا"
+  },
+  {
+    "headwordIndex": 715,
+    "english": "DUE",
+    "referenceArabic": "المستحق"
+  },
+  {
+    "headwordIndex": 716,
+    "english": "ELECTRONICS",
+    "referenceArabic": "الإلكترونيات"
+  },
+  {
+    "headwordIndex": 717,
+    "english": "FIVE",
+    "referenceArabic": "خمسة."
+  },
+  {
+    "headwordIndex": 718,
+    "english": "UPON",
+    "referenceArabic": "بعد الظهر"
+  },
+  {
+    "headwordIndex": 719,
+    "english": "PERIOD",
+    "referenceArabic": "الفترة"
+  },
+  {
+    "headwordIndex": 720,
+    "english": "PLANNING",
+    "referenceArabic": "التخطيط"
+  },
+  {
+    "headwordIndex": 721,
+    "english": "DATABASE",
+    "referenceArabic": "قاعدة بيانات"
+  },
+  {
+    "headwordIndex": 722,
+    "english": "SAYS",
+    "referenceArabic": "يقول"
+  },
+  {
+    "headwordIndex": 723,
+    "english": "OFFICIAL",
+    "referenceArabic": "موظف رسمي"
+  },
+  {
+    "headwordIndex": 724,
+    "english": "WEATHER",
+    "referenceArabic": "الطقس"
+  },
+  {
+    "headwordIndex": 726,
+    "english": "LAND",
+    "referenceArabic": "الأرض"
+  },
+  {
+    "headwordIndex": 727,
+    "english": "AVERAGE",
+    "referenceArabic": "المتوسط"
+  },
+  {
+    "headwordIndex": 728,
+    "english": "DONE",
+    "referenceArabic": "أُنجز"
+  },
+  {
+    "headwordIndex": 729,
+    "english": "TECHNICAL",
+    "referenceArabic": "التقنية"
+  },
+  {
+    "headwordIndex": 730,
+    "english": "WINDOW",
+    "referenceArabic": "نافذة"
+  },
+  {
+    "headwordIndex": 733,
+    "english": "REGION",
+    "referenceArabic": "المنطقة"
+  },
+  {
+    "headwordIndex": 734,
+    "english": "ISLAND",
+    "referenceArabic": "الجزيرة"
+  },
+  {
+    "headwordIndex": 735,
+    "english": "RECORD",
+    "referenceArabic": "سجل"
+  },
+  {
+    "headwordIndex": 736,
+    "english": "DIRECT",
+    "referenceArabic": "مباشرة"
+  },
+  {
+    "headwordIndex": 738,
+    "english": "CONFERENCE",
+    "referenceArabic": "المؤتمر"
+  },
+  {
+    "headwordIndex": 739,
+    "english": "ENVIRONMENT",
+    "referenceArabic": "البيئة"
+  },
+  {
+    "headwordIndex": 740,
+    "english": "RECORDS",
+    "referenceArabic": "السجلات"
+  },
+  {
+    "headwordIndex": 741,
+    "english": "DISTRICT",
+    "referenceArabic": "منطقة حي"
+  },
+  {
+    "headwordIndex": 742,
+    "english": "CALENDAR",
+    "referenceArabic": "تقويم"
+  },
+  {
+    "headwordIndex": 743,
+    "english": "COSTS",
+    "referenceArabic": "التكاليف"
+  },
+  {
+    "headwordIndex": 744,
+    "english": "STYLE",
+    "referenceArabic": "الاسلوب"
+  },
+  {
+    "headwordIndex": 745,
+    "english": "FRONT",
+    "referenceArabic": "الجبهة"
+  },
+  {
+    "headwordIndex": 746,
+    "english": "STATEMENT",
+    "referenceArabic": "بيان"
+  },
+  {
+    "headwordIndex": 747,
+    "english": "UPDATE",
+    "referenceArabic": "تحديث"
+  },
+  {
+    "headwordIndex": 748,
+    "english": "PARTS",
+    "referenceArabic": "أجزاء"
+  },
+  {
+    "headwordIndex": 750,
+    "english": "EVER",
+    "referenceArabic": "أبداً"
+  },
+  {
+    "headwordIndex": 751,
+    "english": "DOWNLOADS",
+    "referenceArabic": "التنزيلات"
+  },
+  {
+    "headwordIndex": 752,
+    "english": "EARLY",
+    "referenceArabic": "مبكر"
+  },
+  {
+    "headwordIndex": 753,
+    "english": "MILES",
+    "referenceArabic": "أميال"
+  },
+  {
+    "headwordIndex": 754,
+    "english": "SOUND",
+    "referenceArabic": "الصوت"
+  },
+  {
+    "headwordIndex": 755,
+    "english": "RESOURCE",
+    "referenceArabic": "مورد"
+  },
+  {
+    "headwordIndex": 756,
+    "english": "PRESENT",
+    "referenceArabic": "الحاضر"
+  },
+  {
+    "headwordIndex": 757,
+    "english": "APPLICATIONS",
+    "referenceArabic": "التطبيقات"
+  },
+  {
+    "headwordIndex": 758,
+    "english": "EITHER",
+    "referenceArabic": "إما"
+  },
+  {
+    "headwordIndex": 759,
+    "english": "AGO",
+    "referenceArabic": "منذ"
+  },
+  {
+    "headwordIndex": 760,
+    "english": "DOCUMENT",
+    "referenceArabic": "الوثيقة"
+  },
+  {
+    "headwordIndex": 761,
+    "english": "WORD",
+    "referenceArabic": "كلمة"
+  },
+  {
+    "headwordIndex": 762,
+    "english": "WORKS",
+    "referenceArabic": "أعمال"
+  },
+  {
+    "headwordIndex": 763,
+    "english": "MATERIAL",
+    "referenceArabic": "مواد"
+  },
+  {
+    "headwordIndex": 764,
+    "english": "BILL",
+    "referenceArabic": "بيل"
+  },
+  {
+    "headwordIndex": 765,
+    "english": "WRITTEN",
+    "referenceArabic": "كتابة"
+  },
+  {
+    "headwordIndex": 766,
+    "english": "TALK",
+    "referenceArabic": "الحديث"
+  },
+  {
+    "headwordIndex": 767,
+    "english": "FEDERAL",
+    "referenceArabic": "الاتحادية"
+  },
+  {
+    "headwordIndex": 768,
+    "english": "HOSTING",
+    "referenceArabic": "استضافة"
+  },
+  {
+    "headwordIndex": 769,
+    "english": "RULES",
+    "referenceArabic": "القواعد"
+  },
+  {
+    "headwordIndex": 770,
+    "english": "FINAL",
+    "referenceArabic": "نهائي"
+  },
+  {
+    "headwordIndex": 771,
+    "english": "ADULT",
+    "referenceArabic": "الكبار"
+  },
+  {
+    "headwordIndex": 772,
+    "english": "TICKETS",
+    "referenceArabic": "تذاكر"
+  },
+  {
+    "headwordIndex": 773,
+    "english": "THING",
+    "referenceArabic": "شيء"
+  },
+  {
+    "headwordIndex": 774,
+    "english": "CENTRE",
+    "referenceArabic": "مركز"
+  },
+  {
+    "headwordIndex": 775,
+    "english": "REQUIREMENTS",
+    "referenceArabic": "الاحتياجات"
+  },
+  {
+    "headwordIndex": 779,
+    "english": "KIDS",
+    "referenceArabic": "الأطفال"
+  },
+  {
+    "headwordIndex": 780,
+    "english": "FINANCE",
+    "referenceArabic": "التمويل"
+  },
+  {
+    "headwordIndex": 781,
+    "english": "TRUE",
+    "referenceArabic": "صحيح"
+  },
+  {
+    "headwordIndex": 782,
+    "english": "MINUTES",
+    "referenceArabic": "دقائق"
+  },
+  {
+    "headwordIndex": 783,
+    "english": "ELSE",
+    "referenceArabic": "غير ذلك"
+  },
+  {
+    "headwordIndex": 784,
+    "english": "MARK",
+    "referenceArabic": "علامة العلامة"
+  },
+  {
+    "headwordIndex": 785,
+    "english": "THIRD",
+    "referenceArabic": "الثالثة"
+  },
+  {
+    "headwordIndex": 786,
+    "english": "ROCK",
+    "referenceArabic": "روك"
+  },
+  {
+    "headwordIndex": 787,
+    "english": "GIFTS",
+    "referenceArabic": "الهدايا"
+  },
+  {
+    "headwordIndex": 789,
+    "english": "READING",
+    "referenceArabic": "القراءة"
+  },
+  {
+    "headwordIndex": 790,
+    "english": "TOPICS",
+    "referenceArabic": "مواضيع"
+  },
+  {
+    "headwordIndex": 791,
+    "english": "BAD",
+    "referenceArabic": "سيئة"
+  },
+  {
+    "headwordIndex": 792,
+    "english": "INDIVIDUAL",
+    "referenceArabic": "فرد"
+  },
+  {
+    "headwordIndex": 793,
+    "english": "TIPS",
+    "referenceArabic": "نصائح"
+  },
+  {
+    "headwordIndex": 794,
+    "english": "PLUS",
+    "referenceArabic": "زائد"
+  },
+  {
+    "headwordIndex": 796,
+    "english": "COVER",
+    "referenceArabic": "غطاء"
+  },
+  {
+    "headwordIndex": 797,
+    "english": "USUALLY",
+    "referenceArabic": "عادة"
+  },
+  {
+    "headwordIndex": 798,
+    "english": "EDIT",
+    "referenceArabic": "حرّر"
+  },
+  {
+    "headwordIndex": 799,
+    "english": "TOGETHER",
+    "referenceArabic": "معاً"
+  },
+  {
+    "headwordIndex": 800,
+    "english": "VIDEOS",
+    "referenceArabic": "فيديوهات"
+  },
+  {
+    "headwordIndex": 801,
+    "english": "PERCENT",
+    "referenceArabic": "النسبة المئوية"
+  },
+  {
+    "headwordIndex": 802,
+    "english": "FAST",
+    "referenceArabic": "سريع"
+  },
+  {
+    "headwordIndex": 804,
+    "english": "FACT",
+    "referenceArabic": "حقيقة"
+  },
+  {
+    "headwordIndex": 805,
+    "english": "UNIT",
+    "referenceArabic": "وحدة"
+  },
+  {
+    "headwordIndex": 806,
+    "english": "GETTING",
+    "referenceArabic": "الحصول على"
+  },
+  {
+    "headwordIndex": 807,
+    "english": "GLOBAL",
+    "referenceArabic": "عالمي"
+  },
+  {
+    "headwordIndex": 809,
+    "english": "MEET",
+    "referenceArabic": "لقاء"
+  },
+  {
+    "headwordIndex": 810,
+    "english": "FAR",
+    "referenceArabic": "بعيداً"
+  },
+  {
+    "headwordIndex": 811,
+    "english": "ECONOMIC",
+    "referenceArabic": "الاقتصادية"
+  },
+  {
+    "headwordIndex": 812,
+    "english": "PLAYER",
+    "referenceArabic": "لاعب"
+  },
+  {
+    "headwordIndex": 813,
+    "english": "PROJECTS",
+    "referenceArabic": "المشاريع"
+  },
+  {
+    "headwordIndex": 814,
+    "english": "LYRICS",
+    "referenceArabic": "كلمات"
+  },
+  {
+    "headwordIndex": 815,
+    "english": "OFTEN",
+    "referenceArabic": "في أغلب الأحيان"
+  },
+  {
+    "headwordIndex": 816,
+    "english": "SUBSCRIBE",
+    "referenceArabic": "الاشتراك"
+  },
+  {
+    "headwordIndex": 817,
+    "english": "SUBMIT",
+    "referenceArabic": "قُدم"
+  },
+  {
+    "headwordIndex": 819,
+    "english": "AMOUNT",
+    "referenceArabic": "المبلغ"
+  },
+  {
+    "headwordIndex": 820,
+    "english": "WATCH",
+    "referenceArabic": "مشاهدة"
+  },
+  {
+    "headwordIndex": 821,
+    "english": "INCLUDED",
+    "referenceArabic": "وشملت"
+  },
+  {
+    "headwordIndex": 822,
+    "english": "FEEL",
+    "referenceArabic": "شعور"
+  },
+  {
+    "headwordIndex": 823,
+    "english": "THOUGH",
+    "referenceArabic": "مع ذلك"
+  },
+  {
+    "headwordIndex": 824,
+    "english": "BANK",
+    "referenceArabic": "مصرف"
+  },
+  {
+    "headwordIndex": 825,
+    "english": "RISK",
+    "referenceArabic": "المخاطر"
+  },
+  {
+    "headwordIndex": 826,
+    "english": "THANKS",
+    "referenceArabic": "شكرًا"
+  },
+  {
+    "headwordIndex": 827,
+    "english": "EVERYTHING",
+    "referenceArabic": "كل شيء"
+  },
+  {
+    "headwordIndex": 828,
+    "english": "DEALS",
+    "referenceArabic": "صفقات"
+  },
+  {
+    "headwordIndex": 829,
+    "english": "VARIOUS",
+    "referenceArabic": "مختلف"
+  },
+  {
+    "headwordIndex": 830,
+    "english": "WORDS",
+    "referenceArabic": "الكلمات"
+  },
+  {
+    "headwordIndex": 832,
+    "english": "PRODUCTION",
+    "referenceArabic": "الإنتاج"
+  },
+  {
+    "headwordIndex": 833,
+    "english": "COMMERCIAL",
+    "referenceArabic": "تجاري"
+  },
+  {
+    "headwordIndex": 835,
+    "english": "WEIGHT",
+    "referenceArabic": "الوزن"
+  },
+  {
+    "headwordIndex": 836,
+    "english": "TOWN",
+    "referenceArabic": "المدينة"
+  },
+  {
+    "headwordIndex": 837,
+    "english": "HEART",
+    "referenceArabic": "القلب"
+  },
+  {
+    "headwordIndex": 838,
+    "english": "ADVERTISING",
+    "referenceArabic": "الإعلانات"
+  },
+  {
+    "headwordIndex": 839,
+    "english": "RECEIVED",
+    "referenceArabic": "وردت"
+  },
+  {
+    "headwordIndex": 840,
+    "english": "CHOOSE",
+    "referenceArabic": "اختر"
+  },
+  {
+    "headwordIndex": 841,
+    "english": "TREATMENT",
+    "referenceArabic": "العلاج"
+  },
+  {
+    "headwordIndex": 842,
+    "english": "NEWSLETTER",
+    "referenceArabic": "النشرة الإخبارية"
+  },
+  {
+    "headwordIndex": 843,
+    "english": "ARCHIVES",
+    "referenceArabic": "المحفوظات"
+  },
+  {
+    "headwordIndex": 844,
+    "english": "POINTS",
+    "referenceArabic": "النقاط"
+  },
+  {
+    "headwordIndex": 845,
+    "english": "KNOWLEDGE",
+    "referenceArabic": "المعرفة"
+  },
+  {
+    "headwordIndex": 847,
+    "english": "ERROR",
+    "referenceArabic": "خطأ"
+  },
+  {
+    "headwordIndex": 848,
+    "english": "CAMERA",
+    "referenceArabic": "كاميرا الكاميرا"
+  },
+  {
+    "headwordIndex": 849,
+    "english": "GIRL",
+    "referenceArabic": "فتاة"
+  },
+  {
+    "headwordIndex": 850,
+    "english": "CURRENTLY",
+    "referenceArabic": "حاليا"
+  },
+  {
+    "headwordIndex": 851,
+    "english": "CONSTRUCTION",
+    "referenceArabic": "البناء"
+  },
+  {
+    "headwordIndex": 852,
+    "english": "TOYS",
+    "referenceArabic": "لعب اطفال"
+  },
+  {
+    "headwordIndex": 853,
+    "english": "REGISTERED",
+    "referenceArabic": "مسجل"
+  },
+  {
+    "headwordIndex": 854,
+    "english": "CLEAR",
+    "referenceArabic": "واضح"
+  },
+  {
+    "headwordIndex": 855,
+    "english": "GOLF",
+    "referenceArabic": "جولف"
+  },
+  {
+    "headwordIndex": 856,
+    "english": "RECEIVE",
+    "referenceArabic": "تلقي"
+  },
+  {
+    "headwordIndex": 857,
+    "english": "DOMAIN",
+    "referenceArabic": "المجال"
+  },
+  {
+    "headwordIndex": 858,
+    "english": "METHODS",
+    "referenceArabic": "الأساليب"
+  },
+  {
+    "headwordIndex": 859,
+    "english": "CHAPTER",
+    "referenceArabic": "الفصل"
+  },
+  {
+    "headwordIndex": 860,
+    "english": "MAKES",
+    "referenceArabic": "يجعل"
+  },
+  {
+    "headwordIndex": 861,
+    "english": "PROTECTION",
+    "referenceArabic": "الحماية"
+  },
+  {
+    "headwordIndex": 862,
+    "english": "POLICIES",
+    "referenceArabic": "السياسات"
+  },
+  {
+    "headwordIndex": 864,
+    "english": "WIDE",
+    "referenceArabic": "واسعة"
+  },
+  {
+    "headwordIndex": 865,
+    "english": "BEAUTY",
+    "referenceArabic": "الجمال"
+  },
+  {
+    "headwordIndex": 866,
+    "english": "MANAGER",
+    "referenceArabic": "مدير"
+  },
+  {
+    "headwordIndex": 868,
+    "english": "POSITION",
+    "referenceArabic": "المنصب"
+  },
+  {
+    "headwordIndex": 869,
+    "english": "TAKEN",
+    "referenceArabic": "متخذ"
+  },
+  {
+    "headwordIndex": 870,
+    "english": "SORT",
+    "referenceArabic": "نوع"
+  },
+  {
+    "headwordIndex": 871,
+    "english": "LISTINGS",
+    "referenceArabic": "القوائم"
+  },
+  {
+    "headwordIndex": 872,
+    "english": "MODELS",
+    "referenceArabic": "نماذج"
+  },
+  {
+    "headwordIndex": 874,
+    "english": "KNOWN",
+    "referenceArabic": "معروف"
+  },
+  {
+    "headwordIndex": 875,
+    "english": "HALF",
+    "referenceArabic": "نصف"
+  },
+  {
+    "headwordIndex": 876,
+    "english": "CASES",
+    "referenceArabic": "الحالات"
+  },
+  {
+    "headwordIndex": 878,
+    "english": "ENGINEERING",
+    "referenceArabic": "الهندسة الهندسية"
+  },
+  {
+    "headwordIndex": 880,
+    "english": "SIMPLE",
+    "referenceArabic": "بسيطة"
+  },
+  {
+    "headwordIndex": 881,
+    "english": "QUICK",
+    "referenceArabic": "بسرعة"
+  },
+  {
+    "headwordIndex": 882,
+    "english": "NONE",
+    "referenceArabic": "لا أحد"
+  },
+  {
+    "headwordIndex": 883,
+    "english": "WIRELESS",
+    "referenceArabic": "لاسلكية"
+  },
+  {
+    "headwordIndex": 884,
+    "english": "LICENSE",
+    "referenceArabic": "ترخيص الترخيص"
+  },
+  {
+    "headwordIndex": 886,
+    "english": "FRIDAY",
+    "referenceArabic": "جمعة"
+  },
+  {
+    "headwordIndex": 887,
+    "english": "LAKE",
+    "referenceArabic": "بحيرة"
+  },
+  {
+    "headwordIndex": 888,
+    "english": "WHOLE",
+    "referenceArabic": "كامل"
+  },
+  {
+    "headwordIndex": 889,
+    "english": "ANNUAL",
+    "referenceArabic": "سنوي"
+  },
+  {
+    "headwordIndex": 890,
+    "english": "PUBLISHED",
+    "referenceArabic": "منشورة"
+  },
+  {
+    "headwordIndex": 891,
+    "english": "LATER",
+    "referenceArabic": "لاحقاً"
+  },
+  {
+    "headwordIndex": 892,
+    "english": "BASIC",
+    "referenceArabic": "الأساسي"
+  },
+  {
+    "headwordIndex": 894,
+    "english": "SHOWS",
+    "referenceArabic": "العروض"
+  },
+  {
+    "headwordIndex": 895,
+    "english": "CORPORATE",
+    "referenceArabic": "الشركات"
+  },
+  {
+    "headwordIndex": 897,
+    "english": "CHURCH",
+    "referenceArabic": "الكنيسة"
+  },
+  {
+    "headwordIndex": 898,
+    "english": "METHOD",
+    "referenceArabic": "الطريقة"
+  },
+  {
+    "headwordIndex": 899,
+    "english": "PURCHASE",
+    "referenceArabic": "شراء"
+  },
+  {
+    "headwordIndex": 900,
+    "english": "CUSTOMERS",
+    "referenceArabic": "العملاء"
+  },
+  {
+    "headwordIndex": 901,
+    "english": "ACTIVE",
+    "referenceArabic": "نشط"
+  },
+  {
+    "headwordIndex": 902,
+    "english": "RESPONSE",
+    "referenceArabic": "الرد"
+  },
+  {
+    "headwordIndex": 903,
+    "english": "PRACTICE",
+    "referenceArabic": "الممارسة"
+  },
+  {
+    "headwordIndex": 904,
+    "english": "HARDWARE",
+    "referenceArabic": "الأجهزة"
+  },
+  {
+    "headwordIndex": 905,
+    "english": "FIGURE",
+    "referenceArabic": "الشكل"
+  },
+  {
+    "headwordIndex": 906,
+    "english": "MATERIALS",
+    "referenceArabic": "مواد"
+  },
+  {
+    "headwordIndex": 907,
+    "english": "FIRE",
+    "referenceArabic": "النار"
+  },
+  {
+    "headwordIndex": 908,
+    "english": "HOLIDAY",
+    "referenceArabic": "عطلة"
+  },
+  {
+    "headwordIndex": 909,
+    "english": "CHAT",
+    "referenceArabic": "دردشة"
+  },
+  {
+    "headwordIndex": 910,
+    "english": "ENOUGH",
+    "referenceArabic": "يكفي"
+  },
+  {
+    "headwordIndex": 911,
+    "english": "DESIGNED",
+    "referenceArabic": "مصممة"
+  },
+  {
+    "headwordIndex": 912,
+    "english": "ALONG",
+    "referenceArabic": "على طول"
+  },
+  {
+    "headwordIndex": 913,
+    "english": "AMONG",
+    "referenceArabic": "بين"
+  },
+  {
+    "headwordIndex": 914,
+    "english": "DEATH",
+    "referenceArabic": "الوفاة"
+  },
+  {
+    "headwordIndex": 915,
+    "english": "WRITING",
+    "referenceArabic": "الكتابة"
+  },
+  {
+    "headwordIndex": 916,
+    "english": "SPEED",
+    "referenceArabic": "السرعة"
+  },
+  {
+    "headwordIndex": 918,
+    "english": "COUNTRIES",
+    "referenceArabic": "البلدان"
+  },
+  {
+    "headwordIndex": 919,
+    "english": "LOSS",
+    "referenceArabic": "الخسارة"
+  },
+  {
+    "headwordIndex": 920,
+    "english": "FACE",
+    "referenceArabic": "وجه"
+  },
+  {
+    "headwordIndex": 921,
+    "english": "BRAND",
+    "referenceArabic": "العلامة التجارية"
+  },
+  {
+    "headwordIndex": 922,
+    "english": "DISCOUNT",
+    "referenceArabic": "خصم"
+  },
+  {
+    "headwordIndex": 923,
+    "english": "HIGHER",
+    "referenceArabic": "أعلى"
+  },
+  {
+    "headwordIndex": 924,
+    "english": "EFFECTS",
+    "referenceArabic": "الآثار"
+  },
+  {
+    "headwordIndex": 925,
+    "english": "CREATED",
+    "referenceArabic": "أنشئ"
+  },
+  {
+    "headwordIndex": 926,
+    "english": "REMEMBER",
+    "referenceArabic": "تذكر"
+  },
+  {
+    "headwordIndex": 927,
+    "english": "STANDARDS",
+    "referenceArabic": "المعايير"
+  },
+  {
+    "headwordIndex": 928,
+    "english": "OIL",
+    "referenceArabic": "النفط"
+  },
+  {
+    "headwordIndex": 929,
+    "english": "BIT",
+    "referenceArabic": "بت"
+  },
+  {
+    "headwordIndex": 930,
+    "english": "YELLOW",
+    "referenceArabic": "أصفر"
+  },
+  {
+    "headwordIndex": 931,
+    "english": "POLITICAL",
+    "referenceArabic": "سياسي"
+  },
+  {
+    "headwordIndex": 932,
+    "english": "INCREASE",
+    "referenceArabic": "الزيادة"
+  },
+  {
+    "headwordIndex": 933,
+    "english": "ADVERTISE",
+    "referenceArabic": "الإعلان"
+  },
+  {
+    "headwordIndex": 934,
+    "english": "KINGDOM",
+    "referenceArabic": "مملكة"
+  },
+  {
+    "headwordIndex": 935,
+    "english": "BASE",
+    "referenceArabic": "قاعدة"
+  },
+  {
+    "headwordIndex": 936,
+    "english": "NEAR",
+    "referenceArabic": "قريب"
+  },
+  {
+    "headwordIndex": 937,
+    "english": "ENVIRONMENTAL",
+    "referenceArabic": "البيئة"
+  },
+  {
+    "headwordIndex": 938,
+    "english": "THOUGHT",
+    "referenceArabic": "فكر"
+  },
+  {
+    "headwordIndex": 939,
+    "english": "STUFF",
+    "referenceArabic": "الاشياء"
+  },
+  {
+    "headwordIndex": 940,
+    "english": "FRENCH",
+    "referenceArabic": "الفرنسية"
+  },
+  {
+    "headwordIndex": 941,
+    "english": "STORAGE",
+    "referenceArabic": "التخزين"
+  },
+  {
+    "headwordIndex": 943,
+    "english": "DOING",
+    "referenceArabic": "القيام به"
+  },
+  {
+    "headwordIndex": 944,
+    "english": "LOANS",
+    "referenceArabic": "القروض"
+  },
+  {
+    "headwordIndex": 945,
+    "english": "SHOES",
+    "referenceArabic": "أحذية"
+  },
+  {
+    "headwordIndex": 946,
+    "english": "ENTRY",
+    "referenceArabic": "إدخال"
+  },
+  {
+    "headwordIndex": 947,
+    "english": "STAY",
+    "referenceArabic": "البقاء"
+  },
+  {
+    "headwordIndex": 948,
+    "english": "NATURE",
+    "referenceArabic": "الطبيعة"
+  },
+  {
+    "headwordIndex": 949,
+    "english": "ORDERS",
+    "referenceArabic": "أوامر"
+  },
+  {
+    "headwordIndex": 950,
+    "english": "AVAILABILITY",
+    "referenceArabic": "التوافر"
+  },
+  {
+    "headwordIndex": 952,
+    "english": "SUMMARY",
+    "referenceArabic": "موجز"
+  },
+  {
+    "headwordIndex": 953,
+    "english": "TURN",
+    "referenceArabic": "انعطف"
+  },
+  {
+    "headwordIndex": 954,
+    "english": "MEAN",
+    "referenceArabic": "يعني"
+  },
+  {
+    "headwordIndex": 955,
+    "english": "GROWTH",
+    "referenceArabic": "النمو"
+  },
+  {
+    "headwordIndex": 956,
+    "english": "NOTES",
+    "referenceArabic": "ملاحظات"
+  },
+  {
+    "headwordIndex": 957,
+    "english": "AGENCY",
+    "referenceArabic": "وكالة"
+  },
+  {
+    "headwordIndex": 958,
+    "english": "KING",
+    "referenceArabic": "الملك"
+  },
+  {
+    "headwordIndex": 959,
+    "english": "MONDAY",
+    "referenceArabic": "الأثنين"
+  },
+  {
+    "headwordIndex": 960,
+    "english": "EUROPEAN",
+    "referenceArabic": "الأوروبيّة"
+  },
+  {
+    "headwordIndex": 961,
+    "english": "ACTIVITY",
+    "referenceArabic": "النشاط"
+  },
+  {
+    "headwordIndex": 962,
+    "english": "COPY",
+    "referenceArabic": "نسخ"
+  },
+  {
+    "headwordIndex": 963,
+    "english": "ALTHOUGH",
+    "referenceArabic": "على الرغم من"
+  },
+  {
+    "headwordIndex": 964,
+    "english": "DRUG",
+    "referenceArabic": "المخدرات"
+  },
+  {
+    "headwordIndex": 966,
+    "english": "WESTERN",
+    "referenceArabic": "الغربية"
+  },
+  {
+    "headwordIndex": 967,
+    "english": "INCOME",
+    "referenceArabic": "الإيرادات"
+  },
+  {
+    "headwordIndex": 968,
+    "english": "FORCE",
+    "referenceArabic": "القوة"
+  },
+  {
+    "headwordIndex": 969,
+    "english": "CASH",
+    "referenceArabic": "النقدية"
+  },
+  {
+    "headwordIndex": 970,
+    "english": "EMPLOYMENT",
+    "referenceArabic": "العمالة"
+  },
+  {
+    "headwordIndex": 971,
+    "english": "OVERALL",
+    "referenceArabic": "عموما"
+  },
+  {
+    "headwordIndex": 972,
+    "english": "BAY",
+    "referenceArabic": "خليج"
+  },
+  {
+    "headwordIndex": 973,
+    "english": "RIVER",
+    "referenceArabic": "نهر"
+  },
+  {
+    "headwordIndex": 974,
+    "english": "COMMISSION",
+    "referenceArabic": "العمولة"
+  },
+  {
+    "headwordIndex": 975,
+    "english": "PACKAGE",
+    "referenceArabic": "حزمة"
+  },
+  {
+    "headwordIndex": 976,
+    "english": "CONTENTS",
+    "referenceArabic": "المحتويات"
+  },
+  {
+    "headwordIndex": 977,
+    "english": "SEEN",
+    "referenceArabic": "شوهد"
+  },
+  {
+    "headwordIndex": 978,
+    "english": "PLAYERS",
+    "referenceArabic": "اللاعبون"
+  },
+  {
+    "headwordIndex": 979,
+    "english": "ENGINE",
+    "referenceArabic": "المحرك"
+  },
+  {
+    "headwordIndex": 980,
+    "english": "PORT",
+    "referenceArabic": "ميناء"
+  },
+  {
+    "headwordIndex": 981,
+    "english": "ALBUM",
+    "referenceArabic": "الألبوم"
+  },
+  {
+    "headwordIndex": 982,
+    "english": "REGIONAL",
+    "referenceArabic": "الإقليمية"
+  },
+  {
+    "headwordIndex": 983,
+    "english": "STOP",
+    "referenceArabic": "توقف"
+  },
+  {
+    "headwordIndex": 984,
+    "english": "SUPPLIES",
+    "referenceArabic": "اللوازم"
+  },
+  {
+    "headwordIndex": 985,
+    "english": "STARTED",
+    "referenceArabic": "بدأت"
+  },
+  {
+    "headwordIndex": 986,
+    "english": "ADMINISTRATION",
+    "referenceArabic": "الإدارة"
+  },
+  {
+    "headwordIndex": 987,
+    "english": "BAR",
+    "referenceArabic": "بار"
+  },
+  {
+    "headwordIndex": 989,
+    "english": "VIEWS",
+    "referenceArabic": "المشاهدات"
+  },
+  {
+    "headwordIndex": 990,
+    "english": "PLANS",
+    "referenceArabic": "الخطط"
+  },
+  {
+    "headwordIndex": 991,
+    "english": "DOUBLE",
+    "referenceArabic": "مزدوج"
+  },
+  {
+    "headwordIndex": 992,
+    "english": "DOG",
+    "referenceArabic": "كلب"
+  },
+  {
+    "headwordIndex": 993,
+    "english": "BUILD",
+    "referenceArabic": "بناء"
+  },
+  {
+    "headwordIndex": 994,
+    "english": "SCREEN",
+    "referenceArabic": "شاشة الشاشة"
+  },
+  {
+    "headwordIndex": 995,
+    "english": "EXCHANGE",
+    "referenceArabic": "التبادل"
+  },
+  {
+    "headwordIndex": 996,
+    "english": "TYPES",
+    "referenceArabic": "أنواع"
+  },
+  {
+    "headwordIndex": 997,
+    "english": "SOON",
+    "referenceArabic": "قريباً"
+  },
+  {
+    "headwordIndex": 998,
+    "english": "SPONSORED",
+    "referenceArabic": "برعاية"
+  },
+  {
+    "headwordIndex": 999,
+    "english": "LINES",
+    "referenceArabic": "خطوط"
+  },
+  {
+    "headwordIndex": 1000,
+    "english": "ELECTRONIC",
+    "referenceArabic": "الإلكترونية"
+  },
+  {
+    "headwordIndex": 1001,
+    "english": "CONTINUE",
+    "referenceArabic": "تابع"
+  },
+  {
+    "headwordIndex": 1002,
+    "english": "ACROSS",
+    "referenceArabic": "عبر"
+  },
+  {
+    "headwordIndex": 1003,
+    "english": "BENEFITS",
+    "referenceArabic": "الفوائد"
+  },
+  {
+    "headwordIndex": 1004,
+    "english": "NEEDED",
+    "referenceArabic": "مطلوب"
+  },
+  {
+    "headwordIndex": 1005,
+    "english": "SEASON",
+    "referenceArabic": "الموسم"
+  },
+  {
+    "headwordIndex": 1006,
+    "english": "APPLY",
+    "referenceArabic": "تطبق"
+  },
+  {
+    "headwordIndex": 1007,
+    "english": "SOMEONE",
+    "referenceArabic": "شخص ما"
+  },
+  {
+    "headwordIndex": 1008,
+    "english": "HELD",
+    "referenceArabic": "محتفظ بها"
+  },
+  {
+    "headwordIndex": 1009,
+    "english": "ANYTHING",
+    "referenceArabic": "أي شيء"
+  },
+  {
+    "headwordIndex": 1010,
+    "english": "PRINTER",
+    "referenceArabic": "طابعة"
+  },
+  {
+    "headwordIndex": 1011,
+    "english": "CONDITION",
+    "referenceArabic": "شرط"
+  },
+  {
+    "headwordIndex": 1012,
+    "english": "EFFECTIVE",
+    "referenceArabic": "فعالة"
+  },
+  {
+    "headwordIndex": 1013,
+    "english": "BELIEVE",
+    "referenceArabic": "آمن"
+  },
+  {
+    "headwordIndex": 1014,
+    "english": "ORGANIZATION",
+    "referenceArabic": "التنظيم"
+  },
+  {
+    "headwordIndex": 1015,
+    "english": "EFFECT",
+    "referenceArabic": "تأثير"
+  },
+  {
+    "headwordIndex": 1016,
+    "english": "ASKED",
+    "referenceArabic": "سؤل"
+  },
+  {
+    "headwordIndex": 1018,
+    "english": "MIND",
+    "referenceArabic": "العقل"
+  },
+  {
+    "headwordIndex": 1019,
+    "english": "SUNDAY",
+    "referenceArabic": "الأحد:"
+  },
+  {
+    "headwordIndex": 1020,
+    "english": "SELECTION",
+    "referenceArabic": "اختيار"
+  },
+  {
+    "headwordIndex": 1021,
+    "english": "CASINO",
+    "referenceArabic": "كازينو"
+  },
+  {
+    "headwordIndex": 1022,
+    "english": "LOST",
+    "referenceArabic": "مفقود"
+  },
+  {
+    "headwordIndex": 1023,
+    "english": "TOUR",
+    "referenceArabic": "جولة سياحية"
+  },
+  {
+    "headwordIndex": 1024,
+    "english": "MENU",
+    "referenceArabic": "القائمة"
+  },
+  {
+    "headwordIndex": 1025,
+    "english": "VOLUME",
+    "referenceArabic": "الحجم"
+  },
+  {
+    "headwordIndex": 1026,
+    "english": "CROSS",
+    "referenceArabic": "الصليب"
+  },
+  {
+    "headwordIndex": 1027,
+    "english": "ANYONE",
+    "referenceArabic": "أي شخص"
+  },
+  {
+    "headwordIndex": 1028,
+    "english": "MORTGAGE",
+    "referenceArabic": "الرهن العقاري"
+  },
+  {
+    "headwordIndex": 1029,
+    "english": "HOPE",
+    "referenceArabic": "الأمل"
+  },
+  {
+    "headwordIndex": 1030,
+    "english": "SILVER",
+    "referenceArabic": "فضة"
+  },
+  {
+    "headwordIndex": 1031,
+    "english": "CORPORATION",
+    "referenceArabic": "شركة"
+  },
+  {
+    "headwordIndex": 1032,
+    "english": "WISH",
+    "referenceArabic": "تمنياتي"
+  },
+  {
+    "headwordIndex": 1033,
+    "english": "INSIDE",
+    "referenceArabic": "داخل"
+  },
+  {
+    "headwordIndex": 1034,
+    "english": "SOLUTION",
+    "referenceArabic": "الحل"
+  },
+  {
+    "headwordIndex": 1035,
+    "english": "MATURE",
+    "referenceArabic": "ناضجة"
+  },
+  {
+    "headwordIndex": 1036,
+    "english": "ROLE",
+    "referenceArabic": "الدور"
+  },
+  {
+    "headwordIndex": 1037,
+    "english": "RATHER",
+    "referenceArabic": "بل بالأحرى"
+  },
+  {
+    "headwordIndex": 1038,
+    "english": "WEEKS",
+    "referenceArabic": "أسابيع"
+  },
+  {
+    "headwordIndex": 1039,
+    "english": "ADDITION",
+    "referenceArabic": "إضافة"
+  },
+  {
+    "headwordIndex": 1040,
+    "english": "CAME",
+    "referenceArabic": "جاء"
+  },
+  {
+    "headwordIndex": 1041,
+    "english": "SUPPLY",
+    "referenceArabic": "العرض"
+  },
+  {
+    "headwordIndex": 1042,
+    "english": "NOTHING",
+    "referenceArabic": "لا شيء"
+  },
+  {
+    "headwordIndex": 1043,
+    "english": "CERTAIN",
+    "referenceArabic": "معينة"
+  },
+  {
+    "headwordIndex": 1044,
+    "english": "EXECUTIVE",
+    "referenceArabic": "تنفيذي"
+  },
+  {
+    "headwordIndex": 1045,
+    "english": "RUNNING",
+    "referenceArabic": "جاري التشغيل"
+  },
+  {
+    "headwordIndex": 1046,
+    "english": "LOWER",
+    "referenceArabic": "أقل"
+  },
+  {
+    "headwordIndex": 1047,
+    "english": "NECESSARY",
+    "referenceArabic": "ضروري"
+  },
+  {
+    "headwordIndex": 1048,
+    "english": "UNION",
+    "referenceArabic": "الاتحاد"
+  },
+  {
+    "headwordIndex": 1049,
+    "english": "JEWELRY",
+    "referenceArabic": "مجوهرات"
+  },
+  {
+    "headwordIndex": 1050,
+    "english": "ACCORDING",
+    "referenceArabic": "وفقا"
+  },
+  {
+    "headwordIndex": 1051,
+    "english": "CLOTHING",
+    "referenceArabic": "ملابس"
+  },
+  {
+    "headwordIndex": 1053,
+    "english": "PARTICULAR",
+    "referenceArabic": "خاص"
+  },
+  {
+    "headwordIndex": 1054,
+    "english": "FINE",
+    "referenceArabic": "لا بأس"
+  },
+  {
+    "headwordIndex": 1055,
+    "english": "NAMES",
+    "referenceArabic": "الأسماء"
+  },
+  {
+    "headwordIndex": 1057,
+    "english": "HOMEPAGE",
+    "referenceArabic": "الصفحة الرئيسية"
+  },
+  {
+    "headwordIndex": 1058,
+    "english": "HOUR",
+    "referenceArabic": "الساعة"
+  },
+  {
+    "headwordIndex": 1060,
+    "english": "SKILLS",
+    "referenceArabic": "مهارات"
+  },
+  {
+    "headwordIndex": 1063,
+    "english": "ISLANDS",
+    "referenceArabic": "الجزر"
+  },
+  {
+    "headwordIndex": 1064,
+    "english": "ADVICE",
+    "referenceArabic": "نصائح"
+  },
+  {
+    "headwordIndex": 1065,
+    "english": "CAREER",
+    "referenceArabic": "مسيرته المهنية"
+  },
+  {
+    "headwordIndex": 1066,
+    "english": "MILITARY",
+    "referenceArabic": "الأفراد العسكريون"
+  },
+  {
+    "headwordIndex": 1067,
+    "english": "RENTAL",
+    "referenceArabic": "تأجير"
+  },
+  {
+    "headwordIndex": 1068,
+    "english": "DECISION",
+    "referenceArabic": "مقرر"
+  },
+  {
+    "headwordIndex": 1069,
+    "english": "LEAVE",
+    "referenceArabic": "الإجازة"
+  },
+  {
+    "headwordIndex": 1070,
+    "english": "BRITISH",
+    "referenceArabic": "البريطانيون"
+  },
+  {
+    "headwordIndex": 1071,
+    "english": "TEENS",
+    "referenceArabic": "مراهقون"
+  },
+  {
+    "headwordIndex": 1072,
+    "english": "HUGE",
+    "referenceArabic": "ضخمة"
+  },
+  {
+    "headwordIndex": 1074,
+    "english": "WOMAN",
+    "referenceArabic": "امرأة"
+  },
+  {
+    "headwordIndex": 1075,
+    "english": "FACILITIES",
+    "referenceArabic": "مرافق"
+  },
+  {
+    "headwordIndex": 1076,
+    "english": "ZIP",
+    "referenceArabic": "الرمز البريدي"
+  },
+  {
+    "headwordIndex": 1077,
+    "english": "BID",
+    "referenceArabic": "المزايدة"
+  },
+  {
+    "headwordIndex": 1078,
+    "english": "KIND",
+    "referenceArabic": "النوع"
+  },
+  {
+    "headwordIndex": 1079,
+    "english": "SELLERS",
+    "referenceArabic": "البائعون"
+  },
+  {
+    "headwordIndex": 1080,
+    "english": "MIDDLE",
+    "referenceArabic": "وسط"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "EBAY": "Brand",
+  "YAHOO": "Brand-dominated ambiguous headword",
+  "YORK": "Place name",
+  "INFO": "Informal abbreviation",
+  "TEXAS": "Geographic proper name; defer in favor of general vocabulary.",
+  "WASHINGTON": "Geographic proper name; defer in favor of general vocabulary.",
+  "CALIFORNIA": "Geographic proper name; defer in favor of general vocabulary.",
+  "FLORIDA": "Geographic proper name; defer in favor of general vocabulary.",
+  "AFRICA": "Geographic proper name; defer in favor of general vocabulary.",
+  "SONY": "Product/brand headword; defer in favor of general vocabulary.",
+  "LINUX": "Product/brand headword; defer in favor of general vocabulary.",
+  "TECH": "Shortened/informal headword; defer full learner vocabulary first.",
+  "PICS": "Shortened/informal headword; defer full learner vocabulary first.",
+  "AUTO": "Shortened/informal headword; defer full learner vocabulary first.",
+  "BUSH": "Only supplied Arabic is a personal-name transliteration; defer lexical enrichment."
+}

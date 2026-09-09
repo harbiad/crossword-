@@ -1,0 +1,102 @@
+# Fresh second-pass AI-assisted review of hidden-decision view. Index|code|English POS|reason. Not independent human certification.
+0|D|pronoun|حاجه in the indefinite something use is colloquial and misspelled; a correct MSA شيء ما alternative exists separately.|
+1|D|verb|جيت is a colloquial came form; do not rewrite to جاء.|
+2|D|adverb|دايما is the colloquial always spelling/form; natural MSA دائما is separate.|
+3|X|noun|شاشة الشاشة repeats screen in an unexplained genitive; not a usable lexical equivalent.|
+4|X|noun/verb|ترخيص الترخيص repeats license without a supported sense.|
+5|H|noun|لبنات can be ل plus بنات meaning for girls, as well as bricks; the earlier categorical wrong-meaning rejection is too strong. Review the construction and retain both exclusions until resolved.|
+6|X|adjective/noun|بريطانيا names Britain and is not British; this changes the referent, not just morphology.|
+7|H|noun|الهندسة الهندسية is redundant but its technical intent is not proven impossible. Move categorical corruption rejection to review while retaining both exclusions; do not delete words.|
+8|X|noun|كنيست refers to the Knesset and does not provide church.|
+9|X|noun|كاميرا الكاميرا is an unexplained doubled phrase; the camera relationship is corrupted.|
+10|X|preposition|بعد الظهر means afternoon, not upon.|
+11|H|noun|مسير can denote a course/progress, overlapping a broad career trajectory. The professional reading is not established, so review with existing exclusions instead of categorical rejection.|
+12|X|noun/verb|علامة العلامة is an unexplained repeated possessive phrase, not a natural mark entry.|
+13|X|noun/determiner|لوط is Lot the proper name, not the general-vocabulary lot meaning selected here.|
+14|X|noun|ستار means curtain/covering rather than a star. Semantic mismatch is clear.|
+15|O|adjective/verb|ادنى lacks the hamza of أدنى; retain the original for spelling review, not dialect classification.|
+16|O|determiner/conjunction|اما lacks required hamza for the intended إما reading; preserve and review.|
+17|O|noun|الاشهر lacks hamza in أشهر. The expression is MSA but its written learner form needs review.|
+18|O|noun/verb|يعنى differs from يعني in its final letter; do not silently normalize Arabic letters into a new answer.|
+19|C|preposition|نظرا can introduce considering/given with suitable complement structure; bare usage remains insufficiently supported.|
+20|U|noun|بيتش is an unestablished phonetic English rendering for beach, not a certified MSA equivalent; retain review and exclusion.|
+21|C|verb|يسمى can mean is called, while CALLED may be passive participle or past. A natural cross-language citation is possible; keep construction review, not automatic exclusion for tense.|
+22|O|noun|الالوان has missing hamza and plural/collective issues; review the original spelling.|
+23|O|noun|اوامر lacks hamza in أوامر. Meaning is recognizable but learner orthography is unresolved.|
+24|O|noun|تاثيرات lacks the hamza of تأثيرات; no silent correction.|
+25|O|adjective/verb|اخفض requires an intended imperative or comparative reading and hamza; defer the written form.|
+26|O|noun|الأثنين uses hamzat qat where the weekday convention is الاثنين; spelling review is appropriate.|
+27|C|noun|المخاطر can realize generic risk collectively. Do not reject merely for plural morphology, but leave the intended generic sense unresolved.|
+28|C|noun|مقرر may be a decision/resolution in some institutional uses, but also rapporteur/course/prescribed. Review this sense without a synonym-based ban.|
+29|C|verb/noun|تمنياتي means my wishes; WISH can occur in a greeting, but this added possession/number needs a supported construction.|
+30|R|noun|بار is a familiar loan for bar, but this pass has insufficient MSA-register evidence. Do not label it dialect merely because informal.|
+31|U|noun|بيل supplies a personal-name rendering of Bill, not the general bill/invoice sense. Exclude while register remains unclassified.|
+32|C|noun|منطقة حي is an awkward stacked district/neighborhood expression; preserve for review rather than rewriting.|
+33|C|noun|مواد can naturally represent collective material, but the standalone intended sense remains uncertain. Do not reject plural morphology alone.|
+34|C|adjective|تحديث names updating; an action/result translation for UPDATED needs context. Hold for review rather than a blanket masdar ban.|
+35|U|noun|هوب is not a certified MSA expression for hope; keep both exclusions without inventing a replacement.|
+36|U|noun|زيب is phonetic and does not establish an MSA zip meaning; retain register review and exclusion.|
+37|U|noun|كينج is a name/transliteration rather than a certified general king equivalent; keep the valid ملك relationship separate.|
+38|U|noun/adjective|سيلفر is an English rendering not established as a natural MSA silver equivalent here.|
+39|U|noun|يونيون is not a certified general MSA union expression; الاتحاد and النقابة preserve valid meanings.|
+40|X|noun/verb|علم denotes knowledge/science/flag or unrelated verbal meanings, not copy.|
+41|U|noun|سلف denotes predecessors/advance or a phonetic rendering, not self. Keep excluded while classification is unresolved.|
+42|U|adjective|شورت usually refers to shorts, not the short property. Preserve it for review and retain the semantic exclusion.|
+43|A|adjective|المستحقة naturally expresses owed/due feminine; article and gender do not block either direction.|owed
+44|A|numeral|خمس is a normal gender-conditioned five form; both directions valid despite خمسة alternative.|
+45|A|noun|الصخرة is a rock, valid with an article and no need for unique reverse translation.|
+46|A|noun|البنك is an ordinary financial bank; the article does not disallow it.|financial institution
+47|A|verb|يجعل means makes/causes; distinguish the causative sense from manufacturing, but allow reverse synonyms.|causes
+48|A|verb|الاختيار is an Arabic action noun for choosing, a natural action-label rendering of CHOOSE.|
+49|A|noun|الطلبات means orders/requests, including purchase orders; synonym ambiguity is fair with crossings.|purchase orders
+50|A|noun|العقل expresses mind/intellect. Record the English noun sense rather than carrying the unrelated verb POS.|intellect
+51|A|noun/verb|العلامة naturally names a mark; article variant remains eligible even if a bare form is preferred.|
+52|A|noun/verb|مالية is natural for finance/financial affairs; feminine/noun morphology need not mirror English.|
+53|A|adjective|المدرجة is listed feminine definite, a valid inflection rather than a different meaning.|
+54|A|noun|الدعاية can legitimately mean advertising/publicity; propaganda overlap alone does not exclude it.|
+55|A|numeral|مليونا is a normal case-marked million form; no need for identical surface morphology.|
+56|A|verb/adjective|نشر permits published as an unvocalized past verbal reading. Person/voice context does not force rejection.|
+57|A|noun|المحاضر are minutes/official records, a legitimate distinct RECORDS sense.|official minutes
+58|A|noun|مدير is director/manager; reverse synonyms are expected crossword ambiguity.|manager
+59|A|verb|مشاهدة is the watching event corresponding to the verb WATCH; avoid labelling the timepiece noun for this relationship.|observing
+60|A|adjective|عزباء is unmarried feminine, an ordinary SINGLE sense; preserve gender alternatives.|unmarried
+61|P|verb|فرز names sorting, naturally representing the SORT verb/action; distinct from SORT meaning kind.|arrange into order
+62|A|verb|اتصلت is called by telephone in past finite morphology, a valid CALLED sense.|telephoned
+63|A|verb|واجه is FACE meaning confront, not the body-part noun. Narrow POS to this relationship.|confront
+64|A|noun|الجمعية is a society/association, a valid organizational sense.|association
+65|A|noun|الميناء is a harbor/port; the article does not change eligibility.|harbor
+66|A|verb|مواصلة is continuing as an Arabic action citation; retain both directions despite masdar morphology.|
+67|P|noun|ساعة legitimately identifies a wristwatch/timepiece; clock/hour alternatives are not exclusion evidence.|timepiece
+68|A|verb/adjective|شملت is a normal finite included sense; subject marking is not a reason to reject.|
+69|P|noun/verb|عرض naturally expresses display/presentation; valid shared Arabic does not require unique English.|
+70|A|noun/verb/adjective|تشغيل expresses running/operating a machine; preserve this distinct sense alongside movement on foot.|operating
+71|P|adjective|سريع is the quick adjective. Narrow the POS for this relationship rather than importing an English adverb reading.|
+72|A|adverb|ليلا is at night/by night. Record the adverbial English NIGHT construction and keep the normal Arabic case form.|
+73|P|adverb|بعيدا is a natural away expression; finite case spelling is valid.|
+74|P|verb|إغلاق naturally cites CLOSE as a shutting action; record verb for this relationship, not the near adjective.|shut
+75|P|noun|بالفرنسية naturally renders French as the language in speaking/writing constructions. The Arabic preposition does not disqualify it; label the English language noun.|French language
+76|A|adjective|لا بأس is a natural expression for being fine/okay, not the monetary penalty noun.|well
+77|P|adverb|حتى الآن means yet/so far in an appropriate temporal context; synonyms are fair.|
+78|P|pronoun|شخص ما naturally expresses someone and should retain its source space.|
+79|P|pronoun|أي شخص naturally expresses anyone; multiword Arabic remains valid.|
+80|P|noun|محرك الأقراص accurately names a disk drive; a clear legitimate device sense.|computer storage device
+81|A|pronoun|لا أحد is the nobody sense of NONE, valid alongside nonpersonal none meanings.|no person
+82|P|adverb|مع ذلك is the sentence-adverb though/nevertheless sense, not only the subordinate although use.|
+83|A|noun|العمولة means commission/fee; a valid sense separate from committee.|fee
+84|P|noun|زبائن naturally means customers; clients synonyms do not make reverse clues unfair.|
+85|A|noun|الموضوعات is topics/subjects and remains valid with article and synonyms.|
+86|A|adjective|تقنية can realize technical in a feminine construction; noun/adjective Arabic ambiguity is not exclusion evidence.|
+87|P|preposition|على طول naturally renders along in a spatial construction; preserve the multiword expression.|
+88|A|noun|المحكمة is a court; article variation does not affect semantic correctness.|
+89|A|noun/verb|التحديث is an update/updating action; this is a valid alternative to the bare Arabic form.|
+90|P|verb|مشاركة naturally cites SHARE as sharing/participation; label the action verb rather than the portion noun.|sharing action
+91|P|noun|سياسات means policies, a natural MSA plural.|
+92|P|noun|حدث is an event, a natural learner equivalent despite other Arabic readings.|
+93|P|noun|الرأس is the head; this is correctly spelled MSA and natural with article.|
+94|A|noun|الاهتمام is attention/interest, a legitimate sense distinct from financial interest.|attention
+95|P|noun|الحانة is a bar/tavern; the establishment sense is natural MSA.|drinking establishment
+96|P|noun|نهر means river. This is a direct natural equivalent.|
+97|P|determiner|عدد قليل naturally expresses few/a small number; the multiword phrase is valid.|
+98|P|noun/verb|ترخيص names a license/licensing action; the distinct permission sense is natural.|
+99|P|noun|الإعلانات is a natural collective rendering of ADVERTISING; English mass and Arabic plural can match.|
+# Preference proposals at 58, 95, 98 have MEDIUM QA confidence and are NOT applied; see reviews.json for detailed rationale.

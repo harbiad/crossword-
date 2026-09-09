@@ -1,0 +1,502 @@
+# Explicit AI-assisted headword-group review. Codes in current relationship order; no default approval.
+# P=approved MSA preferred both; A=approved MSA allowed both nonpreferred; E=approved MSA preferred EN only; C=review MSA construction/meaning uncertain; O=review MSA spelling/editorial defect; R=review uncertain register; U=review uncertain but demonstrably unsuitable both directions; X=rejected MSA wrong mapping; D=rejected dialect. All approval/rejection confidence high; review medium except explicit U exclusions high.
+SELL|P|verb
+OPTIONS|PA|noun
+EXPERIENCE|PAAAP|noun|0=practical expertise;1=an experience;2=practical expertise;3=accumulated experience;4=an experience
+RATES|AP|noun
+CREATE|AAOOP|verb
+KEY|AP|noun
+BODY|APA AA|noun|2=dead body
+YOUNG|PAAC|adjective
+IMPORTANT|AAPA|adjective
+FIELD|APAA|noun|0=field of activity;1=land;2=land;3=field of activity
+FEW|AAAP|determiner
+EAST|AU PAAA|noun/adjective/adverb
+PAPER|APAA|noun
+SINGLE|AAP|adjective|0=unmarried;1=unmarried;2=unmarried
+AGE|AAP|noun
+ACTIVITIES|AOOP|noun
+CLUB|PAOAR|noun
+EXAMPLE|PA|noun
+GIRLS|AAPXA|noun
+ADDITIONAL|P|adjective
+PASSWORD|P|noun
+LATEST|OC|adjective/noun
+SOMETHING|AO DOP|pronoun
+ROAD|AP|noun
+GIFT|PAO|noun
+QUESTION|PA|noun
+CHANGES|APAA|noun
+NIGHT|AAAP|noun/adverb
+HARD|AP A|adjective/adverb|0=with effort;1=difficult;2=difficult
+PAY|AOAP|verb/noun
+FOUR|OOOP|numeral
+POKER|PA|noun
+STATUS|AAP|noun
+BROWSE|P|verb
+ISSUE|OOP|noun
+RANGE|AAAP|noun
+BUILDING|AAPAAA|noun|0=construction;1=structure;2=construction;3=structure;4=structure;5=structure
+SELLER|AP|noun
+COURT|PAC|noun
+FEBRUARY|PA|noun
+ALWAYS|DPA|adverb
+RESULT|PA|noun
+AUDIO|AP|noun
+LIGHT|AAPAAA|adjective/noun|0=not heavy;1=not heavy;2=illumination;3=illumination;4=pale color;5=illumination
+WRITE|PAA|verb
+WAR|PA|noun
+OFFER|AP|noun/verb
+BLUE|UOOOAP|adjective
+GROUPS|AAP|noun
+EASY|APA|adjective
+GIVEN|C|preposition
+FILES|PA|noun
+EVENT|AAAP|noun
+RELEASE|OP|noun/verb
+ANALYSIS|APC|noun
+REQUEST|PA|noun/verb
+PICTURE|PAOO|noun
+NEEDS|PAAAA|noun/verb|0=requirements;1=requires;2=requirements;3=requirements;4=requirements
+POSSIBLE|P|adjective
+MIGHT|P|modal verb
+PROFESSIONAL|AAPAA|adjective/noun
+YET|AP|adverb
+MONTH|AAP|noun
+MAJOR|ARAA|noun/adjective|0=military rank;2=military rank;3=principal
+STAR|AAAPX|noun
+AREAS|AAPA|noun|0=fields of activity;1=fields of activity;2=regions;3=regions
+FUTURE|PAA|noun/adjective/adverb
+SPACE|PAAA|noun|0=available room;1=outer space;2=outer space;3=available room
+COMMITTEE|AP|noun
+HAND|APA|noun
+SUN|UPA|noun
+CARDS|APR|noun
+PROBLEMS|PAAA|noun
+MEETING|PAAA|noun
+BECOME|AAAPO|verb
+INTEREST|AAAAP|noun|0=benefit or stake;1=benefit or stake;2=attention;3=financial interest;4=attention
+CHILD|APAA|noun
+KEEP|PA|verb
+ENTER|OP|verb
+SHARE|PAAPA|verb/noun|0=sharing action;1=sharing action;2=portion;3=portion;4=sharing action
+SIMILAR|APAA|adjective
+SCHOOLS|PA|noun
+MILLION|PAA|numeral
+ADDED|OOOP|verb/adjective
+REFERENCE|AP|noun
+COMPANIES|AP|noun
+LISTED|APA|adjective
+BABY|CCAP|noun
+LEARNING|PA|noun/verb
+ENERGY|PA|noun
+RUN|CA|verb|1=operate a program or machine
+DELIVERY|AAPCA|noun
+POPULAR|AAPAAA|adjective
+TERM|AP|noun|0=word or expression;1=word or expression
+FILM|AP|noun
+PUT|PC|verb
+COMPUTERS|PAA|noun
+JOURNAL|AAP|noun
+REPORTS|PA|noun
+TRY|PAA|verb
+WELCOME|AP|verb/noun
+CENTRAL|ARCA PA|adjective
+IMAGES|AP|noun
+PRESIDENT|PA|noun
+NOTICE|OOP|noun/verb
+ORIGINAL|OOOOOP|adjective
+HEAD|OOOP|noun
+RADIO|PAAOOP|noun|0=receiver;1=receiver;2=receiver;5=broadcasting
+UNTIL|P|preposition/conjunction
+CELL|PAPA|noun|0=prison room;1=prison room;2=biological unit;3=biological unit
+COLOR|POAO|noun
+SELF|CC AUA|noun
+COUNCIL|PA|noun
+AWAY|P|adverb
+INCLUDES|PAAA|verb
+TRACK|PAC|noun
+DISCUSSION|ACPCAA|noun
+ARCHIVE|OOP|noun
+ONCE|POP|adverb
+OTHERS|OOOC|pronoun
+ENTERTAINMENT|PCAA|noun
+AGREEMENT|PA|noun
+FORMAT|AAP|noun/verb
+LEAST|P|determiner/adverb
+SOCIETY|PAA|noun|0=community;1=community;2=association
+MONTHS|OAAOAP|noun
+LOG|PA|noun
+SAFETY|APO|noun
+FRIENDS|OOCP|noun
+SURE|POOP|adjective/adverb
+TRADE|PA|noun/verb
+EDITION|AOPO|noun
+CARS|AP|noun
+MESSAGES|PA|noun
+MARKETING|PA|noun
+TELL|OP|verb
+FURTHER|A|determiner/adverb
+UPDATED|PC|adjective
+ASSOCIATION|PA AA|noun
+ABLE|PAAA|adjective
+HAVING|C|verb
+PROVIDES|PA|verb
+FUN|AAAP|noun/adjective
+ALREADY|P|adverb
+GREEN|OAAOP|adjective
+STUDIES|AP|noun
+CLOSE|PAAOOP|adjective/verb|0=near;1=intimate;2=intimate;5=shut
+COMMON|APA|adjective|0=frequent;1=frequent;2=shared
+DRIVE|P|noun|0=computer storage device
+SPECIFIC|PA|adjective
+SEVERAL|P|determiner
+GOLD|AUUPA|noun/adjective
+LIVING|PA|noun/adjective
+COLLECTION|PAAAA|noun|0=collected group;1=collecting;2=collected group;3=collecting payment;4=collecting payment
+CALLED|AAC|verb|0=summoned;1=telephoned
+SHORT|AAPU|adjective
+ARTS|AP|noun
+LOT|XA|noun/determiner
+ASK|OP|verb
+DISPLAY|PA|noun/verb
+LIMITED|APAAC|adjective
+POWERED|C|adjective
+SOLUTIONS|PA|noun
+MEANS|POP|noun/verb|0=methods;2=signifies
+DIRECTOR|APA AAP|noun|0=manager;1=manager;2=manager;3=manager;4=film director;5=film director
+DAILY|AAAP|adjective/adverb
+BEACH|POAUO|noun
+PAST|OAAP|noun/adjective
+NATURAL|AAPA|adjective
+WHETHER|AP|conjunction
+DUE|AAP|adjective|0=owed;1=owed;2=owed
+ELECTRONICS|OP|noun
+FIVE|POA|numeral
+UPON|X|preposition
+PERIOD|AP|noun
+PLANNING|AP|noun
+DATABASE|P|noun
+SAYS|AP|verb
+OFFICIAL|PAAAP|adjective/noun|0=authorized;1=authorized;2=authorized;3=office holder;4=office holder
+WEATHER|AAP|noun
+LAND|OOOOP|noun
+AVERAGE|PA|noun/adjective
+DONE|CAA AAP|verb/adjective
+TECHNICAL|APAA|adjective
+WINDOW|PA|noun
+REGION|OOPA|noun
+ISLAND|AP|noun
+RECORD|PAA|noun/verb
+DIRECT|APA|adjective/verb/adverb
+CONFERENCE|PA|noun
+ENVIRONMENT|AP|noun
+RECORDS|APA|noun
+DISTRICT|A APC|noun
+CALENDAR|PA|noun
+COSTS|AP|noun
+STYLE|ROAO|noun
+FRONT|PAA|noun
+STATEMENT|PA|noun
+UPDATE|AP|noun/verb
+PARTS|OOP|noun
+EVER|C|adverb
+DOWNLOADS|P|noun
+EARLY|AAOAAP|adjective/adverb
+MILES|CUOP|noun
+SOUND|AP|noun
+RESOURCE|ACP|noun
+PRESENT|PAA|noun/adjective|0=gift;1=current time;2=current
+APPLICATIONS|AAP|noun|0=requests;1=uses or software;2=uses or software
+EITHER|OOP|determiner/conjunction
+AGO|P|adverb
+DOCUMENT|APAA|noun
+WORD|PA|noun
+WORKS|PAOAA|verb/noun|0=functions;1=functions;3=is effective;4=creations or deeds
+MATERIAL|PCCA|noun
+BILL|UPA|noun
+WRITTEN|APAAA|verb/adjective
+TALK|PAAA|noun/verb
+FEDERAL|PAAAAA|adjective
+HOSTING|P|noun/verb
+RULES|PAAA|noun
+FINAL|AP|adjective
+ADULT|AAPC|noun/adjective
+TICKETS|PA|noun
+THING|AP|noun
+CENTRE|AP|noun
+REQUIREMENTS|APAA|noun
+KIDS|OOOP|noun
+FINANCE|PAAA|noun/verb
+TRUE|AP|adjective
+MINUTES|AP|noun
+ELSE|P|adverb
+MARK|AUPX|noun/verb
+THIRD|AAPAA|numeral/adverb
+ROCK|ARPR|noun
+GIFTS|APA|noun
+READING|APOO|noun/verb
+TOPICS|PAAA|noun
+BAD|AUA PO|adjective
+INDIVIDUAL|PAAAA|noun/adjective|0=person;1=individual or personal;2=individual or personal;3=individual or personal;4=person
+TIPS|PA|noun
+PLUS|OPO|preposition/conjunction
+COVER|PAAAA|noun/verb|0=covering;1=covering;2=covering action;3=book jacket;4=book jacket
+USUALLY|P|adverb
+EDIT|APAA|verb
+TOGETHER|AAP|adverb
+VIDEOS|AP|noun
+PERCENT|C|noun
+FAST|AP|adjective/adverb
+FACT|P|noun
+UNIT|PA|noun
+GETTING|AP|verb
+GLOBAL|PA AAA|adjective/adverb
+MEET|PAAA|verb|0=encounter;1=fulfil a requirement;2=encounter;3=encounter
+FAR|PA|adjective/adverb
+ECONOMIC|PA|adjective
+PLAYER|AAP|noun|0=media playback device;1=game participant;2=game participant
+PROJECTS|AA PA|noun
+LYRICS|C|noun
+OFTEN|PA|adverb
+SUBSCRIBE|PAAA|verb
+SUBMIT|PC|verb
+AMOUNT|P|noun
+WATCH|APAA|noun/verb|0=observe;1=timepiece;2=observe;3=observing
+INCLUDED|AAAAC|verb/adjective
+FEEL|AAOPA|verb
+THOUGH|P|adverb
+BANK|AAPA|noun|0=financial institution;1=financial institution;2=financial institution;3=financial institution
+RISK|ACP|noun
+THANKS|AOP|noun/interjection
+EVERYTHING|P|pronoun
+DEALS|PAAA|noun
+VARIOUS|PA|adjective
+WORDS|AP|noun
+PRODUCTION|OOP|noun
+COMMERCIAL|APA|adjective
+WEIGHT|AP|noun
+TOWN|UPCA|noun
+HEART|AAP|noun
+ADVERTISING|AOOOOP|noun
+RECEIVED|PAAAA|verb
+CHOOSE|APAA|verb
+TREATMENT|PAAAPA|noun|0=way of treating;1=processing or therapy;2=therapy;3=way of treating;4=therapy;5=processing or therapy
+NEWSLETTER|P|noun
+ARCHIVES|APO|noun
+POINTS|AP|noun
+KNOWLEDGE|PAA|noun
+ERROR|OOP|noun
+CAMERA|APX|noun
+GIRL|PAAA|noun
+CURRENTLY|P|adverb
+CONSTRUCTION|AAAPOO|noun
+TOYS|OO|noun
+REGISTERED|PA|adjective
+CLEAR|PA CA|adjective
+GOLF|AAAP|noun
+RECEIVE|APAA|verb
+DOMAIN|APA|noun
+METHODS|OOAP|noun
+CHAPTER|P|noun
+MAKES|PA|verb|0=manufactures;1=causes
+PROTECTION|AP|noun
+POLICIES|PA|noun
+WIDE|AAAP|adjective
+BEAUTY|PA|noun
+MANAGER|AP|noun
+POSITION|PAAA|noun|0=stance;1=job;2=location;3=stance
+TAKEN|OOCAA|verb/adjective
+SORT|PP|noun/verb|0=kind;1=arrange into order
+LISTINGS|P|noun
+MODELS|RAPR|noun
+KNOWN|AAPAA|adjective
+HALF|PA|noun/determiner
+CASES|PAAA|noun|0=situations;1=situations;2=legal cases;3=legal cases
+ENGINEERING|APX|noun
+SIMPLE|OPAA|adjective
+QUICK|APA|adjective/adverb
+NONE|A|pronoun
+WIRELESS|APAA|adjective
+LICENSE|AAPAX|noun/verb
+FRIDAY|OAP|noun
+LAKE|UPUA|noun
+WHOLE|P|adjective
+ANNUAL|AAPA|adjective
+PUBLISHED|APAA|verb/adjective
+LATER|PA|adverb/adjective
+BASIC|OOOP|adjective
+SHOWS|PAA|noun/verb|0=performances;1=displays;2=performances
+CORPORATE|CC|adjective
+CHURCH|OXPA|noun
+METHOD|APAOOA|noun
+PURCHASE|PA|noun/verb
+CUSTOMERS|PAAA|noun
+ACTIVE|AAP|adjective
+RESPONSE|AAP A|noun
+PRACTICE|APAAA|noun/verb
+HARDWARE|POOAA|noun
+FIGURE|A|noun|0=shape or illustration
+MATERIALS|AP|noun
+FIRE|APP|noun|0=fire element;1=fire element;2=uncontrolled blaze
+HOLIDAY|OOAP|noun
+CHAT|RAPA|noun/verb
+ENOUGH|PAAA|determiner/adverb
+DESIGNED|AAP|verb/adjective
+ALONG|P|preposition
+AMONG|P|preposition
+DEATH|AAP A|noun
+WRITING|OPCA|noun/verb
+SPEED|UAP|noun
+COUNTRIES|PAA|noun
+LOSS|PA|noun
+FACE|PAA|noun/verb|0=face;1=confront;2=face
+BRAND|RAP|noun
+DISCOUNT|AAPAC|noun
+HIGHER|OOP|adjective
+EFFECTS|OOAP|noun
+CREATED|AAP|verb
+REMEMBER|OAAA|verb
+STANDARDS|PAA|noun
+OIL|AAPAA|noun|0=petroleum;1=oil;2=oil;3=petroleum;4=petroleum
+BIT|APA|noun/verb|0=past of bite;1=binary digit;2=small amount
+YELLOW|OAOP|adjective
+POLITICAL|AAPA|adjective
+INCREASE|PA|noun/verb
+ADVERTISE|OP|verb
+KINGDOM|PA|noun
+BASE|AP|noun
+NEAR|AAP|preposition/adjective/adverb
+ENVIRONMENTAL|PC|adjective
+THOUGHT|AAPAAA|noun/verb|0=believed;1=supposed;2=thinking;3=supposed;4=thought event;5=thinking
+STUFF|OO|noun
+FRENCH|AAPAA|adjective/noun/adverb
+STORAGE|CCAP|noun
+DOING|C|verb
+LOANS|AP|noun
+SHOES|OCCOP|noun
+ENTRY|APP|noun|0=entering;1=entering;2=input
+STAY|OAPA|verb
+NATURE|PA|noun
+ORDERS|AOOPP|noun|0=purchase orders;3=purchase orders;4=commands
+AVAILABILITY|PAA|noun
+SUMMARY|AAPA|noun
+TURN|P|verb
+MEAN|P|verb
+GROWTH|AP|noun
+NOTES|AP|noun
+AGENCY|AP|noun
+KING|PUAU|noun
+MONDAY|PO|noun
+EUROPEAN|OOP|adjective
+ACTIVITY|AP|noun
+COPY|PXAA|noun/verb|0=duplicate;2=make a duplicate;3=copying
+ALTHOUGH|AP|conjunction
+DRUG|PC|noun
+WESTERN|PAAC|adjective
+INCOME|OOPAO|noun
+FORCE|PA|noun
+CASH|AAPRA|noun/adverb
+EMPLOYMENT|APA|noun
+OVERALL|OP|adverb/adjective
+BAY|PAU|noun
+RIVER|UAP|noun
+COMMISSION|APA|noun|0=committee;1=fee;2=fee
+PACKAGE|PAAAA|noun
+CONTENTS|PA|noun
+SEEN|AO|verb
+PLAYERS|APA|noun
+ENGINE|AP|noun
+PORT|PA ARA|noun|0=harbor;1=harbor;2=connection endpoint;4=connection endpoint
+ALBUM|OOP|noun
+REGIONAL|OOOP|adjective
+STOP|AP|verb
+SUPPLIES|OPOAA|noun
+STARTED|OOP|verb
+ADMINISTRATION|OP|noun
+BAR|APARR|noun|0=drinking establishment;1=drinking establishment;2=strip
+VIEWS|POAO|noun
+PLANS|AP|noun
+DOUBLE|RPA AAA|adjective/noun/verb
+DOG|AP|noun
+BUILD|PAA|verb
+SCREEN|APX|noun
+EXCHANGE|PA|noun/verb
+TYPES|OOP|noun
+SOON|P|adverb
+SPONSORED|AP|adjective
+LINES|AAP|noun
+ELECTRONIC|OOOOOP|adjective/adverb
+CONTINUE|AAP A|verb
+ACROSS|P|preposition
+BENEFITS|AAAAP|noun|0=entitlements;1=advantages;2=entitlements;3=advantages;4=advantages
+NEEDED|P|adjective
+SEASON|PA|noun
+APPLY|PA|verb
+SOMEONE|AOP|pronoun
+HELD|PA|verb|0=held a meeting;1=retained
+ANYTHING|P|pronoun
+PRINTER|AP|noun
+CONDITION|PPAA|noun|0=state;1=requirement;2=state;3=requirement
+EFFECTIVE|ACPA|adjective
+BELIEVE|OAP|verb
+ORGANIZATION|PAA|noun|0=institution;1=institution;2=organizing
+EFFECT|OOOP|noun
+ASKED|OO|verb
+MIND|AAAP|noun/verb|0=attention;1=object to;2=intellect;3=intellect
+SUNDAY|OO|noun
+SELECTION|AAPAA|noun
+CASINO|AP|noun
+LOST|AAAAPP|verb/adjective
+TOUR|PAA|noun
+MENU|PA|noun
+VOLUME|APP|noun|0=amount or size;1=book volume;2=amount or size
+CROSS|UPA|noun|1=cruciform symbol;2=cruciform symbol
+ANYONE|P|pronoun
+MORTGAGE|AP|noun
+HOPE|OUOP|noun
+SILVER|AAPUA|noun/adjective
+CORPORATION|P|noun
+WISH|OA AOC|verb/noun
+INSIDE|PAAAA|preposition/adverb/adjective
+SOLUTION|PAAA|noun|0=answer to a problem;1=answer to a problem;2=dissolved mixture;3=answer to a problem
+MATURE|AP|adjective
+ROLE|AP|noun
+RATHER|OP|adverb
+WEEKS|OOP|noun
+ADDITION|P|noun
+CAME|DP|verb
+SUPPLY|OPOA|noun/verb|1=provision;3=economic supply
+NOTHING|P|pronoun
+CERTAIN|A|adjective|0=particular
+EXECUTIVE|APA|adjective
+RUNNING|AAPAA|noun/verb/adjective|0=operating;1=running on foot;2=running on foot;3=running on foot;4=operating
+LOWER|OOOP|adjective/verb
+NECESSARY|PAA|adjective
+UNION|APUA|noun|0=labor union;1=labor union;3=union or federation
+JEWELRY|APA|noun
+ACCORDING|PA|preposition
+CLOTHING|PA|noun
+PARTICULAR|P|adjective
+FINE|AAP A|noun/adjective|0=monetary penalty;1=well;2=monetary penalty;3=well
+NAMES|OOP|noun
+HOMEPAGE|P|noun
+HOUR|OAP|noun
+SKILLS|PA|noun
+ISLANDS|PA|noun
+ADVICE|APA A|noun
+CAREER|XAPC|noun
+MILITARY|AA CA P|adjective/noun
+RENTAL|OPA|noun
+DECISION|APAC|noun
+LEAVE|PAAA|verb/noun|0=depart;1=leave behind;2=departing;3=time off
+BRITISH|AXAAAA|adjective/noun
+TEENS|APA CA|noun
+HUGE|PA|adjective
+WOMAN|OOP|noun
+FACILITIES|PAA|noun
+ZIP|UC|noun
+BID|AAP|noun/verb
+KIND|PA|noun
+SELLERS|AP|noun
+MIDDLE|OAAP|noun/adjective

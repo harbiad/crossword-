@@ -1,0 +1,9 @@
+{
+  "api/_lib/dictionary.stage3b.methodology.generated.ts": "cfd9c63079db2be80443c697d3b3a4fc026f97d821cdc7c87db40d51330f1c95",
+  "api/english_arabic_10000_v3.csv": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+  "dictionary/stage3a/decisions.json": "8b69d909df52f3fc32a62f942bb14e08526f400bec7455ad5091c6f6412346fe",
+  "dictionary/stage3b/batch001/decisions.json": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+  "dictionary/stage3b/batch002/selection.json": "e7232091b0ae4bd77a9c174e7012a7cf92e2692d065493991ce81c1599794045",
+  "dictionary/stage3b/batch002/deferred.json": "a27db025d8851c66bf7b039b92ad2e9f7c69a3e454d563e5d398a1f3c2c165c7",
+  "dictionary/stage3b/batch002/decisions.json": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506"
+}

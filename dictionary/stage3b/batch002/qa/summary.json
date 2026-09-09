@@ -1,0 +1,103 @@
+{
+  "seed": "stage3b-batch002-qa-v1",
+  "sampleSize": 100,
+  "headwords": 92,
+  "strata": {
+    "dialect": 3,
+    "rejected": 12,
+    "review": 12,
+    "reference-conflict": 8,
+    "reverse-restricted": 8,
+    "allowed-not-preferred": 15,
+    "multiple-sense": 8,
+    "verb-inflection": 10,
+    "multiword": 7,
+    "approved-control": 17
+  },
+  "sampleBaseline": {
+    "headwords": 92,
+    "relationships": 100,
+    "headwordStatus": {
+      "approved": 89,
+      "review": 3
+    },
+    "relationshipStatus": {
+      "rejected": 16,
+      "approved": 57,
+      "review": 27
+    },
+    "register": {
+      "dialect": 3,
+      "msa": 87,
+      "uncertain": 10
+    },
+    "allowedEnToAr": 57,
+    "allowedArToEn": 57,
+    "preferredEnToAr": 22,
+    "preferredArToEn": 22,
+    "restrictedEnToAr": 25,
+    "restrictedArToEn": 25,
+    "allowedNonpreferredArToEn": 35,
+    "posAssignments": 100,
+    "senseAssignments": 22,
+    "multiword": 16
+  },
+  "originalDecisionSha256": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506",
+  "qaReviewSha256": "565ae81a7409ab18af5cd977d973bee0a7cad55c8b1b227dca05db2c2252cecd",
+  "agreements": {
+    "status": {
+      "agree": 97,
+      "total": 100,
+      "percent": 97
+    },
+    "register": {
+      "agree": 100,
+      "total": 100,
+      "percent": 100
+    },
+    "allowedForEnToAr": {
+      "agree": 100,
+      "total": 100,
+      "percent": 100
+    },
+    "allowedForArToEn": {
+      "agree": 100,
+      "total": 100,
+      "percent": 100
+    },
+    "preferredForEnToAr": {
+      "agree": 97,
+      "total": 100,
+      "percent": 97
+    },
+    "preferredForArToEn": {
+      "agree": 97,
+      "total": 100,
+      "percent": 97
+    },
+    "partOfSpeech": {
+      "agree": 89,
+      "total": 100,
+      "percent": 89
+    },
+    "sense": {
+      "agree": 22,
+      "total": 25,
+      "percent": 88
+    }
+  },
+  "disagreeingRelationships": 19,
+  "fieldDisagreements": 23,
+  "highConfidenceFieldCorrections": 17,
+  "unapplied": 6,
+  "disagreementsByField": {
+    "status": 3,
+    "partOfSpeech": 11,
+    "sense": 3,
+    "preferredForEnToAr": 3,
+    "preferredForArToEn": 3
+  },
+  "textCorrections": 0,
+  "assessment": "Directional/status/register methodology passed this bounded same-assistant second pass. POS labels should be relationship-specific; sense wording agreement is reported exactly and includes added/removed labels. Review malformed or contextual readings conservatively. Ready for a bounded Batch003 with targeted QA, not unattended bulk approval or independent-human certification.",
+  "measurement": "Original frozen judgments versus a fresh second pass shown English and Arabic without original status/preferences/reference. Same assistant retains conversation context; not blinded independent-human accuracy. Unknown allowance is a third outcome. Sense denominator is rows with an old or new label; disagreements include label wording and scope, not only semantic errors."
+}

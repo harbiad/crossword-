@@ -1,0 +1,506 @@
+{
+  "batch": "002",
+  "selectionMethod": "Exactly 500 new unresolved headwords ranked by tracked 10k-reference presence, then original dictionary index; exclude every Stage3A and Batch001 reviewed headword and explicit frozen deferrals. No alphabetic ranking or reference-based approvals.",
+  "inputs": {
+    "api/_lib/dictionary.stage3b.methodology.generated.ts": "cfd9c63079db2be80443c697d3b3a4fc026f97d821cdc7c87db40d51330f1c95",
+    "api/english_arabic_10000_v3.csv": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+    "dictionary/stage3a/decisions.json": "8b69d909df52f3fc32a62f942bb14e08526f400bec7455ad5091c6f6412346fe",
+    "dictionary/stage3b/batch001/decisions.json": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+    "dictionary/stage3b/batch002/selection.json": "e7232091b0ae4bd77a9c174e7012a7cf92e2692d065493991ce81c1599794045",
+    "dictionary/stage3b/batch002/deferred.json": "a27db025d8851c66bf7b039b92ad2e9f7c69a3e454d563e5d398a1f3c2c165c7",
+    "dictionary/stage3b/batch002/decisions.json": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506"
+  },
+  "before": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 15413,
+      "approved": 510,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 27871,
+      "approved": 1236,
+      "rejected": 360
+    },
+    "register": {
+      "msa": 1444,
+      "uncertain": 28006,
+      "dialect": 17
+    },
+    "allowedEnToAr": 143,
+    "allowedArToEn": 707,
+    "preferredEnToAr": 454,
+    "preferredArToEn": 61,
+    "restrictedEnToAr": 74,
+    "restrictedArToEn": 74,
+    "allowedNonpreferredArToEn": 673,
+    "posAssignments": 1089,
+    "senseAssignments": 220,
+    "multiword": 1488
+  },
+  "afterInitial": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 14929,
+      "approved": 994,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 26620,
+      "approved": 2471,
+      "rejected": 376
+    },
+    "register": {
+      "msa": 2943,
+      "uncertain": 26504,
+      "dialect": 20
+    },
+    "allowedEnToAr": 1378,
+    "allowedArToEn": 1942,
+    "preferredEnToAr": 940,
+    "preferredArToEn": 547,
+    "restrictedEnToAr": 115,
+    "restrictedArToEn": 115,
+    "allowedNonpreferredArToEn": 1422,
+    "posAssignments": 2632,
+    "senseAssignments": 461,
+    "multiword": 1488
+  },
+  "afterQa": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 14929,
+      "approved": 994,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 26623,
+      "approved": 2471,
+      "rejected": 373
+    },
+    "register": {
+      "msa": 2943,
+      "uncertain": 26504,
+      "dialect": 20
+    },
+    "allowedEnToAr": 1378,
+    "allowedArToEn": 1942,
+    "preferredEnToAr": 940,
+    "preferredArToEn": 547,
+    "restrictedEnToAr": 115,
+    "restrictedArToEn": 115,
+    "allowedNonpreferredArToEn": 1422,
+    "posAssignments": 2632,
+    "senseAssignments": 464,
+    "multiword": 1488
+  },
+  "batchInitial": {
+    "headwords": 500,
+    "relationships": 1543,
+    "headwordStatus": {
+      "approved": 484,
+      "review": 16
+    },
+    "relationshipStatus": {
+      "approved": 1235,
+      "review": 292,
+      "rejected": 16
+    },
+    "register": {
+      "msa": 1499,
+      "uncertain": 41,
+      "dialect": 3
+    },
+    "allowedEnToAr": 1235,
+    "allowedArToEn": 1235,
+    "preferredEnToAr": 486,
+    "preferredArToEn": 486,
+    "restrictedEnToAr": 41,
+    "restrictedArToEn": 41,
+    "allowedNonpreferredArToEn": 749,
+    "posAssignments": 1543,
+    "senseAssignments": 241,
+    "multiword": 50
+  },
+  "batchAfterQa": {
+    "headwords": 500,
+    "relationships": 1543,
+    "headwordStatus": {
+      "approved": 484,
+      "review": 16
+    },
+    "relationshipStatus": {
+      "approved": 1235,
+      "review": 295,
+      "rejected": 13
+    },
+    "register": {
+      "msa": 1499,
+      "uncertain": 41,
+      "dialect": 3
+    },
+    "allowedEnToAr": 1235,
+    "allowedArToEn": 1235,
+    "preferredEnToAr": 486,
+    "preferredArToEn": 486,
+    "restrictedEnToAr": 41,
+    "restrictedArToEn": 41,
+    "allowedNonpreferredArToEn": 749,
+    "posAssignments": 1543,
+    "senseAssignments": 244,
+    "multiword": 50
+  },
+  "initialConfidence": {
+    "high": 1276,
+    "medium": 267
+  },
+  "referenceConflicts": 42,
+  "referenceConflictDefinition": "The reference supports a normalized-identical relationship left unresolved or rejected; matching reference is supporting evidence, never automatic approval.",
+  "textCorrections": 0,
+  "relationshipLosses": 0,
+  "newRelationships": 0,
+  "cefrAssignments": 0,
+  "productionPolicy": "compatibility",
+  "relationshipMetadataChanges": 1543,
+  "headwordStatusChanges": 484,
+  "availabilityBefore": [
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 16430
+    },
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 9830
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 23888
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 13520
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 27373
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 15242
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 28636
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29086,
+      "indexedCandidates": 15797
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 956
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 440
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 1130
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 494
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 1171
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 508
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 1177
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 1180,
+      "indexedCandidates": 509
+    }
+  ],
+  "availabilityAfter": [
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 16397
+    },
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 9829
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 23852
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 13519
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 27336
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 15241
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 28597
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 15796
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 1784
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 801
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 2264
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 945
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 2372
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 983
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 2407
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 992
+    }
+  ],
+  "rejectedByReason": {
+    "dialect": 3,
+    "wrong-or-corrupt-relationship": 10
+  },
+  "unresolvedAfterQa": 295,
+  "qa": {
+    "seed": "stage3b-batch002-qa-v1",
+    "sampleSize": 100,
+    "headwords": 92,
+    "strata": {
+      "dialect": 3,
+      "rejected": 12,
+      "review": 12,
+      "reference-conflict": 8,
+      "reverse-restricted": 8,
+      "allowed-not-preferred": 15,
+      "multiple-sense": 8,
+      "verb-inflection": 10,
+      "multiword": 7,
+      "approved-control": 17
+    },
+    "sampleBaseline": {
+      "headwords": 92,
+      "relationships": 100,
+      "headwordStatus": {
+        "approved": 89,
+        "review": 3
+      },
+      "relationshipStatus": {
+        "rejected": 16,
+        "approved": 57,
+        "review": 27
+      },
+      "register": {
+        "dialect": 3,
+        "msa": 87,
+        "uncertain": 10
+      },
+      "allowedEnToAr": 57,
+      "allowedArToEn": 57,
+      "preferredEnToAr": 22,
+      "preferredArToEn": 22,
+      "restrictedEnToAr": 25,
+      "restrictedArToEn": 25,
+      "allowedNonpreferredArToEn": 35,
+      "posAssignments": 100,
+      "senseAssignments": 22,
+      "multiword": 16
+    },
+    "originalDecisionSha256": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506",
+    "qaReviewSha256": "565ae81a7409ab18af5cd977d973bee0a7cad55c8b1b227dca05db2c2252cecd",
+    "agreements": {
+      "status": {
+        "agree": 97,
+        "total": 100,
+        "percent": 97
+      },
+      "register": {
+        "agree": 100,
+        "total": 100,
+        "percent": 100
+      },
+      "allowedForEnToAr": {
+        "agree": 100,
+        "total": 100,
+        "percent": 100
+      },
+      "allowedForArToEn": {
+        "agree": 100,
+        "total": 100,
+        "percent": 100
+      },
+      "preferredForEnToAr": {
+        "agree": 97,
+        "total": 100,
+        "percent": 97
+      },
+      "preferredForArToEn": {
+        "agree": 97,
+        "total": 100,
+        "percent": 97
+      },
+      "partOfSpeech": {
+        "agree": 89,
+        "total": 100,
+        "percent": 89
+      },
+      "sense": {
+        "agree": 22,
+        "total": 25,
+        "percent": 88
+      }
+    },
+    "disagreeingRelationships": 19,
+    "fieldDisagreements": 23,
+    "highConfidenceFieldCorrections": 17,
+    "unapplied": 6,
+    "disagreementsByField": {
+      "status": 3,
+      "partOfSpeech": 11,
+      "sense": 3,
+      "preferredForEnToAr": 3,
+      "preferredForArToEn": 3
+    },
+    "textCorrections": 0,
+    "assessment": "Directional/status/register methodology passed this bounded same-assistant second pass. POS labels should be relationship-specific; sense wording agreement is reported exactly and includes added/removed labels. Review malformed or contextual readings conservatively. Ready for a bounded Batch003 with targeted QA, not unattended bulk approval or independent-human certification.",
+    "measurement": "Original frozen judgments versus a fresh second pass shown English and Arabic without original status/preferences/reference. Same assistant retains conversation context; not blinded independent-human accuracy. Unknown allowance is a third outcome. Sense denominator is rows with an old or new label; disagreements include label wording and scope, not only semantic errors."
+  },
+  "batch003Started": false
+}
