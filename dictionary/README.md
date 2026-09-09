@@ -1,6 +1,10 @@
 # Dictionary structural migration
 
-The production master is `api/_lib/dictionary.generated.ts`. Each English headword has an ordered `translations` array. Each translation stores only its exact source display string in `arabic`; the crossword-safe answer is derived by `normalizeArabicWord()` in `api/_lib/dictionary.ts`. Spaces, alternative relationships, shared expressions, and source ordering are preserved.
+**Current production review:** [Stage 3A decisions and counts](STAGE3A.md). Stage 1 and Stage 2 remain preserved inputs.
+
+**Stage 2 is now available:** see [classification, cleanup actions and review queues](STAGE2.md). The stage-one snapshot below remains the immutable input; its generated dataset is preserved as the input to Stage 3A. Production uses the Stage 3A dataset with explicit compatibility filtering.
+
+The immutable Stage 1 master is `api/_lib/dictionary.generated.ts`. Each English headword has an ordered `translations` array. Each translation stores only its exact source display string in `arabic`; the crossword-safe answer is derived by `normalizeArabicWord()` in `api/_lib/dictionary.ts`. Spaces, alternative relationships, shared expressions, and source ordering are preserved.
 
 The untouched migration source/backup is `api/DICT_COMMON_30000_non_empty.ts`, the dictionary previously used by the API. Other older dictionaries, CSVs and local edits are not merged into this migration. `api/DICT_COMMON_30000.ts` is also left untouched by this task.
 

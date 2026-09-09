@@ -1,5 +1,5 @@
 import { getWordLevel, type CefrLevel } from '../cefr_levels.js';
-import { normalizeArabicWord, type DictionaryHeadword, type DictionaryTranslation } from './dictionary.js';
+import { normalizeArabicWord, eligibleTranslation, type DictionaryPolicy, type DictionaryHeadword, type DictionaryTranslation } from './dictionary.js';
 
 export type Mode = 'en_to_ar' | 'ar_to_en';
 export type Band = 'beginner' | 'intermediate' | 'advanced';
@@ -31,7 +31,7 @@ function meanings(items: readonly DictionaryTranslation[]): Pair[] {
 
 // One initialization per warm process. Keep the existing CEFR classifier,
 // English-length eligibility in both modes, meaning order and normalization.
-export function createCandidateIndex(dictionary: readonly DictionaryHeadword[]): CandidateIndex {
+export function createCandidateIndex(dictionary: readonly DictionaryHeadword[], policy: DictionaryPolicy = 'compatibility'): CandidateIndex {
   const seen = new Set<string>();
   const words: Word[] = [];
   dictionary.forEach((headword, position) => {
@@ -39,7 +39,7 @@ export function createCandidateIndex(dictionary: readonly DictionaryHeadword[]):
     const english = key.trim().replace(/[^a-zA-Z]/g, '').toUpperCase();
     if (!english || seen.has(english)) return;
     seen.add(english);
-    words.push({ english, level: getWordLevel(english, position), meanings: meanings(headword.translations) });
+    words.push({ english, level: getWordLevel(english, position), meanings: meanings(headword.translations.filter(t => eligibleTranslation(headword, t, policy))) });
   });
   const index = new Map<string, LengthGroups>();
   for (const size of sizes) for (const mode of ['en_to_ar', 'ar_to_en'] as const) {

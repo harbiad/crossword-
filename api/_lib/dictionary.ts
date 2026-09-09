@@ -16,6 +16,12 @@ export type DictionaryHeadword = {
   translations: DictionaryTranslation[];
 };
 
+export type DictionaryPolicy = 'compatibility' | 'approved-only';
+export function eligibleTranslation(headword: DictionaryHeadword, translation: DictionaryTranslation, policy: DictionaryPolicy) {
+  if (headword.status === 'rejected' || translation.status === 'rejected' || translation.register === 'dialect') return false;
+  return policy === 'compatibility' || (headword.status === 'approved' && translation.status === 'approved' && translation.register === 'msa');
+}
+
 // Crossword comparison/answer form only. Never use this as displayed Arabic.
 // Preserve the existing API normalization, including hamza and alef maksura.
 export function normalizeArabicWord(value: string): string {

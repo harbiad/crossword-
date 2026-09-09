@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createCandidateIndex, selectCandidates, type Mode, type Band } from './_lib/candidates.js';
-import { DICTIONARY } from './_lib/dictionary.generated.js';
+import { DICTIONARY_STAGE3A } from './_lib/dictionary.stage3a.generated.js';
 
 export const config = {
   runtime: 'nodejs',
@@ -8,7 +8,9 @@ export const config = {
 
 const MIN_ENTRIES_FOR_UI = 24;
 // Warm processes reuse normalized dictionary metadata and eligibility buckets.
-const candidateIndex = createCandidateIndex(DICTIONARY);
+// Review/uncertain data remains eligible explicitly during staged curation.
+// Rejected headwords/relationships and known dialect are excluded in both modes.
+const candidateIndex = createCandidateIndex(DICTIONARY_STAGE3A, 'compatibility');
 // Smallest tested pool retaining baseline success in every size/mode.
 // See benchmarks/results/api-optimization.md for the seeded comparison.
 const TARGET_PAIRS = 2000;

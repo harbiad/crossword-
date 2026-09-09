@@ -1,0 +1,1150 @@
+{
+  "sourceSha256": "59059c65364c5dd4c1aa64bb88dfa1fd568beb1ab8413647748505819fb9104c",
+  "decisionsSha256": "8b69d909df52f3fc32a62f942bb14e08526f400bec7455ad5091c6f6412346fe",
+  "before": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 16018
+    },
+    "relationshipStatus": {
+      "review": 29462,
+      "rejected": 5
+    },
+    "register": {
+      "uncertain": 29457,
+      "msa": 5,
+      "dialect": 5
+    },
+    "multiwordDisplays": 1521,
+    "compatibilityEligible": 29462,
+    "strictApprovedEligible": 0
+  },
+  "after": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 15870,
+      "approved": 53,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 29011,
+      "rejected": 307,
+      "approved": 149
+    },
+    "register": {
+      "msa": 266,
+      "uncertain": 29194,
+      "dialect": 7
+    },
+    "multiwordDisplays": 1488,
+    "compatibilityEligible": 29160,
+    "strictApprovedEligible": 93
+  },
+  "reviewedRelationships": 706,
+  "reviewedHeadwords": 544,
+  "untouchedRelationships": 28761,
+  "decisionStatus": {
+    "rejected": 307,
+    "approved": 149,
+    "review": 250
+  },
+  "decisionConfidence": {
+    "high": 456,
+    "medium": 243,
+    "low": 7
+  },
+  "reviewedCategories": {
+    "possibly-malformed": 19,
+    "dialect-rejected": 5,
+    "repeated-word": 254,
+    "proper-name": 60,
+    "place-name": 32,
+    "possible-dialect": 3,
+    "abbreviation": 330,
+    "editorial-note": 41,
+    "brand-name": 19
+  },
+  "reviewedCategoryHeadwords": {
+    "possibly-malformed": 19,
+    "dialect-rejected": 4,
+    "repeated-word": 254,
+    "proper-name": 32,
+    "place-name": 16,
+    "possible-dialect": 3,
+    "abbreviation": 215,
+    "editorial-note": 41,
+    "brand-name": 10
+  },
+  "appliedTextCorrections": 40,
+  "proposedUnapplied": 109,
+  "metadataChanges": 470,
+  "correctedByReason": {
+    "editorial-residue": 2,
+    "accidental-repetition": 28,
+    "editorial-note": 5,
+    "orthography": 5
+  },
+  "rejectedByReason": {
+    "wrong-or-foreign-relation": 7,
+    "dialect": 7,
+    "personal-or-geographic-name": 103,
+    "redundant-repetition": 91,
+    "geographic-name": 39,
+    "unusable-lexical-rendering": 2,
+    "brand-product": 12,
+    "personal-name": 4,
+    "redundant-editorial-residue": 1,
+    "abbreviation-initialism": 41
+  },
+  "unresolvedByReason": {
+    "unresolved-sense": 226,
+    "meaningful-repetition": 4,
+    "wrong-or-incomplete-sense": 4,
+    "register-or-sense-review": 11,
+    "lexical-sense-needs-confirmation": 3,
+    "orthography-review": 2
+  },
+  "headwordActions": [
+    {
+      "english": "THAN",
+      "headwordIndex": 91,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "JOHN",
+      "headwordIndex": 345,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "LONDON",
+      "headwordIndex": 606,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "FRANCE",
+      "headwordIndex": 731,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "GERMANY",
+      "headwordIndex": 818,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "JAMES",
+      "headwordIndex": 834,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "MICHAEL",
+      "headwordIndex": 873,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "MARY",
+      "headwordIndex": 1435,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "PARIS",
+      "headwordIndex": 1594,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "LOUIS",
+      "headwordIndex": 1999,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "PROPER",
+      "headwordIndex": 2660,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "OUTLET",
+      "headwordIndex": 3257,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "VENTURE",
+      "headwordIndex": 4244,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "SEAN",
+      "headwordIndex": 4283,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "INDOOR",
+      "headwordIndex": 4551,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "RECORDER",
+      "headwordIndex": 4655,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "MARC",
+      "headwordIndex": 4695,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "PAD",
+      "headwordIndex": 4714,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "MARIE",
+      "headwordIndex": 4798,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "MORRIS",
+      "headwordIndex": 5028,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ACUTE",
+      "headwordIndex": 5329,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "SPECTACULAR",
+      "headwordIndex": 5538,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "SUCKING",
+      "headwordIndex": 5648,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "LYNN",
+      "headwordIndex": 5698,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AUTOS",
+      "headwordIndex": 5862,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "STREAMING",
+      "headwordIndex": 6044,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "JOAN",
+      "headwordIndex": 6654,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "BIZARRE",
+      "headwordIndex": 6841,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "SHAW",
+      "headwordIndex": 7296,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "CARROLL",
+      "headwordIndex": 7504,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "COATING",
+      "headwordIndex": 8201,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "ADAPTOR",
+      "headwordIndex": 8267,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "ITALIA",
+      "headwordIndex": 8800,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "LOCKING",
+      "headwordIndex": 8853,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "JAN",
+      "headwordIndex": 142,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "USA",
+      "headwordIndex": 330,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "DEC",
+      "headwordIndex": 470,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AMERICA",
+      "headwordIndex": 535,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "NOV",
+      "headwordIndex": 575,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "FAX",
+      "headwordIndex": 586,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "NET",
+      "headwordIndex": 631,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "DAVID",
+      "headwordIndex": 685,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "FEB",
+      "headwordIndex": 696,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "MICROSOFT",
+      "headwordIndex": 737,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AUG",
+      "headwordIndex": 749,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "INDIA",
+      "headwordIndex": 867,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "GOOGLE",
+      "headwordIndex": 896,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "HTML",
+      "headwordIndex": 917,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "EUR",
+      "headwordIndex": 1017,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "COM",
+      "headwordIndex": 1052,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ROBERT",
+      "headwordIndex": 1056,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SIX",
+      "headwordIndex": 1061,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "FRI",
+      "headwordIndex": 1120,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "THU",
+      "headwordIndex": 1248,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "WILLIAM",
+      "headwordIndex": 1293,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AMAZON",
+      "headwordIndex": 1321,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "III",
+      "headwordIndex": 1350,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ADS",
+      "headwordIndex": 1434,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "ETC",
+      "headwordIndex": 1519,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "MIN",
+      "headwordIndex": 1560,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AID",
+      "headwordIndex": 1565,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "GEORGIA",
+      "headwordIndex": 1627,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "TOM",
+      "headwordIndex": 1631,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "CUP",
+      "headwordIndex": 1727,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "EX",
+      "headwordIndex": 1837,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "BUS",
+      "headwordIndex": 1877,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "NOR",
+      "headwordIndex": 1929,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "MID",
+      "headwordIndex": 1935,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "JIM",
+      "headwordIndex": 1969,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SAMSUNG",
+      "headwordIndex": 1996,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "DEL",
+      "headwordIndex": 2004,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "JOE",
+      "headwordIndex": 2032,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "CDS",
+      "headwordIndex": 2044,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "LAB",
+      "headwordIndex": 2144,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "ROW",
+      "headwordIndex": 2538,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "ANN",
+      "headwordIndex": 2606,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "TIM",
+      "headwordIndex": 2802,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "OP",
+      "headwordIndex": 2842,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ELIZABETH",
+      "headwordIndex": 2888,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "BEN",
+      "headwordIndex": 2913,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "JORDAN",
+      "headwordIndex": 2951,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "PUB",
+      "headwordIndex": 3084,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "SAM",
+      "headwordIndex": 3196,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "JENNIFER",
+      "headwordIndex": 3315,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SARAH",
+      "headwordIndex": 3324,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ISO",
+      "headwordIndex": 3389,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SUM",
+      "headwordIndex": 3397,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "PS",
+      "headwordIndex": 3433,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "KIM",
+      "headwordIndex": 3447,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "EGYPT",
+      "headwordIndex": 3487,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "NASA",
+      "headwordIndex": 3607,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "CSS",
+      "headwordIndex": 3625,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "BERLIN",
+      "headwordIndex": 3765,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "GAP",
+      "headwordIndex": 3872,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "ERA",
+      "headwordIndex": 3928,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "LOL",
+      "headwordIndex": 4070,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "BET",
+      "headwordIndex": 4105,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "TOYOTA",
+      "headwordIndex": 4107,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "RON",
+      "headwordIndex": 4180,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "IAN",
+      "headwordIndex": 4338,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "REP",
+      "headwordIndex": 4404,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "TOKYO",
+      "headwordIndex": 4568,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "EGG",
+      "headwordIndex": 4831,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "RIO",
+      "headwordIndex": 4959,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ARC",
+      "headwordIndex": 4990,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "MRS",
+      "headwordIndex": 5006,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "APP",
+      "headwordIndex": 5017,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "NIKE",
+      "headwordIndex": 5065,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AMY",
+      "headwordIndex": 5146,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "PHD",
+      "headwordIndex": 5168,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SEO",
+      "headwordIndex": 5407,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "GEL",
+      "headwordIndex": 5652,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "TED",
+      "headwordIndex": 5810,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "KDE",
+      "headwordIndex": 5840,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "CAB",
+      "headwordIndex": 6121,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "ALI",
+      "headwordIndex": 6298,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "VII",
+      "headwordIndex": 6435,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "COW",
+      "headwordIndex": 6663,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "AVI",
+      "headwordIndex": 6774,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "LEO",
+      "headwordIndex": 6825,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SIM",
+      "headwordIndex": 6872,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "XI",
+      "headwordIndex": 7064,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AYE",
+      "headwordIndex": 7162,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "COL",
+      "headwordIndex": 7189,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "TEX",
+      "headwordIndex": 7227,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "LIT",
+      "headwordIndex": 7470,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "FOO",
+      "headwordIndex": 7522,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SIG",
+      "headwordIndex": 7541,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "DUO",
+      "headwordIndex": 7543,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "FOG",
+      "headwordIndex": 7553,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "RUG",
+      "headwordIndex": 7656,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "DEM",
+      "headwordIndex": 7675,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "EVA",
+      "headwordIndex": 7751,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "SAO",
+      "headwordIndex": 8042,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ANT",
+      "headwordIndex": 8138,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "APT",
+      "headwordIndex": 8143,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "GEM",
+      "headwordIndex": 8161,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "LIZ",
+      "headwordIndex": 8309,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ATE",
+      "headwordIndex": 8375,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "PAM",
+      "headwordIndex": 8712,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "COP",
+      "headwordIndex": 8724,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "CAIRO",
+      "headwordIndex": 9808,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "COCA",
+      "headwordIndex": 10265,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "MUHAMMAD",
+      "headwordIndex": 10946,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "AHMED",
+      "headwordIndex": 11549,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "PEPSI",
+      "headwordIndex": 12804,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    },
+    {
+      "english": "ERE",
+      "headwordIndex": 15210,
+      "before": "review",
+      "after": "approved",
+      "reason": "All relationships individually reviewed and approved as MSA"
+    },
+    {
+      "english": "RIYADH",
+      "headwordIndex": 15696,
+      "before": "review",
+      "after": "rejected",
+      "reason": "All relationships individually identified as out-of-pool proper-name/abbreviation senses"
+    }
+  ],
+  "deletedRelationships": 0,
+  "newRelationships": 0,
+  "cefrAssignments": 0
+}
