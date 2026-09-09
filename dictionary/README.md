@@ -1,6 +1,6 @@
 # Dictionary structural migration
 
-**Current production review:** [Stage 3B Batch 002 and targeted QA](stage3b/batch002/README.md), using the [revised directional methodology](stage3b/batch001/methodology/README.md). Earlier datasets and reports remain preserved. Compatibility mode remains enabled.
+**Current production review:** [Stage 3B Batch 003 and targeted QA](stage3b/batch003/README.md), using the [revised directional methodology](stage3b/batch001/methodology/README.md). Earlier datasets and reports remain preserved. Compatibility mode remains enabled.
 
 **Stage 2 is now available:** see [classification, cleanup actions and review queues](STAGE2.md). The stage-one snapshot below remains the immutable input; its generated dataset is preserved as the input to Stage 3A. Production uses the Stage 3B dataset with explicit compatibility filtering.
 

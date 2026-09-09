@@ -1,0 +1,56 @@
+[
+  {
+    "sourceId": "1168:2",
+    "english": "FEATURED",
+    "original": "المميزات",
+    "proposedStatus": "rejected",
+    "finalStatus": "review",
+    "confidence": "high",
+    "reason": "المميزات means features/advantages; a nominal featured-items construction is not established, but morphology alone is insufficient to reject. Keep excluded pending sense review."
+  },
+  {
+    "sourceId": "1313:0",
+    "english": "SUCCESS",
+    "original": "ناجحة",
+    "proposedStatus": "rejected",
+    "finalStatus": "review",
+    "confidence": "high",
+    "reason": "ناجحة is successful feminine. A success can be expressed adjectivally in Arabic; leave the bare nominal mapping unresolved rather than categorically rejecting it."
+  },
+  {
+    "sourceId": "1419:3",
+    "english": "SESSION",
+    "original": "الدورة الثانية",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "الدورة الثانية introduces the unsupported ordinal second. It misleadingly narrows a general session clue; no evidence for that specific headword sense is present."
+  },
+  {
+    "sourceId": "1453:3",
+    "english": "GERMAN",
+    "original": "المانيا",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "المانيا names Germany, not German as language/person/adjective. This is a country-versus-demonym referent mismatch, not a natural inflection."
+  },
+  {
+    "sourceId": "1460:1",
+    "english": "BOYS",
+    "original": "ولاد",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "ولاد is the colloquial shortened form in the boys relationship; the standard أولاد alternative exists separately. No rewrite or suppression of the valid relationship is needed."
+  },
+  {
+    "sourceId": "1633:3",
+    "english": "CREATIVE",
+    "original": "ابداع",
+    "proposedStatus": "rejected",
+    "finalStatus": "review",
+    "confidence": "high",
+    "reason": "ابداع is a misspelled creativity/action noun, potentially natural for creative work in context. Defer the isolated mapping; a noun/adjective difference alone is not rejection evidence."
+  }
+]

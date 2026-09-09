@@ -98,5 +98,5 @@ it('audits proposal/review agreement honestly rather than calling it independent
  expect(report.metricInterpretation).toContain('Not independent-human');
  expect(report.textChanges).toBe(0);expect(report.cefrAssignments).toBe(0);
  expect(report.arVetoTransitionsAllBatch001).toEqual({removed:673,retained:74,added:0});
- expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_BATCH002_QA, 'compatibility')");
+ expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility')");
 });

@@ -1,0 +1,548 @@
+{
+  "batch": "003",
+  "selectionMethod": "Exactly 500 new unresolved headwords ranked by tracked 10k-reference presence, then original dictionary index; exclude every Stage3A, Batch001 and Batch002 reviewed headword and explicit frozen deferrals. No alphabetic ranking or reference-based approvals.",
+  "inputs": {
+    "api/_lib/dictionary.stage3b.batch002.qa.generated.ts": "576b57f85ef27f54e2b48ca6cc1d859bef7bcae02afd183d7e5d00c73338202d",
+    "api/english_arabic_10000_v3.csv": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+    "dictionary/stage3a/decisions.json": "8b69d909df52f3fc32a62f942bb14e08526f400bec7455ad5091c6f6412346fe",
+    "dictionary/stage3b/batch001/decisions.json": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+    "dictionary/stage3b/batch002/decisions.json": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506",
+    "dictionary/stage3b/batch003/selection.json": "1fb639f0053adcee049bef840d5bd3b073671f254f719b89fb24985688994ce9",
+    "dictionary/stage3b/batch003/deferred.json": "203d9cbcb3a63523ca3239b92c6f337bc96d241470c2fc89617c4954a0fc8d0f",
+    "dictionary/stage3b/batch003/proposals.json": "f0551536b586b84174453829484e2169b02e25f3897827a3a4e5ecac6e874186",
+    "dictionary/stage3b/batch003/rejection_checks.json": "70991de3c1be8326481be7af7e15a63c185098febe5d24209ab7fae05bd5a7d7",
+    "dictionary/stage3b/batch003/decisions.json": "8e0f0f472a3328cb99099002d1abe9a6c68d9d04f98ea4b2eec63304908a5ead"
+  },
+  "rejectionSecondPass": {
+    "proposed": 6,
+    "retained": 3,
+    "softened": 3
+  },
+  "before": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 14929,
+      "approved": 994,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 26623,
+      "approved": 2471,
+      "rejected": 373
+    },
+    "register": {
+      "msa": 2943,
+      "uncertain": 26504,
+      "dialect": 20
+    },
+    "allowedEnToAr": 1378,
+    "allowedArToEn": 1942,
+    "preferredEnToAr": 940,
+    "preferredArToEn": 547,
+    "restrictedEnToAr": 115,
+    "restrictedArToEn": 115,
+    "allowedNonpreferredArToEn": 1422,
+    "posAssignments": 2632,
+    "unresolvedPos": 26835,
+    "senseAssignments": 464,
+    "multiword": 1488
+  },
+  "afterInitial": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 14442,
+      "approved": 1481,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 25530,
+      "approved": 3561,
+      "rejected": 376
+    },
+    "register": {
+      "msa": 4313,
+      "uncertain": 25133,
+      "dialect": 21
+    },
+    "allowedEnToAr": 2468,
+    "allowedArToEn": 3032,
+    "preferredEnToAr": 1432,
+    "preferredArToEn": 1039,
+    "restrictedEnToAr": 151,
+    "restrictedArToEn": 151,
+    "allowedNonpreferredArToEn": 2020,
+    "posAssignments": 4037,
+    "unresolvedPos": 25430,
+    "senseAssignments": 624,
+    "multiword": 1488
+  },
+  "afterQa": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 14441,
+      "approved": 1482,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 25529,
+      "approved": 3562,
+      "rejected": 376
+    },
+    "register": {
+      "msa": 4313,
+      "uncertain": 25133,
+      "dialect": 21
+    },
+    "allowedEnToAr": 2469,
+    "allowedArToEn": 3033,
+    "preferredEnToAr": 1433,
+    "preferredArToEn": 1040,
+    "restrictedEnToAr": 151,
+    "restrictedArToEn": 151,
+    "allowedNonpreferredArToEn": 2020,
+    "posAssignments": 4037,
+    "unresolvedPos": 25430,
+    "senseAssignments": 624,
+    "multiword": 1488
+  },
+  "batchInitial": {
+    "headwords": 500,
+    "relationships": 1418,
+    "headwordStatus": {
+      "approved": 487,
+      "review": 13
+    },
+    "relationshipStatus": {
+      "approved": 1090,
+      "review": 325,
+      "rejected": 3
+    },
+    "register": {
+      "msa": 1370,
+      "uncertain": 47,
+      "dialect": 1
+    },
+    "allowedEnToAr": 1090,
+    "allowedArToEn": 1090,
+    "preferredEnToAr": 492,
+    "preferredArToEn": 492,
+    "restrictedEnToAr": 36,
+    "restrictedArToEn": 36,
+    "allowedNonpreferredArToEn": 598,
+    "posAssignments": 1405,
+    "unresolvedPos": 13,
+    "senseAssignments": 160,
+    "multiword": 59
+  },
+  "batchAfterQa": {
+    "headwords": 500,
+    "relationships": 1418,
+    "headwordStatus": {
+      "approved": 488,
+      "review": 12
+    },
+    "relationshipStatus": {
+      "approved": 1091,
+      "review": 324,
+      "rejected": 3
+    },
+    "register": {
+      "msa": 1370,
+      "uncertain": 47,
+      "dialect": 1
+    },
+    "allowedEnToAr": 1091,
+    "allowedArToEn": 1091,
+    "preferredEnToAr": 493,
+    "preferredArToEn": 493,
+    "restrictedEnToAr": 36,
+    "restrictedArToEn": 36,
+    "allowedNonpreferredArToEn": 598,
+    "posAssignments": 1405,
+    "unresolvedPos": 13,
+    "senseAssignments": 160,
+    "multiword": 59
+  },
+  "initialConfidence": {
+    "high": 1126,
+    "medium": 292
+  },
+  "referenceConflicts": 43,
+  "referenceConflictDefinition": "The reference supports a normalized-identical relationship left unresolved or rejected; matching reference is supporting evidence, never automatic approval.",
+  "textCorrections": 0,
+  "relationshipLosses": 0,
+  "newRelationships": 0,
+  "cefrAssignments": 0,
+  "productionPolicy": "compatibility",
+  "relationshipMetadataChanges": 1418,
+  "headwordStatusChanges": 488,
+  "availabilityBefore": [
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 16397
+    },
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 9829
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 23852
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 13519
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 27336
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 15241
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 28597
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29045,
+      "indexedCandidates": 15796
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 1784
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 801
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 2264
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 945
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 2372
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 983
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 2407
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 2415,
+      "indexedCandidates": 992
+    }
+  ],
+  "availabilityAfter": [
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 16370
+    },
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 9829
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 23821
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 13519
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 27304
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 15240
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 28563
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 29009,
+      "indexedCandidates": 15795
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 2439
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 1128
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 3194
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 1373
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 3405
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 1455
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "en_to_ar",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 3480
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "ar_to_en",
+      "eligibleRelationshipsBeforeLengthLimits": 3506,
+      "indexedCandidates": 1477
+    }
+  ],
+  "rejectedByReason": {
+    "wrong-or-corrupt-relationship": 2,
+    "dialect": 1
+  },
+  "unresolvedAfterQa": 324,
+  "qa": {
+    "seed": "stage3b-batch003-pos-sense-qa-v1",
+    "sampleSize": 100,
+    "headwords": 84,
+    "strata": {
+      "rejected": 3,
+      "sense": 20,
+      "multi-pos": 20,
+      "nonpreferred-reverse": 15,
+      "review": 12,
+      "register": 8,
+      "reference-conflict": 8,
+      "pos-control": 14
+    },
+    "sampleBaseline": {
+      "headwords": 84,
+      "relationships": 100,
+      "headwordStatus": {
+        "approved": 82,
+        "review": 2
+      },
+      "relationshipStatus": {
+        "rejected": 3,
+        "approved": 69,
+        "review": 28
+      },
+      "register": {
+        "dialect": 1,
+        "msa": 88,
+        "uncertain": 11
+      },
+      "allowedEnToAr": 69,
+      "allowedArToEn": 69,
+      "preferredEnToAr": 25,
+      "preferredArToEn": 25,
+      "restrictedEnToAr": 10,
+      "restrictedArToEn": 10,
+      "allowedNonpreferredArToEn": 44,
+      "posAssignments": 98,
+      "unresolvedPos": 2,
+      "senseAssignments": 29,
+      "multiword": 8
+    },
+    "originalDecisionSha256": "8e0f0f472a3328cb99099002d1abe9a6c68d9d04f98ea4b2eec63304908a5ead",
+    "qaReviewSha256": "ef18e365db7190ace04949ba96ce58ed3c0f04ab6a5bf7733d277a29835c6590",
+    "agreements": {
+      "status": {
+        "agree": 99,
+        "total": 100,
+        "percent": 99
+      },
+      "register": {
+        "agree": 100,
+        "total": 100,
+        "percent": 100
+      },
+      "allowedForEnToAr": {
+        "agree": 99,
+        "total": 100,
+        "percent": 99
+      },
+      "allowedForArToEn": {
+        "agree": 99,
+        "total": 100,
+        "percent": 99
+      },
+      "preferredForEnToAr": {
+        "agree": 98,
+        "total": 100,
+        "percent": 98
+      },
+      "preferredForArToEn": {
+        "agree": 98,
+        "total": 100,
+        "percent": 98
+      },
+      "partOfSpeech": {
+        "agree": 98,
+        "total": 100,
+        "percent": 98
+      },
+      "sense": {
+        "agree": 29,
+        "total": 29,
+        "percent": 100
+      }
+    },
+    "comparisonWithBatch002": {
+      "posBefore": 89,
+      "posNow": 98,
+      "senseBefore": 88,
+      "senseNow": 100,
+      "interpretation": "Numerically higher on a different targeted sample; not a matched-sample causal improvement or independent-human accuracy estimate."
+    },
+    "diagnosticNotes": [
+      {
+        "sourceId": "1329:0",
+        "english": "VOTE",
+        "arabic": "التصويت",
+        "before": "valid-alternative",
+        "after": "natural-preferred",
+        "reason": "التصويت is a valid vote/voting noun. Preference over the bare تصويت is subjective; retain the proposed preference change as medium-confidence, not an applied correction.",
+        "confidence": "medium",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1532:3",
+        "english": "CORE",
+        "arabic": "الأساسية",
+        "before": "orthography-review",
+        "after": "construction-or-sense-review",
+        "reason": "الأساسية has hamza and ordinary feminine morphology. Its written form itself is not defective; it can represent CORE as an essential adjective, but the intended isolated construction needs review.",
+        "confidence": "medium",
+        "productionMetadataChanged": false
+      }
+    ],
+    "disagreeingRelationships": 4,
+    "fieldDisagreements": 9,
+    "highConfidenceFieldCorrections": 7,
+    "unapplied": 2,
+    "disagreementsByField": {
+      "preferredForEnToAr": 2,
+      "preferredForArToEn": 2,
+      "partOfSpeech": 2,
+      "status": 1,
+      "allowedForEnToAr": 1,
+      "allowedForArToEn": 1
+    },
+    "textCorrections": 0,
+    "assessment": "Bounded same-assistant QA with controlled relationship-specific POS and short senses. See measured agreement and all disagreements; no independent-human certification. Batch004 has not begun.",
+    "measurement": "Original frozen judgments versus a fresh second pass shown English and Arabic without original status/preferences/reference. Same assistant retains conversation context; not blinded independent-human accuracy. Unknown allowance is a third outcome. Sense denominator is rows with an old or new label; disagreements include label wording and scope, not only semantic errors."
+  },
+  "batch004Started": false
+}

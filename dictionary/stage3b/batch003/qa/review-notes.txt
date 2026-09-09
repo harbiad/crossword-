@@ -1,0 +1,102 @@
+# Fresh same-assistant second pass from English/Arabic-only view. Index|code+controlledPOS|short sense or empty|reason. Original choices hidden in the review view, not erased from conversational memory.
+0|Dn||ولاد is the colloquial boys form, not the standard أولاد entry. Keep rejection without rewriting.
+1|Xn||الدورة الثانية is a second session/course, not session without qualification. The extra ordinal is materially misleading for a generic clue.
+2|Xn||المانيا names Germany; German denotes language/person/adjective. This changes referent, not merely inflection.
+3|Pn|contest|مباراة is a match/contest; a distinct valid sense, not the matching-action sense.
+4|An|agent or operative|عميلة naturally denotes a female agent/operative; gender does not exclude either direction.
+5|Pj|not concrete|مجردة is abstract feminine; preserve natural gender morphology.
+6|An|filtering device|المرشح can denote a filter device. Candidate ambiguity is an unrelated valid Arabic reading, not reverse exclusion evidence.
+7|Pn|falling|سقوط names a fall/falling event; distinguish it from the autumn season.
+8|An|cooling device|المروحة is the cooling-device fan, not an admirer. Noun and sense are clear.
+9|An|agreement|العقد is a contract/agreement. Arabic article is valid and nonpreference does not exclude it.
+10|Pn|solid piece|كتلة naturally expresses a block/mass; retain the concrete noun sense.
+11|An|season|الربيع identifies the spring season, a distinct sense from a coil or water source.
+12|Pn|metal|الرصاص is the metal lead; it cannot express the leadership verb.
+13|Pj|overweight|سمين is the fat adjective applied to body build, separate from the substance noun.
+14|An|delegation|بعثة is a mission/delegation; valid alongside task/مهمة.
+15|Pn|ancestry|عرق expresses race/ancestry in this context; sweat and vein readings do not bar it.
+16|Pn|teaching staff|أعضاء هيئة التدريس naturally names faculty as the teaching staff, not a university division.
+17|An|delegation|البعثة is the definite mission/delegation noun; preserve the shared sense with بعثة.
+18|Pn|remainder|بقية is the rest/remainder, distinct from repose.
+19|An|capital city|العاصمة is the city sense of capital, not financial assets.
+20|Pn|filtering device|مرشح can denote a filter; different Arabic readings do not make this legitimate sense unsuitable.
+21|Pn|financial capital|رأس المال is the natural financial-capital expression; preserve both source spaces and the distinct sense.
+22|Pv|aim at|استهداف is an Arabic action noun naturally citing TARGET as a verb; not the objective noun sense.
+23|Aj||جاهزة is ready feminine, a natural adjective relation.
+24|Aj||كلاسيكية is a conventional classic/classical adjective form; no noun sense is needed here.
+25|Pj||عميق is the deep adjective, a natural MSA equivalent.
+26|Ab||عميقا naturally realizes adverbial deep, as in dig deep; case morphology does not force adjective-only treatment.
+27|An|agreement|الصفقة is an agreement/deal noun, not the handle/deal-with verb.
+28|Av|come near|الاقتراب naturally cites APPROACH as coming near; preserve the action-noun rendering of the English verb.
+29|Pn||احترام is respect as a noun; the other finite Arabic form expresses the separate verb use.
+30|Aj||سعيدة is a natural happy adjective, not a finite happiness-causing verb.
+31|Pn||التصويت names the voting process, a legitimate vote noun sense.
+32|Aj||عادلة is the fair/just adjective in feminine form.
+33|An||ذكرا is a case-marked male noun in this citation. Both noun and adjective English uses exist, but the entity reading is better supported here; narrow POS without exclusion.
+34|Aj||الدنيا is minimum/lowest feminine in a relevant construction; preserve the adjective use.
+35|Aj||منصف is fair/impartial. It is a natural adjective equivalent regardless of a competing عادل.
+36|Pj|preset|افتراضي naturally expresses default as a preset adjective, not nonpayment.
+37|Pj||شمالي is the northern adjective, distinct from the standalone direction noun north.
+38|Aj|without light|مظلمة expresses dark feminine, not darkness as a noun.
+39|Av||يلعب is a natural finite expression of playing. English -ing and Arabic finite morphology can correspond.
+40|Pn|body fat|الدهون is fat as a substance/collective noun; English mass and Arabic plural are compatible.
+41|Pv|fracture|كسر naturally cites break as a fracturing action, separate from a rest break noun.
+42|An||الذكر denotes the male as an entity. Use noun for this definite citation rather than importing every possible adjectival use of MALE.
+43|Aj||محددة is specified feminine, a clear adjectival relationship.
+44|Aj||عميقة is deep feminine; preserve it as an allowed nonpreferred alternative.
+45|Av||المحاولة naturally cites TRYING as attempting; a masdar and English participial action can correspond.
+46|Av|fracture|تكسر expresses the break/fracture event in finite Arabic. It is the verb relationship, not a pause noun.
+47|An||الاستثمار is investment as an activity, a natural noun alternative with an article.
+48|An||المحاكمة is trial in court, a natural noun equivalent.
+49|An||أماكن الإقامة is accommodation/lodging; its multiword plural form naturally expresses English accommodation.
+50|An||المهام expresses functions/tasks, a legitimate noun equivalent despite alternatives.
+51|Aj||المستقلة is independent feminine definite; no extra sense label needed.
+52|An||القرن expresses century. Horn is another Arabic reading, not grounds for restriction.
+53|Aj||القائمة can mean existing/standing feminine in the intended construction; preserve the adjective reading, not the list noun.
+54|Ab||ولذلك naturally renders therefore with an Arabic conjunction prefix. That grammatical adaptation is not itself an exclusion.
+55|An||السفينة is a ship; article variation remains valid.
+56|An|leadership|القيادة is command as leadership, not an individual order; retain the distinct noun sense.
+57|An||الدليل naturally expresses evidence/proof. Guide is another possible Arabic reading, not a ban.
+58|Oj||اضافي requires the standard hamza in إضافي. Preserve spelling review and do not silently change the answer.
+59|Cn||المحاكمات is trials; generic/collective English trial usage might support it but is not confirmed here. Do not reject number alone.
+60|On||إبني has the wrong hamza convention for ابني and includes possession. Keep spelling/construction review without a text edit.
+61|Cv||تولد may support a born construction depending on voice and context; retain review, not automatic tense exclusion.
+62|Oj||ات is a defective written form for the intended coming adjective. Keep the original and defer spelling repair.
+63|Oj||اساسي lacks hamza in أساسي. Recognizable MSA adjective, still unsuitable for automatic approval as written.
+64|Un||جرانت is the Grant name rendering, not a certified grant verb/financial award. Exclude pending classification while preserving the record.
+65|Oj||ايجابية lacks hamza in إيجابية. Preserve the original for orthographic review.
+66|On||فكره has a letter/spelling issue for فكرة. Do not turn the normalization function into a spelling corrector.
+67|On||الايدي lacks hamza in الأيدي; retain review rather than assuming dialect.
+68|Uu||ابت does not establish the father citation; possible vocative damage remains unresolved. Keep both directions excluded.
+69|On||اداة lacks the hamza of أداة. Meaning recognizable, spelling unresolved.
+70|Un||فالى is a name/phonetic rendering rather than a certified MSA valley equivalent.
+71|Un||ستيل is an unestablished phonetic rendering for the steel substance in this learner entry; do not replace it automatically.
+72|Rn||تلفون is a widespread borrowing, but its preferred MSA spelling/register needs evidence. Do not reject merely as informal.
+73|Uu||مكه does not provide a recognizable fish meaning. Keep uncertain register and both exclusions.
+74|Un||وود is a transliterated name/English form, not a certified natural general wood equivalent here.
+75|Rn||الكريسماس is a familiar borrowing, but this review does not establish its MSA learner-register status. Keep unresolved, not rejected.
+76|Rn||لورد is a title borrowing; MSA use is possible and should not be rejected merely because it is borrowed. Leave register review.
+77|Rn||ماستر is used in several borrowed senses; the intended MSA master relationship remains uncertain.
+78|Hn||الظلام الداكن is redundant dark darkness. Retain review with exclusions; do not mechanically delete an adjective or certify the phrase.
+79|Cn||الهواء الطلق is open air, naturally involved in outdoor constructions. Keep the bare adjective-to-noun relationship unresolved without a blanket POS rejection.
+80|Cn||سيدي is my master/sir; a vocative master use is possible but the isolated sense/possession requires review.
+81|Pn||قيمة legitimately expresses WORTH as a noun meaning value. This is a clear English noun use, not a forced adjective-to-noun mapping; allow both directions and prefer the natural equivalent.
+82|Cn||وظائف is jobs, while careers may encompass professional trajectories; leave that sense distinction unresolved, not synonym-only exclusion.
+83|Cn||الإمكانات المحتملة redundantly combines potential and possible capabilities. Review the naturalness of the expression before approval.
+84|Rn||فلتر is widely used; this review lacks enough evidence to certify the register or reject it as dialect.
+85|Cj||الأساسية has hamza and ordinary feminine morphology. Its written form itself is not defective; it can represent CORE as an essential adjective, but the intended isolated construction needs review.
+86|Pn||بطارية is a natural battery noun; preserve it independently from the malformed repeated alternative.
+87|Pn||مرضى naturally means patients; Arabic broken plural causes no direction problem.
+88|Pn||النتيجة is score/result, a natural noun relation with fair crossword synonym ambiguity.
+89|An||الاستحقاق can express benefit/entitlement. It remains allowed even when منفعة is preferred.
+90|An|objective|الهدف is a target/objective noun; separate it from the targeting action.
+91|An||الفرصة is opportunity/chance. The definite article is a valid variant.
+92|Av||اكتملت is a natural completed past form; subject agreement does not make it misleading.
+93|Pj||تقليدي is traditional, a direct natural adjective relation.
+94|Pj||مستقل is independent, a natural adjective.
+95|Pn||حركة المرور is traffic; the spaced Arabic expression is correct and useful.
+96|An||المواصلات naturally expresses transportation, an ordinary plural-form collective noun.
+97|Aj||الخارجية is external feminine definite in the intended adjective relationship.
+98|Pn||الاتصالات naturally expresses communications. No separate verbose sense is necessary.
+99|Aj||متوسطة is medium feminine; a valid adjective relation, independent of medium as a substance noun.
+# QA preference proposal at index 31 has MEDIUM confidence; see reviews.json. It remains unapplied. CORE at index 85 corrects the diagnostic reason, but retains review status and unknown allowance.

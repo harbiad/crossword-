@@ -1,0 +1,132 @@
+{
+  "seed": "stage3b-batch003-pos-sense-qa-v1",
+  "sampleSize": 100,
+  "headwords": 84,
+  "strata": {
+    "rejected": 3,
+    "sense": 20,
+    "multi-pos": 20,
+    "nonpreferred-reverse": 15,
+    "review": 12,
+    "register": 8,
+    "reference-conflict": 8,
+    "pos-control": 14
+  },
+  "sampleBaseline": {
+    "headwords": 84,
+    "relationships": 100,
+    "headwordStatus": {
+      "approved": 82,
+      "review": 2
+    },
+    "relationshipStatus": {
+      "rejected": 3,
+      "approved": 69,
+      "review": 28
+    },
+    "register": {
+      "dialect": 1,
+      "msa": 88,
+      "uncertain": 11
+    },
+    "allowedEnToAr": 69,
+    "allowedArToEn": 69,
+    "preferredEnToAr": 25,
+    "preferredArToEn": 25,
+    "restrictedEnToAr": 10,
+    "restrictedArToEn": 10,
+    "allowedNonpreferredArToEn": 44,
+    "posAssignments": 98,
+    "unresolvedPos": 2,
+    "senseAssignments": 29,
+    "multiword": 8
+  },
+  "originalDecisionSha256": "8e0f0f472a3328cb99099002d1abe9a6c68d9d04f98ea4b2eec63304908a5ead",
+  "qaReviewSha256": "ef18e365db7190ace04949ba96ce58ed3c0f04ab6a5bf7733d277a29835c6590",
+  "agreements": {
+    "status": {
+      "agree": 99,
+      "total": 100,
+      "percent": 99
+    },
+    "register": {
+      "agree": 100,
+      "total": 100,
+      "percent": 100
+    },
+    "allowedForEnToAr": {
+      "agree": 99,
+      "total": 100,
+      "percent": 99
+    },
+    "allowedForArToEn": {
+      "agree": 99,
+      "total": 100,
+      "percent": 99
+    },
+    "preferredForEnToAr": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "preferredForArToEn": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "partOfSpeech": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "sense": {
+      "agree": 29,
+      "total": 29,
+      "percent": 100
+    }
+  },
+  "comparisonWithBatch002": {
+    "posBefore": 89,
+    "posNow": 98,
+    "senseBefore": 88,
+    "senseNow": 100,
+    "interpretation": "Numerically higher on a different targeted sample; not a matched-sample causal improvement or independent-human accuracy estimate."
+  },
+  "diagnosticNotes": [
+    {
+      "sourceId": "1329:0",
+      "english": "VOTE",
+      "arabic": "التصويت",
+      "before": "valid-alternative",
+      "after": "natural-preferred",
+      "reason": "التصويت is a valid vote/voting noun. Preference over the bare تصويت is subjective; retain the proposed preference change as medium-confidence, not an applied correction.",
+      "confidence": "medium",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1532:3",
+      "english": "CORE",
+      "arabic": "الأساسية",
+      "before": "orthography-review",
+      "after": "construction-or-sense-review",
+      "reason": "الأساسية has hamza and ordinary feminine morphology. Its written form itself is not defective; it can represent CORE as an essential adjective, but the intended isolated construction needs review.",
+      "confidence": "medium",
+      "productionMetadataChanged": false
+    }
+  ],
+  "disagreeingRelationships": 4,
+  "fieldDisagreements": 9,
+  "highConfidenceFieldCorrections": 7,
+  "unapplied": 2,
+  "disagreementsByField": {
+    "preferredForEnToAr": 2,
+    "preferredForArToEn": 2,
+    "partOfSpeech": 2,
+    "status": 1,
+    "allowedForEnToAr": 1,
+    "allowedForArToEn": 1
+  },
+  "textCorrections": 0,
+  "assessment": "Bounded same-assistant QA with controlled relationship-specific POS and short senses. See measured agreement and all disagreements; no independent-human certification. Batch004 has not begun.",
+  "measurement": "Original frozen judgments versus a fresh second pass shown English and Arabic without original status/preferences/reference. Same assistant retains conversation context; not blinded independent-human accuracy. Unknown allowance is a third outcome. Sense denominator is rows with an old or new label; disagreements include label wording and scope, not only semantic errors."
+}

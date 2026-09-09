@@ -1,0 +1,3 @@
+﻿"sourceId","english","arabic","field","before","after","reason","confidence","applied"
+"1329:0","VOTE","التصويت","preferredForEnToAr","false","true","التصويت is a valid vote/voting noun. Preference over the bare تصويت is subjective; retain the proposed preference change as medium-confidence, not an applied correction.","medium","false"
+"1329:0","VOTE","التصويت","preferredForArToEn","false","true","التصويت is a valid vote/voting noun. Preference over the bare تصويت is subjective; retain the proposed preference change as medium-confidence, not an applied correction.","medium","false"

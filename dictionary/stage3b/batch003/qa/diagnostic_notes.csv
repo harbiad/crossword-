@@ -1,0 +1,3 @@
+﻿"sourceId","english","arabic","before","after","reason","confidence","productionMetadataChanged"
+"1329:0","VOTE","التصويت","valid-alternative","natural-preferred","التصويت is a valid vote/voting noun. Preference over the bare تصويت is subjective; retain the proposed preference change as medium-confidence, not an applied correction.","medium","false"
+"1532:3","CORE","الأساسية","orthography-review","construction-or-sense-review","الأساسية has hamza and ordinary feminine morphology. Its written form itself is not defective; it can represent CORE as an essential adjective, but the intended isolated construction needs review.","medium","false"

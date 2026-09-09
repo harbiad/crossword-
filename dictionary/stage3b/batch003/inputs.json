@@ -1,0 +1,12 @@
+{
+  "api/_lib/dictionary.stage3b.batch002.qa.generated.ts": "576b57f85ef27f54e2b48ca6cc1d859bef7bcae02afd183d7e5d00c73338202d",
+  "api/english_arabic_10000_v3.csv": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+  "dictionary/stage3a/decisions.json": "8b69d909df52f3fc32a62f942bb14e08526f400bec7455ad5091c6f6412346fe",
+  "dictionary/stage3b/batch001/decisions.json": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+  "dictionary/stage3b/batch002/decisions.json": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506",
+  "dictionary/stage3b/batch003/selection.json": "1fb639f0053adcee049bef840d5bd3b073671f254f719b89fb24985688994ce9",
+  "dictionary/stage3b/batch003/deferred.json": "203d9cbcb3a63523ca3239b92c6f337bc96d241470c2fc89617c4954a0fc8d0f",
+  "dictionary/stage3b/batch003/proposals.json": "f0551536b586b84174453829484e2169b02e25f3897827a3a4e5ecac6e874186",
+  "dictionary/stage3b/batch003/rejection_checks.json": "70991de3c1be8326481be7af7e15a63c185098febe5d24209ab7fae05bd5a7d7",
+  "dictionary/stage3b/batch003/decisions.json": "8e0f0f472a3328cb99099002d1abe9a6c68d9d04f98ea4b2eec63304908a5ead"
+}

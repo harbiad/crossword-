@@ -1,0 +1,7 @@
+﻿"sourceId","english","original","proposedStatus","finalStatus","confidence","reason"
+"1168:2","FEATURED","المميزات","rejected","review","high","المميزات means features/advantages; a nominal featured-items construction is not established, but morphology alone is insufficient to reject. Keep excluded pending sense review."
+"1313:0","SUCCESS","ناجحة","rejected","review","high","ناجحة is successful feminine. A success can be expressed adjectivally in Arabic; leave the bare nominal mapping unresolved rather than categorically rejecting it."
+"1419:3","SESSION","الدورة الثانية","rejected","rejected","high","الدورة الثانية introduces the unsupported ordinal second. It misleadingly narrows a general session clue; no evidence for that specific headword sense is present."
+"1453:3","GERMAN","المانيا","rejected","rejected","high","المانيا names Germany, not German as language/person/adjective. This is a country-versus-demonym referent mismatch, not a natural inflection."
+"1460:1","BOYS","ولاد","rejected","rejected","high","ولاد is the colloquial shortened form in the boys relationship; the standard أولاد alternative exists separately. No rewrite or suppression of the valid relationship is needed."
+"1633:3","CREATIVE","ابداع","rejected","review","high","ابداع is a misspelled creativity/action noun, potentially natural for creative work in context. Defer the isolated mapping; a noun/adjective difference alone is not rejection evidence."

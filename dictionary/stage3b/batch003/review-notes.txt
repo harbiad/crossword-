@@ -1,0 +1,503 @@
+# Explicit relationship-by-relationship review. Token=status/preference code + controlled English POS code.
+# P approved/preferred both; A approved/allowed both/nonpreferred; C review MSA construction; O review MSA orthography; R review uncertain register; U review uncertain/exclude both; X proposed rejected MSA wrong; D proposed rejected dialect; H review MSA/exclude both.
+# n noun, v verb, j adjective, b adverb, p preposition, q pronoun, c conjunction, d determiner, i interjection, t other, u uncertain. Every relationship has an explicit token; no defaults.
+MOVE|Av Pv Av
+CABLE|Rn An Pn
+OPPORTUNITIES|Pn An
+TAKING|Ov Pv
+VALUES|Pn An
+DIVISION|Pn An
+COMING|Oj Aj Pj Aj
+TUESDAY|Pn
+OBJECT|An Pn An
+LESBIAN|Pj
+APPROPRIATE|Pj
+MACHINE|On An On An Rn Pn
+LOGO|Pn An
+LENGTH|Pn An
+ACTUALLY|Ab Pb
+NICE|Aj Aj Pj
+SCORE|Pn
+STATISTICS|On On On On On Pn
+CLIENT|Pn An An An
+OK|Pj
+RETURNS|Pn Av An An|0=financial returns;1=comes back;2=financial returns;3=returned goods
+CAPITAL|An Pn Pn|0=capital city;1=capital city;2=financial capital
+FOLLOW|Ov Av Av Av Pv
+SAMPLE|An Pn
+INVESTMENT|Cn Cn Cn An Pn
+SENT|Ov Ov Aj
+SHOWN|Cv
+SATURDAY|An Pn An
+CHRISTMAS|Rn Rn An
+CULTURE|An Cn Pn
+FLASH|An Pn Rn
+LEAD|Pn|0=metal
+CHOICE|Pn An An An
+WENT|Rv Pv
+STARTING|Pn An An
+REGISTRATION|Pn An
+THURSDAY|Pn An
+COURSES|An Pn
+CONSUMER|An Pn
+AIRPORT|Pn An
+FOREIGN|Oj Oj Oj Cn
+ARTIST|Pn An An
+OUTSIDE|Ab Pb Ab
+FURNITURE|On On Pn
+LEVELS|An Pn
+CHANNEL|Pn An
+LETTER|Pn An Pn|0=alphabet character;1=written message;2=written message
+MODE|Un An An Pn An
+PHONES|Pn An
+IDEAS|On On Pn
+WEDNESDAY|On Pn
+STRUCTURE|An Pn An
+FUND|Pn An
+SUMMER|Aj An Pn Un
+ALLOW|Pv Av
+DEGREE|Cn Pn An An|3=academic qualification
+CONTRACT|Av Av An Pn|0=make an agreement;1=make an agreement;2=agreement;3=agreement
+BUTTON|Pn An
+RELEASES|On On Pn
+HOMES|An Pn An An
+SUPER|Rj Rj
+MALE|Aj Aj Pj Cn Cn
+MATTER|On On Pn
+CUSTOM|Pn Pj Aj|0=traditional practice;1=made to order;2=made to order
+ALMOST|Pb
+TOOK|Ov Pv
+LOCATED|Cu
+MULTIPLE|Aj Cn Pj Aj
+DISTRIBUTION|Pn An
+EDITOR|Pn An An
+INN|Pn An
+CAUSE|An Pn
+POTENTIAL|On Cn
+SONG|Un On On On On Pn
+FOCUS|Av An Pv
+LATE|Ob Ov Oj Oj Pj
+FALL|Pn Ov An Pn|0=falling;2=falling;3=autumn
+FEATURED|Aj Cj Xn
+IDEA|On An Pn
+ROOMS|An Pn
+FEMALE|Oj Oj Cn Cn Pj
+RESPONSIBLE|Pj Aj
+COMMUNICATIONS|Pn An
+WIN|Pv Av
+ASSOCIATED|Pj Aj
+PRIMARY|Aj Aj Pj
+CANCER|An Pn
+NUMBERS|On On On Pn
+REASON|Pn An
+TOOL|On On Pn
+BROWSER|An Pn
+SPRING|Pn An|0=season;1=season
+FOUNDATION|On Pn An|0=base;1=organization;2=organization
+ANSWER|On On An An Pn
+VOICE|An Pn Uu
+FRIENDLY|Aj Pj
+SCHEDULE|Av An Pn
+DOCUMENTS|An Pn An An
+COMMUNICATION|An An Pn
+PURPOSE|Pn An An
+FEATURE|An Pn An
+BED|An Pn An An
+COMES|Ov Pv
+POLICE|On Rn Pn An
+EVERYONE|Pq
+INDEPENDENT|Aj Pj Aj Aj
+APPROACH|Pn An Av|0=method;1=method;2=come near
+CAMERAS|Pn An
+BROWN|Oj Aj Aj Uj Pj
+PHYSICAL|Pj Aj Aj Aj|2=material
+OPERATING|Pv
+HILL|Pn Un An An
+MAPS|An Pn
+MEDICINE|Pn Pn An An|0=medical practice;1=drug;2=drug;3=medical practice
+DEAL|Av Pn An An An|0=handle;1=agreement;2=agreement;3=agreement;4=agreement
+HOLD|Av|0=hold an event
+RATINGS|An An Pn Cn
+FORMS|On On Pn
+GLASS|Aj Pn An
+HAPPY|Cv Oj Uj Pj Aj
+WANTED|Pj
+DEVELOPED|Av Aj|0=developed something;1=advanced
+THANK|Pv Ov Ci
+SAFE|Cu Oj Pj
+UNIQUE|Cj Aj Pj Aj
+SURVEY|Pn An An An
+PRIOR|Pj Aj
+TELEPHONE|Pn Rn Rn An
+SPORT|Pn An Un
+READY|Aj Aj Aj Cn Pj
+FEED|Pv
+ANIMAL|Aj An Pn
+SOURCES|Pn An
+POPULATION|Pn
+REGULAR|Pj Aj Aj
+SECURE|Pj
+NAVIGATION|Pn
+OPERATIONS|Pn An
+THEREFORE|Ab
+SIMPLY|Pb Ob
+EVIDENCE|On Pn An On An
+CHRISTIAN|Aj Aj Pj Un
+ROUND|Pj Pn|0=circular;1=round of activity
+FAVORITE|Aj Pj Aj Aj
+UNDERSTAND|Ov Cj Pv Av
+OPTION|Pn An
+MASTER|Cn Cn Pn Rn An Cn|2=teacher or skilled master;4=teacher or skilled master
+VALLEY|Pn An Un Un
+RECENTLY|Pb
+PROBABLY|Ab
+RENTALS|Pn
+SEA|An Pn
+BUILT|Av Pj
+PUBLICATIONS|Pn An An
+CUT|Pv Av
+WORLDWIDE|Pb Ab
+IMPROVE|Pv
+CONNECTION|Pn An
+PUBLISHER|Pn
+LARGER|Pj
+ANTI|Aj Pp
+NETWORKS|Pn An
+EARTH|On Pn
+PARENTS|On An Pn On On An
+IMPACT|On On On An Pn|3=collision;4=effect
+TRANSFER|An An Pn
+INTRODUCTION|Pn An
+KITCHEN|Pn An
+STRONG|Oj Aj Aj Pj
+WEDDING|An An An Cn Pn
+PROPERTIES|Pn An An An An|0=attributes;1=attributes;2=attributes;3=possessions;4=attributes
+HOSPITAL|An On Pn An On An
+GROUND|Pn
+OVERVIEW|Pn
+SHIP|An Pn
+ACCOMMODATION|On An Pn An
+OWNERS|Cn Pn
+DISEASE|An An Cn Pn
+EXCELLENT|Aj Pj
+PAID|Av Pj Av Aj
+PERFECT|Pj Aj Cn Aj
+HAIR|An Pn
+OPPORTUNITY|Pn Cn An
+KIT|Pn Cn
+CLASSIC|Un Pj Aj Aj Aj
+BASIS|On On Pn
+COMMAND|On An An Pn|1=leadership;2=leadership;3=order
+CITIES|An Pn
+EXPRESS|Ov Pj|1=explicit
+AWARD|An Pn An|2=arbitration decision
+DISTANCE|An An Pn
+TREE|An Pn
+ASSESSMENT|Pn An
+ENSURE|Pv
+THUS|Ab
+WALL|An An Un An Pn
+INVOLVED|Aj
+EXTRA|Oj Oj Pj
+ESPECIALLY|Cb Ab Pb Ob
+INTERFACE|Pn An
+PARTNERS|An Pn
+BUDGET|Pn An
+RATED|Cn
+GUIDES|Pn
+SUCCESS|Xu An An Pn
+MAXIMUM|Oj Pn
+OPERATION|An Cn Pn An|3=machine operation
+EXISTING|Pj Aj Aj
+QUITE|Pb
+SELECTED|Pj Aj Av Aj Cn
+BOY|An Un Pn An An
+PATIENTS|Pn An
+RESTAURANTS|An Pn
+BEAUTIFUL|Aj Pj Oj
+WARNING|An Pn
+WINE|Pn An
+LOCATIONS|Pn An
+HORSE|Pn An Cn
+VOTE|An Pn Av
+FORWARD|Ob Ob Pb
+FLOWERS|An Pn On On
+STARS|An Pn
+SIGNIFICANT|Pj
+LISTS|Pn An
+TECHNOLOGIES|An Pn
+OWNER|An Pn An
+RETAIL|Pn An
+ANIMALS|Pn An
+USEFUL|Aj Aj Pj
+DIRECTLY|Pb
+MANUFACTURER|An Cu An
+WAYS|An An Pn
+SON|Pn Cn An On
+PROVIDING|Pv
+RULE|An Pn
+HOUSING|On An An An An On Pn
+TAKES|Ov Av Pv|1=requires time
+BRING|Ov Pv Ov Av
+CATALOG|Pn Rn
+SEARCHES|Pn
+TRYING|Av Ov Pv
+MOTHER|On On Pn
+AUTHORITY|Pn
+CONSIDERED|Av Cv
+TOLD|Ov Cv
+TRAFFIC|An Pn
+PROGRAMME|An Pn
+JOINED|Av Pv
+INPUT|Ov An Pn An|1=contribution
+STRATEGY|Pn An
+FEET|On On Cn Cn Cn Pn
+AGENT|An Pn An An An|0=agent or operative;1=representative;2=agent or operative;3=agent or operative;4=representative
+VALID|Aj Pj Aj
+MODERN|Pj Aj
+SENIOR|Cu Oj
+TEACHING|Pn An An
+DOOR|Pn An
+TESTING|An Pn Hn
+TRIAL|Pn Cn An
+CHARGE|An Pn|0=accusation;1=accusation
+UNITS|Pn An
+INSTEAD|Pb
+CANADIAN|Pj Aj Aj Aj
+COOL|Pj
+NORMAL|Aj Pj
+WROTE|Av Pv
+ENTERPRISE|Pn
+SHIPS|An Pn
+ENTIRE|Pj
+EDUCATIONAL|Aj Pj Aj
+LEADING|Pj
+METAL|An Cn Aj Pn Cn
+POSITIVE|Oj Oj Oj Oj Aj Pj
+FITNESS|An An Cn Pn
+OPINION|On Pn
+FOOTBALL|Pn
+ABSTRACT|Pj Pn An|0=not concrete;1=summary;2=summary
+USES|An Pn
+OUTPUT|Pn An On Cn An
+FUNDS|Pn
+GREATER|Oj Pj
+LIKELY|Pj
+DEVELOP|Pv
+EMPLOYEES|An An Pn An
+ARTISTS|Cn An Pn
+ALTERNATIVE|Aj Pj Aj
+PROCESSING|Pn An An An
+RESPONSIBILITY|An Pn
+RESOLUTION|Pn An|0=formal decision;1=formal decision
+GUEST|Pn An An
+SEEMS|Pv
+PUBLICATION|Pn An|0=publishing;1=published item
+PASS|Pv Av Pn|0=pass something;1=passing;2=sports pass
+RELATIONS|Pn An
+TRUST|An Pn
+VAN|Rn Rn
+CONTAINS|Av Pv Av Av
+SESSION|An Pn An Xn
+PHOTOGRAPHY|An An Pn
+REPUBLIC|An Pn
+FEES|Pn An
+COMPONENTS|An An An Pn
+VACATION|On An On Pn On An
+CENTURY|Pn An
+ACADEMIC|Oj Oj Oj Oj Pj
+ASSISTANCE|An Pn
+COMPLETED|Pv Ov Av
+SKIN|An Pn An An
+GRAPHICS|Pn An
+EXPECTED|Aj Pj Aj Aj
+RING|An Pn
+GRADE|Pn|0=school grade
+DATING|Av Pn An Cu
+MOUNTAIN|Un Pn An
+ORGANIZATIONS|Pn An
+POP|Pn|0=music genre
+FILTER|Rn Pv Pn An Av|1=filtering action;2=filtering device;3=filtering device;4=filtering action
+MAILING|Cn
+VEHICLE|An Pn An An
+LONGER|Oj Pj
+CONSIDER|Pv Av
+NORTHERN|Aj Cn Aj Pj
+BEHIND|Pp Ap
+PANEL|Pn
+FLOOR|On Pn On An Cn|1=building level;3=building level
+GERMAN|Oj Cn Oj Xn Oj Oj Aj
+BUYING|Pn
+MATCH|Rn An An Pn An|1=matching;2=matching;3=contest;4=contest
+PROPOSED|Aj Pj Aj
+DEFAULT|Aj Pj Cn An An|0=preset;1=preset;3=failure to fulfil;4=failure to fulfil
+REQUIRE|Pv
+BOYS|On Dn On An Pn
+OUTDOOR|Pj Cn
+DEEP|Ab Pj Aj Cn
+MORNING|An Cn Pn Ci
+OTHERWISE|Oc Pb
+ALLOWS|Av Pv
+REST|Av An Pn An Pn|0=relax;1=repose;2=repose;3=break;4=remainder
+PROTEIN|Pn An
+REPORTED|Aj
+HIT|Pv
+TRANSPORTATION|An An Pn
+POOL|An Pn An An
+POLITICS|Cn An Pn
+PARTNER|Pn An An
+DISCLAIMER|An Pn
+AUTHORS|An Pn
+BOARDS|On Pn An On An|1=committees;2=committees;4=panels
+FACULTY|Pn An Pn|0=university division;1=university division;2=teaching staff
+PARTIES|Pn On On An On On An|0=celebrations;3=celebrations;6=participants
+FISH|Uu An An Un Pn On
+MEMBERSHIP|An Pn
+MISSION|An Pn An An|0=task;1=task;2=delegation;3=delegation
+EYE|Pn An
+STRING|An Pn An Cn|0=sequence;1=thread;2=sequence
+SENSE|On An On Pn|1=sensory faculty;3=feeling
+MODIFIED|Aj Pj Cn Aj
+RELEASED|Av
+STAGE|An An An Pn|0=platform;1=theatrical platform;2=phase;3=phase
+GOODS|An Pn An An An
+RECOMMENDED|Pj
+BORN|Av Cv Pj Cv Av
+UNLESS|Oc Oc Pc
+DETAILED|Aj Pj Aj
+JAPANESE|Pj Aj An Aj
+RACE|An Pn An Pn|0=competition;1=competition;2=ancestry;3=ancestry
+APPROVED|Pj Aj Aj
+BACKGROUND|An Pn
+TARGET|Pn An Pv|0=objective;1=objective;2=aim at
+EXCEPT|Ap Op Op Pp
+CHARACTER|An Pn Pn|0=personality or fictional person;1=personality or fictional person;2=written symbol
+MAINTENANCE|Cn Pn An
+ABILITY|An Pn On
+MAYBE|Ab Pb
+FUNCTIONS|Pn An An
+MOVING|An An Pv Av
+BRANDS|Rn Pn
+PLACES|On On Pn
+PRETTY|Pj
+TRADEMARKS|Pn
+SOUTHERN|Pj Aj Cn Aj
+YOURSELF|Aq Pq
+WINTER|An Pn Un Un
+BATTERY|An Pn Hn
+YOUTH|Pn Ou
+PRESSURE|Pn An
+SUBMITTED|Pj Aj Av
+DEBT|Pn An
+KEYWORDS|Pn
+MEDIUM|Pj Aj Aj
+TELEVISION|Pn An Rn An An
+INTERESTED|Aj Aj Pj Aj
+CORE|Pn Oj An Oj
+BREAK|Av Pv Pn|0=fracture;1=fracture;2=pause
+PURPOSES|An Pn
+THROUGHOUT|Pp
+SETS|Pn
+DANCE|An Pn An
+WOOD|Pn Un An An
+ITSELF|Pq
+DEFINED|Pj Cn
+PAPERS|On An An An On An Pn|3=newspapers;5=newspapers
+PLAYING|Pn Av
+AWARDS|Pn An
+FEE|Pn On An On
+STUDIO|An Pn An An An
+READER|Pn
+VIRTUAL|Aj Pj Aj
+DEVICE|Pn On On An
+ESTABLISHED|Ov Ov Ov Cu
+ANSWERS|On On Pn
+RENT|On Pn
+REMOTE|Pj Aj Ab
+DARK|Pn Pj An Aj Hn|0=darkness;1=without light;2=darkness;3=without light
+PROGRAMMING|Pn An
+EXTERNAL|Aj Pj Aj
+REGARDING|Pp
+INSTRUCTIONS|Pn On An
+OFFERED|Av
+THEORY|Pn An
+ENJOY|Pv Av
+REMOVE|Ov Ov Ov Pv
+SURFACE|Pn An
+MINIMUM|Oj Aj Aj Pn
+VISUAL|Pj Aj Aj Aj
+HOST|An Pn An
+VARIETY|Cj An Pn
+TEACHERS|On An Pn An An
+MANUAL|Pn An Pj|0=handbook;1=handbook;2=done by hand
+BLOCK|Pn Rn Pv|0=solid piece;2=prevent access
+SUBJECTS|Pn An An An
+AGENTS|An Pn An An
+INCREASED|Av Cn
+REPAIR|On An On An Pn
+FAIR|Pj Aj Cn Aj
+CIVIL|Aj Oj Aj Aj Pj
+STEEL|Pn Un An
+UNDERSTANDING|An An Pn An An
+SONGS|On On On Pn
+FIXED|Pj
+WRONG|On Cn On Pj Cn
+BEGINNING|Pn An
+HANDS|An On On Pn
+ASSOCIATES|Hn
+FINALLY|Ob Ob Pb
+UPDATES|An Pn
+DESKTOP|Pn
+CLASSES|An An An Pn An
+GETS|Pv
+SECTOR|Pn An
+CAPACITY|An An Pn Cn
+REQUIRES|Av Pv Av
+FAT|Aj Aj Pn Pj Pn|0=overweight;1=overweight;2=body fat;3=overweight;4=fatty substance
+FULLY|Pb
+FATHER|On Uu On Pn
+INSTRUMENTS|Pn An On|0=legal instruments;1=legal instruments
+QUOTES|Pn
+OFFICER|An Pn An
+DRIVER|An Pn An
+BUSINESSES|Pn
+DEAD|Aj Aj Pj
+RESPECT|Uu Pn An Av
+UNKNOWN|Pj
+SPECIFIED|Pj Aj Aj
+RESTAURANT|An Pn
+TRIP|An An Pn
+WORTH|Cv Cn
+PROCEDURES|On On Pn
+POOR|Aj An Pj Aj Aj An
+TEACHER|On An Pn An An
+EYES|On Pn An Cn
+RELATIONSHIP|Pn An Cn On
+WORKERS|An An Pn
+FARM|An Pn
+PEACE|Pn An
+TRADITIONAL|Aj Aj Aj Pj
+CAMPUS|Pn
+SHOWING|Pv
+CREATIVE|Oj Aj Aj Xu Pj
+COAST|An Pn Un
+BENEFIT|An An Pn Cn
+PROGRESS|Pn An
+FUNDING|Pn An
+DEVICES|On On Pn
+LORD|Cn Pn Rn Cn
+GRANT|Pv Pn Un Un|0=bestow;1=financial award
+AGREE|Pv Ov Av Cj
+FICTION|Cn An
+HEAR|Pv Ov
+SOMETIMES|Ob Pb
+WATCHES|An Pn
+CAREERS|An Pn Cn
+BEYOND|Pp
+GOES|Pv
+FAMILIES|An On An On Pn An
+LED|Pv
+MUSEUM|An Pn
+THEMSELVES|Pq
+FAN|An Pn An Pn An|0=supporter;1=supporter;2=cooling device;3=cooling device;4=admirer
+TRANSPORT|An An Pn
