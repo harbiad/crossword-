@@ -1,0 +1,42 @@
+{
+  "seed": "stage3b-batch001-qa-v1",
+  "baselineSha256": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+  "strata": [
+    {
+      "name": "approved",
+      "n": 40
+    },
+    {
+      "name": "rejected",
+      "n": 20
+    },
+    {
+      "name": "review",
+      "n": 20
+    },
+    {
+      "name": "reverse-restricted",
+      "n": 30
+    },
+    {
+      "name": "reverse-preferred",
+      "n": 10
+    },
+    {
+      "name": "sense",
+      "n": 10
+    },
+    {
+      "name": "reference-conflict",
+      "n": 10
+    },
+    {
+      "name": "multiword",
+      "n": 5
+    },
+    {
+      "name": "function-verb-adverb",
+      "n": 5
+    }
+  ]
+}

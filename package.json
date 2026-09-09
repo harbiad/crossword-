@@ -15,9 +15,11 @@
     "test:worker": "npm run build && vitest run --config vitest.worker.config.ts",
     "bench:lookahead": "npm run build && vitest run --config vitest.lookahead.config.ts",
     "dictionary:migrate": "node scripts/dictionary.ts migrate",
-    "dictionary:audit": "node scripts/dictionary.ts audit && node scripts/dictionary-stage2.ts audit && node scripts/dictionary-stage3a.ts audit",
+    "dictionary:audit": "node scripts/dictionary.ts audit && node scripts/dictionary-stage2.ts audit && node scripts/dictionary-stage3a.ts audit && node scripts/dictionary-stage3b.ts audit && node scripts/dictionary-stage3b-qa.ts audit",
     "dictionary:cleanup": "node scripts/dictionary-stage2.ts generate",
-    "dictionary:review3a": "node scripts/dictionary-stage3a.ts generate"
+    "dictionary:review3a": "node scripts/dictionary-stage3a.ts generate",
+    "dictionary:review3b": "node scripts/dictionary-stage3b.ts generate",
+    "dictionary:qa3b": "node scripts/dictionary-stage3b-qa.ts generate"
   },
   "dependencies": {
     "@vercel/node": "^5.5.28",

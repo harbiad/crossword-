@@ -31,7 +31,7 @@ it('benchmarks the real local API and unmocked generation pipeline', async () =>
   if (!['beginner', 'intermediate', 'advanced'].includes(band)) throw new Error('Invalid CROSSWORD_BENCH_BAND');
   const output = resolve(process.env.CROSSWORD_BENCH_OUTPUT ?? 'benchmarks/results/current.json');
   mkdirSync(resolve(output, '..'), { recursive: true });
-  const sourceFiles = ['api/generate.ts', 'api/_lib/candidates.ts', 'api/_lib/dictionary.ts', 'api/_lib/dictionary.generated.ts', 'api/_lib/dictionary.stage2.generated.ts', 'api/_lib/dictionary.stage3a.generated.ts', 'benchmarks/fixtures/legacy-generate.ts', 'api/cefr_levels.ts', 'api/DICT_COMMON_30000_non_empty.ts',
+  const sourceFiles = ['api/generate.ts', 'api/_lib/candidates.ts', 'api/_lib/dictionary.ts', 'api/_lib/dictionary.generated.ts', 'api/_lib/dictionary.stage2.generated.ts', 'api/_lib/dictionary.stage3a.generated.ts', 'api/_lib/dictionary.stage3b.generated.ts', 'api/_lib/dictionary.stage3b.qa.generated.ts', 'benchmarks/fixtures/legacy-generate.ts', 'api/cefr_levels.ts', 'api/DICT_COMMON_30000_non_empty.ts',
     'src/lib/generateCrossword.ts', 'src/lib/construct.ts', 'src/lib/preparedCandidates.ts', 'src/lib/preparedTemplate.ts', 'src/App.tsx', 'src/lib/generateWithRetry.ts', 'src/lib/templates.ts', 'src/lib/crossword.ts',
     'benchmarks/crossword.benchmark.ts', 'benchmarks/instrumentation.ts', 'benchmarks/metrics.ts'];
   const metadata = {

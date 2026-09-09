@@ -1,0 +1,502 @@
+# First-pass AI-assisted per-headword notes; decisions.json contains the final second-pass judgments. Zero-based translation indices in Stage 3A.
+# English|approved indices (preferred first)|part of speech; '-' means no approval.
+OF|0|preposition
+AND|1|conjunction
+TO|0|preposition
+A|-|article
+IN|0|preposition
+FOR|1|preposition
+IS|-|verb
+ON|0|preposition
+THAT|1|demonstrative
+BY|0|preposition
+THIS|0,1|demonstrative
+WITH|0|preposition
+I|-|pronoun
+YOU|2|pronoun
+OR|0|conjunction
+ARE|-|verb
+FROM|0|preposition
+AT|0|preposition
+AS|0|conjunction
+YOUR|1|possessive
+ALL|3,2,4|determiner
+HAVE|-|verb
+NEW|0,2,3|adjective
+MORE|3,0|quantifier
+AN|-|article
+WAS|1,0|verb
+WE|0|pronoun
+WILL|2|auxiliary verb
+HOME|2,0,1,3|noun
+CAN|0,1|auxiliary verb
+US|-|pronoun
+ABOUT|3,0,2|preposition
+IF|0|conjunction
+PAGE|0,1|noun
+HAS|0|verb
+SEARCH|2,1,0|noun / verb
+FREE|2,3,1|adjective
+BUT|0,2|conjunction
+ONE|2,1|numeral
+OTHER|1|adjective
+DO|0|verb
+NO|0|particle
+INFORMATION|2,1|noun
+TIME|0,1,2,3,4|noun
+THEY|0|pronoun
+SITE|0|noun
+HE|0|pronoun
+UP|0|adverb
+MAY|0,2|auxiliary verb / month noun
+WHAT|1,0|interrogative
+WHICH|1,3|relative pronoun
+THEIR|-|possessive
+NEWS|-|noun
+USE|2,1,3,0,4|noun / verb
+ANY|-|determiner
+THERE|0|adverb
+SEE|2,0|verb
+ONLY|0|adverb
+SO|-|adverb / conjunction
+HIS|-|possessive
+WHEN|2,1,0|adverb / conjunction
+CONTACT|1,2,3|noun
+HERE|0|adverb
+BUSINESS|3,0,2|noun
+WHO|0|pronoun
+WEB|0,1,2,3|noun
+ALSO|2|adverb
+NOW|2|adverb
+HELP|1,0,2|noun / verb
+GET|0,3|verb
+VIEW|1,0,2|noun / verb
+ONLINE|-|adjective / adverb
+FIRST|-|ordinal / adverb
+AM|-|verb
+BEEN|-|verb
+WOULD|-|auxiliary verb
+WERE|0|verb
+ME|-|pronoun
+SERVICES|0,1|noun
+SOME|1,0|determiner
+THESE|0,1|demonstrative
+CLICK|2,3,4,1|noun / verb
+ITS|-|possessive
+LIKE|0|preposition
+SERVICE|1,0|noun
+FIND|-|verb
+PRICE|3,4,0|noun
+DATE|3,2,0,1|noun
+BACK|5,0|noun
+TOP|2,0,4|noun / adjective
+PEOPLE|3,4|noun
+HAD|-|verb
+LIST|0,2|noun
+NAME|0,1|noun
+JUST|1,0|adverb
+OVER|0|preposition
+STATE|1,4,2,0,3|noun
+YEAR|3,0,1,5|noun
+DAY|1,0,2|noun
+INTO|0|preposition
+EMAIL|2|noun
+TWO|1,0,2|numeral
+HEALTH|1,0|noun
+WORLD|3,0,2|noun
+NEXT|2,0,1|adjective
+USED|4,2|adjective
+GO|-|verb
+WORK|2,0,1|noun / verb
+LAST|5|adjective
+MOST|0|quantifier
+PRODUCTS|0,1|noun
+MUSIC|0,2|noun
+BUY|2|verb
+DATA|1,0|noun
+MAKE|3,2|verb
+THEM|-|pronoun
+SHOULD|0|auxiliary verb
+PRODUCT|2,0|noun
+SYSTEM|0,1,2|noun
+POST|0,2|noun
+HER|0|pronoun
+CITY|1,2|noun
+ADD|3|verb
+POLICY|2,1|noun
+NUMBER|3,2,0,1|noun
+SUCH|0|determiner
+PLEASE|1,2|interjection
+AVAILABLE|1,0,2,3|adjective
+COPYRIGHT|0|noun
+SUPPORT|0,1|noun
+MESSAGE|2,1|noun
+AFTER|1,0|preposition / conjunction
+BEST|4|adjective
+SOFTWARE|0,1,2,3|noun
+THEN|2,1|adverb
+GOOD|3,2|adjective
+VIDEO|2,1|noun
+WELL|0|adverb
+WHERE|2,1|adverb
+RIGHTS|0,1|noun
+PUBLIC|1,3,0|adjective / noun
+BOOKS|0,1|noun
+HIGH|2,0,3|adjective
+SCHOOL|1,2|noun
+THROUGH|0,1,2|preposition
+EACH|-|determiner
+LINKS|2,3,0,1,4|noun
+SHE|1|pronoun
+REVIEW|3,0,1,2|noun
+YEARS|4,3,2,0|noun
+ORDER|1,3,2,4|noun
+VERY|0|adverb
+PRIVACY|0,1|noun
+BOOK|1,0|noun
+ITEMS|1,4,2,3|noun
+COMPANY|1,2,3|noun
+READ|-|verb
+GROUP|0,1|noun
+NEED|0,1|noun
+MANY|0,1,3,5|quantifier
+USER|0,1,2,3|noun
+SAID|1,0|verb
+DOES|-|verb
+SET|2,0,1|noun
+UNDER|0|preposition
+GENERAL|0,4,3,5|adjective / noun
+RESEARCH|3,5,0,4|noun
+UNIVERSITY|0,1|noun
+JANUARY|0|noun
+MAIL|0,1,2|noun
+FULL|2,0,3|adjective
+MAP|3,2,1|noun
+REVIEWS|0,1,2|noun
+PROGRAM|1,0|noun
+LIFE|2,0|noun
+KNOW|1,0|verb
+GAMES|0,2|noun
+WAY|2,3,1|noun
+DAYS|2|noun
+MANAGEMENT|2|noun
+PART|0,1|noun
+COULD|-|auxiliary verb
+GREAT|0,1,2|adjective
+UNITED|2,1|adjective
+HOTEL|2,0|noun
+REAL|1,2|adjective
+ITEM|1,0,2,3|noun
+INTERNATIONAL|3,0,1,2|adjective
+CENTER|4,1,2,3|noun
+MUST|1|auxiliary verb
+STORE|3,2,0,1|noun
+TRAVEL|0,1|noun
+COMMENTS|0,1|noun
+MADE|2|participle
+DEVELOPMENT|1,0,2|noun
+REPORT|2,1,3|noun
+OFF|0|preposition
+MEMBER|1,0,2|noun
+DETAILS|0,1|noun
+LINE|3,2,0,1|noun
+TERMS|0,2,1|noun
+BEFORE|0|preposition
+HOTELS|0,1|noun
+SEND|-|verb
+RIGHT|1,3,4,2|adjective / noun
+TYPE|1,0|noun
+LOCAL|0,1,2,4|adjective
+THOSE|-|demonstrative
+USING|1,2|verbal noun
+RESULTS|1,0|noun
+OFFICE|1,0,2|noun
+EDUCATION|0,2,1|noun
+NATIONAL|3,2,0|adjective
+CAR|1,0|noun
+DESIGN|0,1|noun
+TAKE|0|verb
+POSTED|2|participle
+INTERNET|2|noun
+ADDRESS|1,0|noun
+COMMUNITY|0,1,2|noun
+WITHIN|1,0|preposition
+STATES|0,2,1|noun
+AREA|2,3,0,1|noun
+WANT|1|verb
+PHONE|0,2|noun
+SHIPPING|1,0|noun
+RESERVED|1,2,0|adjective
+SUBJECT|0|noun
+BETWEEN|0|preposition
+FORUM|0,1,2,3,4|noun
+FAMILY|1,4,5|noun
+LONG|4,1,3|adjective
+BASED|-|participle
+CODE|0,2,3|noun
+SHOW|1,3,4|noun / verb
+EVEN|0|adverb
+BLACK|4,3|adjective
+CHECK|0,2,1,3|noun / verb
+SPECIAL|1,0,2,3|adjective
+PRICES|2|noun
+WEBSITE|0|noun
+INDEX|0,2,1|noun
+BEING|-|verb / noun
+WOMEN|0,2|noun
+MUCH|1|quantifier
+SIGN|0,1|noun / verb
+FILE|0,1|noun
+LINK|4,0,2,3|noun
+OPEN|0,1,2|adjective / verb
+TODAY|0|adverb
+TECHNOLOGY|0,1,2,3|noun
+SOUTH|3,2|noun
+CASE|3,1,2,0|noun
+PROJECT|0,1|noun
+SAME|2|adjective phrase
+PAGES|0,1|noun
+VERSION|0|noun
+SECTION|1,0,2,3|noun
+OWN|0|verb
+FOUND|-|verb
+SPORTS|2,0,1|noun
+HOUSE|1,0,3|noun
+RELATED|0|adjective phrase
+SECURITY|2|noun
+BOTH|0|pronoun
+COUNTY|0,1|noun
+AMERICAN|4|adjective
+PHOTO|0,1|noun
+GAME|0,3,1,2|noun
+MEMBERS|2|noun
+POWER|0,3,1,2,4|noun
+WHILE|0|conjunction
+CARE|1,2,3,4,0|noun / verb
+NETWORK|0,1|noun
+DOWN|1|adverb
+COMPUTER|3,1,2,0,4|noun
+SYSTEMS|0,2,4|noun
+THREE|0,1|numeral
+TOTAL|0,1|noun
+PLACE|0,1|noun
+END|0,1|noun
+FOLLOWING|-|participle
+DOWNLOAD|1,2|noun
+HIM|-|pronoun
+WITHOUT|0|preposition
+ACCESS|1,0|noun
+THINK|0,1|verb
+NORTH|2,4|noun
+RESOURCES|1,0|noun
+CURRENT|2,1,0|adjective / noun
+POSTS|1,3,0,2|noun
+BIG|3,0,1|adjective
+MEDIA|2|noun
+LAW|1,0|noun
+CONTROL|3,0,1,2|noun
+WATER|1,0,2,3|noun
+HISTORY|1,0|noun
+PICTURES|1,0|noun
+SIZE|2,1,0|noun
+ART|2,0|noun
+PERSONAL|2,1|adjective
+SINCE|0|preposition
+INCLUDING|0|preposition
+GUIDE|1,2,0,3|noun
+SHOP|2,0|noun
+DIRECTORY|0,1|noun
+BOARD|0,1,2|noun
+LOCATION|0,1,2|noun
+CHANGE|1,2,0,4|noun
+WHITE|4,0|adjective
+TEXT|1,2|noun
+SMALL|1,3|adjective
+RATING|0,1,2,3|noun
+RATE|1,0|noun
+GOVERNMENT|2,0|noun
+CHILDREN|2|noun
+DURING|1|preposition
+RETURN|1,0|noun
+STUDENTS|0,2,3,4,1|noun
+SHOPPING|1,2|noun
+ACCOUNT|1,0|noun
+TIMES|4,2|noun
+SITES|0,1|noun
+LEVEL|0,1|noun
+DIGITAL|1,0,2|adjective
+PROFILE|1|noun
+PREVIOUS|0,1,2,3|adjective
+FORM|0,1,2,3|noun
+EVENTS|5,1,2,4|noun
+LOVE|2,3,0|noun
+OLD|3,2,4,1|adjective
+MAIN|0,1|adjective
+CALL|1,2,0,3|noun / verb
+HOURS|1,0|noun
+IMAGE|0,1|noun
+DEPARTMENT|1,0|noun
+TITLE|2,1,0|noun
+DESCRIPTION|1,0|noun
+INSURANCE|2|noun
+ANOTHER|2|adjective
+SHALL|-|auxiliary verb
+PROPERTY|0,1,2,3|noun
+CLASS|2,3,4,5,0,1|noun
+STILL|1|adverb phrase
+MONEY|1,4,3|noun
+QUALITY|1,2,0|noun
+EVERY|0|determiner phrase
+LISTING|0|noun
+CONTENT|0,1,3,2|noun
+COUNTRY|0,3,1,2|noun
+PRIVATE|2,0,1,3|adjective
+LITTLE|1,2,0|adjective / quantifier
+VISIT|2,1|noun
+SAVE|3,2|verb
+TOOLS|2|noun
+LOW|0,1|adjective
+REPLY|1,0|noun
+CUSTOMER|1,0|noun
+DECEMBER|0|noun
+COMPARE|2|verb
+MOVIES|2|noun
+INCLUDE|0|verb
+COLLEGE|0,1|noun
+VALUE|1,0|noun
+ARTICLE|1,0,2,3|noun
+MAN|0,2|noun
+CARD|0,1|noun
+JOBS|1,0|noun
+PROVIDE|0|verb
+FOOD|0,2,1,3,4|noun
+SOURCE|1,0|noun
+AUTHOR|0,3,2,1|noun
+DIFFERENT|0,1|adjective
+PRESS|2,1,0|noun / verb
+LEARN|0,1,2,4|verb
+SALE|0,1,2|noun
+AROUND|2|preposition
+PRINT|2,1,0|noun
+COURSE|-|noun
+JOB|1,0,4,3,2|noun
+PROCESS|1,0|noun
+TEEN|1,0|noun
+ROOM|0,1,2|noun
+STOCK|1,0|noun
+TRAINING|1,0|noun
+TOO|1|adverb
+CREDIT|0,1,2|noun
+POINT|0,2|noun
+JOIN|1,0|verb
+SCIENCE|2,0,1|noun
+MEN|1,0|noun
+CATEGORIES|2,0|noun
+ADVANCED|0,1,2,3|adjective
+WEST|3,1|noun
+SALES|1,0|noun
+LOOK|0,2,3,1|noun / verb
+ENGLISH|-|noun / adjective
+LEFT|1,0|noun / adverb
+TEAM|1,0|noun
+ESTATE|0,1|noun
+CONDITIONS|1,2,3,4|noun
+SELECT|2,0|verb
+PHOTOS|1,0|noun
+THREAD|0,1,2|noun
+WEEK|3|noun
+CATEGORY|1,0|noun
+NOTE|0,1,2|noun
+LIVE|2,0,1,5|adjective / verb
+LARGE|1,0|adjective
+GALLERY|1,0|noun
+TABLE|2,1,0|noun
+REGISTER|2,0,1,3|noun / verb
+HOWEVER|0|conjunction
+JUNE|1,0|noun
+OCTOBER|1,2|noun
+NOVEMBER|0|noun
+MARKET|0,1|noun
+LIBRARY|0,1|noun
+ACTION|-|noun
+START|0,1,2,3|noun / verb
+SERIES|1,2,0|noun
+MODEL|2,4,1|noun
+FEATURES|1,2,0,3,4,5|noun
+AIR|0,1|noun
+INDUSTRY|0,1|noun
+PLAN|1,0|noun
+HUMAN|4,1,2|noun / adjective
+PROVIDED|-|conjunction / participle
+YES|3,2|particle
+REQUIRED|1,0,2,3|adjective
+SECOND|5,3,4|ordinal / noun
+HOT|0,1,2,3|adjective
+ACCESSORIES|0,1,2|noun
+COST|3,1,0|noun
+MOVIE|1,0,2|noun
+FORUMS|0,1,2,3|noun
+MARCH|2,0,1|noun
+SEPTEMBER|1,2|noun
+BETTER|2|adjective
+SAY|0,1,2,3|verb
+QUESTIONS|2|noun
+GOING|1,2,0|participle / verbal noun
+MEDICAL|2,0,1,3|adjective
+FRIEND|0,1|noun
+COME|3,0,2|verb
+SERVER|0,1,2|noun
+STUDY|0,2,1|noun / verb
+APPLICATION|1,2,0|noun
+CART|1,0|noun
+STAFF|1,0,2|noun
+ARTICLES|0,1|noun
+FEEDBACK|0,1|noun
+AGAIN|2,1,0|adverb
+PLAY|1,2,0,5,4|noun / verb
+LOOKING|-|participle
+ISSUES|3,0,1,2,4|noun
+APRIL|2,1|noun
+NEVER|1|adverb
+USERS|1,0,2,3|noun
+COMPLETE|0,2|adjective
+STREET|2,1|noun
+TOPIC|1,0|noun
+COMMENT|1,0,2|noun / verb
+FINANCIAL|0,1,2|adjective
+THINGS|4|noun
+WORKING|0|verb
+AGAINST|0|preposition
+STANDARD|2,1,0|noun / adjective
+TAX|4,3|noun
+PERSON|0,1|noun
+BELOW|2,0|adverb / preposition
+MOBILE|0,1|noun
+LESS|1|quantifier
+GOT|-|verb
+BLOG|1,2|noun
+PARTY|2,4,0,3,1|noun
+PAYMENT|4,0,1,2,3|noun
+EQUIPMENT|1,0|noun
+LOGIN|0|noun
+STUDENT|1,0,2,3,4|noun
+LET|1|verb
+PROGRAMS|0,1|noun
+OFFERS|0,1|noun
+LEGAL|0,1,2|adjective
+ABOVE|1|adverb
+RECENT|0|adjective
+PARK|3,1,0|noun
+STORES|0,3,2,1,4|noun
+SIDE|0,2,1|noun
+ACT|3,0,1,2|noun
+PROBLEM|0,1,2|noun
+RED|3,0|adjective
+GIVE|-|verb
+MEMORY|2,0,1,3|noun
+PERFORMANCE|2|noun
+SOCIAL|3,0,1,2|adjective
+AUGUST|2,3|noun
+QUOTE|1,2,0|noun / verb
+LANGUAGE|0,1|noun
+STORY|1,2,3|noun

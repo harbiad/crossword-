@@ -1,0 +1,152 @@
+# Fresh semantic/register judgments. A=approved, R=review, X=rejected; M=MSA, U=uncertain, D=dialect.
+# Sample number | status | register | independent rationale (not copied from original decision).
+0|A|M|بحث names a search or investigation; ordinary noun, but RESEARCH is a real competing sense.
+1|A|M|ينبغي expresses recommendation or obligation; a sound should equivalent, not a promise or future marker.
+2|A|M|السعر is the ordinary definite price noun; PRICED is not a synonymous noun.
+3|A|M|فندق is a hotel. A motel is a narrower hotel type; its existence alone should not disqualify the dominant translation.
+4|A|M|الفصل can denote a school class or a chapter; both senses are real, but the English answer lengths differ.
+5|A|M|عرض is a show/presentation noun. Bare Arabic also permits OFFER or DISPLAY and needs reverse caution.
+6|A|M|الوسط can mean the middle or center; this is a valid locational sense rather than a central adjective.
+7|A|M|الكثير expresses a large quantity. MUCH and MANY are equally short plausible English answers without countability context.
+8|A|M|قليل expresses a small amount, the quantifier sense of little rather than small physical size.
+9|A|M|ملحوظة is a normal MSA note/observation; the spelling is a valid alternative to ملاحظة.
+10|A|M|الضريبة is singular tax; no plural or tax-related adjective has been introduced.
+11|A|M|مجموعة is a collection or set; the collection sense is coherent even though not uniquely reverse-translatable.
+12|A|M|الطلب can mean a formal application/request; generic demand/order readings make reverse use context-sensitive.
+13|A|M|الملتقى can name a forum or gathering; geographical confluence is a different sense, not proof every forum clue is unfair.
+14|A|M|الأعمال is idiomatic for business activities; plural Arabic is legitimate for this English mass/activity noun.
+15|A|M|مخازن denotes stores/storehouses, not just retail shops; this is a valid storage-place sense.
+16|A|M|الطريقة means a method or way; ordinary equivalence, with different-length common English alternatives.
+17|A|M|عرض works for a software/display view, but also SHOW of the same length; retain the display sense distinction.
+18|R|M|نقول explicitly means we say. Certifying an unqualified SAY lemma while rejecting other person-marked forms is inconsistent; require the verb-form convention first.
+19|A|M|المنطقة is an area/region; ZONE is a genuine same-length alternative to AREA.
+20|A|M|لو is valid for hypothetical/counterfactual if. A personal-name LOU collision is irrelevant to general vocabulary.
+21|A|M|أفضل legitimately expresses better or best depending on construction; the English answer length resolves BETTER versus BEST.
+22|A|M|الويب is a standard modern borrowing for the Web; WEBB is a name, not another translation of the concept.
+23|A|M|رجل is an adult man; GUY is a real same-length colloquial English synonym, so ambiguity is not invented.
+24|A|M|الجودة denotes quality or excellence, an ordinary mass noun.
+25|A|M|بعدما introduces a clause meaning after; its POS here is conjunction, not the preposition after before a noun.
+26|A|M|المالية is a feminine definite financial adjective in context; FINANCE is a different grammatical reading and length.
+27|A|M|القصة is an ordinary story noun; definiteness does not make the relationship invalid.
+28|A|M|التصميم denotes design. LAYOUT has the same length and can overlap in the relevant sense, so reverse caution is reasonable.
+29|A|M|قيمة is value or worth; VALUE and WORTH are genuine same-length alternatives.
+30|A|M|الحقوق is plural rights; it need not be changed to a singular abstract noun.
+31|A|M|النفاذ can mean access, especially administrative/computing access; valid standard usage although not always the simplest learner choice.
+32|A|M|تصرف can name an act or behavior. CONDUCT and DISPOSITION are different lengths; collision counting overstates exclusion evidence.
+33|A|M|حزيران is a regional standard Arabic month name, not slang; it denotes June.
+34|A|M|فوق expresses up/above; suitable spatial adverb, with context-dependent alternatives.
+35|A|M|المشروع is a project; its proposal/draft readings do not automatically make PROJECT an unfair answer.
+36|A|M|تشرين الأول is standard Arabic for October; multiword and regional-standard usage are both legitimate.
+37|A|M|الموقع can be a location or site; both ordinary meanings are valid, but word lengths differ.
+38|A|M|جنوب is the direction south. SOUTHERN is an adjective, so the logged collision is grammatically mismatched.
+39|A|M|تصنيف can be a rating/classification; RATED/RATINGS are not identical forms, and CLASSIFICATION differs in length.
+40|X|U|ماتش resembles match, not the quantity much. No sound general-vocabulary relationship is established.
+41|X|U|لونغ is a name/transliteration, not the MSA adjective طويل; reject the relationship without inventing a translation.
+42|X|M|ضرائب is plural taxes, while TAX is singular. Retain rejection under the explicit noun-number convention.
+43|A|M|In US usage cart can mean a shopping cart. عربة التسوق is a legitimate sense-specific translation, not automatically an erroneous expansion.
+44|X|D|شنو is colloquial what, not standard ماذا/ما; rejection is appropriate for an MSA-only learning pool.
+45|R|M|المكتبة العامة is a real public-library subtype. Narrowness alone does not prove mistranslation; defer context/preference rather than label it categorically wrong.
+46|A|M|A gallery may be a collection/display of pictures, including online. معرض الصور is legitimate in that sense and should not be rejected merely for two words.
+47|X|U|هاته is a demonstrative form, not an English possessive its; the relationship is wrong even if a demonstrative reading is possible.
+48|X|U|ساوث transliterates the English sound; it is not a natural Arabic direction word in this relationship.
+49|X|D|تاني is colloquial second/other; it does not satisfy the standard Arabic policy as written.
+50|X|M|أجل is standard affirmative yes, not a general translation of so. Register and semantic correctness must be assessed separately.
+51|X|M|للتفاصيل adds for/to; the bare plural DETAILS does not include that prepositional relation.
+52|X|M|المدارس is plural schools, not the singular SCHOOL noun.
+53|R|M|الخاصة بك can express your own in a possessive construction. It is context-bound, but categorical rejection solely for the possessive is too strong.
+54|X|U|ستريت is an English transliteration/name rather than the Arabic common noun street.
+55|R|U|انتي may represent a colloquial spelling or a misspelling of standard أنتِ. Script alone does not establish dialect with high confidence; keep unresolved.
+56|X|M|الحكومات is plural governments; it mismatches the singular headword GOVERNMENT.
+57|X|D|بس in the adversative but sense is colloquial. This is a relationship-specific dialect judgment, not a ban on every homograph.
+58|X|M|المراة intends singular woman and also has a hamza issue; neither spelling repair alone nor register classification fixes the plural WOMEN mismatch.
+59|X|D|ده is an Egyptian demonstrative, not his. Both register and meaning support rejection.
+60|R|M|الامريكي has a recoverable hamza omission in a standard adjective. Keep orthography review, but the missing hamza is not evidence of uncertain register.
+61|R|M|شمالي is northern/northerly. NORTH can be attributive, but that convention is not settled; the Arabic adjective itself is standard.
+62|R|M|اول intends أول. Standard-register adjective with unresolved written hamza, not an unknown register.
+63|R|M|اسعار intends أسعار, a standard plural noun; retain spelling review separately from register.
+64|R|M|ارسال intends إرسال, a verbal noun. Both hamza and verb-versus-masdar convention need review; register is standard.
+65|R|M|حفظ can be saving/preservation or a past-form verb. It is standard Arabic, but bare SAVE needs a consistent verb-entry convention.
+66|R|M|استخدمت is a standard person-marked past form. USED can be past or adjective; context is missing, not register evidence.
+67|R|U|واحده may be a spelling error for واحدة or a possessive form. Do not certify intended morphology or register without resolving the writing.
+68|R|M|ابحاث intends أبحاث. It is a standard research noun with an orthographic omission, so register uncertainty conflates two different questions.
+69|R|M|العاب intends ألعاب; missing hamza merits spelling review, not a dialect/unknown-register conclusion.
+70|A|M|جدد is the legitimate masculine plural adjective new, as with new teachers. Gender/number alternatives were accepted elsewhere and should be treated consistently.
+71|R|M|ثانيا is the adverb secondly rather than a simple ordinal noun. The Arabic is standard; grammatical correspondence still needs context.
+72|R|M|اخرى intends أخرى, a standard feminine adjective. Orthography review remains appropriate.
+73|R|M|اكثر intends أكثر, a standard comparative/quantifier. Review the hamza without treating register as unknown.
+74|R|M|غير has standard adjective/noun/verb readings including other/change depending on vocalization. Unresolved POS is not uncertain register.
+75|R|M|لاجل intends لأجل, a standard prepositional expression. Keep orthography review; do not rewrite automatically.
+76|R|M|الاعلى intends الأعلى, a standard superlative adjective. Missing hamza is a written-form issue.
+77|R|M|اشياء intends أشياء, a standard plural noun. Retain spelling review with MSA register.
+78|R|M|فلوس has a standard currency-unit plural basis; the broad everyday money sense is register-sensitive. Retaining review without a dialect rejection is appropriate.
+79|R|M|على الانترنت is an ordinary online phrase with hamza omission. Multiword form is valid; only orthography remains uncertified.
+80|A|M|سعر is the ordinary price noun; the past participle PRICED cannot by itself justify reverse exclusion.
+81|A|M|علامة is a sign or mark. SIGN and MARK are both natural four-letter answers.
+82|A|M|الرعاية is care; sponsorship is a contextual extension, not enough alone to reject CARE as a clue answer.
+83|A|M|كان is an ordinary was equivalent. HAD without possession/perfect context is not an independent same-sense competitor.
+84|A|M|الاتصال covers contact/connection. CONNECT is a verb but seven letters like CONTACT; bare noun/verb Arabic ambiguity still warrants caution.
+85|A|M|المستخدمون is users. An unvowelled employed reading does not justify rejecting the plural noun USERS categorically.
+86|A|M|انظر is a standard look imperative. SEE and archaic LO have different lengths; the logged list exaggerates ambiguity.
+87|A|M|العودة is return or comeback; the word-length distinction makes a blanket ban unnecessarily cautious.
+88|A|M|تيار denotes a current or stream. The clue is broad, but these English nouns have different lengths.
+89|A|M|حسنا can be well/all right; OKAY alone is not grounds to ban a different-length WELL clue.
+90|A|M|نيسان is standard April. NISSAN is a brand and has a different length; neither is good evidence for excluding APRIL.
+91|A|M|تغير is a standard change noun when read تغيّر. The English past form CHANGED alone is not a valid exclusion argument.
+92|A|M|المميزات can mean features or benefits in the recorded advantages sense. FEATURES and BENEFITS both have eight letters. Although FEATURED/FEATURING were weak original evidence, this separate genuine competitor makes retaining reverse caution probably justified.
+93|A|M|الرمز can be a code or symbol/icon; ICON and CODE have the same length and are genuine competing readings.
+94|A|M|المراهق is a teen/teenager, an age-category noun. Adolescent and teenager have different lengths, so the exclusion is excessive.
+95|A|M|الولايات denotes states. A mandates reading is not a same-length competitor and should not alone prohibit STATES.
+96|A|M|دفع is payment in a financial sense but also pushing; PAY/PAYING/PAYMENTS do not share PAYMENT's length. A global hard restriction needs stronger context analysis.
+97|A|M|أعلى can mean top/higher/highest. The comparative/superlative distinction deserves context, but all logged competitors are longer than TOP.
+98|A|M|تعلم can represent learn or learning depending on vocalization. The ambiguity deserves thought, but LEARNING alone has a different answer length.
+99|A|M|خاصة can be private/special; SPECIAL and PRIVATE are equally long, so reverse ambiguity remains real.
+100|A|M|استعراض can be review/overview/survey. SURVEY is a real same-length alternative even though the original collision list only mentioned inflections.
+101|A|M|الخاصة is a definite feminine private/special adjective; SPECIAL remains a plausible same-length alternative.
+102|A|M|متجر is a store/shop. Both are basic valid words; different lengths make blanket rejection unnecessarily strong.
+103|A|M|رصيد is an account balance or credit; ambiguity is real semantically, but the answer lengths differ.
+104|A|M|هذه can agree with nonhuman plurals and thus translate these. Without the noun it usually suggests THIS; reverse caution is defensible despite length differences.
+105|A|M|شخص is a person; SOMEONE is a pronoun with a different length. The restriction conflates lexical category and word length.
+106|A|M|اللقب can mean a title, nickname or surname; TITLE is a legitimate appellation sense, with longer competitors.
+107|A|M|الروابط can mean links or ties. Their different lengths should be considered before exclusion.
+108|A|M|ذات صلة is related/relevant. RELEVANT differs in length, and RELATE/RELATES differ in grammar; the phrase is useful.
+109|A|M|المحلية is a standard feminine local adjective. DOMESTIC is a different-length alternative, not sufficient exclusion evidence.
+110|A|M|فنادق is hotels, but MOTELS has the same length and can share this broad Arabic rendering. The positive reverse preference deserves a cautious follow-up.
+111|A|M|جودة naturally denotes quality. Its ordinary English alternatives do not make QUALITY an unfair seven-letter answer.
+112|A|M|مكتبة can be library or bookshop; the English lengths differ. LIBRARY is a reasonable preferred reverse clue.
+113|A|M|قانون normally means law; CODE and RULE differ in length. Dominant ordinary meaning supports the preference.
+114|A|M|حكومة is government, not merely governance. GOVERNMENT is a clear ordinary reverse answer.
+115|A|M|نوفمبر identifies November with no material general-vocabulary ambiguity.
+116|A|M|سبتمبر identifies September with no material general-vocabulary ambiguity.
+117|A|M|ماء is water, an ordinary mass noun with a clear reverse reading.
+118|A|M|مصدر may mean source or origin. SOURCE and ORIGIN both have six letters; absence of a collision in the dictionary does not establish fairness.
+119|A|M|طلاب is students. Learners is broader and pupils is shorter; STUDENTS is a defensible ordinary reverse preference.
+120|A|M|المخزن is a store/storehouse. Storage and warehouse differ in length, so the valid storage-place sense should not be blanket-excluded.
+121|A|M|مجلس الإدارة is the governing board sense, a legitimate multiword noun, not an accidental expansion of a wooden board.
+122|A|M|ضبط can represent set/adjust as a verb. Calling it a noun meaning adjustment under SET is the wrong POS linkage; label the verb sense explicitly.
+123|A|M|قديم means old. ANCIENT is a valid narrower meaning but has a different length; ordinary OLD remains fair.
+124|A|M|مايو is the month May. It must remain distinguished from the modal may in sense metadata.
+125|A|M|الطبقة is a class/stratum or layer; CLASS and LAYER are equally long, supporting reverse restriction.
+126|A|M|مقالة is an article or essay. The word-length distinction weakens the need for a categorical restriction.
+127|A|M|جنرال is an established Arabic military-rank borrowing. Loanword origin alone is not evidence of slang.
+128|A|M|خيط is thread/string; both English nouns have six letters, so a reverse restriction is well-founded.
+129|A|M|دولة is a state/country in the sovereign-country sense. It is not an adjective or administrative status word.
+130|X|M|نحن is a subject pronoun, not an isolated object-pronoun US equivalent under the current inflection convention.
+131|R|M|حسب is standard Arabic for according to/as depending on context. Context review is warranted, not uncertain register.
+132|R|M|وجدت is a standard inflected found form; subject/tense ambiguity remains unresolved. It is not evidence of dialect.
+133|R|M|له may encode to/for him or possession; an isolated HIS clue requires construction context.
+134|R|M|العقارات is standard real-property vocabulary. ESTATE can overlap but its particular sense needs specification; register is not uncertain.
+135|R|M|مقارنة is a standard comparison noun, while COMPARE is a verb. Retain review until the masdar convention is explicitly decided.
+136|X|M|حياته adds his to life; this unsupported possessive is not a generic LIFE translation.
+137|X|M|الخدمات الطبية means medical services, a noun phrase rather than the adjective MEDICAL; rejection is reasonable for the general adjective entry.
+138|R|M|أداة تنكير is a grammatical description of A, not a direct indefinite-article translation. Such pedagogical clues need an explicit policy.
+139|R|M|الرتبة is standard rank/grade. Its overlap with LEVEL is context-dependent; keeping review is conservative and reasonable.
+140|A|M|ردود الفعل can denote feedback as responses. REACTIONS is related but a different length; a global exclusion is probably excessive.
+141|X|M|الإجراء المتخذ adds taken to action. Unlike a conventional lexical sense such as shopping cart, this participle contributes unsupported content.
+142|R|M|لكل منها means for each of them, with an added preposition and complement. Standard phrase, but not a certified bare EACH equivalent.
+143|A|M|البريد الإلكتروني can denote mail in the electronic-mail sense. EMAIL has a different length; URLS is not a valid synonym.
+144|R|M|شبكة الإنترنت denotes the Internet network, not specifically the Web. Broad approval conflates related concepts; require a precise sense review.
+145|A|M|لكن is the standard adversative but conjunction; valid and natural.
+146|A|M|حتى can express even as well as until; EVEN and TILL are both four letters, so context matters for reverse use.
+147|A|M|تحت is under/below; UNDER and BELOW are both five letters, so the restriction is linguistically justified.
+148|A|M|عن طريق is a natural through/by-means-of prepositional phrase. Its spaces are required display text.
+149|A|M|بعدها means afterwards/then with an anaphoric suffix; valid in temporal sequencing, though sentence context is implicit.

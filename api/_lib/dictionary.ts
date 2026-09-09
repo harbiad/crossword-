@@ -17,8 +17,10 @@ export type DictionaryHeadword = {
 };
 
 export type DictionaryPolicy = 'compatibility' | 'approved-only';
-export function eligibleTranslation(headword: DictionaryHeadword, translation: DictionaryTranslation, policy: DictionaryPolicy) {
+export function eligibleTranslation(headword: DictionaryHeadword, translation: DictionaryTranslation, policy: DictionaryPolicy, mode?: 'en_to_ar' | 'ar_to_en') {
   if (headword.status === 'rejected' || translation.status === 'rejected' || translation.register === 'dialect') return false;
+  if (mode === 'en_to_ar' && translation.preferredForEnToAr === false) return false;
+  if (mode === 'ar_to_en' && translation.preferredForArToEn === false) return false;
   return policy === 'compatibility' || (headword.status === 'approved' && translation.status === 'approved' && translation.register === 'msa');
 }
 

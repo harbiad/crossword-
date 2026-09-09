@@ -1,0 +1,328 @@
+{
+  "batch": "001",
+  "selectionMethod": "First 500 Stage 3A review-status headwords present in the tracked 10k reference, in original dictionary order; exclude all previously Stage 3A-reviewed headwords and explicit deferred list. No alphabetical sorting. Reference presence is selection evidence, not translation approval.",
+  "sourceSha256": "0a10d8e74f6ae3bf1d77e64c25861ce4184752366891c75cf3d1cf853cbf6ff2",
+  "referenceSha256": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+  "decisionsSha256": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+  "selectionSha256": "0007fcad8273e7994a74150d7874e27bbbad602302e08024a33037052a91fc2c",
+  "before": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 15870,
+      "approved": 53,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 29011,
+      "rejected": 307,
+      "approved": 149
+    },
+    "register": {
+      "msa": 266,
+      "uncertain": 29194,
+      "dialect": 7
+    }
+  },
+  "after": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 15416,
+      "approved": 507,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 27861,
+      "approved": 1223,
+      "rejected": 383
+    },
+    "register": {
+      "msa": 1409,
+      "uncertain": 28040,
+      "dialect": 18
+    }
+  },
+  "batchCounts": {
+    "headwords": 500,
+    "relationships": 1526,
+    "headwordStatus": {
+      "approved": 454,
+      "review": 46
+    },
+    "relationshipStatus": {
+      "approved": 1074,
+      "review": 376,
+      "rejected": 76
+    },
+    "register": {
+      "msa": 1146,
+      "uncertain": 369,
+      "dialect": 11
+    }
+  },
+  "decisionConfidence": {
+    "high": 1150,
+    "medium": 376
+  },
+  "partOfSpeechAssignments": 1074,
+  "senseAssignments": 206,
+  "multiwordDisplaysBefore": 1488,
+  "multiwordDisplaysAfter": 1488,
+  "textCorrections": 0,
+  "relationshipMetadataChanges": 1179,
+  "headwordStatusChanges": 454,
+  "preferredEnToAr": 454,
+  "preferredArToEn": 62,
+  "directionallyRestrictedRelationships": 682,
+  "multipleSenseHeadwords": 57,
+  "rejectedByReason": {
+    "incorrect-or-mismatched-equivalent": 66,
+    "dialect-form": 10
+  },
+  "unresolvedByReason": {
+    "needs-linguistic-confirmation": 375,
+    "inflection-review": 1
+  },
+  "referenceConflicts": 87,
+  "referenceConflictPolicy": "Includes unresolved form/grammar conflicts; not all are proven errors.",
+  "deferred": {
+    "EBAY": "Brand",
+    "YAHOO": "Brand-dominated ambiguous headword",
+    "YORK": "Place name",
+    "INFO": "Informal abbreviation"
+  },
+  "rejectedProperNamesBrandsAbbreviations": 0,
+  "relationshipLosses": 0,
+  "newRelationships": 0,
+  "cefrAssignments": 0,
+  "productionPolicy": "compatibility",
+  "availabilityBefore": [
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 7,
+      "eligibleRelationships": 16485,
+      "actualIndexedCandidates": 16486
+    },
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 9,
+      "eligibleRelationships": 23955,
+      "actualIndexedCandidates": 23953
+    },
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 11,
+      "eligibleRelationships": 27444,
+      "actualIndexedCandidates": 27441
+    },
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 13,
+      "eligibleRelationships": 28711,
+      "actualIndexedCandidates": 28708
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 7,
+      "eligibleRelationships": 18213,
+      "actualIndexedCandidates": 9839
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 9,
+      "eligibleRelationships": 24834,
+      "actualIndexedCandidates": 13529
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 11,
+      "eligibleRelationships": 27941,
+      "actualIndexedCandidates": 15251
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 13,
+      "eligibleRelationships": 28967,
+      "actualIndexedCandidates": 15806
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 7,
+      "eligibleRelationships": 85,
+      "actualIndexedCandidates": 85
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 9,
+      "eligibleRelationships": 92,
+      "actualIndexedCandidates": 92
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 11,
+      "eligibleRelationships": 93,
+      "actualIndexedCandidates": 93
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 13,
+      "eligibleRelationships": 93,
+      "actualIndexedCandidates": 93
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 7,
+      "eligibleRelationships": 90,
+      "actualIndexedCandidates": 50
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 9,
+      "eligibleRelationships": 92,
+      "actualIndexedCandidates": 52
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 11,
+      "eligibleRelationships": 93,
+      "actualIndexedCandidates": 53
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 13,
+      "eligibleRelationships": 93,
+      "actualIndexedCandidates": 53
+    }
+  ],
+  "availabilityAfter": [
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 7,
+      "eligibleRelationships": 16428,
+      "actualIndexedCandidates": 16429
+    },
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 9,
+      "eligibleRelationships": 23888,
+      "actualIndexedCandidates": 23886
+    },
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 11,
+      "eligibleRelationships": 27373,
+      "actualIndexedCandidates": 27370
+    },
+    {
+      "policy": "compatibility",
+      "mode": "en_to_ar",
+      "size": 13,
+      "eligibleRelationships": 28637,
+      "actualIndexedCandidates": 28634
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 7,
+      "eligibleRelationships": 17564,
+      "actualIndexedCandidates": 9699
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 9,
+      "eligibleRelationships": 24105,
+      "actualIndexedCandidates": 13369
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 11,
+      "eligibleRelationships": 27187,
+      "actualIndexedCandidates": 15087
+    },
+    {
+      "policy": "compatibility",
+      "mode": "ar_to_en",
+      "size": 13,
+      "eligibleRelationships": 28211,
+      "actualIndexedCandidates": 15642
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 7,
+      "eligibleRelationships": 946,
+      "actualIndexedCandidates": 946
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 9,
+      "eligibleRelationships": 1117,
+      "actualIndexedCandidates": 1117
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 11,
+      "eligibleRelationships": 1157,
+      "actualIndexedCandidates": 1157
+    },
+    {
+      "policy": "approved-only",
+      "mode": "en_to_ar",
+      "size": 13,
+      "eligibleRelationships": 1164,
+      "actualIndexedCandidates": 1164
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 7,
+      "eligibleRelationships": 425,
+      "actualIndexedCandidates": 241
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 9,
+      "eligibleRelationships": 475,
+      "actualIndexedCandidates": 268
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 11,
+      "eligibleRelationships": 483,
+      "actualIndexedCandidates": 273
+    },
+    {
+      "policy": "approved-only",
+      "mode": "ar_to_en",
+      "size": 13,
+      "eligibleRelationships": 485,
+      "actualIndexedCandidates": 274
+    }
+  ]
+}

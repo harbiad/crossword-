@@ -4,7 +4,7 @@ import { normalizeArabicWord, eligibleTranslation, type DictionaryPolicy, type D
 export type Mode = 'en_to_ar' | 'ar_to_en';
 export type Band = 'beginner' | 'intermediate' | 'advanced';
 type Pair = Readonly<{ answer: string; clue: string }>;
-type Word = { english: string; level: CefrLevel; meanings: Pair[] };
+type Word = { english: string; level: CefrLevel; meanings: Record<Mode, Pair[]> };
 type LengthGroups = ReadonlyMap<number, readonly (readonly Pair[])[]>;
 export type CandidateIndex = ReadonlyMap<string, LengthGroups>;
 const sizes = [7, 9, 11, 13];
@@ -39,16 +39,23 @@ export function createCandidateIndex(dictionary: readonly DictionaryHeadword[], 
     const english = key.trim().replace(/[^a-zA-Z]/g, '').toUpperCase();
     if (!english || seen.has(english)) return;
     seen.add(english);
-    words.push({ english, level: getWordLevel(english, position), meanings: meanings(headword.translations.filter(t => eligibleTranslation(headword, t, policy))) });
+    const forMode = (mode: Mode) => {
+      const flag = mode === 'en_to_ar' ? 'preferredForEnToAr' : 'preferredForArToEn';
+      const eligible = headword.translations.filter(t => eligibleTranslation(headword, t, policy, mode));
+      // Stable partition: explicit preferred forms first, then unchanged alternatives.
+      return meanings([...eligible.filter(t => t[flag] === true), ...eligible.filter(t => t[flag] !== true)]);
+    };
+    words.push({ english, level: getWordLevel(english, position), meanings: { en_to_ar: forMode('en_to_ar'), ar_to_en: forMode('ar_to_en') } });
   });
   const index = new Map<string, LengthGroups>();
   for (const size of sizes) for (const mode of ['en_to_ar', 'ar_to_en'] as const) {
     const buckets = new Map<number, Record<CefrLevel, Pair[]>>();
     for (const word of words) {
-      if (word.english.length < 2 || word.english.length > size || !word.meanings.length) continue;
+      const wordMeanings = word.meanings[mode];
+      if (word.english.length < 2 || word.english.length > size || !wordMeanings.length) continue;
       const pairs = mode === 'ar_to_en'
-        ? [{ answer: word.english, clue: word.meanings[0].clue }]
-        : /repeated/i.test(word.english) ? [] : word.meanings.map(m => ({ answer: m.answer, clue: word.english }));
+        ? [{ answer: word.english, clue: wordMeanings[0].clue }]
+        : /repeated/i.test(word.english) ? [] : wordMeanings.map(m => ({ answer: m.answer, clue: word.english }));
       for (const pair of pairs) {
         const length = pair.answer.length;
         if (length > size) continue;

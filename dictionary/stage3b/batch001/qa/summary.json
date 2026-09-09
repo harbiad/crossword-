@@ -1,0 +1,229 @@
+{
+  "seed": "stage3b-batch001-qa-v1",
+  "baselineSha256": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+  "reviewsSha256": "92481026d736e3a4fd36af0efcfc5afe82b39e5d1248c351ea940787cb77dd66",
+  "sourceSha256": "d373e896731cc44c0b74eb6954b31cf83420e6da4ea9fc247d145ff6bbe503a5",
+  "sampleSize": 150,
+  "distinctHeadwords": 133,
+  "strata": {
+    "approved": 40,
+    "rejected": 20,
+    "review": 20,
+    "reverse-restricted": 30,
+    "reverse-preferred": 10,
+    "sense": 10,
+    "reference-conflict": 10,
+    "multiword": 5,
+    "function-verb-adverb": 5
+  },
+  "statusCoverage": {
+    "approved": 98,
+    "rejected": 24,
+    "review": 28
+  },
+  "posCoverage": {
+    "noun": 73,
+    "auxiliary verb": 1,
+    "quantifier": 1,
+    "adjective / quantifier": 1,
+    "verb": 4,
+    "conjunction": 2,
+    "adjective": 7,
+    "preposition / conjunction": 1,
+    "adverb": 4,
+    "unset": 52,
+    "demonstrative": 1,
+    "adjective phrase": 1,
+    "preposition": 2
+  },
+  "multiwordArabic": 16,
+  "senseLabels": 25,
+  "referenceConflicts": 21,
+  "metrics": {
+    "approvalAgreement": {
+      "agree": 96,
+      "denominator": 98,
+      "percent": 97.96
+    },
+    "rejectionAgreement": {
+      "agree": 19,
+      "denominator": 24,
+      "percent": 79.17
+    },
+    "unresolvedAgreement": {
+      "agree": 27,
+      "denominator": 28,
+      "percent": 96.43
+    },
+    "enPreferenceAgreement": {
+      "agree": 61,
+      "denominator": 63,
+      "percent": 96.83
+    },
+    "enPositivePreferenceAgreement": {
+      "agree": 39,
+      "denominator": 39,
+      "percent": 100
+    },
+    "arRestrictionAgreement": {
+      "agree": 22,
+      "denominator": 68,
+      "percent": 32.35
+    },
+    "arPositivePreferenceAgreement": {
+      "agree": 8,
+      "denominator": 10,
+      "percent": 80
+    },
+    "posAgreement": {
+      "agree": 96,
+      "denominator": 98,
+      "percent": 97.96
+    },
+    "senseLabelAgreement": {
+      "agree": 24,
+      "denominator": 25,
+      "percent": 96
+    },
+    "registerAgreement": {
+      "agree": 126,
+      "denominator": 150,
+      "percent": 84
+    }
+  },
+  "reverseClassification": {
+    "probably justified": 6,
+    "clearly too restrictive": 12,
+    "probably too restrictive": 34,
+    "clearly justified": 16
+  },
+  "disagreementRelationships": 81,
+  "disagreementsByCategory": {
+    "preferred-direction issue": 56,
+    "serious approval/rejection error": 4,
+    "POS/sense issue": 8,
+    "semantic translation issue": 4,
+    "register issue": 24
+  },
+  "appliedRelationships": 46,
+  "appliedFieldChanges": 61,
+  "appliedByField": {
+    "preferredForArToEn": 17,
+    "status": 8,
+    "preferredForEnToAr": 4,
+    "partOfSpeech": 5,
+    "sense": 3,
+    "register": 24
+  },
+  "appliedByCategory": {
+    "preferred-direction issue": 21,
+    "serious approval/rejection error": 4,
+    "POS/sense issue": 8,
+    "semantic translation issue": 4,
+    "register issue": 24
+  },
+  "unappliedProposals": 35,
+  "seriousErrors": [
+    {
+      "english": "SAY",
+      "arabic": "نقول",
+      "from": "approved",
+      "to": "review",
+      "reason": "نقول explicitly means we say. Certifying an unqualified SAY lemma while rejecting other person-marked forms is inconsistent; require the verb-form convention first."
+    },
+    {
+      "english": "CART",
+      "arabic": "عربة التسوق",
+      "from": "rejected",
+      "to": "approved",
+      "reason": "In US usage cart can mean a shopping cart. عربة التسوق is a legitimate sense-specific translation, not automatically an erroneous expansion."
+    },
+    {
+      "english": "GALLERY",
+      "arabic": "معرض الصور",
+      "from": "rejected",
+      "to": "approved",
+      "reason": "A gallery may be a collection/display of pictures, including online. معرض الصور is legitimate in that sense and should not be rejected merely for two words."
+    },
+    {
+      "english": "WEB",
+      "arabic": "شبكة الإنترنت",
+      "from": "approved",
+      "to": "review",
+      "reason": "شبكة الإنترنت denotes the Internet network, not specifically the Web. Broad approval conflates related concepts; require a precise sense review."
+    }
+  ],
+  "batchBefore": {
+    "approved": 1074,
+    "review": 376,
+    "rejected": 76
+  },
+  "batchAfter": {
+    "approved": 1075,
+    "review": 380,
+    "rejected": 71
+  },
+  "batchPreferencesAfter": {
+    "en": 454,
+    "ar": 61,
+    "reverseRestrictedApproved": 671
+  },
+  "compatibilityFallbackLimitation": "SOURCE → مصدر is now reverse-restricted, but the unsampled definite variant المصدر remains eligible. No restriction is propagated to unsampled relationships; headword-level fallback QA is still required.",
+  "before": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 15416,
+      "approved": 507,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 27861,
+      "approved": 1223,
+      "rejected": 383
+    },
+    "register": {
+      "msa": 1409,
+      "uncertain": 28040,
+      "dialect": 18
+    }
+  },
+  "after": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 15416,
+      "approved": 507,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 27865,
+      "approved": 1224,
+      "rejected": 378
+    },
+    "register": {
+      "msa": 1432,
+      "uncertain": 28018,
+      "dialect": 17
+    }
+  },
+  "textChanges": 0,
+  "relationshipLosses": 0,
+  "cefrAssignments": 0,
+  "productionPolicy": "compatibility",
+  "approvedReversePreferencesNeedingRestriction": [
+    {
+      "english": "HOTELS",
+      "arabic": "فنادق",
+      "applied": false
+    },
+    {
+      "english": "SOURCE",
+      "arabic": "مصدر",
+      "applied": true
+    }
+  ],
+  "interpretation": "Descriptive agreement on a deliberately stratified, overlapping-category sample, not a population accuracy estimate. Fresh same-assistant QA, not independent human certification. Medium-confidence disagreements count but are not applied.",
+  "batch002Ready": false,
+  "gate": "Do not scale the old method. Follow-up validation of the revised verb/POS and directional rules plus remaining unsampled restrictions is required before Batch 002."
+}
