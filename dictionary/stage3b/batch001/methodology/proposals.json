@@ -1,0 +1,1002 @@
+[
+  {
+    "sourceId": "351:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "516:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "173:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "285:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "266:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "201:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "404:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "275:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "201:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "194:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "478:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "380:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "503:4",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "242:4",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "320:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "155:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "331:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "514:4",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "68:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "213:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "187:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "460:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "495:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "179:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "358:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "490:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "413:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "391:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "145:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "219:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "399:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "302:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "96:4",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "198:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "325:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "417:2",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "112:3",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "354:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "76:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "14:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "77:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "26:2",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "321:3",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "279:3",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "63:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "154:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "272:2",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "21:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "6:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "452:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "176:2",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "491:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "96:3",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "252:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "300:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "215:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "369:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "337:2",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "186:3",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "119:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "215:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "24:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "461:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "65:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "248:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "449:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "73:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "369:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "108:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "77:3",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "60:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "33:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "441:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "375:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "519:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "519:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "461:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "165:4",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "64:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "169:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "221:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "121:1",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "271:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "79:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "465:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "497:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "228:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "165:3",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "200:0",
+    "allowedForArToEn": null,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "244:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "452:2",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "313:3",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "468:2",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "30:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "312:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "440:5",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "144:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "323:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "93:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "41:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "26:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "257:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "90:2",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "393:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "7:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "184:3",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "495:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "53:3",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "256:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "495:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "373:2",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "152:3",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "412:2",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "339:0",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "405:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "194:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "382:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "327:1",
+    "allowedForArToEn": false,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "430:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "379:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "103:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "281:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "105:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "241:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "410:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "270:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "468:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "26:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "70:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "493:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "221:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "514:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "458:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "524:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "341:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "429:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "68:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "458:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "437:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "450:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "480:4",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "378:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "190:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "232:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "265:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "451:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "424:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "515:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "97:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "524:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "476:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "221:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "432:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "120:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "211:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "130:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "20:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "506:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "407:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "164:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "170:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "340:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "443:4",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "494:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "454:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "232:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "424:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "101:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "428:5",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "243:5",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "384:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "490:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "324:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "380:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "331:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "510:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "329:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "419:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "103:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "367:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "235:3",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "173:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "131:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "413:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "347:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "103:4",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "394:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "302:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "458:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "387:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "256:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "446:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "416:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "332:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "259:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "447:1",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "438:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "525:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "312:2",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  },
+  {
+    "sourceId": "161:0",
+    "allowedForArToEn": true,
+    "reason": "Correct approved MSA relationships are not excluded for synonyms; rejected/dialect records remain excluded; review records require judgment."
+  }
+]

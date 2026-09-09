@@ -1,0 +1,864 @@
+{
+  "seed": "batch001-methodology-v2-validation",
+  "sourceSha256": "0fa948e58e85311d454730f9c6f61136b24cc929b87fac0e2082c3715e07ad91",
+  "proposalsSha256": "e91820ef655e525e7286f2e16fb3b4e34daaa8c4be324cd67b80989c4c802e54",
+  "reviewsSha256": "e53348bbf5a916647235e4449e95c6d43aafc9f1a76bc62ac6ff18726a393b42",
+  "sampleSize": 200,
+  "headwordsInSample": 166,
+  "strata": {
+    "unapplied-qa": 35,
+    "register-disagreement": 24,
+    "verb-inflection": 30,
+    "previous-rejection": 30,
+    "previous-reverse-restriction": 60,
+    "multiple-sense": 10,
+    "qa-source-counterexample": 1,
+    "control": 10
+  },
+  "unappliedQaProposalsCovered": 35,
+  "revisedArProposalAgreement": {
+    "agree": 178,
+    "total": 200,
+    "percent": 89
+  },
+  "formerlyRestrictedArAgreement": {
+    "agree": 107,
+    "total": 107,
+    "percent": 100
+  },
+  "metricInterpretation": "Frozen revised-policy proposals versus subsequent explicit same-assistant linguistic review. Unknown counts as a third outcome. Not independent-human agreement, not a population accuracy estimate, and not directly comparable to the old 150-row QA sample.",
+  "before": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "status": {
+      "review": 27865,
+      "approved": 1224,
+      "rejected": 378
+    },
+    "register": {
+      "msa": 1432,
+      "uncertain": 28018,
+      "dialect": 17
+    },
+    "headwordStatus": {
+      "review": 15416,
+      "approved": 507,
+      "rejected": 95
+    }
+  },
+  "after": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "status": {
+      "review": 27871,
+      "approved": 1236,
+      "rejected": 360
+    },
+    "register": {
+      "msa": 1444,
+      "uncertain": 28006,
+      "dialect": 17
+    },
+    "headwordStatus": {
+      "review": 15413,
+      "approved": 510,
+      "rejected": 95
+    }
+  },
+  "directionCounts": {
+    "en_to_ar": {
+      "explicitAllowed": 143,
+      "explicitDisallowed": 74,
+      "preferred": 454,
+      "compatibilityEligible": 29086,
+      "approvedOnlyEligible": 1180
+    },
+    "ar_to_en": {
+      "explicitAllowed": 707,
+      "explicitDisallowed": 74,
+      "preferred": 61,
+      "compatibilityEligible": 29086,
+      "approvedOnlyEligible": 1180
+    }
+  },
+  "availability": [
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "en_to_ar",
+      "indexedCandidates": 16430
+    },
+    {
+      "policy": "compatibility",
+      "size": 7,
+      "mode": "ar_to_en",
+      "indexedCandidates": 9830
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "en_to_ar",
+      "indexedCandidates": 23888
+    },
+    {
+      "policy": "compatibility",
+      "size": 9,
+      "mode": "ar_to_en",
+      "indexedCandidates": 13520
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "en_to_ar",
+      "indexedCandidates": 27373
+    },
+    {
+      "policy": "compatibility",
+      "size": 11,
+      "mode": "ar_to_en",
+      "indexedCandidates": 15242
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "en_to_ar",
+      "indexedCandidates": 28636
+    },
+    {
+      "policy": "compatibility",
+      "size": 13,
+      "mode": "ar_to_en",
+      "indexedCandidates": 15797
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "en_to_ar",
+      "indexedCandidates": 956
+    },
+    {
+      "policy": "approved-only",
+      "size": 7,
+      "mode": "ar_to_en",
+      "indexedCandidates": 440
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "en_to_ar",
+      "indexedCandidates": 1130
+    },
+    {
+      "policy": "approved-only",
+      "size": 9,
+      "mode": "ar_to_en",
+      "indexedCandidates": 494
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "en_to_ar",
+      "indexedCandidates": 1171
+    },
+    {
+      "policy": "approved-only",
+      "size": 11,
+      "mode": "ar_to_en",
+      "indexedCandidates": 508
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "en_to_ar",
+      "indexedCandidates": 1177
+    },
+    {
+      "policy": "approved-only",
+      "size": 13,
+      "mode": "ar_to_en",
+      "indexedCandidates": 509
+    }
+  ],
+  "migrationActions": 823,
+  "migrationObsoleteVetoesRemoved": 671,
+  "migrationExclusionsPreserved": 152,
+  "arVetoTransitionsAllBatch001": {
+    "removed": 673,
+    "retained": 74,
+    "added": 0
+  },
+  "arVetoTransitionsTargeted": {
+    "removed": 109,
+    "retained": 30,
+    "added": 0
+  },
+  "highConfidenceFieldChanges": 245,
+  "changedRelationships": 167,
+  "changesByField": {
+    "allowedForEnToAr": 143,
+    "allowedForArToEn": 36,
+    "status": 28,
+    "partOfSpeech": 13,
+    "sense": 13,
+    "register": 12
+  },
+  "headwordChanges": [
+    {
+      "headwordIndex": 165,
+      "english": "READ",
+      "before": "review",
+      "after": "approved",
+      "reason": "Suitable reviewed headword now has a high-confidence approved MSA relationship."
+    },
+    {
+      "headwordIndex": 272,
+      "english": "FOUND",
+      "before": "review",
+      "after": "approved",
+      "reason": "Suitable reviewed headword now has a high-confidence approved MSA relationship."
+    },
+    {
+      "headwordIndex": 449,
+      "english": "PROVIDED",
+      "before": "review",
+      "after": "approved",
+      "reason": "Suitable reviewed headword now has a high-confidence approved MSA relationship."
+    }
+  ],
+  "rejectionChanges": [
+    {
+      "sourceId": "33:0",
+      "english": "US",
+      "arabic": "نحن",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "نحن normally represents a subject pronoun, but English US can occur in constructions translated with Arabic subject forms. Do not categorically reject on case alone; bare-entry construction remains unresolved."
+    },
+    {
+      "sourceId": "244:0",
+      "english": "LONG",
+      "arabic": "لونغ",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "لونغ is not an established MSA translation of the long property. Keep both directions disallowed; register remains uncertain and status becomes review under the revised register rule."
+    },
+    {
+      "sourceId": "468:2",
+      "english": "FRIEND",
+      "arabic": "صديقي",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "صديقي is my friend and can be natural when addressing someone as friend. Do not reject every possessive adaptation; this isolated sense needs confirmation."
+    },
+    {
+      "sourceId": "312:1",
+      "english": "ART",
+      "arabic": "ارت",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ارت is a phonetic rendering/name, not a certified Arabic art concept. Withhold both directions while register remains unclassified."
+    },
+    {
+      "sourceId": "144:0",
+      "english": "VIDEO",
+      "arabic": "بالفيديو",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "بالفيديو can naturally occur where English VIDEO modifies a communication medium. Isolated use needs context, so rejection solely for a preposition is too strong."
+    },
+    {
+      "sourceId": "323:0",
+      "english": "TEXT",
+      "arabic": "نصوص",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "نصوص is plural texts, but TEXT can denote written material collectively. Defer the collective sense instead of automatically rejecting number differences."
+    },
+    {
+      "sourceId": "93:1",
+      "english": "PRICE",
+      "arabic": "الاسعار",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "الاسعار has both a hamza issue and a plural reading; contextual price/prices usage needs review, not automatic morphological rejection."
+    },
+    {
+      "sourceId": "257:0",
+      "english": "MUCH",
+      "arabic": "ماتش",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ماتش points to match, not much. The semantic exclusion is clear even while its register classification remains uncertain."
+    },
+    {
+      "sourceId": "90:2",
+      "english": "SERVICE",
+      "arabic": "الخدمات",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "الخدمات may realize collective service in context. Bare-entry number/collective use needs review rather than blanket rejection."
+    },
+    {
+      "sourceId": "393:0",
+      "english": "AROUND",
+      "arabic": "حو",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "حو is a truncated fragment, not a certified MSA around equivalent. Keep both directions disallowed and retain register review."
+    },
+    {
+      "sourceId": "495:1",
+      "english": "TAX",
+      "arabic": "ضرائب",
+      "field": "status",
+      "before": "rejected",
+      "after": "approved",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ضرائب can express TAX in the collective taxation sense. English tax as a mass/activity term can naturally take an Arabic plural."
+    },
+    {
+      "sourceId": "256:1",
+      "english": "WOMEN",
+      "arabic": "المراة",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "المراة has an orthographic defect; Arabic singular woman can denote women collectively in some constructions. Do not reject solely for singular/plural form, but do not approve the text yet."
+    },
+    {
+      "sourceId": "495:0",
+      "english": "TAX",
+      "arabic": "ضريبي",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ضريبي can be tax-related in an attributive construction or my tax as written. The intended reading is unresolved, not automatically invalid because it is adjectival."
+    },
+    {
+      "sourceId": "373:2",
+      "english": "CUSTOMER",
+      "arabic": "العملاء",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "العملاء can occur naturally for attributive English CUSTOMER, as in customer service. Keep construction review instead of absolute singular/plural rejection."
+    },
+    {
+      "sourceId": "412:2",
+      "english": "SALES",
+      "arabic": "البيع",
+      "field": "status",
+      "before": "rejected",
+      "after": "approved",
+      "confidence": "high",
+      "applied": true,
+      "reason": "البيع is the natural selling-activity sense of SALES. English lexical plural and Arabic mass noun need not match in form."
+    },
+    {
+      "sourceId": "339:0",
+      "english": "PROFILE",
+      "arabic": "التشكيلة",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "التشكيلة is a standard lineup/composition term. PROFILE might have a specialized overlap but is not certified here; review the sense rather than make an unsupported categorical rejection."
+    },
+    {
+      "sourceId": "405:1",
+      "english": "POINT",
+      "arabic": "بوينت",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "بوينت is not a certified natural MSA point noun in this relationship. Keep both directions disallowed pending lexical/register evidence."
+    },
+    {
+      "sourceId": "382:1",
+      "english": "MAN",
+      "arabic": "مان",
+      "field": "status",
+      "before": "rejected",
+      "after": "review",
+      "confidence": "high",
+      "applied": true,
+      "reason": "مان is not a certified Arabic man noun in this relationship; retain exclusion while register remains uncertain."
+    }
+  ],
+  "registerChanges": [
+    {
+      "sourceId": "215:0",
+      "english": "SEND",
+      "arabic": "ارسل",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ارسل could intend أرسل but needs hamza/reading confirmation. It is standard-register vocabulary with unresolved spelling."
+    },
+    {
+      "sourceId": "369:1",
+      "english": "SAVE",
+      "arabic": "انقاذ",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "انقاذ intends إنقاذ. The save/rescue event is legitimate, but the hamza spelling needs review."
+    },
+    {
+      "sourceId": "77:3",
+      "english": "FIRST",
+      "arabic": "الاولى",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "الاولى intends الأولى and has an unresolved hamza omission; feminine ordinal agreement itself is not a rejection reason."
+    },
+    {
+      "sourceId": "519:1",
+      "english": "GIVE",
+      "arabic": "اعطي",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "اعطي needs hamza and vowel/person disambiguation. Preserve spelling and review, rather than automatically reject the finite form."
+    },
+    {
+      "sourceId": "519:0",
+      "english": "GIVE",
+      "arabic": "اعطاء",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "اعطاء intends إعطاء; the give event is correct but the written hamza remains unresolved."
+    },
+    {
+      "sourceId": "165:4",
+      "english": "READ",
+      "arabic": "اقرا",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "اقرا needs spelling review of اقرأ; verb morphology itself is not a reason to reject."
+    },
+    {
+      "sourceId": "221:0",
+      "english": "USING",
+      "arabic": "باستعمال",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "باستعمال is a natural using/by using expression; an Arabic preposition plus masdar can correspond to an English participial construction."
+    },
+    {
+      "sourceId": "121:1",
+      "english": "MAKE",
+      "arabic": "صنع",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "صنع is a natural make/manufacture verbal citation or event noun. Arabic past citation morphology does not force an English past-tense headword."
+    },
+    {
+      "sourceId": "165:3",
+      "english": "READ",
+      "arabic": "قراءة",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "قراءة naturally names the read event and can cite an action. Label the English reading/action sense without rejecting masdar morphology."
+    },
+    {
+      "sourceId": "313:3",
+      "english": "PERSONAL",
+      "arabic": "البيانات الشخصية",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "البيانات الشخصية names personal data, not the adjective PERSONAL. It introduces a substantive concept, not merely grammatical adaptation."
+    },
+    {
+      "sourceId": "339:0",
+      "english": "PROFILE",
+      "arabic": "التشكيلة",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "التشكيلة is a standard lineup/composition term. PROFILE might have a specialized overlap but is not certified here; review the sense rather than make an unsupported categorical rejection."
+    },
+    {
+      "sourceId": "194:1",
+      "english": "HOTEL",
+      "arabic": "دق",
+      "field": "register",
+      "before": "uncertain",
+      "after": "msa",
+      "confidence": "high",
+      "applied": true,
+      "reason": "دق is standard Arabic knocking/pounding, not HOTEL. Register can be MSA while the relationship is semantically wrong."
+    }
+  ],
+  "verbInflectionChanges": [
+    {
+      "sourceId": "112:3",
+      "english": "USED",
+      "arabic": "استخدمت",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "verb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "استخدمت is a normal Arabic past finite form of use. USED has that legitimate past sense; implicit subject agreement is not an automatic ban."
+    },
+    {
+      "sourceId": "112:3",
+      "english": "USED",
+      "arabic": "استخدمت",
+      "field": "sense",
+      "before": null,
+      "after": "past tense of use",
+      "confidence": "high",
+      "applied": true,
+      "reason": "استخدمت is a normal Arabic past finite form of use. USED has that legitimate past sense; implicit subject agreement is not an automatic ban."
+    },
+    {
+      "sourceId": "272:2",
+      "english": "FOUND",
+      "arabic": "وجدت",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "verb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "وجدت is a natural past finite form of find. FOUND has that legitimate past sense; person agreement does not materially change the event."
+    },
+    {
+      "sourceId": "272:2",
+      "english": "FOUND",
+      "arabic": "وجدت",
+      "field": "sense",
+      "before": null,
+      "after": "past tense of find",
+      "confidence": "high",
+      "applied": true,
+      "reason": "وجدت is a natural past finite form of find. FOUND has that legitimate past sense; person agreement does not materially change the event."
+    },
+    {
+      "sourceId": "452:0",
+      "english": "SECOND",
+      "arabic": "ثانيا",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "adverb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ثانيا is a standard sequencing adverb. SECOND has an adverbial use meaning secondly, so identical ordinal morphology is not required."
+    },
+    {
+      "sourceId": "452:0",
+      "english": "SECOND",
+      "arabic": "ثانيا",
+      "field": "sense",
+      "before": null,
+      "after": "secondly in a sequence",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ثانيا is a standard sequencing adverb. SECOND has an adverbial use meaning secondly, so identical ordinal morphology is not required."
+    },
+    {
+      "sourceId": "300:1",
+      "english": "NORTH",
+      "arabic": "شمالي",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "attributive noun",
+      "confidence": "high",
+      "applied": true,
+      "reason": "شمالي is a natural north/northern attributive adjective, as in a north coast. English attributive nouns and Arabic adjectives need not have identical POS."
+    },
+    {
+      "sourceId": "300:1",
+      "english": "NORTH",
+      "arabic": "شمالي",
+      "field": "sense",
+      "before": null,
+      "after": "attributive north direction",
+      "confidence": "high",
+      "applied": true,
+      "reason": "شمالي is a natural north/northern attributive adjective, as in a north coast. English attributive nouns and Arabic adjectives need not have identical POS."
+    },
+    {
+      "sourceId": "369:0",
+      "english": "SAVE",
+      "arabic": "حفظ",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "verb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "حفظ is a natural save equivalent in preservation/file-saving use, as a verbal citation or event noun. Cross-language morphology is not grounds for exclusion."
+    },
+    {
+      "sourceId": "369:0",
+      "english": "SAVE",
+      "arabic": "حفظ",
+      "field": "sense",
+      "before": null,
+      "after": "save or preserve, including file saving",
+      "confidence": "high",
+      "applied": true,
+      "reason": "حفظ is a natural save equivalent in preservation/file-saving use, as a verbal citation or event noun. Cross-language morphology is not grounds for exclusion."
+    },
+    {
+      "sourceId": "449:0",
+      "english": "PROVIDED",
+      "arabic": "شريطة",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "conjunction",
+      "confidence": "high",
+      "applied": true,
+      "reason": "شريطة is the conventional condition expression corresponding to PROVIDED as a conjunction. Both require a following condition; this is natural grammar."
+    },
+    {
+      "sourceId": "449:0",
+      "english": "PROVIDED",
+      "arabic": "شريطة",
+      "field": "sense",
+      "before": null,
+      "after": "on condition that",
+      "confidence": "high",
+      "applied": true,
+      "reason": "شريطة is the conventional condition expression corresponding to PROVIDED as a conjunction. Both require a following condition; this is natural grammar."
+    },
+    {
+      "sourceId": "375:0",
+      "english": "COMPARE",
+      "arabic": "مقارنة",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "verb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "مقارنة is the standard compare/comparison event noun, including interface/action labels. An Arabic masdar can naturally cite an English action verb."
+    },
+    {
+      "sourceId": "375:0",
+      "english": "COMPARE",
+      "arabic": "مقارنة",
+      "field": "sense",
+      "before": null,
+      "after": "compare action expressed by Arabic masdar",
+      "confidence": "high",
+      "applied": true,
+      "reason": "مقارنة is the standard compare/comparison event noun, including interface/action labels. An Arabic masdar can naturally cite an English action verb."
+    },
+    {
+      "sourceId": "221:0",
+      "english": "USING",
+      "arabic": "باستعمال",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "participle",
+      "confidence": "high",
+      "applied": true,
+      "reason": "باستعمال is a natural using/by using expression; an Arabic preposition plus masdar can correspond to an English participial construction."
+    },
+    {
+      "sourceId": "221:0",
+      "english": "USING",
+      "arabic": "باستعمال",
+      "field": "sense",
+      "before": null,
+      "after": "using expressed by preposition plus masdar",
+      "confidence": "high",
+      "applied": true,
+      "reason": "باستعمال is a natural using/by using expression; an Arabic preposition plus masdar can correspond to an English participial construction."
+    },
+    {
+      "sourceId": "121:1",
+      "english": "MAKE",
+      "arabic": "صنع",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "verb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "صنع is a natural make/manufacture verbal citation or event noun. Arabic past citation morphology does not force an English past-tense headword."
+    },
+    {
+      "sourceId": "121:1",
+      "english": "MAKE",
+      "arabic": "صنع",
+      "field": "sense",
+      "before": null,
+      "after": "make or manufacture",
+      "confidence": "high",
+      "applied": true,
+      "reason": "صنع is a natural make/manufacture verbal citation or event noun. Arabic past citation morphology does not force an English past-tense headword."
+    },
+    {
+      "sourceId": "165:3",
+      "english": "READ",
+      "arabic": "قراءة",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "verb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "قراءة naturally names the read event and can cite an action. Label the English reading/action sense without rejecting masdar morphology."
+    },
+    {
+      "sourceId": "165:3",
+      "english": "READ",
+      "arabic": "قراءة",
+      "field": "sense",
+      "before": null,
+      "after": "read action expressed by Arabic masdar",
+      "confidence": "high",
+      "applied": true,
+      "reason": "قراءة naturally names the read event and can cite an action. Label the English reading/action sense without rejecting masdar morphology."
+    },
+    {
+      "sourceId": "495:1",
+      "english": "TAX",
+      "arabic": "ضرائب",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "noun",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ضرائب can express TAX in the collective taxation sense. English tax as a mass/activity term can naturally take an Arabic plural."
+    },
+    {
+      "sourceId": "495:1",
+      "english": "TAX",
+      "arabic": "ضرائب",
+      "field": "sense",
+      "before": null,
+      "after": "tax collectively or taxation",
+      "confidence": "high",
+      "applied": true,
+      "reason": "ضرائب can express TAX in the collective taxation sense. English tax as a mass/activity term can naturally take an Arabic plural."
+    },
+    {
+      "sourceId": "412:2",
+      "english": "SALES",
+      "arabic": "البيع",
+      "field": "partOfSpeech",
+      "before": null,
+      "after": "noun",
+      "confidence": "high",
+      "applied": true,
+      "reason": "البيع is the natural selling-activity sense of SALES. English lexical plural and Arabic mass noun need not match in form."
+    },
+    {
+      "sourceId": "412:2",
+      "english": "SALES",
+      "arabic": "البيع",
+      "field": "sense",
+      "before": null,
+      "after": "selling activity",
+      "confidence": "high",
+      "applied": true,
+      "reason": "البيع is the natural selling-activity sense of SALES. English lexical plural and Arabic mass noun need not match in form."
+    },
+    {
+      "sourceId": "173:1",
+      "english": "SET",
+      "arabic": "تعيين",
+      "field": "partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "confidence": "high",
+      "applied": true,
+      "reason": "تعيين can cite the set/assign action as an Arabic event noun. Label the English verb sense explicitly, rather than mislabelling SET as an assignment noun."
+    },
+    {
+      "sourceId": "173:1",
+      "english": "SET",
+      "arabic": "تعيين",
+      "field": "sense",
+      "before": "assignment",
+      "after": "set or assign a value",
+      "confidence": "high",
+      "applied": true,
+      "reason": "تعيين can cite the set/assign action as an Arabic event noun. Label the English verb sense explicitly, rather than mislabelling SET as an assignment noun."
+    }
+  ],
+  "unresolved": 44,
+  "unappliedFieldProposals": 22,
+  "validationOutcomes": {
+    "approved": 143,
+    "review": 44,
+    "rejected": 13
+  },
+  "textChanges": 0,
+  "relationshipLosses": 0,
+  "newRelationships": 0,
+  "cefrAssignments": 0,
+  "productionPolicy": "compatibility",
+  "batch002ReadyUnderRevisedRules": true,
+  "readinessLimit": "Ready for another bounded, explicitly reviewed batch under the new rules, not unattended bulk approval. Keep unresolved rows in review and repeat targeted QA; this is not independent human certification."
+}

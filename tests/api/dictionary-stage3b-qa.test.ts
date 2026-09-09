@@ -5,6 +5,7 @@ import { DICTIONARY_STAGE3B as before } from '../../api/_lib/dictionary.stage3b.
 import { DICTIONARY_STAGE3B_QA as after } from '../../api/_lib/dictionary.stage3b.qa.generated';
 import { sampleBatchQa, applyBatchQa, qaKey, type QaReview } from '../../scripts/stage3b-qa';
 import { normalizeArabicWord, buildReverseIndex, eligibleTranslation } from '../../api/_lib/dictionary';
+import { legacyDirectionalView } from '../../scripts/legacy-directional-view';
 import { createCandidateIndex } from '../../api/_lib/candidates';
 import { parseReferenceCsv, type BatchDecision } from '../../scripts/stage3b';
 
@@ -71,7 +72,7 @@ it('restores legitimate multiword senses and holds context-bound approvals for r
 });
 
 it('removes only sampled unjustified restrictions and excludes the newly restricted SOURCE relationship independently by direction',()=>{
-  const index=createCandidateIndex(after,'compatibility');
+  const index=createCandidateIndex(legacyDirectionalView(after),'compatibility');
   const pairs=(mode:string)=>[...index.get(`13:${mode}:advanced`)!.values()].flat(2);
   expect(pairs('ar_to_en')).toContainEqual({answer:'IF',clue:'لو'});
   expect(pairs('ar_to_en')).not.toContainEqual({answer:'SOURCE',clue:'مصدر'});
@@ -94,5 +95,5 @@ it('computes agreement against the frozen pre-correction baseline with explicit 
   expect(s.unappliedProposals).toBe(35);
   expect(s.batch002Ready).toBe(false);
   expect(s.after.relationships).toBe(s.before.relationships);
-  expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_STAGE3B_QA, 'compatibility')");
+  expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_STAGE3B_METHOD, 'compatibility')");
 });

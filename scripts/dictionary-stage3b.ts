@@ -5,6 +5,7 @@ import { eligibleTranslation, normalizeArabicWord, type DictionaryHeadword, type
 import { registerHooks } from 'node:module';
 import type { Mode } from '../api/_lib/candidates.ts';
 import { applyBatch001, parseReferenceCsv, selectBatch001 } from './stage3b.ts';
+import { legacyDirectionalView } from './legacy-directional-view.ts';
 import { reviewCsv } from './stage3a.ts';
 
 // Node's TS runner does not remap Vercel's .js source imports. This hook is
@@ -29,7 +30,8 @@ const result = applyBatch001(DICTIONARY_STAGE3A, selection, JSON.parse(read('dec
 const group = (rows: Record<string, unknown>[], key: string) => rows.reduce<Record<string,number>>((out,r) => { const k=String(r[key] ?? 'unset');out[k]=(out[k]??0)+1;return out; },{});
 const counts = (data: readonly DictionaryHeadword[]) => ({ headwords: data.length, relationships: data.reduce((n,h)=>n+h.translations.length,0),
   headwordStatus: group([...data],'status'), relationshipStatus:group(data.flatMap(h=>h.translations),'status'), register:group(data.flatMap(h=>h.translations),'register') });
-const availability = (data: readonly DictionaryHeadword[]) => {
+const availability = (source: readonly DictionaryHeadword[]) => {
+  const data = legacyDirectionalView(source); // Reproduce the frozen historical policy, not current production.
   const rows = [];
   for (const policy of ['compatibility','approved-only'] as DictionaryPolicy[]) {
     const index = createCandidateIndex(data,policy);

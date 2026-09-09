@@ -72,8 +72,8 @@ it('preserves multiword display, existing senses and many-to-many reverse relati
 const pairs=(data:DictionaryHeadword[],mode:'en_to_ar'|'ar_to_en',policy:'compatibility'|'approved-only'='compatibility')=>[...createCandidateIndex(data,policy).get(`13:${mode}:advanced`)!.values()].flat(2);
 it('handles direction exclusions independently, prefers allowed forms and retains review compatibility explicitly',()=>{
   const sample:DictionaryHeadword[]=[{english:'BOOK',status:'approved',translations:[
-    {arabic:'كتاب',status:'approved',register:'msa',preferredForEnToAr:true,preferredForArToEn:false},
-    {arabic:'الكتاب',status:'approved',register:'msa',preferredForEnToAr:false,preferredForArToEn:true},
+    {arabic:'كتاب',status:'approved',register:'msa',allowedForEnToAr:true,allowedForArToEn:false,preferredForEnToAr:true,preferredForArToEn:false},
+    {arabic:'الكتاب',status:'approved',register:'msa',allowedForEnToAr:false,allowedForArToEn:true,preferredForEnToAr:false,preferredForArToEn:true},
     {arabic:'مرفوض',status:'rejected',register:'msa'},
   ]},{english:'HOUSE',status:'review',translations:[{arabic:'منزل',status:'review',register:'uncertain'}]}];
   expect(pairs(sample,'en_to_ar')).toEqual(expect.arrayContaining([{answer:'كتاب',clue:'BOOK'},{answer:'منزل',clue:'HOUSE'}]));
@@ -105,5 +105,5 @@ it('reports exact before/after counts and every reviewed relationship, including
   const csv=readFileSync('dictionary/stage3b/batch001/decisions.csv','utf8');
   for(const d of manifest)expect(csv).toContain(`"stage3a:h${d.headwordIndex}:t${d.translationIndex}"`);
   expect(readFileSync('dictionary/stage3b/batch001/reference_conflicts.csv','utf8')).toContain('ENGLISH');
-  expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_STAGE3B_QA, 'compatibility')");
+  expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_STAGE3B_METHOD, 'compatibility')");
 });

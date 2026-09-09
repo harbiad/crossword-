@@ -4,6 +4,9 @@ export type DictionaryTranslation = {
   arabic: string;
   status?: ReviewStatus;
   register?: ArabicRegister;
+  // Allowed controls eligibility; preferred controls ranking only.
+  allowedForEnToAr?: boolean;
+  allowedForArToEn?: boolean;
   preferredForEnToAr?: boolean;
   preferredForArToEn?: boolean;
   partOfSpeech?: string;
@@ -19,8 +22,8 @@ export type DictionaryHeadword = {
 export type DictionaryPolicy = 'compatibility' | 'approved-only';
 export function eligibleTranslation(headword: DictionaryHeadword, translation: DictionaryTranslation, policy: DictionaryPolicy, mode?: 'en_to_ar' | 'ar_to_en') {
   if (headword.status === 'rejected' || translation.status === 'rejected' || translation.register === 'dialect') return false;
-  if (mode === 'en_to_ar' && translation.preferredForEnToAr === false) return false;
-  if (mode === 'ar_to_en' && translation.preferredForArToEn === false) return false;
+  if (mode === 'en_to_ar' && translation.allowedForEnToAr === false) return false;
+  if (mode === 'ar_to_en' && translation.allowedForArToEn === false) return false;
   return policy === 'compatibility' || (headword.status === 'approved' && translation.status === 'approved' && translation.register === 'msa');
 }
 

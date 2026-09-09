@@ -1,0 +1,201 @@
+# Index | A approved, R unresolved, X rejected, U wrong mapping with uncertain register | M MSA, D dialect, U uncertain | independent validation reason.
+0|A|M|اللقب legitimately names a title/appellation; nickname and surname alternatives are not exclusion grounds.
+1|A|M|تصرف can name an act or behavior; ordinary related senses remain usable with crossings.
+2|A|M|مجموعة is a valid set/collection noun; synonyms do not invalidate it.
+3|A|M|الرعاية expresses care; its sponsorship applications do not make this sense misleading.
+4|A|M|المشروع is a normal project noun, even though draft and venture can overlap.
+5|A|M|متجر is a store or shop; either legitimate crossword answer is allowed.
+6|A|M|رصيد denotes account credit/balance; shared financial synonyms are acceptable.
+7|A|M|ذات صلة is a natural related/relevant expression. Multiple answers are resolved by the puzzle.
+8|A|M|المخزن is a store in the storage-place sense; warehouse is a legitimate alternative, not a ban.
+9|A|M|فندق is the natural hotel noun. A motel alternative does not make HOTEL misleading.
+10|A|M|ردود الفعل can express feedback as responses. REACTIONS does not make that sense invalid.
+11|A|M|مقالة is an article or essay; both are legitimate dictionary relationships.
+12|A|M|دفع is payment in the financial sense. Its pushing sense needs a sense label, not a synonym exclusion.
+13|A|M|الملتقى can name a forum/gathering; other meeting-place senses are legitimate polysemy.
+14|A|M|الموقع is a valid location/site noun; neither commonness nor answer length determines eligibility.
+15|A|M|الروابط naturally means links/ties; retain both mappings.
+16|A|M|العودة is a normal return/comeback noun, with no misleading mismatch.
+17|A|M|مخازن is plural stores/storehouses; the storage sense is a legitimate alternative to retail stores.
+18|A|M|الأعمال naturally denotes business activities. English mass/activity nouns need not match Arabic surface number.
+19|A|M|فنادق means hotels. MOTELS may overlap, but synonym/type ambiguity alone is not pedagogical unsuitability.
+20|A|M|الطريقة is a normal way/method expression; allow the intended sense.
+21|A|M|أفضل can mean better or best depending on construction. A legitimate comparative reading remains usable.
+22|A|M|الضريبة is a natural singular tax noun; levy synonyms do not undermine correctness.
+23|A|M|البريد الإلكتروني is a valid electronic-mail sense of MAIL; EMAIL is also legitimate.
+24|A|M|الفصل can denote a school class as well as a chapter. The school sense is valid.
+25|A|M|المالية is a natural feminine definite financial adjective; the English adjective need not encode Arabic gender.
+26|A|M|انظر is the normal Arabic imperative for look; an English base verb may map to a natural imperative.
+27|A|M|تعلم can be a learn imperative or finite form. The learning-event meaning is preserved without exact morphology.
+28|A|M|حسنا works for well/all right in a discourse or manner use; OKAY does not justify exclusion.
+29|A|M|المحلية is an inflected local adjective; agreement differences do not change the property.
+30|A|M|المراهق is a teen/teenager noun. These are legitimate synonyms, not competing invalid answers.
+31|A|M|تيار denotes a current/stream. Retain the flow sense without requiring uniqueness.
+32|A|M|أعلى can express top/highest in an attributive sense; superlative morphology is natural here.
+33|A|M|الوسط is middle/center in the spatial sense; allow both equivalents.
+34|A|M|تصنيف can denote a rating/classification; the classification sense is legitimate.
+35|R|M|العقارات denotes real property; ESTATE can overlap but the recorded bare sense needs clarification before approval.
+36|A|M|استخدمت is a normal Arabic past finite form of use. USED has that legitimate past sense; implicit subject agreement is not an automatic ban.
+37|R|M|اخرى has a hamza omission. Standard-register intention is clear; preserve writing and keep orthography review.
+38|R|M|على الانترنت is a natural online phrase with a hamza omission. Keep spelling review, not a dialect classification.
+39|R|U|انتي could be colloquial writing or a misspelling of أنتِ. Register and written form remain uncertain; do not approve or rewrite.
+40|R|M|اول intends a standard ordinal but needs its written hamza reviewed; no automatic correction.
+41|R|M|اكثر is recognizable standard comparative vocabulary with a hamza omission; retain spelling review.
+42|R|M|غير has several unvowelled readings, including other and change. The intended grammatical sense needs review, not categorical rejection.
+43|R|M|الامريكي is a recognizable standard adjective with hamza omission; preserve it for orthographic review.
+44|X|M|أجل is affirmative yes, not the consequence/degree/conjunction SO sense. The semantic mapping is materially wrong.
+45|R|M|لكل منها adds a preposition and complement to each. Such a construction may be natural in context, but bare-entry suitability is unresolved.
+46|A|M|وجدت is a natural past finite form of find. FOUND has that legitimate past sense; person agreement does not materially change the event.
+47|R|M|حسب can mean according to/as, but the intended relation for the broad function word needs context. Do not reject it solely for being contextual.
+48|R|M|لاجل is standard لأجل with unresolved hamza spelling. Preserve the text and the review status.
+49|A|M|ثانيا is a standard sequencing adverb. SECOND has an adverbial use meaning secondly, so identical ordinal morphology is not required.
+50|R|M|ابحاث is a standard research noun with missing hamza; keep orthography review.
+51|R|M|اشياء is a standard things plural with missing hamza; do not silently repair.
+52|R|M|الاعلى requires orthographic verification of الأعلى. Register is standard, written approval remains pending.
+53|R|M|اسعار has the correct prices meaning but unresolved hamza spelling; retain review.
+54|A|M|شمالي is a natural north/northern attributive adjective, as in a north coast. English attributive nouns and Arabic adjectives need not have identical POS.
+55|R|M|ارسال has a hamza omission. A verbal noun may convey the send event, but the current spelling is not certified.
+56|A|M|حفظ is a natural save equivalent in preservation/file-saving use, as a verbal citation or event noun. Cross-language morphology is not grounds for exclusion.
+57|R|M|الرتبة is rank/grade and can overlap with level. Keep the sense unresolved rather than rejecting the less-common alternative.
+58|R|M|العاب has a hamza omission in the ordinary games plural; keep spelling review.
+59|A|M|يشتري is the normal Arabic present finite citation form for buy. The inherent third-person inflection is not misleading.
+60|R|M|ارسل could intend أرسل but needs hamza/reading confirmation. It is standard-register vocabulary with unresolved spelling.
+61|R|M|عندي naturally expresses first-person possession. HAVE may be translated this way in a sentence, but isolated clue suitability needs a construction label; no automatic rejection.
+62|A|M|قولي is a natural feminine imperative of say; grammatical addressee gender does not change the say event.
+63|A|M|عندما is a normal temporal when conjunction. A different Arabic interrogative when is another sense, not an exclusion reason.
+64|A|M|حتى legitimately expresses even as well as until; the even sense is allowed despite ambiguity.
+65|A|M|شريطة is the conventional condition expression corresponding to PROVIDED as a conjunction. Both require a following condition; this is natural grammar.
+66|A|M|ساعد is a natural help imperative/finite citation; the core helping event is preserved.
+67|R|M|انقاذ intends إنقاذ. The save/rescue event is legitimate, but the hamza spelling needs review.
+68|A|M|اثنين is an oblique form of two. Case inflection is normal Arabic grammar, not a meaning mismatch.
+69|R|M|الاولى intends الأولى and has an unresolved hamza omission; feminine ordinal agreement itself is not a rejection reason.
+70|A|M|هناك is a natural locative there; ordinary and learner-appropriate.
+71|R|M|نحن normally represents a subject pronoun, but English US can occur in constructions translated with Arabic subject forms. Do not categorically reject on case alone; bare-entry construction remains unresolved.
+72|A|M|ابدأ is a natural start imperative; grammatical form is appropriate without matching an English finite ending.
+73|A|M|مقارنة is the standard compare/comparison event noun, including interface/action labels. An Arabic masdar can naturally cite an English action verb.
+74|R|M|اعطي needs hamza and vowel/person disambiguation. Preserve spelling and review, rather than automatically reject the finite form.
+75|R|M|اعطاء intends إعطاء; the give event is correct but the written hamza remains unresolved.
+76|A|M|قل is a natural say imperative; base-verb to imperative mapping is reasonable.
+77|R|M|اقرا needs spelling review of اقرأ; verb morphology itself is not a reason to reject.
+78|R|M|له can encode possession or to/for him. HIS may be natural in a full construction, but the isolated relationship needs clarification.
+79|A|M|كثير expresses many/much with Arabic agreement. Surface number does not invalidate a quantity expression.
+80|A|M|باستعمال is a natural using/by using expression; an Arabic preposition plus masdar can correspond to an English participial construction.
+81|A|M|صنع is a natural make/manufacture verbal citation or event noun. Arabic past citation morphology does not force an English past-tense headword.
+82|A|M|امتلك expresses own/possess as a finite citation; the possession sense is maintained.
+83|R|M|كان can participate in translations of BEEN, but the English perfect participle needs construction context. Retain review, not an automatic surface-form ban.
+84|A|M|ذهاب names the going event. An English gerund may naturally correspond to an Arabic verbal noun.
+85|A|M|تحت is a natural below/under spatial relation. Synonyms are allowed in a crossword.
+86|A|M|خذ is the normal take imperative; semantic event is preserved.
+87|A|M|قراءة naturally names the read event and can cite an action. Label the English reading/action sense without rejecting masdar morphology.
+88|R|M|لازم has legitimate standard necessary/adherent readings and colloquial modal uses. MUST needs a context-specific usage decision; do not mark the whole word dialect.
+89|U|U|لونغ is not an established MSA translation of the long property. Keep both directions disallowed; register remains uncertain and status becomes review under the revised register rule.
+90|X|D|تاني in the second sense is established colloquial usage; this relationship does not meet the MSA policy.
+91|X|M|البيانات الشخصية names personal data, not the adjective PERSONAL. It introduces a substantive concept, not merely grammatical adaptation.
+92|R|M|صديقي is my friend and can be natural when addressing someone as friend. Do not reject every possessive adaptation; this isolated sense needs confirmation.
+93|X|D|راح as a future WILL marker is colloquial; the standard departed reading of the same spelling does not validate this particular relationship.
+94|U|U|ارت is a phonetic rendering/name, not a certified Arabic art concept. Withhold both directions while register remains unclassified.
+95|X|M|الإجراء المتخذ adds the substantive taken/completed qualification to action; this is not a generic action equivalent.
+96|R|M|بالفيديو can naturally occur where English VIDEO modifies a communication medium. Isolated use needs context, so rejection solely for a preposition is too strong.
+97|R|M|نصوص is plural texts, but TEXT can denote written material collectively. Defer the collective sense instead of automatically rejecting number differences.
+98|R|M|الاسعار has both a hamza issue and a plural reading; contextual price/prices usage needs review, not automatic morphological rejection.
+99|X|D|بس in the adversative but sense is colloquial; relationship-specific dialect evidence supports exclusion.
+100|X|D|اكتر is the familiar colloquial more form. Do not certify it as standard أكثر without changing the text, which this task forbids.
+101|U|U|ماتش points to match, not much. The semantic exclusion is clear even while its register classification remains uncertain.
+102|R|M|الخدمات may realize collective service in context. Bare-entry number/collective use needs review rather than blanket rejection.
+103|U|U|حو is a truncated fragment, not a certified MSA around equivalent. Keep both directions disallowed and retain register review.
+104|X|M|هو كذلك means he/it is so, adding a subject and predicate beyond isolated IS. This is materially extra meaning, not natural citation inflection alone.
+105|X|M|حياته adds a specific possessor to LIFE without an established lexical sense requiring it. Retain exclusion of this bare relationship.
+106|A|M|ضرائب can express TAX in the collective taxation sense. English tax as a mass/activity term can naturally take an Arabic plural.
+107|X|D|شنو is a colloquial what form. MSA-only policy excludes the relationship without rewriting it.
+108|R|M|المراة has an orthographic defect; Arabic singular woman can denote women collectively in some constructions. Do not reject solely for singular/plural form, but do not approve the text yet.
+109|R|M|ضريبي can be tax-related in an attributive construction or my tax as written. The intended reading is unresolved, not automatically invalid because it is adjectival.
+110|R|M|العملاء can occur naturally for attributive English CUSTOMER, as in customer service. Keep construction review instead of absolute singular/plural rejection.
+111|X|M|المدارس denotes multiple schools, whereas the ordinary SCHOOL location noun denotes a single institution. No established collective sense is supplied here; the referential change is material.
+112|A|M|البيع is the natural selling-activity sense of SALES. English lexical plural and Arabic mass noun need not match in form.
+113|R|M|التشكيلة is a standard lineup/composition term. PROFILE might have a specialized overlap but is not certified here; review the sense rather than make an unsupported categorical rejection.
+114|U|U|بوينت is not a certified natural MSA point noun in this relationship. Keep both directions disallowed pending lexical/register evidence.
+115|X|M|دق is standard Arabic knocking/pounding, not HOTEL. Register can be MSA while the relationship is semantically wrong.
+116|U|U|مان is not a certified Arabic man noun in this relationship; retain exclusion while register remains uncertain.
+117|X|M|الحكومات denotes several distinct governments, not the ordinary single governing-body noun GOVERNMENT. This materially changes the referent.
+118|A|M|معرض الصور is a valid picture-display/gallery sense; spaces and a specific legitimate sense do not invalidate it.
+119|A|M|القيمة is ordinary value/worth; synonym alternatives are expected.
+120|A|M|ولاية is a legitimate administrative state sense; other meanings of state are preserved separately.
+121|A|M|اللعبة names a game; gender and definiteness are ordinary Arabic grammar.
+122|A|M|نهار is day/daytime. The daylight period is a legitimate sense of day rather than a misleading substitute.
+123|A|M|بين is the ordinary between relation; no special restriction is needed.
+124|A|M|متقدم is a natural advanced participial adjective; cross-language participle/adjective morphology is appropriate.
+125|A|M|الفرع can be a section/branch subdivision; the subdivision sense is legitimate.
+126|A|M|صديق is an ordinary friend noun; synonyms such as companion are not exclusion evidence.
+127|A|M|مزيد naturally expresses more/additional quantity; allow it.
+128|A|M|ويب is an established modern Web borrowing; not every borrowing is dialect.
+129|A|M|ضد is the normal against relation; allow both directions.
+130|A|M|استخدام is the standard using event noun; a gerund-to-masdar mapping is natural.
+131|A|M|متاجر is ordinary plural stores/shops; both English alternatives are legitimate.
+132|A|M|مارس identifies the calendar month March; the verb homograph is a different reading, not grounds to exclude this sense.
+133|A|M|الاقتباس names a quote/quotation; the noun reading is legitimate.
+134|A|M|النموذج can mean a form/template; this recorded sense is useful even with synonyms.
+135|A|M|كبيرة is the feminine large adjective; Arabic agreement does not alter the property.
+136|A|M|العمل can denote business/work activity; the activity sense is legitimate though broad.
+137|A|M|المسيرة names a march/procession; preserve the event sense.
+138|A|M|السوق is a normal market noun; no uniqueness requirement applies.
+139|A|M|نعم is the standard affirmative yes; allow both directions.
+140|A|M|لعب can name play or serve as a verb citation. The play-activity meaning is retained without exact POS symmetry.
+141|A|M|كلية is an ordinary college/faculty noun. Related institutional senses are legitimate.
+142|A|M|الجزء is a part/portion; synonyms are expected in bilingual crosswords.
+143|A|M|الجماعة can denote a community/group. This legitimate social-group sense is not excluded for breadth alone.
+144|A|M|قضية is a case/matter, including a legal case; no legal advice or new sense is being added.
+145|A|M|مطلوب is a natural required participial adjective; morphology is appropriate.
+146|A|M|خيط means thread/string. Same-length synonyms are still acceptable with crossings.
+147|A|M|الجانب is a side/aspect; both are legitimate senses.
+148|A|M|الناس is the ordinary people collective noun; surface number comparison is unnecessary.
+149|A|M|اقتبس is a natural quote imperative/finite citation; it preserves the quoting event.
+150|A|M|المقالات is plural articles in the writing sense; appropriate noun correspondence.
+151|A|M|استعمال is a standard using/use event noun; gerund versus masdar is not an error.
+152|A|M|السجل names a register/record book. This noun sense is distinct from the registering verb.
+153|A|M|البيانات is ordinary data; collective/plural morphology is natural.
+154|A|M|المصطلحات is terms in the specialized-word sense; preserve that sense without excluding synonyms.
+155|A|M|السياسة can denote a policy as well as politics. The policy sense is legitimate in context and remains allowed.
+156|A|M|في can naturally express AT for a location or time construction; broad function-word overlap is not sufficient exclusion evidence.
+157|A|M|تلميذ is a student/pupil noun; both legitimate English words may be answers.
+158|A|M|العلوم is natural for science/sciences as a collective field of study; identical number is not required.
+159|A|M|الشركة is a normal business-company noun; suitable learner vocabulary.
+160|A|M|مستعمل can be an active-participle user. The unvowelled used-adjective reading is another reading, not proof of a wrong user sense.
+161|A|M|سابق is a natural previous/former adjective; synonyms are allowed.
+162|A|M|النموذج is a model/example; the representation sense is valid.
+163|A|M|المعيار is a standard/criterion. The relationship remains useful despite alternative English equivalents.
+164|A|M|الملحقات is accessories/attachments; related legitimate nouns do not require exclusion.
+165|A|M|مجتمع is an ordinary community/society noun; both mappings are valid.
+166|A|M|موضوع is a conventional discussion-thread sense in online forums. Preserve that domain sense without claiming every topic is a thread.
+167|A|M|مجرد expresses just/merely in a limiting construction. This legitimate function-word sense is allowed.
+168|A|M|عش can be the live imperative, despite the nest noun homograph without vowels. The verbal sense is legitimate and should be labelled.
+169|A|M|الأسرة is a normal family/household noun; legitimate alternatives are expected.
+170|A|M|وظائف is jobs/positions; the work-position sense is correct.
+171|A|M|مالي is a natural financial adjective; adjective agreement need not mirror English surface form.
+172|A|M|صغير is the ordinary small adjective; no reverse uniqueness requirement.
+173|A|M|المقالة is an article/essay noun in the writing sense; both are legitimate.
+174|A|M|عودة is a natural return noun; allow synonyms rather than ban this sense.
+175|A|M|القانوني is the definite legal adjective; this is standard agreement, not a POS error.
+176|A|M|خلال is the normal during/through temporal relation; allow the legitimate temporal sense.
+177|A|M|الظروف is conditions/circumstances. Shared equivalents remain dictionary relationships.
+178|A|M|الحالة is state/condition; preserve the condition sense.
+179|A|M|قليل expresses a little/small amount. Quantity grammar is natural across languages.
+180|A|M|المنطقة is area/region/zone; synonyms are not automatic exclusions, even of equal length.
+181|A|M|تعيين can cite the set/assign action as an Arabic event noun. Label the English verb sense explicitly, rather than mislabelling SET as an assignment noun.
+182|A|M|الرقم is a number/numeral identifier; its alternatives do not make the relationship poor.
+183|A|M|نظرة names a look/glance; a legitimate noun sense.
+184|A|M|مكالمة is a telephone call; a natural and sufficiently specific sense.
+185|A|M|الدولة is state/country in the sovereign-country sense; both ordinary equivalents are allowed.
+186|A|M|بصمة is a print/impression, especially a finger impression. Preserve this distinct noun sense instead of forcing the printing-process meaning.
+187|A|M|الحالي is the current/present adjective, distinct from the flow noun; the sense label is appropriate.
+188|A|M|مسيرة is a march/procession; ordinary event vocabulary.
+189|A|M|مصدر is a correct source equivalent. ORIGIN is a legitimate synonym, not a reason to exclude SOURCE; preference and eligibility are separate.
+190|A|M|نساء is ordinary women; correct MSA plural noun.
+191|A|M|صناعة is a natural industry/manufacturing noun; valid related senses.
+192|A|M|فريق is a normal team/group noun. No one-to-one requirement is imposed.
+193|A|M|طلاب is a natural students plural; learners may also be valid, with crossings resolving the answer.
+194|A|M|ملف is a standard file noun; appropriate learner vocabulary.
+195|A|M|خطة is a normal plan; related English alternatives do not invalidate it.
+196|A|M|مكتبة can denote library/bookshop. The library sense remains allowed without depending on answer length.
+197|A|M|لغة is a normal language noun; allow both directions.
+198|A|M|فن is a natural art noun; appropriate general vocabulary.
+199|A|M|خصوصية is a natural privacy noun; suitable in both directions.

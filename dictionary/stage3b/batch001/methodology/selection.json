@@ -1,0 +1,39 @@
+{
+  "seed": "batch001-methodology-v2-validation",
+  "sourceSha256": "0fa948e58e85311d454730f9c6f61136b24cc929b87fac0e2082c3715e07ad91",
+  "proposalsSha256": "e91820ef655e525e7286f2e16fb3b4e34daaa8c4be324cd67b80989c4c802e54",
+  "strata": [
+    {
+      "name": "unapplied-qa",
+      "count": 35
+    },
+    {
+      "name": "register-disagreement",
+      "count": 24
+    },
+    {
+      "name": "verb-inflection",
+      "count": 30
+    },
+    {
+      "name": "previous-rejection",
+      "count": 30
+    },
+    {
+      "name": "previous-reverse-restriction",
+      "count": 60
+    },
+    {
+      "name": "multiple-sense",
+      "count": 10
+    },
+    {
+      "name": "qa-source-counterexample",
+      "count": 1
+    },
+    {
+      "name": "control",
+      "count": 10
+    }
+  ]
+}
