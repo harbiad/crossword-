@@ -28,7 +28,8 @@ describe.each([7, 9, 11, 13])('size %i', size => {
       expect(result.contentType).toBe('application/json; charset=utf-8');
       const entries = result.body.entries as { answer: string; clue: string }[];
       expect(entries.length).toBeGreaterThanOrEqual(24);
-      expect(entries.length).toBe(2000);
+      const expected = mode === 'en_to_ar' ? 2000 : ({ 7: 2000, 9: 4000, 11: 6000, 13: 6000 } as Record<number, number>)[size];
+      expect(entries.length).toBe(expected);
       expect(entries.every(p => p.answer.length >= 2 && p.answer.length <= size && p.clue.length > 0)).toBe(true);
       expect(new Set(entries.map(p => `${p.clue}::${p.answer}`)).size).toBe(entries.length);
       if (mode === 'ar_to_en') expect(entries.every(p => /^[A-Z]+$/.test(p.answer))).toBe(true);

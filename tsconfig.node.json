@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts", "vitest.stress.config.ts", "vitest.benchmark.config.ts", "vitest.worker.config.ts", "vitest.lookahead.config.ts", "benchmarks/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
+  "include": ["vite.config.ts", "vitest.stress.config.ts", "vitest.benchmark.config.ts", "vitest.approved-benchmark.config.ts", "vitest.diagnostic.config.ts", "vitest.worker.config.ts", "vitest.lookahead.config.ts", "benchmarks/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
 }

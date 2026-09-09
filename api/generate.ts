@@ -1,3 +1,4 @@
+import { candidatePoolLimit } from './_lib/candidatePool.js';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createCandidateIndex, selectCandidates, type Mode, type Band } from './_lib/candidates.js';
 import { DICTIONARY_BATCH003_QA } from './_lib/dictionary.stage3b.batch003.qa.generated.js';
@@ -11,9 +12,7 @@ const MIN_ENTRIES_FOR_UI = 24;
 // Review/uncertain data remains eligible explicitly during staged curation.
 // Rejected headwords/relationships and known dialect are excluded in both modes.
 const candidateIndex = createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility');
-// Smallest tested pool retaining baseline success in every size/mode.
-// See benchmarks/results/api-optimization.md for the seeded comparison.
-const TARGET_PAIRS = 2000;
+// Request limits are measured by size/direction; policy remains compatibility.
 
 function json(res: VercelResponse, status: number, body: unknown) {
   res.status(status);
@@ -32,7 +31,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (mode !== 'en_to_ar' && mode !== 'ar_to_en') return json(res, 400, { error: 'Invalid mode' });
     if (band !== 'beginner' && band !== 'intermediate' && band !== 'advanced') return json(res, 400, { error: 'Invalid band' });
 
-    const pairs = selectCandidates(candidateIndex, gridSize, mode, band, TARGET_PAIRS);
+    const pairs = selectCandidates(candidateIndex, gridSize, mode, band, candidatePoolLimit(gridSize, mode));
 
     if (pairs.length < MIN_ENTRIES_FOR_UI) {
       return json(res, 200, { entries: [], warning: 'No entries generated from DICT_COMMON_30000_NON_EMPTY.' });

@@ -1,0 +1,645 @@
+{
+  "started": "2026-09-09T18:19:24.197Z",
+  "finished": "2026-09-09T18:33:39.764Z",
+  "commit": "6b01f715bda2243487cdf7065d3f278a15af6389",
+  "runtime": "v24.10.0",
+  "machine": {
+    "platform": "darwin",
+    "release": "25.3.0",
+    "cpu": "Apple M4 Pro"
+  },
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "band": "advanced",
+  "candidateLimit": 2000,
+  "warmups": 16,
+  "configurations": [
+    {
+      "size": 7,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 30,
+      "failed": 0,
+      "successRate": 100,
+      "generationMs": {
+        "median": 3.8605829999723937,
+        "p95": 4.6980839999741875,
+        "slowest": 5.260417000041343
+      },
+      "entries": {
+        "median": 26,
+        "p95": 26,
+        "slowest": 26
+      },
+      "minimumEntries": 24,
+      "intersections": {
+        "median": 36,
+        "p95": 37,
+        "slowest": 38
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 1,
+        "p95": 1,
+        "slowest": 1
+      },
+      "recommendation": "READY"
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 29,
+      "failed": 1,
+      "successRate": 96.66666666666667,
+      "generationMs": {
+        "median": 7.031021499991766,
+        "p95": 11.208958999952301,
+        "slowest": 1702.4221670000115
+      },
+      "entries": {
+        "median": 42,
+        "p95": 44,
+        "slowest": 44
+      },
+      "minimumEntries": 40,
+      "intersections": {
+        "median": 57,
+        "p95": 60,
+        "slowest": 60
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 1,
+        "p95": 1,
+        "slowest": 2
+      },
+      "recommendation": "READY"
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 29,
+      "failed": 1,
+      "successRate": 96.66666666666667,
+      "generationMs": {
+        "median": 13.72349999999642,
+        "p95": 1095.4489579999936,
+        "slowest": 1803.6806670000078
+      },
+      "entries": {
+        "median": 59,
+        "p95": 62,
+        "slowest": 62
+      },
+      "minimumEntries": 56,
+      "intersections": {
+        "median": 85,
+        "p95": 90,
+        "slowest": 90
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 1,
+        "p95": 2,
+        "slowest": 2
+      },
+      "recommendation": "READY"
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 20,
+      "failed": 10,
+      "successRate": 66.66666666666666,
+      "generationMs": {
+        "median": 1035.460062500002,
+        "p95": 1806.879917000013,
+        "slowest": 1807.0246669999906
+      },
+      "entries": {
+        "median": 81.5,
+        "p95": 86,
+        "slowest": 88
+      },
+      "minimumEntries": 78,
+      "intersections": {
+        "median": 119.5,
+        "p95": 120,
+        "slowest": 120
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 2,
+        "p95": 2,
+        "slowest": 2
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 30,
+      "failed": 0,
+      "successRate": 100,
+      "generationMs": {
+        "median": 5.1569375000253785,
+        "p95": 130.18129199999385,
+        "slowest": 130.356832999998
+      },
+      "entries": {
+        "median": 22,
+        "p95": 22,
+        "slowest": 22
+      },
+      "minimumEntries": 21,
+      "intersections": {
+        "median": 41,
+        "p95": 42,
+        "slowest": 42
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 1,
+        "p95": 2,
+        "slowest": 2
+      },
+      "recommendation": "READY"
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 27,
+      "failed": 3,
+      "successRate": 90,
+      "generationMs": {
+        "median": 683.9570625000197,
+        "p95": 3991.9298750000307,
+        "slowest": 3992.5234159999527
+      },
+      "entries": {
+        "median": 32,
+        "p95": 32,
+        "slowest": 32
+      },
+      "minimumEntries": 31,
+      "intersections": {
+        "median": 64,
+        "p95": 64,
+        "slowest": 64
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 5,
+        "p95": 24,
+        "slowest": 24
+      },
+      "recommendation": "NEARLY READY"
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 0,
+      "failed": 30,
+      "successRate": 0,
+      "generationMs": {
+        "median": 4502.323333000008,
+        "p95": 4503.377457999974,
+        "slowest": 4503.658999999985
+      },
+      "entries": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "minimumEntries": null,
+      "intersections": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 24,
+        "p95": 24,
+        "slowest": 24
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "attempts": 30,
+      "successful": 0,
+      "failed": 30,
+      "successRate": 0,
+      "generationMs": {
+        "median": 4513.613020999997,
+        "p95": 4515.6825839999365,
+        "slowest": 4518.1251250000205
+      },
+      "entries": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "minimumEntries": null,
+      "intersections": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 24,
+        "p95": 24,
+        "slowest": 25
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 7,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 29,
+      "failed": 1,
+      "successRate": 96.66666666666667,
+      "generationMs": {
+        "median": 5.238771500007715,
+        "p95": 777.1081669999985,
+        "slowest": 1101.718499999959
+      },
+      "entries": {
+        "median": 26,
+        "p95": 26,
+        "slowest": 26
+      },
+      "minimumEntries": 24,
+      "intersections": {
+        "median": 36,
+        "p95": 37,
+        "slowest": 38
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 1,
+        "p95": 2,
+        "slowest": 3
+      },
+      "recommendation": "READY"
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 14,
+      "failed": 16,
+      "successRate": 46.666666666666664,
+      "generationMs": {
+        "median": 1701.978520500008,
+        "p95": 1703.0116249999846,
+        "slowest": 1703.1073329999344
+      },
+      "entries": {
+        "median": 42,
+        "p95": 44,
+        "slowest": 44
+      },
+      "minimumEntries": 40,
+      "intersections": {
+        "median": 57,
+        "p95": 60,
+        "slowest": 60
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 2,
+        "p95": 2,
+        "slowest": 2
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 4,
+      "failed": 26,
+      "successRate": 13.333333333333334,
+      "generationMs": {
+        "median": 1803.703853999963,
+        "p95": 1804.7764590000006,
+        "slowest": 1804.7774159999099
+      },
+      "entries": {
+        "median": 59,
+        "p95": 60,
+        "slowest": 60
+      },
+      "minimumEntries": 58,
+      "intersections": {
+        "median": 85,
+        "p95": 85,
+        "slowest": 85
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 2,
+        "p95": 2,
+        "slowest": 2
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 0,
+      "failed": 30,
+      "successRate": 0,
+      "generationMs": {
+        "median": 1806.2869795000006,
+        "p95": 1807.2546670000302,
+        "slowest": 1807.4618329999503
+      },
+      "entries": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "minimumEntries": null,
+      "intersections": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "candidateCount": {
+        "median": 2000,
+        "p95": 2000,
+        "slowest": 2000
+      },
+      "solverAttempts": {
+        "median": 2,
+        "p95": 42,
+        "slowest": 83
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 0,
+      "failed": 30,
+      "successRate": 0,
+      "generationMs": {
+        "median": 3002.2454794999794,
+        "p95": 3002.577416,
+        "slowest": 3003.2060420000053
+      },
+      "entries": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "minimumEntries": null,
+      "intersections": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "candidateCount": {
+        "median": 1128,
+        "p95": 1128,
+        "slowest": 1128
+      },
+      "solverAttempts": {
+        "median": 24,
+        "p95": 24,
+        "slowest": 24
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 0,
+      "failed": 30,
+      "successRate": 0,
+      "generationMs": {
+        "median": 3991.146541499984,
+        "p95": 3991.9973330000066,
+        "slowest": 3992.6707079999615
+      },
+      "entries": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "minimumEntries": null,
+      "intersections": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "candidateCount": {
+        "median": 1373,
+        "p95": 1373,
+        "slowest": 1373
+      },
+      "solverAttempts": {
+        "median": 57,
+        "p95": 72,
+        "slowest": 77
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 0,
+      "failed": 30,
+      "successRate": 0,
+      "generationMs": {
+        "median": 4420.549145500001,
+        "p95": 4502.38625000004,
+        "slowest": 4503.55045900002
+      },
+      "entries": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "minimumEntries": null,
+      "intersections": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "candidateCount": {
+        "median": 1455,
+        "p95": 1455,
+        "slowest": 1455
+      },
+      "solverAttempts": {
+        "median": 288,
+        "p95": 310,
+        "slowest": 325
+      },
+      "recommendation": "NOT READY"
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "attempts": 30,
+      "successful": 0,
+      "failed": 30,
+      "successRate": 0,
+      "generationMs": {
+        "median": 92.13008350000018,
+        "p95": 98.00612500007264,
+        "slowest": 98.07929200003855
+      },
+      "entries": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "minimumEntries": null,
+      "intersections": {
+        "median": null,
+        "p95": null,
+        "slowest": null
+      },
+      "candidateCount": {
+        "median": 1477,
+        "p95": 1477,
+        "slowest": 1477
+      },
+      "solverAttempts": {
+        "median": 480,
+        "p95": 480,
+        "slowest": 480
+      },
+      "recommendation": "NOT READY"
+    }
+  ],
+  "returnedPuzzleQualityFailures": 0,
+  "verification": {
+    "dictionaryAudit": "passed",
+    "tests": {
+      "passed": 346,
+      "files": 21
+    },
+    "lint": "passed",
+    "build": "passed",
+    "benchmark": {
+      "passed": 1,
+      "measuredRuns": 480
+    }
+  },
+  "dictionaryCounts": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "approved": 3562,
+    "review": 25529,
+    "rejected": 376
+  }
+}

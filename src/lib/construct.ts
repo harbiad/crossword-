@@ -1,3 +1,4 @@
+import { constructArc } from './arcConsistency';
 import { getEntryCellAt, type Direction } from './crossword';
 import type { WordClue } from './generateCrossword';
 import { type Slot } from './templates';
@@ -195,6 +196,11 @@ export function constructCrossword(
   options: ConstructOptions = {}
 ): Placement[] {
   if (options.useFillAllSlots) {
+    // Diagnosed dense English grids and 13x13 Arabic benefit from propagation
+    // beyond one-hop forward checking. Keep the existing attempt budgets.
+    if ((answerDirection === 'ltr' && size >= 9) || (answerDirection === 'rtl' && size >= 13)) {
+      return constructArc(size, wordClues, template, answerDirection, options);
+    }
     return constructCrosswordFillAllSlots(size, wordClues, template, answerDirection, options);
   }
   if (options.useWordCentric) {

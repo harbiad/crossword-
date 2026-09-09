@@ -16,8 +16,8 @@ export function instrumentation(): Plugin {
       };
       if (path.endsWith('/api/generate.ts') || path.endsWith('/benchmarks/fixtures/legacy-generate.ts')) {
         if (path.endsWith('/api/generate.ts')) {
-          replace('    const pairs = selectCandidates(candidateIndex, gridSize, mode, band, TARGET_PAIRS);',
-            '    const benchApiStart = clock();\n    const pairs = selectCandidates(candidateIndex, gridSize, mode, band, candidateLimit ?? TARGET_PAIRS);');
+          replace('    const pairs = selectCandidates(candidateIndex, gridSize, mode, band, candidatePoolLimit(gridSize, mode));',
+            '    const benchApiStart = clock();\n    const pairs = selectCandidates(candidateIndex, gridSize, mode, band, candidateLimit ?? candidatePoolLimit(gridSize, mode));');
         } else {
           replace('    const baseList = buildCandidateWords(band);', '    const benchApiStart = clock();\n    const baseList = buildCandidateWords(band);');
         }

@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
+    "bench:diagnose": "vitest run --config vitest.diagnostic.config.ts",
+    "bench:approved": "vitest run --config vitest.approved-benchmark.config.ts && node benchmarks/approved-report.mjs",
     "bench:crossword": "vitest run --config vitest.benchmark.config.ts",
     "bench:crossword:stress": "CROSSWORD_BENCH_STRESS=1 vitest run --config vitest.benchmark.config.ts",
     "test:stress": "vitest run --config vitest.stress.config.ts",
