@@ -1,7 +1,8 @@
 import { useMemo, useState, useRef, useEffect, useLayoutEffect } from 'react';
 import './App.css';
 import type { Crossword, Entry } from './lib/crossword';
-import { getEntryCells as getEntryCellsForEntry, getEntryCellAt, revealEntries, checkEntry, displayClue } from './lib/crossword';
+import { getEntryCells as getEntryCellsForEntry, revealEntries, checkEntry, displayClue } from './lib/crossword';
+import { chooseGridEntry, entrySelection, getTypingStartIndicator } from './lib/typingStart';
 import type { WordClue } from './lib/generateCrossword';
 import { generateWithRetry } from './lib/generateWithRetry';
 import { generateInWorker } from './lib/generateInWorker';
@@ -106,6 +107,8 @@ export default function App() {
     return cw.entries.find((e) => e.id === selectedEntryId) || null;
   }, [cw, selectedEntryId]);
 
+  const typingStart = getTypingStartIndicator(selectedEntry, cw?.answerDirection ?? 'ltr', fill);
+
   // Sorted entries for navigation
   const sortedEntries = useMemo(() => {
     if (!cw) return [];
@@ -126,8 +129,9 @@ export default function App() {
 
   function selectEntry(entry: Entry) {
     if (!cw) return;
-    setSelectedEntryId(entry.id);
-    setActiveCell(getEntryCellAt(entry, 0, cw.answerDirection));
+    const selection = entrySelection(entry, cw.answerDirection);
+    setSelectedEntryId(selection.entryId);
+    setActiveCell(selection.activeCell);
     setLastTappedCell(null);
   }
 
@@ -140,11 +144,14 @@ export default function App() {
     if (!selectedEntry || !cell.entries.has(selectedEntry.id)) {
       const entry = cw.entries.find(entry => cell.entries.has(entry.id) && entry.direction === 'across')
         ?? cw.entries.find(entry => cell.entries.has(entry.id));
-      if (entry) setSelectedEntryId(entry.id);
+      if (entry) selectEntry(entry);
+      return;
     }
     if (activeCell?.r !== r || activeCell?.c !== c) {
       setActiveCell({ r, c });
-      setLastTappedCell(null);
+      // Refocusing the same tapped crossing after jumping to its entry start
+      // must still allow the next tap to toggle back to the other direction.
+      setLastTappedCell(previous => previous === key(r, c) ? previous : null);
     }
   }
 
@@ -155,28 +162,10 @@ export default function App() {
     if (cell.type === 'block') return;
 
     const cellKey = key(r, c);
-    const entryIds = Array.from(cell.entries);
-    const acrossEntry = cw.entries.find(e => entryIds.includes(e.id) && e.direction === 'across');
-    const downEntry = cw.entries.find(e => entryIds.includes(e.id) && e.direction === 'down');
-
-    // Toggle logic: if same cell tapped again, switch direction
-    if (lastTappedCell === cellKey && selectedEntry) {
-      if (selectedEntry.direction === 'across' && downEntry) {
-        setSelectedEntryId(downEntry.id);
-      } else if (selectedEntry.direction === 'down' && acrossEntry) {
-        setSelectedEntryId(acrossEntry.id);
-      }
-    } else {
-      // New cell - prefer across, or down if no across
-      if (acrossEntry) {
-        setSelectedEntryId(acrossEntry.id);
-      } else if (downEntry) {
-        setSelectedEntryId(downEntry.id);
-      }
-    }
-
+    const entry = chooseGridEntry(cw.entries, cell.entries, selectedEntryId, lastTappedCell === cellKey);
+    if (!entry) return;
+    selectEntry(entry);
     setLastTappedCell(cellKey);
-    setActiveCell({ r, c });
   }
 
   // Physical input and the custom keyboard use exactly the same state changes.
@@ -437,6 +426,9 @@ export default function App() {
                         onClick={() => onCellClick(r, c)}
                       >
                         {cell.number ? <div className="cellNumber">{cell.number}</div> : null}
+                        {typingStart?.r === r && typingStart.c === c ? (
+                          <span className="typingStartIndicator" aria-hidden="true" dir="ltr">{typingStart.arrow}</span>
+                        ) : null}
                         <input
                           ref={(el) => {
                             if (el) inputRefs.current.set(key(r, c), el);
@@ -445,6 +437,10 @@ export default function App() {
                           className={answerDirection === 'rtl' ? 'rtlInput' : ''}
                           dir={answerDirection}
                           value={fill[key(r, c)] || ''}
+                          onPointerDown={(e) => {
+                            // Click chooses the entry before focus can change it.
+                            e.preventDefault();
+                          }}
                           onFocus={() => onCellFocus(r, c)}
                           onChange={(e) => onCellChange(r, c, e.target.value)}
                           onKeyDown={(e) => onCellKeyDown(e, r, c)}

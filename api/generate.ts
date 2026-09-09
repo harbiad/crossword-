@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createCandidateIndex, selectCandidates, type Mode, type Band } from './_lib/candidates.js';
-import { DICT_COMMON_30000_NON_EMPTY } from './DICT_COMMON_30000_non_empty.js';
+import { DICTIONARY } from './_lib/dictionary.generated.js';
 
 export const config = {
   runtime: 'nodejs',
@@ -8,7 +8,7 @@ export const config = {
 
 const MIN_ENTRIES_FOR_UI = 24;
 // Warm processes reuse normalized dictionary metadata and eligibility buckets.
-const candidateIndex = createCandidateIndex(DICT_COMMON_30000_NON_EMPTY);
+const candidateIndex = createCandidateIndex(DICTIONARY);
 // Smallest tested pool retaining baseline success in every size/mode.
 // See benchmarks/results/api-optimization.md for the seeded comparison.
 const TARGET_PAIRS = 2000;

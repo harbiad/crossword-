@@ -1,13 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { createCandidateIndex, selectCandidates, type Band } from '../../api/_lib/candidates';
+import { createCandidateIndex as prepare, selectCandidates, type Band } from '../../api/_lib/candidates';
+
+import type { DictionaryTranslation } from '../../api/_lib/dictionary';
+const createCandidateIndex = (dictionary: Record<string, DictionaryTranslation[]>) =>
+  prepare(Object.entries(dictionary).map(([english, translations]) => ({ english, translations })));
 
 const dictionary = {
-  CAT: [{ answer: 'قط / قِط / هر', clue: 'قط' }],
-  DOG: [{ answer: 'كلب', clue: 'كلب' }],
-  HOUSE: [{ answer: 'منزل', clue: 'منزل' }],
-  SCHOOL: [{ answer: 'مدرسة', clue: 'مدرسة' }],
-  ABILITY: [{ answer: 'قدرة', clue: 'قدرة' }],
-  ABERRATION: [{ answer: 'انحراف', clue: 'انحراف' }],
+  CAT: [{ arabic: 'قط / قِط / هر' }],
+  DOG: [{ arabic: 'كلب' }],
+  HOUSE: [{ arabic: 'منزل' }],
+  SCHOOL: [{ arabic: 'مدرسة' }],
+  ABILITY: [{ arabic: 'قدرة' }],
+  ABERRATION: [{ arabic: 'انحراف' }],
 };
 const index = createCandidateIndex(dictionary);
 const zero = () => 0;
@@ -16,13 +20,13 @@ it('normalizes meanings once, deduplicates variants, and preserves English and A
   const result = selectCandidates(index, 7, 'en_to_ar', 'advanced', 100, zero);
   expect(result.filter(p => p.clue === 'CAT').map(p => p.answer).sort()).toEqual(['قط', 'هر']);
   expect(result).toContainEqual({ answer: 'كلب', clue: 'DOG' });
-  expect(selectCandidates(index, 7, 'ar_to_en', 'advanced', 100, zero)).toContainEqual({ answer: 'CAT', clue: 'قط' });
+  expect(selectCandidates(index, 7, 'ar_to_en', 'advanced', 100, zero)).toContainEqual({ answer: 'CAT', clue: 'قط / قِط / هر' });
 });
 
 it('retains English length eligibility in both modes, without restricting Arabic clue length', () => {
   const custom = createCandidateIndex({
-    ABERRATION: [{ answer: 'قط', clue: 'قط' }],
-    CAT: [{ answer: 'عبارةعربيةطويلة', clue: 'عبارة عربية طويلة' }],
+    ABERRATION: [{ arabic: 'قط' }],
+    CAT: [{ arabic: 'عبارة عربية طويلة' }],
   });
   expect(selectCandidates(custom, 7, 'en_to_ar', 'advanced', 100, zero)).toEqual([]);
   expect(selectCandidates(custom, 7, 'ar_to_en', 'advanced', 100, zero)).toEqual([{ answer: 'CAT', clue: 'عبارة عربية طويلة' }]);
@@ -30,9 +34,9 @@ it('retains English length eligibility in both modes, without restricting Arabic
 
 it('balances lengths and redistributes capacity from exhausted lengths', () => {
   const custom = createCandidateIndex({
-    CAT: [{ answer: 'قط', clue: '' }, { answer: 'هر', clue: '' }, { answer: 'يد', clue: '' }],
-    DOG: [{ answer: 'كلب', clue: '' }, { answer: 'بيت', clue: '' }, { answer: 'نور', clue: '' }],
-    HOUSE: [{ answer: 'منزل', clue: '' }],
+    CAT: [{ arabic: 'قط' }, { arabic: 'هر' }, { arabic: 'يد' }],
+    DOG: [{ arabic: 'كلب' }, { arabic: 'بيت' }, { arabic: 'نور' }],
+    HOUSE: [{ arabic: 'منزل' }],
   });
   const counts = (limit: number) => selectCandidates(custom, 7, 'en_to_ar', 'beginner', limit, zero)
     .reduce<Record<number, number>>((result, p) => { result[p.answer.length] = (result[p.answer.length] ?? 0) + 1; return result; }, {});
@@ -55,9 +59,9 @@ describe.each<Band>(['beginner', 'intermediate', 'advanced'])('%s', band => {
 it('uses CEFR tiers within each length and falls back instead of hard-filtering', () => {
   // Same Arabic length isolates preference from length allocation.
   const custom = createCandidateIndex({
-    ABERRATION: [{ answer: 'شر', clue: '' }], // C curated
-    ABILITY: [{ answer: 'يد', clue: '' }], // B
-    CAT: [{ answer: 'قط', clue: '' }], // A
+    ABERRATION: [{ arabic: 'شر' }], // C curated
+    ABILITY: [{ arabic: 'يد' }], // B
+    CAT: [{ arabic: 'قط' }], // A
   });
   const choose = (band: Band, limit: number, random = zero) => selectCandidates(custom, 13, 'en_to_ar', band, limit, random).map(p => p.clue);
   expect(choose('beginner', 3)).toEqual(['CAT', 'ABILITY', 'ABERRATION']);
@@ -77,10 +81,10 @@ it('draws fresh random samples and never reclassifies or rereads dictionary valu
   expect(reads).toBe(initializedReads);
 });
 
-it('preserves the first Arabic clue and fallback clue text, and excludes repeated fillers', () => {
+it('preserves the first display Arabic including separators, and excludes repeated fillers', () => {
   const custom = createCandidateIndex({
-    CAT: [{ answer: 'قط/هر', clue: '[]' }, { answer: 'بس', clue: 'آخر' }],
-    REPEATED: [{ answer: 'دد', clue: 'تكرار' }],
+    CAT: [{ arabic: 'قط/هر' }, { arabic: 'آخر' }],
+    REPEATED: [{ arabic: 'تكرار' }],
   });
   expect(selectCandidates(custom, 13, 'ar_to_en', 'advanced', 10, zero)).toContainEqual({ answer: 'CAT', clue: 'قط/هر' });
   expect(selectCandidates(custom, 13, 'en_to_ar', 'advanced', 10, zero).every(p => p.clue !== 'REPEATED')).toBe(true);
