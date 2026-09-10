@@ -1,0 +1,2 @@
+﻿"sourceId","english","arabic","field","before","after","reason","confidence","applied"
+"5072:1","INVITE","الدعوة","partOfSpeech","verb","noun","English invite also has the noun use invitation; the definite Arabic invitation noun expresses that use. Assign noun to this relationship while retaining both allowances.","high","true"

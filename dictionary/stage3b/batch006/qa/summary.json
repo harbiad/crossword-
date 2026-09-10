@@ -1,0 +1,548 @@
+{
+  "seed": "batch006-67-headwords-qa-v1",
+  "sampleSize": 45,
+  "headwords": 33,
+  "strata": {
+    "rejected": 2,
+    "register": 3,
+    "unresolved": 5,
+    "multiple-meaning": 8,
+    "allowed-nonpreferred": 8,
+    "verb-inflection": 8,
+    "approved-reverse": 11
+  },
+  "sampleBaseline": {
+    "headwords": 33,
+    "relationships": 45,
+    "headwordStatus": {
+      "approved": 32,
+      "review": 1
+    },
+    "relationshipStatus": {
+      "rejected": 2,
+      "approved": 35,
+      "review": 8
+    },
+    "register": {
+      "msa": 42,
+      "uncertain": 3
+    },
+    "allowedEnToAr": 35,
+    "allowedArToEn": 35,
+    "preferredEnToAr": 21,
+    "preferredArToEn": 21,
+    "restrictedEnToAr": 3,
+    "restrictedArToEn": 3,
+    "allowedNonpreferredArToEn": 14,
+    "posAssignments": 45,
+    "unresolvedPos": 0,
+    "senseAssignments": 3,
+    "multiword": 4
+  },
+  "originalDecisionSha256": "0ca22be5feb685f9cc591f9979a6335cae49e6dc8c94aabf838f5505d0717c67",
+  "qaReviewSha256": "fe685383fb1d9898843190402c0c5a750ac9b47b8fe0b13966bb74f3cfc56a98",
+  "agreements": {
+    "status": {
+      "agree": 45,
+      "total": 45,
+      "percent": 100
+    },
+    "register": {
+      "agree": 45,
+      "total": 45,
+      "percent": 100
+    },
+    "allowedForEnToAr": {
+      "agree": 45,
+      "total": 45,
+      "percent": 100
+    },
+    "allowedForArToEn": {
+      "agree": 45,
+      "total": 45,
+      "percent": 100
+    },
+    "preferredForEnToAr": {
+      "agree": 45,
+      "total": 45,
+      "percent": 100
+    },
+    "preferredForArToEn": {
+      "agree": 45,
+      "total": 45,
+      "percent": 100
+    },
+    "partOfSpeech": {
+      "agree": 44,
+      "total": 45,
+      "percent": 97.78
+    },
+    "sense": {
+      "agree": 3,
+      "total": 3,
+      "percent": 100
+    }
+  },
+  "diagnosticNotes": [
+    {
+      "sourceId": "6319:2",
+      "english": "PRAISE",
+      "arabic": "ماشاء",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The incomplete fragment is not a standalone equivalent for praise; do not supply missing words silently.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2872:2",
+      "english": "ANGEL",
+      "arabic": "انجيل",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "This expresses the Gospel, not the general angel noun; rejection remains justified.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6599:1",
+      "english": "TECHNO",
+      "arabic": "تكنو",
+      "before": "register-review",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The music borrowing needs supported register/usage evidence before MSA approval; familiarity alone is insufficient.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6599:0",
+      "english": "TECHNO",
+      "arabic": "كنو",
+      "before": "register-review",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The short form does not establish the music term or a valid MSA borrowing; retain uncertainty without repair.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2872:3",
+      "english": "ANGEL",
+      "arabic": "انجل",
+      "before": "unsuitable-unclassified",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The name-like transliteration does not establish the general angel meaning; keep both directions withheld and preserve the record.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5609:0",
+      "english": "DISCS",
+      "arabic": "الاقراص",
+      "before": "orthography-review",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The plural disc noun is recognizable but its initial hamza spelling needs correction review; do not silently normalize display.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5644:2",
+      "english": "INCLUSION",
+      "arabic": "ادراج",
+      "before": "orthography-review",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The inclusion noun is recognizable with omitted hamza; preserve display and leave orthographic review.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3108:0",
+      "english": "ATTRACTIONS",
+      "arabic": "الجذب",
+      "before": "construction-or-sense-review",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Abstract drawing power is not enough to approve the isolated plural attractions mapping without context.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2524:1",
+      "english": "NOTED",
+      "arabic": "ملاحظة",
+      "before": "construction-or-sense-review",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The note/observation noun does not clearly express noted in isolation; defer rather than impose an automatic rejection.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5672:1",
+      "english": "AUTHENTIC",
+      "arabic": "اصيلة",
+      "before": "orthography-review",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The feminine authenticity adjective is recognizable, but the missing hamza remains an unresolved spelling issue.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "7053:1",
+      "english": "BEANS",
+      "arabic": "الفول",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Broad beans are a valid sense of beans; the Arabic article and narrower common variety do not justify exclusion.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2590:3",
+      "english": "UTILITIES",
+      "arabic": "المرافق العامة",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Public utilities are naturally expressed by this multiword MSA noun phrase.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "7053:2",
+      "english": "BEANS",
+      "arabic": "الفاصوليا",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural common bean expression; keep it preferred without excluding other legitimate bean varieties.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4112:1",
+      "english": "SHAVED",
+      "arabic": "حليق",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "This Arabic adjective expresses the shaved state and warrants adjective POS.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5583:2",
+      "english": "ALIEN",
+      "arabic": "فضائي",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The substantivized Arabic expression legitimately denotes an extraterrestrial being, distinct from a foreign person.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4434:4",
+      "english": "SOLO",
+      "arabic": "منفردا",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The accusative Arabic form is adverbial here and naturally conveys performing or acting solo.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2590:1",
+      "english": "UTILITIES",
+      "arabic": "مرافق",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Facilities/public services are valid utilities; broader nominal alternatives remain fair with crossings.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6319:0",
+      "english": "PRAISE",
+      "arabic": "الثناء",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural MSA praise noun, including commendation without a forced religious restriction.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6356:1",
+      "english": "MODIFICATIONS",
+      "arabic": "التعديلات",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Definite plural modifications is a valid article variant, allowed but nonpreferred.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "8509:2",
+      "english": "YEN",
+      "arabic": "الين",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Established yen currency noun with the article; another spelling preference does not affect eligibility.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "9232:1",
+      "english": "MUG",
+      "arabic": "القدح",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Definite drinking-vessel noun is a valid mug equivalent.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3777:1",
+      "english": "ORGANISATIONS",
+      "arabic": "المنظمات",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural plural organisations with an article; British English spelling remains valid.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5609:1",
+      "english": "DISCS",
+      "arabic": "الأقراص المضغوطة",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Compact discs are a genuine disc sense; retain the short sense label and allow the relationship.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5776:1",
+      "english": "TONGUE",
+      "arabic": "اللسان",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural definite body-part tongue noun; article variation is harmless.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6553:0",
+      "english": "ANNEX",
+      "arabic": "المرفق",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The attachment/annex noun is valid; other meanings of the Arabic clue do not exclude this one.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4371:0",
+      "english": "YOGA",
+      "arabic": "اليوغا",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Established yoga borrowing with the article; nonpreference is not a register concern or exclusion.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4611:0",
+      "english": "LOCATE",
+      "arabic": "حدد موقع",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural imperative meaning determine the location; a multiword Arabic command is a valid locate rendering.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "8883:0",
+      "english": "MONITORED",
+      "arabic": "رصدت",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The finite Arabic past naturally expresses monitoring/observing; cross-language inflection differences are acceptable.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4905:0",
+      "english": "EARNED",
+      "arabic": "كسبت",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The finite past naturally conveys earning; person and gender endings do not invalidate the mapping.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5072:1",
+      "english": "INVITE",
+      "arabic": "الدعوة",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "English invite also has the noun use invitation; the definite Arabic invitation noun expresses that use. Assign noun to this relationship while retaining both allowances.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4112:0",
+      "english": "SHAVED",
+      "arabic": "حلقت",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The Arabic finite past expresses shaving and supports the verbal use of shaved.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2524:0",
+      "english": "NOTED",
+      "arabic": "لوحظ",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The passive Arabic past means was noted, a legitimate verbal mapping.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4074:1",
+      "english": "DONATE",
+      "arabic": "التبرع",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The definite verbal noun expresses the donating action; English donate is a verb, so the relationship remains verbal despite Arabic surface nominalization.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6980:0",
+      "english": "ARRANGE",
+      "arabic": "ترتيب",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Arranging/ordering is naturally expressed by the Arabic action noun; do not require an identical finite inflection.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5776:0",
+      "english": "TONGUE",
+      "arabic": "لسان",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural unmarked tongue noun, suitable in both directions.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6631:0",
+      "english": "ADVISE",
+      "arabic": "تقديم المشورة",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Giving advice is an idiomatic Arabic verbal-noun construction for advise; natural spacing remains required.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2964:1",
+      "english": "INSTITUTION",
+      "arabic": "المؤسسة",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural definite institution noun, allowed despite nonpreference.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "7323:1",
+      "english": "TRIO",
+      "arabic": "ثلاثي",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "The Arabic form can denote a group of three as a noun; do not force its other adjectival use onto this relationship.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4680:0",
+      "english": "ODDS",
+      "arabic": "الاحتمالات",
+      "before": "valid-alternative",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural definite expression for odds/chances; valid synonyms and number ambiguity remain acceptable with crossings.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "9080:1",
+      "english": "COMMISSIONERS",
+      "arabic": "المفوضون",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural nominative plural commissioners; Arabic grammatical case does not change vocabulary identity.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2541:0",
+      "english": "HELPS",
+      "arabic": "يساعد",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural present-tense Arabic verb for helps.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4680:1",
+      "english": "ODDS",
+      "arabic": "احتمالات",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural unmarked odds/chances noun, preferred without requiring a unique reverse translation.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6190:0",
+      "english": "RIPE",
+      "arabic": "ناضج",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural adjective for ripe or mature; related English senses are legitimate.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4434:3",
+      "english": "SOLO",
+      "arabic": "منفرد",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural masculine adjective for solo or unaccompanied; gender agreement is not exclusion evidence.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "6553:1",
+      "english": "ANNEX",
+      "arabic": "مرفق",
+      "before": "natural-preferred",
+      "after": "batch006-qa-fresh-pass",
+      "reason": "Natural noun for an annex or attachment; clue ambiguity alone is acceptable.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    }
+  ],
+  "disagreeingRelationships": 1,
+  "fieldDisagreements": 1,
+  "highConfidenceFieldCorrections": 1,
+  "unapplied": 0,
+  "disagreementsByField": {
+    "partOfSpeech": 1
+  },
+  "textCorrections": 0,
+  "assessment": "Bounded same-assistant QA with controlled relationship-specific POS and short senses. See measured agreement and all disagreements; no independent-human certification. Batch007 has not begun.",
+  "measurement": "Original frozen judgments versus a fresh second pass shown English and Arabic without original status/preferences/reference. Same assistant retains conversation context; not blinded independent-human accuracy. Unknown allowance is a third outcome. Sense denominator is rows with an old or new label; disagreements include label wording and scope, not only semantic errors."
+}

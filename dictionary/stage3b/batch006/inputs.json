@@ -1,0 +1,18 @@
+{
+  "api/_lib/dictionary.stage3b.batch005.qa.generated.ts": "2040371b0622b2af55de8fb704a0a6b0222a3c58849e58850d86027f333fe122",
+  "api/english_arabic_10000_v3.csv": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+  "dictionary/stage3b/batch006_analysis/proposed_headwords.txt": "103051dcdb8778bd7c64bd6a09a16564931558710694136a133d42f5e0987ebc",
+  "dictionary/stage3b/batch006_analysis/proposed_candidates.json": "20dc5999dba6618b211b604b7bb54bc772f2bcf15dc9004870293d2441bc8da2",
+  "dictionary/stage3b/batch006_analysis/residual_domains.json.gz": "1781dbf4674e15734582dfd5652da73ffeb33c35129544e10ce2f6a428b8c8a1",
+  "dictionary/stage3b/batch005/generation/summary.json": "753f9e47903e60eab2f1a7c6af10d6ae7f16cf836676de91893c59245765d9cc",
+  "dictionary/stage3b/batch005/generation/runs.json": "9d186dea83a62169b50dcf827d1c7199d6f8b1ee55a38d9b27baa8c519b98c10",
+  "dictionary/stage3b/batch006/selection.json": "20dc5999dba6618b211b604b7bb54bc772f2bcf15dc9004870293d2441bc8da2",
+  "dictionary/stage3b/batch006/review-notes.txt": "05ba03cfc9b3ef65c18073beded0d92e2ca959f6b9574998e6fe2af5c3c3032a",
+  "dictionary/stage3b/batch006/review-details.json": "ad87afe722908296997cdd675618cedf506f480695e24e21092bacc12063a1e2",
+  "dictionary/stage3b/batch006/proposals.json": "d096032f6bcfe9e4192b55e06715b4e72c78fbcdfd9200bbdd1474ad70b7f3b2",
+  "dictionary/stage3b/batch006/decisions.json": "0ca22be5feb685f9cc591f9979a6335cae49e6dc8c94aabf838f5505d0717c67",
+  "dictionary/stage3b/batch006/rejection_checks.json": "670eb80437b0113d16f87a6e089f432ad0127c9b206e807baf6cf16dfc55db0c",
+  "dictionary/stage3b/batch006/qa/sample.json": "89244cd5096afa89e6a3675fc297669190fd483ce0ce490dfe4f2f65f1f46787",
+  "dictionary/stage3b/batch006/qa/review-notes.txt": "bf36bd6c39c8aabe4af706b051dd4068e0ae682b998cab8c1339f4e01d3556cf",
+  "dictionary/stage3b/batch006/qa/reviews.json": "fe685383fb1d9898843190402c0c5a750ac9b47b8fe0b13966bb74f3cfc56a98"
+}

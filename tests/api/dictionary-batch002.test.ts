@@ -103,7 +103,7 @@ it('reports actual candidate availability for both modes and all sizes without e
    expect(row.indexedCandidates).toBe([...index.get(`${size}:${mode}:advanced`)!.values()].flat(2).length);
   }
  }
- expect(read('api/generate.ts')).toContain("createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility')");
+ expect(read('api/generate.ts')).toMatch(/createCandidateIndex\(DICTIONARY_BATCH\d+_QA, 'compatibility'\)/);
  expect(summary.batchAfterQa.relationshipStatus).toEqual({approved:1235,review:295,rejected:13});
 });
 describe('manifest safeguards',()=>{

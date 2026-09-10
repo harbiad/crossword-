@@ -1,0 +1,718 @@
+[
+  {
+    "mode": "ar_to_en",
+    "pattern": "????????U??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??????PI?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??????PR?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "????A?F??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "????A?N??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "????S?F??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "????S?N??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "???AK?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "???RK?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??A??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??C??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??C??O"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??D??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??E??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??F?S????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??G??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??I?????I??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??I?????N??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??K????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??M??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??M????B?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??M????I?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??MY?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??N??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??O??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??OI"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??P??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??R??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??U????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "??V??????????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?D??T????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?DC"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?EO??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?EU??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?FS"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?GS"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?IC"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?IP??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?KM???"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?KR"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?KS"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?LE"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?M?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?M??A"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?MK?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?NS"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?O??????A"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?O??????P"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?OA??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?RP??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?RS"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?TC??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?TE??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?TL??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?TV??????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?U??A????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?W??T"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?WG"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "?WS"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "A?M"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "AH?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "AO?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "AT?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "AU?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "AY?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "B?M"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "CC?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "CD?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "CE?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "CI?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "CS?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "DD?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "DR?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "DT?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "E?I"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EA?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EA?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EAU????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EC?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EDA????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EE?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EEU????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EFE????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EHA????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EN????P"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "EPA????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "ERE????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "ETU????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "F?E????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "FB?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "FF?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "FN?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "G?N???"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "G?R????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "GC?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "GER????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "GK?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "GT?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "I??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "I?O????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "I?T??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "L?????T"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "L?S"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "LES"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "LS?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "MK?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "MM?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "MS?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "N??A"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "N??K"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "N??U"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "N?A"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "N?N???"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "NC?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "NG?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "NL?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "NN?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "NS?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "NT?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "NX?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "O??N??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "P?N???"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "PAL????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "PD?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "PES"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "PF?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "PG?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "PN?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "PS?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "R?M"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "R?R"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "RK?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "RN?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "RS?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "SK?????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "T?????E"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "T?????O"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "T?M"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "U?O????"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "V?T??"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "WEH"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "WES"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "WH?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "WN?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "WU?"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "Y????N"
+  },
+  {
+    "mode": "ar_to_en",
+    "pattern": "Y??D??"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?اا???"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?اة???"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?او??????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?ة"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?ز"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?شا"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?شت"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?شض"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?شط"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?شع"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?شق"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "?شي"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "ة?"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "جج?????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "جح?????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "جر?????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "جن?????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "جه?????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "جو?????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "جي?????"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "خو??"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "ري?"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "صد"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "صف"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "مر"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "مف"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "ند"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "نف"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "نل??"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "نم??"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "نن"
+  },
+  {
+    "mode": "en_to_ar",
+    "pattern": "وف"
+  }
+]

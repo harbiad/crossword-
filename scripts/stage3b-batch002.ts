@@ -48,8 +48,8 @@ export function translationForDecision(old:DictionaryTranslation,d:Batch002Decis
   if(d.sense)t.sense=d.sense;else delete t.sense;
   return t;
 }
-export function applyBatch002(source:readonly DictionaryHeadword[],selection:ReturnType<typeof selectBatch002>,input:unknown){
-  if(selection.length!==500||new Set(selection.map(s=>s.headwordIndex)).size!==500)throw new Error('Exactly 500 distinct new headwords required');
+export function applyBatch002(source:readonly DictionaryHeadword[],selection:ReturnType<typeof selectBatch002>,input:unknown,expectedCount=500){
+  if(selection.length!==expectedCount||new Set(selection.map(s=>s.headwordIndex)).size!==expectedCount)throw new Error('Expected number of distinct new headwords required');
   const decisions=z.array(batch002DecisionSchema).parse(input),dictionary:DictionaryHeadword[]=structuredClone([...source]),selected=new Set(selection.map(s=>s.headwordIndex)),seen=new Set<string>();
   for(const d of decisions){
     const h=dictionary[d.headwordIndex],old=h?.translations[d.translationIndex],key=relationshipKey(d);
@@ -100,8 +100,8 @@ export function sampleBatch002Qa(decisions:Batch002Decision[],reference:Map<stri
 export const qaFields=['status','register','allowedForEnToAr','allowedForArToEn','preferredForEnToAr','preferredForArToEn','partOfSpeech','sense']as const;
 const qaSchema=z.object({sourceId:z.string(),originalDecision:batch002DecisionSchema,revisedDecision:batch002DecisionSchema,reason:z.string().min(1),confidence:z.enum(['high','medium','low'])}).strict();
 export type Batch002Qa=z.infer<typeof qaSchema>;
-export function applyBatch002Qa(before:readonly DictionaryHeadword[],sample:ReturnType<typeof sampleBatch002Qa>,input:unknown){
- const reviews=z.array(qaSchema).parse(input);if(sample.length!==100||reviews.length!==100)throw new Error('Exactly 100 QA reviews required');
+export function applyBatch002Qa(before:readonly DictionaryHeadword[],sample:ReturnType<typeof sampleBatch002Qa>,input:unknown,expectedCount=100){
+ const reviews=z.array(qaSchema).parse(input);if(sample.length!==expectedCount||reviews.length!==expectedCount)throw new Error('Expected number of QA reviews required');
  const dictionary:DictionaryHeadword[]=structuredClone([...before]),seen=new Set<string>();
  const disagreements:{sourceId:string;english:string;arabic:string;field:string;before:unknown;after:unknown;reason:string;confidence:string;applied:boolean}[]=[];
  for(const r of reviews){

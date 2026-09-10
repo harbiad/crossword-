@@ -1,7 +1,7 @@
 import { candidatePoolLimit } from './_lib/candidatePool.js';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createCandidateIndex, selectCandidates, type Mode, type Band } from './_lib/candidates.js';
-import { DICTIONARY_BATCH003_QA } from './_lib/dictionary.stage3b.batch003.qa.generated.js';
+import { DICTIONARY_BATCH006_QA } from './_lib/dictionary.stage3b.batch006.qa.generated.js';
 
 export const config = {
   runtime: 'nodejs',
@@ -11,7 +11,7 @@ const MIN_ENTRIES_FOR_UI = 24;
 // Warm processes reuse normalized dictionary metadata and eligibility buckets.
 // Review/uncertain data remains eligible explicitly during staged curation.
 // Rejected headwords/relationships and known dialect are excluded in both modes.
-const candidateIndex = createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility');
+const candidateIndex = createCandidateIndex(DICTIONARY_BATCH006_QA, 'compatibility');
 // Request limits are measured by size/direction; policy remains compatibility.
 
 function json(res: VercelResponse, status: number, body: unknown) {

@@ -1,0 +1,22 @@
+{
+  "api/_lib/dictionary.stage3b.batch004.qa.generated.ts": "3de003aa9e27d84a65a8b3abbbe9ebab9accd6b98910cf40b653ff186575d001",
+  "api/english_arabic_10000_v3.csv": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+  "dictionary/stage3a/decisions.json": "8b69d909df52f3fc32a62f942bb14e08526f400bec7455ad5091c6f6412346fe",
+  "dictionary/stage3b/batch004/generation/runs.json": "ce588788cd8bbb4c72d5ae15dd39405c3c3bfa812d935cb7ee77e7da22c3fa74",
+  "dictionary/stage3b/batch004/generation/summary.json": "33d672f387fcb3b6a1718549cb886bd876f4bfb903d629a700975349c7c2bd13",
+  "dictionary/stage3b/batch001/decisions.json": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+  "dictionary/stage3b/batch002/decisions.json": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506",
+  "dictionary/stage3b/batch003/decisions.json": "8e0f0f472a3328cb99099002d1abe9a6c68d9d04f98ea4b2eec63304908a5ead",
+  "dictionary/stage3b/batch004/decisions.json": "c8cc51c99fc2b5ede04774cf56b8bb6a100bb3233a678e3c8d1b6665de685373",
+  "dictionary/stage3b/batch005/domain_needs.json": "de51216690a829249befdeaabf56fdb0e5274872e2ac3cbce272dae9fe9263c5",
+  "dictionary/stage3b/batch005/diagnostics/runs.json": "e18a6c29f7087ebe6dc7f483548d3e97e78e2b21ab03c739003bf622488b0632",
+  "dictionary/stage3b/batch005/selection.json": "0b25a820ed04f449d83f3dee2c24b388606c48fe776adfb1f3b1f51f629451c0",
+  "dictionary/stage3b/batch005/deferred.json": "1f53ab637444f53c7f475de2ce3f97612a988e424bb7c04c7d32877ee25cef18",
+  "dictionary/stage3b/batch005/review-notes.txt": "42b7bfa061cd1e0524a9c80fecbc4fb80f236aee6172d3971f424713c32cbf85",
+  "dictionary/stage3b/batch005/review-details.json": "dd73905a7741fb48740527c0dd45d0463dd13488fae9767dac45147e6b4cf4f1",
+  "dictionary/stage3b/batch005/proposals.json": "c7c10ec30710f0447b7c35786066299cf70a107d9e32408084479aa4bab7566a",
+  "dictionary/stage3b/batch005/rejection_checks.json": "3db3a73e806ef4380af36310572a27f0e26c540385078c70b101a2393390a11f",
+  "dictionary/stage3b/batch005/decisions.json": "a29e38b1409a1ebef0bc32faf85847abd7b463c67b79a160d677e05eddd763d5",
+  "dictionary/stage3b/batch005/qa/review-notes.txt": "fa41d50023a9acc6d0601b6d38d222f6b2585c03a3bdc747028e18c363fbacab",
+  "dictionary/stage3b/batch005/qa/reviews.json": "282966a5de28e5087bf4c7bb3a178dc5ef7013bf65a8d976350c11556806f876"
+}

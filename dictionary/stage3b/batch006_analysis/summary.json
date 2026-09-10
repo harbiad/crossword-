@@ -1,0 +1,1357 @@
+{
+  "policy": "approved-only diagnostics; production compatibility unchanged",
+  "baseline": "dictionary/stage3b/batch005/generation/runs.json",
+  "failedRunsRequested": 81,
+  "failedRunsAnalyzed": 81,
+  "diagnosticReturnedPuzzles": 0,
+  "solverAttempts": 5491,
+  "constructNoPlacements": 5491,
+  "attemptsWithPlacements": 0,
+  "captured": 620710,
+  "excludedTruncated": 2919,
+  "uncapturedCalls": 5226047,
+  "useful": {
+    "observations": 617791,
+    "runs": 81,
+    "zeroObservations": 56406,
+    "criticallySmall": 561385
+  },
+  "classification": {
+    "SUPPORTED_SMALL_DOMAIN": {
+      "observations": 460747,
+      "runs": 81,
+      "zeroObservations": 0,
+      "criticallySmall": 460747
+    },
+    "B_USED_EXHAUSTION": {
+      "observations": 15474,
+      "runs": 70,
+      "zeroObservations": 15310,
+      "criticallySmall": 164
+    },
+    "A_TRUE_GAP": {
+      "observations": 141431,
+      "runs": 81,
+      "zeroObservations": 40998,
+      "criticallySmall": 100433
+    },
+    "C_API_SAMPLING_LOSS": {
+      "observations": 139,
+      "runs": 25,
+      "zeroObservations": 98,
+      "criticallySmall": 41
+    }
+  },
+  "samplingLoss": {
+    "observations": 840,
+    "runs": 28,
+    "zeroObservations": 98,
+    "criticallySmall": 742
+  },
+  "samplingZero": {
+    "observations": 139,
+    "runs": 25,
+    "zeroObservations": 98,
+    "criticallySmall": 41
+  },
+  "samplingHealthyToSmall": {
+    "observations": 225,
+    "runs": 28,
+    "zeroObservations": 0,
+    "criticallySmall": 225
+  },
+  "configurations": [
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "baselineFailed": 30,
+      "stillFailed": 30,
+      "observations": 486396,
+      "byType": {
+        "SUPPORTED_SMALL_DOMAIN": {
+          "observations": 365480,
+          "runs": 30,
+          "zeroObservations": 0,
+          "criticallySmall": 365480
+        },
+        "B_USED_EXHAUSTION": {
+          "observations": 14613,
+          "runs": 30,
+          "zeroObservations": 14573,
+          "criticallySmall": 40
+        },
+        "A_TRUE_GAP": {
+          "observations": 106303,
+          "runs": 30,
+          "zeroObservations": 30654,
+          "criticallySmall": 75649
+        },
+        "C_API_SAMPLING_LOSS": {
+          "observations": 0,
+          "runs": 0,
+          "zeroObservations": 0,
+          "criticallySmall": 0
+        }
+      },
+      "samplingZero": {
+        "observations": 0,
+        "runs": 0,
+        "zeroObservations": 0,
+        "criticallySmall": 0
+      },
+      "samplingHealthyToSmall": {
+        "observations": 0,
+        "runs": 0,
+        "zeroObservations": 0,
+        "criticallySmall": 0
+      },
+      "zeroByLength": [
+        {
+          "length": 3,
+          "trueGaps": 5381,
+          "usedExhaustion": 39,
+          "samplingLoss": 0
+        },
+        {
+          "length": 4,
+          "trueGaps": 2082,
+          "usedExhaustion": 2,
+          "samplingLoss": 0
+        },
+        {
+          "length": 5,
+          "trueGaps": 3243,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 6,
+          "trueGaps": 3663,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 7,
+          "trueGaps": 2501,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 8,
+          "trueGaps": 1727,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 9,
+          "trueGaps": 2540,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 10,
+          "trueGaps": 253,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 11,
+          "trueGaps": 1934,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 12,
+          "trueGaps": 0,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 13,
+          "trueGaps": 7330,
+          "usedExhaustion": 14532,
+          "samplingLoss": 0
+        }
+      ],
+      "fullEligibleUnique": 2417,
+      "actualZeroRuns": {
+        "A_TRUE_GAP": 30,
+        "B_USED_EXHAUSTION": 30,
+        "C_API_SAMPLING_LOSS": 0
+      }
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "baselineFailed": 22,
+      "stillFailed": 22,
+      "observations": 126250,
+      "byType": {
+        "SUPPORTED_SMALL_DOMAIN": {
+          "observations": 91097,
+          "runs": 22,
+          "zeroObservations": 0,
+          "criticallySmall": 91097
+        },
+        "B_USED_EXHAUSTION": {
+          "observations": 579,
+          "runs": 22,
+          "zeroObservations": 539,
+          "criticallySmall": 40
+        },
+        "A_TRUE_GAP": {
+          "observations": 34574,
+          "runs": 22,
+          "zeroObservations": 10004,
+          "criticallySmall": 24570
+        },
+        "C_API_SAMPLING_LOSS": {
+          "observations": 0,
+          "runs": 0,
+          "zeroObservations": 0,
+          "criticallySmall": 0
+        }
+      },
+      "samplingZero": {
+        "observations": 0,
+        "runs": 0,
+        "zeroObservations": 0,
+        "criticallySmall": 0
+      },
+      "samplingHealthyToSmall": {
+        "observations": 0,
+        "runs": 0,
+        "zeroObservations": 0,
+        "criticallySmall": 0
+      },
+      "zeroByLength": [
+        {
+          "length": 3,
+          "trueGaps": 1992,
+          "usedExhaustion": 75,
+          "samplingLoss": 0
+        },
+        {
+          "length": 4,
+          "trueGaps": 603,
+          "usedExhaustion": 4,
+          "samplingLoss": 0
+        },
+        {
+          "length": 5,
+          "trueGaps": 774,
+          "usedExhaustion": 1,
+          "samplingLoss": 0
+        },
+        {
+          "length": 6,
+          "trueGaps": 1124,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 7,
+          "trueGaps": 473,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 8,
+          "trueGaps": 73,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 9,
+          "trueGaps": 964,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 10,
+          "trueGaps": 112,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 11,
+          "trueGaps": 3889,
+          "usedExhaustion": 459,
+          "samplingLoss": 0
+        }
+      ],
+      "fullEligibleUnique": 2373,
+      "actualZeroRuns": {
+        "A_TRUE_GAP": 22,
+        "B_USED_EXHAUSTION": 22,
+        "C_API_SAMPLING_LOSS": 0
+      }
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "baselineFailed": 15,
+      "stillFailed": 15,
+      "observations": 4480,
+      "byType": {
+        "SUPPORTED_SMALL_DOMAIN": {
+          "observations": 3903,
+          "runs": 15,
+          "zeroObservations": 0,
+          "criticallySmall": 3903
+        },
+        "B_USED_EXHAUSTION": {
+          "observations": 244,
+          "runs": 15,
+          "zeroObservations": 160,
+          "criticallySmall": 84
+        },
+        "A_TRUE_GAP": {
+          "observations": 268,
+          "runs": 15,
+          "zeroObservations": 54,
+          "criticallySmall": 214
+        },
+        "C_API_SAMPLING_LOSS": {
+          "observations": 65,
+          "runs": 13,
+          "zeroObservations": 24,
+          "criticallySmall": 41
+        }
+      },
+      "samplingZero": {
+        "observations": 65,
+        "runs": 13,
+        "zeroObservations": 24,
+        "criticallySmall": 41
+      },
+      "samplingHealthyToSmall": {
+        "observations": 178,
+        "runs": 15,
+        "zeroObservations": 0,
+        "criticallySmall": 178
+      },
+      "zeroByLength": [
+        {
+          "length": 2,
+          "trueGaps": 36,
+          "usedExhaustion": 155,
+          "samplingLoss": 0
+        },
+        {
+          "length": 3,
+          "trueGaps": 7,
+          "usedExhaustion": 1,
+          "samplingLoss": 9
+        },
+        {
+          "length": 4,
+          "trueGaps": 2,
+          "usedExhaustion": 4,
+          "samplingLoss": 7
+        },
+        {
+          "length": 5,
+          "trueGaps": 5,
+          "usedExhaustion": 0,
+          "samplingLoss": 7
+        },
+        {
+          "length": 6,
+          "trueGaps": 0,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 7,
+          "trueGaps": 2,
+          "usedExhaustion": 0,
+          "samplingLoss": 1
+        },
+        {
+          "length": 8,
+          "trueGaps": 2,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 9,
+          "trueGaps": 0,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 10,
+          "trueGaps": 0,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 12,
+          "trueGaps": 0,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 13,
+          "trueGaps": 0,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        }
+      ],
+      "fullEligibleUnique": 4770,
+      "actualZeroRuns": {
+        "A_TRUE_GAP": 12,
+        "B_USED_EXHAUSTION": 15,
+        "C_API_SAMPLING_LOSS": 10
+      }
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "baselineFailed": 11,
+      "stillFailed": 11,
+      "observations": 447,
+      "byType": {
+        "SUPPORTED_SMALL_DOMAIN": {
+          "observations": 185,
+          "runs": 11,
+          "zeroObservations": 0,
+          "criticallySmall": 185
+        },
+        "B_USED_EXHAUSTION": {
+          "observations": 0,
+          "runs": 0,
+          "zeroObservations": 0,
+          "criticallySmall": 0
+        },
+        "A_TRUE_GAP": {
+          "observations": 193,
+          "runs": 11,
+          "zeroObservations": 193,
+          "criticallySmall": 0
+        },
+        "C_API_SAMPLING_LOSS": {
+          "observations": 69,
+          "runs": 10,
+          "zeroObservations": 69,
+          "criticallySmall": 0
+        }
+      },
+      "samplingZero": {
+        "observations": 69,
+        "runs": 10,
+        "zeroObservations": 69,
+        "criticallySmall": 0
+      },
+      "samplingHealthyToSmall": {
+        "observations": 44,
+        "runs": 11,
+        "zeroObservations": 0,
+        "criticallySmall": 44
+      },
+      "zeroByLength": [
+        {
+          "length": 2,
+          "trueGaps": 102,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 3,
+          "trueGaps": 12,
+          "usedExhaustion": 0,
+          "samplingLoss": 10
+        },
+        {
+          "length": 4,
+          "trueGaps": 32,
+          "usedExhaustion": 0,
+          "samplingLoss": 39
+        },
+        {
+          "length": 5,
+          "trueGaps": 10,
+          "usedExhaustion": 0,
+          "samplingLoss": 13
+        },
+        {
+          "length": 6,
+          "trueGaps": 5,
+          "usedExhaustion": 0,
+          "samplingLoss": 7
+        },
+        {
+          "length": 7,
+          "trueGaps": 5,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 8,
+          "trueGaps": 19,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 9,
+          "trueGaps": 8,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        }
+      ],
+      "fullEligibleUnique": 4665,
+      "actualZeroRuns": {
+        "A_TRUE_GAP": 11,
+        "B_USED_EXHAUSTION": 0,
+        "C_API_SAMPLING_LOSS": 10
+      }
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "baselineFailed": 3,
+      "stillFailed": 3,
+      "observations": 218,
+      "byType": {
+        "SUPPORTED_SMALL_DOMAIN": {
+          "observations": 82,
+          "runs": 3,
+          "zeroObservations": 0,
+          "criticallySmall": 82
+        },
+        "B_USED_EXHAUSTION": {
+          "observations": 38,
+          "runs": 3,
+          "zeroObservations": 38,
+          "criticallySmall": 0
+        },
+        "A_TRUE_GAP": {
+          "observations": 93,
+          "runs": 3,
+          "zeroObservations": 93,
+          "criticallySmall": 0
+        },
+        "C_API_SAMPLING_LOSS": {
+          "observations": 5,
+          "runs": 2,
+          "zeroObservations": 5,
+          "criticallySmall": 0
+        }
+      },
+      "samplingZero": {
+        "observations": 5,
+        "runs": 2,
+        "zeroObservations": 5,
+        "criticallySmall": 0
+      },
+      "samplingHealthyToSmall": {
+        "observations": 3,
+        "runs": 2,
+        "zeroObservations": 0,
+        "criticallySmall": 3
+      },
+      "zeroByLength": [
+        {
+          "length": 2,
+          "trueGaps": 50,
+          "usedExhaustion": 37,
+          "samplingLoss": 0
+        },
+        {
+          "length": 3,
+          "trueGaps": 5,
+          "usedExhaustion": 0,
+          "samplingLoss": 0
+        },
+        {
+          "length": 5,
+          "trueGaps": 1,
+          "usedExhaustion": 0,
+          "samplingLoss": 2
+        },
+        {
+          "length": 6,
+          "trueGaps": 0,
+          "usedExhaustion": 0,
+          "samplingLoss": 3
+        },
+        {
+          "length": 9,
+          "trueGaps": 37,
+          "usedExhaustion": 1,
+          "samplingLoss": 0
+        }
+      ],
+      "fullEligibleUnique": 4357,
+      "actualZeroRuns": {
+        "A_TRUE_GAP": 3,
+        "B_USED_EXHAUSTION": 3,
+        "C_API_SAMPLING_LOSS": 2
+      }
+    }
+  ],
+  "distinctDomains": 140769,
+  "recurringDomains": 26452,
+  "recurringRepairableTypeDomains": 2408,
+  "selectionExclusions": 146,
+  "exhaustionDiversity": [
+    {
+      "fullDomainSize": 1,
+      "observations": 15300,
+      "runs": 69,
+      "zeroObservations": 15300,
+      "criticallySmall": 0
+    },
+    {
+      "fullDomainSize": 2,
+      "observations": 8,
+      "runs": 5,
+      "zeroObservations": 8,
+      "criticallySmall": 0
+    },
+    {
+      "fullDomainSize": 3,
+      "observations": 0,
+      "runs": 0,
+      "zeroObservations": 0,
+      "criticallySmall": 0
+    }
+  ],
+  "proposal": {
+    "headwords": 67,
+    "eligibleMatchingHeadwords": 421,
+    "reachableDomains": 924,
+    "coveredDomains": 788,
+    "weightedCoveragePercent": 90.0533696899095,
+    "threshold": 0.9,
+    "thresholdRationale": "Smallest prefix of the deterministic greedy learner-weighted cover reaching 90% of reachable weighted A/B needs. Disclosed planning tradeoff, not an empirically optimal batch size or generation guarantee.",
+    "alternatives": [
+      {
+        "targetPercent": 50,
+        "headwords": 3
+      },
+      {
+        "targetPercent": 75,
+        "headwords": 14
+      },
+      {
+        "targetPercent": 80,
+        "headwords": 22
+      },
+      {
+        "targetPercent": 90,
+        "headwords": 67
+      }
+    ],
+    "expectedConfigurations": [
+      "13:ar_to_en",
+      "11:ar_to_en"
+    ],
+    "unreachableDomains": 1484,
+    "byConfiguration": [
+      {
+        "size": 13,
+        "mode": "ar_to_en",
+        "recurringABTargets": 1581,
+        "reachable": 711,
+        "selectedCoverage": 638
+      },
+      {
+        "size": 11,
+        "mode": "ar_to_en",
+        "recurringABTargets": 805,
+        "reachable": 211,
+        "selectedCoverage": 150
+      },
+      {
+        "size": 13,
+        "mode": "en_to_ar",
+        "recurringABTargets": 5,
+        "reachable": 0,
+        "selectedCoverage": 0
+      },
+      {
+        "size": 11,
+        "mode": "en_to_ar",
+        "recurringABTargets": 13,
+        "reachable": 2,
+        "selectedCoverage": 0
+      },
+      {
+        "size": 9,
+        "mode": "en_to_ar",
+        "recurringABTargets": 4,
+        "reachable": 0,
+        "selectedCoverage": 0
+      }
+    ]
+  },
+  "exhaustedAnswers": [
+    {
+      "answer": "PROFESSIONALS",
+      "observations": 3736,
+      "runs": 30,
+      "patterns": 406
+    },
+    {
+      "answer": "UNDERSTANDING",
+      "observations": 3602,
+      "runs": 30,
+      "patterns": 430
+    },
+    {
+      "answer": "AUTOMATICALLY",
+      "observations": 2671,
+      "runs": 30,
+      "patterns": 267
+    },
+    {
+      "answer": "MISCELLANEOUS",
+      "observations": 2337,
+      "runs": 30,
+      "patterns": 265
+    },
+    {
+      "answer": "OPPORTUNITIES",
+      "observations": 909,
+      "runs": 30,
+      "patterns": 148
+    },
+    {
+      "answer": "CIRCUMSTANCES",
+      "observations": 353,
+      "runs": 30,
+      "patterns": 56
+    },
+    {
+      "answer": "ORGANIZATIONS",
+      "observations": 195,
+      "runs": 28,
+      "patterns": 43
+    },
+    {
+      "answer": "ENVIRONMENTAL",
+      "observations": 217,
+      "runs": 25,
+      "patterns": 37
+    },
+    {
+      "answer": "ADVERTISEMENT",
+      "observations": 195,
+      "runs": 25,
+      "patterns": 27
+    },
+    {
+      "answer": "NEWSLETTERS",
+      "observations": 215,
+      "runs": 21,
+      "patterns": 128
+    },
+    {
+      "answer": "ASSOCIATION",
+      "observations": 174,
+      "runs": 18,
+      "patterns": 60
+    },
+    {
+      "answer": "ACCOMMODATION",
+      "observations": 107,
+      "runs": 14,
+      "patterns": 13
+    },
+    {
+      "answer": "INN",
+      "observations": 20,
+      "runs": 11,
+      "patterns": 7
+    },
+    {
+      "answer": "ADMINISTRATOR",
+      "observations": 71,
+      "runs": 10,
+      "patterns": 12
+    },
+    {
+      "answer": "او",
+      "observations": 37,
+      "runs": 8,
+      "patterns": 10
+    },
+    {
+      "answer": "IMMEDIATELY",
+      "observations": 16,
+      "runs": 8,
+      "patterns": 7
+    },
+    {
+      "answer": "ما",
+      "observations": 52,
+      "runs": 7,
+      "patterns": 5
+    },
+    {
+      "answer": "OWN",
+      "observations": 8,
+      "runs": 7,
+      "patterns": 4
+    },
+    {
+      "answer": "ACQUISITION",
+      "observations": 8,
+      "runs": 7,
+      "patterns": 8
+    },
+    {
+      "answer": "اب",
+      "observations": 34,
+      "runs": 6,
+      "patterns": 4
+    },
+    {
+      "answer": "لا",
+      "observations": 24,
+      "runs": 6,
+      "patterns": 2
+    },
+    {
+      "answer": "INDEPENDENT",
+      "observations": 12,
+      "runs": 6,
+      "patterns": 9
+    },
+    {
+      "answer": "APPROXIMATELY",
+      "observations": 30,
+      "runs": 5,
+      "patterns": 6
+    },
+    {
+      "answer": "APP",
+      "observations": 10,
+      "runs": 5,
+      "patterns": 2
+    },
+    {
+      "answer": "ADVERTISING",
+      "observations": 9,
+      "runs": 5,
+      "patterns": 5
+    },
+    {
+      "answer": "AGO",
+      "observations": 8,
+      "runs": 5,
+      "patterns": 3
+    },
+    {
+      "answer": "ICE",
+      "observations": 8,
+      "runs": 5,
+      "patterns": 3
+    },
+    {
+      "answer": "ONE",
+      "observations": 6,
+      "runs": 5,
+      "patterns": 3
+    },
+    {
+      "answer": "USE",
+      "observations": 5,
+      "runs": 4,
+      "patterns": 4
+    },
+    {
+      "answer": "RECOMMENDED",
+      "observations": 5,
+      "runs": 4,
+      "patterns": 5
+    },
+    {
+      "answer": "PRESENTATIONS",
+      "observations": 48,
+      "runs": 3,
+      "patterns": 2
+    },
+    {
+      "answer": "TOO",
+      "observations": 6,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "ILL",
+      "observations": 5,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "SUGGESTIONS",
+      "observations": 4,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "WHO",
+      "observations": 4,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "بت",
+      "observations": 4,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "لي",
+      "observations": 4,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "زر",
+      "observations": 3,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "تل",
+      "observations": 3,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "خذ",
+      "observations": 3,
+      "runs": 3,
+      "patterns": 3
+    },
+    {
+      "answer": "ANNOUNCEMENTS",
+      "observations": 40,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "مد",
+      "observations": 4,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "رد",
+      "observations": 4,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "FLY",
+      "observations": 3,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "ANTI",
+      "observations": 3,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "رف",
+      "observations": 3,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "CONTRIBUTIONS",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "ACID",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "ANT",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "DISTRIBUTED",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "CONSTITUTES",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "ENGINEERING",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "TWO",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "DISCUSSIONS",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "قط",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "تم",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "مت",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 2
+    },
+    {
+      "answer": "ثم",
+      "observations": 2,
+      "runs": 2,
+      "patterns": 1
+    },
+    {
+      "answer": "INTERNATIONAL",
+      "observations": 13,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "DOCUMENTATION",
+      "observations": 6,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "ACT",
+      "observations": 3,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "LED",
+      "observations": 3,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "BED",
+      "observations": 3,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "RED",
+      "observations": 3,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "حمام",
+      "observations": 3,
+      "runs": 1,
+      "patterns": 2
+    },
+    {
+      "answer": "قد",
+      "observations": 3,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "INK",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "SPY",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "ERE",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "SKI",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "PERFORMANCE",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 2
+    },
+    {
+      "answer": "لو",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "ظل",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "صل",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "قل",
+      "observations": 2,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "END",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "SINCE",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "ODD",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "DIFFERENCES",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "SPECTACULAR",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "COLLECTIONS",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "SIR",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "INDIVIDUALS",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "CAT",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "CAR",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "CAB",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "CAN",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "RACE",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "MAINTENANCE",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "ATE",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "RESPONSIBLE",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "عن",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "دخلت",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "كم",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "من",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "نم",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "هم",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "مخ",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "مص",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "اقل",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "عم",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "مع",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "شر",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "حر",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "حل",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "حد",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    },
+    {
+      "answer": "نصبتذكاري",
+      "observations": 1,
+      "runs": 1,
+      "patterns": 1
+    }
+  ],
+  "limitations": [
+    "128 distinct observations per solver attempt; all attempts and uncaptured calls reported. Counts are captured branch observations, not independent causal failures.",
+    "Same seeds and settings; observer overhead affects wall-clock deadlines. No claims of unchanged runtime or exact replay trajectory.",
+    "A full-domain zero proves a gap for a particular branch constraint, not global puzzle unsatisfiability.",
+    "Supported small domains and internal-window/propagation restrictions are not falsely forced into A/B/C.",
+    "Proposal does not assess semantic validity or approve any relationship; repair estimates are potential unique-answer additions, not forecast success percentages."
+  ],
+  "dictionaryReviewed": false,
+  "cefrAssignments": 0,
+  "generatorChanged": false,
+  "productionPolicy": "compatibility",
+  "recommendation": {
+    "choice": "A",
+    "scope": "Targeted AR→EN linguistic review of the proposed 67 headwords is the main next step for the two highest-priority English-answer grids.",
+    "sampling": "Sampling need not be fixed before that English-focused review: no API pool loss was observed for either English configuration. Investigate Arabic sampling separately before commissioning more Arabic-focused review; existing approved matches should not be replaced by needless dictionary work.",
+    "caveat": "No counterfactual full-pool solver experiment was run. Branch-domain counts cannot identify what fraction of entire puzzles a sampling or dictionary change would rescue. Used-word exhaustion also depends on earlier search choices; search efficiency remains a possible joint limitation.",
+    "reviewStarted": false
+  },
+  "actualZeroRuns": {
+    "A_TRUE_GAP": 78,
+    "B_USED_EXHAUSTION": 70,
+    "C_API_SAMPLING_LOSS": 22
+  }
+}

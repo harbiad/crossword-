@@ -1,0 +1,100 @@
+1|Xq||The supplied relative pronoun lacks the possession relation expressed by whose.
+2|Dn||This familiar uncle address is colloquial; standard عم remains a separate valid relationship.
+3|Xu||The truncated word has no supported organ sense; POS for the intended relationship is unresolved.
+4|Dv||The Gulf want expression is neither MSA nor a translation of hide.
+5|Ru||A Bath name transliteration does not supply the ordinary bathing noun.
+6|Rn||The sound-system borrowing is recognizable, but this pass does not establish its standalone MSA register convention.
+7|Rn||The Greek-letter borrowing is plausible; retain review pending register/learner-scope evidence rather than automatic approval.
+8|Ru||This reads a name transliteration, not the grace/blessing noun.
+9|Rn||The borrowed genre spelling needs register/orthographic support, not automatic dialect rejection.
+10|Ru||The transliteration is not established as a natural MSA camp noun.
+11|Ri||The borrowed interjection is familiar but MSA register remains unresolved.
+12|Ru||Name-like transliteration does not establish a natural MSA fortress noun.
+13|Cn||Mouse versus rat is a real learner distinction; broader rodent usage remains unresolved.
+14|Ru||لين can express softness or a name; it does not establish the lane/roadway sense.
+15|An|falling|Arabic السقوط naturally renders falls collectively, as in prevention of falls. Plural English versus Arabic action noun is not automatic exclusion; distinguish it from waterfalls.
+16|Cn||The singular/uncountable detail versus plural details relationship needs a supported construction before approval.
+17|Hn||The redundant installation compound is not a clean standalone label; preserve for review.
+18|Hn||The numbered editorial prefix is extraneous translation data; no silent stripping.
+19|An||النوع legitimately expresses genre as kind/type. A broader valid Arabic equivalent is acceptable with crossings; allow both ways without forcing preference.
+20|Hn||The redundant genitive touch label is not a natural isolated equivalent.
+21|Ov||The intended fill imperative is recognizable, but its final hamza is missing.
+22|Hn||This is not an established MSA ideal equivalent; retain withheld without inventing a replacement.
+23|Cn||Comprehensiveness/inclusion is not necessarily coverage; a construction is needed.
+24|Oj||Recognizable older/earlier adjective, but the initial hamza is missing.
+25|Hu||The supplied form does not establish a bomb meaning or a secure register.
+26|On||The revenue plural has omitted initial hamza; preserve for orthographic review.
+27|Ru||Name-like borrowing does not establish the domestic-service role in natural MSA.
+28|Oj||The final ه needs orthographic review for the feminine sorry adjective.
+29|On||The intended errors noun lacks the initial hamza.
+30|On||The clubs plural lacks the initial hamza.
+31|An||Standard plural samples with an article; both directions remain valid.
+32|Pn||Natural learner-facing samples noun.
+33|Pn||شر naturally names evil as a noun.
+34|Aj||The definite mixed adjective is a valid variant.
+35|Pn||Acquisition as obtaining/possession is naturally expressed by اقتناء.
+36|An|loops|The rings/loops sense is legitimate and separate from finger jewelry.
+37|Aj||The definite chronic adjective is a valid form.
+38|An||The definite lens noun is valid even when another article form is preferred.
+39|Pj||مسرور naturally means pleased.
+40|An||Standard plural pieces with article.
+41|Pv||يضمن naturally expresses ensures; competing synonyms do not exclude it.
+42|Pj||خطي is a standard linear adjective, including ordinary mathematical use.
+43|Av||The Arabic action citation can express the English verb delete; no automatic morphology exclusion.
+44|Pn||Natural atom noun; also a homograph of corn, which crossings can disambiguate.
+45|An||Standard fort noun with article.
+46|An||ثنائي can name a duo/couple, a legitimate noun relationship.
+47|Pj||وحيد is a natural alone/solitary adjective.
+48|An||The oblique plural adults is natural MSA; case morphology does not exclude it.
+49|An||The touching/touch noun is valid with article.
+50|Pn||تصدير naturally names exporting/export as an activity.
+51|An||ادعاء is a correctly spelled MSA claim noun with hamzat-wasl.
+52|An||اللؤلؤ is the natural collective/material pearl noun.
+53|Av||ذكر means stated/mentioned; secondary equivalents remain valid.
+54|An||التبديل names the act of switching, an English switch noun use.
+55|An||Standard crime noun with article.
+56|Aj||The feminine definite routine adjective is valid.
+57|An||Standard sleep activity noun with article.
+58|An||ذوق naturally expresses taste; do not force an aesthetic-only sense label.
+59|Pj||Natural flexible adjective.
+60|An||The directions/tendencies noun legitimately expresses trends.
+61|Pn||Natural noise noun; synonyms do not make it an unfair reverse clue.
+62|Pn||مكالمات naturally supplies calls.
+63|Pn||طيار naturally supplies a pilot.
+64|An||الاتصالات can express contacts/communications; the noun relationship remains valid.
+65|Pn|noble title|كونت is the conventional noble-title borrowing, distinct from numerical count.
+66|An|eras|The ages/eras noun is distinct from people's ages.
+67|An|loops|حلقات expresses rings as loops rather than jewelry.
+68|Pn|narcotics|المخدرات supplies the narcotics sense, distinct from therapeutic drugs.
+69|Pn|return to health|The recovery noun expresses return to health, distinguished from retrieval.
+70|Pn|eras|عصور naturally names historical ages/eras.
+71|Pn|religious service|قداس is the religious-service sense of mass, not physical quantity.
+72|An|legal challenge|The appeal noun is a legal challenge, distinct from a general request.
+73|An|retrieval|الاسترداد expresses recovering/retrieving something rather than health recovery.
+74|An|appointments|المواعيد expresses dates as appointments, distinct from calendar dates.
+75|An||Standard signs noun with article.
+76|An||لباس names dress/clothing generally and is a valid noun sense.
+77|An||Standard silence noun with article.
+78|An||Standard boat noun with article.
+79|Aj||The feminine orange-color adjective is valid.
+80|An||Standard implementation noun with article.
+81|An||Standard shadow noun with article.
+82|Aj||The feminine honest adjective is valid, not a separate invented sense.
+83|An||الموضوع naturally expresses the subject/theme noun.
+84|An||Standard plural elements with article.
+85|Pb||In the future naturally expresses the temporal ahead sense.
+86|Pn||The naturally spaced phrase explicitly means sunrise.
+87|Pn||The naturally spaced opinion-poll phrase is a good learner equivalent.
+88|Pn||The phrase explicitly means an air flight.
+89|Pn||The standard naturally spaced patent phrase is appropriate.
+90|Pb||The phrase naturally expresses anyway/in any case.
+91|Av||The action citation تمكين is a natural equivalent for the English infinitive enable.
+92|Pv||عرف can be read عرّف, define; lack of vowel/shadda marks does not invalidate the verb.
+93|Pv||قتل supports killed in the past verbal reading.
+94|Pv||لمس naturally expresses the touching action.
+95|Pv||يحذف naturally expresses the verb delete.
+96|Av||إعلان is an accepted Arabic action citation for announce; English POS remains verb.
+97|Pn||Natural circle noun.
+98|Pn||The correctly spelled frames plural is natural.
+99|Av||The past verb placed has a natural Arabic finite form.
+100|Av||استثمار naturally cites the investing action; surface infinitive morphology need not match.

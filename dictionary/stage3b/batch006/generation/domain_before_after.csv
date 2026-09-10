@@ -1,0 +1,9 @@
+size,mode,beforeFailedCalls,afterFailedCalls,beforeTrueGapZeros,afterTrueGapZeros,beforeExhaustionZeros,afterExhaustionZeros,beforeSamplingZeros,afterSamplingZeros,beforeCriticallySmall,afterCriticallySmall
+"13","ar_to_en","30","30","30654","26164","14573","4946","0","0","441169","354366"
+"11","ar_to_en","22","23","10004","8543","539","209","0","0","115707","108784"
+"13","en_to_ar","15","13","54","50","160","243","24","26","4242","3009"
+"11","en_to_ar","11","11","193","266","0","6","69","86","185","210"
+"9","en_to_ar","3","3","93","52","38","10","5","10","82","108"
+"7","ar_to_en","1","1","1363","1061","44","20","0","0","501","535"
+"9","ar_to_en","1","4","174","720","17","68","0","0","2881","11500"
+"7","en_to_ar","1","0","109","0","2","0","4","0","46","0"

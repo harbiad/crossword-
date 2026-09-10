@@ -1,0 +1,20 @@
+[
+  {
+    "sourceId": "2872:2",
+    "english": "ANGEL",
+    "original": "انجيل",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "Second pass confirms the Arabic denotes the Gospel rather than an angel; it is not a secondary angel sense or grammatical variant."
+  },
+  {
+    "sourceId": "6319:2",
+    "english": "PRAISE",
+    "original": "ماشاء",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "Second pass confirms this incomplete fragment is not a usable praise expression; restoring missing words would invent a new phrase, so preserve but reject."
+  }
+]

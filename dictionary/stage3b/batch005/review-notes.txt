@@ -1,0 +1,500 @@
+SECRET|Pn Pj An Aj
+LINEAR|Aj Pj Aj
+MINE|Aq Pq On Pn Pn An Cn|3=explosive device;4=excavation;5=explosive device
+RICE|On Rn Rn On Ru Pn
+ORIGIN|On On Pn
+RICH|Aj Aj Ru Aj Pj Aj
+GAVE|Ov Av Ov Pv
+TASK|Pn
+DISC|Pn An
+BRAIN|An Pn An An Cn
+PARENT|Pn
+DELETE|Pv Av Av Av Av
+FUEL|Pn An
+GENDER|Cn Pn
+EVIL|An An Pn
+EXPERT|Pn An An An
+WIRE|An Pn
+LIMIT|An Pn
+CODES|Pn An
+EASILY|Pb
+BATH|Pn An Ru
+DOUBT|An Ov Pn
+EXPECT|Ov Av Pv
+BEAR|An Ru Pn
+DAMAGE|On On Pn An
+POLL|An An Pn
+SNOW|Pn An Ru
+TITLES|An On Pn On
+DOLLAR|An Pn
+CELLS|An An Pn|1=prison cells
+CALLS|An An An Pn|2=appeals or calls
+COVERAGE|Cn An Pn
+GONE|Av Av Pv Av
+ORANGE|Ru Aj Pj Pn Aj An
+SENATE|Pn
+SLEEP|Pn Pv Av Av An
+SEEMED|Av Ov Pv
+PROFIT|On An On Pn Cn
+URBAN|Cn Aj Aj Aj Pj
+REDUCE|Pv
+DEALER|Pn An An Cn An
+LENS|Pn Cn Cn An
+MATH|Pn An
+RELIEF|On On Pn
+ERRORS|On On Pn
+ACCURATE|Aj Pj Aj
+APARTMENTS|An Pn An
+BIRD|An An Pn An Ru Cn Cn
+SING|Av Ov Pv Av Av
+SLIDE|Pv Pn An An
+POSTAL|Pj Cn
+EXTENT|Pn An
+NECK|An An Pn An
+COUPONS|Pn An
+SLEEVE|An Pn
+TOUCH|Av Pv Pn An Av Hn
+DEPTH|Pn An
+EARN|Pv Av Av
+FACTS|An An An Pn
+CRIME|Pn An Cn
+BREAST|An Pn
+EASIER|Oj Pj
+INTENT|An Pn An
+LUCK|Pn An Cn
+SCRIPT|Pn An An An Rn|0=screenplay;1=screenplay
+SHIRTS|Pn An
+ALONE|Rb Ab Pj Aj Cb
+PRIDE|An Pn An An
+TENNIS|Pn An
+DEPOSIT|Pn Cn Cn
+RINGS|An Pn An An|0=loops;1=jewelry;2=loops;3=jewelry
+PEARL|An Ru An Pn
+ENDS|Pv Cn
+WONDER|Pn
+MISSED|Av Pv Cv|1=failed to catch or attend
+OCEAN|Cn An Pn
+STATED|Pv Av
+TIDE|An Pn An
+GENE|Pn
+PLEASED|Cv Pj
+AWARE|Pj Aj
+ONES|Cn
+PRIEST|An Pn An An
+CLAIMS|An Pn Hn
+ROMAN|Pj Cn Aj Aj
+EXPLORE|Pv Av Av
+CONCEPT|Pn
+PURE|Aj Pj Aj
+APPEAL|An An Pn An Pn|0=request;1=legal challenge;2=request;3=legal challenge;4=legal challenge
+SPREAD|Av Pv Pn
+BLOCKS|Pn An
+TRIPLE|Aj Pj Aj
+ROUTINE|Aj Pn Aj Aj An
+FOOT|An Pn
+ATTEND|Pv
+FLIGHT|Cn An An Pn
+CAMP|Ru An Pn An An
+HAPPENED|Pv Av
+DETAIL|An Cn Cn Pn
+FINDER|Pn
+PROCEED|Pv
+HIDE|Ov Dv Ov Pv
+MOUTH|Pn An
+UNCLE|Dn Cn Pn An
+PREFERENCES|Pn
+FILL|Pv Ov Ov
+ASSETS|On An On An Pn
+MYSELF|Pq Oq
+AGENDA|On Pn
+ICON|An On Pn
+BEE|An An Pn An
+TRENDS|An An Pn
+RANK|An Pn
+HIRE|Cv
+STANDS|Pv Av
+RARE|Aj Pj Aj
+DRESS|Pn An An An An
+BOAT|An An Pn An An
+SPIRIT|An Pn
+DEFINE|Pv Av
+RACING|An Pn An An
+LEISURE|Pn
+BORED|Cj Cn Cn
+RECOVERY|An An Pn An On An|0=retrieval;1=return to health;2=return to health;3=revival;5=retrieval
+FRAUD|An An An Pn An|2=deceptive person
+CONFERENCES|An Pn
+LEADER|An Pn
+ALERTS|Pn
+STYLES|An On On On On Pn
+INCH|Pn On
+AGREED|Pv Aj Aj
+PRAY|Av Av Ov Av Pv
+LOOKED|Pv Av Av|0=directed the gaze;1=seemed;2=seemed
+AHEAD|Pb
+DREAM|An Av Ov Pn
+LACK|An An Pn
+HOSTED|Pv Cv Av Aj
+RECRUITMENT|An An An Pn|0=military recruitment;2=military recruitment
+PASSED|Pv
+PAL|Hn
+DELTA|Pn
+RESORT|Pn An Pn|2=recourse
+CANON|Rn Cn
+MEMORIAL|Aj Pn
+RIP|Ru Pv Av
+PLANNED|Pj Cj
+INDEED|Pb
+ABUSE|On On Pn
+MASS|An Pn Pn An|2=religious service;3=religious service
+FRAMES|On On On On Pn
+REVISED|Aj Pj Aj
+ENEMY|An Pn
+TAPE|An Pn
+SOFT|Aj Aj Aj Pj
+TONIGHT|Pb
+IDEAL|Aj Hn Pj
+WARS|Pn An
+ANYWAY|Pb
+DROP|Pn Ov Ov
+ROSE|Ru Pn An
+SOUL|An Cn Pn
+GIVING|An On Pn
+RAIN|Pn An On
+INVEST|Pv Av Av
+CLUBS|Pn On On An
+FORT|Pn An Ru
+ROMANCE|Pn An
+SILENT|Aj Aj Pj Aj
+PRIME|Hn
+SHADOW|An Pn
+STEPS|An Pn
+CREEK|Ru Pn|1=coastal inlet
+WIDTH|Pn
+FORGOT|Pv
+COUPLE|An Pn An
+SCALE|Pn An
+BYE|Ri Ri Pi
+SORTED|Pj Cv Cv
+LANE|Ru
+GHOST|Pn Ru An
+MODIFY|Pv Av
+OLDEST|Oj Oj Pj
+SOLAR|Aj Pj Aj Cn
+GENERATION|Pn An Pn|0=production;1=age cohort;2=age cohort
+ATOM|Pn An
+BATTLE|Pn Ru An
+OWNED|Pj Aj
+BECAME|Av Pv
+PRINCE|Rn Rn On On Pn
+ASPECT|Pn An
+SEQUENCE|An An Pn
+COLLECTIONS|An An Pn Cn
+DISK|Pn An
+SAYING|Pn Pv
+HATE|An An Cn Pn
+ARRIVED|Pv Av
+REACH|Pv
+EXTEND|Pv
+PROCEEDINGS|On Pn
+BRANCH|An Pn Ru
+SEEK|Av Pv
+SPECIFICATION|Cn Cn
+DUTY|An Pn
+SCHEME|An Pn
+STICK|An An Pn
+SWITCH|An Pn Pn|2=electrical switch
+MANAGE|Ov Pv
+SAND|An An Ru Pn An
+CIRCLE|An Pn
+JUMP|Pn
+ANNOUNCE|Pv Ov Av Av
+PLANTS|Pn An
+REVENUE|On On On Pn
+GARLIC|An Pn
+NOTIFY|Pv
+IGNORE|Av Ov Pv
+STRATEGIC|Aj Pj Aj
+TONE|Pn An Pn|2=musical sound
+PLATES|Cn
+NATIVE|Pj
+ENABLE|Pv Av
+ECHO|Pn An Ru
+INSTITUTIONS|Pn An
+KEPT|Pv
+STEREO|Cn Rn
+TEND|Pv
+SUGGESTIONS|Pn An An An
+ENGINEER|An Pn
+CONSOLE|Pn
+CONNECTIONS|An An Pn
+COMEDY|An Cj Pn
+CREATING|Pn
+SHELL|Ru Pn An Pn|3=projectile
+CONTACTS|An An Pn
+GENRE|Cn
+FEAR|Hu An Pn
+TESTED|Cv
+ENHANCE|Pv
+ADOPTED|Av Aj Pv
+ULTIMATE|Hn
+STREAM|Pn
+CRACK|Pn An An Rn
+MAINTAINING|Pn
+WAIT|Av Av An Pv
+AUCTIONS|Pn Xn
+SUNRISE|An An Pn
+SIGNED|Pj Cn Av
+MIXED|Pj Aj Aj Aj
+GRACE|Ru Pn Ru Ru
+SALT|An Ru Pn
+TAXES|Pn An
+SHOPS|Pn An An An An
+CONSUMPTION|Pn An
+DELAY|Pn
+EXCEED|Pv
+MARINE|Pj
+ACID|Pn Cj
+CREATION|Pn On On An An
+MURDER|An Pn
+EXPERIENCES|Pn An An
+PLACED|Pj Av
+ENHANCED|Pj Aj
+CAST|Pn
+DYNAMIC|Pj Aj Aj
+ACTOR|An An Pn|1=agent
+PATENT|Pn
+SILENCE|An An Pn
+ADULTS|An An An Pn
+CLIPS|An Pn
+MEASURES|An Pn
+ACCOUNTING|An Pn
+ALIVE|Aj Oj Aj Pj Aj
+ORIENTATION|An Pn An An
+LIVER|Xu An Pn
+THEME|An An An Pn
+MASSAGE|An Pn
+AVATAR|Rn
+LIP|Ru Cn
+PLAYED|Pv
+HANDLE|Pn
+POUR|Pv
+IMPORT|Cn Pn An
+CLAIM|An An Pn Hn
+BOMB|Pn Hu An
+CONTEST|On An Pn
+GOALS|On On An Pn
+NEITHER|Hc
+HEAT|On Ru Pn An
+ELECTION|Pn An An An
+GREY|Ru Pj
+MAGIC|An Pn
+TRIED|Av Av Pv
+AVOID|Av Pv
+AWARDED|Av Pv
+MOON|Pn An
+BLOGS|An Pn
+NEARLY|Pb
+EVALUATION|Pn An
+TAGS|On On An An Pn
+LAUNCH|An An On On Pn
+IMPLEMENTATION|Pn An
+FOREVER|Ob On Pb
+MINUTE|An Pn
+ZONE|Pn An
+CYCLE|An Pn
+ANALYST|Pn
+REFERENCES|An Pn
+CORNER|An An Pn An
+DISCUSSIONS|Pn An An
+AGENCIES|Pn An
+RESPECTIVE|Cj
+IRON|Cj Pn An
+ANIME|On Rn
+DRUGS|An Pn Pn An|2=narcotics;3=narcotics
+FRESH|Pj Aj
+STAND|Pv
+SHARES|Cn Cn Pn|2=company equity
+ATTACK|Pn An
+DESTROYED|Pv Av
+KILLED|Pv
+LUXURY|An Pn An An Cj
+DEFINITION|An Pn
+AVENUE|Pn
+POETRY|An An Pn
+NETWORKING|Cn An Pn|2=computer networks
+FLEXIBLE|Aj Aj Pj
+AUSTRALIAN|On Oj Oj Oj
+PERMISSION|An On Pn
+SPOT|Pn An
+LAWS|Pn An
+SMILE|Pn An Pv
+RIDING|An Pn An|2=horse riding
+CHART|An An Pn
+COUPLES|On On Pn
+RAISE|Pv
+RELEVANT|Pj
+GUIDELINES|An On Pn
+GUESS|Pv An
+BIBLE|Cn On Pn
+INFORMED|Cv
+VANILLA|Pn An
+WEEKLY|Ob Oj Oj Oj Oj Pj
+INSTALLATION|An An An Pn Hn
+HEAVY|Pj Aj Aj Aj
+HONEY|An Pn
+PIECES|An Pn Ou
+AGES|On Pn An On Pn|1=eras;2=eras;4=ages of people
+RAT|Pn An Ru On Cn
+HONEST|Aj Pj Aj
+PEOPLES|Pn An
+CONTRACTORS|An Pn An
+FAIL|Pv Av
+BUTLER|Ru Ru
+LOTS|Pq
+DENTAL|Cj
+OLDER|Oj Cj
+AIRLINE|Cn
+ENABLES|Cv
+ELEMENTS|Pn An
+DOLLS|Pn An
+DATES|Pn An An An|0=calendar dates;1=appointments;2=appointments;3=calendar dates
+RATIO|An Pn
+PALACE|Pn An
+DECLARE|Av Ov Av Pv Av
+RANDOM|Aj Pj
+TRIALS|An Pn
+SAMPLES|An Pn
+DIRECTIONS|Pn
+TAP|Pv
+DINING|Cn
+PILOT|An Pn Pj
+RISE|Pn
+WHOSE|Xq
+NOISE|Pn An An An
+MENTAL|Aj Pj
+FALLS|An Pn Cn
+SCENE|Pn An
+RURAL|Aj Cn Pj
+LADY|An Pn
+BATHROOM|Pn An Hu
+ENDING|Cj On Pn
+BIRTH|An An An Pn
+AUTOMOTIVE|Cj Cn
+SEPARATE|Pj Aj
+HELLO|Ri Pi
+EXPORT|An Pv Pn Cn
+OFFICES|Pn An
+FAITH|On Ru On On Pn
+HIGHLY|Pb
+CUTE|Pj Rj
+DEFENCE|Pn An
+SPAM|Pn
+DEVELOPING|Pj An Aj
+CHEST|Pn An
+STAYED|Av Ov Pv
+ARENA|An An Pn An Ru
+MOVED|Av Av Pv
+SEES|Cj Pv
+ACTUAL|Aj Pj Aj
+THEORETICAL|Pj Aj
+HISTORICAL|Pj Aj Oj
+EXTENDED|Av Pv Cn
+MILE|Pn An Rn
+COMMERCE|Pn An
+PREPARATION|On Pn An On An
+SORRY|Oj On Pi Oj
+LEGEND|On On Pn
+VIOLENCE|An Pn
+TESTS|Pn An
+FASTER|Pj
+ACCOUNTS|Pn An
+TOOTH|An Pn Cn
+SETTINGS|On Hn
+BUYER|An Pn
+CULTURAL|Aj Pj Aj Aj
+POLAR|Pj Hn
+TASTE|Pv An An Pn
+FUNCTIONAL|Aj Pj
+DUAL|Pj
+HOLIDAYS|Pn On On On An An
+NOTICED|Pv
+TRAIN|Pn An
+MATCHING|Pn Aj An
+INCHES|Cn On Pn
+ARCHITECTURE|Pn An An
+LABEL|Pn An Hn
+DANGER|An Pn
+ACQUISITION|An Pn An
+OOPS|Ri Ci Ri
+PROVIDER|Pn
+OPTIONAL|Aj Pj
+DICTIONARY|Pn An
+REMAIN|Ov
+GARAGE|An Pn
+ONTO|Pp
+SECTIONS|On On Pn
+LIFT|Av Pv Pn
+PHASE|An An Pn
+ACHIEVE|Cv Pv
+MOUSE|On On On Rn
+ENFORCEMENT|Pn
+FUNNY|Aj Pj Aj
+PIE|An Pn
+SPEAK|Pv
+LOSE|Pv Cv
+BAT|An Pn Pn|0=sports implement;1=sports implement;2=flying mammal
+APPLICABLE|Cj
+ISRAELI|Oj Oj Oj Oj
+REFER|Ov
+GANG|An Pn
+SPEECH|An An An An Pn An
+CHANNELS|Pn An
+BLUES|Rn
+FUR|An An Pn An
+COUNT|Pn An An Pn|0=noble title;2=noble title
+SHARED|Aj Av Pj
+EXCEPTIONAL|Pj
+TECHNIQUES|An Pn
+WEBSITES|Pn
+BETA|Rn
+RELIGION|An Pn An
+CENT|Pn
+OCCUR|Pv
+CHRONIC|Pj Aj Aj Aj
+PATCH|An Pn Rn Cn
+NULL|Pj Cq
+MOSTLY|Ab Pb
+MISS|Cv Cn
+CHEMICAL|Aj Pj Aj
+DOCTOR|An Pn An An An
+SIGNS|An Pn
+CALCIUM|Pn An
+EXERCISE|An Pn
+COMMITMENT|An Pn
+SHELF|Pn Cn An Cn
+SYMBOLS|Pn An
+COTTON|Pn An
+MEETINGS|An An An Pn
+CONGRESS|Rn Pn Rn Rn
+PROPOSAL|An Pn An An
+VICE|Cn
+USERNAME|Pn
+PRODUCED|Ov Cj
+LICENCE|An Pn An
+YOURS|Pq Aq
+FLAG|Pn An
+MUSCLE|Cn An Pn Cn
+ENSURES|Av Pv
+LETS|Pv
+SLIGHTLY|Pb
+ASSIST|Pv
+SAINT|Rn Pn An
+CONDUCT|Pn An
+EXAMINED|Cv
+ARGUMENT|Pn An
+STRESS|On On An Pn
+SERVED|Av Pv
+TREND|Pn An
+DESERT|Pn An
+BOXES|An Pn

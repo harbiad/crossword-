@@ -1,0 +1,1086 @@
+{
+  "seed": "batch004-coverage-qa-v1",
+  "sampleSize": 100,
+  "headwords": 93,
+  "strata": {
+    "rejected": 6,
+    "reference-conflict": 8,
+    "register-review": 8,
+    "review": 10,
+    "coverage-approved-reverse": 20,
+    "allowed-nonpreferred-reverse": 12,
+    "sense": 10,
+    "multiword": 8,
+    "verb": 6,
+    "approved-control": 12
+  },
+  "sampleBaseline": {
+    "headwords": 93,
+    "relationships": 100,
+    "headwordStatus": {
+      "approved": 88,
+      "review": 5
+    },
+    "relationshipStatus": {
+      "rejected": 6,
+      "review": 26,
+      "approved": 68
+    },
+    "register": {
+      "msa": 90,
+      "uncertain": 10
+    },
+    "allowedEnToAr": 68,
+    "allowedArToEn": 68,
+    "preferredEnToAr": 29,
+    "preferredArToEn": 29,
+    "restrictedEnToAr": 8,
+    "restrictedArToEn": 8,
+    "allowedNonpreferredArToEn": 39,
+    "posAssignments": 95,
+    "unresolvedPos": 5,
+    "senseAssignments": 15,
+    "multiword": 16
+  },
+  "originalDecisionSha256": "c8cc51c99fc2b5ede04774cf56b8bb6a100bb3233a678e3c8d1b6665de685373",
+  "qaReviewSha256": "d46bfc5500c0a681c2493dc2d4c791244c0edeea39e310e9d62acd0bc3104491",
+  "agreements": {
+    "status": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "register": {
+      "agree": 100,
+      "total": 100,
+      "percent": 100
+    },
+    "allowedForEnToAr": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "allowedForArToEn": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "preferredForEnToAr": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "preferredForArToEn": {
+      "agree": 98,
+      "total": 100,
+      "percent": 98
+    },
+    "partOfSpeech": {
+      "agree": 100,
+      "total": 100,
+      "percent": 100
+    },
+    "sense": {
+      "agree": 14,
+      "total": 16,
+      "percent": 87.5
+    }
+  },
+  "diagnosticNotes": [
+    {
+      "sourceId": "3069:1",
+      "english": "BOOKING",
+      "arabic": "جز",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Shearing is not booking; the missing letter leaves an unrelated lexical item.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2841:1",
+      "english": "SUGGESTED",
+      "arabic": "رحت",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Went and suggested are different verbs, not variants of one inflection.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1716:3",
+      "english": "RUSSIAN",
+      "arabic": "روسيا",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Russia names the country, not a Russian person, language or adjective.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5493:0",
+      "english": "TIN",
+      "arabic": "تين",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Figs and the metal tin are unrelated; phonetic similarity supplies no valid sense.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3853:2",
+      "english": "LEG",
+      "arabic": "القدم",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Foot and leg denote different body parts in basic learner vocabulary.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1679:3",
+      "english": "SPANISH",
+      "arabic": "اسبانيا",
+      "before": "wrong-or-corrupt-relationship",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Spain is a country rather than the language or adjective Spanish.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2811:0",
+      "english": "DON",
+      "arabic": "دون",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "This may be a title transliteration or a distinct Arabic function word; the ordinary clothing verb is not supplied.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1958:0",
+      "english": "PAPERBACK",
+      "arabic": "غلاف ورقي",
+      "before": "construction-or-sense-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Paper cover describes binding; the book noun needs contextual support.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2200:2",
+      "english": "WHOLESALE",
+      "arabic": "الجملة",
+      "before": "construction-or-sense-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The isolated sentence/total noun needs the wholesale-trade construction.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2765:1",
+      "english": "DOT",
+      "arabic": "دوت",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Transliteration alone does not establish a natural MSA word for the point symbol.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2217:0",
+      "english": "BROTHER",
+      "arabic": "اخي",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Missing hamza and the possessive suffix require review; preserve text.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2295:1",
+      "english": "ESTIMATED",
+      "arabic": "تقديرات",
+      "before": "construction-or-sense-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Estimates is a noun while estimated is participial; a linking construction is not supplied.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2734:3",
+      "english": "CIRCUIT",
+      "arabic": "دائرة الدائرة",
+      "before": "unsuitable-pending-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Duplicated circuit genitive is not a natural standalone label; retain for repair.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4458:1",
+      "english": "TOE",
+      "arabic": "اصبع القدم",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Toe meaning is clear but the initial hamza is missing; do not silently correct it.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1823:0",
+      "english": "STONE",
+      "arabic": "ستون",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The form could be a name transliteration or Arabic sixty; neither establishes the material stone.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3969:0",
+      "english": "JET",
+      "arabic": "جيت",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "This transliteration does not securely identify the standard jet-aircraft noun.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2609:1",
+      "english": "TIP",
+      "arabic": "تيب",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Borrowing/register needs support before approval as an MSA tip equivalent.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1740:1",
+      "english": "SKIP",
+      "arabic": "سكيب",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "A transliteration is not enough evidence for a natural Arabic verb skip.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2317:0",
+      "english": "MIX",
+      "arabic": "ميكس",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The borrowing may occur commercially; natural MSA status remains unresolved.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3509:0",
+      "english": "WOW",
+      "arabic": "واو",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "A common exclamation spelling, but register is not established by its popularity.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2687:0",
+      "english": "HEY",
+      "arabic": "هيه",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Interjection/register needs evidence; do not infer dialect merely from informal use.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5493:1",
+      "english": "TIN",
+      "arabic": "تن",
+      "before": "register-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The intended metal reading is not established by this short form.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3784:0",
+      "english": "MECHANISM",
+      "arabic": "الالية",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Recognizable mechanism noun but initial madda is omitted.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2197:0",
+      "english": "YESTERDAY",
+      "arabic": "امس",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Yesterday is recognizable; the initial hamza is missing.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1927:1",
+      "english": "BROUGHT",
+      "arabic": "احضرت",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Brought is semantically recognizable, but the initial hamza is missing.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4141:1",
+      "english": "EXHIBIT",
+      "arabic": "معرض",
+      "before": "construction-or-sense-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The word ordinarily names an exhibition/showroom; the individual exhibit sense needs support.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1656:0",
+      "english": "INTERESTING",
+      "arabic": "للاهتمام",
+      "before": "unsuitable-pending-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The prepositional fragment lacks the adjective that would mean interesting.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2107:1",
+      "english": "PROCEDURE",
+      "arabic": "الاجراءات",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Hamza omission and plural presentation need review without changing source text.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2769:1",
+      "english": "FEELING",
+      "arabic": "الاحساس",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The MSA feeling/sensation noun is recognizable but lacks the initial hamza.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2107:2",
+      "english": "PROCEDURE",
+      "arabic": "اجراء",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The intended procedure noun has an omitted hamza; preserve pending orthographic review.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2322:2",
+      "english": "CREDITS",
+      "arabic": "الاعتمادات",
+      "before": "orthography-review",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Credits/appropriations is recognizable but the initial hamza is missing.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2574:0",
+      "english": "AGRICULTURE",
+      "arabic": "الزراعة",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard agriculture noun with a valid article variant; both directions remain allowed.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2099:1",
+      "english": "ELEMENT",
+      "arabic": "عنصر",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural element noun; no one-to-one synonym requirement.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4029:1",
+      "english": "JOY",
+      "arabic": "فرحة",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "A natural joy noun variant; preference for another form is not exclusion.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1936:1",
+      "english": "GUARANTEE",
+      "arabic": "الضمان",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard guarantee noun with article; valid even when another form is preferred.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1801:2",
+      "english": "WIND",
+      "arabic": "ريح",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural singular/collective wind noun in MSA.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2942:1",
+      "english": "TROUBLE",
+      "arabic": "المشاكل",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Problems is a natural Arabic rendering of uncountable trouble; number need not match mechanically.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3505:1",
+      "english": "SIT",
+      "arabic": "الجلوس",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Arabic verbal-noun citation naturally represents the English action sit.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2572:4",
+      "english": "EAT",
+      "arabic": "تناول الطعام",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The naturally spaced phrase expresses eating food; keep it as display text.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4927:1",
+      "english": "JAM",
+      "arabic": "المربى",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard jam noun with article, not an excluded alternative.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1670:1",
+      "english": "DIE",
+      "arabic": "مت",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Unvocalized مُت is the imperative die; morphology supports the verb mapping.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1883:1",
+      "english": "MANUFACTURING",
+      "arabic": "التصنيع",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural manufacturing action noun with article.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3038:2",
+      "english": "FOX",
+      "arabic": "الثعلب",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard fox noun; article does not make the relationship unsuitable.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1858:3",
+      "english": "ICE",
+      "arabic": "جليد",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural frozen-water noun for ice.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1778:1",
+      "english": "DOCUMENTATION",
+      "arabic": "الوثائق",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Documents collectively can denote documentation; this is a valid noun sense.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2899:1",
+      "english": "RAW",
+      "arabic": "خام",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Raw as unprocessed material is naturally expressed by خام.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3009:0",
+      "english": "CONTINUES",
+      "arabic": "يستمر",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "يستمر naturally means continues.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4751:2",
+      "english": "SAD",
+      "arabic": "محزن",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "محزن expresses sad in sad news, distinct from feeling sad. Add a short relationship-specific sense to distinguish the causal adjective.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3046:1",
+      "english": "ARM",
+      "arabic": "الذراع",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard arm noun with article.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "5108:0",
+      "english": "ODD",
+      "arabic": "غريب",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Odd in the strange sense is a natural adjective mapping.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3670:1",
+      "english": "AFTERNOON",
+      "arabic": "العصر",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "العصر naturally names the later afternoon period; a synonym does not exclude it.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2046:1",
+      "english": "LANGUAGES",
+      "arabic": "اللغات",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard plural languages with article.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3258:1",
+      "english": "CONTRIBUTIONS",
+      "arabic": "المساهمات",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard plural contributions with article.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3093:2",
+      "english": "REQUIREMENT",
+      "arabic": "اشتراط",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Stipulation is a legitimate requirement sense; not excluded for being secondary.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1800:1",
+      "english": "SOLD",
+      "arabic": "بيعت",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The passive past verb was sold naturally expresses sold.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3156:4",
+      "english": "QUALIFIED",
+      "arabic": "مؤهلون",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The plural qualified form is a natural adjective with an implicit people referent.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1728:0",
+      "english": "BASKET",
+      "arabic": "السلة",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard basket noun with article.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2689:0",
+      "english": "BUILDINGS",
+      "arabic": "المباني",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard plural buildings noun.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1688:1",
+      "english": "MONTHLY",
+      "arabic": "شهرية",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Feminine monthly is a legitimate adjective use, not a noun assignment.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1701:2",
+      "english": "BOTTOM",
+      "arabic": "أسفل",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "أسفل can name the lower part/bottom; retain the noun mapping.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1869:1",
+      "english": "THINKING",
+      "arabic": "التفكير",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The verbal noun names thinking as an activity.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2760:0",
+      "english": "OPTICAL",
+      "arabic": "بصرية",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural feminine optical adjective.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1668:0",
+      "english": "GALLERIES",
+      "arabic": "المعارض",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Exhibition galleries are naturally represented by this plural noun.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2322:3",
+      "english": "CREDITS",
+      "arabic": "أرصدة دائنة",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The phrase precisely identifies credit balances; the narrow sense is explicitly recorded.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2933:1",
+      "english": "CONCERN",
+      "arabic": "قلق",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Concern as worry is correctly distinguished from a matter of concern.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1664:1",
+      "english": "HITS",
+      "arabic": "يضرب",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The finite verb hits means strikes; this is separate from the plural noun.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2627:4",
+      "english": "INSTANT",
+      "arabic": "لحظة",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "An instant is a moment, distinct from the immediate adjective.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "4628:1",
+      "english": "LIE",
+      "arabic": "الكذب",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The action/falsehood noun is a legitimate lie sense, not reclining.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3338:0",
+      "english": "RESERVATION",
+      "arabic": "حجز",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Reservation as booking is distinct from an expressed doubt.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2142:2",
+      "english": "OPENING",
+      "arabic": "افتتاح",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The opening/inauguration noun is distinct from physically opening something.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2734:0",
+      "english": "CIRCUIT",
+      "arabic": "الدائرة",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The electrical-circuit noun is valid and distinguished from a race circuit.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1984:0",
+      "english": "HEARING",
+      "arabic": "سماع",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Sماع names hearing/listening activity, distinct from a formal hearing.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1984:2",
+      "english": "HEARING",
+      "arabic": "جلسة استماع",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The naturally spaced phrase identifies a formal hearing.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2058:2",
+      "english": "FINDING",
+      "arabic": "العثور على",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The finding action phrase is natural; preserve its preposition and spaces.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2196:0",
+      "english": "HEADLINES",
+      "arabic": "العناوين الرئيسية",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural main-headlines phrase in MSA.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1973:1",
+      "english": "PROVIDERS",
+      "arabic": "مقدمو الخدمات",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Providers of services is a natural explicit noun phrase for providers.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1826:0",
+      "english": "RINGTONES",
+      "arabic": "نغمات الرنين",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural ringtone phrase with plural noun.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3643:1",
+      "english": "ANNIVERSARY",
+      "arabic": "الذكرى السنوية",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural annual-anniversary noun phrase.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1765:1",
+      "english": "MODULE",
+      "arabic": "الوحدة النمطية",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "A standard technical module expression; common computing vocabulary need not be rejected as jargon.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3788:3",
+      "english": "WELFARE",
+      "arabic": "الرعاية الاجتماعية",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The social-assistance sense is distinct from general well-being.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1886:1",
+      "english": "FISHING",
+      "arabic": "صيد الأسماك",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The phrase explicitly means fishing rather than hunting generally.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3860:2",
+      "english": "APPOINTED",
+      "arabic": "عين",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "عيّن is the verb appointed with normal omitted vowel/shadda marks.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1979:1",
+      "english": "GROWING",
+      "arabic": "ينمو",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The natural finite verb expresses the growing action; surface inflection is not exclusion.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1752:2",
+      "english": "SELLING",
+      "arabic": "يبيع",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The finite verb expresses selling naturally; retain English verb sense.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2155:0",
+      "english": "FOLLOWS",
+      "arabic": "يلي",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "يلي means follows in sequence.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2525:2",
+      "english": "DISPLAYED",
+      "arabic": "عرض",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "عرض can be read عُرض, was displayed; the past verbal sense is natural.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "3242:0",
+      "english": "ENCOURAGE",
+      "arabic": "نشجع",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The finite first-person plural naturally expresses the action encourage.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2275:2",
+      "english": "PROFESSIONALS",
+      "arabic": "المهنيين",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Natural plural professionals with case/article variation.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1841:0",
+      "english": "PARTICULARLY",
+      "arabic": "خاصة",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "خاصة naturally expresses particularly/especially as an adverb.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2966:1",
+      "english": "DEALERS",
+      "arabic": "تجار",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Dealers as traders is a valid general noun mapping.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1959:0",
+      "english": "CLASSIFIEDS",
+      "arabic": "إعلانات مبوبة",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Naturally spaced classified-advertisement phrase.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2902:1",
+      "english": "EXPLAIN",
+      "arabic": "فسر",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "فسر is a natural verb explain; other valid equivalents do not exclude it.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2288:0",
+      "english": "NEWSLETTERS",
+      "arabic": "النشرات الإخبارية",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Standard plural newsletter phrase, preserved with spaces.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2153:1",
+      "english": "COUNTER",
+      "arabic": "مضاد",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Counter as opposing is the adjective sense; record it to distinguish the counting-device noun under this headword.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2142:1",
+      "english": "OPENING",
+      "arabic": "الافتتاح",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Article variant of the inauguration noun remains valid.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1663:0",
+      "english": "TEN",
+      "arabic": "العشرة",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "The nominal number ten is natural with an article; POS noun is appropriate here.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "2038:1",
+      "english": "COMPREHENSIVE",
+      "arabic": "شامل",
+      "before": "natural-preferred",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Comprehensive is naturally expressed by this adjective.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    },
+    {
+      "sourceId": "1791:0",
+      "english": "CLIENTS",
+      "arabic": "زبائن",
+      "before": "valid-alternative",
+      "after": "batch004-qa-independent-pass",
+      "reason": "Clients/customers is a natural MSA noun; competing synonyms are legitimate.",
+      "confidence": "high",
+      "productionMetadataChanged": false
+    }
+  ],
+  "disagreeingRelationships": 4,
+  "fieldDisagreements": 12,
+  "highConfidenceFieldCorrections": 12,
+  "unapplied": 0,
+  "disagreementsByField": {
+    "status": 2,
+    "allowedForEnToAr": 2,
+    "allowedForArToEn": 2,
+    "preferredForEnToAr": 2,
+    "preferredForArToEn": 2,
+    "sense": 2
+  },
+  "textCorrections": 0,
+  "assessment": "Bounded same-assistant QA with controlled relationship-specific POS and short senses. See measured agreement and all disagreements; no independent-human certification. Batch005 has not begun.",
+  "measurement": "Original frozen judgments versus a fresh second pass shown English and Arabic without original status/preferences/reference. Same assistant retains conversation context; not blinded independent-human accuracy. Unknown allowance is a third outcome. Sense denominator is rows with an old or new label; disagreements include label wording and scope, not only semantic errors."
+}

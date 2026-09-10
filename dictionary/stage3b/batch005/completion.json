@@ -1,0 +1,1759 @@
+{
+  "batch": {
+    "headwords": 500,
+    "relationships": 1321,
+    "headwordStatus": {
+      "approved": 460,
+      "review": 40
+    },
+    "relationshipStatus": {
+      "approved": 1027,
+      "review": 290,
+      "rejected": 4
+    },
+    "register": {
+      "msa": 1261,
+      "uncertain": 58,
+      "dialect": 2
+    },
+    "allowedEnToAr": 1027,
+    "allowedArToEn": 1027,
+    "preferredEnToAr": 485,
+    "preferredArToEn": 485,
+    "restrictedEnToAr": 20,
+    "restrictedArToEn": 20,
+    "allowedNonpreferredArToEn": 542,
+    "posAssignments": 1284,
+    "unresolvedPos": 37,
+    "senseAssignments": 57,
+    "multiword": 59
+  },
+  "globalBefore": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 13960,
+      "approved": 1963,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 24457,
+      "approved": 4628,
+      "rejected": 382
+    },
+    "register": {
+      "msa": 5589,
+      "uncertain": 23857,
+      "dialect": 21
+    },
+    "allowedEnToAr": 3535,
+    "allowedArToEn": 4099,
+    "preferredEnToAr": 1936,
+    "preferredArToEn": 1543,
+    "restrictedEnToAr": 165,
+    "restrictedArToEn": 165,
+    "allowedNonpreferredArToEn": 2583,
+    "posAssignments": 5327,
+    "unresolvedPos": 24140,
+    "senseAssignments": 794,
+    "multiword": 1488
+  },
+  "globalAfter": {
+    "headwords": 16018,
+    "relationships": 29467,
+    "headwordStatus": {
+      "review": 13500,
+      "approved": 2423,
+      "rejected": 95
+    },
+    "relationshipStatus": {
+      "review": 23426,
+      "approved": 5655,
+      "rejected": 386
+    },
+    "register": {
+      "msa": 6850,
+      "uncertain": 22594,
+      "dialect": 23
+    },
+    "allowedEnToAr": 4562,
+    "allowedArToEn": 5126,
+    "preferredEnToAr": 2421,
+    "preferredArToEn": 2028,
+    "restrictedEnToAr": 185,
+    "restrictedArToEn": 185,
+    "allowedNonpreferredArToEn": 3125,
+    "posAssignments": 6611,
+    "unresolvedPos": 22856,
+    "senseAssignments": 851,
+    "multiword": 1488
+  },
+  "qa": {
+    "seed": "batch005-current-domains-qa-v1",
+    "sampleSize": 100,
+    "headwords": 92,
+    "strata": {
+      "rejected": 4,
+      "register": 8,
+      "reference-conflict": 8,
+      "review": 10,
+      "english-large-domain": 18,
+      "arabic-domain": 16,
+      "sense": 10,
+      "nonpreferred": 10,
+      "multiword": 6,
+      "verb": 6,
+      "approved-control": 4
+    },
+    "sampleBaseline": {
+      "headwords": 92,
+      "relationships": 100,
+      "headwordStatus": {
+        "review": 9,
+        "approved": 83
+      },
+      "relationshipStatus": {
+        "rejected": 4,
+        "review": 26,
+        "approved": 70
+      },
+      "register": {
+        "msa": 88,
+        "dialect": 2,
+        "uncertain": 10
+      },
+      "allowedEnToAr": 70,
+      "allowedArToEn": 70,
+      "preferredEnToAr": 29,
+      "preferredArToEn": 29,
+      "restrictedEnToAr": 9,
+      "restrictedArToEn": 9,
+      "allowedNonpreferredArToEn": 41,
+      "posAssignments": 92,
+      "unresolvedPos": 8,
+      "senseAssignments": 11,
+      "multiword": 9
+    },
+    "originalDecisionSha256": "a29e38b1409a1ebef0bc32faf85847abd7b463c67b79a160d677e05eddd763d5",
+    "qaReviewSha256": "282966a5de28e5087bf4c7bb3a178dc5ef7013bf65a8d976350c11556806f876",
+    "agreements": {
+      "status": {
+        "agree": 98,
+        "total": 100,
+        "percent": 98
+      },
+      "register": {
+        "agree": 100,
+        "total": 100,
+        "percent": 100
+      },
+      "allowedForEnToAr": {
+        "agree": 98,
+        "total": 100,
+        "percent": 98
+      },
+      "allowedForArToEn": {
+        "agree": 98,
+        "total": 100,
+        "percent": 98
+      },
+      "preferredForEnToAr": {
+        "agree": 97,
+        "total": 100,
+        "percent": 97
+      },
+      "preferredForArToEn": {
+        "agree": 97,
+        "total": 100,
+        "percent": 97
+      },
+      "partOfSpeech": {
+        "agree": 100,
+        "total": 100,
+        "percent": 100
+      },
+      "sense": {
+        "agree": 11,
+        "total": 12,
+        "percent": 91.67
+      }
+    },
+    "diagnosticNotes": [
+      {
+        "sourceId": "1783:0",
+        "english": "WHOSE",
+        "arabic": "الذين",
+        "before": "wrong-or-corrupt-relationship",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The supplied relative pronoun lacks the possession relation expressed by whose.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "6749:0",
+        "english": "UNCLE",
+        "arabic": "عمو",
+        "before": "dialect",
+        "after": "batch005-qa-independent-pass",
+        "reason": "This familiar uncle address is colloquial; standard عم remains a separate valid relationship.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "5024:0",
+        "english": "LIVER",
+        "arabic": "كب",
+        "before": "wrong-or-corrupt-relationship",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The truncated word has no supported organ sense; POS for the intended relationship is unresolved.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2717:1",
+        "english": "HIDE",
+        "arabic": "تبي",
+        "before": "dialect",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The Gulf want expression is neither MSA nor a translation of hide.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2452:2",
+        "english": "BATH",
+        "arabic": "باث",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "A Bath name transliteration does not supply the ordinary bathing noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3859:1",
+        "english": "STEREO",
+        "arabic": "ستيريو",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The sound-system borrowing is recognizable, but this pass does not establish its standalone MSA register convention.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2483:0",
+        "english": "BETA",
+        "arabic": "بيتا",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The Greek-letter borrowing is plausible; retain review pending register/learner-scope evidence rather than automatic approval.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3809:0",
+        "english": "GRACE",
+        "arabic": "جريس",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "This reads a name transliteration, not the grace/blessing noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2400:1",
+        "english": "ANIME",
+        "arabic": "أنيمي",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The borrowed genre spelling needs register/orthographic support, not automatic dialect rejection.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2158:0",
+        "english": "CAMP",
+        "arabic": "كامب",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The transliteration is not established as a natural MSA camp noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "7061:2",
+        "english": "OOPS",
+        "arabic": "أوبس",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The borrowed interjection is familiar but MSA register remains unresolved.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2212:2",
+        "english": "FORT",
+        "arabic": "فورت",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Name-like transliteration does not establish a natural MSA fortress noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "5528:4",
+        "english": "RAT",
+        "arabic": "فأر",
+        "before": "construction-or-sense-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Mouse versus rat is a real learner distinction; broader rodent usage remains unresolved.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2914:0",
+        "english": "LANE",
+        "arabic": "لين",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "لين can express softness or a name; it does not establish the lane/roadway sense.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1704:2",
+        "english": "DETAIL",
+        "arabic": "التفاصيل",
+        "before": "construction-or-sense-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The singular/uncountable detail versus plural details relationship needs a supported construction before approval.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1731:4",
+        "english": "INSTALLATION",
+        "arabic": "تركيب التثبيت",
+        "before": "unsuitable-pending-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The redundant installation compound is not a clean standalone label; preserve for review.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2064:2",
+        "english": "CLAIMS",
+        "arabic": "2- المطالبات",
+        "before": "unsuitable-pending-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The numbered editorial prefix is extraneous translation data; no silent stripping.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2071:5",
+        "english": "TOUCH",
+        "arabic": "لمسة اللمس",
+        "before": "unsuitable-pending-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The redundant genitive touch label is not a natural isolated equivalent.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2166:2",
+        "english": "FILL",
+        "arabic": "املا",
+        "before": "orthography-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The intended fill imperative is recognizable, but its final hamza is missing.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2808:1",
+        "english": "IDEAL",
+        "arabic": "ديال",
+        "before": "unsuitable-pending-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "This is not an established MSA ideal equivalent; retain withheld without inventing a replacement.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1784:0",
+        "english": "COVERAGE",
+        "arabic": "الشمول",
+        "before": "construction-or-sense-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Comprehensiveness/inclusion is not necessarily coverage; a construction is needed.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1758:0",
+        "english": "OLDER",
+        "arabic": "الاقدم",
+        "before": "orthography-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Recognizable older/earlier adjective, but the initial hamza is missing.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "5758:1",
+        "english": "BOMB",
+        "arabic": "بله",
+        "before": "unsuitable-pending-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The supplied form does not establish a bomb meaning or a secure register.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2341:0",
+        "english": "REVENUE",
+        "arabic": "ايرادات",
+        "before": "orthography-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The revenue plural has omitted initial hamza; preserve for orthographic review.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "6580:1",
+        "english": "BUTLER",
+        "arabic": "بتلر",
+        "before": "register-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Name-like borrowing does not establish the domestic-service role in natural MSA.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2140:3",
+        "english": "SORRY",
+        "arabic": "آسفه",
+        "before": "orthography-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The final ه needs orthographic review for the feminine sorry adjective.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2001:1",
+        "english": "ERRORS",
+        "arabic": "اخطاء",
+        "before": "orthography-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The intended errors noun lacks the initial hamza.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2179:1",
+        "english": "CLUBS",
+        "arabic": "اندية",
+        "before": "orthography-review",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The clubs plural lacks the initial hamza.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2533:0",
+        "english": "SAMPLES",
+        "arabic": "العينات",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard plural samples with an article; both directions remain valid.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2533:1",
+        "english": "SAMPLES",
+        "arabic": "عينات",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Natural learner-facing samples noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2832:2",
+        "english": "EVIL",
+        "arabic": "شر",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "شر naturally names evil as a noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2857:3",
+        "english": "MIXED",
+        "arabic": "المختلط",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The definite mixed adjective is a valid variant.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3583:1",
+        "english": "ACQUISITION",
+        "arabic": "اقتناء",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Acquisition as obtaining/possession is naturally expressed by اقتناء.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2607:0",
+        "english": "RINGS",
+        "arabic": "الحلقات",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The rings/loops sense is legitimate and separate from finger jewelry.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "4603:3",
+        "english": "CHRONIC",
+        "arabic": "المزمن",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The definite chronic adjective is a valid form.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3158:3",
+        "english": "LENS",
+        "arabic": "العدسة",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The definite lens noun is valid even when another article form is preferred.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "4696:1",
+        "english": "PLEASED",
+        "arabic": "مسرور",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "مسرور naturally means pleased.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2812:0",
+        "english": "PIECES",
+        "arabic": "القطع",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard plural pieces with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "7624:1",
+        "english": "ENSURES",
+        "arabic": "يضمن",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "يضمن naturally expresses ensures; competing synonyms do not exclude it.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3131:1",
+        "english": "LINEAR",
+        "arabic": "خطي",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "خطي is a standard linear adjective, including ordinary mathematical use.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2244:4",
+        "english": "DELETE",
+        "arabic": "حذف",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The Arabic action citation can express the English verb delete; no automatic morphology exclusion.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2293:0",
+        "english": "ATOM",
+        "arabic": "ذرة",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Natural atom noun; also a homograph of corn, which crossings can disambiguate.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2212:1",
+        "english": "FORT",
+        "arabic": "الحصن",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard fort noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1785:2",
+        "english": "COUPLE",
+        "arabic": "ثنائي",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "ثنائي can name a duo/couple, a legitimate noun relationship.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1943:2",
+        "english": "ALONE",
+        "arabic": "وحيد",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "وحيد is a natural alone/solitary adjective.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2289:2",
+        "english": "ADULTS",
+        "arabic": "بالغين",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The oblique plural adults is natural MSA; case morphology does not exclude it.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2071:3",
+        "english": "TOUCH",
+        "arabic": "اللمس",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The touching/touch noun is valid with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2919:2",
+        "english": "EXPORT",
+        "arabic": "تصدير",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "تصدير naturally names exporting/export as an activity.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1912:0",
+        "english": "CLAIM",
+        "arabic": "ادعاء",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "ادعاء is a correctly spelled MSA claim noun with hamzat-wasl.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3647:0",
+        "english": "PEARL",
+        "arabic": "اللؤلؤ",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "اللؤلؤ is the natural collective/material pearl noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2272:1",
+        "english": "STATED",
+        "arabic": "ذكر",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "ذكر means stated/mentioned; secondary equivalents remain valid.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1715:0",
+        "english": "SWITCH",
+        "arabic": "التبديل",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "التبديل names the act of switching, an English switch noun use.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1903:1",
+        "english": "CRIME",
+        "arabic": "الجريمة",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard crime noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "4937:3",
+        "english": "ROUTINE",
+        "arabic": "الروتينية",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The feminine definite routine adjective is valid.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2550:4",
+        "english": "SLEEP",
+        "arabic": "النوم",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard sleep activity noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3861:1",
+        "english": "TASTE",
+        "arabic": "ذوق",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "ذوق naturally expresses taste; do not force an aesthetic-only sense label.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3513:2",
+        "english": "FLEXIBLE",
+        "arabic": "مرن",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Natural flexible adjective.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2821:1",
+        "english": "TRENDS",
+        "arabic": "الاتجاهات",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The directions/tendencies noun legitimately expresses trends.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2881:0",
+        "english": "NOISE",
+        "arabic": "ضجيج",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Natural noise noun; synonyms do not make it an unfair reverse clue.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1782:3",
+        "english": "CALLS",
+        "arabic": "مكالمات",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "مكالمات naturally supplies calls.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3256:1",
+        "english": "PILOT",
+        "arabic": "طيار",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "طيار naturally supplies a pilot.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2176:0",
+        "english": "CONTACTS",
+        "arabic": "الاتصالات",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "الاتصالات can express contacts/communications; the noun relationship remains valid.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1904:0",
+        "english": "COUNT",
+        "arabic": "كونت",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "كونت is the conventional noble-title borrowing, distinct from numerical count.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2953:2",
+        "english": "AGES",
+        "arabic": "العصور",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The ages/eras noun is distinct from people's ages.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2607:2",
+        "english": "RINGS",
+        "arabic": "حلقات",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "حلقات expresses rings as loops rather than jewelry.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1970:3",
+        "english": "DRUGS",
+        "arabic": "المخدرات",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "المخدرات supplies the narcotics sense, distinct from therapeutic drugs.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2031:2",
+        "english": "RECOVERY",
+        "arabic": "التعافي",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The recovery noun expresses return to health, distinguished from retrieval.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2953:1",
+        "english": "AGES",
+        "arabic": "عصور",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "عصور naturally names historical ages/eras.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1902:2",
+        "english": "MASS",
+        "arabic": "قداس",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "قداس is the religious-service sense of mass, not physical quantity.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2682:3",
+        "english": "APPEAL",
+        "arabic": "الاستئناف",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The appeal noun is a legal challenge, distinct from a general request.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2031:5",
+        "english": "RECOVERY",
+        "arabic": "الاسترداد",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "الاسترداد expresses recovering/retrieving something rather than health recovery.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1989:1",
+        "english": "DATES",
+        "arabic": "المواعيد",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "المواعيد expresses dates as appointments, distinct from calendar dates.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2355:0",
+        "english": "SIGNS",
+        "arabic": "العلامات",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard signs noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2706:4",
+        "english": "DRESS",
+        "arabic": "لباس",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "لباس names dress/clothing generally and is a valid noun sense.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "6213:1",
+        "english": "SILENCE",
+        "arabic": "الصمت",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard silence noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2227:1",
+        "english": "BOAT",
+        "arabic": "القارب",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard boat noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2048:4",
+        "english": "ORANGE",
+        "arabic": "برتقالية",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The feminine orange-color adjective is valid.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1662:1",
+        "english": "IMPLEMENTATION",
+        "arabic": "التنفيذ",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard implementation noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "4236:0",
+        "english": "SHADOW",
+        "arabic": "الظل",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard shadow noun with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "5337:0",
+        "english": "HONEST",
+        "arabic": "صادقة",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The feminine honest adjective is valid, not a separate invented sense.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2052:2",
+        "english": "THEME",
+        "arabic": "الموضوع",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "الموضوع naturally expresses the subject/theme noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1761:1",
+        "english": "ELEMENTS",
+        "arabic": "العناصر",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Standard plural elements with article.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2642:0",
+        "english": "AHEAD",
+        "arabic": "في المستقبل",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "In the future naturally expresses the temporal ahead sense.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "7609:2",
+        "english": "SUNRISE",
+        "arabic": "شروق الشمس",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The naturally spaced phrase explicitly means sunrise.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3068:2",
+        "english": "POLL",
+        "arabic": "استطلاع الرأي",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The naturally spaced opinion-poll phrase is a good learner equivalent.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1950:3",
+        "english": "FLIGHT",
+        "arabic": "رحلة طيران",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The phrase explicitly means an air flight.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3292:0",
+        "english": "PATENT",
+        "arabic": "براءة اختراع",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The standard naturally spaced patent phrase is appropriate.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3008:0",
+        "english": "ANYWAY",
+        "arabic": "على أية حال",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The phrase naturally expresses anyway/in any case.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "1931:1",
+        "english": "ENABLE",
+        "arabic": "تمكين",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The action citation تمكين is a natural equivalent for the English infinitive enable.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2110:0",
+        "english": "DEFINE",
+        "arabic": "عرف",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "عرف can be read عرّف, define; lack of vowel/shadda marks does not invalidate the verb.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3097:0",
+        "english": "KILLED",
+        "arabic": "قتل",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "قتل supports killed in the past verbal reading.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2071:1",
+        "english": "TOUCH",
+        "arabic": "لمس",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "لمس naturally expresses the touching action.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2244:0",
+        "english": "DELETE",
+        "arabic": "يحذف",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "يحذف naturally expresses the verb delete.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "5188:3",
+        "english": "ANNOUNCE",
+        "arabic": "إعلان",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "إعلان is an accepted Arabic action citation for announce; English POS remains verb.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "3017:1",
+        "english": "CIRCLE",
+        "arabic": "دائرة",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "Natural circle noun.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2729:4",
+        "english": "FRAMES",
+        "arabic": "إطارات",
+        "before": "natural-preferred",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The correctly spelled frames plural is natural.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "2151:1",
+        "english": "PLACED",
+        "arabic": "وضعت",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "The past verb placed has a natural Arabic finite form.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      },
+      {
+        "sourceId": "5785:2",
+        "english": "INVEST",
+        "arabic": "استثمار",
+        "before": "valid-alternative",
+        "after": "batch005-qa-independent-pass",
+        "reason": "استثمار naturally cites the investing action; surface infinitive morphology need not match.",
+        "confidence": "high",
+        "productionMetadataChanged": false
+      }
+    ],
+    "disagreeingRelationships": 3,
+    "fieldDisagreements": 13,
+    "highConfidenceFieldCorrections": 13,
+    "unapplied": 0,
+    "disagreementsByField": {
+      "status": 2,
+      "allowedForEnToAr": 2,
+      "allowedForArToEn": 2,
+      "preferredForEnToAr": 3,
+      "preferredForArToEn": 3,
+      "sense": 1
+    },
+    "textCorrections": 0,
+    "assessment": "Bounded same-assistant QA with controlled relationship-specific POS and short senses. See measured agreement and all disagreements; no independent-human certification. Batch006 has not begun.",
+    "measurement": "Original frozen judgments versus a fresh second pass shown English and Arabic without original status/preferences/reference. Same assistant retains conversation context; not blinded independent-human accuracy. Unknown allowance is a third outcome. Sense denominator is rows with an old or new label; disagreements include label wording and scope, not only semantic errors."
+  },
+  "domainCoverage": {
+    "scope": "Unique canonical answers in full size-specific approved index, matching frozen crossing-support constraints. No used-word exclusions or API sampling. Not a re-solved search state.",
+    "criticallySmall": "1-3 unique canonical answers",
+    "healthy": "at least 5; descriptive headroom heuristic, not a proven sufficiency threshold",
+    "allObserved": {
+      "domains": 53456,
+      "zeroBefore": 15693,
+      "zeroToSupported": 1372,
+      "zeroRemaining": 14321,
+      "criticalBefore": 34471,
+      "criticalToHealthy": 1283,
+      "improved": 9545,
+      "unchanged": 43911,
+      "decreased": 0
+    },
+    "recurring": {
+      "domains": 6891,
+      "zeroBefore": 1806,
+      "zeroToSupported": 249,
+      "zeroRemaining": 1557,
+      "criticalBefore": 4857,
+      "criticalToHealthy": 208,
+      "improved": 1227,
+      "unchanged": 5664,
+      "decreased": 0
+    },
+    "selectedTargets": {
+      "domains": 1239,
+      "zeroBefore": 293,
+      "zeroToSupported": 249,
+      "zeroRemaining": 44,
+      "criticalBefore": 946,
+      "criticalToHealthy": 208,
+      "improved": 1099,
+      "unchanged": 140,
+      "decreased": 0
+    },
+    "byConfiguration": [
+      {
+        "size": 7,
+        "mode": "en_to_ar",
+        "domains": 0,
+        "zeroBefore": 0,
+        "zeroToSupported": 0,
+        "zeroRemaining": 0,
+        "criticalBefore": 0,
+        "criticalToHealthy": 0,
+        "improved": 0,
+        "unchanged": 0,
+        "decreased": 0
+      },
+      {
+        "size": 7,
+        "mode": "ar_to_en",
+        "domains": 65,
+        "zeroBefore": 33,
+        "zeroToSupported": 0,
+        "zeroRemaining": 33,
+        "criticalBefore": 31,
+        "criticalToHealthy": 0,
+        "improved": 3,
+        "unchanged": 62,
+        "decreased": 0
+      },
+      {
+        "size": 9,
+        "mode": "en_to_ar",
+        "domains": 798,
+        "zeroBefore": 417,
+        "zeroToSupported": 71,
+        "zeroRemaining": 346,
+        "criticalBefore": 309,
+        "criticalToHealthy": 25,
+        "improved": 224,
+        "unchanged": 574,
+        "decreased": 0
+      },
+      {
+        "size": 9,
+        "mode": "ar_to_en",
+        "domains": 1,
+        "zeroBefore": 0,
+        "zeroToSupported": 0,
+        "zeroRemaining": 0,
+        "criticalBefore": 1,
+        "criticalToHealthy": 0,
+        "improved": 0,
+        "unchanged": 1,
+        "decreased": 0
+      },
+      {
+        "size": 11,
+        "mode": "en_to_ar",
+        "domains": 904,
+        "zeroBefore": 438,
+        "zeroToSupported": 75,
+        "zeroRemaining": 363,
+        "criticalBefore": 368,
+        "criticalToHealthy": 25,
+        "improved": 267,
+        "unchanged": 637,
+        "decreased": 0
+      },
+      {
+        "size": 11,
+        "mode": "ar_to_en",
+        "domains": 3383,
+        "zeroBefore": 724,
+        "zeroToSupported": 90,
+        "zeroRemaining": 634,
+        "criticalBefore": 2635,
+        "criticalToHealthy": 142,
+        "improved": 621,
+        "unchanged": 2762,
+        "decreased": 0
+      },
+      {
+        "size": 13,
+        "mode": "en_to_ar",
+        "domains": 365,
+        "zeroBefore": 28,
+        "zeroToSupported": 2,
+        "zeroRemaining": 26,
+        "criticalBefore": 326,
+        "criticalToHealthy": 1,
+        "improved": 45,
+        "unchanged": 320,
+        "decreased": 0
+      },
+      {
+        "size": 13,
+        "mode": "ar_to_en",
+        "domains": 1375,
+        "zeroBefore": 166,
+        "zeroToSupported": 11,
+        "zeroRemaining": 155,
+        "criticalBefore": 1187,
+        "criticalToHealthy": 15,
+        "improved": 67,
+        "unchanged": 1308,
+        "decreased": 0
+      }
+    ]
+  },
+  "generationComparison": [
+    {
+      "size": 7,
+      "mode": "en_to_ar",
+      "beforeSuccess": 100,
+      "afterSuccess": 96.66666666666667,
+      "beforeMedianMs": 5.052520500001265,
+      "afterMedianMs": 3.6555419999931473,
+      "beforeP95Ms": 209.7762920000241,
+      "afterP95Ms": 21.835707999998704,
+      "beforeCandidates": 2000,
+      "afterCandidates": 2000,
+      "beforeMedianWords": 26,
+      "afterMedianWords": 26,
+      "beforeMedianCrossings": 36,
+      "afterMedianCrossings": 36,
+      "readiness": "READY"
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "beforeSuccess": 43.333333333333336,
+      "afterSuccess": 90,
+      "beforeMedianMs": 1702.1210624999949,
+      "afterMedianMs": 36.154561999996076,
+      "beforeP95Ms": 1702.7835000000014,
+      "afterP95Ms": 1702.8180830000056,
+      "beforeCandidates": 2000,
+      "afterCandidates": 2000,
+      "beforeMedianWords": 42,
+      "afterMedianWords": 42,
+      "beforeMedianCrossings": 57,
+      "afterMedianCrossings": 57,
+      "readiness": "NEARLY READY"
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "beforeSuccess": 30,
+      "afterSuccess": 63.33333333333333,
+      "beforeMedianMs": 1803.6237710000132,
+      "afterMedianMs": 623.209749499998,
+      "beforeP95Ms": 1804.4879580000124,
+      "afterP95Ms": 1805.0642499999958,
+      "beforeCandidates": 2000,
+      "afterCandidates": 2000,
+      "beforeMedianWords": 60,
+      "afterMedianWords": 60,
+      "beforeMedianCrossings": 85,
+      "afterMedianCrossings": 85,
+      "readiness": "NOT READY"
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "beforeSuccess": 6.666666666666667,
+      "afterSuccess": 50,
+      "beforeMedianMs": 1806.1233745000063,
+      "afterMedianMs": 1643.288708999993,
+      "beforeP95Ms": 1807.2629999999772,
+      "afterP95Ms": 1807.8734159999876,
+      "beforeCandidates": 2000,
+      "afterCandidates": 2000,
+      "beforeMedianWords": 78,
+      "afterMedianWords": 80,
+      "beforeMedianCrossings": 119.5,
+      "afterMedianCrossings": 119,
+      "readiness": "NOT READY"
+    },
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "beforeSuccess": 93.33333333333333,
+      "afterSuccess": 96.66666666666667,
+      "beforeMedianMs": 28.041228999994928,
+      "afterMedianMs": 25.117041499979678,
+      "beforeP95Ms": 3002.3249160000123,
+      "afterP95Ms": 159.63937499999884,
+      "beforeCandidates": 1429,
+      "afterCandidates": 1807,
+      "beforeMedianWords": 22,
+      "afterMedianWords": 22,
+      "beforeMedianCrossings": 41,
+      "afterMedianCrossings": 41,
+      "readiness": "READY"
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "beforeSuccess": 83.33333333333334,
+      "afterSuccess": 96.66666666666667,
+      "beforeMedianMs": 820.8554375000022,
+      "afterMedianMs": 709.4537080000155,
+      "beforeP95Ms": 3991.5646250000136,
+      "afterP95Ms": 1521.464082999999,
+      "beforeCandidates": 1801,
+      "afterCandidates": 2223,
+      "beforeMedianWords": 32,
+      "afterMedianWords": 32,
+      "beforeMedianCrossings": 64,
+      "afterMedianCrossings": 64,
+      "readiness": "READY"
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "beforeSuccess": 0,
+      "afterSuccess": 26.666666666666668,
+      "beforeMedianMs": 4501.6759374999965,
+      "afterMedianMs": 4502.988687499979,
+      "beforeP95Ms": 4503.176166999998,
+      "afterP95Ms": 4504.552292000008,
+      "beforeCandidates": 1917,
+      "afterCandidates": 2373,
+      "beforeMedianWords": null,
+      "afterMedianWords": 44,
+      "beforeMedianCrossings": null,
+      "afterMedianCrossings": 88,
+      "readiness": "NOT READY"
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "beforeSuccess": 0,
+      "afterSuccess": 0,
+      "beforeMedianMs": 4512.185958000016,
+      "afterMedianMs": 4515.914875000002,
+      "beforeP95Ms": 4515.270999999979,
+      "afterP95Ms": 4519.065624999988,
+      "beforeCandidates": 1958,
+      "afterCandidates": 2417,
+      "beforeMedianWords": null,
+      "afterMedianWords": null,
+      "beforeMedianCrossings": null,
+      "afterMedianCrossings": null,
+      "readiness": "NOT READY"
+    }
+  ],
+  "residualDiagnostics": {
+    "selection": "First five failed benchmark seeds per configuration, or all when fewer; deterministic, deliberately targeted, not random.",
+    "runs": 26,
+    "stillFailed": 26,
+    "observations": 15369,
+    "uncapturedObservationCalls": 1625950,
+    "zeroObservations": 3681,
+    "reasons": {
+      "full-pool support absent": {
+        "observations": 2857,
+        "runs": 26
+      },
+      "used-word exhaustion": {
+        "observations": 541,
+        "runs": 26
+      },
+      "sampled-pool support absent": {
+        "observations": 283,
+        "runs": 13
+      },
+      "propagation/search-history restriction": {
+        "observations": 0,
+        "runs": 0
+      }
+    },
+    "configurations": [
+      {
+        "size": 13,
+        "mode": "en_to_ar",
+        "sampledRuns": 5,
+        "stillFailed": 5,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 51,
+            "runs": 5
+          },
+          "used-word exhaustion": {
+            "observations": 76,
+            "runs": 5
+          },
+          "sampled-pool support absent": {
+            "observations": 12,
+            "runs": 4
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      },
+      {
+        "size": 13,
+        "mode": "ar_to_en",
+        "sampledRuns": 5,
+        "stillFailed": 5,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 169,
+            "runs": 5
+          },
+          "used-word exhaustion": {
+            "observations": 94,
+            "runs": 5
+          },
+          "sampled-pool support absent": {
+            "observations": 0,
+            "runs": 0
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      },
+      {
+        "size": 11,
+        "mode": "ar_to_en",
+        "sampledRuns": 5,
+        "stillFailed": 5,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 146,
+            "runs": 5
+          },
+          "used-word exhaustion": {
+            "observations": 15,
+            "runs": 5
+          },
+          "sampled-pool support absent": {
+            "observations": 0,
+            "runs": 0
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      },
+      {
+        "size": 9,
+        "mode": "ar_to_en",
+        "sampledRuns": 1,
+        "stillFailed": 1,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 60,
+            "runs": 1
+          },
+          "used-word exhaustion": {
+            "observations": 3,
+            "runs": 1
+          },
+          "sampled-pool support absent": {
+            "observations": 0,
+            "runs": 0
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      },
+      {
+        "size": 11,
+        "mode": "en_to_ar",
+        "sampledRuns": 5,
+        "stillFailed": 5,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 1095,
+            "runs": 5
+          },
+          "used-word exhaustion": {
+            "observations": 187,
+            "runs": 5
+          },
+          "sampled-pool support absent": {
+            "observations": 180,
+            "runs": 5
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      },
+      {
+        "size": 9,
+        "mode": "en_to_ar",
+        "sampledRuns": 3,
+        "stillFailed": 3,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 763,
+            "runs": 3
+          },
+          "used-word exhaustion": {
+            "observations": 127,
+            "runs": 3
+          },
+          "sampled-pool support absent": {
+            "observations": 48,
+            "runs": 3
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      },
+      {
+        "size": 7,
+        "mode": "en_to_ar",
+        "sampledRuns": 1,
+        "stillFailed": 1,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 267,
+            "runs": 1
+          },
+          "used-word exhaustion": {
+            "observations": 9,
+            "runs": 1
+          },
+          "sampled-pool support absent": {
+            "observations": 43,
+            "runs": 1
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      },
+      {
+        "size": 7,
+        "mode": "ar_to_en",
+        "sampledRuns": 1,
+        "stillFailed": 1,
+        "reasons": {
+          "full-pool support absent": {
+            "observations": 306,
+            "runs": 1
+          },
+          "used-word exhaustion": {
+            "observations": 30,
+            "runs": 1
+          },
+          "sampled-pool support absent": {
+            "observations": 0,
+            "runs": 0
+          },
+          "propagation/search-history restriction": {
+            "observations": 0,
+            "runs": 0
+          }
+        }
+      }
+    ],
+    "limitations": [
+      "At most the first 600 unique observations per run; uncaptured calls may repeat. Counts are not unbiased failure frequencies.",
+      "Full-pool zero is a missing support for this branch, not proof that every alternative branch is unsatisfiable. Empty support sets can originate from propagated contradictions.",
+      "Full-pool support with a zero live domain identifies additional propagation, used-word or sampling restrictions; it does not establish that the complete puzzle is solvable.",
+      "Observer overhead can affect deadlines. No larger-budget or solver-change experiment was run in this dictionary task."
+    ]
+  },
+  "recommendation": "Do not begin an automatic next 500-word batch. Refresh and check the recurring residual full-pool gaps first; a narrower learner-quality review targeting English large-grid domains and Arabic short crossing domains is justified where suitable unresolved vocabulary actually matches. Missing approved support remains measured, alongside used-word and Arabic sampling losses. These bounded traces do not prove that solver search is now the primary limit, especially for 13×13 English.",
+  "checks": {
+    "date": "2026-09-09T23:32:14.945403+00:00",
+    "dictionaryAudit": {
+      "result": "passed",
+      "unexplainedRelationshipLosses": 0
+    },
+    "tests": {
+      "result": "passed",
+      "files": 24,
+      "tests": 375,
+      "addedBatch005Tests": 11
+    },
+    "lint": {
+      "result": "passed"
+    },
+    "build": {
+      "result": "passed",
+      "note": "Fixed TypeScript literal-union comparison limit with erased, individually checked type annotations; semantic dictionary hash unchanged."
+    },
+    "approvedBenchmark": {
+      "result": "passed",
+      "runs": 240,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "returnedPuzzleQualityFailures": 0
+    },
+    "beforeDiagnostics": {
+      "result": "passed",
+      "runs": 133
+    },
+    "afterDiagnostics": {
+      "result": "passed",
+      "runs": 26
+    },
+    "comparisonHashChecks": "passed",
+    "dictionarySemanticSha256": "cad59502997dd414cc1af80352ad623d93caba1ff6a783ddd6ad1386ac9a86ab",
+    "productionPolicy": "compatibility",
+    "solverChanges": false,
+    "cefrAssignments": 0,
+    "batch006Started": false
+  }
+}

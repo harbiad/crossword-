@@ -2,7 +2,7 @@ import { test, expect } from 'vitest';
 import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { cpus, platform, release } from 'node:os';
 import { execFileSync } from 'node:child_process';
-import { DICTIONARY_BATCH003_QA as dictionary } from '../api/_lib/dictionary.stage3b.batch003.qa.generated';
+import { DICTIONARY_BATCH006_QA as dictionary } from '../api/_lib/dictionary.stage3b.batch006.qa.generated';
 import { candidatePoolLimit } from '../api/_lib/candidatePool';
 import { createCandidateIndex, selectCandidates, type Mode } from '../api/_lib/candidates';
 import { eligibleTranslation, normalizeArabicWord, type DictionaryPolicy } from '../api/_lib/dictionary';
@@ -13,9 +13,10 @@ import { metrics, resetMetrics } from './metrics';
 import { observations, resetObservations } from './approved-metrics';
 import { summarize } from './statistics';
 
-const directory = process.env.APPROVED_BENCH_OUTPUT ?? 'generator_failure_analysis/after';
+const directory = process.env.APPROVED_BENCH_OUTPUT ?? 'benchmarks/results/approved-current';
 const seeds = Array.from({ length: 30 }, (_, i) => i + 1);
-const policies: DictionaryPolicy[] = ['compatibility', 'approved-only'];
+const policies: DictionaryPolicy[] = process.env.APPROVED_BENCH_POLICY === 'approved-only' ? ['approved-only'] : ['compatibility', 'approved-only'];
+if (process.env.APPROVED_BENCH_POLICY && process.env.APPROVED_BENCH_POLICY !== 'approved-only') throw new Error('Unsupported benchmark policy filter');
 const modes: Mode[] = ['en_to_ar', 'ar_to_en'];
 const sizes = [7, 9, 11, 13];
 function random(seed: number) { let state = seed >>> 0; return () => ((state = (Math.imul(state, 1664525) + 1013904223) >>> 0) / 4294967296); }
@@ -44,7 +45,7 @@ function provenance(policy: DictionaryPolicy, mode: Mode) {
 test('paired approved dictionary generation measurement', () => {
   const api = readFileSync('api/generate.ts', 'utf8');
   expect(api).toContain('candidatePoolLimit(gridSize, mode)');
-  expect(api).toContain("createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility')");
+  expect(api).toContain("createCandidateIndex(DICTIONARY_BATCH006_QA, 'compatibility')");
   const indexes = new Map(policies.map(p => [p, createCandidateIndex(dictionary, p)]));
   const sources = new Map(policies.flatMap(p => modes.map(m => [`${p}:${m}`, provenance(p, m)] as const)));
   const coverage: object[] = [];
@@ -105,7 +106,7 @@ test('paired approved dictionary generation measurement', () => {
   })));
   writeFileSync(`${directory}/runs.csv`, csv(runs));
   writeFileSync(`${directory}/failure_analysis.csv`, csv(runs.filter(r => !r.success).map(r => ({ seed: r.seed, size: r.size, mode: r.mode, policy: r.policy, reason: r.failureReason, solverAttempts: r.solverAttempts, timeoutChecks: r.timeoutChecks, viableTemplates: r.viableTemplates, validationErrors: r.validationErrors, qualityErrors: r.qualityErrors }))));
-  writeFileSync(`${directory}/summary.json`, JSON.stringify({ started, finished: new Date().toISOString(), commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), runtime: process.version, machine: { platform: platform(), release: release(), cpu: cpus()[0]?.model }, seeds, band: 'advanced', candidateLimit: process.env.APPROVED_BENCH_CURRENT_API !== '0' ? 'production-size-specific' : 2000, warmups: 16, configurations, returnedPuzzleQualityFailures: runs.filter(r => r.qualityErrors.length).length }, null, 2) + '\n');
-  expect(runs).toHaveLength(480);
+  writeFileSync(`${directory}/summary.json`, JSON.stringify({ started, finished: new Date().toISOString(), commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), runtime: process.version, machine: { platform: platform(), release: release(), cpu: cpus()[0]?.model }, seeds, band: 'advanced', candidateLimit: process.env.APPROVED_BENCH_CURRENT_API !== '0' ? 'production-size-specific' : 2000, warmups: policies.length * modes.length * sizes.length, configurations, returnedPuzzleQualityFailures: runs.filter(r => r.qualityErrors.length).length }, null, 2) + '\n');
+  expect(runs).toHaveLength(seeds.length * sizes.length * modes.length * policies.length);
   expect(runs.filter(r => r.qualityErrors.length)).toEqual([]);
 });

@@ -1,0 +1,45 @@
+1|Xn||The incomplete fragment is not a standalone equivalent for praise; do not supply missing words silently.
+2|Xn||This expresses the Gospel, not the general angel noun; rejection remains justified.
+3|Rn||The music borrowing needs supported register/usage evidence before MSA approval; familiarity alone is insufficient.
+4|Rn||The short form does not establish the music term or a valid MSA borrowing; retain uncertainty without repair.
+5|Un||The name-like transliteration does not establish the general angel meaning; keep both directions withheld and preserve the record.
+6|On||The plural disc noun is recognizable but its initial hamza spelling needs correction review; do not silently normalize display.
+7|On||The inclusion noun is recognizable with omitted hamza; preserve display and leave orthographic review.
+8|Cn||Abstract drawing power is not enough to approve the isolated plural attractions mapping without context.
+9|Cn||The note/observation noun does not clearly express noted in isolation; defer rather than impose an automatic rejection.
+10|Oj||The feminine authenticity adjective is recognizable, but the missing hamza remains an unresolved spelling issue.
+11|An|broad beans|Broad beans are a valid sense of beans; the Arabic article and narrower common variety do not justify exclusion.
+12|Pn||Public utilities are naturally expressed by this multiword MSA noun phrase.
+13|Pn||Natural common bean expression; keep it preferred without excluding other legitimate bean varieties.
+14|Pj||This Arabic adjective expresses the shaved state and warrants adjective POS.
+15|Pn|extraterrestrial|The substantivized Arabic expression legitimately denotes an extraterrestrial being, distinct from a foreign person.
+16|Pb||The accusative Arabic form is adverbial here and naturally conveys performing or acting solo.
+17|An||Facilities/public services are valid utilities; broader nominal alternatives remain fair with crossings.
+18|Pn||Natural MSA praise noun, including commendation without a forced religious restriction.
+19|An||Definite plural modifications is a valid article variant, allowed but nonpreferred.
+20|An||Established yen currency noun with the article; another spelling preference does not affect eligibility.
+21|An||Definite drinking-vessel noun is a valid mug equivalent.
+22|An||Natural plural organisations with an article; British English spelling remains valid.
+23|An|compact discs|Compact discs are a genuine disc sense; retain the short sense label and allow the relationship.
+24|An||Natural definite body-part tongue noun; article variation is harmless.
+25|An||The attachment/annex noun is valid; other meanings of the Arabic clue do not exclude this one.
+26|An||Established yoga borrowing with the article; nonpreference is not a register concern or exclusion.
+27|Pv||Natural imperative meaning determine the location; a multiword Arabic command is a valid locate rendering.
+28|Pv||The finite Arabic past naturally expresses monitoring/observing; cross-language inflection differences are acceptable.
+29|Pv||The finite past naturally conveys earning; person and gender endings do not invalidate the mapping.
+30|An||English invite also has the noun use invitation; the definite Arabic invitation noun expresses that use. Assign noun to this relationship while retaining both allowances.
+31|Pv||The Arabic finite past expresses shaving and supports the verbal use of shaved.
+32|Pv||The passive Arabic past means was noted, a legitimate verbal mapping.
+33|Av||The definite verbal noun expresses the donating action; English donate is a verb, so the relationship remains verbal despite Arabic surface nominalization.
+34|Pv||Arranging/ordering is naturally expressed by the Arabic action noun; do not require an identical finite inflection.
+35|Pn||Natural unmarked tongue noun, suitable in both directions.
+36|Pv||Giving advice is an idiomatic Arabic verbal-noun construction for advise; natural spacing remains required.
+37|An||Natural definite institution noun, allowed despite nonpreference.
+38|Pn||The Arabic form can denote a group of three as a noun; do not force its other adjectival use onto this relationship.
+39|An||Natural definite expression for odds/chances; valid synonyms and number ambiguity remain acceptable with crossings.
+40|Pn||Natural nominative plural commissioners; Arabic grammatical case does not change vocabulary identity.
+41|Pv||Natural present-tense Arabic verb for helps.
+42|Pn||Natural unmarked odds/chances noun, preferred without requiring a unique reverse translation.
+43|Pj||Natural adjective for ripe or mature; related English senses are legitimate.
+44|Pj||Natural masculine adjective for solo or unaccompanied; gender agreement is not exclusion evidence.
+45|Pn||Natural noun for an annex or attachment; clue ambiguity alone is acceptable.

@@ -1,0 +1,22 @@
+{
+  "api/_lib/dictionary.stage3b.batch003.qa.generated.ts": "c178fe767a128cf4940f60992f77c51774dc108d6dedc46f6b194b54f98cfd10",
+  "api/english_arabic_10000_v3.csv": "5d8a7cf8aec620ac9a15dd30f416150e7f352d8012a051d7b5771efda2f9d55e",
+  "generator_failure_analysis/pattern_domains.csv": "4d8df614076e0323753c45237f346fa5eac20b8fecb0c57b05edfa3be7f60820",
+  "generator_failure_analysis/after/summary.json": "ebdd2f27db9bce8647e4705529f5abb6c1bcef3306ad0e532646ba1c118c4ce7",
+  "generator_failure_analysis/after/runs.json": "99da8c8d165e49af800337cdbd3fa856369aac425c2605d628fa94095077dfe3",
+  "dictionary/stage3a/decisions.json": "8b69d909df52f3fc32a62f942bb14e08526f400bec7455ad5091c6f6412346fe",
+  "dictionary/stage3b/batch001/decisions.json": "54bcf8b03011db506dc9b2f314edcb66ef155831ae1aeb7c4f77769de95bc822",
+  "dictionary/stage3b/batch002/decisions.json": "1ba6ccd67bf55a194b520a30eb80f7054c064b3c56373db0653cc746fbc9b506",
+  "dictionary/stage3b/batch003/decisions.json": "8e0f0f472a3328cb99099002d1abe9a6c68d9d04f98ea4b2eec63304908a5ead",
+  "dictionary/stage3b/batch004/selection.json": "dde0fc26f28d672936b19c6f081be4eea0f13a8e6349e78b7993c234aaebc561",
+  "dictionary/stage3b/batch004/deferred.json": "f549e9f7e0dd7291dc6bc7df51a52662989346149adb6a5846fa64d2b183bfbd",
+  "dictionary/stage3b/batch004/diagnostic_patterns.json": "d8a8d420e142c8683b245bf6db166d581343cd6903f0dbde3709b1342f81c99f",
+  "dictionary/stage3b/batch004/review-notes.txt": "f7485a3edbb1ef8c15cd21b4b4cfa19ca42eeb56f570e9c9c715f76e136abd94",
+  "dictionary/stage3b/batch004/review-details.json": "42e3f57b0ddcd1b4d1c39b08114cf8fc454bc7966e30a8f0c88d4472f158a242",
+  "dictionary/stage3b/batch004/proposals.json": "4182ace2136b3ee816c79b39138baf8c254bfaee329aa602c221eee0bb19e104",
+  "dictionary/stage3b/batch004/rejection_checks.json": "4dcb7f48215131d20ef597ba6e61282a24ffbcfbe7113941e25177d568c88da7",
+  "dictionary/stage3b/batch004/decisions.json": "c8cc51c99fc2b5ede04774cf56b8bb6a100bb3233a678e3c8d1b6665de685373",
+  "dictionary/stage3b/batch004/qa/review-notes.txt": "ffdabe5102d3a5a867bb46a29ed910438ab3133e420e412f473cfb07647d5282",
+  "dictionary/stage3b/batch004/qa/reviews.json": "d46bfc5500c0a681c2493dc2d4c791244c0edeea39e310e9d62acd0bc3104491",
+  "generator_failure_analysis/diagnostic_runs.json": "d6cab2fd7c5412fd5f9b65938d8aaf757f5023ce7ccd337f78e29727cf68e8d0"
+}

@@ -1,0 +1,167 @@
+{
+  "runs": 85,
+  "stillFailed": 85,
+  "attempts": 4591,
+  "uncapturedCalls": 6009397,
+  "excludedProbes": 4292,
+  "observations": 520992,
+  "trueGapZeros": 36856,
+  "exhaustionZeros": 5502,
+  "samplingZeros": 122,
+  "criticallySmall": 478512,
+  "configurations": [
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 30,
+      "stillFailed": 30,
+      "observations": 385476,
+      "trueGapZeros": 26164,
+      "exhaustionZeros": 4946,
+      "samplingZeros": 0,
+      "criticallySmall": 354366
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 23,
+      "stillFailed": 23,
+      "observations": 117536,
+      "trueGapZeros": 8543,
+      "exhaustionZeros": 209,
+      "samplingZeros": 0,
+      "criticallySmall": 108784
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 13,
+      "stillFailed": 13,
+      "observations": 3328,
+      "trueGapZeros": 50,
+      "exhaustionZeros": 243,
+      "samplingZeros": 26,
+      "criticallySmall": 3009
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 11,
+      "stillFailed": 11,
+      "observations": 568,
+      "trueGapZeros": 266,
+      "exhaustionZeros": 6,
+      "samplingZeros": 86,
+      "criticallySmall": 210
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 3,
+      "stillFailed": 3,
+      "observations": 180,
+      "trueGapZeros": 52,
+      "exhaustionZeros": 10,
+      "samplingZeros": 10,
+      "criticallySmall": 108
+    },
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 1,
+      "stillFailed": 1,
+      "observations": 1616,
+      "trueGapZeros": 1061,
+      "exhaustionZeros": 20,
+      "samplingZeros": 0,
+      "criticallySmall": 535
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 4,
+      "stillFailed": 4,
+      "observations": 12288,
+      "trueGapZeros": 720,
+      "exhaustionZeros": 68,
+      "samplingZeros": 0,
+      "criticallySmall": 11500
+    },
+    {
+      "size": 7,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 0,
+      "stillFailed": 0,
+      "observations": 0,
+      "trueGapZeros": 0,
+      "exhaustionZeros": 0,
+      "samplingZeros": 0,
+      "criticallySmall": 0
+    }
+  ],
+  "limitations": "Same per-attempt cap of 128 and current production settings as pre-review analysis. Runs are only remaining benchmark failures. Absolute observation counts are not independent causal failures and change with search choices, deadlines, and failure count.",
+  "remainingCommonCoverage": {
+    "recurringDomains": 1262,
+    "withPotential": 183,
+    "withoutPotential": 1079,
+    "byConfiguration": [
+      {
+        "size": 13,
+        "mode": "ar_to_en",
+        "recurringDomains": 587,
+        "withPotential": 95,
+        "withoutPotential": 492
+      },
+      {
+        "size": 11,
+        "mode": "ar_to_en",
+        "recurringDomains": 645,
+        "withPotential": 87,
+        "withoutPotential": 558
+      },
+      {
+        "size": 13,
+        "mode": "en_to_ar",
+        "recurringDomains": 0,
+        "withPotential": 0,
+        "withoutPotential": 0
+      },
+      {
+        "size": 11,
+        "mode": "en_to_ar",
+        "recurringDomains": 16,
+        "withPotential": 1,
+        "withoutPotential": 15
+      },
+      {
+        "size": 9,
+        "mode": "en_to_ar",
+        "recurringDomains": 4,
+        "withPotential": 0,
+        "withoutPotential": 4
+      },
+      {
+        "size": 7,
+        "mode": "ar_to_en",
+        "recurringDomains": 0,
+        "withPotential": 0,
+        "withoutPotential": 0
+      },
+      {
+        "size": 9,
+        "mode": "ar_to_en",
+        "recurringDomains": 10,
+        "withPotential": 0,
+        "withoutPotential": 10
+      },
+      {
+        "size": 7,
+        "mode": "en_to_ar",
+        "recurringDomains": 0,
+        "withPotential": 0,
+        "withoutPotential": 0
+      }
+    ],
+    "scope": "Only mechanical pattern matching in new unresolved, never-linguistically-reviewed common-reference headwords, retaining prior selection deferrals and existing direction flags. No Batch007 selection, review, or approval."
+  }
+}

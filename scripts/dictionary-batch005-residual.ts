@@ -1,0 +1,26 @@
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+import {registerHooks} from 'node:module';
+import {DICTIONARY_BATCH005_QA as dictionary} from '../api/_lib/dictionary.stage3b.batch005.qa.generated.ts';
+import {gridForm,matchesDomain} from './stage3b-batch005.ts';
+import {reviewCsv} from './stage3a.ts';
+import type {DomainObservation} from '../benchmarks/batch005-domain-state.ts';
+registerHooks({resolve(specifier,context,next){if(specifier.endsWith('.js')&&specifier.startsWith('.')&&context.parentURL?.startsWith(new URL('../api/',import.meta.url).href)){const ts=new URL(specifier.slice(0,-3)+'.ts',context.parentURL);if(existsSync(ts))return next(ts.href,context);}return next(specifier,context);}});
+const {createCandidateIndex}=await import('../api/_lib/candidates.ts');
+const root='dictionary/stage3b/batch005/';
+type Run={seed:number;size:number;mode:string;diagnosticSuccess:boolean;dropped:number;events:(DomainObservation&{sampledUnusedSupportUnique:number})[]};
+const runs=JSON.parse(readFileSync(root+'diagnostics/after-runs.json','utf8'))as Run[];
+const index=createCandidateIndex(dictionary,'approved-only');
+const pool=new Map<string,string[]>([...index].filter(([k])=>k.endsWith(':advanced')).flatMap(([key,groups])=>[...groups].map(([length,tiers])=>[`${key}:${length}`,[...new Set(tiers.flat().map(p=>gridForm(p.answer)))]]as const)));
+const rows=runs.filter(r=>!r.diagnosticSuccess).flatMap(r=>r.events.filter(e=>e.reason.startsWith('fill')?e.sampledUnusedSupportUnique===0:e.liveDomain===0).map(e=>{
+ const matching=(pool.get(`${r.size}:${r.mode}:advanced:${e.slot.length}`)??[]).filter(a=>matchesDomain(a,{length:e.slot.length,constraints:e.constraints}));
+ const unused=matching.filter(a=>!e.used.includes(a));
+ const reason=matching.length===0?'full-pool support absent':unused.length===0?'used-word exhaustion':e.sampledUnusedSupportUnique===0?'sampled-pool support absent':'propagation/search-history restriction';
+ return {seed:r.seed,size:r.size,mode:r.mode,template:e.template,attempt:e.attempt,row:e.slot.row,col:e.slot.col,direction:e.slot.direction,length:e.slot.length,pattern:e.pattern,constraints:e.constraints,liveDomain:e.liveDomain,fullPoolMatches:matching.length,fullPoolUnused:unused.length,sampledUnused:e.sampledUnusedSupportUnique,reason,observerReason:e.reason};
+}));
+const reasons=['full-pool support absent','used-word exhaustion','sampled-pool support absent','propagation/search-history restriction'];
+const stats=(rs:typeof rows)=>Object.fromEntries(reasons.map(reason=>{const found=rs.filter(r=>r.reason===reason);return [reason,{observations:found.length,runs:new Set(found.map(r=>`${r.size}:${r.mode}:${r.seed}`)).size}];}));
+const configurations=[...new Set(runs.map(r=>`${r.size}:${r.mode}`))].map(key=>{const selected=runs.filter(r=>`${r.size}:${r.mode}`===key);return {size:selected[0].size,mode:selected[0].mode,sampledRuns:selected.length,stillFailed:selected.filter(r=>!r.diagnosticSuccess).length,reasons:stats(rows.filter(r=>`${r.size}:${r.mode}`===key))};});
+const summary={selection:'First five failed benchmark seeds per configuration, or all when fewer; deterministic, deliberately targeted, not random.',runs:runs.length,stillFailed:runs.filter(r=>!r.diagnosticSuccess).length,observations:runs.reduce((n,r)=>n+r.events.length,0),uncapturedObservationCalls:runs.reduce((n,r)=>n+r.dropped,0),zeroObservations:rows.length,reasons:stats(rows),configurations,limitations:['At most the first 600 unique observations per run; uncaptured calls may repeat. Counts are not unbiased failure frequencies.','Full-pool zero is a missing support for this branch, not proof that every alternative branch is unsatisfiable. Empty support sets can originate from propagated contradictions.','Full-pool support with a zero live domain identifies additional propagation, used-word or sampling restrictions; it does not establish that the complete puzzle is solvable.','Observer overhead can affect deadlines. No larger-budget or solver-change experiment was run in this dictionary task.']};
+writeFileSync(root+'diagnostics/residual_domains.csv',reviewCsv(rows));
+writeFileSync(root+'diagnostics/residual_summary.json',JSON.stringify(summary,null,2)+'\n');
+console.log(JSON.stringify(summary,null,2));

@@ -1,0 +1,8 @@
+﻿"sourceId","english","original","proposedStatus","finalStatus","confidence","reason"
+"1716:3","RUSSIAN","روسيا","rejected","rejected","high","Second reading confirms a country name, not the person, language or adjective. Reject only this relationship; other Russian relationships remain valid."
+"3853:2","LEG","القدم","rejected","rejected","high","Foot is a distinct body part from leg in learner anatomy. This is not simply a morphology or synonym difference."
+"3069:1","BOOKING","جز","rejected","rejected","high","The surviving Arabic word is shearing/cutting, whereas the same headword already supplies intact reservation relationships. Preserve the corrupt record but exclude it."
+"2841:1","SUGGESTED","رحت","rejected","rejected","high","Went is a different verb from suggested; ordinary inflection does not connect these meanings. The intact participial alternatives remain available."
+"4751:0","SAD","حزن","rejected","review","medium","Reconsidered: nominal sadness can express being sad in a construction. The bare form is unsuitable for immediate approval, but grammatical flexibility prevents high-confidence categorical rejection."
+"1679:3","SPANISH","اسبانيا","rejected","rejected","high","The country Spain and the language/demonym Spanish are distinct referents. Retain the source text and reject only this country-name relationship."
+"5493:0","TIN","تين","rejected","rejected","high","Arabic figs and English tin metal are semantically unrelated. The phonetic resemblance does not support an alternative English sense."

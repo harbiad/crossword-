@@ -17,14 +17,20 @@
     "test:worker": "npm run build && vitest run --config vitest.worker.config.ts",
     "bench:lookahead": "npm run build && vitest run --config vitest.lookahead.config.ts",
     "dictionary:migrate": "node scripts/dictionary.ts migrate",
-    "dictionary:audit": "node scripts/dictionary.ts audit && node scripts/dictionary-stage2.ts audit && node scripts/dictionary-stage3a.ts audit && node scripts/dictionary-stage3b.ts audit && node scripts/dictionary-stage3b-qa.ts audit && node scripts/dictionary-stage3b-methodology.ts audit && node scripts/dictionary-batch002.ts audit && node scripts/dictionary-batch003.ts audit",
+    "dictionary:audit": "node scripts/dictionary.ts audit && node scripts/dictionary-stage2.ts audit && node scripts/dictionary-stage3a.ts audit && node scripts/dictionary-stage3b.ts audit && node scripts/dictionary-stage3b-qa.ts audit && node scripts/dictionary-stage3b-methodology.ts audit && node scripts/dictionary-batch002.ts audit && node scripts/dictionary-batch003.ts audit && node scripts/dictionary-batch004.ts audit && node scripts/dictionary-batch005.ts audit && node scripts/dictionary-batch006.ts audit",
     "dictionary:cleanup": "node scripts/dictionary-stage2.ts generate",
     "dictionary:review3a": "node scripts/dictionary-stage3a.ts generate",
     "dictionary:review3b": "node scripts/dictionary-stage3b.ts generate",
     "dictionary:qa3b": "node scripts/dictionary-stage3b-qa.ts generate",
     "dictionary:methodology": "node scripts/dictionary-stage3b-methodology.ts generate",
     "dictionary:batch002": "node scripts/dictionary-batch002.ts generate",
-    "dictionary:batch003": "node scripts/dictionary-batch003.ts generate"
+    "dictionary:batch003": "node scripts/dictionary-batch003.ts generate",
+    "dictionary:batch004": "node scripts/dictionary-batch004.ts generate",
+    "dictionary:batch005": "node scripts/dictionary-batch005.ts generate",
+    "bench:domains005": "vitest run --config vitest.batch005-domains.config.ts",
+    "bench:residual": "vitest run --config vitest.residual-domains.config.ts",
+    "dictionary:batch006": "node scripts/dictionary-batch006.ts generate",
+    "bench:batch006:domains": "vitest run --config vitest.batch006-residuals.config.ts"
   },
   "dependencies": {
     "@vercel/node": "^5.5.28",

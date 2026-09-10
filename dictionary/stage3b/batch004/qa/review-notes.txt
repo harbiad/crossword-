@@ -1,0 +1,100 @@
+1|Xn||Shearing is not booking; the missing letter leaves an unrelated lexical item.
+2|Xv||Went and suggested are different verbs, not variants of one inflection.
+3|Xn||Russia names the country, not a Russian person, language or adjective.
+4|Xn||Figs and the metal tin are unrelated; phonetic similarity supplies no valid sense.
+5|Xn||Foot and leg denote different body parts in basic learner vocabulary.
+6|Xn||Spain is a country rather than the language or adjective Spanish.
+7|Ru||This may be a title transliteration or a distinct Arabic function word; the ordinary clothing verb is not supplied.
+8|Cn||Paper cover describes binding; the book noun needs contextual support.
+9|Cn||The isolated sentence/total noun needs the wholesale-trade construction.
+10|Rn||Transliteration alone does not establish a natural MSA word for the point symbol.
+11|On||Missing hamza and the possessive suffix require review; preserve text.
+12|Cn||Estimates is a noun while estimated is participial; a linking construction is not supplied.
+13|Hn||Duplicated circuit genitive is not a natural standalone label; retain for repair.
+14|On||Toe meaning is clear but the initial hamza is missing; do not silently correct it.
+15|Ru||The form could be a name transliteration or Arabic sixty; neither establishes the material stone.
+16|Ru||This transliteration does not securely identify the standard jet-aircraft noun.
+17|Rn||Borrowing/register needs support before approval as an MSA tip equivalent.
+18|Ru||A transliteration is not enough evidence for a natural Arabic verb skip.
+19|Rn||The borrowing may occur commercially; natural MSA status remains unresolved.
+20|Ri||A common exclamation spelling, but register is not established by its popularity.
+21|Ri||Interjection/register needs evidence; do not infer dialect merely from informal use.
+22|Ru||The intended metal reading is not established by this short form.
+23|On||Recognizable mechanism noun but initial madda is omitted.
+24|Ob||Yesterday is recognizable; the initial hamza is missing.
+25|An||هاوية is the regular feminine of amateur. The unrelated abyss homograph does not invalidate this person sense; crossings help.
+26|Ov||Brought is semantically recognizable, but the initial hamza is missing.
+27|Cn||The word ordinarily names an exhibition/showroom; the individual exhibit sense needs support.
+28|Hj||The prepositional fragment lacks the adjective that would mean interesting.
+29|On||Hamza omission and plural presentation need review without changing source text.
+30|On||The MSA feeling/sensation noun is recognizable but lacks the initial hamza.
+31|On||The intended procedure noun has an omitted hamza; preserve pending orthographic review.
+32|On||Credits/appropriations is recognizable but the initial hamza is missing.
+33|An||Standard agriculture noun with a valid article variant; both directions remain allowed.
+34|Pn||Natural element noun; no one-to-one synonym requirement.
+35|An||A natural joy noun variant; preference for another form is not exclusion.
+36|An||Standard guarantee noun with article; valid even when another form is preferred.
+37|Pn||Natural singular/collective wind noun in MSA.
+38|An||Problems is a natural Arabic rendering of uncountable trouble; number need not match mechanically.
+39|Av||Arabic verbal-noun citation naturally represents the English action sit.
+40|Pv||The naturally spaced phrase expresses eating food; keep it as display text.
+41|An||Standard jam noun with article, not an excluded alternative.
+42|Av||Unvocalized مُت is the imperative die; morphology supports the verb mapping.
+43|An||Natural manufacturing action noun with article.
+44|An||Standard fox noun; article does not make the relationship unsuitable.
+45|Pn||Natural frozen-water noun for ice.
+46|An||Documents collectively can denote documentation; this is a valid noun sense.
+47|Pj||Raw as unprocessed material is naturally expressed by خام.
+48|Pv||يستمر naturally means continues.
+49|Aj|saddening|محزن expresses sad in sad news, distinct from feeling sad. Add a short relationship-specific sense to distinguish the causal adjective.
+50|An||Standard arm noun with article.
+51|Pj||Odd in the strange sense is a natural adjective mapping.
+52|An||العصر naturally names the later afternoon period; a synonym does not exclude it.
+53|An||Standard plural languages with article.
+54|An||Standard plural contributions with article.
+55|An||Stipulation is a legitimate requirement sense; not excluded for being secondary.
+56|Av||The passive past verb was sold naturally expresses sold.
+57|Aj||The plural qualified form is a natural adjective with an implicit people referent.
+58|An||Standard basket noun with article.
+59|An||Standard plural buildings noun.
+60|Aj||Feminine monthly is a legitimate adjective use, not a noun assignment.
+61|An||أسفل can name the lower part/bottom; retain the noun mapping.
+62|An||The verbal noun names thinking as an activity.
+63|Aj||Natural feminine optical adjective.
+64|An||Exhibition galleries are naturally represented by this plural noun.
+65|Pn|accounting credit balances|The phrase precisely identifies credit balances; the narrow sense is explicitly recorded.
+66|Pn|worry|Concern as worry is correctly distinguished from a matter of concern.
+67|Pv|strikes|The finite verb hits means strikes; this is separate from the plural noun.
+68|Pn|moment|An instant is a moment, distinct from the immediate adjective.
+69|An|falsehood|The action/falsehood noun is a legitimate lie sense, not reclining.
+70|Pn|booking|Reservation as booking is distinct from an expressed doubt.
+71|Pn|inauguration|The opening/inauguration noun is distinct from physically opening something.
+72|An|electrical circuit|The electrical-circuit noun is valid and distinguished from a race circuit.
+73|An|hearing sounds|Sماع names hearing/listening activity, distinct from a formal hearing.
+74|An|formal hearing|The naturally spaced phrase identifies a formal hearing.
+75|Pn||The finding action phrase is natural; preserve its preposition and spaces.
+76|Pn||Natural main-headlines phrase in MSA.
+77|Pn||Providers of services is a natural explicit noun phrase for providers.
+78|Pn||Natural ringtone phrase with plural noun.
+79|Pn||Natural annual-anniversary noun phrase.
+80|An||A standard technical module expression; common computing vocabulary need not be rejected as jargon.
+81|Pn|social assistance|The social-assistance sense is distinct from general well-being.
+82|Pn||The phrase explicitly means fishing rather than hunting generally.
+83|Pv||عيّن is the verb appointed with normal omitted vowel/shadda marks.
+84|Av||The natural finite verb expresses the growing action; surface inflection is not exclusion.
+85|Av||The finite verb expresses selling naturally; retain English verb sense.
+86|Pv||يلي means follows in sequence.
+87|Av||عرض can be read عُرض, was displayed; the past verbal sense is natural.
+88|Pv||The finite first-person plural naturally expresses the action encourage.
+89|An||Natural plural professionals with case/article variation.
+90|Pb||خاصة naturally expresses particularly/especially as an adverb.
+91|Pn||Dealers as traders is a valid general noun mapping.
+92|Pn||Naturally spaced classified-advertisement phrase.
+93|Av||فسر is a natural verb explain; other valid equivalents do not exclude it.
+94|Pn||Standard plural newsletter phrase, preserved with spaces.
+95|Pj|opposing|Counter as opposing is the adjective sense; record it to distinguish the counting-device noun under this headword.
+96|Cn|web visits|Web visits and individual server hits are not identical units. Leave this common loose usage for sense review rather than approve it merely as a familiar web term.
+97|An|inauguration|Article variant of the inauguration noun remains valid.
+98|An||The nominal number ten is natural with an article; POS noun is appropriate here.
+99|Pj||Comprehensive is naturally expressed by this adjective.
+100|An||Clients/customers is a natural MSA noun; competing synonyms are legitimate.

@@ -1,0 +1,44 @@
+{
+  "scope": "The same 788 frozen recurring A/B target domains. Distinct full-index canonical matches, without sampling or used-word exclusions. Improved support is not a guaranteed solution.",
+  "healthyThreshold": 5,
+  "domains": 788,
+  "improved": 769,
+  "unchanged": 19,
+  "zeroBefore": 262,
+  "zeroToSupported": 243,
+  "zeroRemaining": 19,
+  "criticallySmallBefore": 526,
+  "criticallySmallAfter": 769,
+  "criticalToHealthy": 0,
+  "exhaustionDomainsImproved": 526,
+  "byConfiguration": [
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "domains": 150,
+      "improved": 141,
+      "unchanged": 9,
+      "zeroBefore": 95,
+      "zeroToSupported": 86,
+      "zeroRemaining": 9,
+      "criticallySmallBefore": 55,
+      "criticallySmallAfter": 141,
+      "criticalToHealthy": 0,
+      "exhaustionDomainsImproved": 55
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "domains": 638,
+      "improved": 628,
+      "unchanged": 10,
+      "zeroBefore": 167,
+      "zeroToSupported": 157,
+      "zeroRemaining": 10,
+      "criticallySmallBefore": 471,
+      "criticallySmallAfter": 628,
+      "criticalToHealthy": 0,
+      "exhaustionDomainsImproved": 471
+    }
+  ]
+}

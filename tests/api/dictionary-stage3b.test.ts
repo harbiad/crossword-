@@ -105,5 +105,5 @@ it('reports exact before/after counts and every reviewed relationship, including
   const csv=readFileSync('dictionary/stage3b/batch001/decisions.csv','utf8');
   for(const d of manifest)expect(csv).toContain(`"stage3a:h${d.headwordIndex}:t${d.translationIndex}"`);
   expect(readFileSync('dictionary/stage3b/batch001/reference_conflicts.csv','utf8')).toContain('ENGLISH');
-  expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility')");
+  expect(readFileSync('api/generate.ts','utf8')).toMatch(/createCandidateIndex\(DICTIONARY_BATCH\d+_QA, 'compatibility'\)/);
 });

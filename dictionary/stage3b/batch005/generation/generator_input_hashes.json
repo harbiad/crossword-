@@ -1,0 +1,20 @@
+{
+  "src/lib/generateWithRetry.ts": "4a26a7d14fc3da2b10e30ec293c058797f41b7e559f167004f4e49a9648c17e7",
+  "src/lib/generateInWorker.ts": "50528d3a9acf9308d724840ed73a99926dc6eaa3a54eb0f194186c02666c657a",
+  "src/lib/generateCrossword.ts": "1561dd8d05c739710ad6ea89578d8ac0f765be2aa289f1f27c25856c14390aa6",
+  "src/lib/navigation.ts": "bf88f38a2aa545e67602ea4e22fe6f27881701f961b950f7f58bc0ccbef7a031",
+  "src/lib/crossword.ts": "bb5a1222ddedeefaed1a8f86592257bb0f3ca04c88bf787cc0ef5f1554df55e2",
+  "src/lib/construct.ts": "af0ac5e67c5d328349ae763727f84843a368bfead93c84bf7d647f1687f23538",
+  "src/lib/i18n.ts": "edba1a6bdba4a0ecff1aa95d36daddfad6d96b8f5470185329937f776e3f2373",
+  "src/lib/preparedTemplate.ts": "d93d49ba3bdb7aa9a96c6d0fbc53643d68075df872fb32bc86c443b698cde28a",
+  "src/lib/puzzleLookAhead.ts": "fca8cc243e8d5ab95af5ec4b36a3ad2c187530c70a016a975bf9cb4d090cd1bc",
+  "src/lib/templates.ts": "e4782887fa5471fa6ac6d396d50d1335b6307be49990726fce813ac3202bf9da",
+  "src/lib/arcConsistency.ts": "d63d4ab3ea107e10710950616c1f7065419906f721c99a86ea7a7bfbec359b5c",
+  "src/lib/typingStart.ts": "39e47a41d9be9bc0ef75675942635549fad77d3c59031ff743d3ce89e566296f",
+  "src/lib/cefr.ts": "78bbeebe7c037e7277080aeda677d101a808f27975611cd4902594b81d3421f0",
+  "src/lib/preparedCandidates.ts": "d01a2312a6d65280881f107b0dc35799546dcaeb1d4e42a6541893c01c7c002c",
+  "src/lib/generateCrossword.stress.ts": "3b56686c469a06c907dfe558cae0566a2ec50ede1ffeb3b3ff9c49c6d2d98526",
+  "api/_lib/candidatePool.ts": "78567d7066bde894251e5b890ba6b40a5076c5236577a1f5d628e1c16586050a",
+  "api/_lib/candidates.ts": "12996dc88942d6472245f57faecd3a9047e037994a64bf97e3934d065bc3f27b",
+  "api/_lib/dictionary.ts": "68fddef686f95039df1cab70028f7e957a2125f18d8d65d02a0006920a3d17fd"
+}

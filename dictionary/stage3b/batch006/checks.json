@@ -1,0 +1,35 @@
+{
+  "dictionaryAudit": {
+    "command": "npm run dictionary:audit",
+    "exitCode": 0
+  },
+  "tests": {
+    "command": "npm test",
+    "exitCode": 0,
+    "filesPassed": 26,
+    "testsPassed": 384
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exitCode": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "note": "Initial full-snapshot representation exceeded compiler heap; final typed overlays pass at default heap with identical semantic data."
+  },
+  "benchmark": {
+    "command": "APPROVED_BENCH_POLICY=approved-only APPROVED_BENCH_OUTPUT=dictionary/stage3b/batch006/generation npm run bench:approved",
+    "exitCode": 0,
+    "runs": 240,
+    "seedsPerConfiguration": 30,
+    "qualityFailures": 0
+  },
+  "diagnostics": {
+    "afterFailedCalls": 85,
+    "baselineControlCalls": 3
+  },
+  "productionPolicy": "compatibility",
+  "cefrAssigned": false,
+  "batch007Started": false
+}

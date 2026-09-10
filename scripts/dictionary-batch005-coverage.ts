@@ -1,0 +1,17 @@
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+import {registerHooks} from 'node:module';
+import {DICTIONARY_BATCH004_QA as before} from '../api/_lib/dictionary.stage3b.batch004.qa.generated.ts';
+import {DICTIONARY_BATCH005_QA as after} from '../api/_lib/dictionary.stage3b.batch005.qa.generated.ts';
+import {gridForm,matchesDomain,type DomainNeed} from './stage3b-batch005.ts';
+import {reviewCsv} from './stage3a.ts';
+registerHooks({resolve(specifier,context,next){if(specifier.endsWith('.js')&&specifier.startsWith('.')&&context.parentURL?.startsWith(new URL('../api/',import.meta.url).href)){const ts=new URL(specifier.slice(0,-3)+'.ts',context.parentURL);if(existsSync(ts))return next(ts.href,context);}return next(specifier,context);}});
+const {createCandidateIndex}=await import('../api/_lib/candidates.ts');
+const root='dictionary/stage3b/batch005/',needs=JSON.parse(readFileSync(root+'domain_needs.json','utf8'))as DomainNeed[];
+const selected=new Set((JSON.parse(readFileSync(root+'selection.json','utf8'))as{matchedDomainIds:string[]}[]).flatMap(s=>s.matchedDomainIds));
+const indexes=[before,after].map(data=>createCandidateIndex(data,'approved-only'));
+const buckets=indexes.map(index=>new Map<string,string[]>([...index].filter(([k])=>k.endsWith(':advanced')).flatMap(([key,groups])=>[...groups].map(([length,tiers])=>[`${key}:${length}`,[...new Set(tiers.flat().map(p=>gridForm(p.answer)))]]as const))));
+const rows=needs.map(n=>{const key=`${n.size}:${n.mode}:advanced:${n.length}`,old=(buckets[0].get(key)??[]).filter(a=>matchesDomain(a,n)),next=(buckets[1].get(key)??[]).filter(a=>matchesDomain(a,n));if(old.length!==n.matchingApproved)throw Error('Baseline domain drift');
+ return {id:n.id,size:n.size,mode:n.mode,length:n.length,pattern:n.pattern,failedSeeds:n.failedSeeds,recurring:n.failedSeeds.length>=2,selectedTarget:selected.has(n.id),before:old.length,after:next.length,addedAnswers:next.filter(a=>!old.includes(a)),zeroToSupported:old.length===0&&next.length>0,remainsZero:next.length===0,criticalToHealthy:old.length>=1&&old.length<=3&&next.length>=5};});
+const stats=(rs:typeof rows)=>({domains:rs.length,zeroBefore:rs.filter(r=>r.before===0).length,zeroToSupported:rs.filter(r=>r.zeroToSupported).length,zeroRemaining:rs.filter(r=>r.remainsZero).length,criticalBefore:rs.filter(r=>r.before>=1&&r.before<=3).length,criticalToHealthy:rs.filter(r=>r.criticalToHealthy).length,improved:rs.filter(r=>r.after>r.before).length,unchanged:rs.filter(r=>r.after===r.before).length,decreased:rs.filter(r=>r.after<r.before).length});
+const summary={scope:'Unique canonical answers in full size-specific approved index, matching frozen crossing-support constraints. No used-word exclusions or API sampling. Not a re-solved search state.',criticallySmall:'1-3 unique canonical answers',healthy:'at least 5; descriptive headroom heuristic, not a proven sufficiency threshold',allObserved:stats(rows),recurring:stats(rows.filter(r=>r.recurring)),selectedTargets:stats(rows.filter(r=>r.selectedTarget)),byConfiguration:[7,9,11,13].flatMap(size=>(['en_to_ar','ar_to_en']).map(mode=>({size,mode,...stats(rows.filter(r=>r.size===size&&r.mode===mode&&r.recurring))})))};
+writeFileSync(root+'domain_coverage.csv',reviewCsv(rows));writeFileSync(root+'domain_coverage_summary.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary,null,2));

@@ -1,0 +1,103 @@
+{
+  "runs": 3,
+  "stillFailed": 3,
+  "attempts": 51,
+  "uncapturedCalls": 819266,
+  "excludedProbes": 1387,
+  "observations": 5141,
+  "trueGapZeros": 1646,
+  "exhaustionZeros": 63,
+  "samplingZeros": 4,
+  "criticallySmall": 3428,
+  "configurations": [
+    {
+      "size": 7,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 1,
+      "stillFailed": 1,
+      "observations": 161,
+      "trueGapZeros": 109,
+      "exhaustionZeros": 2,
+      "samplingZeros": 4,
+      "criticallySmall": 46
+    },
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 1,
+      "stillFailed": 1,
+      "observations": 1908,
+      "trueGapZeros": 1363,
+      "exhaustionZeros": 44,
+      "samplingZeros": 0,
+      "criticallySmall": 501
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 1,
+      "stillFailed": 1,
+      "observations": 3072,
+      "trueGapZeros": 174,
+      "exhaustionZeros": 17,
+      "samplingZeros": 0,
+      "criticallySmall": 2881
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 0,
+      "stillFailed": 0,
+      "observations": 0,
+      "trueGapZeros": 0,
+      "exhaustionZeros": 0,
+      "samplingZeros": 0,
+      "criticallySmall": 0
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "failedBenchmarkCalls": 0,
+      "stillFailed": 0,
+      "observations": 0,
+      "trueGapZeros": 0,
+      "exhaustionZeros": 0,
+      "samplingZeros": 0,
+      "criticallySmall": 0
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 0,
+      "stillFailed": 0,
+      "observations": 0,
+      "trueGapZeros": 0,
+      "exhaustionZeros": 0,
+      "samplingZeros": 0,
+      "criticallySmall": 0
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 0,
+      "stillFailed": 0,
+      "observations": 0,
+      "trueGapZeros": 0,
+      "exhaustionZeros": 0,
+      "samplingZeros": 0,
+      "criticallySmall": 0
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "failedBenchmarkCalls": 0,
+      "stillFailed": 0,
+      "observations": 0,
+      "trueGapZeros": 0,
+      "exhaustionZeros": 0,
+      "samplingZeros": 0,
+      "criticallySmall": 0
+    }
+  ],
+  "limitations": "Same per-attempt cap of 128 and current production settings as pre-review analysis. Runs are only remaining benchmark failures. Absolute observation counts are not independent causal failures and change with search choices, deadlines, and failure count."
+}

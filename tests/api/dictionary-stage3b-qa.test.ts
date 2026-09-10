@@ -95,5 +95,5 @@ it('computes agreement against the frozen pre-correction baseline with explicit 
   expect(s.unappliedProposals).toBe(35);
   expect(s.batch002Ready).toBe(false);
   expect(s.after.relationships).toBe(s.before.relationships);
-  expect(readFileSync('api/generate.ts','utf8')).toContain("createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility')");
+  expect(readFileSync('api/generate.ts','utf8')).toMatch(/createCandidateIndex\(DICTIONARY_BATCH\d+_QA, 'compatibility'\)/);
 });

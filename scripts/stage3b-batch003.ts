@@ -14,8 +14,8 @@ export function codeDecision(code:string){
  if(code==='H')return {...codeRules.X,status:'review' as const,reasonCode:'unsuitable-pending-review',reason:'A potentially misleading or malformed relationship remains excluded pending review; a categorical rejection is not sufficiently established.'};
  const rule=codeRules[code as keyof typeof codeRules];if(!rule)throw new Error('No implicit approval/default decision');return rule;
 }
-export function compileBatch003Notes(source:readonly DictionaryHeadword[],selection:ReturnType<typeof selectBatch003>,text:string,details:Record<string,string>){
- const lines=text.split(/\r?\n/).filter(l=>l&&!l.startsWith('#'));if(lines.length!==500)throw new Error('Exactly 500 explicit headword reviews required');
+export function compileBatch003Notes(source:readonly DictionaryHeadword[],selection:ReturnType<typeof selectBatch003>,text:string,details:Record<string,string>,expectedCount=500){
+ const lines=text.split(/\r?\n/).filter(l=>l&&!l.startsWith('#'));if(lines.length!==expectedCount)throw new Error('Expected number of explicit headword reviews required');
  return lines.flatMap((line,n)=>{
   const [english,raw,senseText='']=line.split('|'),s=selection[n],h=source[s.headwordIndex],tokens=raw.trim().split(/\s+/);
   if(english!==s.english||tokens.length!==h.translations.length)throw new Error(`Incomplete relationship review ${english}`);
@@ -43,9 +43,9 @@ export function checkRejections(proposals:Batch002Decision[],input:unknown){
  return {decisions,checks};
 }
 function verifyPos(decisions:Batch002Decision[]){for(const d of decisions){z.enum(POS).parse(d.partOfSpeech);if(d.sense&&d.sense.length>60)throw new Error('Sense must be short and discriminative');}}
-export function applyBatch003(source:readonly DictionaryHeadword[],selection:ReturnType<typeof selectBatch003>,proposals:Batch002Decision[],checks:unknown){
+export function applyBatch003(source:readonly DictionaryHeadword[],selection:ReturnType<typeof selectBatch003>,proposals:Batch002Decision[],checks:unknown,expectedCount=500){
  verifyPos(proposals);const checked=checkRejections(proposals,checks);
- return {...applyBatch002(source,selection,checked.decisions),checks:checked.checks};
+ return {...applyBatch002(source,selection,checked.decisions,expectedCount),checks:checked.checks};
 }
 export function sampleBatch003Qa(decisions:Batch002Decision[],reference:Map<string,string>){
  const byWord=new Map<string,Set<string>>();for(const d of decisions){if(d.partOfSpeech==='uncertain')continue;const set=byWord.get(d.english)??new Set();set.add(d.partOfSpeech);byWord.set(d.english,set);}
@@ -64,6 +64,6 @@ export function sampleBatch003Qa(decisions:Batch002Decision[],reference:Map<stri
  for(const d of remainder.slice(0,100-sample.length))sample.push({...d,stratum:'pos-control'});
  if(sample.length!==100)throw new Error('QA sample must contain 100');return sample;
 }
-export function applyBatch003Qa(before:readonly DictionaryHeadword[],sample:ReturnType<typeof sampleBatch003Qa>,reviews:Batch002Qa[]){
- verifyPos(reviews.map(r=>r.revisedDecision));return applyBatch002Qa(before,sample,reviews);
+export function applyBatch003Qa(before:readonly DictionaryHeadword[],sample:ReturnType<typeof sampleBatch003Qa>,reviews:Batch002Qa[],expectedCount=100){
+ verifyPos(reviews.map(r=>r.revisedDecision));return applyBatch002Qa(before,sample,reviews,expectedCount);
 }

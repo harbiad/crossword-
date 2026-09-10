@@ -1,0 +1,53 @@
+{
+  "configurations": [
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "allThirtyPoolsContainEveryOldPair": true,
+      "lostSeeds": [],
+      "gainedSeeds": []
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "allThirtyPoolsContainEveryOldPair": true,
+      "lostSeeds": [
+        16,
+        20,
+        25,
+        30
+      ],
+      "gainedSeeds": [
+        6
+      ]
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "allThirtyPoolsContainEveryOldPair": true,
+      "lostSeeds": [
+        1,
+        10,
+        17,
+        19,
+        25,
+        30
+      ],
+      "gainedSeeds": [
+        12,
+        14,
+        15,
+        16,
+        24
+      ]
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "allThirtyPoolsContainEveryOldPair": true,
+      "lostSeeds": [],
+      "gainedSeeds": []
+    }
+  ],
+  "inference": "For English answers every sampled after-pool contains every old answer/clue pair, and runtime/validation are unchanged. Lost successes therefore cannot be explained by removing vocabulary or losing prior mathematical solutions; bounded search order/time is implicated. This does not establish feasibility for previously unsuccessful 13x13 cases. Arabic pools are capped and are not assumed to contain previous samples."
+}

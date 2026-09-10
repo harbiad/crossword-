@@ -89,7 +89,7 @@ it('reports measured availability in both modes and all sizes while compatibilit
  for(const policy of ['compatibility','approved-only']as const){const index=createCandidateIndex(final,policy);
   for(const mode of ['en_to_ar','ar_to_en'])for(const size of [7,9,11,13])expect(summary.availabilityAfter.find((r:{policy:string;mode:string;size:number})=>r.policy===policy&&r.mode===mode&&r.size===size).indexedCandidates).toBe([...index.get(`${size}:${mode}:advanced`)!.values()].flat(2).length);
  }
- expect(read('api/generate.ts')).toContain("createCandidateIndex(DICTIONARY_BATCH003_QA, 'compatibility')");expect(summary.batch004Started).toBe(false);
+ expect(read('api/generate.ts')).toMatch(/createCandidateIndex\(DICTIONARY_BATCH\d+_QA, 'compatibility'\)/);expect(summary.batch004Started).toBe(false);
 });
 it.each(['missing-check','duplicate-check','stale-check','low-confidence-reject'] as const)('rejects %s in mandatory second pass',kind=>{
  const changed=structuredClone(checks);if(kind==='missing-check')changed.pop();if(kind==='duplicate-check')changed.push(changed[0]);if(kind==='stale-check')changed[0].original='changed';if(kind==='low-confidence-reject')changed.find(c=>c.finalStatus==='rejected')!.confidence='medium';

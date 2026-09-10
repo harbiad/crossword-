@@ -1,0 +1,47 @@
+[
+  {
+    "sourceId": "2717:1",
+    "english": "HIDE",
+    "original": "تبي",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "The Gulf colloquial verb means want, not hide. Both non-MSA register and wrong meaning support exclusion without rewriting."
+  },
+  {
+    "sourceId": "6749:0",
+    "english": "UNCLE",
+    "original": "عمو",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "The familiar vocative عمو is colloquial. The natural MSA عم relationship already remains separately available."
+  },
+  {
+    "sourceId": "1986:1",
+    "english": "AUCTIONS",
+    "original": "المناقصات",
+    "proposedStatus": "rejected",
+    "finalStatus": "review",
+    "confidence": "medium",
+    "reason": "Reverse auctions and procurement bidding complicate a categorical distinction. Ordinary tenders are not a direct learner equivalent, but defer final rejection pending a supported procurement sense."
+  },
+  {
+    "sourceId": "5024:0",
+    "english": "LIVER",
+    "original": "كب",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "The truncated spelling names no liver-organ sense. Under a standard Arabic reading it is an unrelated pouring/toppling verb."
+  },
+  {
+    "sourceId": "1783:0",
+    "english": "WHOSE",
+    "original": "الذين",
+    "proposedStatus": "rejected",
+    "finalStatus": "rejected",
+    "confidence": "high",
+    "reason": "The relative pronoun omits the possession relation required by whose. A full sentence could add possession elsewhere, but the standalone relationship lacks it."
+  }
+]

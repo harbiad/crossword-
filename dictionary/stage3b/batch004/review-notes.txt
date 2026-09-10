@@ -1,0 +1,500 @@
+ICE|Cn An Cn Pn|1=frozen water;3=frozen water
+TEN|An Pd Ad Cj
+SKI|Pv Rn An
+CAT|An An Pn An Rn
+DIE|Ov Av Pv
+GUY|Ru Pn
+FIT|Aj Pv|0=suitable;1=match in size
+EAT|Av Ov Av Av Pv Ov
+AIM|An An Pn|0=directing a weapon;1=purpose;2=purpose
+SKY|Ou Pn Rn An
+INK|An Pn
+TAG|Rn Pn
+MIX|Rn An Pn
+FIX|Ov Ov Pv
+ARM|Pn An Cn
+WON|Pv Ru
+TIP|Pn Rn
+FLY|Pn Pv|0=insect;1=move through air
+HEY|Ri Ci Pi Ri
+TEA|Pn An On
+TOY|Pn
+HIP|Pn An Rn
+DOT|Pn Rn
+DON|Ru Pv
+MET|Av Av Av Pv
+PIN|An Pn Cn
+RAW|Aj Pj Aj
+CONTINUED|Pv
+HIMSELF|Pq
+GUARANTEE|An An Pn
+HAT|An Pn
+FREEDOM|Pn An
+THOUSANDS|On On Pn
+EASTERN|Pj Aj Aj Cj
+WET|Aj Pj
+SIR|Rn Pn On
+FOX|Pn Rn An
+COMPREHENSIVE|Aj Pj
+ELEMENT|An Pn
+THEATRE|An Pn Hn
+KID|Pn
+PAN|Ru Cu
+COMPLEX|Pn|0=group of buildings
+PRESENTED|Pv
+HIGHEST|Pj
+HELPFUL|Aj Pj
+MONTHLY|Aj Aj Aj Pb Pj
+CHANGED|Av Pv Av
+PET|Cn
+RUSSIAN|Pj Aj An Xn Aj|2=language
+CONNECT|Pv Av Av Cv Cv
+APPLIED|Av Cv Pj
+DESCRIBED|Av Pv
+ADVANCE|Cj Aj Pb Aj Pn|1=beforehand;2=beforehand;3=beforehand;4=loan
+AUCTION|Pn An An
+ALLOWED|Pj Av Aj
+CORRECT|Pv Pj|0=rectify;1=accurate
+SELLING|Pn An Av
+FASHION|On On Pn An
+MONITOR|An Av Pn|0=display device;1=observe;2=observer
+DISCUSS|Av Pv Av Av
+LEATHER|An An Pn Cj
+PATIENT|An Pn An Pj|0=person receiving care;1=person receiving care;2=person receiving care;3=patient temperament
+CIRCUMSTANCES|Pn An
+PERHAPS|Pb
+DIFFICULT|Pj Aj
+SATELLITE|Pn Cn An
+VILLAGE|Pn An
+AMATEUR|Pn Cn Cn
+BALANCE|An An An An Pn|0=account balance;1=equilibrium;2=weighing instrument;3=account balance;4=equilibrium
+REPLIES|An Pn
+RECOMMEND|Av Av Pv
+SPY|Pv An Pn An|0=conduct espionage;1=secret agent;2=secret agent;3=secret agent
+FANTASY|An Pn
+LETTERS|On An On Pn An An|1=correspondence;3=correspondence;4=alphabetic characters;5=alphabetic characters
+CONTEXT|Pn An
+SIT|Pv Av
+WOW|Ri Hn
+BROUGHT|Av Ov Pv
+COMPONENT|An An An Pn
+DIAMOND|Pn An An Rn
+ADMINISTRATOR|Pn
+SECONDS|An An Pn
+PREMIUM|An Pn|0=insurance payment;1=insurance payment
+FIG|Ru Pn
+GROWING|Aj Av Pn
+HEARING|An Pn An|0=hearing sounds;1=sense of hearing;2=formal hearing
+THERAPY|An Pn
+GENERATED|Pv
+SERIOUS|Pj Aj Aj
+TAB|Ru Cn
+IMMEDIATELY|Pb
+DEFENSE|Pn An
+COVERED|Av Av Aj Pj
+LANGUAGES|Pn An
+PREVENT|Pv Av
+IMPROVEMENT|An An An Pn
+CHALLENGE|An An Pn Av
+AFFAIRS|An Pn
+TOWARDS|Pp
+CHARGES|Pn Pn|0=accusations;1=fees
+CERTIFIED|Aj Aj Pj Aj
+QUARTER|Pn An
+BREAKFAST|Pn On An On An
+OPENING|An An Pn An|0=opening something;1=inauguration;2=inauguration;3=opening something
+COUNTER|An Pj Pn|0=counting device;1=opposing;2=counting device
+FAILURE|Pn An
+FOLLOWS|Pv Cv
+AUTOMATICALLY|Ob Pb
+FEELING|Pn On Ov An On
+READERS|Pn An
+LEADERS|Pn An An An
+YESTERDAY|Ob Ab Ob Ob Pb
+WHOLESALE|Cn Pb Cn
+ANNOUNCED|Ov Ov Pv
+BROTHER|On On On
+TEMPERATURE|Cn Pn
+SPONSOR|An Pn
+DEDICATED|Aj Pj
+EVENING|An Pn
+NUCLEAR|Aj Pj Aj
+LEG|An Pn Xn
+APPEARS|Pv
+DECIDED|Av Pv Av
+ADVANTAGE|An Pn An
+BINDING|Pj Aj On Aj Cn
+FRAMEWORK|On Pn
+INSTALLED|Aj Pj
+CREDITS|Cn Cn On Pn|3=accounting credit balances
+TROUBLE|An An Pn An
+MEASURE|An An Pn An|0=measurement;1=step taken;2=standard of measurement;3=measurement
+VINTAGE|Aj Pj Cn
+JET|Ru Pn
+REALITY|Pn An An
+DESTINATION|Cn Pn An An
+CONTRACTS|Pn An
+RESIDENTIAL|Pj
+CONTINUES|Pv Cv
+PEN|Pn An
+REPLACEMENT|An An Pn An|0=substitution;1=substitute;2=substitution;3=substitute
+JOY|Pn An An An
+APARTMENT|Pn An On
+RAN|Pv Av Av
+MANAGED|Cv
+THEATER|An Pn
+PERFORM|Pv
+HEALTHY|Ou Aj Pj
+LAY|Pv
+PROTECTED|Aj Pj
+SERVING|Av Pn
+WALKING|Pn Av Ov An
+FREQUENCY|An An An An Pn
+DISPLAYED|Pj Aj Av
+APPROXIMATELY|Pb
+PERFORMED|Cv
+SPECIALTY|An Pn
+REMOVED|Ov Ov Pv
+SINGLES|Cj Cj Pn|2=unmarried people
+PERMANENT|Pj Aj Aj Oj Aj
+CONSTITUTES|Pv
+PRACTICAL|Aj Pj
+DELIVERED|Pv Aj
+ADVERTISEMENT|Pn
+RECORDING|Pn An Av
+MEANING|Cn Pn An Cv Av
+WONDERFUL|Pj
+POSTING|Pn Cv An
+INSTANT|Aj Aj Aj Pj Pn|4=moment
+MENTIONED|Av Pv
+AUTOMATIC|Ob Pj Aj Cb Aj
+MANUFACTURERS|Pn
+CONNECTED|Aj Pj Aj Aj
+COMBINATION|Pn An
+DESPITE|Pp
+DISTRIBUTED|Cv Pv
+SEEKING|Pv Cn
+BOOKING|Pn Xn An
+COMFORT|An Pn
+PROFESSIONALS|An An An Pn An
+BUILDINGS|An An Pn An
+SMOKING|Pn An Av Av
+BECOMES|Pv Av
+CARRIED|Pv
+LARGEST|Pj
+CIRCUIT|An Pn An Hn|0=electrical circuit;1=racing circuit;2=electrical circuit
+ATTENTION|An Pn An An
+OPTICAL|Aj Pj
+AMAZING|Pj
+DOCUMENTATION|Pn An An An
+REPRESENT|Pv
+ANNOUNCEMENTS|On On Pn
+MARKETPLACE|Pn An
+EVOLUTION|An Pn
+SUGGESTED|Aj Xv Pj
+GENERIC|Pj
+TOE|On On
+TRANSIT|An Pn An
+KEEPING|Pn
+RECEIVING|An An Pn
+MANUFACTURING|Pn An
+DISCUSSED|Av Pv Av
+CLIMATE|An Pn
+ALCOHOL|An Pn An
+PROFESSOR|On On An On Pn
+DIFFERENCES|An An An An Pn
+EXPLAIN|Pv Av Av
+SMALLER|Oj Pj
+ODD|Pj
+QUICKLY|Pb
+PARAGRAPH|An Pn
+CONCERN|An Pn|0=matter of concern;1=worry
+REQUESTED|Aj Pv
+IMMEDIATE|Aj Pj
+PARTICIPATE|Pv
+EXPERIENCED|Cj Pj
+DEALERS|An Pn
+SEARCHING|Av Pn
+AGRICULTURE|An Pn
+UPGRADE|Pn An
+FAVOURITE|Pj Aj Aj
+RESPONSES|An An An Pn
+LIE|Pn An An Ov|0=false statement;1=falsehood;2=false statement;3=tell a falsehood
+COOKING|Pn An An An
+CONFIGURATION|An An An Pn
+RESPOND|Pv
+ENTERED|Pv
+AFTERNOON|Cn An Pn
+GARDENS|An Pn An
+PORTION|Pn
+PRESENTATIONS|An An Pn
+REQUIREMENT|An Pn An An An
+ANCIENT|Pj Cn Aj
+PREGNANCY|Pn An
+BIOGRAPHY|Pn Cn
+HUSBAND|An Cn Pn
+CONCERT|Cn Pn
+CARRIER|An An Pn
+REFLECT|Pv
+SAD|Xn Pj Aj Aj
+LESSONS|An Pn An An|2=lessons learned;3=lessons learned
+QUALIFIED|Aj Pj Aj Aj Aj
+CONFIRM|Ov Ov Ov Pv
+POT|Cn Pn
+EXPLAINED|Pv
+CONVERTER|Pn An
+INDICATED|Pj Aj
+ENABLED|Pv
+VOLUNTEER|Pv Av Pn|0=offer services;1=offer services;2=person volunteering
+ADAPTER|Pn
+THREADS|Pn An Cn|0=fibres;1=fibres
+EARLIER|Pb
+ENCOURAGE|Pv Av
+FANTASTIC|Pj
+INTERESTING|Hj Pj
+GALLERIES|An Pn
+EPISODE|Pn An
+INDICATES|Av Pv
+SPANISH|On On Oj Xn An|0=language;1=language;4=language
+SETTING|Hn
+ECONOMY|Pn An
+CANDIDATE|An An Pn An
+MUSICAL|Pj Aj Aj
+SECRETARY|An On Pn An
+MESSENGER|Pn An
+MAGAZINES|An Pn
+MISCELLANEOUS|Aj Pj Aj
+INDIVIDUALS|On On Pn
+CATALOGUE|Pn An An
+AFRICAN|Oj Oj Oj Oj On
+JUSTICE|An Pn An
+JAM|Pn An Ru
+RESERVATION|Pn Pn An An|0=booking;1=qualification or doubt;2=booking;3=qualification or doubt
+DEPENDING|Cp
+EXPANSION|An An Pn An
+PROMOTION|An An Cn Pn An Pn|0=publicity;1=career advancement;3=publicity;4=furthering a cause;5=career advancement
+REGULATIONS|Pn On On An
+SPECIES|On Pn
+PRICING|Pn An
+CERTIFICATE|An Pn Cn
+COLLECTED|Pv Av
+TRADING|An Pn An
+CHAMBER|Pn
+CLIENTS|An Pn An
+ACTIONS|On On An On Pn|2=lawsuits;4=steps taken
+TEMPORARY|Cb Aj Aj Pj
+WIND|An An Pn An
+COMMUNITIES|Pn An An|1=expatriate communities;2=local communities
+SITUATION|Pn An An
+MARKETS|On On Pn
+EMERGENCY|An An Pn
+OAK|Pn
+AWARENESS|Cn Pn An
+DETERMINE|Pv
+MEASUREMENT|An Pn
+FORMULA|An An Pn
+RINGTONES|Pn
+PERSONS|Pn
+SPEAKER|An An An Pn
+FACTORS|Pn An
+BIGGEST|Oj Pj
+VISITOR|An Pn
+ILL|Pj
+DRAWING|Ov An Pn An Hn
+ORDERED|Ov Pv
+INITIAL|Oj Oj Ob Pj
+HAPPENS|Pv
+PROMOTE|Av Pv
+BAN|Cn An Pn
+FISHING|Cn Pn
+PHYSICIAN|Pn
+BARGAIN|Pn An An|0=good deal;1=good deal;2=negotiation
+CONTAINED|Cv Aj
+INSTALL|Pv Av
+APPAREL|Pn
+HUNTING|An Pn
+GENERALLY|Ab Pb
+DOLLARS|An Cn Pn
+DRIVING|Pn An
+SURGERY|An Pn
+PREFERRED|Av Aj Pj Aj
+GRANTED|Av Pv
+COMFORTABLE|Pj Aj Aj
+EXHIBIT|Cn Cn
+PROCESSES|Pn An
+SERVERS|Pn
+MASSIVE|Pj
+KEYWORD|Pn
+INTERESTS|An An An Pn|0=things of interest;1=benefits or stakes;2=benefits or stakes;3=things of interest
+POVERTY|An Pn
+WALK|Pv Ov Av
+ITALIAN|Oj On Oj On Oj
+PAPERBACK|Cn
+CLASSIFIEDS|Pn
+SUPPORTED|Aj Pj Aj
+MYSTERY|An An An Pn|0=secrecy;1=secrecy;2=puzzle;3=puzzle
+COMPETITION|An An Pn Pn An|0=rivalry;1=rivalry;2=rivalry;3=contest;4=contest
+JOURNEY|An Pn
+PROVIDERS|Cn Pn
+LIFESTYLE|Pn
+IMPLEMENTED|Aj Pv
+BLOGGER|Pn An Cn
+ENTRIES|Cn An An Pn|0=entrances;1=data entries;2=data entries;3=data entries
+DIVERSITY|An Pn
+REVERSE|Pn An
+SEMINAR|Pn An An
+EFFORTS|Pn An
+SPECIFY|Av Pv
+SENSITIVE|Aj Aj Aj Pj
+PRACTICES|An Pn
+REPORTING|On On Pn
+ESSENTIAL|Oj Pj
+AFFILIATE|Cj Cj
+NURSING|Pn
+CALCULATE|Pv Av
+BROADCAST|Pn An An
+UNIVERSAL|Aj Aj Pj
+PROTECT|Pv
+ANNIVERSARY|Cn Pn
+PARTICIPATION|Pn
+ACCESSORY|Pn
+TYPICALLY|Cb Pb
+CONTRIBUTIONS|Cn An Pn An|3=donations
+FINDING|An On Pn
+WIFE|An On Pn
+ACCEPTED|Av Pj
+FORMER|Pj Aj Cn
+HITS|Pn Pv An|0=blows;1=strikes;2=web visits
+SITTING|Aj Pj Aj An
+PUTTING|Pn
+FLAT|Pj Pn Aj|0=level surface;1=apartment;2=level surface
+FLOW|Pn An
+LITERATURE|On On Pn
+SUGGEST|Av Pv Av
+REASONS|An On On Pn
+CERTIFICATION|Pn Cn
+TALKING|Pn
+ANTIQUE|Pj Aj Pn|0=old;1=old;2=old collectible
+WILLING|Pj
+CRITICAL|Pj Aj Aj
+FRAME|On On Pn
+PATH|An An An Pn
+COMPUTING|Pn
+EMPLOYEE|Pn An An
+CHIEF|Pn An An
+GIVES|Pv Av
+HUNDRED|Pd
+BOTTOM|An Pn An
+INTERACTIVE|Aj Aj Pj Aj
+HUB|An Pn Ru Ru
+PACKAGES|An Pn
+STRANGE|Pj
+PROCEDURE|On On On Pn
+HEARD|Av Pv
+MENTION|Pn
+BEGIN|Pv
+RELIGIOUS|Aj Aj Aj Pj|0=relating to religion;1=relating to religion;2=relating to religion;3=devout
+CLEAN|Pj Aj Aj
+AMENDED|Pv
+DEVELOPER|Pn
+PROVISION|Cn
+MISSING|Aj Aj Aj Pj
+POLLUTION|An Pn
+SITEMAP|Pn
+BASKET|An Pn
+CERTAINLY|Pb
+DEMAND|An Pn An
+SUITE|An Pn
+SKIP|Pv Ru Av
+CENTERS|Pn An
+DIET|Pn An
+ARMY|An Pn
+GEAR|Pn Pn Cn|0=equipment;1=toothed wheel
+RESERVE|An Pn
+RECIPES|Pn An
+DIFFERENCE|An An An Pn
+PLASTIC|An Cj Pn
+PRODUCE|Pv
+NATION|On On Pn
+SHEET|An Pn
+WEEKEND|Pn
+FIRM|Pn An Pj|0=company;1=company;2=resolute
+SIN|An Pn
+ORGANIZED|Pj
+MODULE|Pn An
+FACILITY|On Pn An
+EXPENSIVE|Aj Aj Pj Aj
+CAPTURE|On An An Pn|1=apprehension;2=capturing an image;3=taking captive
+MINISTER|Pn An An An
+MOTION|An Pn
+LOOKS|Pn An Pv|0=glances;1=glances;2=appears
+VISITORS|Pn An An
+FOREST|Cn An Pn Cn
+ADVENTURE|An Cn Pn
+MECHANISM|On On Pn
+CAMPING|Pn Av
+WELFARE|Pn An An Pn|3=social assistance
+CHANCE|Pn An
+POSTERS|Pn An
+VISION|Pn An An|2=dream or vision
+BALL|Pn An
+ASSISTANT|Pn An
+LISTEN|Cv Pv Av Cv Av
+PARKING|Cn
+ACCEPT|Av Av Av Pv
+HEADLINES|Pn
+NAKED|Aj Pj Aj Aj
+GOAL|An Pn An|0=goalmouth;1=objective;2=objective
+SUCCESSFUL|Aj Aj Pj
+SOLD|Cv Av Pv Av Av
+SCIENCES|Pn An
+EXTENSION|Pn An An|0=prolongation;1=spatial extension;2=prolongation
+LOWEST|Oj Cj
+PUBLISHING|Pn An
+APPEAR|Pv
+MONSTER|An Pn
+LIVES|Pn Cn
+CURRENCY|An Pn
+PALM|Pn Pn|0=palm trees;1=inside of hand
+DETECTION|An Pn Hn
+STONE|Ru Pn Cn Cn An
+MODERATOR|Pn An
+CLASSICAL|Aj Pj Aj Aj
+DIRECTION|Pn An
+PAIN|On On Pn
+PARTICULARLY|Pb
+OBJECTS|On On Pn|2=entities
+COFFEE|An An Pn
+CAPTAIN|Pn An An Pn|0=military rank;1=team leader;2=team leader;3=ship commander
+IMAGINE|Av Av Av Pv
+ORAL|Aj Aj Aj Pj Aj
+POSTER|An Pn
+EDGE|An Pn
+ROOT|Ru Cn An Pn
+CLOSED|Aj Pj
+APPOINTED|Aj Av Pv
+PINK|Aj Pj Aj
+MONITORING|An Pn
+PERSONNEL|An Pn On An
+GRADUATE|Cv Pn
+SHOT|Pn On
+THINKING|Ov An Pn Av
+RAP|Rn Rn
+LEAGUE|An Pn
+WASTE|Pn Pn|0=refuse;1=squandering
+DETERMINATION|An Pn An|0=resolve;1=resolve;2=ascertaining
+COLD|An Pj Aj Aj Pn|0=cold weather;1=low temperature;2=low temperature;3=low temperature;4=cold weather
+DESIGNS|An An An Pn
+CHAIR|An Pn
+TOURISM|Pn An
+EFFORT|An An Pn An
+NEWSLETTERS|Pn
+TIN|Xn Ru Pn
+FIELDS|An An Pn An|0=areas of activity;1=agricultural fields;2=agricultural fields;3=areas of activity
+SAVINGS|An An Pn An An|3=economies;4=economies
+GRAPHIC|Pj Cn
+MOTOR|An Pn Rn
+ESTIMATED|Pj Cn
+SHIRT|Pn An
+WINNING|Pn
+ANONYMOUS|Pj

@@ -1,0 +1,11 @@
+{
+  "runs": 133,
+  "stillFailed": 133,
+  "observations": 79225,
+  "uncapturedObservationCalls": 7088997,
+  "needs": 53456,
+  "recurrent": 6891,
+  "recurrentZero": 1806,
+  "recurrentSmall": 4857,
+  "limits": "First 600 distinct template/slot/support-set/reason records per run; uncaptured calls may repeat and are not distinct-domain counts; observed occurrences are not unbiased search frequencies. Recurrence counts distinct failed seeds. Observer overhead may change deadline outcomes. No solver settings changed."
+}

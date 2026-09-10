@@ -1,0 +1,404 @@
+[
+  {
+    "headwords": 1,
+    "weightedReachableDomainPct": 22.545853090428658,
+    "marginalDomains": 177,
+    "marginalWeight": 3650.568451004721
+  },
+  {
+    "headwords": 2,
+    "weightedReachableDomainPct": 42.28003493997551,
+    "marginalDomains": 159,
+    "marginalWeight": 3195.309637537253
+  },
+  {
+    "headwords": 3,
+    "weightedReachableDomainPct": 57.814194607510494,
+    "marginalDomains": 123,
+    "marginalWeight": 2515.2524931180164
+  },
+  {
+    "headwords": 4,
+    "weightedReachableDomainPct": 60.59734074035617,
+    "marginalDomains": 39,
+    "marginalWeight": 450.64009892867784
+  },
+  {
+    "headwords": 5,
+    "weightedReachableDomainPct": 63.13568966455695,
+    "marginalDomains": 20,
+    "marginalWeight": 411.00314382262144
+  },
+  {
+    "headwords": 6,
+    "weightedReachableDomainPct": 65.70943336913079,
+    "marginalDomains": 22,
+    "marginalWeight": 416.7341786183298
+  },
+  {
+    "headwords": 7,
+    "weightedReachableDomainPct": 67.83171091824488,
+    "marginalDomains": 35,
+    "marginalWeight": 343.63390172006956
+  },
+  {
+    "headwords": 8,
+    "weightedReachableDomainPct": 69.31540648530668,
+    "marginalDomains": 11,
+    "marginalWeight": 240.2362956188476
+  },
+  {
+    "headwords": 9,
+    "weightedReachableDomainPct": 70.86114287318733,
+    "marginalDomains": 21,
+    "marginalWeight": 250.28179100318283
+  },
+  {
+    "headwords": 10,
+    "weightedReachableDomainPct": 71.94407467203794,
+    "marginalDomains": 7,
+    "marginalWeight": 175.34562314486712
+  },
+  {
+    "headwords": 11,
+    "weightedReachableDomainPct": 72.99684875726801,
+    "marginalDomains": 6,
+    "marginalWeight": 170.462561170851
+  },
+  {
+    "headwords": 12,
+    "weightedReachableDomainPct": 73.75081347687798,
+    "marginalDomains": 5,
+    "marginalWeight": 122.08009195923016
+  },
+  {
+    "headwords": 13,
+    "weightedReachableDomainPct": 74.53788705230443,
+    "marginalDomains": 9,
+    "marginalWeight": 127.44099553682672
+  },
+  {
+    "headwords": 14,
+    "weightedReachableDomainPct": 75.29078111033422,
+    "marginalDomains": 5,
+    "marginalWeight": 121.90673309936932
+  },
+  {
+    "headwords": 15,
+    "weightedReachableDomainPct": 76.02443243510695,
+    "marginalDomains": 7,
+    "marginalWeight": 118.7909975954799
+  },
+  {
+    "headwords": 16,
+    "weightedReachableDomainPct": 76.76340301544016,
+    "marginalDomains": 7,
+    "marginalWeight": 119.65227822451808
+  },
+  {
+    "headwords": 17,
+    "weightedReachableDomainPct": 77.4398543966372,
+    "marginalDomains": 5,
+    "marginalWeight": 109.5293250129808
+  },
+  {
+    "headwords": 18,
+    "weightedReachableDomainPct": 78.06481264296494,
+    "marginalDomains": 6,
+    "marginalWeight": 101.19168470089032
+  },
+  {
+    "headwords": 19,
+    "weightedReachableDomainPct": 78.62744249329705,
+    "marginalDomains": 5,
+    "marginalWeight": 91.09962585926189
+  },
+  {
+    "headwords": 20,
+    "weightedReachableDomainPct": 79.19146725145504,
+    "marginalDomains": 4,
+    "marginalWeight": 91.32548586467777
+  },
+  {
+    "headwords": 21,
+    "weightedReachableDomainPct": 79.64932834550002,
+    "marginalDomains": 6,
+    "marginalWeight": 74.1357294469705
+  },
+  {
+    "headwords": 22,
+    "weightedReachableDomainPct": 80.06321600420065,
+    "marginalDomains": 3,
+    "marginalWeight": 67.01566017717904
+  },
+  {
+    "headwords": 23,
+    "weightedReachableDomainPct": 80.46652969304193,
+    "marginalDomains": 4,
+    "marginalWeight": 65.30354927963718
+  },
+  {
+    "headwords": 24,
+    "weightedReachableDomainPct": 80.85056835900524,
+    "marginalDomains": 3,
+    "marginalWeight": 62.18258552064995
+  },
+  {
+    "headwords": 25,
+    "weightedReachableDomainPct": 81.16086291441604,
+    "marginalDomains": 4,
+    "marginalWeight": 50.242122573845215
+  },
+  {
+    "headwords": 26,
+    "weightedReachableDomainPct": 81.46176117756445,
+    "marginalDomains": 4,
+    "marginalWeight": 48.720698303406024
+  },
+  {
+    "headwords": 27,
+    "weightedReachableDomainPct": 81.76787819210415,
+    "marginalDomains": 3,
+    "marginalWeight": 49.56570554736662
+  },
+  {
+    "headwords": 28,
+    "weightedReachableDomainPct": 82.05309494474548,
+    "marginalDomains": 4,
+    "marginalWeight": 46.181587128876764
+  },
+  {
+    "headwords": 29,
+    "weightedReachableDomainPct": 82.33176190653856,
+    "marginalDomains": 3,
+    "marginalWeight": 45.12106128692261
+  },
+  {
+    "headwords": 30,
+    "weightedReachableDomainPct": 82.62176605523108,
+    "marginalDomains": 2,
+    "marginalWeight": 46.956750389136275
+  },
+  {
+    "headwords": 31,
+    "weightedReachableDomainPct": 82.90499737193468,
+    "marginalDomains": 2,
+    "marginalWeight": 45.86011028048529
+  },
+  {
+    "headwords": 32,
+    "weightedReachableDomainPct": 83.18822868863828,
+    "marginalDomains": 2,
+    "marginalWeight": 45.86011028048529
+  },
+  {
+    "headwords": 33,
+    "weightedReachableDomainPct": 83.46689565043137,
+    "marginalDomains": 3,
+    "marginalWeight": 45.12106128692261
+  },
+  {
+    "headwords": 34,
+    "weightedReachableDomainPct": 83.71453315668337,
+    "marginalDomains": 3,
+    "marginalWeight": 40.096849029538085
+  },
+  {
+    "headwords": 35,
+    "weightedReachableDomainPct": 83.9858121048862,
+    "marginalDomains": 3,
+    "marginalWeight": 43.92481250360578
+  },
+  {
+    "headwords": 36,
+    "weightedReachableDomainPct": 84.25018360318097,
+    "marginalDomains": 2,
+    "marginalWeight": 42.80637539634783
+  },
+  {
+    "headwords": 37,
+    "weightedReachableDomainPct": 84.47731498911479,
+    "marginalDomains": 2,
+    "marginalWeight": 36.77654903530733
+  },
+  {
+    "headwords": 38,
+    "weightedReachableDomainPct": 84.70171917850242,
+    "marginalDomains": 2,
+    "marginalWeight": 36.33496815427865
+  },
+  {
+    "headwords": 39,
+    "weightedReachableDomainPct": 84.9203973434885,
+    "marginalDomains": 3,
+    "marginalWeight": 35.407824526307536
+  },
+  {
+    "headwords": 40,
+    "weightedReachableDomainPct": 85.16511492771338,
+    "marginalDomains": 2,
+    "marginalWeight": 39.62406251802891
+  },
+  {
+    "headwords": 41,
+    "weightedReachableDomainPct": 85.399402727572,
+    "marginalDomains": 2,
+    "marginalWeight": 37.93529777687951
+  },
+  {
+    "headwords": 42,
+    "weightedReachableDomainPct": 85.65644796677435,
+    "marginalDomains": 2,
+    "marginalWeight": 41.62012574771054
+  },
+  {
+    "headwords": 43,
+    "weightedReachableDomainPct": 85.89366848136085,
+    "marginalDomains": 2,
+    "marginalWeight": 38.41015565067286
+  },
+  {
+    "headwords": 44,
+    "weightedReachableDomainPct": 86.11567333721513,
+    "marginalDomains": 3,
+    "marginalWeight": 35.94647403674965
+  },
+  {
+    "headwords": 45,
+    "weightedReachableDomainPct": 86.31091981998115,
+    "marginalDomains": 2,
+    "marginalWeight": 31.613824826078062
+  },
+  {
+    "headwords": 46,
+    "weightedReachableDomainPct": 86.51201314292153,
+    "marginalDomains": 2,
+    "marginalWeight": 32.560530643461306
+  },
+  {
+    "headwords": 47,
+    "weightedReachableDomainPct": 86.72101336426635,
+    "marginalDomains": 3,
+    "marginalWeight": 33.84079596519196
+  },
+  {
+    "headwords": 48,
+    "weightedReachableDomainPct": 86.91864485880666,
+    "marginalDomains": 2,
+    "marginalWeight": 32
+  },
+  {
+    "headwords": 49,
+    "weightedReachableDomainPct": 87.11973818174704,
+    "marginalDomains": 2,
+    "marginalWeight": 32.560530643461306
+  },
+  {
+    "headwords": 50,
+    "weightedReachableDomainPct": 87.32083150468742,
+    "marginalDomains": 2,
+    "marginalWeight": 32.560530643461306
+  },
+  {
+    "headwords": 51,
+    "weightedReachableDomainPct": 87.51295989070552,
+    "marginalDomains": 3,
+    "marginalWeight": 31.1089503567232
+  },
+  {
+    "headwords": 52,
+    "weightedReachableDomainPct": 87.69248324221562,
+    "marginalDomains": 3,
+    "marginalWeight": 29.067974523422915
+  },
+  {
+    "headwords": 53,
+    "weightedReachableDomainPct": 87.87127060562646,
+    "marginalDomains": 3,
+    "marginalWeight": 28.94880516111497
+  },
+  {
+    "headwords": 54,
+    "weightedReachableDomainPct": 88.04765999174931,
+    "marginalDomains": 2,
+    "marginalWeight": 28.560530643461306
+  },
+  {
+    "headwords": 55,
+    "weightedReachableDomainPct": 88.20280726945471,
+    "marginalDomains": 2,
+    "marginalWeight": 25.121061286922608
+  },
+  {
+    "headwords": 56,
+    "weightedReachableDomainPct": 88.36929173405953,
+    "marginalDomains": 1,
+    "marginalWeight": 26.956750389136275
+  },
+  {
+    "headwords": 57,
+    "weightedReachableDomainPct": 88.52923767883165,
+    "marginalDomains": 2,
+    "marginalWeight": 25.898049521980603
+  },
+  {
+    "headwords": 58,
+    "weightedReachableDomainPct": 88.69572214343648,
+    "marginalDomains": 1,
+    "marginalWeight": 26.956750389136275
+  },
+  {
+    "headwords": 59,
+    "weightedReachableDomainPct": 88.85086942114188,
+    "marginalDomains": 2,
+    "marginalWeight": 25.121061286922608
+  },
+  {
+    "headwords": 60,
+    "weightedReachableDomainPct": 89.00675268694656,
+    "marginalDomains": 3,
+    "marginalWeight": 25.240230649230554
+  },
+  {
+    "headwords": 61,
+    "weightedReachableDomainPct": 89.16189996465195,
+    "marginalDomains": 2,
+    "marginalWeight": 25.121061286922608
+  },
+  {
+    "headwords": 62,
+    "weightedReachableDomainPct": 89.32277462300426,
+    "marginalDomains": 2,
+    "marginalWeight": 26.048424514769042
+  },
+  {
+    "headwords": 63,
+    "weightedReachableDomainPct": 89.47792190070966,
+    "marginalDomains": 2,
+    "marginalWeight": 25.121061286922608
+  },
+  {
+    "headwords": 64,
+    "weightedReachableDomainPct": 89.62132381308705,
+    "marginalDomains": 1,
+    "marginalWeight": 23.21928094887362
+  },
+  {
+    "headwords": 65,
+    "weightedReachableDomainPct": 89.76472572546446,
+    "marginalDomains": 1,
+    "marginalWeight": 23.21928094887362
+  },
+  {
+    "headwords": 66,
+    "weightedReachableDomainPct": 89.91300115187538,
+    "marginalDomains": 1,
+    "marginalWeight": 24.008388218618983
+  },
+  {
+    "headwords": 67,
+    "weightedReachableDomainPct": 90.0533696899095,
+    "marginalDomains": 2,
+    "marginalWeight": 22.72812452053829
+  }
+]

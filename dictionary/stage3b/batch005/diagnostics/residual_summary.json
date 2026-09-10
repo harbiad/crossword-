@@ -1,0 +1,226 @@
+{
+  "selection": "First five failed benchmark seeds per configuration, or all when fewer; deterministic, deliberately targeted, not random.",
+  "runs": 26,
+  "stillFailed": 26,
+  "observations": 15369,
+  "uncapturedObservationCalls": 1625950,
+  "zeroObservations": 3681,
+  "reasons": {
+    "full-pool support absent": {
+      "observations": 2857,
+      "runs": 26
+    },
+    "used-word exhaustion": {
+      "observations": 541,
+      "runs": 26
+    },
+    "sampled-pool support absent": {
+      "observations": 283,
+      "runs": 13
+    },
+    "propagation/search-history restriction": {
+      "observations": 0,
+      "runs": 0
+    }
+  },
+  "configurations": [
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "sampledRuns": 5,
+      "stillFailed": 5,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 51,
+          "runs": 5
+        },
+        "used-word exhaustion": {
+          "observations": 76,
+          "runs": 5
+        },
+        "sampled-pool support absent": {
+          "observations": 12,
+          "runs": 4
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "sampledRuns": 5,
+      "stillFailed": 5,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 169,
+          "runs": 5
+        },
+        "used-word exhaustion": {
+          "observations": 94,
+          "runs": 5
+        },
+        "sampled-pool support absent": {
+          "observations": 0,
+          "runs": 0
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "sampledRuns": 5,
+      "stillFailed": 5,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 146,
+          "runs": 5
+        },
+        "used-word exhaustion": {
+          "observations": 15,
+          "runs": 5
+        },
+        "sampled-pool support absent": {
+          "observations": 0,
+          "runs": 0
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "sampledRuns": 1,
+      "stillFailed": 1,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 60,
+          "runs": 1
+        },
+        "used-word exhaustion": {
+          "observations": 3,
+          "runs": 1
+        },
+        "sampled-pool support absent": {
+          "observations": 0,
+          "runs": 0
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "sampledRuns": 5,
+      "stillFailed": 5,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 1095,
+          "runs": 5
+        },
+        "used-word exhaustion": {
+          "observations": 187,
+          "runs": 5
+        },
+        "sampled-pool support absent": {
+          "observations": 180,
+          "runs": 5
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "sampledRuns": 3,
+      "stillFailed": 3,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 763,
+          "runs": 3
+        },
+        "used-word exhaustion": {
+          "observations": 127,
+          "runs": 3
+        },
+        "sampled-pool support absent": {
+          "observations": 48,
+          "runs": 3
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    },
+    {
+      "size": 7,
+      "mode": "en_to_ar",
+      "sampledRuns": 1,
+      "stillFailed": 1,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 267,
+          "runs": 1
+        },
+        "used-word exhaustion": {
+          "observations": 9,
+          "runs": 1
+        },
+        "sampled-pool support absent": {
+          "observations": 43,
+          "runs": 1
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    },
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "sampledRuns": 1,
+      "stillFailed": 1,
+      "reasons": {
+        "full-pool support absent": {
+          "observations": 306,
+          "runs": 1
+        },
+        "used-word exhaustion": {
+          "observations": 30,
+          "runs": 1
+        },
+        "sampled-pool support absent": {
+          "observations": 0,
+          "runs": 0
+        },
+        "propagation/search-history restriction": {
+          "observations": 0,
+          "runs": 0
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "At most the first 600 unique observations per run; uncaptured calls may repeat. Counts are not unbiased failure frequencies.",
+    "Full-pool zero is a missing support for this branch, not proof that every alternative branch is unsatisfiable. Empty support sets can originate from propagated contradictions.",
+    "Full-pool support with a zero live domain identifies additional propagation, used-word or sampling restrictions; it does not establish that the complete puzzle is solvable.",
+    "Observer overhead can affect deadlines. No larger-budget or solver-change experiment was run in this dictionary task."
+  ]
+}
