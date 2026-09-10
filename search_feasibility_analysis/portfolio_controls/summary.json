@@ -1,0 +1,44 @@
+[
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "variant": "current",
+    "runs": 3,
+    "successes": 1,
+    "medianMs": 4504.6,
+    "nodes": 2698,
+    "deadEnds": 17210,
+    "backtracks": 19846,
+    "rootContradictions": 0,
+    "exhaustiveFailures": 61,
+    "hallContradictions": 0
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "variant": "portfolio",
+    "runs": 3,
+    "successes": 1,
+    "medianMs": 4512.9,
+    "nodes": 4133,
+    "deadEnds": 12170,
+    "backtracks": 16325,
+    "rootContradictions": 0,
+    "exhaustiveFailures": 22,
+    "hallContradictions": 0
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "variant": "portfolioLex",
+    "runs": 3,
+    "successes": 2,
+    "medianMs": 1670.9,
+    "nodes": 3434,
+    "deadEnds": 9100,
+    "backtracks": 12511,
+    "rootContradictions": 0,
+    "exhaustiveFailures": 10,
+    "hallContradictions": 0
+  }
+]

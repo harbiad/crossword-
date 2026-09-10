@@ -1,0 +1,16 @@
+[
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "variant": "portfolioLex",
+    "runs": 30,
+    "successes": 11,
+    "medianMs": 4512.3,
+    "nodes": 34952,
+    "deadEnds": 108978,
+    "backtracks": 144069,
+    "rootContradictions": 0,
+    "exhaustiveFailures": 155,
+    "hallContradictions": 0
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "totals": {
+    "observations": 658521,
+    "windowLoss": 0,
+    "windowZero": 0,
+    "windowCritical": 0
+  },
+  "configurations": [
+    {
+      "size": 11,
+      "mode": "ar_to_en",
+      "observations": 151161,
+      "windowLoss": 0,
+      "windowZero": 0,
+      "windowCritical": 0
+    },
+    {
+      "size": 11,
+      "mode": "en_to_ar",
+      "observations": 4121,
+      "windowLoss": 0,
+      "windowZero": 0,
+      "windowCritical": 0
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en",
+      "observations": 476811,
+      "windowLoss": 0,
+      "windowZero": 0,
+      "windowCritical": 0
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar",
+      "observations": 6407,
+      "windowLoss": 0,
+      "windowZero": 0,
+      "windowCritical": 0
+    },
+    {
+      "size": 7,
+      "mode": "ar_to_en",
+      "observations": 3304,
+      "windowLoss": 0,
+      "windowZero": 0,
+      "windowCritical": 0
+    },
+    {
+      "size": 9,
+      "mode": "ar_to_en",
+      "observations": 15636,
+      "windowLoss": 0,
+      "windowZero": 0,
+      "windowCritical": 0
+    },
+    {
+      "size": 9,
+      "mode": "en_to_ar",
+      "observations": 1081,
+      "windowLoss": 0,
+      "windowZero": 0,
+      "windowCritical": 0
+    }
+  ],
+  "scope": "All captured failed-call observations from Batch006 QA. Full means the API pool received by the solver, before per-length attempt windows; removes canonical used answers. Matching supports include both structural orientations. Arc-pruned live domains can be smaller for sound simultaneous-support reasons, not truncation. No maxCandidatesPerSlot is applied on production fill/arc paths. No omitted match means no omitted known-solution match."
+}

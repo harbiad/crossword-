@@ -1,0 +1,17 @@
+size,mode,variant,runs,successes,medianMs,nodes,deadEnds,backtracks,rootContradictions,exhaustiveFailures,hallContradictions
+11,ar_to_en,current,3,1,4502.6,2699,17185,19821,0,61,0
+11,ar_to_en,supportTie,3,1,4512.8,2639,16336,18915,0,58,0
+11,ar_to_en,supportPrimary,3,1,4511.9,1831,11544,13328,0,37,0
+11,ar_to_en,supportMemo,3,1,3581.5,1853,8388,10215,0,19,0
+13,ar_to_en,current,3,0,4516.1,631,15692,16040,0,300,0
+13,ar_to_en,supportTie,3,0,4523.2,644,15771,16130,0,305,0
+13,ar_to_en,supportPrimary,3,0,4523.4,633,15803,16149,0,304,0
+13,ar_to_en,supportMemo,3,0,1239.0,212,3870,4020,0,72,0
+11,en_to_ar,current,3,2,17.4,134864,1,359956,0,0,0
+11,en_to_ar,supportTie,3,2,16.7,65562,0,169584,0,0,0
+11,en_to_ar,supportPrimary,3,2,15.1,65202,0,168751,0,0,0
+11,en_to_ar,supportMemo,3,2,15.4,64900,0,167858,0,0,0
+13,en_to_ar,current,3,3,98.2,1015,1169,2089,0,0,0
+13,en_to_ar,supportTie,3,3,105.3,1015,1169,2089,0,0,0
+13,en_to_ar,supportPrimary,3,3,108.4,1015,1169,2089,0,0,0
+13,en_to_ar,supportMemo,3,3,108.2,1015,1169,2089,0,0,0

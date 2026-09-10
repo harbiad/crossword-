@@ -1,0 +1,7 @@
+size,mode,variant,runs,successes,medianMs,nodes,deadEnds,backtracks,rootContradictions,exhaustiveFailures,hallContradictions
+11,ar_to_en,current,3,1,4504.5,3003,18809,21746,0,74,0
+11,ar_to_en,replenish48,3,1,4513.1,3904,15627,19511,0,47,0
+11,ar_to_en,replenish96,3,1,4511.9,3837,15423,19236,0,46,0
+13,ar_to_en,current,3,0,4514.8,679,17019,17393,0,324,0
+13,ar_to_en,replenish48,3,0,2176.2,363,7669,7900,0,143,0
+13,ar_to_en,replenish96,3,0,4478.4,714,15125,15586,0,267,0

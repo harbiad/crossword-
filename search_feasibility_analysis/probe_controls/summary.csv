@@ -1,0 +1,17 @@
+size,mode,variant,runs,successes,medianMs,nodes,deadEnds,backtracks,rootContradictions,exhaustiveFailures,hallContradictions
+9,ar_to_en,current,3,2,1207.7,2008,7612,9596,0,0,0
+9,ar_to_en,probe8,3,2,1220.9,1481,6802,6094,0,0,0
+9,ar_to_en,probe32,3,2,1240.2,1373,6504,2201,0,0,0
+9,ar_to_en,probeMemo,3,2,1239.3,1379,6570,2203,0,0,0
+11,ar_to_en,current,3,1,4501.4,2389,15704,18034,0,51,0
+11,ar_to_en,probe8,3,0,4501.9,2213,15421,14412,0,50,0
+11,ar_to_en,probe32,3,0,4502.4,2205,15230,13462,0,51,0
+11,ar_to_en,probeMemo,3,1,4364.4,2713,11913,9806,0,33,0
+13,ar_to_en,current,3,0,4514.9,559,14431,14729,0,276,0
+13,ar_to_en,probe8,3,0,4514.3,547,14401,14388,0,278,0
+13,ar_to_en,probe32,3,0,4513.1,546,14183,13218,0,275,0
+13,ar_to_en,probeMemo,3,0,1322.6,212,3870,3727,0,72,0
+13,en_to_ar,current,3,3,94.2,1015,1169,2089,0,0,0
+13,en_to_ar,probe8,3,2,170.2,2099,4487,1986,0,0,0
+13,en_to_ar,probe32,3,3,367.1,934,2653,681,0,0,0
+13,en_to_ar,probeMemo,3,3,344.0,937,2663,684,0,0,0

@@ -1,0 +1,9 @@
+{
+  "src/lib/arcConsistency.ts": "d63d4ab3ea107e10710950616c1f7065419906f721c99a86ea7a7bfbec359b5c",
+  "src/lib/construct.ts": "af0ac5e67c5d328349ae763727f84843a368bfead93c84bf7d647f1687f23538",
+  "src/lib/generateCrossword.ts": "1561dd8d05c739710ad6ea89578d8ac0f765be2aa289f1f27c25856c14390aa6",
+  "src/lib/preparedCandidates.ts": "d01a2312a6d65280881f107b0dc35799546dcaeb1d4e42a6541893c01c7c002c",
+  "src/lib/templates.ts": "e4782887fa5471fa6ac6d396d50d1335b6307be49990726fce813ac3202bf9da",
+  "api/_lib/candidates.ts": "12996dc88942d6472245f57faecd3a9047e037994a64bf97e3934d065bc3f27b",
+  "api/_lib/dictionary.stage3b.batch006.qa.generated.ts": "2ed518d5c22e76d2605613f1f8a5fbb339ad3f9c8fdf3fcdde382771f5c0964d"
+}

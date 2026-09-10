@@ -1,0 +1,144 @@
+{
+  "seeds": [
+    1,
+    10,
+    16
+  ],
+  "configs": [
+    {
+      "size": 9,
+      "mode": "ar_to_en"
+    },
+    {
+      "size": 11,
+      "mode": "ar_to_en"
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en"
+    }
+  ],
+  "selected": [
+    "current",
+    "pairUniqueness",
+    "strongUniqueness",
+    "strongMemo"
+  ],
+  "variants": {
+    "current": {},
+    "dedup": {
+      "dedup": true
+    },
+    "lcv": {
+      "lcv": true
+    },
+    "singleton": {
+      "singleton": true
+    },
+    "hall": {
+      "hall": true
+    },
+    "remainingDegree": {
+      "tie": "remaining-degree"
+    },
+    "longest": {
+      "tie": "longest"
+    },
+    "fixed": {
+      "tie": "fixed"
+    },
+    "constrained": {
+      "tie": "constrained"
+    },
+    "stable": {
+      "tie": "stable"
+    },
+    "noWindow": {
+      "noWindow": true
+    },
+    "allArc": {
+      "allArc": true
+    },
+    "lexical": {
+      "order": "lexical"
+    },
+    "oldOrder": {
+      "order": "old"
+    },
+    "frequency": {
+      "order": "frequency"
+    },
+    "shuffle17": {
+      "order": "shuffle17"
+    },
+    "shuffle71": {
+      "order": "shuffle71"
+    },
+    "oldTemplates": {
+      "templateOrder": "old"
+    },
+    "oldBoth": {
+      "templateOrder": "old",
+      "order": "old"
+    },
+    "independentTemplates": {
+      "templateOrder": "independent"
+    },
+    "independentCombo": {
+      "templateOrder": "independent",
+      "memo": true,
+      "shareBudget": true,
+      "lcv": true,
+      "singleton": true
+    },
+    "replenish48": {
+      "memo": true,
+      "shareBudget": true,
+      "extraBatches": 1
+    },
+    "replenish96": {
+      "memo": true,
+      "shareBudget": true,
+      "extraBatches": 3
+    },
+    "pairUniqueness": {
+      "pairUniqueness": true
+    },
+    "strongUniqueness": {
+      "pairUniqueness": true,
+      "singleton": true
+    },
+    "strongMemo": {
+      "pairUniqueness": true,
+      "singleton": true,
+      "memo": true,
+      "shareBudget": true,
+      "extraBatches": 3
+    },
+    "memo": {
+      "memo": true
+    },
+    "shareBudget": {
+      "shareBudget": true
+    },
+    "memoShare": {
+      "memo": true,
+      "shareBudget": true
+    },
+    "comboMemo": {
+      "memo": true,
+      "shareBudget": true,
+      "dedup": true,
+      "lcv": true,
+      "singleton": true,
+      "hall": true
+    },
+    "combined": {
+      "dedup": true,
+      "lcv": true,
+      "singleton": true,
+      "hall": true
+    }
+  },
+  "baseline": "Batch006 QA unchanged; all variants use the exact same API candidate pairs; sorting occurs after canonical normalization/per-length shuffle and does not change RNG consumption or templates."
+}

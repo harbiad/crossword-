@@ -1,0 +1,2 @@
+size,mode,variant,runs,successes,medianMs,nodes,deadEnds,backtracks,rootContradictions,exhaustiveFailures,hallContradictions
+11,ar_to_en,lcvMemo,30,1,3657.8,39209,135662,175301,0,288,0

@@ -181,6 +181,8 @@ type ConstructOptions = {
   };
   timeBudgetMs?: number;
   maxCandidatesPerSlot?: number;
+  searchProgress?: { maxDepth: number };
+  valueOrder?: 'input' | 'lexical';
   targetWords?: number;
   minWords?: number;
   useBacktracking?: boolean;
@@ -304,9 +306,12 @@ function constructCrosswordFillAllSlots(
       const changed = applyWord(slot, wc);
       usedWords.add(wc.answer);
 
-      // Forward checking: verify all intersecting remaining slots still have candidates.
+      // Crossings change letters; canonical uniqueness also changes every
+      // remaining same-length domain, including nonintersecting slots.
       let feasible = true;
-      for (const neighbor of geometry.neighbors.get(slot)!) {
+      const affected = new Set(geometry.neighbors.get(slot)!);
+      for (const other of remaining) if (other.length === wc.answer.length) affected.add(other);
+      for (const neighbor of affected) {
         if (!remainingSet.has(neighbor) || neighbor === slot) continue;
         if (!hasCandidateForSlot(neighbor)) { feasible = false; break; }
       }

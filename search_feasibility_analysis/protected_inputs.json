@@ -1,0 +1,7 @@
+{
+  "src/lib/preparedCandidates.ts": true,
+  "src/lib/templates.ts": true,
+  "api/_lib/candidates.ts": true,
+  "api/_lib/dictionary.stage3b.batch006.qa.generated.ts": true,
+  "validatorAndGridBuilder": true
+}

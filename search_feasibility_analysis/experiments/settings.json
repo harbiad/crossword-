@@ -1,0 +1,92 @@
+{
+  "seeds": [
+    1,
+    10,
+    16
+  ],
+  "configs": [
+    {
+      "size": 11,
+      "mode": "ar_to_en"
+    },
+    {
+      "size": 13,
+      "mode": "ar_to_en"
+    },
+    {
+      "size": 13,
+      "mode": "en_to_ar"
+    }
+  ],
+  "selected": [
+    "current",
+    "dedup",
+    "lcv",
+    "singleton",
+    "hall",
+    "remainingDegree",
+    "longest",
+    "fixed",
+    "stable",
+    "noWindow",
+    "combined"
+  ],
+  "variants": {
+    "current": {},
+    "dedup": {
+      "dedup": true
+    },
+    "lcv": {
+      "lcv": true
+    },
+    "singleton": {
+      "singleton": true
+    },
+    "hall": {
+      "hall": true
+    },
+    "remainingDegree": {
+      "tie": "remaining-degree"
+    },
+    "longest": {
+      "tie": "longest"
+    },
+    "fixed": {
+      "tie": "fixed"
+    },
+    "constrained": {
+      "tie": "constrained"
+    },
+    "stable": {
+      "tie": "stable"
+    },
+    "noWindow": {
+      "noWindow": true
+    },
+    "allArc": {
+      "allArc": true
+    },
+    "lexical": {
+      "order": "lexical"
+    },
+    "oldOrder": {
+      "order": "old"
+    },
+    "frequency": {
+      "order": "frequency"
+    },
+    "shuffle17": {
+      "order": "shuffle17"
+    },
+    "shuffle71": {
+      "order": "shuffle71"
+    },
+    "combined": {
+      "dedup": true,
+      "lcv": true,
+      "singleton": true,
+      "hall": true
+    }
+  },
+  "baseline": "Batch006 QA unchanged; all variants use the exact same API candidate pairs; sorting occurs after canonical normalization/per-length shuffle and does not change RNG consumption or templates."
+}

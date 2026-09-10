@@ -1,0 +1,1922 @@
+[
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 1,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 1,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 1,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 1,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 1,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 1,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 1,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 1,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 2,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 2,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 2,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 2,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 2,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 2,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 2,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 2,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 3,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 3,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 3,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 3,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 3,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 3,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 3,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 3,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 4,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 4,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 4,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 4,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 4,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 4,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 4,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 4,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 5,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 5,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 5,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 5,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 5,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 5,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 5,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 5,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 6,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 6,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 6,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 6,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 6,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 6,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 6,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 6,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 7,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 7,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 7,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 7,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 7,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 7,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 7,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 7,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 8,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 8,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 8,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 8,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 8,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 8,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 8,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 8,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 9,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 9,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 9,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 9,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 9,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 9,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 9,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 9,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 10,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 10,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 10,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 10,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 10,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 10,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 10,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 10,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 11,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 11,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 11,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 11,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 11,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 11,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 11,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 11,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 12,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 12,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 12,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 12,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 12,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 12,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 12,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 12,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 13,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 13,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 13,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 13,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 13,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 13,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 13,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 13,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 14,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 14,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 14,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 14,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 14,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 14,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 14,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 14,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 15,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 15,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 15,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 15,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 15,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 15,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 15,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 15,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 16,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 16,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 16,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 16,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 16,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 16,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 16,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 16,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 17,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 17,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 17,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 17,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 17,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 17,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 17,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 17,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 18,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 18,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 18,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 18,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 18,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 18,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 18,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 18,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 19,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 19,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 19,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 19,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 19,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 19,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 19,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 19,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 20,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 20,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 20,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 20,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 20,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 20,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 20,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 20,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 21,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 21,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 21,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 21,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 21,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 21,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 21,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 21,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 22,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 22,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 22,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 22,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 22,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 22,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 22,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 22,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 23,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 23,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 23,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 23,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 23,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 23,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 23,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 23,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 24,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 24,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 24,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 24,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 24,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 24,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 24,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 24,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 25,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 25,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 25,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 25,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 25,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 25,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 25,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 25,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 26,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 26,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 26,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 26,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 26,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 26,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 26,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 26,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 27,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 27,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 27,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 27,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 27,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 27,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 27,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 27,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 28,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 28,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 28,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 28,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 28,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 28,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 28,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 28,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 29,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 29,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 29,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 29,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 29,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 29,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 29,
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "new-success"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 29,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "size": 7,
+    "mode": "en_to_ar",
+    "seed": 30,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 7,
+    "mode": "ar_to_en",
+    "seed": 30,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "en_to_ar",
+    "seed": 30,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 9,
+    "mode": "ar_to_en",
+    "seed": 30,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 11,
+    "mode": "en_to_ar",
+    "seed": 30,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 11,
+    "mode": "ar_to_en",
+    "seed": 30,
+    "beforeSuccess": true,
+    "afterSuccess": false,
+    "transition": "regressed"
+  },
+  {
+    "size": 13,
+    "mode": "en_to_ar",
+    "seed": 30,
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "size": 13,
+    "mode": "ar_to_en",
+    "seed": 30,
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  }
+]

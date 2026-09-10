@@ -1,0 +1,2 @@
+size,mode,variant,runs,successes,medianMs,nodes,deadEnds,backtracks,rootContradictions,exhaustiveFailures,hallContradictions
+11,ar_to_en,portfolioLex,30,11,4512.3,34952,108978,144069,0,155,0

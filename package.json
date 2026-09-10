@@ -30,7 +30,8 @@
     "bench:domains005": "vitest run --config vitest.batch005-domains.config.ts",
     "bench:residual": "vitest run --config vitest.residual-domains.config.ts",
     "dictionary:batch006": "node scripts/dictionary-batch006.ts generate",
-    "bench:batch006:domains": "vitest run --config vitest.batch006-residuals.config.ts"
+    "bench:batch006:domains": "vitest run --config vitest.batch006-residuals.config.ts",
+    "bench:search": "vitest run --config vitest.search.config.ts"
   },
   "dependencies": {
     "@vercel/node": "^5.5.28",

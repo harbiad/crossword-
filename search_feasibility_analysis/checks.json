@@ -1,0 +1,37 @@
+{
+  "dictionaryAudit": {
+    "exitCode": 0
+  },
+  "tests": {
+    "exitCode": 0,
+    "filesPassed": 26,
+    "testsPassed": 390
+  },
+  "lint": {
+    "exitCode": 0
+  },
+  "build": {
+    "exitCode": 0
+  },
+  "benchmarks": {
+    "beforeRuns": 480,
+    "afterRuns": 480,
+    "seedsPerConfiguration": 30,
+    "policies": [
+      "compatibility",
+      "approved-only"
+    ],
+    "qualityFailures": 0
+  },
+  "independentProofVerification": {
+    "templates": 2,
+    "provedUnsatisfiable": 2,
+    "timeouts": 0
+  },
+  "dictionaryModified": false,
+  "validationModified": false,
+  "inversionModified": false,
+  "cefrAssigned": false,
+  "batch007Started": false,
+  "controlRuns": 543
+}

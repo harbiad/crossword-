@@ -1,0 +1,4322 @@
+[
+  {
+    "seed": 1,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 1,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 1,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 2,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 2,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 2,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 2,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 2,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 2,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 3,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 3,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 3,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 4,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 4,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 4,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 5,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 5,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 5,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 5,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 6,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 6,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 6,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 6,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 6,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 6,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 7,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 7,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 8,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 8,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 8,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 8,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 9,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 9,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 9,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 9,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 9,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 10,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 10,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 10,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 10,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 11,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 11,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 11,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 11,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 12,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 12,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 12,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 12,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 13,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 13,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 13,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 14,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 14,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 14,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 14,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 14,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 14,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 15,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 16,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 16,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 16,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 16,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 16,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 17,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 17,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 17,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 17,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 18,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 18,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 18,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 18,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 18,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 19,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 19,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 20,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 20,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 20,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 20,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 20,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 20,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 20,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 21,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 21,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 21,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 22,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 22,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 22,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 22,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 22,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 23,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 23,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 24,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 24,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 24,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 24,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 24,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 25,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 25,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 25,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 26,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 26,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 26,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 26,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 26,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 26,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 27,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 27,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 28,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 28,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 28,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 28,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 28,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 28,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 28,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 29,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 29,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 30,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 7,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 7,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 9,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": true,
+    "transition": "gained"
+  },
+  {
+    "seed": 30,
+    "size": 9,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 11,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 30,
+    "size": 11,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "approved-only",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 13,
+    "mode": "en_to_ar",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  },
+  {
+    "seed": 30,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "approved-only",
+    "beforeSuccess": false,
+    "afterSuccess": false,
+    "transition": "still-failed"
+  },
+  {
+    "seed": 30,
+    "size": 13,
+    "mode": "ar_to_en",
+    "policy": "compatibility",
+    "beforeSuccess": true,
+    "afterSuccess": true,
+    "transition": "retained"
+  }
+]

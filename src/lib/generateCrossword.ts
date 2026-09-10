@@ -498,15 +498,24 @@ export function generateCrossword(
     ? (size <= 7 ? 125 : size <= 9 ? 200 : 350)
     : (size <= 7 ? 450 : size <= 9 ? 850 : 1000);
 
-  for (const ranked of rankedTemplates) {
+  // On 11x11 English grids, a brief first pass identifies promising layouts.
+  // Revisit them with a deterministic alternative value order, inside the
+  // unchanged request deadline. Fully exhausted layouts reuse their proof.
+  const usePortfolio = size === 11 && answerDirection === 'ltr';
+  const firstPassCount = rankedTemplates.length;
+  const progress = new Map<typeof rankedTemplates[number]['geometry'], { maxDepth: number }>();
+  for (let templateIndex = 0; templateIndex < rankedTemplates.length; templateIndex++) {
+    const ranked = rankedTemplates[templateIndex];
+    const revisit = templateIndex >= firstPassCount;
     const template = ranked.template;
     if (getNow() > deadline) break;
     const templateDeadline = answerDirection === 'ltr'
-      ? Math.min(getNow() + perTemplateBudgetMs, deadline)
+      ? Math.min(getNow() + (usePortfolio ? (revisit ? innerBudgetMs : perTemplateBudgetMs / 4) : perTemplateBudgetMs), deadline)
       : deadline;
     const slots = ranked.geometry.slots;
     const allowedLengths = ranked.geometry.lengths;
-    const perLengthCap = size <= 7 ? 900 : size <= 9 ? 1300 : 1700;
+    const searchProgress = progress.get(ranked.geometry) ?? { maxDepth: 0 };
+    progress.set(ranked.geometry, searchProgress);
 
     for (let i = 0; i < attempts; i++) {
       if (getNow() > templateDeadline) break;
@@ -515,7 +524,9 @@ export function generateCrossword(
       for (const len of allowedLengths) {
         const bucket = buckets.get(len);
         if (!bucket || bucket.words.length === 0) continue;
-        const cap = Math.min(bucket.words.length, perLengthCap);
+        // The API already bounds/balances the pool. Keep every received answer
+        // available to constrained slots; attempts may rotate order, not membership.
+        const cap = bucket.words.length;
         const offset = i === 0 && bucket.words.length <= cap ? 0 : (attemptsRun * 97 + len * 13) % bucket.words.length;
         candidateWindows.set(len, { offset, count: cap });
       }
@@ -536,6 +547,8 @@ export function generateCrossword(
           candidateWindows,
           timeBudgetMs: Math.min(innerBudgetMs, Math.max(0, remainingMs)),
           useFillAllSlots: true,
+          searchProgress: usePortfolio ? searchProgress : undefined,
+          valueOrder: usePortfolio && revisit ? 'lexical' : 'input',
           debug: debugEnabled
             ? {
                 enabled: true,
@@ -575,6 +588,11 @@ export function generateCrossword(
       // Every slot is filled, so all valid solutions of this template have
       // the same word count/length score. Re-solving cannot improve density.
       return cw;
+    }
+    if (usePortfolio && templateIndex === firstPassCount - 1 && getNow() < deadline) {
+      rankedTemplates.push(...rankedTemplates.slice(0, firstPassCount).sort((a, b) =>
+        (progress.get(b.geometry)!.maxDepth / b.geometry.slots.length) -
+        (progress.get(a.geometry)!.maxDepth / a.geometry.slots.length)));
     }
     // For LTR: continue to next template even if templateDeadline exceeded (only stop at global deadline)
     // For RTL: stop on deadline (original behavior)

@@ -9,7 +9,12 @@ type Options = {
   preparedTemplate?: PreparedTemplate;
   candidateWindows?: ReadonlyMap<number, CandidateWindow>;
   timeBudgetMs?: number;
+  searchProgress?: { maxDepth: number };
+  valueOrder?: 'input' | 'lexical';
 };
+// A proof is reusable only for this immutable prepared pool and full domains.
+// Never cache timeouts, branch failures or failures of a sampled subset.
+const impossibleTemplates = new WeakMap<PreparedCandidates, WeakSet<PreparedTemplate>>();
 type Crossing = { other: number; here: number; there: number };
 
 // Maintain support at every crossing, including between unassigned slots.
@@ -24,6 +29,19 @@ export function constructArc(
   const geometry = options.preparedTemplate ?? prepareTemplate(template, direction);
   const prepared = options.preparedCandidates ?? indexCandidates(words);
   const slots = geometry.slots;
+  const completePool = slots.every(slot => {
+    const window = options.candidateWindows?.get(slot.length);
+    return !window || window.count >= (prepared.byLength.get(slot.length)?.words.length ?? 0);
+  });
+  let impossible = impossibleTemplates.get(prepared);
+  if (!impossible) {
+    impossible = new WeakSet();
+    impossibleTemplates.set(prepared, impossible);
+  }
+  if (completePool && impossible.has(geometry)) return [];
+  const rememberImpossible = () => {
+    if (completePool && performance.now() <= end) impossible.add(geometry);
+  };
   const domains = slots.map(slot => [...lookupCandidates(
     prepared, Array(slot.length).fill(null), new Set(), options.candidateWindows?.get(slot.length),
   )]);
@@ -75,12 +93,16 @@ export function constructArc(
     }
     return true;
   };
-  if (!propagate(slots.map((_, index) => index))) return [];
+  if (!propagate(slots.map((_, index) => index))) {
+    rememberImpossible();
+    return [];
+  }
 
   const chosen = new Map<number, OrientedWord>();
   const used = new Set<string>();
   const search = (): boolean => {
     if (performance.now() > end) return false;
+    if (options.searchProgress) options.searchProgress.maxDepth = Math.max(options.searchProgress.maxDepth, chosen.size);
     if (chosen.size === slots.length) return true;
     let best = -1;
     for (let index = 0; index < slots.length; index++) {
@@ -91,7 +113,25 @@ export function constructArc(
       }
     }
     if (best < 0 || !domains[best].length) return false;
-    for (const word of domains[best]) {
+    let values = domains[best];
+    if (options.valueOrder === 'lexical') values = [...values].sort((a, b) => a.answer.localeCompare(b.answer));
+    // Measured on regressed 9x9 English seeds: prioritize values retaining
+    // support at every unassigned crossing. Preserve stable order on ties.
+    if (size === 9 && direction === 'ltr') {
+      const support = neighbors[best].filter(edge => !chosen.has(edge.other)).map(edge => {
+        const counts = new Map<string, number>();
+        for (const word of domains[edge.other]) {
+          const letter = char(word, edge.there);
+          counts.set(letter, (counts.get(letter) ?? 0) + 1);
+        }
+        return { edge, counts };
+      });
+      values = values.map((word, order) => ({
+        word, order,
+        score: support.reduce((sum, { edge, counts }) => sum + Math.log(counts.get(char(word, edge.here)) ?? 0), 0),
+      })).sort((a, b) => b.score - a.score || a.order - b.order).map(value => value.word);
+    }
+    for (const word of values) {
       if (performance.now() > end) return false;
       if (used.has(word.answer)) continue;
       const mark = trail.length;
@@ -117,7 +157,10 @@ export function constructArc(
     }
     return false;
   };
-  if (!search()) return [];
+  if (!search()) {
+    rememberImpossible();
+    return [];
+  }
   return slots.map((slot, index) => {
     const word = chosen.get(index)!;
     // Retain geometric numbering anchors even when typing begins at the far end.
