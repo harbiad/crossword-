@@ -1,7 +1,8 @@
+import { generationRandom } from './generationRandom';
 import { getEntryCellAt } from './crossword';
 import type { Crossword, Cell, Entry, Direction } from './crossword';
 import { constructCrossword, validateBlockRuns } from './construct';
-import { getTemplates } from './templates';
+import { getBalancedEnglishTemplates13, getTemplates } from './templates';
 import { prepareCandidates, type CandidateWindow } from './preparedCandidates';
 import { prepareTemplate } from './preparedTemplate';
 
@@ -447,13 +448,17 @@ export function generateCrossword(
   wordClues: WordClue[],
   answerDirection: 'rtl' | 'ltr' = 'ltr'
 ): Crossword {
-  const prepared = prepareCandidates(wordClues, size);
+  const streams = size === 13 && answerDirection === 'ltr'
+    ? generationRandom(Math.floor(Math.random() * 4294967296)) : undefined;
+  const prepared = prepareCandidates(wordClues, size, streams?.candidates);
   const clean = prepared.words;
   const buckets = prepared.byLength;
 
   // LTR mode needs more templates to find a solvable one (fewer 2-letter slots = tighter constraints)
   const templateCount = answerDirection === 'ltr' ? 24 : 6;
-  const templates = getTemplates(size, answerDirection === 'ltr' ? 3 : 2, templateCount);
+  const templates = size === 13 && answerDirection === 'ltr'
+    ? getBalancedEnglishTemplates13(templateCount, streams?.templates)
+    : getTemplates(size, answerDirection === 'ltr' ? 3 : 2, templateCount, streams?.templates);
   const attempts = size <= 7 ? 18 : size <= 9 ? 22 : 20;
   // Halved after indexed 100%/75%/50% budget comparisons; see the solver benchmark report.
   const timeBudgetMs = answerDirection === 'ltr'

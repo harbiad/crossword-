@@ -92,3 +92,10 @@ it('preserves crossing and canonical identity with 9x9 value ordering and distra
  }
  expect(cells.size).toBe(6);
 });
+
+it('never carries a 13x13 impossibility proof into an expanded canonical pool',()=>{
+ const template=Array.from({length:13},(_,r)=>Array.from({length:13},(_,c)=>Number(r<2&&c<2)));
+ expect(constructArc(13,[{answer:'AA',clue:'one'}],template,'ltr',{timeBudgetMs:1000})).toEqual([]);
+ const words=['AA','AB','AC','CD','BD'].map(answer=>({answer,clue:answer}));
+ expect(constructArc(13,words,template,'ltr',{timeBudgetMs:1000})).toHaveLength(4);
+});

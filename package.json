@@ -31,7 +31,11 @@
     "bench:residual": "vitest run --config vitest.residual-domains.config.ts",
     "dictionary:batch006": "node scripts/dictionary-batch006.ts generate",
     "bench:batch006:domains": "vitest run --config vitest.batch006-residuals.config.ts",
-    "bench:search": "vitest run --config vitest.search.config.ts"
+    "bench:search": "vitest run --config vitest.search.config.ts",
+    "bench:templates": "vitest run --config vitest.template-feasibility.config.ts benchmarks/template-feasibility/census.benchmark.ts",
+    "bench:templates:controls": "vitest run --config vitest.template-controls.config.ts",
+    "bench:template-families": "FAMILY_DISCOVERY=1 vitest run --config vitest.template-families.config.ts benchmarks/template-families/discovery.benchmark.ts",
+    "bench:template-families:compare": "FAMILY_COMPARE=1 vitest run --config vitest.template-families.config.ts benchmarks/template-families/compare.benchmark.ts"
   },
   "dependencies": {
     "@vercel/node": "^5.5.28",

@@ -31,7 +31,7 @@ it('proposes only new unresolved reference headwords for recurring A/B gaps and 
  // API import advances with later review layers; the analysis snapshot remains pinned for historical replay.
  // Historical solver hashes identify the measured baseline, not a freeze on future fixes.
  for(const [path,hash]of Object.entries(json(root+'inputs.json')).filter(([path])=>path!=='api/generate.ts')){
-  const baseline=['src/lib/arcConsistency.ts','src/lib/generateCrossword.ts','src/lib/construct.ts'].includes(path)?'benchmarks/search/baseline/'+path.split('/').pop()!.replace('.ts','.txt'):path;
+  const baseline=path==='src/lib/templates.ts'?'template_feasibility_13x13/baseline/templates.txt':['src/lib/arcConsistency.ts','src/lib/generateCrossword.ts','src/lib/construct.ts'].includes(path)?'benchmarks/search/baseline/'+path.split('/').pop()!.replace('.ts','.txt'):path;
   expect(createHash('sha256').update(readFileSync(baseline)).digest('hex')).toBe(hash);
  }
  expect(readFileSync('api/generate.ts','utf8')).toMatch(/createCandidateIndex\(DICTIONARY_BATCH\d+_QA, 'compatibility'\)/);

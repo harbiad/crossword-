@@ -30,7 +30,7 @@ export function instrumentation(): Plugin {
           if (!expression) throw new Error(`Missing budget marker ${variable}`);
           replace(expression, expression.replace('= answerDirection', '= (answerDirection').replace(/;$/, `) * ${scale};`));
         }
-        replace('  const prepared = prepareCandidates(wordClues, size);', '  const benchPreparationStart = clock();\n  const prepared = prepareCandidates(wordClues, size);');
+        replace('  const prepared = prepareCandidates(wordClues, size, streams?.candidates);', '  const benchPreparationStart = clock();\n  const prepared = prepareCandidates(wordClues, size, streams?.candidates);');
         replace('  const buckets = prepared.byLength;', "  const buckets = prepared.byLength;\n  add('clientPreparationMs', clock() - benchPreparationStart);\n  add('clientCandidateCount', clean.length);\n  const benchTemplatesStart = clock();");
         replace('  const attempts = size <= 7', "  add('templatesMs', clock() - benchTemplatesStart);\n  const attempts = size <= 7");
         replace('  const templateScores = templates', '  const benchRankingStart = clock();\n  const templateScores = templates');

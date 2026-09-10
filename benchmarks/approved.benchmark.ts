@@ -58,7 +58,7 @@ test('paired approved dictionary generation measurement', () => {
   }
   mkdirSync(directory, { recursive: true });
   writeFileSync(`${directory}/candidate_length_distribution.csv`, csv(coverage));
-  type Run = { seed: number; size: number; mode: Mode; policy: DictionaryPolicy; success: boolean; generationMs: number; entries: number; intersections: number; candidateCount: number; candidateLengths: Record<number, number>; solverAttempts: number; timeoutChecks: number; viableTemplates: number; totalTemplates: number; validationErrors: string[]; qualityErrors: string[]; failureReason: string };
+  type Run = { whitePct: number; crossedPct: number; signature: string; seed: number; size: number; mode: Mode; policy: DictionaryPolicy; success: boolean; generationMs: number; entries: number; intersections: number; candidateCount: number; candidateLengths: Record<number, number>; solverAttempts: number; timeoutChecks: number; viableTemplates: number; totalTemplates: number; validationErrors: string[]; qualityErrors: string[]; failureReason: string };
   const runs: Run[] = [];
   const originalRandom = Math.random;
   const started = new Date().toISOString();
@@ -82,6 +82,7 @@ test('paired approved dictionary generation measurement', () => {
         qualityErrors.push(...validatePuzzle(cw.grid, cw.entries, cw.answerDirection).errors);
         for (const entry of cw.entries) {
           if (!selected.has(key(entry.answer, entry.clue)) || !source.has(key(entry.answer, entry.clue))) qualityErrors.push(`Invalid provenance ${entry.id}`);
+          if (mode === 'ar_to_en' && entry.answer.length < 3) qualityErrors.push(`English answer below minimum ${entry.id}`);
           if (typeof entry.isInverted !== 'boolean') qualityErrors.push(`Missing inversion metadata ${entry.id}`);
           for (let i = 0; i < entry.answer.length; i++) {
             const { r, c } = getEntryCellAt(entry, i, cw.answerDirection);
@@ -92,7 +93,9 @@ test('paired approved dictionary generation measurement', () => {
       }
       const success = cw.entries.length > 0 && !qualityErrors.length;
       const failureReason = success ? '' : qualityErrors.length ? 'returned_puzzle_quality_failure' : !observations.viableTemplates ? 'no_template_with_all_required_lengths' : observations.validationErrors.length ? 'validation_rejections_observed' : observations.timeouts ? 'solver_deadline_observed_root_cause_unestablished' : 'bounded_search_no_solution_reason_unestablished';
-      const run: Run = { seed, size, mode, policy, success, generationMs, entries: cw.entries.length, intersections: cw.grid.flat().filter(c => c.type === 'letter' && c.entries.size === 2).length, candidateCount: pairs.length, candidateLengths, solverAttempts: metrics.solverAttempts ?? 0, timeoutChecks: observations.timeouts, viableTemplates: observations.viableTemplates, totalTemplates: observations.totalTemplates, validationErrors: [...observations.validationErrors], qualityErrors, failureReason };
+      const white = cw.grid.flat().filter(c => c.type === 'letter').length;
+      const crossed = cw.grid.flat().filter(c => c.type === 'letter' && c.entries.size === 2).length;
+      const run: Run = { whitePct: white / (size * size) * 100, crossedPct: white ? crossed / white * 100 : 0, signature: cw.grid.map(row => row.map(c => c.type === 'letter' ? '1' : '0').join('')).join('/'), seed, size, mode, policy, success, generationMs, entries: cw.entries.length, intersections: cw.grid.flat().filter(c => c.type === 'letter' && c.entries.size === 2).length, candidateCount: pairs.length, candidateLengths, solverAttempts: metrics.solverAttempts ?? 0, timeoutChecks: observations.timeouts, viableTemplates: observations.viableTemplates, totalTemplates: observations.totalTemplates, validationErrors: [...observations.validationErrors], qualityErrors, failureReason };
       if (seed) runs.push(run);
       if (seed) writeFileSync(`${directory}/runs.json`, JSON.stringify(runs, null, 2) + '\n');
       console.log(`${seed ? 'MEASURE' : 'WARMUP'} seed=${seed} ${size} ${mode} ${policy}: ${success ? 'OK' : failureReason} ${generationMs.toFixed(0)}ms words=${run.entries}`);
@@ -102,7 +105,7 @@ test('paired approved dictionary generation measurement', () => {
     const group = runs.filter(r => r.policy === policy && r.mode === mode && r.size === size);
     const successful = group.filter(r => r.success);
     const successRate = successful.length / group.length * 100;
-    return { size, mode, policy, attempts: group.length, successful: successful.length, failed: group.length - successful.length, successRate, generationMs: summarize(group.map(r => r.generationMs)), entries: summarize(successful.map(r => r.entries)), minimumEntries: successful.length ? Math.min(...successful.map(r => r.entries)) : null, intersections: summarize(successful.map(r => r.intersections)), candidateCount: summarize(group.map(r => r.candidateCount)), solverAttempts: summarize(group.map(r => r.solverAttempts)), recommendation: successRate >= 95 ? 'READY' : successRate >= 80 ? 'NEARLY READY' : 'NOT READY' };
+    return { size, mode, policy, attempts: group.length, successful: successful.length, failed: group.length - successful.length, successRate, generationMs: summarize(group.map(r => r.generationMs)), entries: summarize(successful.map(r => r.entries)), minimumEntries: successful.length ? Math.min(...successful.map(r => r.entries)) : null, intersections: summarize(successful.map(r => r.intersections)), whitePct: summarize(successful.map(r => r.whitePct)), crossedPct: summarize(successful.map(r => r.crossedPct)), distinctLayouts: new Set(successful.map(r => r.signature)).size, candidateCount: summarize(group.map(r => r.candidateCount)), solverAttempts: summarize(group.map(r => r.solverAttempts)), recommendation: successRate >= 95 ? 'READY' : successRate >= 80 ? 'NEARLY READY' : 'NOT READY' };
   })));
   writeFileSync(`${directory}/runs.csv`, csv(runs));
   writeFileSync(`${directory}/failure_analysis.csv`, csv(runs.filter(r => !r.success).map(r => ({ seed: r.seed, size: r.size, mode: r.mode, policy: r.policy, reason: r.failureReason, solverAttempts: r.solverAttempts, timeoutChecks: r.timeoutChecks, viableTemplates: r.viableTemplates, validationErrors: r.validationErrors, qualityErrors: r.qualityErrors }))));

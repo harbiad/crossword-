@@ -1,3 +1,4 @@
+import { createTemplateProofCache } from './templateProofCache';
 import { getEntryCellAt } from './crossword';
 import { prepareTemplate, type PreparedTemplate } from './preparedTemplate';
 import { indexCandidates, lookupCandidates, type OrientedWord, type PreparedCandidates, type CandidateWindow } from './preparedCandidates';
@@ -15,6 +16,7 @@ type Options = {
 // A proof is reusable only for this immutable prepared pool and full domains.
 // Never cache timeouts, branch failures or failures of a sampled subset.
 const impossibleTemplates = new WeakMap<PreparedCandidates, WeakSet<PreparedTemplate>>();
+const largeEnglishProofs = createTemplateProofCache();
 type Crossing = { other: number; here: number; there: number };
 
 // Maintain support at every crossing, including between unassigned slots.
@@ -38,9 +40,14 @@ export function constructArc(
     impossible = new WeakSet();
     impossibleTemplates.set(prepared, impossible);
   }
+  const shareProofs = size === 13 && direction === 'ltr' && completePool;
   if (completePool && impossible.has(geometry)) return [];
+  if (shareProofs && largeEnglishProofs.has(prepared, template, direction)) return [];
   const rememberImpossible = () => {
-    if (completePool && performance.now() <= end) impossible.add(geometry);
+    if (completePool && performance.now() <= end) {
+      impossible.add(geometry);
+      if (shareProofs) largeEnglishProofs.add(prepared, template, direction);
+    }
   };
   const domains = slots.map(slot => [...lookupCandidates(
     prepared, Array(slot.length).fill(null), new Set(), options.candidateWindows?.get(slot.length),

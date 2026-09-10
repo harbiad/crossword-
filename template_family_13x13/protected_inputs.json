@@ -1,0 +1,11 @@
+{
+  "src/lib/generateCrossword.ts": true,
+  "src/lib/construct.ts": true,
+  "src/lib/arcConsistency.ts": true,
+  "src/lib/templates.ts": true,
+  "src/lib/crossword.ts": true,
+  "src/lib/generationRandom.ts": true,
+  "src/lib/templateProofCache.ts": true,
+  "api/generate.ts": true,
+  "api/_lib/dictionary.stage3b.batch006.qa.generated.ts": true
+}

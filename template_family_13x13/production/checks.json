@@ -1,0 +1,25 @@
+{
+  "dictionaryAudit": {
+    "exitCode": 0
+  },
+  "tests": {
+    "exitCode": 0,
+    "passed": 402,
+    "files": 30
+  },
+  "lint": {
+    "exitCode": 0
+  },
+  "build": {
+    "exitCode": 0
+  },
+  "approvedAndCompatibilityBenchmark": {
+    "exitCode": 0,
+    "measuredRuns": 480,
+    "warmups": 16,
+    "returnedQualityFailures": 0
+  },
+  "twoLetterEnglishEnabled": false,
+  "validatorWeakened": false,
+  "productionDictionaryPolicy": "compatibility"
+}

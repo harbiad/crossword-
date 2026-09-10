@@ -1,0 +1,373 @@
+{
+  "censusOccurrences": 720,
+  "uniqueLayouts": 701,
+  "classes": {
+    "C": 719,
+    "B": 1
+  },
+  "uniqueClasses": {
+    "C": 700,
+    "B": 1
+  },
+  "provablyUnsatisfiablePercent": 100.0,
+  "classificationMs": 34960.702508999915,
+  "families": {
+    "asymmetric": 361,
+    "rotational": 340
+  },
+  "mandatoryFullLengthLines": {
+    "zeroBasedRows": [
+      2,
+      10
+    ],
+    "zeroBasedColumns": [
+      2,
+      10
+    ]
+  },
+  "scope": "Every layout from the 30 production seeds, not every mathematically possible grid. No assumption that an unknown is impossible.",
+  "original-family-exploration.json": {
+    "observations": 1400,
+    "solutions": 0,
+    "proofs": 1363,
+    "unknown": 37
+  },
+  "exploration.json": {
+    "observations": 5500,
+    "solutions": 0,
+    "proofs": 5437,
+    "unknown": 63
+  },
+  "deep.json": {
+    "observations": 59,
+    "solutions": 0,
+    "proofs": 59,
+    "unknown": 0
+  },
+  "filtering": {
+    "A": {
+      "runs": 30,
+      "successes": 0,
+      "medianMs": 1216.350541499999,
+      "p95Ms": 1474.9789579999997,
+      "medianAttempts": 480.0,
+      "impossibleMs": 35837.90469300032
+    },
+    "B": {
+      "runs": 30,
+      "successes": 0,
+      "medianMs": 22.23760450000009,
+      "p95Ms": 24.90308300000015,
+      "medianAttempts": 0.0,
+      "impossibleMs": 0
+    },
+    "C": {
+      "runs": 30,
+      "successes": 0,
+      "medianMs": 1198.7435204999947,
+      "p95Ms": 1478.5147919999981,
+      "medianAttempts": 480.0,
+      "impossibleMs": 35809.32786699999
+    },
+    "D": {
+      "runs": 30,
+      "successes": 0,
+      "medianMs": 21.87835449999966,
+      "p95Ms": 23.736834000003,
+      "medianAttempts": 0.0,
+      "impossibleMs": 0
+    }
+  },
+  "independentStreamCensus": {
+    "occurrences": 720,
+    "uniqueLayouts": 702,
+    "classes": {
+      "C": 719,
+      "B": 1
+    },
+    "allInitialDomainsNonempty": true
+  },
+  "comparison": [
+    {
+      "grid": 7,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "beforeSuccess": 100,
+      "afterSuccess": 100,
+      "beforeMedianMs": 4.1227079999989655,
+      "afterMedianMs": 3.852375000002212,
+      "beforeP95Ms": 5.6777080000028946,
+      "afterP95Ms": 5.026333000016166,
+      "beforeWords": 26,
+      "afterWords": 26,
+      "beforeIntersections": 36,
+      "afterIntersections": 36
+    },
+    {
+      "grid": 9,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "beforeSuccess": 100,
+      "afterSuccess": 100,
+      "beforeMedianMs": 7.998416499991436,
+      "afterMedianMs": 7.436792000022251,
+      "beforeP95Ms": 15.592250000016065,
+      "afterP95Ms": 14.788292000012007,
+      "beforeWords": 42,
+      "afterWords": 42,
+      "beforeIntersections": 57,
+      "afterIntersections": 57
+    },
+    {
+      "grid": 11,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "beforeSuccess": 93.33333333333333,
+      "afterSuccess": 93.33333333333333,
+      "beforeMedianMs": 16.756645999998,
+      "afterMedianMs": 14.502228999997897,
+      "beforeP95Ms": 1804.1768750000047,
+      "afterP95Ms": 1803.808416999993,
+      "beforeWords": 59.5,
+      "afterWords": 59.5,
+      "beforeIntersections": 85,
+      "afterIntersections": 85
+    },
+    {
+      "grid": 13,
+      "mode": "en_to_ar",
+      "policy": "compatibility",
+      "beforeSuccess": 93.33333333333333,
+      "afterSuccess": 93.33333333333333,
+      "beforeMedianMs": 60.34904149999784,
+      "afterMedianMs": 60.384083500004635,
+      "beforeP95Ms": 1806.9562920000171,
+      "afterP95Ms": 1806.066541999986,
+      "beforeWords": 82,
+      "afterWords": 82,
+      "beforeIntersections": 119,
+      "afterIntersections": 119
+    },
+    {
+      "grid": 7,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "beforeSuccess": 100,
+      "afterSuccess": 100,
+      "beforeMedianMs": 6.092395499988925,
+      "afterMedianMs": 5.292125499996473,
+      "beforeP95Ms": 132.97320800001035,
+      "afterP95Ms": 130.47499999999127,
+      "beforeWords": 22,
+      "afterWords": 22,
+      "beforeIntersections": 41,
+      "afterIntersections": 41
+    },
+    {
+      "grid": 9,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "beforeSuccess": 100,
+      "afterSuccess": 100,
+      "beforeMedianMs": 378.9134374999994,
+      "afterMedianMs": 367.5164994999941,
+      "beforeP95Ms": 1045.3168330000044,
+      "afterP95Ms": 1030.7400000000052,
+      "beforeWords": 31,
+      "afterWords": 31,
+      "beforeIntersections": 65.5,
+      "afterIntersections": 65.5
+    },
+    {
+      "grid": 11,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "beforeSuccess": 100,
+      "afterSuccess": 100,
+      "beforeMedianMs": 1205.5999999999913,
+      "afterMedianMs": 857.5469165000104,
+      "beforeP95Ms": 2343.652457999997,
+      "afterP95Ms": 1201.8613339999574,
+      "beforeWords": 42,
+      "afterWords": 42,
+      "beforeIntersections": 88,
+      "afterIntersections": 89.5
+    },
+    {
+      "grid": 13,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "beforeSuccess": 96.66666666666667,
+      "afterSuccess": 96.66666666666667,
+      "beforeMedianMs": 483.5351459999947,
+      "afterMedianMs": 881.4562494999991,
+      "beforeP95Ms": 4018.056749999989,
+      "afterP95Ms": 4359.215666999982,
+      "beforeWords": 64,
+      "afterWords": 62,
+      "beforeIntersections": 131,
+      "afterIntersections": 131
+    },
+    {
+      "grid": 7,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "beforeSuccess": 100,
+      "afterSuccess": 100,
+      "beforeMedianMs": 3.792229500009853,
+      "afterMedianMs": 3.5082709999842336,
+      "beforeP95Ms": 903.0328329999465,
+      "afterP95Ms": 902.7315829999861,
+      "beforeWords": 26,
+      "afterWords": 26,
+      "beforeIntersections": 36,
+      "afterIntersections": 36
+    },
+    {
+      "grid": 9,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "beforeSuccess": 90,
+      "afterSuccess": 90,
+      "beforeMedianMs": 14.83927049999329,
+      "afterMedianMs": 14.42727050000758,
+      "beforeP95Ms": 1702.5999580000062,
+      "afterP95Ms": 1702.5365839999868,
+      "beforeWords": 42,
+      "afterWords": 42,
+      "beforeIntersections": 57,
+      "afterIntersections": 57
+    },
+    {
+      "grid": 11,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "beforeSuccess": 63.33333333333333,
+      "afterSuccess": 63.33333333333333,
+      "beforeMedianMs": 1023.4140415000074,
+      "afterMedianMs": 1022.0572709999979,
+      "beforeP95Ms": 1805.1176669999986,
+      "afterP95Ms": 1804.2499160000007,
+      "beforeWords": 60,
+      "afterWords": 60,
+      "beforeIntersections": 85,
+      "afterIntersections": 85
+    },
+    {
+      "grid": 13,
+      "mode": "en_to_ar",
+      "policy": "approved-only",
+      "beforeSuccess": 56.666666666666664,
+      "afterSuccess": 56.666666666666664,
+      "beforeMedianMs": 1074.2526669999934,
+      "afterMedianMs": 1074.7143959999994,
+      "beforeP95Ms": 1807.8738750000193,
+      "afterP95Ms": 1807.1331670000072,
+      "beforeWords": 80,
+      "afterWords": 80,
+      "beforeIntersections": 119,
+      "afterIntersections": 119
+    },
+    {
+      "grid": 7,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "beforeSuccess": 96.66666666666667,
+      "afterSuccess": 96.66666666666667,
+      "beforeMedianMs": 16.650354499979585,
+      "afterMedianMs": 14.45385399999941,
+      "beforeP95Ms": 171.493959000014,
+      "afterP95Ms": 165.46354200001224,
+      "beforeWords": 22,
+      "afterWords": 22,
+      "beforeIntersections": 41,
+      "afterIntersections": 41
+    },
+    {
+      "grid": 9,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "beforeSuccess": 100,
+      "afterSuccess": 100,
+      "beforeMedianMs": 774.4315630000056,
+      "afterMedianMs": 748.5286250000063,
+      "beforeP95Ms": 1300.3904579999798,
+      "afterP95Ms": 1268.146458000003,
+      "beforeWords": 32,
+      "afterWords": 32,
+      "beforeIntersections": 64,
+      "afterIntersections": 64
+    },
+    {
+      "grid": 11,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "beforeSuccess": 36.666666666666664,
+      "afterSuccess": 40,
+      "beforeMedianMs": 4512.921437500001,
+      "afterMedianMs": 4512.071958500004,
+      "beforeP95Ms": 4514.846167000011,
+      "afterP95Ms": 4513.710625000007,
+      "beforeWords": 44,
+      "afterWords": 44,
+      "beforeIntersections": 88,
+      "afterIntersections": 88
+    },
+    {
+      "grid": 13,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "beforeSuccess": 0,
+      "afterSuccess": 0,
+      "beforeMedianMs": 1361.682812500003,
+      "afterMedianMs": 1032.2276874999807,
+      "beforeP95Ms": 1677.648583000002,
+      "afterP95Ms": 1262.8812920000055,
+      "beforeWords": null,
+      "afterWords": null,
+      "beforeIntersections": null,
+      "afterIntersections": null
+    }
+  ],
+  "seedChanges": [
+    {
+      "grid": 13,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "seed": 8,
+      "beforeSuccess": false,
+      "afterSuccess": true
+    },
+    {
+      "grid": 13,
+      "mode": "ar_to_en",
+      "policy": "compatibility",
+      "seed": 16,
+      "beforeSuccess": true,
+      "afterSuccess": false
+    },
+    {
+      "grid": 11,
+      "mode": "ar_to_en",
+      "policy": "approved-only",
+      "seed": 22,
+      "beforeSuccess": false,
+      "afterSuccess": true
+    }
+  ],
+  "acceptanceTargetMet": false,
+  "batch007Started": false,
+  "productionPolicy": "compatibility",
+  "dictionaryModified": false,
+  "validatorModified": false,
+  "twoLetterExperimentAuthorized": false,
+  "twoLetterExperimentPerformed": false,
+  "conclusion": "Acceptance target not met. Filtering an all-impossible catalog cannot yield a solution. No feasible new layout was found under the existing template constraints.",
+  "remainingBottleneck": "Joint template/canonical-vocabulary feasibility, not raw counts, truncation or reordering of proven contradictions.",
+  "recommendation": "Keep Batch007 paused. Decide whether to authorize a separate two-letter English template experiment, or continue joint layout search under the three-letter minimum.",
+  "runtimeChanges": [
+    "13x13 English-only independent template/candidate RNG streams",
+    "Bounded exact-canonical-membership complete impossibility proof cache"
+  ],
+  "feasibilitySelectorRetained": false
+}

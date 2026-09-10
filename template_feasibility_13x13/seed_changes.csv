@@ -1,0 +1,4 @@
+grid,mode,policy,seed,beforeSuccess,afterSuccess
+13,ar_to_en,compatibility,8,False,True
+13,ar_to_en,compatibility,16,True,False
+11,ar_to_en,approved-only,22,False,True

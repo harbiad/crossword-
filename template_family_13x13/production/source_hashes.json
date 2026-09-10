@@ -1,0 +1,11 @@
+{
+  "src/lib/templates.ts": "4775238d4aa28d5d810bdd05926d451fab386ba9e877c7088a7e23adc6219e6f",
+  "src/lib/generateCrossword.ts": "80e3184f8b4e559dd0283f6accab6a0db41e9a17fb44e2f9384d7ccd7bbfeff9",
+  "src/lib/construct.ts": "80d8bdb40a85371c08ae831cf7e5de75ae340d36f869be2763b818ea13f12d94",
+  "src/lib/arcConsistency.ts": "d227589e043fa57a8a4d8f47a0ad6e98dd04a130329837cbda3d43d94d6f2c5c",
+  "src/lib/generationRandom.ts": "b6b78124f77c3ff0c95a898ce2127e9ee8e3f470f11cada1fdb7507dd5580162",
+  "src/lib/templateProofCache.ts": "0d643be4f1e0864d36645118dd4daee7e50bfdef58e3e73b9399a1a7e5150b59",
+  "api/_lib/dictionary.stage3b.batch006.qa.generated.ts": "2ed518d5c22e76d2605613f1f8a5fbb339ad3f9c8fdf3fcdde382771f5c0964d",
+  "api/generate.ts": "0ac637d3deffc1f3910659c7a3f136d57949eb16defdcd3904038344d999235a",
+  "benchmarks/approved.benchmark.ts": "7d514682073b50d600f9f12a68e52d1d485b1eac09c5d210cafb18a54be9c153"
+}

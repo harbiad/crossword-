@@ -87,7 +87,7 @@ function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
 }
 
-function validateBlockRunsLocal(grid: number[][], minRunLength = 2): boolean {
+function validateBlockRunsLocal(grid: number[][], minRunLength = 2, allowUnchecked = false): boolean {
   const size = grid.length;
 
   // Check across runs
@@ -97,7 +97,7 @@ function validateBlockRunsLocal(grid: number[][], minRunLength = 2): boolean {
       const isWhite = c < size && grid[r][c] === 1;
       if (isWhite) run++;
       if (!isWhite || c === size) {
-        if (run > 0 && run < minRunLength) return false;
+        if (run > 0 && run < minRunLength && !(allowUnchecked && run === 1)) return false;
         run = 0;
       }
     }
@@ -110,9 +110,22 @@ function validateBlockRunsLocal(grid: number[][], minRunLength = 2): boolean {
       const isWhite = r < size && grid[r][c] === 1;
       if (isWhite) run++;
       if (!isWhite || r === size) {
-        if (run > 0 && run < minRunLength) return false;
+        if (run > 0 && run < minRunLength && !(allowUnchecked && run === 1)) return false;
         run = 0;
       }
+    }
+  }
+
+  // A perpendicular singleton is not a clue, but must belong to a real word.
+  if (allowUnchecked) {
+    for (let r = 0; r < size; r++) for (let c = 0; c < size; c++) {
+      if (grid[r][c] !== 1) continue;
+      let horizontal = 1, vertical = 1;
+      for (let x = c - 1; x >= 0 && grid[r][x] === 1; x--) horizontal++;
+      for (let x = c + 1; x < size && grid[r][x] === 1; x++) horizontal++;
+      for (let y = r - 1; y >= 0 && grid[y][c] === 1; y--) vertical++;
+      for (let y = r + 1; y < size && grid[y][c] === 1; y++) vertical++;
+      if (horizontal < minRunLength && vertical < minRunLength) return false;
     }
   }
 
@@ -156,7 +169,7 @@ function targetBlockRatio(size: number) {
   return 0.24;
 }
 
-function canConvertPairToBlack(grid: number[][], r: number, c: number, minRunLength = 2): boolean {
+function canConvertPairToBlack(grid: number[][], r: number, c: number, minRunLength = 2, allowUnchecked = false): boolean {
   const size = grid.length;
   const r2 = size - 1 - r;
   const c2 = size - 1 - c;
@@ -167,7 +180,7 @@ function canConvertPairToBlack(grid: number[][], r: number, c: number, minRunLen
   grid[r][c] = 0;
   grid[r2][c2] = 0;
 
-  const ok = validateBlockRunsLocal(grid, minRunLength) && validateBlockRunsBlocks(grid) && isWhiteConnected(grid);
+  const ok = validateBlockRunsLocal(grid, minRunLength, allowUnchecked) && validateBlockRunsBlocks(grid) && isWhiteConnected(grid);
 
   if (!ok) {
     grid[r][c] = prev1;
@@ -177,7 +190,11 @@ function canConvertPairToBlack(grid: number[][], r: number, c: number, minRunLen
   return ok;
 }
 
-export function getNYTTemplate(size: number, minRunLength = 2): number[][] {
+export function getNYTTemplate(size: number, minRunLength = 2, random = Math.random): number[][] {
+  return symmetricTemplate(size, minRunLength, random, false);
+}
+
+function symmetricTemplate(size: number, minRunLength: number, random: () => number, allowUnchecked: boolean): number[][] {
   const grid = Array.from({ length: size }, () => Array(size).fill(1));
   const targetBlocks = Math.floor(size * size * targetBlockRatio(size));
   const maxBlocks = Math.floor(size * size * 0.3);
@@ -185,26 +202,26 @@ export function getNYTTemplate(size: number, minRunLength = 2): number[][] {
 
   const attempts = size * size * 10;
   for (let i = 0; i < attempts && blocks < maxBlocks; i++) {
-    const r = Math.floor(Math.random() * size);
-    const c = Math.floor(Math.random() * size);
+    const r = Math.floor(random() * size);
+    const c = Math.floor(random() * size);
     const r2 = size - 1 - r;
     const c2 = size - 1 - c;
     const add = (r === r2 && c === c2) ? 1 : 2;
     if (blocks + add > maxBlocks) continue;
-    if (!canConvertPairToBlack(grid, r, c, minRunLength)) continue;
+    if (!canConvertPairToBlack(grid, r, c, minRunLength, allowUnchecked)) continue;
     blocks += add;
   }
 
   const minBlocks = clamp(Math.floor(size * size * 0.08), 2, targetBlocks);
   if (blocks < minBlocks) {
     for (let i = 0; i < attempts && blocks < minBlocks; i++) {
-      const r = Math.floor(Math.random() * size);
-      const c = Math.floor(Math.random() * size);
+      const r = Math.floor(random() * size);
+      const c = Math.floor(random() * size);
       const r2 = size - 1 - r;
       const c2 = size - 1 - c;
       const add = (r === r2 && c === c2) ? 1 : 2;
       if (blocks + add > maxBlocks) continue;
-      if (!canConvertPairToBlack(grid, r, c, minRunLength)) continue;
+      if (!canConvertPairToBlack(grid, r, c, minRunLength, allowUnchecked)) continue;
       blocks += add;
     }
   }
@@ -212,7 +229,7 @@ export function getNYTTemplate(size: number, minRunLength = 2): number[][] {
   return grid;
 }
 
-export function getTemplate(size: number, minRunLength = 2): number[][] {
+export function getTemplate(size: number, minRunLength = 2, random = Math.random): number[][] {
   const grid = Array.from({ length: size }, () => Array(size).fill(1));
   const targetBlocks = Math.floor(size * size * targetBlockRatio(size));
   const maxBlocks = Math.floor(size * size * 0.3);
@@ -220,8 +237,8 @@ export function getTemplate(size: number, minRunLength = 2): number[][] {
 
   const attempts = size * size * 6;
   for (let i = 0; i < attempts && blocks < maxBlocks; i++) {
-    const r = Math.floor(Math.random() * size);
-    const c = Math.floor(Math.random() * size);
+    const r = Math.floor(random() * size);
+    const c = Math.floor(random() * size);
     if (grid[r][c] === 0) continue;
     if (!canConvertToBlack(grid, r, c)) continue;
     grid[r][c] = 0;
@@ -236,8 +253,8 @@ export function getTemplate(size: number, minRunLength = 2): number[][] {
   if (blocks < minBlocks) {
     // Try a few more passes to reach a minimal block count.
     for (let i = 0; i < attempts && blocks < minBlocks; i++) {
-      const r = Math.floor(Math.random() * size);
-      const c = Math.floor(Math.random() * size);
+      const r = Math.floor(random() * size);
+      const c = Math.floor(random() * size);
       if (grid[r][c] === 0) continue;
       if (!canConvertToBlack(grid, r, c)) continue;
       grid[r][c] = 0;
@@ -252,13 +269,13 @@ export function getTemplate(size: number, minRunLength = 2): number[][] {
   return grid;
 }
 
-export function getTemplates(size: number, minRunLength = 2, count = 6): number[][][] {
+export function getTemplates(size: number, minRunLength = 2, count = 6, random = Math.random): number[][][] {
   const templates: number[][][] = [];
   for (let i = 0; i < count; i++) {
-    if (Math.random() < 0.5) {
-      templates.push(getNYTTemplate(size, minRunLength));
+    if (random() < 0.5) {
+      templates.push(getNYTTemplate(size, minRunLength, random));
     } else {
-      templates.push(getTemplate(size, minRunLength));
+      templates.push(getTemplate(size, minRunLength, random));
     }
   }
   return templates;
@@ -314,4 +331,16 @@ export function canConvertToBlack(grid: number[][], r: number, c: number): boole
   }
 
   return true;
+}
+
+/** Balanced English 13×13 family: three-letter minimum, at most 60% three-letter clues.
+ * Singleton perpendicular runs are permitted only inside another valid word.
+ * Generate a fresh symmetric family per request; filtering does not refill/retry.
+ */
+export function getBalancedEnglishTemplates13(count = 24, random = Math.random): number[][][] {
+  return Array.from({ length: count }, () => symmetricTemplate(13, 3, random, true))
+    .filter(grid => {
+      const slots = findSlots(grid);
+      return slots.length > 0 && slots.filter(slot => slot.length === 3).length / slots.length <= 0.60;
+    });
 }

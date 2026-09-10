@@ -55,7 +55,7 @@ export function seededFixture(seed: number, size: number, dir: 'ltr' | 'rtl') {
 // Fix only template selection so the vocabulary is known to be satisfiable.
 // The solver, normalization, grid construction and validation remain real.
 export function generateFixture(seed: number, size: number, dir: 'ltr' | 'rtl', fixture = seededFixture(seed, size, dir)) {
-  const spy = vi.spyOn(templates, 'getTemplates').mockReturnValue([fixture.template]);
+  const spy = vi.spyOn(templates, size === 13 && dir === 'ltr' ? 'getBalancedEnglishTemplates13' : 'getTemplates').mockReturnValue([fixture.template]);
   try {
     return withSeed(seed, () => generateCrossword(size, fixture.wordClues, dir));
   } finally {

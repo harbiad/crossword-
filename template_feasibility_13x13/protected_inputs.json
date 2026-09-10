@@ -1,0 +1,6 @@
+{
+  "api/_lib/dictionary.stage3b.batch006.qa.generated.ts": true,
+  "api/generate.ts": true,
+  "src/lib/preparedCandidates.ts": true,
+  "validatorAndGridBuilderUnchanged": true
+}

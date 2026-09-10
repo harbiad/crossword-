@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts", "vitest.stress.config.ts", "vitest.benchmark.config.ts", "vitest.search.config.ts", "vitest.approved-benchmark.config.ts", "vitest.batch005-domains.config.ts", "vitest.residual-domains.config.ts", "vitest.batch006-residuals.config.ts", "vitest.diagnostic.config.ts", "vitest.worker.config.ts", "vitest.lookahead.config.ts", "benchmarks/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
+  "include": ["vite.config.ts", "vitest.stress.config.ts", "vitest.benchmark.config.ts", "vitest.search.config.ts", "vitest.template-feasibility.config.ts", "vitest.template-controls.config.ts", "vitest.template-families.config.ts", "vitest.approved-benchmark.config.ts", "vitest.batch005-domains.config.ts", "vitest.residual-domains.config.ts", "vitest.batch006-residuals.config.ts", "vitest.diagnostic.config.ts", "vitest.worker.config.ts", "vitest.lookahead.config.ts", "benchmarks/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
 }

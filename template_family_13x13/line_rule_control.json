@@ -1,0 +1,17 @@
+[
+  {
+    "allowSingleCellPerpendicularRun": false,
+    "lineLayouts": 116,
+    "forcedWhitePositions": [
+      2,
+      10
+    ],
+    "note": "A singleton is not an entry; in a full grid it must belong to a 3+ entry in the other direction."
+  },
+  {
+    "allowSingleCellPerpendicularRun": true,
+    "lineLayouts": 1050,
+    "forcedWhitePositions": [],
+    "note": "A singleton is not an entry; in a full grid it must belong to a 3+ entry in the other direction."
+  }
+]
