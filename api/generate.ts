@@ -14,9 +14,9 @@ const MIN_ENTRIES_FOR_UI = 24;
 const TARGET_PAIRS = 3000;
 
 function json(res: VercelResponse, status: number, body: unknown) {
-  res.status(status);
+  res.statusCode = status;
   res.setHeader('content-type', 'application/json; charset=utf-8');
-  res.send(JSON.stringify(body));
+  res.end(JSON.stringify(body));
 }
 
 function normalizeEnglishWord(s: string) {
